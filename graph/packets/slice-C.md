@@ -159,8 +159,8 @@ NOTE: NEW ext (not in spec table). Used implicitly at L1372 ('measurable w.r.t. 
 NODE: eqn-integral-nu
 KIND: display
 TITLE: Integrals (I),(II) as stationary expectations (3.1)
-STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1256-L1258
-PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1256-L1257
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1260
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1257
 CONTRACT_ID: paper.eqn-integral-nu
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; law of e^{i theta^_t(zz)} is stationary; nu is pi-periodic (stated in source)
@@ -174,14 +174,14 @@ FROZEN_ABI_SHA256: -
 DEPS: item-I, item-II, eqn-nu-D.nu, defn-sigma, def-arg, lem-p, lem-stationary, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
-EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1258-L1258 | left side of the first identity
-EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1258-L1258 | left side of the second identity
-EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1256-L1258 | nu is pi-periodic and enters both integrands
-EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1254-L1254 | sigma-time change defining theta^_t
-EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1254-L1254 | argument process theta behind theta^
-EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1253-L1253 | 'as in Lemma 2.13': p 1_[0,2pi] is the law of arg zz and e^{i theta^(zz)} is stationary (stationary p of Lemma 2.13)
-EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1256-L1256 | stationarity of e^{i theta^_t(zz)} for every admissible p (R7/R15); the source cites only Lemma 2.13
-EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1253-L1256 | p ranges over admissible densities (R7/R15)
+EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1259-L1259 | left side of the first identity
+EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1260-L1260 | left side of the second identity
+EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1260 | nu is pi-periodic and enters both integrands
+EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | sigma-time change defining theta^_t
+EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | argument process theta behind theta^
+EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | 'as in Lemma 2.13': p 1_[0,2pi] is the law of arg zz (stationary p of Lemma 2.13)
+EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1257 | stationarity of e^{i theta^_t(zz)} for every admissible p (R7/R15); the source cites only Lemma 2.13
+EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1257 | p ranges over admissible densities (R7/R15)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -440,7 +440,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Lambda dense in the unit circle (from step:all-z-lambda-conull); theta_.(z) non-constant continuous on [0,T_z)
 SOURCE_QUANTIFIERS: q < 1; z
 SOURCE_CONCLUSION: there is a stopping time tau < T_z a.s. with P(e^{i theta_tau(z)} in Lambda) >= q; hence P(E(z)) >= q, and P(E(z)) = 1
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: q in (0,1) is arbitrary; tau = tau(z,q) is a stopping time chosen after q; no dependence of Lambda on q
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -529,7 +529,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: m in N; (B^1..B^m) m-dim BM (arbitrary covariance); X : [0,inf) -> C adapted to the filtration of B, law stationary in time, dX = g^0(X)dt + sum g^j(X) dB^j with measurable g^j; deterministic xbar with a.s. arbitrarily large t with X_t = xbar; measurable f^0..f^m : C -> R with E int_0^1 (f^j(X_s))^2 ds < infinity; Y : [0,inf) -> R with dY = f^0(X)dt + sum f^j(X) dB^j
 SOURCE_QUANTIFIERS: m; B; X; xbar; f^j; Y
 SOURCE_CONCLUSION: a.s. Y_t/t -> E f^0(X_0) (source typo T2: X_0^0 read as X_0); if E f^0(X_0) = 0 then a.s. for each eps > 0 there are arbitrarily large t with |Y_t| < eps
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: xbar is a deterministic point of C (independent of omega, chosen before X); m, f^j, g^j are deterministic
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -590,9 +590,10 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: -
+DEPS: step:sde-stationary-increments
 ROUTES: -
 ROUTE_FOR: -
+EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1363 | stationarity of the increments of Y is used to compare Y_t/t with Y_{floor(t)}/floor(t)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -727,13 +728,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-recurrent, step:sde-birkhoff-limit, step:sde-limit-deterministic, step:sde-mean-zero
+DEPS: lem-recurrent, step:sde-stationary-increments, step:sde-birkhoff-limit, step:sde-limit-deterministic, step:sde-mean-zero
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-recurrent | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | applied to the stationary sequence xi_n
 EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | E(xi_1 ∣ I) is the a.s. limit of Y_n/n
 EDGE: step:sde-limit-deterministic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | the limit is deterministic
-EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | that constant equals E f^0(X_0) = 0, hence E(xi_1∣I) = 0
+EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | that constant equals E f^0(X_0) = 0, hence E(xi_1 ∣ I) = 0
+EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | discharges the premise 'stationary sequence' of Lemma 3.5 for xi_n = Y_n - Y_{n-1}
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -949,7 +951,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: (I) = -alpha < 0; Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: alpha > 0
 SOURCE_CONCLUSION: a.s. there is t_* < T_zz such that for all t in (t_*, T_zz): log|f_t(zz)| < -(alpha/2) int_0^t |f_s(zz)|^{-2} ds
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: alpha = -(I) > 0 is deterministic (depends on Sigma, p); t_* < T_zz is random (depends on omega), a.s. finite
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -978,7 +980,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: eqn-neg-I1-bd; F(t) = int_0^t |f_s(zz)|^{-2} ds, F' = |f_t(zz)|^{-2}
 SOURCE_QUANTIFIERS: alpha > 0
 SOURCE_CONCLUSION: a.s. T_zz <= t_* + (1/alpha) e^{-alpha F(t_*)} < infinity
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: alpha > 0 deterministic; t_* is the random time of (3.2); the bound t_* + e^{-alpha F(t_*)}/alpha is random
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1122,19 +1124,18 @@ PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp
 CONTRACT_ID: paper.step:zero-in-left-hull
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: U_0 = 0 (R4)
-SOURCE_QUANTIFIERS: t >= 0; s >= 0
-SOURCE_CONCLUSION: 0 in L_t and 0 in L_{t,s+t}; hence dist(zz, L_t) <= |zz| = 1 and log(1/dist(zz,L_{sigma(t^)})) >= 0
+SOURCE_QUANTIFIERS: t >= 0
+SOURCE_CONCLUSION: 0 in L_t, hence dist(zz, L_t) <= |zz| = 1 and log(1/dist(zz,L_{sigma(t^)})) >= 0
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left, defn-loewner.absorbing-time, eqn-conc
+DEPS: defn-hulls.left, defn-loewner.absorbing-time
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | L_t = {z : T_z <= t}
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | T_0 = 0 because the driver starts at the singular point 0
-EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | future hulls L_{t,s+t} are the left hulls of the shifted driver U(.+t)-U(t) started at 0
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1206,10 +1207,10 @@ STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@
 PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1463-L1463
 CONTRACT_ID: paper.eqn-hit-koebe
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: t < T_zz; f_t : C\L_t -> C\R_t conformal with L_t, R_t compact; universal implicit constants
+SOURCE_HYPOTHESES: t < T_zz; Section-3 package (L1255-1257): zz is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); the display is deterministic given t < T_zz
 SOURCE_QUANTIFIERS: t < T_zz
 SOURCE_CONCLUSION: |f_t'(zz)| asymp dist(f_t(zz),R_t)/dist(zz,L_t) <= |f_t(zz)|/dist(zz,L_t) with universal constants
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega; the relation holds for every t < T_zz
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1357,20 +1358,19 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; t, s as in Step 1
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: |f_{t,s+t}'(f_t(zz))| asymp dist(f_{s+t}(zz), R_{t,s+t})/dist(f_t(zz), L_{t,s+t}) with universal constants
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: ext:koebe-quarter, step:hulls-compact, claim:gt-conformal, lem-markov, eqn-conc, step:future-point-outside-hulls
+DEPS: ext:koebe-quarter, step:hulls-compact, claim:gt-conformal, eqn-conc, step:future-point-outside-hulls
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | Koebe quarter theorem for f_{t,s+t} : C\L_{t,s+t} -> C\R_{t,s+t}
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1708 | compactness premise
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1708 | conformality of the future map f_{t,s+t}
-EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1708 | f_{t,s+t} is again a centered SLE_Sigma map at the stopping time sigma(t^) (so conformal/left hull theory applies)
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_{t,s+t}(f_t(zz)) = f_{s+t}(zz)
-EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1707-L1707 | f_t(zz) not in L_{t,s+t}
+EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_t(zz) not in L_{t,s+t}
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1389,7 +1389,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; t, s as in Step 1
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: |f_{t,s+t}'(f_t(zz))| asymp dist(f_{s+t}(zz), R_{s+t})/dist(f_t(zz), L_{t,s+t} u R_t) with universal constants
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1420,7 +1420,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: dist(f_{s+t}(zz),R_{t,s+t})/dist(f_t(zz),L_{t,s+t}) asymp dist(f_{s+t}(zz),R_{s+t})/dist(f_t(zz),L_{t,s+t} u R_t)
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1448,12 +1448,12 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: |f_t'(zz)| dist(zz,L_{s+t}) asymp dist(f_t(zz), L_{t,s+t} u R_t) asymp [dist(f_t(zz),L_{t,s+t})/dist(f_{s+t}(zz),R_{t,s+t})] dist(f_{s+t}(zz),R_{s+t})
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: ext:koebe-quarter, step:hulls-compact, eqn-conc, eqn-two-dist-ratio, step:future-point-outside-hulls
+DEPS: ext:koebe-quarter, step:hulls-compact, claim:gt-conformal, eqn-conc, eqn-two-dist-ratio, step:future-point-outside-hulls
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1728 | Koebe quarter theorem for f_t : C\L_{s+t} -> C\(L_{t,s+t} u R_t)
@@ -1461,6 +1461,7 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-k
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1727 | f_t maps C\L_{s+t} onto C\(L_{t,s+t} u R_t)
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1728-L1728 | second asymp via (3.9)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1727 | zz not in L_{s+t}
+EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1728 | f_t is conformal (injective holomorphic) on C\L_t, hence on C\L_{s+t}
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1479,7 +1480,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: dist(f_t(zz),L_{t,s+t})/(|f_t(zz)| dist(zz,L_{s+t})) asymp (|f_t'(zz)|/|f_t(zz)|) dist(f_{s+t}(zz),R_{t,s+t})/dist(f_{s+t}(zz),R_{s+t})
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1589,7 +1590,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; on E_s^
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: on E_s^: |f_t'(zz)| asymp dist(f_t(zz),L_{t,s+t} u R_t)/dist(zz,L_{s+t}) = dist(f_t(zz),L_{t,s+t})/dist(zz,L_{s+t})
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1618,7 +1619,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; on E_s^
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: on E_s^: dist(f_t(zz),L_{t,s+t})/(|f_t(zz)| dist(zz,L_{s+t})) asymp |f_t'(zz)|/|f_t(zz)|
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1645,17 +1646,17 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; on E_s^c
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: on E_s^c: dist(f_{s+t}(zz),R_{t,s+t})/dist(f_{s+t}(zz),R_{s+t}) asymp dist(f_t(zz),L_{t,s+t})/dist(f_t(zz),L_{t,s+t} u R_t) <= |f_t(zz)|/dist(f_t(zz),R_t)
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-two-dist-ratio, step:zero-in-left-hull, eqn-dist-cases
+DEPS: eqn-two-dist-ratio, step:zero-in-future-left-hull, eqn-dist-cases
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | the asymp via (3.9)
-EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | 0 in L_{t,s+t}, so dist(f_t(zz),L_{t,s+t}) <= ∣f_t(zz)∣
 EDGE: eqn-dist-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | on E^c the union distance equals dist(f_t(zz),R_t)
+EDGE: step:zero-in-future-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | 0 in L_{t,s+t}, so dist(f_t(zz),L_{t,s+t}) <= ∣f_t(zz)∣
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1674,18 +1675,19 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; on E_s^c
 SOURCE_QUANTIFIERS: t^, s^
 SOURCE_CONCLUSION: on E_s^c: dist(f_t(zz),L_{t,s+t})/(|f_t(zz)| dist(zz,L_{s+t})) <~ |f_t'(zz)|/dist(f_t(zz),R_t) asymp 1/dist(zz,L_t)
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: implicit constants in the asymp / lesssim relations are universal: independent of Sigma, p, t^, s^, zz and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-dist-1, eqn-dist-2, ext:koebe-quarter, step:hulls-compact
+DEPS: eqn-dist-1, eqn-dist-2, ext:koebe-quarter, step:hulls-compact, claim:gt-conformal
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-dist-1 | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1773-L1773 | left side of (3.11)
 EDGE: eqn-dist-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1773-L1773 | upper bound for the ratio of R-distances on E^c
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | Koebe quarter for f_t : C\L_t -> C\R_t gives the last asymp
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | compactness
+EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | f_t conformal C\L_t -> C\R_t
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1704,7 +1706,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: lim_{u->T_zz^-} dist(zz,L_u) = 0 a.s. (hypothesis of the contrapositive); Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time; t = sigma(t^), s = sigma(s^+t^) - sigma(t^)
 SOURCE_QUANTIFIERS: t^, s^ > 0
 SOURCE_CONCLUSION: log[dist(f_t(zz),L_{t,s+t})/|f_t(zz)|] - log dist(zz,L_{s+t}) <= log(|f_t'(zz)|/|f_t(zz)|) 1_{E_s^} + log(1/dist(zz,L_t)) 1_{E_s^c} + C, with a universal constant C
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C is universal: independent of Sigma, p, t^, s^, zz and omega (the implicit asymp constants of (3.15), (3.17) are absorbed into C)
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1733,7 +1735,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: eqn-dist-3; 1_{E_s^} -> 1 a.s.; Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^ fixed; s^ -> infinity
 SOURCE_CONCLUSION: lim_{s^->infinity} E[RHS of (3.6)] = E log(|f_t'(zz)|/|f_t(zz)|) + C, with E|log(|f_t'(zz)|/|f_t(zz)|)| < infinity
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C is the universal constant of (3.6); independent of t^, s^, Sigma, omega; the limit s^ -> infinity is taken with t^ fixed
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1793,7 +1795,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: lim dist(zz,L_u) = 0 a.s.; Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^ > 0
 SOURCE_CONCLUSION: E log(|f_t'(zz)|/|f_t(zz)|) + C >= 0, i.e. C - t^ (II) >= 0 for all t^, hence (II) <= 0
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C is the universal constant of (3.6), independent of t^ (this is what allows t^ -> infinity); t^ is arbitrary
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -1801,7 +1803,7 @@ FROZEN_ABI_SHA256: -
 DEPS: step:converse-rhs-limit, step:converse-lhs-nonneg, lem-integral-ii
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:converse-rhs-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1691-L1691 | limit of the right side
+EDGE: step:converse-rhs-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | limit of the right side, combined with the left side at L1697
 EDGE: step:converse-lhs-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | left side has nonnegative expectation
 EDGE: lem-integral-ii | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | E log(∣f_t'∣/∣f_t∣) = -t^ (II)
 TOPOLOGY_STATUS: PROPOSED
@@ -2084,7 +2086,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: law of int_{tau_k}^{T_k} |f_v(zz)|^{-2} dv independent of k
 SOURCE_QUANTIFIERS: none
 SOURCE_CONCLUSION: there is q = q(Sigma) > 0 with P(int_{tau_k}^{T_k} |f_v(zz)|^{-2} dv >= q) >= 1/2 for all k
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: q = q(Sigma) > 0 depends only on Sigma (and p); independent of k and omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2111,7 +2113,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: events A_k = {int_{tau_k}^{T_k} |f_v(zz)|^{-2} dv >= q}, P(A_k) >= 1/2
 SOURCE_QUANTIFIERS: N in N; k in N
 SOURCE_CONCLUSION: events A_k independent; P(#{j <= k : A_j} <= N) <= C_N 2^{-k} with C_N depending only on N; hence P(int_0^{tau_k} |f_v(zz)|^{-2} dv <= q N) <= C_N 2^{-k}
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C_N depends only on N (combinatorial); independent of k, Sigma and omega; N is fixed before k
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2140,7 +2142,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: N in N; k in N
 SOURCE_CONCLUSION: P(tau_k <= sigma(q N)) <= C_N 2^{-k} for all k in N
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C_N depends only on N, as in the binomial bound; independent of k; N in N arbitrary
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2168,7 +2170,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: Section-3 package (L1252-1255): zz (bold z) is a random point of the unit circle with arg zz ~ p(u)1_[0,2pi](u)du, independent of the driver U, p admissible (R7/R15); sigma = sigma_zz; hats denote sigma-time
 SOURCE_QUANTIFIERS: t^ > 0; k in N
 SOURCE_CONCLUSION: there is C_{t^} = C(t^,Sigma) with P(dist(zz,L_{sigma(t^)}) <= 16^{-k}) <= C_{t^} 2^{-k+1} for all k in N
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: C_t^ depends only on t^ and Sigma (and p), not on k or omega; chosen before k; N = N(t^,Sigma) with qN >= t^
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2205,7 +2207,7 @@ DEPS: eqn-log-finite-show, step:zero-in-left-hull
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-log-finite-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | geometric tail P(log(1/dist) >= k log 16) <= C 2^{-k+1}
-EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | log(1/dist(zz,L_{sigma(t^)})) >= 0 so the tail integral formula applies
+EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | log(1/dist(zz,L_{sigma(t^)})) >= 0 so the tail integral formula applies
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -2347,11 +2349,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer
+DEPS: step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-scale-reduction
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:prop-ii-b-hit-lambda-prime | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1803 | P(tau < infinity) > 0
 EDGE: step:prop-ii-b-markov-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L1805 | q(z) >= E[q(e^{i theta^_tau}) ; tau < infinity] > 0 since e^{i theta^_tau} in Lambda' subset Lambda
+EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1799-L1799 | q(z) > 0 on the unit circle gives q(z) > 0 on C\{0}
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -2401,7 +2404,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: q(z) > 0 for all z (step:prop-ii-b-lambda-full)
 SOURCE_QUANTIFIERS: none
 SOURCE_CONCLUSION: there exists q_* > 0 with q(z) >= q_* for all z in C\{0}
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: epsilon = epsilon(z) depends on z; q_* > 0 depends only on Sigma (and p), uniform in z in C\{0} and independent of omega
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2430,7 +2433,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: z in C\{0}
 SOURCE_QUANTIFIERS: z; t^ >= 0
 SOURCE_CONCLUSION: P(lim_{t->T_z^-} dist(z,L_t) > 0 | F_{sigma_z(t^)}) >= q_* for all t^ >= 0
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: q_* is the deterministic constant of step:prop-ii-b-compactness, depending only on Sigma (and p), independent of z and t^
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2461,7 +2464,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: z in C\{0}; P(A | F_{sigma_z(t^)}) >= q_* for all t^; A = {lim dist(z,L_t) > 0}
 SOURCE_QUANTIFIERS: z
 SOURCE_CONCLUSION: a.s. lim_{t->T_z^-} dist(z,L_t) > 0
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: q_* is the deterministic constant of step:prop-ii-b-compactness, depending only on Sigma (and p), independent of z and t^
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2490,7 +2493,7 @@ CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: a,b > 0; c = 0; p admissible (R7/R15)
 SOURCE_QUANTIFIERS: a,b > 0
 SOURCE_CONCLUSION: p(u) = Z^{-1}(a+b+(b-a)cos 2u)^{4/(b-a)} for a != b and Z^{-1} exp((4/a)cos^2 u) for a = b, with normalizing Z = Z(a,b) > 0; p = p_0 in the proof of Lemma 2.13 (r_* = 0)
-CONSTANT_SCOPE: none
+CONSTANT_SCOPE: Z = Z(a,b) > 0 depends only on a and b (c = 0)
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
@@ -2918,6 +2921,37 @@ LEAN_REF: -
 LEAN_NOTE: -
 NOTE: Union of the cases of Lemma 3.11 and Lemma 3.12 (a-b>8 and a-b=8 give a-b>=8, P8). Trivial assembly; included because the source states it as part of the proof of Thm 1.8 (L1930-1932). Slice A's thm-phases.c-zero depends on lem-c0-phases, lem-c0-bdy directly; recommend it depends on this node (and no longer needs prop-i.a/b, prop-ii.a/b directly since Lemma 3.11 consumes the sign-case assembly).
 
+NODE: step:zero-in-future-left-hull
+KIND: step
+TITLE: 0 belongs to the future left hulls L_{t,s+t}
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768
+CONTRACT_ID: paper.step:zero-in-future-left-hull
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U_0 = 0 (R4); t, s >= 0
+SOURCE_QUANTIFIERS: t >= 0; s >= 0
+SOURCE_CONCLUSION: 0 in L_{t,s+t}, hence dist(f_t(zz), L_{t,s+t}) <= |f_t(zz)|
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: defn-hulls.left, defn-loewner.absorbing-time, eqn-conc, step:zero-in-left-hull
+ROUTES: -
+ROUTE_FOR: -
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | L_{t,s+t} is a left hull
+EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | T_0 = 0 for the shifted driver U(.+t)-U(t), which starts at 0
+EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | L_{t,s+t} is the left hull of the chain driven by U(.+t)-U(t)
+EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | same argument as for L_t, applied to the shifted driver
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-C/sonnet (proposed split of step:zero-in-left-hull)
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: The source writes 'the fact that 0 in L_{t,s+t}' at L1768 without argument (read as the shifted-driver version of L1558; not a SOURCE_GAP beyond what L1558 already assumes). Split out of step:zero-in-left-hull so each EDGE locator cites its own use site.
+
+
 ## Coverage
 
 ITEM: inv:heading:L1250
@@ -3049,7 +3083,7 @@ REVIEWER: -
 ITEM: inv:proof:L1360
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1360@L1360-L1379
-DISPOSITION: NODE lem-stationary-sde, step:sde-stationary-increments, step:sde-continuity-noninteger, step:sde-birkhoff-limit, step:sde-regeneration, step:sde-limit-deterministic, step:sde-mean-zero, step:sde-recurrence-zero
+DISPOSITION: NODE lem-stationary-sde, step:sde-stationary-increments, step:sde-continuity-noninteger, step:sde-birkhoff-limit, step:sde-regeneration, step:sde-limit-deterministic, step:sde-mean-zero, step:sde-recurrence-zero, ext:birkhoff, ext:kolmogorov-zero-one, ext:strong-markov-bm
 REASON: proof of Lemma 3.4
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
@@ -3454,7 +3488,7 @@ REVIEWER: -
 ITEM: inv:proof:L1786
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1786@L1786-L1816
-DISPOSITION: NODE prop-ii.b, step:prop-ii-b-scale-reduction, step:prop-ii-b-lambda-positive-measure, step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-lambda-full, step:prop-ii-b-koebe-ball, step:prop-ii-b-compactness, step:prop-ii-b-conditional-lower-bound, step:prop-ii-b-martingale-zero-one
+DISPOSITION: NODE prop-ii.b, step:prop-ii-b-scale-reduction, step:prop-ii-b-lambda-positive-measure, step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-lambda-full, step:prop-ii-b-koebe-ball, step:prop-ii-b-compactness, step:prop-ii-b-conditional-lower-bound, step:prop-ii-b-martingale-zero-one, ext:girsanov, ext:koebe-distortion, ext:martingale-convergence
 REASON: proof of Prop 3.2(b)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
@@ -3598,7 +3632,7 @@ REVIEWER: -
 ITEM: inv:L1558:zero-in-left-hull
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1558:zero-in-left-hull@L1558-L1558
-DISPOSITION: NODE step:zero-in-left-hull
+DISPOSITION: NODE step:zero-in-left-hull, step:zero-in-future-left-hull
 REASON: unlabeled claim |zz| = 1 and 0 in L_{sigma(t^)}; also used at L1768 for L_{t,s+t}
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet

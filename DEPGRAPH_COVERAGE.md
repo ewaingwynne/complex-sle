@@ -1575,7 +1575,7 @@ REVIEWER: -
 ITEM: inv:proof:L1360
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1360@L1360-L1379
-DISPOSITION: NODE lem-stationary-sde, step:sde-stationary-increments, step:sde-continuity-noninteger, step:sde-birkhoff-limit, step:sde-regeneration, step:sde-limit-deterministic, step:sde-mean-zero, step:sde-recurrence-zero
+DISPOSITION: NODE lem-stationary-sde, step:sde-stationary-increments, step:sde-continuity-noninteger, step:sde-birkhoff-limit, step:sde-regeneration, step:sde-limit-deterministic, step:sde-mean-zero, step:sde-recurrence-zero, ext:birkhoff, ext:kolmogorov-zero-one, ext:strong-markov-bm
 REASON: proof of Lemma 3.4
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
@@ -1980,7 +1980,7 @@ REVIEWER: -
 ITEM: inv:proof:L1786
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1786@L1786-L1816
-DISPOSITION: NODE prop-ii.b, step:prop-ii-b-scale-reduction, step:prop-ii-b-lambda-positive-measure, step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-lambda-full, step:prop-ii-b-koebe-ball, step:prop-ii-b-compactness, step:prop-ii-b-conditional-lower-bound, step:prop-ii-b-martingale-zero-one
+DISPOSITION: NODE prop-ii.b, step:prop-ii-b-scale-reduction, step:prop-ii-b-lambda-positive-measure, step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-lambda-full, step:prop-ii-b-koebe-ball, step:prop-ii-b-compactness, step:prop-ii-b-conditional-lower-bound, step:prop-ii-b-martingale-zero-one, ext:girsanov, ext:koebe-distortion, ext:martingale-convergence
 REASON: proof of Prop 3.2(b)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
@@ -2124,7 +2124,7 @@ REVIEWER: -
 ITEM: inv:L1558:zero-in-left-hull
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1558:zero-in-left-hull@L1558-L1558
-DISPOSITION: NODE step:zero-in-left-hull
+DISPOSITION: NODE step:zero-in-left-hull, step:zero-in-future-left-hull
 REASON: unlabeled claim |zz| = 1 and 0 in L_{sigma(t^)}; also used at L1768 for L_{t,s+t}
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
