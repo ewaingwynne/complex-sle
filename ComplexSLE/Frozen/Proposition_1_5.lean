@@ -44,7 +44,7 @@ theorem sle_duality (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω) [IsProbabi
               centeredLoewnerMap (fun s => Complex.I * (U (t - s) ω - U t ω) +
                   Complex.I * (U (max s t) ω - U t ω)) (by fun_prop) t ⟨w, hw⟩ = Complex.I * z :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.sle_duality Ω P a b c ha hb hc U hU t ht
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

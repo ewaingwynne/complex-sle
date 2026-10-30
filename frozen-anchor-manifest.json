@@ -3585,7 +3585,7 @@
         "module": "ComplexSLE.Internal.Proposition_1_5",
         "export": "ComplexSLE.Internal.sle_duality"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "e520f4d3f56b392f257b7999f605dd6b2856601380be31b1541de99c83939c7e",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

@@ -20,8 +20,7 @@ M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative t
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 9
-  ComplexSLE/Frozen/Proposition_1_5.lean       ComplexSLE.sle_duality  (R28)
+DRAFT_ANCHORS: 8
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
   ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
@@ -38,7 +37,8 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
 EXTERNALS: 17 frozen (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
-PROVED: 14   PROVED_REL: 3
+PROVED: 15   PROVED_REL: 3
+  PROVED  ComplexSLE.sle_duality (Prop 1.5, coupling form R28; AU-M6-S4)
   PROVED  concatenation_{centeredLoewnerMap,leftHull,image_leftHull,rightHull}  (AUTO-1; AU-M6-D1d) — (2.3) fully proved
   PROVED_REL{exists_isBrownianReal}  ComplexSLE.exists_sleDriver (AU-M6-S0)
   PROVED_REL{loewnerMap_conformal}  ComplexSLE.lemma_2_4_leftHull  (AU-M4-D2)
