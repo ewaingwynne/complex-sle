@@ -45,6 +45,34 @@ export PATH="$HOME/.elan/bin:$HOME/.local/bin:$PATH"
 - There is no root aggregator module (it would import draft anchors); `lake build`
   builds every module under `ComplexSLE/` via a glob.
 
+## Approvals (ruling R26)
+
+The author asked (2026-10-30) for about a third as many approval pauses. Rules:
+
+1. **No "start the next milestone?" questions.** Milestones roll over automatically. Each milestone
+   close is committed, pushed and reported without a question unless an author decision is pending.
+2. **Auto-approval (`AUTO-n` in ERRATA.md, listed in the next packet for retroactive veto).** The
+   orchestrator approves on the author's behalf:
+   - mechanical companions of an author-approved declaration: the remaining parts of an approved split,
+     analogues in the same pattern (right hulls, maps f_t, reflected or shifted drivers), characterization
+     theorems of an approved definition, and versioned successors that change only docstrings, binder
+     names or an unambiguous typo;
+   - literal transcriptions of a source definition or statement with no modeling choice (no new carrier,
+     normalization, quantifier, a.s. or hypothesis decision beyond existing rulings), after a transient
+     compile and two independent fresh Sonnet reviews that ACCEPT (cosmetic changes only);
+   - unambiguous typo errata (T-items).
+   Proof-route substitutions, graph amendments and internal/infrastructure lemmas never needed approval;
+   they are reported only.
+3. **Author approval, batched into one packet per milestone** (`review/approvals/M<k>.md`, one question):
+   new EXTERNAL inputs; any declaration with a modeling choice or a departure from the literal source
+   (added or changed hypotheses, carriers, normalizations, encodings, splits and witness policy);
+   corrections of mathematical errors in the paper (P-items) and other rulings; scope changes.
+   While a packet is pending, work continues on everything that does not depend on it (drafts and proofs
+   against pending statements stay in scratch, unfrozen). Pause only when the whole remaining frontier
+   depends on the packet.
+4. **Safety.** AUTO never applies to EXTERNAL inputs, nor to anything weaker than the literal source. If the
+   author vetoes an AUTO item, it gets a versioned successor and every dependent seal and audit is redone.
+
 ## Hard rules (repeat verbatim in every worker brief)
 
 

@@ -57,6 +57,10 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   `koebe_quarter`, `koebe_distortion`, `ito_formula`, `levy_characterization`, `dambis_dubins_schwarz`,
   `timeChange_isContLocalMartingale` (σ 0 = 0), `girsanov_law_equiv` (bounded h), `hormander_oneDim`. Kolmogorov 0-1 is
   Mathlib-supplied (no file). This completes the graph's external boundary.
+- R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
+  transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
+  veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet
+  per milestone; milestones roll over without a question. Full text: CLAUDE.md "Approvals (ruling R26)".
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
@@ -178,13 +182,38 @@ modeled as SOURCE_GAP steps:
 - The product-space extension for the random point 𝐳 (Props 3.1/3.2 over arbitrary Ω).
 - The new external `ext:kolmogorov-zero-one`.
 
-**P13 (open, found in M5). Girsanov steps in Prop 3.2(b) and Thm 1.10(a).** `paper.tex:L1799-1802` and the reuse
+**P13 (fix proposed, pending author; found in M5). Girsanov steps in Prop 3.2(b) and Thm 1.10(a).** `paper.tex:L1799-1802` and the reuse
 in the proof of Thm 1.10(a). The paper infers P(τ < ∞) > 0 "from the SDE and Girsanov's theorem". The drift ratio
 h = µ/√(2D) is bounded only when c² < ab, so in the critical case c² = ab Girsanov does not apply as used; and even
 for c² < ab the argument that the driftless diffusion hits the target set with positive probability is not given.
 Both are SOURCE_GAP steps in the graph (step:prop-ii-b-hit-lambda-prime, step:disc-a-hit-Lambda); the external
 `girsanov_law_equiv` covers only bounded h. **Needed from the author:** an argument for the critical case (e.g. a
 localisation or a direct comparison), or a ruling on how to treat it.
+
+**Proposed fix for P13 (no Girsanov; pending in review/approvals/M6.md).** Reviewed by p13-reviewer/sonnet:
+HOLDS_WITH_CAVEATS, with every caveat folded in below. Replace the Girsanov step by a hitting lemma for θ̂.
+- *Lemma (hitting levels).* Let a, b > 0, c² ≤ ab and c ≥ 0. For c < 0 apply the symmetry θ ↦ −θ, c ↦ −c, under
+  which µ_c(−u) = −µ_{−c}(u). Then θ̂ started at any y hits every level θ* < y with positive probability. If c² < ab
+  it also hits every level θ* > y.
+- *Proof, c² < ab.* Let S' = exp(−∫ µ/D). Then µS' + DS'' = 0, so S(θ̂) is a local martingale (Itô, martingale form).
+  D ≥ d₀ > 0, so the exit time from [θ*, y+1] is a.s. finite. Optional stopping gives
+  P(exit at θ*) = (S(y+1) − S(y)) / (S(y+1) − S(θ*)) > 0. The same holds for upper levels.
+- *Proof, c = √(ab).* D vanishes exactly on x + πℤ, with double zeros, and µ(x) = −4√(ab)/(a+b) < 0. Let
+  I_n = (x + (n−1)π, x + nπ). Three facts are needed:
+  (1) Inside I_n the upper endpoint is unattainable, since S(u⁻) = +∞. The lower endpoint is hit with positive
+      probability: S(l⁺) is finite, as at L1210-1223. The exit time is finite because µ ≤ −m/2 near l gives
+      E[exit] ≤ 2ε₀/m. The paper does not state this finiteness for ω(R) at L1226; the same bound covers it.
+  (2) A degenerate level x + jπ is left downward immediately: the diffusion coefficient is Lipschitz and vanishes
+      there, the drift is negative, and the occupation time of the level is 0.
+  (3) Chaining. If y and θ* lie in the same I_m, go directly through the scale function on (θ*, x + mπ). Otherwise
+      pass through the degenerate levels between them one at a time, using (1) and (2) and the strong Markov property
+      at a small positive time after each level. Then finish on (θ*, x + mπ).
+- *Correction to Prop 3.2(b), L1801-1802, and Thm 1.10(a), ≈L2205-2207.* Λ ≠ ∅ because E q(𝐳) > 0. Pick θ* with
+  e^{iθ*} ∈ Λ and θ* < arg z (θ* > arg z if c < 0). Take Λ' := {e^{iθ*}}. By the lemma θ̂(z) hits θ* with positive
+  probability, so P(τ < ∞) > 0. The rest is unchanged. Positive Lebesgue measure of Λ is no longer needed beyond
+  Λ ≠ ∅, and the external `girsanov_law_equiv` is no longer consumed.
+- *Adjacent (modeling question, not part of P13).* The step "find τ with P(e^{iθ_τ} ∈ Λ) ≥ q" in Lemma all-z
+  (≈L1319) is one-sided at degenerate points in the critical case. It uses no Girsanov.
 
 ### Typos (graph notes only)
 
