@@ -28,6 +28,8 @@ if [[ -f frozen-anchor-manifest.json ]]; then
   if [[ "${1:-}" != "--quick" ]]; then
     echo "== elaborated ABI hashes"
     python3 -I tools/leanprobe.py verify-abi frozen-anchor-manifest.json
+    echo "== external-dependency closure (UNSOUND fails)"
+    python3 -I tools/leanprobe.py externals-all frozen-anchor-manifest.json
   fi
 else
   echo "== frozen anchors: no manifest yet; checking for stray placeholders"

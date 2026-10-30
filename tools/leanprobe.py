@@ -11,6 +11,17 @@ Subcommands (run from the project root):
   abi-many MODULE:DECL...  ABI hashes of several declarations in one Lean run.
   verify-abi MANIFEST Recompute every anchor's ABI hash and fail on any drift.
   axioms MODULE DECL  Run `#print axioms DECL` and report the axiom list.
+  externals MODULE DECL
+                      Walk the transitive closure of constants used by DECL (type and
+                      value) and print JSON {decl, axioms, externals, status, ...}.
+                      status is PROVED (axioms within the standard three), PROVED_REL
+                      (the only extra axiom is sorryAx and every constant whose own
+                      type/value mentions sorryAx is an EXTERNAL manifest export
+                      declared in its manifest module), or UNSOUND (offenders listed;
+                      exit code 1). Needs frozen-anchor-manifest.json.
+  externals-all MANIFEST
+                      Run `externals` for every SEALED theorem anchor, one JSON line
+                      each; exit code 1 if any is UNSOUND.
   sha FILE...         SHA-256 of raw file bytes (for `full_file_sha256`).
   regions FILE        SHA-256 of the frozen prefix and suffix of a theorem file.
 
@@ -54,6 +65,62 @@ open Lean in
   IO.println s!"type={{ci.type.dbgToString}}"
   IO.println s!"value={{value}}"
   IO.println "ABI_END"
+"""
+
+# Closure walk. Constants used by a constant: its type, its value (definitions, theorems,
+# opaques), and for inductives their constructors (as Lean's own `collectAxioms`).
+# Everything is walked (no prefix pruning); a visited set makes each constant cost once.
+# `EXTERNALS` lists (name, module) pairs of EXTERNAL manifest exports; a constant counts as
+# an external only if it really is declared in that module.
+EXT_PROBE_HEAD = r"""open Lean in
+partial def extWalk (env : Environment) (todo : Array Name) (seen : NameHashSet)
+    (axs sorries : Array Name) : (Array Name × Array Name × NameHashSet) :=
+  match todo.back? with
+  | none => (axs, sorries, seen)
+  | some n =>
+    let todo := todo.pop
+    if seen.contains n then extWalk env todo seen axs sorries
+    else
+      let seen := seen.insert n
+      match env.find? n with
+      | none => extWalk env todo seen axs (sorries.push (Name.mkSimple s!"<missing:{n}>"))
+      | some ci =>
+        let used := ci.type.getUsedConstants
+        let used := match ci.value? (allowOpaque := true) with
+          | some v => used ++ v.getUsedConstants
+          | none => used
+        let used := match ci with
+          | .inductInfo v => used ++ v.ctors.toArray
+          | _ => used
+        let axs := match ci with
+          | .axiomInfo _ => axs.push n
+          | _ => axs
+        let sorries := if used.contains ``sorryAx then sorries.push n else sorries
+        extWalk env (todo ++ used) seen axs sorries
+
+open Lean in
+def extReport (env : Environment) (decl : Name) (externals : Array (String × String)) : IO Unit := do
+  if (env.find? decl).isNone then throw (IO.userError s!"unknown constant {decl}")
+  let (axs, sorries, seen) := extWalk env #[decl] {} #[] #[]
+  let modOf (n : Name) : Name :=
+    match env.getModuleIdxFor? n with
+    | some i => env.header.moduleNames[i.toNat]!
+    | none => .anonymous
+  -- A constant is a genuine external only if it is declared in its manifest module.
+  let genuine := externals.filter fun (n, m) => modOf n.toName == m.toName
+  IO.println s!"EXT_BEGIN {decl}"
+  IO.println s!"CLOSURE {seen.size}"
+  for a in axs do IO.println s!"AXIOM {a}"
+  for (n, _) in genuine do
+    if seen.contains n.toName then IO.println s!"EXTERNAL {n}"
+  for s in sorries do
+    unless genuine.any (fun (n, _) => n.toName == s) do IO.println s!"SORRYUSER {s}"
+  IO.println "EXT_END"
+"""
+
+EXT_PROBE_CALL = """open Lean in
+#eval show CoreM Unit from do
+  extReport (← getEnv) "@DECL@".toName #[@EXTERNALS@]
 """
 
 AXIOM_PROBE = "import {module}\n\n#print axioms {decl}\n"
@@ -101,6 +168,79 @@ def axioms(module: str, decl: str) -> None:
         raise SystemExit(1)
 
 
+def manifest_externals(manifest: str = str(ROOT / "frozen-anchor-manifest.json")) -> list[tuple[str, str]]:
+    """(export, module) of every EXTERNAL anchor in the manifest."""
+    data = json.loads(Path(manifest).read_text(encoding="utf-8"))
+    return sorted((a["export"], ".".join(Path(a["path"]).with_suffix("").parts))
+                  for a in data["anchors"] if a.get("state") == "EXTERNAL")
+
+
+def externals_many(pairs: list[tuple[str, str]], manifest: str) -> list[dict]:
+    """Closure analysis of several (module, decl) pairs in one Lean run."""
+    exts = manifest_externals(manifest)
+    ext_literal = ", ".join(f"({json.dumps(name)}, {json.dumps(mod)})" for name, mod in exts)
+    imports = "import Lean\n" + "\n".join(sorted({f"import {module}" for module, _ in pairs}))
+    calls = [EXT_PROBE_CALL.replace("@DECL@", decl).replace("@EXTERNALS@", ext_literal)
+             for _, decl in pairs]
+    out = run_probe(imports + "\n\n" + EXT_PROBE_HEAD + "\n" + "\n".join(calls))
+    blocks = dict(re.findall(r"EXT_BEGIN (\S+)\n(.*?)\nEXT_END", out, re.S))
+    results = []
+    for _, decl in pairs:
+        if decl not in blocks:
+            raise SystemExit(f"probe produced no closure record for {decl}:\n{out}")
+        axs, externals, offenders, closure = [], [], [], 0
+        for line in blocks[decl].splitlines():
+            key, _, value = line.partition(" ")
+            if key == "AXIOM":
+                axs.append(value)
+            elif key == "EXTERNAL":
+                externals.append(value)
+            elif key == "SORRYUSER":
+                offenders.append(value)
+            elif key == "CLOSURE":
+                closure = int(value)
+            else:
+                raise SystemExit(f"unexpected closure record line: {line!r}")
+        axs, externals = sorted(set(axs)), sorted(set(externals))
+        extra = sorted(set(axs) - STANDARD_AXIOMS)
+        if not extra:
+            status = "PROVED"
+        elif extra == ["sorryAx"] and not offenders and externals:
+            status = "PROVED_REL"
+        else:
+            status = "UNSOUND"
+        record = {"decl": decl, "axioms": axs, "externals": externals, "status": status,
+                  "closure_size": closure}
+        if status == "UNSOUND":
+            record["offenders"] = sorted(set(offenders)) + [a for a in extra if a != "sorryAx"]
+        results.append(record)
+    return results
+
+
+def externals(module: str, decl: str, manifest: str = str(ROOT / "frozen-anchor-manifest.json")) -> None:
+    (record,) = externals_many([(module, decl)], manifest)
+    print(json.dumps(record))
+    if record["status"] == "UNSOUND":
+        raise SystemExit(1)
+
+
+def externals_all(manifest: str) -> None:
+    """Closure analysis of every SEALED theorem anchor, one JSON line each."""
+    data = json.loads(Path(manifest).read_text(encoding="utf-8"))
+    pairs = [(".".join(Path(a["path"]).with_suffix("").parts), a["export"])
+             for a in data["anchors"] if a["kind"] == "theorem" and a["state"] == "SEALED"]
+    if not pairs:
+        print("externals-all: no SEALED theorem anchors")
+        return
+    results = externals_many(pairs, manifest)
+    for record in results:
+        print(json.dumps(record))
+    unsound = [r["decl"] for r in results if r["status"] == "UNSOUND"]
+    if unsound:
+        raise SystemExit(f"UNSOUND theorems: {unsound}")
+    print(f"EXTERNALS OK ({len(results)} sealed theorems)")
+
+
 def regions(path: str) -> None:
     text = Path(path).read_bytes().decode("utf-8")
     body_start = text.index("\n", text.index("FROZEN_ANCHOR_PROOF_BEGIN")) + 1
@@ -146,6 +286,10 @@ def main(argv: list[str]) -> None:
         abi(argv[1], argv[2])
     elif len(argv) >= 3 and argv[0] == "axioms":
         axioms(argv[1], argv[2])
+    elif len(argv) >= 3 and argv[0] == "externals":
+        externals(argv[1], argv[2], *argv[3:4])
+    elif len(argv) == 2 and argv[0] == "externals-all":
+        externals_all(argv[1])
     elif len(argv) >= 2 and argv[0] == "sha":
         for path in argv[1:]:
             print(hashlib.sha256(Path(path).read_bytes()).hexdigest(), path)

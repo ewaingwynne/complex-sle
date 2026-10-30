@@ -32,6 +32,8 @@ SECTION = re.compile(
     r"^[ \t]*(?:@\[[^\]\n]*\][ \t]*)*((?:(?:public|private|noncomputable)\s+)*)"
     r"section(?:\s+[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*)?[ \t]*$")
 END = re.compile(r"^[ \t]*end(?:\s+[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*)?[ \t]*$")
+EXTERNAL_DIR = "ComplexSLE/External"
+EXTERNAL_MODULE_PREFIX = "ComplexSLE.External."
 PLACEHOLDER = re.compile(r"\b(?:sorry|admit)\b")
 # Names bound by `(x y : T)`, `{x : T}`, `[x : T]`, `⦃x : T⦄` binders of a declaration header.
 BINDER_GROUP = re.compile(r"[({\[⦃]\s*([^\s:(){}\[\]⦃⦄][^:(){}\[\]⦃⦄]*?)\s*:")
@@ -161,8 +163,11 @@ class Guard:
         return "".join(out)
 
     def project_files(self) -> list[Path]:
+        # Filter on the path relative to --root, so a root that itself sits below a `.lake` or
+        # `.git` directory (e.g. a probe fixture) is still checked in full.
         return [path for path in self.root.rglob("*.lean")
-                if ".lake" not in path.parts and ".git" not in path.parts]
+                if ".lake" not in path.relative_to(self.root).parts
+                and ".git" not in path.relative_to(self.root).parts]
 
     def declarations(self, text: str) -> list[tuple[str | None, str, str | None, str | None]]:
         """Lexically resolve common declaration commands under simple namespaces.
@@ -264,7 +269,7 @@ class Guard:
                 continue
             modules[self.module_name(path)] = path
             implementation = None
-            if item.get("kind") == "theorem":
+            if item.get("kind") == "theorem" and item.get("state") != "EXTERNAL":
                 implementation = self.implementation_path(item, number)
                 if implementation is not None:
                     modules[item["implementation"]["module"]] = implementation
@@ -272,6 +277,8 @@ class Guard:
         self.check_split_groups(anchors)
         self.check_import_graph(modules, parsed)
         self.check_draft_quarantine(parsed)
+        self.check_sealed_not_draft(parsed)
+        self.check_external_anchors(parsed)
         self.check_all_sorries()
         self.check_forbidden_axioms_constants()
 
@@ -286,12 +293,21 @@ class Guard:
             ids.add(anchor["id"])
         if kind not in ("theorem", "definition"):
             self.fail(f"{label}.kind: must be theorem or definition")
-        if state not in ("DRAFT_SORRY", "SEALED"):
-            self.fail(f"{label}.state: must be DRAFT_SORRY or SEALED")
+        if state not in ("DRAFT_SORRY", "SEALED", "EXTERNAL"):
+            self.fail(f"{label}.state: must be DRAFT_SORRY, SEALED or EXTERNAL")
+        if kind == "theorem" and state == "EXTERNAL":
+            self.check_external_path(anchor, label)
+        elif isinstance(anchor.get("path"), str) and anchor["path"].startswith(EXTERNAL_DIR + "/"):
+            self.fail(f"{label}.path: only EXTERNAL theorem anchors may live under {EXTERNAL_DIR}/")
         common = {"id", "kind", "author_approval", "source", "contract", "path", "export",
                   "abi_sha256", "definition_closure", "state", "split_policy"}
-        expected = (common | {"implementation", "prefix_sha256", "suffix_sha256", "draft_allowlist"}
-                    if kind == "theorem" else common | {"full_file_sha256"})
+        if kind == "theorem" and state == "EXTERNAL":
+            # No provider (`implementation`) and no draft allowlist: the body is `by sorry` forever.
+            expected = common | {"prefix_sha256", "suffix_sha256"}
+        elif kind == "theorem":
+            expected = common | {"implementation", "prefix_sha256", "suffix_sha256", "draft_allowlist"}
+        else:
+            expected = common | {"full_file_sha256"}
         if set(anchor) != expected:
             self.fail(f"{label}: schema has missing or unauthorized fields")
         if kind == "definition" and state != "SEALED":
@@ -329,7 +345,8 @@ class Guard:
                 self.fail(f"{label}: whole-file definition anchor hash drift")
             self.check_declaration(anchor, label, text, "definition")
             return path
-        self.check_allowlist(anchor, label)
+        if state != "EXTERNAL":
+            self.check_allowlist(anchor, label)
         bounds = self.check_theorem_region(anchor, label, text, limits)
         self.check_declaration(anchor, label, text, "theorem")
         implementation = anchor.get("implementation")
@@ -338,6 +355,13 @@ class Guard:
             if implementation["module"] not in self.imports_text(prefix):
                 self.fail(f"{label}: frozen prefix does not import declared implementation.module")
         return path
+
+    def check_external_path(self, anchor: dict[str, Any], label: str) -> None:
+        value = anchor.get("path")
+        if not isinstance(value, str) or not value.startswith(EXTERNAL_DIR + "/"):
+            self.fail(f"{label}.path: EXTERNAL anchors must live under {EXTERNAL_DIR}/")
+        if "implementation" in anchor:
+            self.fail(f"{label}: EXTERNAL anchors must not have an implementation provider")
 
     def check_split_policy(self, policy: Any, label: str) -> None:
         keys = {"source_group", "mode", "ruling_ref"}
@@ -436,10 +460,10 @@ class Guard:
             self.fail(f"{label}: frozen prefix hash drift (all bytes before proof body changed)")
         if self.hash(anchor.get("suffix_sha256"), f"{label}.suffix_sha256") and self.digest(suffix) != anchor["suffix_sha256"]:
             self.fail(f"{label}: frozen suffix hash drift (all bytes after proof body changed)")
-        if anchor.get("state") == "DRAFT_SORRY":
+        if anchor.get("state") in ("DRAFT_SORRY", "EXTERNAL"):
             match = re.fullmatch(r"\s*by\s+(?P<sorry>sorry)\s*", body)
             if match is None:
-                self.fail(f"{label}: DRAFT_SORRY body must be exactly the single authorized `by sorry`")
+                self.fail(f"{label}: {anchor.get('state')} body must be exactly the single authorized `by sorry`")
             else:
                 path_value = anchor.get("path")
                 if isinstance(path_value, str):
@@ -585,6 +609,70 @@ class Guard:
                         self.fail(f"{anchor['id']}: DRAFT provider imported directly or transitively outside its provider and frozen anchor: {path.relative_to(self.root)}")
                     if provider_token.search(code):
                         self.fail(f"{anchor['id']}: DRAFT provider export used outside its provider and frozen anchor: {path.relative_to(self.root)}")
+
+    def reachable(self, start: str, graph: dict[str, set[str]]) -> set[str]:
+        seen: set[str] = set()
+        todo = [start]
+        while todo:
+            current = todo.pop()
+            if current not in seen:
+                seen.add(current)
+                todo.extend(graph.get(current, ()))
+        return seen
+
+    def check_sealed_not_draft(self, parsed: list[tuple[dict[str, Any], Path, Path | None]]) -> None:
+        """A SEALED theorem (anchor or provider) must not import a DRAFT_SORRY anchor or its provider."""
+        _modules, graph = self.project_module_graph()
+        draft: dict[str, str] = {}
+        for anchor, frozen, implementation in parsed:
+            if anchor.get("kind") == "theorem" and anchor.get("state") == "DRAFT_SORRY":
+                draft[self.module_name(frozen)] = f"{anchor.get('id')} anchor"
+                if implementation is not None:
+                    draft[self.module_name(implementation)] = f"{anchor.get('id')} provider"
+        for anchor, frozen, implementation in parsed:
+            sealed_theorem = anchor.get("kind") == "theorem" and anchor.get("state") == "SEALED"
+            # Definitions and EXTERNAL inputs must not rest on a draft either.
+            if not (sealed_theorem or anchor.get("kind") == "definition" or anchor.get("state") == "EXTERNAL"):
+                continue
+            starts = [self.module_name(frozen)] + ([self.module_name(implementation)] if implementation else [])
+            for start in starts:
+                for module in sorted(self.reachable(start, graph) & set(draft)):
+                    self.fail(f"{anchor['id']}: SEALED/EXTERNAL/definition anchor depends by import ({start} -> {module}) "
+                              f"on DRAFT_SORRY {draft[module]}")
+
+    def check_external_anchors(self, parsed: list[tuple[dict[str, Any], Path, Path | None]]) -> None:
+        """EXTERNAL anchors: closed directory, restricted imports."""
+        external = {self.module_name(path): path for anchor, path, _ in parsed
+                    if anchor.get("kind") == "theorem" and anchor.get("state") == "EXTERNAL"}
+        definitions = {self.module_name(path) for anchor, path, _ in parsed if anchor.get("kind") == "definition"}
+        directory = self.root / EXTERNAL_DIR
+        listed = {path.resolve() for path in external.values()}
+        if directory.is_dir():
+            listed_exact = {path.absolute() for path in external.values()}
+            for path in sorted(directory.rglob("*")):
+                if path.is_symlink():
+                    self.fail(f"{path.relative_to(self.root)}: symlinks are not allowed under {EXTERNAL_DIR}/")
+                elif path.is_file() and (path.resolve() not in listed or path.absolute() not in listed_exact):
+                    self.fail(f"{path.relative_to(self.root)}: file under {EXTERNAL_DIR}/ is not an EXTERNAL manifest anchor")
+        for anchor, _frozen, implementation in parsed:
+            if (anchor.get("state") != "EXTERNAL" and implementation is not None
+                    and self.module_name(implementation).startswith(EXTERNAL_MODULE_PREFIX)):
+                self.fail(f"{anchor['id']}: implementation module must not live under {EXTERNAL_DIR}/")
+        modules, graph = self.project_module_graph()
+        # A sealed definition anchor may itself rest on SEALED theorem anchors (e.g. `loewnerMap` on
+        # `loewner_wellDefined`); whatever the definitions reach is already vetted draft-free, so an
+        # EXTERNAL may reach it too.
+        allowed = definitions | set(external)
+        for definition in definitions:
+            allowed |= self.reachable(definition, graph)
+        for module, path in external.items():
+            for imported in sorted(self.imports(path)):
+                if (imported == "ComplexSLE" or imported.startswith("ComplexSLE.")) and imported not in modules:
+                    self.fail(f"{module}: EXTERNAL file imports unknown project module {imported}")
+            for reached in sorted(self.reachable(module, graph) - {module}):
+                if reached not in allowed:
+                    self.fail(f"{module}: EXTERNAL file may depend only on Mathlib, sealed definition anchors "
+                              f"(with their vetted closure) and other EXTERNAL modules, but reaches {reached}")
 
     def check_all_sorries(self) -> None:
         for path in self.project_files():

@@ -7,7 +7,11 @@ SPEC.json is a list of objects with the fields
   id, kind ("definition" | "theorem"), export, path, source_range, contract_id,
   approved_at, approval_ref, ruling_ref, split_group (optional, defaults to contract_id),
   split_mode (optional, defaults to NOT_SPLIT), closure (list of definition-anchor paths),
-and, for theorems, implementation {module, export}.
+and, for theorems, implementation {module, export} (state DRAFT_SORRY).
+For an author-approved external input use kind "theorem" with "state": "EXTERNAL": the path must
+be under ComplexSLE/External/, there must be NO implementation, and the entry is recorded with
+state EXTERNAL (body `by sorry` forever). "state" is otherwise optional and must not be given
+for definitions or for implemented theorems except as DRAFT_SORRY / SEALED-by-definition.
 
 The script computes every hash from the files as they are now (whole-file hash for
 definitions; prefix/suffix hashes for theorems; elaborated ABI hash via a Lean probe)
@@ -47,6 +51,20 @@ def main() -> None:
     data = (json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else
             {"schema_version": 1, "manifest_state": "AUTHOR_APPROVED",
              "seal_limits": {"max_body_lines": 3, "max_body_bytes": 240}, "anchors": []})
+    for item in spec:
+        state = item.get("state")
+        if item["kind"] == "theorem" and state == "EXTERNAL":
+            if "implementation" in item:
+                raise SystemExit(f"{item['id']}: EXTERNAL anchors must not have an implementation")
+            if not item["path"].startswith("ComplexSLE/External/"):
+                raise SystemExit(f"{item['id']}: EXTERNAL anchors must live under ComplexSLE/External/")
+        else:
+            if state not in (None, "DRAFT_SORRY" if item["kind"] == "theorem" else "SEALED"):
+                raise SystemExit(f"{item['id']}: unsupported state {state!r} for kind {item['kind']}")
+            if item["kind"] == "theorem" and "implementation" not in item:
+                raise SystemExit(f"{item['id']}: theorem anchors need an implementation")
+            if item["path"].startswith("ComplexSLE/External/"):
+                raise SystemExit(f"{item['id']}: only EXTERNAL theorems may live under ComplexSLE/External/")
     taken = {(key, a[key]) for a in data["anchors"] for key in ("id", "path", "export")}
     for item in spec:
         for key in ("id", "path", "export"):
@@ -75,11 +93,14 @@ def main() -> None:
             entry["full_file_sha256"] = sha(item["path"])
         else:
             prefix, suffix = regions(item["path"])
-            entry["implementation"] = item["implementation"]
-            entry["state"] = "DRAFT_SORRY"
+            external = item.get("state") == "EXTERNAL"
+            if not external:
+                entry["implementation"] = item["implementation"]
+            entry["state"] = "EXTERNAL" if external else "DRAFT_SORRY"
             entry["prefix_sha256"] = prefix
             entry["suffix_sha256"] = suffix
-            entry["draft_allowlist"] = {"frozen_paths": [], "audit_paths": []}
+            if not external:
+                entry["draft_allowlist"] = {"frozen_paths": [], "audit_paths": []}
         data["anchors"].append(entry)
     MANIFEST.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"added {len(spec)} anchors; manifest now has {len(data['anchors'])}")

@@ -42,6 +42,11 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   `scaling_rightHull` ((2.1)), `reflection_rightHull` ((2.2)), `lemma_2_4_rightHull` (Lemma 2.4), and
   `reflection_centeredLoewnerMap` (reflection for the maps f_t, which the source uses at L984/L1165 but states only for
   hulls; resolves that ERRATA modeling question). Pre-approval review: reviewer-M4-R/sonnet.
+- R23 (2026-10-30) EXTERNAL batch 1 approved as written (pre-approval review: reviewer-M5-ext1/sonnet):
+  `External.exists_isBrownianReal` (ext:bm-existence), `External.support_sleDriver` (ext:bm-support, E13; any PSD Σ),
+  `External.loewnerMap_conformal` (ext:lawler-4.5), `External.loewnerMap_tendstoUniformly` (ext:loewner-convergence,
+  E12; the source's K_T read as L_T). Graph externals ext:dct, ext:martingale-convergence and ext:picard-lindelof are
+  supplied by Mathlib and get no EXTERNAL file.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
@@ -174,6 +179,7 @@ modeled as SOURCE_GAP steps:
   and will be a SOURCE_GAP step node.
 - T7 §2.1.1 `paper.tex:L545`: "U : [0,∞) → ℝ" should be "→ ℂ".
 - T10 Lemma 4.3 `paper.tex:L1995`: "[−2T^{−1/2} i, 2T^{1/2} i]" should be "[−2T^{1/2} i, 2T^{1/2} i]".
+- T11 §2.1 `paper.tex:L281`: "lim_{t→∞} z(g_t(z) − z) = 2t" should be "lim_{z→∞}".
 - T6 Lemma 4.3 `paper.tex:L1991-2030`: [Law05, Prop 4.43] "extends to ℂ by replacing ℍ by
   ℂ". This is an external input whose extension is asserted, not proved (SOURCE_GAP, and
   part of E12).

@@ -1,5 +1,6 @@
 # Status ledger
 
+M5 in progress — 2026-10-30: EXTERNAL state live (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
 M4 complete — 2026-10-30 (Tier D, except Lemma 2.4 which needs the external ext:lawler-4.5 and duality (2.4); see M5). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
@@ -23,7 +24,8 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
   loewnerMap_eq, loewnerMap_exists_solution, scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull,
   reflection_centeredLoewnerMap)
 SEALED DEFINITIONS: 20 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21)
-EXTERNALS: 0 frozen
+EXTERNALS: 4 frozen (R23): exists_isBrownianReal, support_sleDriver, loewnerMap_conformal,
+  loewnerMap_tendstoUniformly  (ComplexSLE/External/)
 PROVED: 10   PROVED_REL: 0
   PROVED  scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull, reflection_centeredLoewnerMap (AU-M4-D1c)
   Source items fully proved: Def 1.1 well-definedness, (2.1), (2.2), Lemma 2.13 (existence).
@@ -33,7 +35,7 @@ PROVED: 10   PROVED_REL: 0
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 41 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 45 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review
