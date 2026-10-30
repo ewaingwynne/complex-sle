@@ -258,7 +258,7 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-sigma, def-arg, eqn-def-ft, eqn-nu-D.mu, eqn-nu-D.nu, step:polar-time-change, step:polar-W-law, step:polar-derivative-sde
+DEPS: defn-sigma, def-arg, eqn-def-ft, eqn-nu-D.mu, eqn-nu-D.nu, step:polar-time-change, step:polar-W-law, step:polar-derivative-sde, remark-sigma
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L865-L865 | sigma-time parametrization
@@ -269,6 +269,7 @@ EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L8
 EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L922-L926 | time-changed SDEs (2.25),(2.26)
 EDGE: step:polar-W-law | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | (W,W~) =_d (B,B~)
 EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | (2.27)
+EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L865-L868 | the statement fixes sigma = sigma_z and evaluates for all t~ >= 0: sigma_z is defined on (0,infinity) by Remark 2.12
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -431,7 +432,7 @@ STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L
 PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L893-L896
 CONTRACT_ID: paper.remark-sigma
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: (f_t) centered SLE_Sigma; z in C (R5 not required by the source)
+SOURCE_HYPOTHESES: (f_t) centered SLE_Sigma; z in C; a,b>0 (R5, inherited from the polar SDEs; the source states the remark without it)
 SOURCE_QUANTIFIERS: forall z
 SOURCE_CONCLUSION: a.s. the domain of sigma_z is (0,infty) (and sigma maps (0,infty) onto (0,T_z))
 CONSTANT_SCOPE: none
@@ -439,13 +440,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-polar, step:sigma-bounded-coefficients, lem-endpt-cont, defn-sigma
+DEPS: step:polar-time-change, step:polar-derivative-sde, step:sigma-bounded-coefficients, lem-endpt-cont, defn-sigma
 ROUTES: -
 ROUTE_FOR: -
-EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L893-L893 | SDEs with bounded coefficients on the sigma-time scale
 EDGE: step:sigma-bounded-coefficients | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L895 | ∣hat f∣ and ∣hat f'∣ bounded away from 0, infinity on compacts
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L895-L895 | lim ∣f_t(z)∣ = 0 as t -> T_z- on {T_z<infinity}
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L895 | the claim concerns the domain of sigma_z defined by t~ = int_0^sigma ∣f_s∣^-2 ds
+EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | SDE (2.26) for log∣hat f∣ on the domain of sigma, with bounded coefficients
+EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | SDE (2.27) for log∣hat f-prime∣ on the domain of sigma, with bounded coefficients
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -469,10 +471,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-polar
+DEPS: step:polar-time-change, step:polar-derivative-sde
 ROUTES: -
 ROUTE_FOR: -
-EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | (2.26),(2.27) give the semimartingale decompositions of log∣hat f∣ and log∣hat f'∣
+EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | (2.26) on the domain of sigma gives the semimartingale decomposition of log∣hat f∣ with bounded coefficients
+EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | (2.27) gives the semimartingale decomposition of log∣hat f-prime∣ with bounded coefficients
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -641,15 +644,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-reflect, step:driver-negation-symmetry, def-arg, step:stat-apply-kolmogorov-noncritical, step:stat-apply-kolmogorov-critical, lem-stationary.admissible
+DEPS: step:reflect-map-identity, step:driver-negation-symmetry, def-arg, step:stat-apply-kolmogorov-noncritical, step:stat-apply-kolmogorov-critical, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
-EDGE: eqn-reflect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | (2.2): multiplying the driving function by -1 gives f_t -> -f_t(-.)
 EDGE: step:driver-negation-symmetry | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | -U =_d U
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | carrier change theta <-> e^{2i theta}, e^{i theta}
 EDGE: step:stat-apply-kolmogorov-noncritical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | stationarity of e^{2i theta} (case ∣c∣ != sqrt(ab)) is the premise being upgraded
 EDGE: step:stat-apply-kolmogorov-critical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | stationarity of e^{2i theta} (case c = +-sqrt(ab)) is the premise being upgraded
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | p is pi-periodic, so -zz =_d zz
+EDGE: step:reflect-map-identity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | f_t^{-U}(-z) = -f_t^U(z); with -U =_d U and -zz =_d zz this gives (f_t(zz)) =_d (-f_t(zz))
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1252,15 +1255,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-stationary, step:wlog-c-nonneg, step:rec-reduction-to-x, step:rec-renewal, step:rec-tau-finite, step:rec-angle-hit-unif
+DEPS: lem-stationary, step:wlog-c-nonneg-arg, step:rec-reduction-to-x, step:rec-renewal, step:rec-tau-finite, step:rec-angle-hit-unif
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | stationarity of e^{2i theta}
-EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | c>=0 WLOG
 EDGE: step:rec-reduction-to-x | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | suffices to hit e^{2ix}
 EDGE: step:rec-renewal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1177-L1183 | infinitely many hits on {tau_k<infty for all k}
 EDGE: step:rec-tau-finite | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1185-L1190 | a.s. some eps with all tau_k^eps finite
 EDGE: step:rec-angle-hit-unif | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1167-L1171 | claim (2.45) fed to renewal argument
+EDGE: step:wlog-c-nonneg-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | c>=0 WLOG for the argument process
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1284,11 +1287,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:D-structure, step:wlog-c-nonneg
+DEPS: step:D-structure, step:wlog-c-nonneg-arg
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | D^-1(0)=x+piZ in the critical case
-EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | WLOG c>=0
+EDGE: step:wlog-c-nonneg-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | WLOG c>=0 for the argument process
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -

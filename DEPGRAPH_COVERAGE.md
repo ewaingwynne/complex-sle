@@ -504,10 +504,10 @@ REVIEWER: -
 ITEM: inv:eqn-duality
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L568-L568
-DISPOSITION: EXCLUDED
-REASON: (2.4) duality: feeds no root (used only by Prop 1.5, Lemma 2.4 right-hull part and the simulation section, all excluded)
+DISPOSITION: NODE eqn-duality
+REASON: (2.4) duality, consumed by step:right-hull-connected (right-hull part of Lemma 2.4, itself consumed by step:disc-E1-positive); Prop 1.5 stays EXCLUDED (feeds no root)
 COVERAGE_STATUS: PROPOSED
-EXTRACTOR: extractor-A/sonnet
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 
 ITEM: inv:heading:L582
@@ -603,10 +603,10 @@ REVIEWER: -
 ITEM: inv:lem-connected
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L658-L660
-DISPOSITION: NODE lem-connected.left, claim:hull-nonempty
-REASON: Lemma 2.4 left-hull part (root); right-hull part excluded (feeds no root)
+DISPOSITION: NODE lem-connected.left, claim:hull-nonempty, step:right-hull-connected
+REASON: Lemma 2.4: left-hull part (root) and nonemptiness; the right-hull part is consumed by step:disc-E1-positive and is modeled by step:right-hull-connected (replaces 'right-hull part excluded')
 COVERAGE_STATUS: PROPOSED
-EXTRACTOR: extractor-A/sonnet
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 
 ITEM: inv:proof:L661
@@ -2623,6 +2623,33 @@ DISPOSITION: NODE ext:blumenthal
 REASON: Blumenthal's zero-one law invoked by name in the proof of Theorem 1.10(b)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+REVIEWER: -
+
+ITEM: inv:L554:reflect-map-identity
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L554:reflect-map-identity@L553-L558
+DISPOSITION: NODE step:reflect-map-identity
+REASON: map-level form of the reflection property (2.2), used at L984 and L1165 but stated in the source for hulls only; SOURCE_GAP
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: global-reviewer/sonnet
+REVIEWER: -
+
+ITEM: inv:L1165:wlog-arg
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1165:wlog-arg@L1165-L1165
+DISPOSITION: NODE step:wlog-c-nonneg-arg
+REASON: 'Assume without loss of generality that c >= 0' in the proof of Lemma 2.16, a reduction for the argument process under conjugation (not the hull-level reduction of L323)
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: global-reviewer/sonnet
+REVIEWER: -
+
+ITEM: inv:L1255:product-extension
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1255:product-extension@L1255-L1255
+DISPOSITION: NODE step:section3-product-extension
+REASON: 'independent from the driving Brownian motion' (also L939): carrier change from the given probability space to the product with the circle, not stated in the source; SOURCE_GAP
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 
 ITEM: inv:ext:picard-lindelof

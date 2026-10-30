@@ -795,7 +795,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: as stated the lemma is trivial for U = empty (the empty set is open, bounded, disjoint from L_t and disconnected from infinity). Non-emptiness of U (U = U^- or U^+ of the proof) is implicit and is read as part of the statement; consumers (proof-a, proof-b) need it. The hypothesis c>=0 is supplied at consumers by step:wlog-c-nonneg.
+NOTE: SOURCE_GAP: as stated the lemma is trivial for U = empty (the empty set is open, bounded, disjoint from L_t and disconnected from infinity). Non-emptiness of U (U = U^- or U^+ of the proof) is implicit and is read as part of the statement; consumers (proof-a, proof-b) need it. The hypothesis c>=0 is supplied at consumers by step:wlog-c-nonneg. AUTHOR_BLOCKED (ERRATA P10): the proof as written goes through step:disc-setup, whose construction of U^+- is refuted; the statement itself is not claimed false.
 
 NODE: step:disc-setup
 KIND: step
@@ -823,7 +823,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: existence of non-empty open U^+- satisfying both requirements (distance >= 2 eps from the imaginary axis; mapped by z -> sqrt(z^2+4T) into B_{eps/2}(x -+ 2 i eps)) is asserted at L2165, not shown. Reviewer computation (to be confirmed by the orchestrator): the preimage of w = x -+ 2 i eps is z with z^2 = w^2-4T, |Re z| ~ 2 x eps / sqrt(4T-x^2), and the preimage of B_{eps/2}(w) has |Re z| <= ~ 2.5 x eps / sqrt(4T-x^2) as eps -> 0. A point at distance >= 2 eps from the imaginary axis therefore needs x / sqrt(4T-x^2) >~ 0.8. For the choice made in the proof of Lemma 4.4 (x = 2C, y = 7C, so x/y = 2/7) and any T > y^2/2 one has x / sqrt(4T-x^2) < 0.21 (numerically max |Re z|/eps = 0.72 at C = 1, T = 13, eps = 0.01), so U^+- would be empty. Lemma 4.4 is stated existentially ('we can choose 0<x<y'), so the proof of Lemma 4.1 may not re-pick x, y. The text also writes (B_t) for measurability; the hulls depend on U = (B, B~).
+NOTE: AUTHOR_BLOCKED (ERRATA P10): the construction at L2165 is refuted for x = 2C, y = 7C, not merely unstated. SOURCE_GAP: existence of non-empty open U^+- satisfying both requirements (distance >= 2 eps from the imaginary axis; mapped by z -> sqrt(z^2+4T) into B_{eps/2}(x -+ 2 i eps)) is asserted at L2165, not shown. Reviewer computation (to be confirmed by the orchestrator): the preimage of w = x -+ 2 i eps is z with z^2 = w^2-4T, |Re z| ~ 2 x eps / sqrt(4T-x^2), and the preimage of B_{eps/2}(w) has |Re z| <= ~ 2.5 x eps / sqrt(4T-x^2) as eps -> 0. A point at distance >= 2 eps from the imaginary axis therefore needs x / sqrt(4T-x^2) >~ 0.8. For the choice made in the proof of Lemma 4.4 (x = 2C, y = 7C, so x/y = 2/7) and any T > y^2/2 one has x / sqrt(4T-x^2) < 0.21 (numerically max |Re z|/eps = 0.72 at C = 1, T = 13, eps = 0.01), so U^+- would be empty. Lemma 4.4 is stated existentially ('we can choose 0<x<y'), so the proof of Lemma 4.1 may not re-pick x, y. The text also writes (B_t) for measurability; the hulls depend on U = (B, B~). Global review: confirmed. For any T with y < 2T^{1/2} the exact linearization gives max |Re z|/eps over the preimage of B_{eps/2}(x -+ 2 i eps) of about 2.5 x/sqrt(4T-x^2) < 0.7, below the required 2; the required 2 would need T <= 0.64 x^2, incompatible with y < 2T^{1/2} unless y < 1.6 x, while Lemma 4.4 forces y/x > 2 (Re f_2(z) - Re z lies in [-6C,-3C]); the preimage lies within eps of the segment [-2T^{1/2} i, 2T^{1/2} i], where L_T may lie and where the uniform closeness of f_T to z -> sqrt(z^2+4T) is not available. Dependents modeled as if the construction held: step:disc-E1-positive, step:disc-concatenation-transfer, step:disc-topological-separation, step:disc-pullback-conclusion, step:disc-choose-U, lem-disconnect-2 and everything downstream.
 
 NODE: step:disc-E1-positive
 KIND: step
@@ -1497,9 +1497,9 @@ FROZEN_ABI_SHA256: -
 DEPS: step:disc-independence-product, step:disc-pullback-conclusion, step:disc-setup
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | P(E_1 cap ... cap E_4) > 0
-EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events one of U^-, U^+ is disconnected by L_{T+2+K} and avoided by it
-EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2165-L2165 | U^+- are deterministic, bounded, open and (needed) non-empty
+EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | P(E_1 cap ... cap E_4) > 0 is what lets one of the two sets be chosen
+EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events one of U^-, U^+ is avoided and disconnected by L_{T+2+K}
+EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | U^+- are deterministic, bounded, open (and needed non-empty)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
 REVIEWER: -
@@ -1510,30 +1510,32 @@ NOTE: Quantifier closure / witness choice. SOURCE_GAP: the source says only 'thi
 
 NODE: step:right-hull-connected
 KIND: step
-TITLE: Right hulls R_t are connected
-STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169
-PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169
+TITLE: Right hulls R_t are connected (Lemma 2.4, right-hull part)
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L658-L660
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663
 CONTRACT_ID: paper.step:right-hull-connected
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: U : [0,infinity) -> C continuous; t >= 0 (used for T)
+SOURCE_HYPOTHESES: U : [0,infinity) -> C continuous
 SOURCE_QUANTIFIERS: U; t >= 0
-SOURCE_CONCLUSION: R_t is connected (and non-empty)
+SOURCE_CONCLUSION: R_t is connected
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.right
+DEPS: defn-hulls.right, eqn-duality, lem-connected.left
 ROUTES: -
 ROUTE_FOR: -
-EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | R_T = C minus the range of f_T
+EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | statement is about R_t
+EDGE: eqn-duality | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | "The duality property (2.4) implies that R_t is also connected": R_t^U = i L_t^{i(U(t)-U(t-.))}
+EDGE: lem-connected.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | left-hull connectedness applied to the dual driver s -> i(U(t)-U(t-s)) (extended by a constant after time t)
 TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: the source never states connectedness of right hulls. Slice A froze only the left-hull part of Lemma 2.4 (R16) and records that the right hull would follow from the duality (2.4) (not a node) and Lemma 2.4. E_1 (crossing of [x,y]x[-eps,eps] by R_T) and the topological step at L2194 consume it, so right-hull connectedness now feeds a root and the orchestrator must decide whether to graph eqn-duality / a right-hull analogue of lem-connected.left.
+NOTE: R16: right-hull part of Lemma 2.4, ordinary non-anchored node, consumed by step:disc-E1-positive (crossing of [x,y]x[-eps,eps] by R_T) and step:disc-topological-separation. The source states the claim (L659) and proves it in one sentence by duality (L662-L663); the duality identity (2.4) itself is only cited to Lu (eqn-duality). Unstated in the source: that L_t depends only on U restricted to [0,t], needed to extend the dual driver beyond time t. Replaces the reviewer-D proposal, which mislocated the statement at L2169 and called it a source gap.
 
 NODE: step:disc-concat-disconnect-general
 KIND: step
@@ -1550,13 +1552,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-conc, def-disconnect, defn-hulls.left, defn-hulls.right
+DEPS: eqn-conc, def-disconnect, defn-hulls.left, defn-hulls.right, claim:gt-conformal, step:hulls-compact
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{s+t} = L_s cup f_s^{-1}(L_{s,s+t}\R_s); f_s maps C\L_s into C\R_s
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection from infinity and disjointness
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{s+t}, L_s, z not in L_{s+t} iff T_z > s+t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_s is the complement of the range of f_s, so f_s(z) not in R_s
+EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | f_s: C\L_s -> C\R_s is a conformal bijection with f_s(w) - w bounded near infinity, so the bounded components of C\L_{s+t} correspond to the bounded components of C\(L_{s,s+t} u R_s)
+EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_s, R_s, L_{s,s+t} compact, so a component of the complement is unbounded iff its image is
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
 REVIEWER: -

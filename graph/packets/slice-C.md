@@ -171,7 +171,7 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: item-I, item-II, eqn-nu-D.nu, defn-sigma, def-arg, lem-p, lem-stationary, lem-stationary.admissible
+DEPS: item-I, item-II, eqn-nu-D.nu, defn-sigma, def-arg, lem-stationary, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1259-L1259 | left side of the first identity
@@ -179,7 +179,6 @@ EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1260 | nu is pi-periodic and enters both integrands
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | sigma-time change defining theta^_t
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | argument process theta behind theta^
-EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | 'as in Lemma 2.13': p 1_[0,2pi] is the law of arg zz (stationary p of Lemma 2.13)
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1257 | stationarity of e^{i theta^_t(zz)} for every admissible p (R7/R15); the source cites only Lemma 2.13
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1257 | p ranges over admissible densities (R7/R15)
 TOPOLOGY_STATUS: PROPOSED
@@ -205,7 +204,7 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_1_A.lean
 FROZEN_DECL: ComplexSLE.proposition_3_1_a
 FROZEN_ANCHOR_ID: thm.proposition_3_1_a.v1
 FROZEN_ABI_SHA256: 98149ac34067ca49e2b3a5155685d35078ede80ef870a1e3917076c77a93a902
-DEPS: item-I, defn-loewner.absorbing-time, step:prop-i-a-not-to-minus-infinity, lem-swallow-distance, step:all-z-apply-Tz, lem-all-z
+DEPS: item-I, defn-loewner.absorbing-time, step:prop-i-a-not-to-minus-infinity, lem-swallow-distance, step:all-z-apply-Tz, lem-all-z, step:section3-product-extension
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1265-L1266 | sign hypothesis on (I)
@@ -214,6 +213,7 @@ EDGE: step:prop-i-a-not-to-minus-infinity | source/arxiv-2203.07313v4/complex-sl
 EDGE: lem-swallow-distance | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | T_zz < infinity would force log∣f^_t(zz)∣ -> -infinity, so T_zz = infinity a.s.
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | discharges the scale-invariance/future-dependence hypotheses of Lemma 3.3 for {T_z = infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | extends a.s. T_zz = infinity to each fixed z != 0
+EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -237,7 +237,7 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_1_B.lean
 FROZEN_DECL: ComplexSLE.proposition_3_1_b
 FROZEN_ANCHOR_ID: thm.proposition_3_1_b.v1
 FROZEN_ABI_SHA256: 80b1301f8349878a927cecf5bb3e25558a8e4f99a13edc51752231df161fa236
-DEPS: item-I, defn-loewner.absorbing-time, eqn-neg-I1-bd, step:prop-i-b-ode-comparison, step:all-z-apply-Tz, lem-all-z
+DEPS: item-I, defn-loewner.absorbing-time, eqn-neg-I1-bd, step:prop-i-b-ode-comparison, step:all-z-apply-Tz, lem-all-z, step:section3-product-extension
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1265-L1270 | sign hypothesis on (I)
@@ -246,6 +246,7 @@ EDGE: eqn-neg-I1-bd | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L14
 EDGE: step:prop-i-b-ode-comparison | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1413-L1415 | F'(t) e^{-alpha F(t)} > 1 forces T_zz <= t_* + e^{-alpha F(t_*)}/alpha < infinity
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | hypotheses of Lemma 3.3 for {T_z < infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | extends a.s. T_zz < infinity to each fixed z != 0
+EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -269,7 +270,7 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_2_A.lean
 FROZEN_DECL: ComplexSLE.proposition_3_2_a
 FROZEN_ANCHOR_ID: thm.proposition_3_2_a.v1
 FROZEN_ABI_SHA256: 7bbf7b70ad8ac1714e12908c49ba28298a6e77844f927984651fff3b2fc3f161
-DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-a-koebe-limit, step:all-z-apply-dist, lem-all-z
+DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-a-koebe-limit, step:all-z-apply-dist, lem-all-z, step:section3-product-extension
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1276-L1279 | sign hypothesis on (II)
@@ -278,6 +279,7 @@ EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.
 EDGE: step:prop-ii-a-koebe-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1468 | a.s. dist(zz,L_t) -> 0 as t -> T_zz
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | discharges the hypotheses of Lemma 3.3 for the event {lim dist(z,L_t)=0}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | extends to each fixed z != 0
+EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1459 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -301,13 +303,14 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_2_B.lean
 FROZEN_DECL: ComplexSLE.proposition_3_2_b
 FROZEN_ANCHOR_ID: thm.proposition_3_2_b.v1
 FROZEN_ABI_SHA256: 68e7f561920bc47ded181922aa3709800fd30024d385e40bf7734750bb063c67
-DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one
+DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one, step:section3-product-extension
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1276-L1281 | sign hypothesis on (II)
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1281-L1281 | L_t in the conclusion
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1281-L1281 | T_z in the conclusion
 EDGE: step:prop-ii-b-martingale-zero-one | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | indicator of {lim dist > 0} is a.s. >= q_*, hence equals 1
+EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | Fubini over the independent pair (zz, U) requires the product extension of the given probability space
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -896,7 +899,7 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-stationary-sde, step:stationary-sde-X-form, lem-polar, lem-recurrence, lem-stationary, lem-p, eqn-integral-nu
+DEPS: lem-stationary-sde, step:stationary-sde-X-form, lem-polar, lem-recurrence, lem-stationary, eqn-integral-nu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | conclusion of Lemma 3.4 for Y = log∣f^(zz)∣
@@ -904,7 +907,6 @@ EDGE: step:stationary-sde-X-form | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1403 | SDE (eqn-abs-zt) for log∣f^_t(zz)∣ with drift nu(theta^)
 EDGE: lem-recurrence | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | recurrence of X (hits a fixed xbar at arbitrarily large times)
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | stationarity of the law of X_t = e^{2 i theta^_t(zz)} for every admissible p
-EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | stationary choice of zz as in Lemma 2.13
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | E f^0(X_0) = E nu(theta^_0(zz)) = (I)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
@@ -1118,7 +1120,7 @@ NOTE: The source says only 'the second part follows from applying Lemma 3.4'; th
 
 NODE: step:zero-in-left-hull
 KIND: step
-TITLE: 0 belongs to every left hull (and to the future hulls L_{t,s+t})
+TITLE: 0 belongs to every left hull
 STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558
 PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558
 CONTRACT_ID: paper.step:zero-in-left-hull
@@ -1142,7 +1144,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558 and L1768 ('0 in L_{t,s+t}'). The shifted-driver statement for L_{t,s+t} is the same fact applied to the chain driven by U(.+t)-U(t).
+NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558. The shifted-driver statement for L_{t,s+t} used at L1768 is step:zero-in-future-left-hull.
 
 NODE: step:zero-in-right-hull
 KIND: step
@@ -1186,12 +1188,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: claim:gt-conformal, defn-hulls.left, defn-hulls.right
+DEPS: claim:gt-conformal, defn-hulls.left, defn-hulls.right, step:hull-closed
 ROUTES: -
 ROUTE_FOR: -
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1705 | f_t : C\L_t -> C\R_t conformal
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | L_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | R_t
+EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1705 | L_t closed (domain of f_t open); R_t closed because f_t is an open map on an open domain
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -1886,12 +1889,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:computation-scaling-markov, lem-stationary, lem-p
+DEPS: step:computation-scaling-markov, lem-stationary
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:computation-scaling-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | f~ =_D f and independent of the past
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | stationarity: f_{sigma(t^)}(zz)/∣f_{sigma(t^)}(zz)∣ =_D zz
-EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | stationarity cited as Lemma 2.13
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-C/sonnet
 REVIEWER: -
@@ -2490,9 +2492,9 @@ STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-p@L1829
 PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1836
 CONTRACT_ID: paper.step:c0-explicit-density
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: a,b > 0; c = 0; p admissible (R7/R15)
+SOURCE_HYPOTHESES: a,b > 0; c = 0; p = the density constructed in the proof of Lemma 2.13 (case 1, c = 0), equal to k p_0 by Remark 2.15
 SOURCE_QUANTIFIERS: a,b > 0
-SOURCE_CONCLUSION: p(u) = Z^{-1}(a+b+(b-a)cos 2u)^{4/(b-a)} for a != b and Z^{-1} exp((4/a)cos^2 u) for a = b, with normalizing Z = Z(a,b) > 0; p = p_0 in the proof of Lemma 2.13 (r_* = 0)
+SOURCE_CONCLUSION: this p is admissible (lem-p.exists, case 1) and p(u) = Z^{-1}(a+b+(b-a)cos 2u)^{4/(b-a)} for a != b, p(u) = Z^{-1} exp((4/a)cos^2 u) for a = b, with Z = Z(a,b) > 0 the normalizing constant for int_0^{2pi} p = 1
 CONSTANT_SCOPE: Z = Z(a,b) > 0 depends only on a and b (c = 0)
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -2512,7 +2514,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP (R7/R15): 'we can explicitly solve (2.24)' identifies the stationary density with the displayed formula only for the constructed p (Remark 2.15, Lemma 2.13 proof with r_* = 0). The theorem is stated for every admissible p; uniqueness of the normalized pi-periodic ODE solution (so every admissible p equals (3.19)) is not argued. Also, differentiating/solving the ODE and checking the normalization/regularity (e.g. on {a = b}) are not written.
+NOTE: SOURCE_GAP: the explicit integration of (mu - D')/D for c = 0 (the Mathematica check sits in a %-comment, L1140-L1146) and the check of normalization/regularity at a = b are not written. The identification is for the constructed p (Remark 2.15); the source never claims it for every admissible p and uniqueness of the normalized pi-periodic solution is not argued, but the c = 0 root does not need it: the later Lemmas 3.11/3.12 are applied to this p only. Consumers that cite 'p admissible' in this section (step:c0-bdy-finite-time, lem-c0-phases) are read with p := this density.
 
 NODE: eqn-c0-integrals
 KIND: display

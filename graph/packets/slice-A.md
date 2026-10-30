@@ -753,7 +753,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical (2.3). Proof not in source (cited to Lu Sect. 2). Used by Lemma 2.8 and slices C, D. The source writes f_{t,s+t} with a time-shifted chain, defined in the item itself (no separate node).
+NOTE: Canonical (2.3). Proof not in source (cited to Lu Sect. 2). Used by Lemma 2.8 and slices C, D. The source writes f_{t,s+t} with a time-shifted chain, defined in the item itself (no separate node). TYPO CANDIDATE T8 (author ruling needed): the third formula of (2.3), f_t(L_{s+t}\L_t) = L_{t,s+t}, contradicts the second formula, L_{s+t} = L_t cup f_t^{-1}(L_{t,s+t}\R_t), because f_t(C\L_t) = C\R_t omits 0 in R_t cap L_{t,s+t}; read as f_t(L_{s+t}\L_t) = L_{t,s+t}\R_t. Consumers that use the third formula (step:future-point-outside-hulls, step:log-finite-exit-times, step:converse-event-converges) must be read with this correction.
 
 NODE: step:driver-representation
 KIND: step
@@ -1475,7 +1475,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Root. The source says "for each z in C"; R4 excludes z = 0 (0 in L_t for all t).
+NOTE: Root. The source says "for each z in C"; R4 excludes z = 0 (0 in L_t for all t). AUTHOR_BLOCKED (ERRATA P10): the root closure contains lem-disconnect-2 and through it the refuted step step:disc-setup; this root cannot be counted as source-supported until the author supplies a corrected argument.
 
 NODE: thm-disconnects.b
 KIND: theorem
@@ -1505,7 +1505,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Root. P7: uniform in t: a.s., for every t > 0. By Definition 1.9 points of L_t count as disconnected, so (b) does not itself say that C\L_t is disconnected.
+NOTE: Root. P7: uniform in t: a.s., for every t > 0. By Definition 1.9 points of L_t count as disconnected, so (b) does not itself say that C\L_t is disconnected. AUTHOR_BLOCKED (ERRATA P10): same as thm-disconnects.a (closure through lem-disconnect-2 and step:disc-setup).
 
 NODE: ext:picard-lindelof
 KIND: external
@@ -2224,10 +2224,10 @@ REVIEWER: -
 ITEM: inv:eqn-duality
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L568-L568
-DISPOSITION: EXCLUDED
-REASON: (2.4) duality: feeds no root (used only by Prop 1.5, Lemma 2.4 right-hull part and the simulation section, all excluded)
+DISPOSITION: NODE eqn-duality
+REASON: (2.4) duality, consumed by step:right-hull-connected (right-hull part of Lemma 2.4, itself consumed by step:disc-E1-positive); Prop 1.5 stays EXCLUDED (feeds no root)
 COVERAGE_STATUS: PROPOSED
-EXTRACTOR: extractor-A/sonnet
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 
 ITEM: inv:heading:L582
@@ -2323,10 +2323,10 @@ REVIEWER: -
 ITEM: inv:lem-connected
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L658-L660
-DISPOSITION: NODE lem-connected.left, claim:hull-nonempty
-REASON: Lemma 2.4 left-hull part (root); right-hull part excluded (feeds no root)
+DISPOSITION: NODE lem-connected.left, claim:hull-nonempty, step:right-hull-connected
+REASON: Lemma 2.4: left-hull part (root) and nonemptiness; the right-hull part is consumed by step:disc-E1-positive and is modeled by step:right-hull-connected (replaces 'right-hull part excluded')
 COVERAGE_STATUS: PROPOSED
-EXTRACTOR: extractor-A/sonnet
+EXTRACTOR: global-reviewer/sonnet
 REVIEWER: -
 
 ITEM: inv:proof:L661
