@@ -1,6 +1,15 @@
 # Status ledger
 
-M6 in progress — 2026-10-30 (approval packet review/approvals/M6.md).
+M6 in progress — paused 2026-10-30 (session limit). Approval packet: review/approvals/M6.md (P13 fix, Prop 1.5
+coupling, AUTO-1, T12). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3) (PROVED), driver-level lemmas
+(Internal/Driver: scaling, symmetries, shift independence, time reversal).
+Resume: two Fable jobs were stopped mid-work; their unfinished files are parked (untracked) in .lake/wip/:
+  M6-polar/Polar/*            → ComplexSLE/Internal/Polar/      (brief briefs/M6-S2-polar.md, Lemma 2.11)
+  M6-stationary/Stationary/*  → ComplexSLE/Internal/Stationary/ (brief briefs/M6-S3-stationarity.md, Lemmas A.1/A.2)
+  M6-stochastic/Stochastic/*  → ComplexSLE/Infrastructure/Stochastic/ (shared helpers of both)
+  Not checked for sorry-freeness or compilation; restore, build, then relaunch the briefs with "continue from these files".
+  The stationarity prover reported a compiling Markov-property draft; a new external may be needed (see brief).
+Then: recurrence (Lemma 2.16) + P13 hitting lemma, Prop 1.5 anchor after packet approval, close M6.
 M5 complete — 2026-10-30: EXTERNAL state live; external boundary frozen (R23, R25). Open author item P13 (Girsanov, critical case) (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
 M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative to loewnerMap_conformal). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
