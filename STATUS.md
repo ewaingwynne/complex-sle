@@ -9,6 +9,9 @@ Resume: two Fable jobs were stopped mid-work; their unfinished files are parked 
   M6-stochastic/Stochastic/*  → ComplexSLE/Infrastructure/Stochastic/ (shared helpers of both)
   Not checked for sorry-freeness or compilation; restore, build, then relaunch the briefs with "continue from these files".
   The stationarity prover reported a compiling Markov-property draft; a new external may be needed (see brief).
+Proof-route substitutions (graph models the source; Lean follows the ruling): step:p-case1-* → Lemma 2.13
+periodic-solution route; lem-connected.left → max-modulus route; step:prop-ii-b-hit-lambda-prime and
+step:disc-a-hit-Lambda → R27 hitting lemma (ext:girsanov stays in the source graph but is not consumed in Lean).
 Then: recurrence (Lemma 2.16) + P13 hitting lemma, prove sle_duality (driver part: Internal/Driver time reversal + mul_I;
 hull part: Internal/Loewner/Duality.lean), graph amendments for R27, close M6.
 M5 complete — 2026-10-30: EXTERNAL state live; external boundary frozen (R23, R25). Open author item P13 (Girsanov, critical case) (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
