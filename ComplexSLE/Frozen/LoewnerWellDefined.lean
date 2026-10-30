@@ -27,7 +27,7 @@ theorem loewner_wellDefined (U : ℝ≥0 → ℂ) (hU : Continuous U) (z : ℂ) 
       ∀ (τ : ℝ≥0∞) (γ₁ γ₂ : ℝ → ℂ), IsLoewnerSolution U z τ γ₁ → IsLoewnerSolution U z τ γ₂ →
           Set.EqOn γ₁ γ₂ {t | 0 ≤ t ∧ ENNReal.ofReal t < τ} :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.loewner_wellDefined U hU z
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

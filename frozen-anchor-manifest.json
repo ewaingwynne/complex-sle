@@ -680,7 +680,7 @@
         "module": "ComplexSLE.Internal.LoewnerWellDefined",
         "export": "ComplexSLE.Internal.loewner_wellDefined"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "80b5b7aa6222cef25b1240aaa4da6f3de20fcd5e49cb3b5036f9616459645185",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

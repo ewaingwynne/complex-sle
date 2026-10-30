@@ -1,0 +1,1 @@
+Review of R20 amendments by amend-reviewer-R20/sonnet (2026-10-30): R20-disc-setup ACCEPT (follow-ups 1–2 applied: conclusion restates E_2–E_4 and the E_1(δ) consequences; constant scope names η, δ, ε<x/2); R20-disc-E1-positive ACCEPT. Math of the fix: p10-reviewer/sonnet, HOLDS_WITH_CAVEATS (both caveats folded into R20).

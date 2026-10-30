@@ -31,6 +31,9 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   (typo T8).
 - R19 (2026-10-30) P12 accepted: in Lemma 2.16 with c = −√(ab), choose x with tan x = sgn(c)·√(b/a), so the
   recurrence point is e^{2ix} as printed (typo T9).
+- R20 (2026-10-30) P10 resolved: the two-scale construction of U^± and E_1(δ) proposed below replaces the
+  printed choice at L2163-2169 in the proof of Lemma 4.1. The statement of Lemma 4.1 and the Thm 1.10 anchors
+  are unchanged.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
@@ -115,7 +118,7 @@ may be. The argument needs a repair (for example, take U^± ⊂ ℂ∖L_T direct
 change how ε and the neighbourhood of L_T are chosen). It is recorded as a SOURCE_GAP on
 `step:disc-setup`. **Needed from the author:** a corrected argument, or a ruling on how to model it.
 
-**Proposed fix for P10 (two scales; the statement of Lemma 4.1 is unchanged).** Keep x < y, ε and K from Lemma 4.4
+**Fix for P10, approved as R20 (two scales; the statement of Lemma 4.1 is unchanged).** Keep x < y, ε and K from Lemma 4.4
 as in the paper, with also ε < x/2, and fix T > y²/2. Let φ_T(z) = √(z² + 4T) be the zero-driver map (the branch
 ~ z at ∞) and set U^± := φ_T^{-1}(B_{ε/2}(x ± 2iε)). The closed balls miss ℝ and iℝ, so the closures of U^± are
 compact subsets of {Re z > 0}, and η := dist(U^+ ∪ U^-, iℝ) > 0 is deterministic (η ≈ 1.5Cε/√(T−C²)).

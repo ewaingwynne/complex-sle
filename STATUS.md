@@ -1,10 +1,11 @@
 # Status ledger
 
+M4 in progress — 2026-10-30. P10 resolved by R20; P11/P12 accepted as R18/R19.
+
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 14
-  ComplexSLE/Frozen/LoewnerWellDefined.lean    ComplexSLE.loewner_wellDefined
+DRAFT_ANCHORS: 13
   ComplexSLE/Frozen/Lemma_2_13_Exists.lean     ComplexSLE.exists_admissibleDensity
   ComplexSLE/Frozen/ExistsSLEDriver.lean       ComplexSLE.exists_sleDriver
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
@@ -20,10 +21,11 @@ DRAFT_ANCHORS: 14
   ComplexSLE/Frozen/Reflection_LeftHull.lean   ComplexSLE.reflection_leftHull
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-SEALED_THIS_TURN: 0
+SEALED_THIS_TURN: 1 (ComplexSLE.loewner_wellDefined)
 SEALED DEFINITIONS: 17 (M1)
 EXTERNALS: 0 frozen
-PROVED: 0   PROVED_REL: 0
+PROVED: 1   PROVED_REL: 0
+  PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
 Manifest: 31 anchors. Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
@@ -33,8 +35,8 @@ Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 
 (slice reviewers A–D, global-reviewer, and global-verifier as GLOBAL_REVIEWER). The full gate passes:
 `proof_depgraph.py --require-reviewed --require-complete-coverage --require-initial-lean-status
 --require-all-reachable --check`.
-Author items open: P10 (Lemma 4.1 U±, which blocks the Thm 1.10 roots), P11 (T8), P12 (T9), and the
-modeling questions in ERRATA.md.
+Author items open: the modeling questions in ERRATA.md. Graph amendments R20-disc-setup and
+R20-disc-E1-positive (reviewed: graph/reviews/R20-amend.review.md) encode R20.
 
 Next (M4): Lean proofs of the Tier-D frontier (deterministic Loewner core, stationary density).
 Deferred anchors: g_t / f_t / R_t (after `loewner_wellDefined` is proved), Prop 1.5,
