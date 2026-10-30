@@ -50,6 +50,13 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
 - R24 (2026-10-30) Stochastic externals (Itô, Lévy characterization, strong Markov, Girsanov, Hörmander, Blumenthal,
   Kolmogorov 0-1, Birkhoff, …) are stated in martingale / law form using only Mathlib notions (filtrations, stopping
   times, `Martingale`, conditional expectation, `HasLaw`, independence); no stochastic integral is built in-project.
+- R25 (2026-10-30) EXTERNAL batch 2 approved as drafted (reviews reviewer-M5-ext2/sonnet, then reviewer-M5-ext2b/sonnet
+  after fixes): definitions `pathIntegral`, `IsContLocalMartingale`, `IsSLEDriverAdapted` (everywhere-continuous paths),
+  `IsDiffusionSolution`; externals `strongMarkov_sleDriver`, `blumenthal_sleDriver`, `birkhoff_stationary`,
+  `recurrence_stationary`, `scale_function_hit` (with "drift bounded above near l", truncated exit times),
+  `koebe_quarter`, `koebe_distortion`, `ito_formula`, `levy_characterization`, `dambis_dubins_schwarz`,
+  `timeChange_isContLocalMartingale` (σ 0 = 0), `girsanov_law_equiv` (bounded h), `hormander_oneDim`. Kolmogorov 0-1 is
+  Mathlib-supplied (no file). This completes the graph's external boundary.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
@@ -170,6 +177,14 @@ modeled as SOURCE_GAP steps:
 - T_z < ∞ in Lemma 3.12.
 - The product-space extension for the random point 𝐳 (Props 3.1/3.2 over arbitrary Ω).
 - The new external `ext:kolmogorov-zero-one`.
+
+**P13 (open, found in M5). Girsanov steps in Prop 3.2(b) and Thm 1.10(a).** `paper.tex:L1799-1802` and the reuse
+in the proof of Thm 1.10(a). The paper infers P(τ < ∞) > 0 "from the SDE and Girsanov's theorem". The drift ratio
+h = µ/√(2D) is bounded only when c² < ab, so in the critical case c² = ab Girsanov does not apply as used; and even
+for c² < ab the argument that the driftless diffusion hits the target set with positive probability is not given.
+Both are SOURCE_GAP steps in the graph (step:prop-ii-b-hit-lambda-prime, step:disc-a-hit-Lambda); the external
+`girsanov_law_equiv` covers only bounded h. **Needed from the author:** an argument for the critical case (e.g. a
+localisation or a direct comparison), or a ruling on how to treat it.
 
 ### Typos (graph notes only)
 
