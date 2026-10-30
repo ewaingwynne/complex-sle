@@ -27,6 +27,10 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
 - R17 (2026-10-30) Splits approved with the M2 batch: Thm 1.8 → `theorem_1_8` + `theorem_1_8_c_zero`;
   Thm 1.10 → (a), (b); Prop 3.1 → (a), (b); Prop 3.2 → (a), (b). They are independent anchors: no
   witness or constant is shared across them.
+- R18 (2026-10-30) P11 accepted: the third formula of (2.3) reads f_t(L_{s+t} ∖ L_t) = L_{t,s+t} ∖ R_t
+  (typo T8).
+- R19 (2026-10-30) P12 accepted: in Lemma 2.16 with c = −√(ab), choose x with tan x = sgn(c)·√(b/a), so the
+  recurrence point is e^{2ix} as printed (typo T9).
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
@@ -111,12 +115,28 @@ may be. The argument needs a repair (for example, take U^± ⊂ ℂ∖L_T direct
 change how ε and the neighbourhood of L_T are chosen). It is recorded as a SOURCE_GAP on
 `step:disc-setup`. **Needed from the author:** a corrected argument, or a ruling on how to model it.
 
-**P11 (T8 candidate). The third formula of (2.3) as printed.** `paper.tex:L556-565`.
+**Proposed fix for P10 (two scales; the statement of Lemma 4.1 is unchanged).** Keep x < y, ε and K from Lemma 4.4
+as in the paper, with also ε < x/2, and fix T > y²/2. Let φ_T(z) = √(z² + 4T) be the zero-driver map (the branch
+~ z at ∞) and set U^± := φ_T^{-1}(B_{ε/2}(x ± 2iε)). The closed balls miss ℝ and iℝ, so the closures of U^± are
+compact subsets of {Re z > 0}, and η := dist(U^+ ∪ U^-, iℝ) > 0 is deterministic (η ≈ 1.5Cε/√(T−C²)).
+Set δ := min(η/2, ε/2, (2√T − y)/2) and replace E_1 by E_1(δ), which is E_1 with δ in place of ε in its first
+three clauses (L_T, R_T and the uniform approximation of f_T); the crossing of [x,y]×[−ε,ε] is kept.
+P(E_1(δ)) > 0 by Lemma 4.3 at scale δ, and E_1(δ) is still F_T-measurable. Then U^± ∩ L_T = ∅,
+f_T(U^±) ⊂ B_{ε/2+δ}(x ± 2iε) ⊂ B_ε(x ± 2iε) ⊂ B_{3ε}(x) ∖ R_T, and E_1(δ) implies the printed E_1,
+so the rest of the proof goes through verbatim. The bound δ < 2√T − y gives the R_T point with Re ≥ y that the
+crossing argument needs; the paper leaves the same condition on ε implicit. (Proposed by the orchestrator;
+η > 0, quantifier order and the downstream uses were checked by a fresh Sonnet reviewer, verdict HOLDS_WITH_CAVEATS,
+with both caveats folded in above.)
+The same review noted gaps that predate the fix and are already modeled as SOURCE_GAP steps: the choice of ε and K
+in E_2/E_3 from Lemma 4.4, the uniformity argument in Lemma 4.3, "by topological considerations" (L2194), and the
+transfer through concatenation (2.3)/R18.
+
+**P11 (T8; accepted as R18). The third formula of (2.3) as printed.** `paper.tex:L556-565`.
 f_t(L_{s+t} ∖ L_t) = L_{t,s+t} cannot hold, since f_t maps ℂ∖L_t onto ℂ∖R_t and 0 ∈ R_t ∩ L_{t,s+t}.
 **Proposed:** read it as f_t(L_{s+t} ∖ L_t) = L_{t,s+t} ∖ R_t, which agrees with the second formula
 (found by global-reviewer, confirmed by global-verifier).
 
-**P12 (T9 candidate). Lemma 2.16 for c = −√(ab).** `paper.tex:L1155-1163`. When c = −√(ab), D vanishes on
+**P12 (T9; accepted as R19). Lemma 2.16 for c = −√(ab).** `paper.tex:L1155-1163`. When c = −√(ab), D vanishes on
 −x + πℤ, so the argument proves recurrence at e^{−2ix} rather than e^{2ix}.
 **Proposed:** in the critical case, choose x with tan x = sgn(c)·√(b/a). Downstream (Lemma 3.4) only needs some
 deterministic recurrent point, so nothing else changes (found by global-verifier, checked by the orchestrator).
@@ -142,6 +162,7 @@ modeled as SOURCE_GAP steps:
   "f_t ∘ L homotopic to L in ℂ∖{0}, hence the region bounded by L misses L_t" is a sketch
   and will be a SOURCE_GAP step node.
 - T7 §2.1.1 `paper.tex:L545`: "U : [0,∞) → ℝ" should be "→ ℂ".
+- T10 Lemma 4.3 `paper.tex:L1995`: "[−2T^{−1/2} i, 2T^{1/2} i]" should be "[−2T^{1/2} i, 2T^{1/2} i]".
 - T6 Lemma 4.3 `paper.tex:L1991-2030`: [Law05, Prop 4.43] "extends to ℂ by replacing ℍ by
   ℂ". This is an external input whose extension is asserted, not proved (SOURCE_GAP, and
   part of E12).
