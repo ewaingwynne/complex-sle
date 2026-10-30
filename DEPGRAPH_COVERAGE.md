@@ -612,7 +612,7 @@ REVIEWER: -
 ITEM: inv:proof:L661
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L661@L661-L663
-DISPOSITION: NODE step:connected-loop-criterion, step:connected-homotopy, step:connected-region-misses-hull, lem-connected.left
+DISPOSITION: NODE step:connected-loop-criterion, step:connected-homotopy, step:connected-region-misses-hull, lem-connected.left, step:flow-continuity, step:hull-closed
 REASON: proof of Lemma 2.4 (left hull part; the final duality sentence for R_t is not consumed)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
@@ -630,7 +630,7 @@ REVIEWER: -
 ITEM: inv:proof:L673
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L673@L673-L691
-DISPOSITION: NODE step:endpt-liminf, step:endpt-upcrossing-bound, step:endpt-finite-upcrossings, lem-endpt-cont
+DISPOSITION: NODE step:endpt-liminf, step:endpt-upcrossing-bound, step:endpt-finite-upcrossings, lem-endpt-cont, step:endpt-upcrossing-reduction
 REASON: proof of Lemma 2.5
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
@@ -855,10 +855,19 @@ REVIEWER: -
 ITEM: inv:L604:loewner-theorem
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L604:loewner-theorem@L603-L607
-DISPOSITION: EXCLUDED
-REASON: background recollection of Loewner theorem for real drivers (not consumed by any node of the graph)
+DISPOSITION: NODE defn-chordal-loewner
+REASON: recollection of Loewner's theorem and the identification of the chordal hulls L_t, R_t (L606-L607); the hull identification is consumed by Lemma 2.2 and its step nodes; Loewner's theorem itself is recalled without proof (SOURCE_GAP in defn-chordal-loewner NOTE)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
+REVIEWER: -
+
+ITEM: inv:L644:reverse-remark
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L644:reverse-remark@L644-L644
+DISPOSITION: NODE step:reverse-via-mult-by-i
+REASON: unlabeled claim after Lemma 2.3: if f_t is a centered Loewner chain with driver U then z -> i f_t(-iz) is a centered reverse chain with driver iU; used for Lemma 2.2(b)
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
 REVIEWER: -
 
 ITEM: inv:heading:L805
@@ -2700,7 +2709,7 @@ REVIEWER: -
 ITEM: inv:L268:loewner-ivp-solvability
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L268-L268
-DISPOSITION: NODE step:loewner-local-solution, step:loewner-glue-maximal
+DISPOSITION: NODE step:loewner-local-solution, step:loewner-glue-maximal, step:loewner-global-uniqueness
 REASON: the claim that the solution of (1.1) is defined up to an absorbing time T_z; split into local solvability and maximal gluing (both SOURCE_GAP)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: orchestrator/opus-5.5/session-a85056b9

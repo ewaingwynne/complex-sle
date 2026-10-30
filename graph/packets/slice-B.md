@@ -173,11 +173,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-sle, defn-loewner.absorbing-time
+DEPS: defn-sle, defn-loewner.absorbing-time, defn-loewner.well-defined
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L838-L838 | centered SLE_Sigma maps f_t supply f_s(z)
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L839-L839 | domain (0,T_z) of the time change uses the absorbing time
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L842-L842 | the integrand ∣f_s(z)∣^-2 uses the centered chain f_s(z) = g_s(z) - U_s, whose existence and uniqueness up to T_z is that theorem
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -201,11 +202,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-loewner.absorbing-time, defn-sle
+DEPS: defn-loewner.absorbing-time, defn-sle, defn-loewner.well-defined
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) nonvanishing and continuous for t<T_z
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) is a continuous process built from the driver
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) is the (unique) solution, continuous in t and nonzero for t<T_z, so the lift to the covering R -> S^1 exists
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -378,12 +380,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: ext:levy-characterization, defn-sigma, defn-sle
+DEPS: ext:levy-characterization, defn-sigma, step:polar-time-change, step:driver-representation
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | equality of law from equal quadratic (cross-)variations
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | <W>_t~ = int_0^sigma(t~) ∣f∣^-2 ds = t~ by the definition of sigma
-EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | covariance structure of (B,B~)
+EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L924-L927 | W and W~ are the stochastic integrals defined there
+EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | (B,B~) are standard BMs with cross-variation c t/sqrt(ab)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -407,12 +410,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-def-ft, defn-sigma, step:polar-real-imag
+DEPS: eqn-def-ft, defn-sigma, def-arg
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-def-ft | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | differentiate the SDE for f_t(z) in z
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | time change
-EDGE: step:polar-real-imag | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | f_t^-2 = ∣f_t∣^-2 e^{-2i theta_t}, real part
+EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | f_t^-2 = ∣f_t∣^-2 e^{-2i theta_t}, real part -2cos(2 theta)/∣f∣^2
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -436,12 +439,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-polar, step:sigma-bounded-coefficients, lem-endpt-cont
+DEPS: lem-polar, step:sigma-bounded-coefficients, lem-endpt-cont, defn-sigma
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L893-L893 | SDEs with bounded coefficients on the sigma-time scale
 EDGE: step:sigma-bounded-coefficients | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L895 | ∣hat f∣ and ∣hat f'∣ bounded away from 0, infinity on compacts
-EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L895-L895 | lim ∣f_t(z)∣ = 0 as t -> T_z- on {T_z<infty}
+EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L895-L895 | lim ∣f_t(z)∣ = 0 as t -> T_z- on {T_z<infinity}
+EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L895 | the claim concerns the domain of sigma_z defined by t~ = int_0^sigma ∣f_s∣^-2 ds
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -637,12 +641,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-reflect, step:driver-negation-symmetry, def-arg
+DEPS: eqn-reflect, step:driver-negation-symmetry, def-arg, step:stat-apply-kolmogorov-noncritical, step:stat-apply-kolmogorov-critical, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-reflect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | (2.2): multiplying the driving function by -1 gives f_t -> -f_t(-.)
 EDGE: step:driver-negation-symmetry | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | -U =_d U
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | carrier change theta <-> e^{2i theta}, e^{i theta}
+EDGE: step:stat-apply-kolmogorov-noncritical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | stationarity of e^{2i theta} (case ∣c∣ != sqrt(ab)) is the premise being upgraded
+EDGE: step:stat-apply-kolmogorov-critical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | stationarity of e^{2i theta} (case c = +-sqrt(ab)) is the premise being upgraded
+EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | p is pi-periodic, so -zz =_d zz
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -753,13 +760,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-kolmogorov, step:stat-kolmogorov-normalization, step:D-structure, step:stat-theta-bm-sde
+DEPS: lem-kolmogorov, step:stat-kolmogorov-normalization, step:D-structure, step:stat-theta-bm-sde, eqn-nu-D.mu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-kolmogorov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L993-L993 | Hormander-condition hypothesis (A.1) checked at zeros of beta
 EDGE: step:stat-kolmogorov-normalization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L993-L993 | 2p, alpha=mu, beta
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L992 | 2D = beta^2 and zero set of beta
 EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L989-L992 | rewrite with W'' and beta
+EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L993-L993 | value of mu(u) beta'(u) at the zeros of beta
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -842,11 +850,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-nu-D.mu, eqn-nu-D.D
+DEPS: eqn-nu-D.mu, eqn-nu-D.D, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | symmetry mu(c)(u) = -mu(-c)(-u)
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | symmetry D(c)(u) = D(-c)(-u)
+EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | "if p satisfies the hypotheses of Lemma 2.14 then p~ does"
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -864,7 +873,7 @@ CONTRACT_ID: paper.step:p-case1-first-order-solutions
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: |c|<sqrt(ab), so D>0 (a,b>0)
 SOURCE_QUANTIFIERS: forall j in {0,1}
-SOURCE_CONCLUSION: p_0(u) = exp(int_0^u (mu-D')/D) and p_1(u) = D(u)^-1 exp(int_0^u mu/D) int_0^u exp(-int_0^s mu/D) ds are smooth on R and satisfy -mu p_j + [D p_j]' = j; p_0(0)=1, p_1(0)=0
+SOURCE_CONCLUSION: p_0(u) = exp(int_0^u (mu-D')/D) and p_1(u) = D(u)^-1 exp(int_0^u mu/D) int_0^u exp(-int_0^s mu/D) ds are smooth on R and satisfy -mu p_j + [D p_j]' = j; p_0(0)=1, p_1(0)=0; the source also asserts p_0, p_1 >= 0 (L1030) and uses p_1(pi) > 0 (L1054, L1065) without argument
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -882,7 +891,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Covers eqn-defn-p0, eqn-defn-p1, eqn-p0-p1-ODE. Verification is direct differentiation. SOURCE_GAP-adjacent: source says p_0,p_1: R -> [0,infty) ('smooth and nonnegative'), but p_1(u)<0 for u<0 (integral int_0^u of a positive function is negative); nonnegativity is only needed (and true) on [0,pi]; see step:p-case1-nonneg. Hence uncertainty.
+NOTE: Covers eqn-defn-p0, eqn-defn-p1, eqn-p0-p1-ODE. Verification of the ODEs is direct differentiation. SOURCE_GAP: the source says p_0,p_1 : R -> [0,infty) and later 'p_1(pi) > 0' and 'p_0, p_1 clearly non-negative' with no argument; p_1(u) < 0 for u < 0, so nonnegativity holds only on [0,pi] where it is used. Downstream nodes step:p-case1-periodic and step:p-case1-nonneg consume 'p_1(pi) > 0' and 'p_1 >= 0 on [0,pi]' from this node.
 
 NODE: step:p-case1-periodic
 KIND: step
@@ -1013,13 +1022,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:p-case1-periodic, step:p-case1-nonneg, step:p-case1-zero-set, lem-stationary.admissible
+DEPS: step:p-case1-first-order-solutions, step:p-case1-periodic, step:p-case1-nonneg, step:p-case1-zero-set, lem-stationary.admissible
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case1-periodic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1058-L1063 | pi-periodicity and the ODE
 EDGE: step:p-case1-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1065-L1065 | nonnegativity
 EDGE: step:p-case1-zero-set | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1088-L1088 | int_0^{2pi}(p_0+r_* p_1) > 0 so k exists
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1025-L1025 | admissibility target
+EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1041-L1041 | p_0, p_1 smooth, so p is C^2 on R and D p is C^1 (x-condition vacuous)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1100,12 +1110,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:p-case2-limits, step:p-case2-welldefined, step:p-case1-first-order-solutions
+DEPS: step:p-case2-limits, step:p-case2-welldefined
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case2-limits | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | continuity at x+n pi and one-sided limits of [D p]'
-EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | ODE (2.33) off the singular points
-EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | 'By (2.19)' [D p]' = 1 + mu p (first-order ODE for j=1)
+EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | ODE (2.33) i.e. [D p]' = 1 + mu p off the singular points (the source's "By (2.19)" is this same equation, valid in Case 2 only through (2.33))
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1246,7 +1255,7 @@ FROZEN_ABI_SHA256: -
 DEPS: lem-stationary, step:wlog-c-nonneg, step:rec-reduction-to-x, step:rec-renewal, step:rec-tau-finite, step:rec-angle-hit-unif
 ROUTES: -
 ROUTE_FOR: -
-EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1156-L1158 | stationarity of e^{2i theta}
+EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | stationarity of e^{2i theta}
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | c>=0 WLOG
 EDGE: step:rec-reduction-to-x | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | suffices to hit e^{2ix}
 EDGE: step:rec-renewal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1177-L1183 | infinitely many hits on {tau_k<infty for all k}
@@ -1303,11 +1312,10 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:rec-monotone-in-y, step:rec-hit-fixed-y
+DEPS: step:rec-monotone-in-y
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:rec-monotone-in-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1229-L1229 | monotonicity in y reduces uniform bound to the worst y=x+pi-eps
-EDGE: step:rec-hit-fixed-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1225-L1228 | positive probability at each fixed y
+EDGE: step:rec-monotone-in-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1229-L1229 | monotonicity in y reduces uniform bound to the worst y=x+pi-eps (itself built on the fixed-y bound)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1331,12 +1339,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:rec-angle-hit-unif, ext:strong-markov-bm, ext:martingale-convergence
+DEPS: step:rec-angle-hit-unif, ext:strong-markov-bm, ext:martingale-convergence, step:stat-theta-bm-sde
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:rec-angle-hit-unif | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1183-L1183 | conditional probability >= delta in each window
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1182-L1182 | strong Markov property at tau_k
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1183-L1183 | conditional Borel-Cantelli to conclude infinitely many hits
+EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1182-L1182 | pi-periodic coefficients of SDE (2.30) give the same conditional law from [theta_tau]
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1360,11 +1369,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-stationary, lem-p
+DEPS: lem-stationary, lem-stationary.admissible, step:rec-renewal
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | stationary law of e^{2i theta}
-EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | the law of zz has a density (p), so its image is non-atomic
+EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | the admissible p is a density (angle law p 1_[0,2pi]), so the image law is non-atomic
+EDGE: step:rec-renewal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1177-L1180 | the stopping times tau_k^eps are defined there
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -1619,11 +1629,10 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:kol-derivative-at-zero, step:kol-shift-start
+DEPS: step:kol-derivative-at-zero
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:kol-derivative-at-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2382-L2382 | integrand to be integrated by parts
-EDGE: step:kol-shift-start | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2384-L2384 | integration over one period [x,x+pi]
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
@@ -2430,6 +2439,7 @@ REASON: expository sentence motivating condition (A.1); the claim is Lemma A.2
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-B/sonnet
 REVIEWER: -
+
 
 ## Report
 

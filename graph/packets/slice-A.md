@@ -95,11 +95,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left, defn-loewner.solution
+DEPS: defn-hulls.left, defn-loewner.well-defined
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L275 | f_t is a map on the complement of L_t whose range complement is R_t
-EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L272 | f_t = g_t - U_t is the centered Loewner map whose range defines R_t
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L272 | f_t = g_t - U_t is a well-defined map only via existence and uniqueness of the Loewner IVP; R_t is the complement of its range
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -413,7 +413,7 @@ STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-I@L440-L4
 PROOF_SOURCE: -
 CONTRACT_ID: paper.def.integralI
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: p a density (admissible)
+SOURCE_HYPOTHESES: a, b, c real; p : R -> R an arbitrary function (the source introduces p before the theorem; admissibility of p is a premise of Thm 1.8, not of the integral)
 SOURCE_QUANTIFIERS: a,b,c; p
 SOURCE_CONCLUSION: (I) = integral_0^{2pi} nu(u) p(u) du
 CONSTANT_SCOPE: none
@@ -440,7 +440,7 @@ STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-II@L441-L
 PROOF_SOURCE: -
 CONTRACT_ID: paper.def.integralII
 CONTRACT_VERSION: 1
-SOURCE_HYPOTHESES: p a density (admissible)
+SOURCE_HYPOTHESES: a, b, c real; p : R -> R an arbitrary function (the source introduces p before the theorem; admissibility of p is a premise of Thm 1.8, not of the integral)
 SOURCE_QUANTIFIERS: a,b,c; p
 SOURCE_CONCLUSION: (II) = integral_0^{2pi} (nu(u) + 2 cos 2u) p(u) du
 CONSTANT_SCOPE: none
@@ -469,7 +469,7 @@ CONTRACT_ID: paper.step:loewner-local-solution
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: U continuous; z in C, z != U_0
 SOURCE_QUANTIFIERS: U; z; initial time
-SOURCE_CONCLUSION: near any time t0 with g(t0) != U_{t0} the ODE g-dot = 2/(g-U_t) has a solution, and two solutions agree on their common interval
+SOURCE_CONCLUSION: near any time t0 with g(t0) != U_{t0} the ODE g-dot = 2/(g-U_t) has a solution, and two solutions that agree at a time t0 agree on a neighbourhood of t0 (local uniqueness only)
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -478,7 +478,7 @@ FROZEN_ABI_SHA256: -
 DEPS: ext:picard-lindelof, defn-loewner.solution
 ROUTES: -
 ROUTE_FOR: -
-EDGE: ext:picard-lindelof | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L674-L674 | "standard existence results for solutions to ODEs": right side is continuous in t and locally Lipschitz in g where g != U_t
+EDGE: ext:picard-lindelof | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | "as in the case of a real driving function": right side is continuous in t and locally Lipschitz in g where g != U_t
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L256-L256 | the ODE is (1.1)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
@@ -503,11 +503,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:loewner-local-solution, defn-loewner.absorbing-time
+DEPS: step:loewner-local-solution, step:loewner-global-uniqueness, defn-loewner.absorbing-time
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | uniqueness lets solutions on shorter intervals be patched into one solution on [0,T_z)
+EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | solutions on shorter intervals are the pieces to be patched
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | T_z is the supremum of existence times; the supremum must be attained as an open interval
+EDGE: step:loewner-global-uniqueness | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | uniqueness on overlaps lets the pieces patch into one solution on [0,T_z)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -531,13 +532,14 @@ FROZEN_FILE: ComplexSLE/Frozen/LoewnerWellDefined.lean
 FROZEN_DECL: ComplexSLE.loewner_wellDefined
 FROZEN_ANCHOR_ID: thm.loewner_wellDefined.v1
 FROZEN_ABI_SHA256: 627a9c24bc589b835afd7829fa4c0ca50499a5167908b24c5ac70bd838f0257f
-DEPS: defn-loewner.solution, defn-loewner.absorbing-time, step:loewner-local-solution, step:loewner-glue-maximal
+DEPS: defn-loewner.solution, defn-loewner.absorbing-time, step:loewner-local-solution, step:loewner-global-uniqueness, step:loewner-glue-maximal
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L253-L256 | the statement concerns solutions of (1.1)
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | the solution interval is [0,T_z)
-EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | uniqueness on common intervals and local existence
+EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | local existence
 EDGE: step:loewner-glue-maximal | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | existence on all of [0,T_z)
+EDGE: step:loewner-global-uniqueness | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | any two solutions on a common interval agree
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -795,12 +797,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-loewner.solution, defn-sle, step:driver-representation
+DEPS: defn-loewner.solution, defn-loewner.well-defined, defn-sle, step:driver-representation
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L316-L316 | f_t = g_t - U_t with g_t from the Loewner ODE gives f_t = z + int 2/f ds - (U_t - U_0)
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L315-L315 | U is the SLE_Sigma driving BM
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L317-L317 | U written as sqrt(a) B + i sqrt(b) B~
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L315-L315 | f_t(z) exists for t < T_z only through the well-defined chain
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -841,13 +844,13 @@ NOTE: Spec Section 4: a WLOG step consuming the reflection property. The source 
 NODE: defn-chordal-loewner
 KIND: definition
 TITLE: Chordal Loewner chains (forward and reverse)
-STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#defn-chordal-loewner@L588-L601
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#defn-chordal-loewner@L588-L607
 PROOF_SOURCE: -
 CONTRACT_ID: paper.defn-chordal-loewner
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: U : [0,infinity) -> R continuous
 SOURCE_QUANTIFIERS: U; z in H
-SOURCE_CONCLUSION: forward chain g_t(z) solves g-dot = 2/(g-U_t), reverse chain solves g-dot = -2/(g-U_t), g_0(z) = z; centered chain f_t = g_t - U_t
+SOURCE_CONCLUSION: forward chain g_t(z) solves g-dot = 2/(g-U_t), reverse chain solves g-dot = -2/(g-U_t), g_0(z) = z; centered chain f_t = g_t - U_t; forward chain: f_t maps H \ L_t onto H with L_t = {z in H : T_z <= t}; reverse chain: f_t maps H onto H \ R_t for some set R_t (hulls identified via Loewner's theorem, L603-L607)
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -862,7 +865,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Definition 2.1; includes displays (2.5), (2.6). The surrounding remarks about Loewner theorem are background.
+NOTE: Definition 2.1 with (2.5), (2.6), plus the hull identification at L606-L607 that Lemma 2.2 consumes. SOURCE_GAP: Loewner's theorem (g_t the unique conformal map with g_t(z)-z -> 0) is recalled, not proved, and is not a node; Lemma 2.2 relies on it only through the hull identification.
 
 NODE: lem-mult-by-i
 KIND: lemma
@@ -879,11 +882,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-loewner.solution, defn-chordal-loewner
+DEPS: defn-loewner.solution, defn-loewner.well-defined, defn-chordal-loewner
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L641-L641 | "immediate consequence of Definition 1.1": the rotated map solves the forward ODE for iU
 EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L637-L637 | reverse ODE (2.6) is the hypothesis
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L641-L641 | a solution of the ODE for iU is identified with the Loewner chain of iU by uniqueness
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -907,13 +911,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: eqn-reflect, defn-chordal-loewner, defn-hulls.right, defn-loewner.well-defined
+DEPS: eqn-reflect, defn-chordal-loewner, defn-hulls.left, defn-hulls.right, defn-loewner.well-defined
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-reflect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | "first assertion is immediate from the reflection property under conjugation": U real so U* = U
 EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L626-L626 | forward chordal chain and its hulls
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L626-L626 | right hulls are subsets of the real axis
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | complex chain coincides with chordal chain on H by uniqueness
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L626-L626 | the left hulls of the complex chain are claimed to be L_t cup L_t*
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -937,18 +942,19 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-mult-by-i, step:forward-real-driver
+DEPS: lem-mult-by-i, step:forward-real-driver, defn-chordal-loewner
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-mult-by-i | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | "second assertion follows from ... Lemma 2.3"
 EDGE: step:forward-real-driver | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | combined with the first assertion
+EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L628-L628 | the reverse chordal chain whose Schwarz extension feeds Lemma 2.3
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Includes the reversal remark at L644 (forward chain for U gives reverse chain for iU).
+NOTE: Includes the reversal remark at L644 (forward chain for U gives reverse chain for iU). SOURCE_GAP: Lemma 2.3 assumes a reverse solution g_t(z) for every z in C and a continuous complex driver; here the only available object is the reverse chordal chain on H, extended by Schwarz reflection (footnote at L623), and the discharge of that premise (existence of the reflected solution for the required times) is not written in the source.
 
 NODE: lem-forward-reverse-ext
 KIND: lemma
@@ -994,10 +1000,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left
+DEPS: defn-hulls.left, defn-loewner.absorbing-time, defn-loewner.solution
 ROUTES: -
 ROUTE_FOR: -
-EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | T_{U_0} = 0 so U_0 in L_t
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | U_0 in L_t means T_{U_0} <= t
+EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | T_{U_0} = 0 (no solution of positive duration starts at U_0)
+EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | a solution must satisfy g_s != U_s, impossible at s = 0 when g_0 = U_0
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -1021,10 +1029,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left
+DEPS: defn-hulls.left, step:hull-closed
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | L_t is the complement of the domain of f_t
+EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | the planar reduction "it is enough to show" uses that L_t is closed
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -1048,11 +1057,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-loewner.well-defined, defn-hulls.left
+DEPS: defn-loewner.well-defined, defn-hulls.left, step:flow-continuity
 ROUTES: -
 ROUTE_FOR: -
-EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_s(w) is defined and continuous in (s,w) for w not in L_t, s <= t
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_s(w) is defined for w not in L_t, s <= t
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | w not in L_t means T_w > t, so f_s(w) != 0 for s <= t
+EDGE: step:flow-continuity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | "The function (r,s) -> f_s(L(r)) is continuous"
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -1219,12 +1229,11 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-loewner.absorbing-time, step:endpt-liminf, step:endpt-finite-upcrossings
+DEPS: defn-loewner.absorbing-time, step:endpt-upcrossing-reduction
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L668-L668 | T_z is the absorbing time
-EDGE: step:endpt-liminf | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L674-L675 | liminf is 0
-EDGE: step:endpt-finite-upcrossings | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L676-L690 | "it suffices": finitely many upcrossings of every [alpha,beta] with 0<alpha<beta upgrades liminf to limit
+EDGE: step:endpt-upcrossing-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L690 | liminf = 0 plus finitely many upcrossings of every [alpha,beta] gives the limit
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
 REVIEWER: -
@@ -1601,6 +1610,119 @@ LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
 NOTE: Canonical ID per spec; used only by the non-source root.
+
+NODE: step:loewner-global-uniqueness
+KIND: step
+TITLE: Global uniqueness of Loewner solutions on a common interval
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268
+CONTRACT_ID: paper.step:loewner-global-uniqueness
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U continuous; z in C; gamma1, gamma2 solutions of (1.1) on [0,tau)
+SOURCE_QUANTIFIERS: U; z; tau; gamma1, gamma2
+SOURCE_CONCLUSION: gamma1 = gamma2 on [0,tau) (the agreement set is nonempty, closed and open, by local uniqueness)
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: step:loewner-local-solution, defn-loewner.solution
+ROUTES: -
+ROUTE_FOR: -
+EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | local uniqueness is propagated along the interval
+EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L256-L256 | the solutions are solutions of (1.1)
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: SOURCE_GAP: the source (L268) asserts only that the solution is "defined up to some time T_z" as in the real-driver case; the passage from local to global uniqueness is not written.
+
+NODE: step:flow-continuity
+KIND: step
+TITLE: Joint continuity of the Loewner flow in time and initial point
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662
+CONTRACT_ID: paper.step:flow-continuity
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U : [0,infinity) -> C continuous
+SOURCE_QUANTIFIERS: U; (s,w) with s < T_w
+SOURCE_CONCLUSION: (s,w) -> f_s(w) is continuous on {(s,w) : s < T_w}, and {w : T_w > t} is open for each t
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: defn-loewner.well-defined, defn-hulls.left
+ROUTES: -
+ROUTE_FOR: -
+EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_s(w) is defined for s < T_w; continuous dependence on w is a further property of the ODE flow
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | the domain {T_w > t} of f_t is the complement of L_t
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: SOURCE_GAP: the source says "the function (r,s) -> f_s(L(r)) is continuous" without justification; continuous dependence of ODE solutions on the initial point is not in the existence/uniqueness statement of Def 1.1 and is not Picard-Lindelof as stated for ext:picard-lindelof (uncertain whether that external covers it).
+
+NODE: step:hull-closed
+KIND: step
+TITLE: L_t is closed
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662
+CONTRACT_ID: paper.step:hull-closed
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U continuous
+SOURCE_QUANTIFIERS: U; t >= 0
+SOURCE_CONCLUSION: L_t is closed, i.e. the domain C \ L_t of f_t is open
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: step:flow-continuity, defn-hulls.left
+ROUTES: -
+ROUTE_FOR: -
+EDGE: step:flow-continuity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | {w : T_w > t} is open
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | L_t = {T_w <= t}
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: SOURCE_GAP: the proof speaks of loops "that do not intersect L_t" and reduces connectedness to regions bounded by such loops, which silently uses that C \ L_t is open; this is not stated in the source.
+
+NODE: step:endpt-upcrossing-reduction
+KIND: step
+TITLE: Finitely many upcrossings of every [alpha,beta] upgrades liminf = 0 to lim = 0
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L677
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L677
+CONTRACT_ID: paper.step:endpt-upcrossing-reduction
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: T_z < infinity; liminf_{t -> T_z^-} |f_t(z)| = 0; for all 0 < alpha < beta only finitely many upcrossings of [alpha,beta] before T_z
+SOURCE_QUANTIFIERS: z; alpha, beta with 0 < alpha < beta
+SOURCE_CONCLUSION: lim_{t -> T_z^-} |f_t(z)| = 0
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: step:endpt-liminf, step:endpt-finite-upcrossings
+ROUTES: -
+ROUTE_FOR: -
+EDGE: step:endpt-liminf | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L675 | "We need to replace the liminf by a limit"
+EDGE: step:endpt-finite-upcrossings | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L677-L677 | "It suffices to show that there are at most finitely many upcrossings"
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: Quantifier closure over all pairs alpha < beta and the extraction of an upcrossing pair (intermediate value theorem) from limsup > 0 are implicit in "it suffices"; the source does not write them.
+
 
 ## Coverage
 
@@ -2210,7 +2332,7 @@ REVIEWER: -
 ITEM: inv:proof:L661
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L661@L661-L663
-DISPOSITION: NODE step:connected-loop-criterion, step:connected-homotopy, step:connected-region-misses-hull, lem-connected.left
+DISPOSITION: NODE step:connected-loop-criterion, step:connected-homotopy, step:connected-region-misses-hull, lem-connected.left, step:flow-continuity, step:hull-closed
 REASON: proof of Lemma 2.4 (left hull part; the final duality sentence for R_t is not consumed)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
@@ -2228,7 +2350,7 @@ REVIEWER: -
 ITEM: inv:proof:L673
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L673@L673-L691
-DISPOSITION: NODE step:endpt-liminf, step:endpt-upcrossing-bound, step:endpt-finite-upcrossings, lem-endpt-cont
+DISPOSITION: NODE step:endpt-liminf, step:endpt-upcrossing-bound, step:endpt-finite-upcrossings, lem-endpt-cont, step:endpt-upcrossing-reduction
 REASON: proof of Lemma 2.5
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
@@ -2453,10 +2575,19 @@ REVIEWER: -
 ITEM: inv:L604:loewner-theorem
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L604:loewner-theorem@L603-L607
-DISPOSITION: EXCLUDED
-REASON: background recollection of Loewner theorem for real drivers (not consumed by any node of the graph)
+DISPOSITION: NODE defn-chordal-loewner
+REASON: recollection of Loewner's theorem and the identification of the chordal hulls L_t, R_t (L606-L607); the hull identification is consumed by Lemma 2.2 and its step nodes; Loewner's theorem itself is recalled without proof (SOURCE_GAP in defn-chordal-loewner NOTE)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-A/sonnet
+REVIEWER: -
+
+ITEM: inv:L644:reverse-remark
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L644:reverse-remark@L644-L644
+DISPOSITION: NODE step:reverse-via-mult-by-i
+REASON: unlabeled claim after Lemma 2.3: if f_t is a centered Loewner chain with driver U then z -> i f_t(-iz) is a centered reverse chain with driver iU; used for Lemma 2.2(b)
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: reviewer-A/sonnet
 REVIEWER: -
 
 

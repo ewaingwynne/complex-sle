@@ -102,7 +102,7 @@ REVIEWER: -
 ITEM: inv:L268:loewner-ivp-solvability
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L268-L268
-DISPOSITION: NODE step:loewner-local-solution, step:loewner-glue-maximal
+DISPOSITION: NODE step:loewner-local-solution, step:loewner-glue-maximal, step:loewner-global-uniqueness
 REASON: the claim that the solution of (1.1) is defined up to an absorbing time T_z; split into local solvability and maximal gluing (both SOURCE_GAP)
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: orchestrator/opus-5.5/session-a85056b9
