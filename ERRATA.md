@@ -93,6 +93,7 @@ P3 …". Ω is in universe 0 (Type). Statements are about a.s. events, and a.s. 
 - T5 Lemma 2.4 proof `paper.tex:L658-666`: "a.s." in a deterministic lemma. The step
   "f_t ∘ L homotopic to L in ℂ∖{0}, hence the region bounded by L misses L_t" is a sketch
   and will be a SOURCE_GAP step node.
+- T7 §2.1.1 `paper.tex:L545`: "U : [0,∞) → ℝ" should be "→ ℂ".
 - T6 Lemma 4.3 `paper.tex:L1991-2030`: [Law05, Prop 4.43] "extends to ℂ by replacing ℍ by
   ℂ". This is an external input whose extension is asserted, not proved (SOURCE_GAP, and
   part of E12).
