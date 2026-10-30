@@ -782,7 +782,7 @@
         "module": "ComplexSLE.Internal.ExistsSLEDriver",
         "export": "ComplexSLE.Internal.exists_sleDriver"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "ed579b4583ce171a7d23736555ed932e7be5df76d4a88616923d301ec6c38ef7",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

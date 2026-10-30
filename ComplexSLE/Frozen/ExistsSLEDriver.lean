@@ -28,7 +28,7 @@ theorem exists_sleDriver (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤
     ∃ (Ω : Type) (_ : MeasurableSpace Ω) (P : Measure Ω) (_ : IsProbabilityMeasure P)
       (U : ℝ≥0 → Ω → ℂ), IsSLEDriver a b c U P :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.exists_sleDriver a b c ha hb hc
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
