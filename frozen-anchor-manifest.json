@@ -3517,6 +3517,81 @@
         "frozen_paths": [],
         "audit_paths": []
       }
+    },
+    {
+      "id": "thm.sle_duality.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R28; review by reviewer-M6-dual/sonnet; review/approvals/M6.md",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:329-336"
+      },
+      "contract": {
+        "id": "paper.prop1_5.duality",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Proposition_1_5.lean",
+      "export": "ComplexSLE.sle_duality",
+      "split_policy": {
+        "source_group": "paper.prop1_5.duality",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R28"
+      },
+      "abi_sha256": "cb1c6e5473774528f0166eb59ab939e6f7971df6c4350353f4a0a711280d76ce",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Proposition_1_5",
+        "export": "ComplexSLE.Internal.sle_duality"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "e520f4d3f56b392f257b7999f605dd6b2856601380be31b1541de99c83939c7e",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Status ledger
 
-M6 in progress — paused 2026-10-30 (session limit). Approval packet: review/approvals/M6.md (P13 fix, Prop 1.5
-coupling, AUTO-1, T12). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3) (PROVED), driver-level lemmas
+M6 in progress — paused 2026-10-30 (session limit). Approval packet review/approvals/M6.md answered: all approved
+(R27 P13 fix, R28 Prop 1.5 coupling frozen as DRAFT_SORRY anchor ComplexSLE.sle_duality, AUTO-1 and T12 confirmed). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3) (PROVED), driver-level lemmas
 (Internal/Driver: scaling, symmetries, shift independence, time reversal).
 Resume: two Fable jobs were stopped mid-work; their unfinished files are parked (untracked) in .lake/wip/:
   M6-polar/Polar/*            → ComplexSLE/Internal/Polar/      (brief briefs/M6-S2-polar.md, Lemma 2.11)
@@ -9,14 +9,16 @@ Resume: two Fable jobs were stopped mid-work; their unfinished files are parked 
   M6-stochastic/Stochastic/*  → ComplexSLE/Infrastructure/Stochastic/ (shared helpers of both)
   Not checked for sorry-freeness or compilation; restore, build, then relaunch the briefs with "continue from these files".
   The stationarity prover reported a compiling Markov-property draft; a new external may be needed (see brief).
-Then: recurrence (Lemma 2.16) + P13 hitting lemma, Prop 1.5 anchor after packet approval, close M6.
+Then: recurrence (Lemma 2.16) + P13 hitting lemma, prove sle_duality (driver part: Internal/Driver time reversal + mul_I;
+hull part: Internal/Loewner/Duality.lean), graph amendments for R27, close M6.
 M5 complete — 2026-10-30: EXTERNAL state live; external boundary frozen (R23, R25). Open author item P13 (Girsanov, critical case) (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
 M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative to loewnerMap_conformal). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 8
+DRAFT_ANCHORS: 9
+  ComplexSLE/Frozen/Proposition_1_5.lean       ComplexSLE.sle_duality  (R28)
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
   ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
@@ -46,7 +48,7 @@ PROVED: 14   PROVED_REL: 3
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 66 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 67 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review

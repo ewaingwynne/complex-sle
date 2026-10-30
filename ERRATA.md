@@ -57,6 +57,11 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   `koebe_quarter`, `koebe_distortion`, `ito_formula`, `levy_characterization`, `dambis_dubins_schwarz`,
   `timeChange_isContLocalMartingale` (σ 0 = 0), `girsanov_law_equiv` (bounded h), `hormander_oneDim`. Kolmogorov 0-1 is
   Mathlib-supplied (no file). This completes the graph's external boundary.
+- R27 (2026-10-30, M6 packet) P13 fix approved: the Girsanov step in Prop 3.2(b) and Thm 1.10(a) is replaced by the hitting
+  lemma ("Proposed fix for P13" below); Λ' is a single point and `girsanov_law_equiv` is no longer consumed.
+- R28 (2026-10-30, M6 packet) Prop 1.5 frozen as the pathwise coupling `sle_duality` (hypotheses a, b ≥ 0, c² ≤ ab, t > 0;
+  driver Ũ(s) = i(U((t−s)⁺) − U t) + i(U(max s t) − U t), the opposite sign to the paper's (2.4) driver, needed pathwise).
+- AUTO-1 and T12 confirmed by the author (M6 packet).
 - R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
   transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet
@@ -189,7 +194,7 @@ modeled as SOURCE_GAP steps:
 - The product-space extension for the random point 𝐳 (Props 3.1/3.2 over arbitrary Ω).
 - The new external `ext:kolmogorov-zero-one`.
 
-**P13 (fix proposed, pending author; found in M5). Girsanov steps in Prop 3.2(b) and Thm 1.10(a).** `paper.tex:L1799-1802` and the reuse
+**P13 (resolved by R27; found in M5). Girsanov steps in Prop 3.2(b) and Thm 1.10(a).** `paper.tex:L1799-1802` and the reuse
 in the proof of Thm 1.10(a). The paper infers P(τ < ∞) > 0 "from the SDE and Girsanov's theorem". The drift ratio
 h = µ/√(2D) is bounded only when c² < ab, so in the critical case c² = ab Girsanov does not apply as used; and even
 for c² < ab the argument that the driftless diffusion hits the target set with positive probability is not given.
@@ -197,7 +202,7 @@ Both are SOURCE_GAP steps in the graph (step:prop-ii-b-hit-lambda-prime, step:di
 `girsanov_law_equiv` covers only bounded h. **Needed from the author:** an argument for the critical case (e.g. a
 localisation or a direct comparison), or a ruling on how to treat it.
 
-**Proposed fix for P13 (no Girsanov; pending in review/approvals/M6.md).** Reviewed by p13-reviewer/sonnet:
+**Fix for P13, approved as R27 (no Girsanov).** Reviewed by p13-reviewer/sonnet:
 HOLDS_WITH_CAVEATS, with every caveat folded in below. Replace the Girsanov step by a hitting lemma for θ̂.
 - *Lemma (hitting levels).* Let a, b > 0, c² ≤ ab and c ≥ 0. For c < 0 apply the symmetry θ ↦ −θ, c ↦ −c, under
   which µ_c(−u) = −µ_{−c}(u). Then θ̂ started at any y hits every level θ* < y with positive probability. If c² < ab
