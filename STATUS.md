@@ -1,6 +1,6 @@
 # Status ledger
 
-M2 roots frozen — 2026-10-30.
+M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
 DRAFT_ANCHORS: 14
@@ -28,7 +28,15 @@ PROVED: 0   PROVED_REL: 0
 
 Manifest: 31 anchors. Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
-Next (M3): source dependency graph (build-proof-dependency-graph), slices A–D.
+Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
+62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review
+(slice reviewers A–D, global-reviewer, and global-verifier as GLOBAL_REVIEWER). The full gate passes:
+`proof_depgraph.py --require-reviewed --require-complete-coverage --require-initial-lean-status
+--require-all-reachable --check`.
+Author items open: P10 (Lemma 4.1 U±, which blocks the Thm 1.10 roots), P11 (T8), P12 (T9), and the
+modeling questions in ERRATA.md.
+
+Next (M4): Lean proofs of the Tier-D frontier (deterministic Loewner core, stationary density).
 Deferred anchors: g_t / f_t / R_t (after `loewner_wellDefined` is proved), Prop 1.5,
 right-hull and f_t parts of (2.1)–(2.4) and Lemma 2.4, the concatenation property, Lemma 2.5,
 Lemma 4.3, and the externals E1–E13 (M5).

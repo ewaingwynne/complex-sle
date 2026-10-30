@@ -22,13 +22,13 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L547-L547 | uniqueness identifies the time-reversed flow
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L569-L569 | left hull of the original chain
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L569-L569 | right hull of the dual chain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical (2.4). The source gives no proof ("easily consequences of Definition 1.1; see [Lu, Section 2]", L547). Do not fill. Consumed only through step:right-hull-connected; Prop 1.5 (the other consumer) is excluded.
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Canonical (2.4). The source gives no proof ("easily consequences of Definition 1.1; see [Lu, Section 2]", L547). Do not fill. Consumed only through step:right-hull-connected; Prop 1.5 (the other consumer) is excluded.
 
 NODE: step:reflect-map-identity
 KIND: step
@@ -51,9 +51,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | the conjugated / negated trajectory solves the ODE for the conjugated / negated driver
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | T_z is preserved
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | uniqueness identifies the transformed trajectory with the chain of the transformed driver
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -68,7 +68,7 @@ CONTRACT_ID: paper.step:wlog-c-nonneg-arg
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: a, b > 0; c in [-sqrt(ab), 0); p admissible for (a,b,c); zz on the unit circle independent of U with angle density p 1_[0,2pi]
 SOURCE_QUANTIFIERS: forall a,b,c; p
-SOURCE_CONCLUSION: the conclusion of lem-recurrence for (a,b,c,p) follows from that for (a,b,-c, p~) with p~(u) = p(-u): conjugating U gives an SLE_{Sigma~} driver, Sigma~ = [[a,-c],[-c,b]], conj(zz) has angle density p~, theta^ becomes -theta^ and e^{2i theta^} becomes its conjugate, and recurrence at w (resp. e^{2ix}) is equivalent to recurrence at conj(w)
+SOURCE_CONCLUSION: the conclusion of lem-recurrence for (a,b,c,p) follows from that for (a,b,-c, p~) with p~(u) = p(-u): conjugating U gives an SLE_{Sigma~} driver, Sigma~ = [[a,-c],[-c,b]], conj(zz) has angle density p~, theta^ becomes -theta^ and e^{2i theta^} becomes its conjugate, so recurrence at w for (a,b,-c,p~) is equivalent to recurrence at conj(w) for (a,b,c,p); in the critical case c = -sqrt(ab) the recurrent point obtained this way is conj(e^{2ix}) = e^{-2ix} (the zero of D(u) = (sqrt a sin u + sqrt b cos u)^2/2), not the printed e^{2ix} with tan x = sqrt(b/a)
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -83,13 +83,13 @@ EDGE: step:reflect-map-identity | source/arxiv-2203.07313v4/complex-sle-final.te
 EDGE: step:p-wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | p~(u) = p(-u) is admissible for (a,b,-c)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | the continuous lift of the conjugated process is the negated lift
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | sigma-time is unchanged by conjugation (∣f_s∣ is unchanged)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: the source writes only 'Assume without loss of generality that c >= 0' for a statement about the argument process. Distinct from step:wlog-c-nonneg (hull level, used at L323/L1951) and from step:p-wlog-c-nonneg (admissibility of p~ only).
+NOTE: SOURCE_GAP: the source writes only 'Assume without loss of generality that c >= 0' for a statement about the argument process. SOURCE_GAP (sign): the printed second bullet of Lemma 2.16 (point e^{2ix}, tan x = sqrt(b/a)) is proved by the written argument only for c = +sqrt(ab); for c = -sqrt(ab) the reduction yields the point e^{-2ix}; recurrence at e^{2ix} for c = -sqrt(ab) is not supplied (it would need irreducibility of the diffusion, which is unstated). Consumers (lem-stationary-sde applications) need only some deterministic point, so e^{-2ix} suffices. Distinct from step:wlog-c-nonneg (hull level, used at L323/L1951) and from step:p-wlog-c-nonneg (admissibility of p~ only).
 
 NODE: step:section3-product-extension
 KIND: step
@@ -111,9 +111,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#sec-phases@L1255-L1255 | the lifted process is again a planar BM with covariance Sigma
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#sec-phases@L1255-L1255 | p is a density on [0,2pi], so P (x) p du is a probability measure
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -127,25 +127,25 @@ KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L554:reflect-map-identity@L553-L558
 DISPOSITION: NODE step:reflect-map-identity
 REASON: map-level form of the reflection property (2.2), used at L984 and L1165 but stated in the source for hulls only; SOURCE_GAP
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 
 ITEM: inv:L1165:wlog-arg
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1165:wlog-arg@L1165-L1165
 DISPOSITION: NODE step:wlog-c-nonneg-arg
 REASON: 'Assume without loss of generality that c >= 0' in the proof of Lemma 2.16, a reduction for the argument process under conjugation (not the hull-level reduction of L323)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 
 ITEM: inv:L1255:product-extension
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1255:product-extension@L1255-L1255
 DISPOSITION: NODE step:section3-product-extension
 REASON: 'independent from the driving Brownian motion' (also L939): carrier change from the given probability space to the product with the circle, not stated in the source; SOURCE_GAP
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 

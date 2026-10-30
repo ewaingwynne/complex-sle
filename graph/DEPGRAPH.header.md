@@ -9,8 +9,8 @@ EXTERNAL_POLICY: cited literature results and named standard theorems explicitly
 FROZEN_ANCHORS: defn-loewner.solution, defn-loewner.absorbing-time, defn-hulls.left, def-disconnect, eqn-cov-matrix, defn-sle.gaussian-law, defn-sle, defn-phases.thin, defn-phases.swallowing, defn-phases.hitting, defn-phases.dense, eqn-nu-D.mu, eqn-nu-D.nu, eqn-nu-D.D, lem-stationary.admissible, item-I, item-II, defn-loewner.well-defined, lem-p.exists, nonsource.exists-sle-driver, thm-phases, thm-phases.c-zero, thm-disconnects.a, thm-disconnects.b, prop-i.a, prop-i.b, prop-ii.a, prop-ii.b, lem-connected.left, eqn-scale.left, eqn-reflect.left
 FROZEN_MANIFEST: frozen-anchor-manifest.json | sha256:2828acc43590018a4ecb51212013762c7de09abea5cb78e81aea33e0e52ef3ed
 WRITER: orchestrator/opus-5.5/session-a85056b9
-GLOBAL_REVIEWER: -
-GLOBAL_REVIEW_REF: -
+GLOBAL_REVIEWER: global-verifier/sonnet
+GLOBAL_REVIEW_REF: graph/reviews/global-verify.review.md (final verification; first global review graph/reviews/global.review.md)
 
 The dependency direction is `NODE -> prerequisite`. `DEPS` is conjunctive. `ROUTES` lists
 alternative `KIND: route` nodes; one route is sufficient. Lean fields are initialized planning

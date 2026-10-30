@@ -9,8 +9,8 @@ EXTERNAL_POLICY: cited literature results and named standard theorems explicitly
 FROZEN_ANCHORS: defn-loewner.solution, defn-loewner.absorbing-time, defn-hulls.left, def-disconnect, eqn-cov-matrix, defn-sle.gaussian-law, defn-sle, defn-phases.thin, defn-phases.swallowing, defn-phases.hitting, defn-phases.dense, eqn-nu-D.mu, eqn-nu-D.nu, eqn-nu-D.D, lem-stationary.admissible, item-I, item-II, defn-loewner.well-defined, lem-p.exists, nonsource.exists-sle-driver, thm-phases, thm-phases.c-zero, thm-disconnects.a, thm-disconnects.b, prop-i.a, prop-i.b, prop-ii.a, prop-ii.b, lem-connected.left, eqn-scale.left, eqn-reflect.left
 FROZEN_MANIFEST: frozen-anchor-manifest.json | sha256:2828acc43590018a4ecb51212013762c7de09abea5cb78e81aea33e0e52ef3ed
 WRITER: orchestrator/opus-5.5/session-a85056b9
-GLOBAL_REVIEWER: -
-GLOBAL_REVIEW_REF: -
+GLOBAL_REVIEWER: global-verifier/sonnet
+GLOBAL_REVIEW_REF: graph/reviews/global-verify.review.md (final verification; first global review graph/reviews/global.review.md)
 
 The dependency direction is `NODE -> prerequisite`. `DEPS` is conjunctive. `ROUTES` lists
 alternative `KIND: route` nodes; one route is sufficient. Lean fields are initialized planning
@@ -36,9 +36,9 @@ FROZEN_ABI_SHA256: bbe2299b871e2374841a91b93b4f6762ad46fdaed6a82c43893c005089db4
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -63,9 +63,9 @@ DEPS: defn-loewner.solution
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | T_z is defined as the maximal time of existence of a solution of the initial value problem
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -90,9 +90,9 @@ DEPS: defn-loewner.absorbing-time
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L272 | L_t is defined as {z : T_z <= t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -118,9 +118,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L275 | f_t is a map on the complement of L_t whose range complement is R_t
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-hulls@L272-L272 | f_t = g_t - U_t is a well-defined map only via existence and uniqueness of the Loewner IVP; R_t is the complement of its range
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -144,9 +144,9 @@ FROZEN_ABI_SHA256: 396f675756de6faa68b7c805e29e8d726cae4320d590f5a714e96ee80ee54
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -170,9 +170,9 @@ FROZEN_ABI_SHA256: 9c7db20131aa7365837343dbfe0137f267d6d9583f10c6217364b322317c9
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -196,9 +196,9 @@ FROZEN_ABI_SHA256: 35770535322d991e762fad0a8fe630fa74e550a8a476439b08129e00de75c
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -224,9 +224,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-cov-matrix | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sle@L304-L307 | the covariance of the driver is Sigma
 EDGE: defn-sle.gaussian-law | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sle@L307-L307 | increments of U have Gaussian law with covariance (t-s)Sigma
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -252,9 +252,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L410-L410 | the phase is a property of an SLE_Sigma driven chain (all probability spaces / drivers)
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L412-L412 | the condition is stated in terms of the left hulls L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -281,9 +281,9 @@ ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L410-L410 | the phase is a property of an SLE_Sigma driven chain (all probability spaces / drivers)
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L413-L413 | the condition is stated in terms of the left hulls L_t
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L413-L413 | the condition uses T_z (finite and the time union)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -310,9 +310,9 @@ ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L410-L410 | the phase is a property of an SLE_Sigma driven chain (all probability spaces / drivers)
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L414-L414 | the condition is stated in terms of the left hulls L_t
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L414-L414 | the condition uses T_z (finite and the time union)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -338,9 +338,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L410-L410 | the phase is a property of an SLE_Sigma driven chain (all probability spaces / drivers)
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-phases@L415-L415 | the condition is stated in terms of the left hulls L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -364,9 +364,9 @@ FROZEN_ABI_SHA256: cd3369a3cc72d9850889657ec3f058716a2c7cbc084efbddfcc84738b7842
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -390,9 +390,9 @@ FROZEN_ABI_SHA256: f9ff6a5f33ed2c7350371531fdb5f1700586fdc010eb37a4a4c11857b1ce2
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -416,9 +416,9 @@ FROZEN_ABI_SHA256: ae71cf207fc738d3a8f3b0629a9e5bc1c4b8e6c767665016cbbb6630db368
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -443,9 +443,9 @@ DEPS: eqn-nu-D.nu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#item-I@L440-L440 | the integrand is nu(u)p(u)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -470,9 +470,9 @@ DEPS: eqn-nu-D.nu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#item-II@L441-L441 | the integrand contains nu(u)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -498,9 +498,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:picard-lindelof | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | "as in the case of a real driving function": right side is continuous in t and locally Lipschitz in g where g != U_t
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L256-L256 | the ODE is (1.1)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -527,9 +527,9 @@ ROUTE_FOR: -
 EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | solutions on shorter intervals are the pieces to be patched
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | T_z is the supremum of existence times; the supremum must be attained as an open interval
 EDGE: step:loewner-global-uniqueness | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | uniqueness on overlaps lets the pieces patch into one solution on [0,T_z)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -558,9 +558,9 @@ EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.
 EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | local existence
 EDGE: step:loewner-glue-maximal | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | existence on all of [0,T_z)
 EDGE: step:loewner-global-uniqueness | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | any two solutions on a common interval agree
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -585,9 +585,9 @@ DEPS: defn-hulls.left
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#hulls-monotone@L272-L272 | "By definition": L_t = {T_z <= t} is increasing in t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -615,9 +615,9 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#gt-confo
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#gt-conformal@L286-L286 | range of g_t is the complement of R_t + U_t
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#gt-conformal@L286-L286 | g_t is the time-t flow map defined by the well-defined IVP
 EDGE: ext:lawler-4.5 | source/arxiv-2203.07313v4/complex-sle-final.tex#gt-conformal@L286-L286 | "exactly the same arguments as ... [Lawler, Theorem 4.5]"
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -645,13 +645,13 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L547-L547 | hulls are sublevel sets of T_z
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L547-L547 | statement is about L_t
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L547-L547 | uniqueness of the ODE solution identifies the transformed solution with the chain of the transformed driver
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Root (left-hull part of (2.1), R16). Source proof: "easily consequences of Definition 1.1; see [Lu, Section 2]" (no proof in source). Typo T7: U : [0,infinity) -> R at L545 should be -> C.
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Root (left-hull part of (2.1), R16). Source proof: "easily consequences of Definition 1.1; see [Lu, Section 2]" (no proof in source). Typo T7: U : [0,infinity) -> R at L545 should be -> C.
 
 NODE: eqn-scale
 KIND: display
@@ -675,13 +675,13 @@ EDGE: eqn-scale.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L552-L552 | right-hull identity
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L547-L547 | f_t identity by uniqueness of solutions
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-scale@L547-L547 | the ODE is rescaled
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical full (2.1). Proof not in source (cited to Lu Sect. 2).
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Canonical full (2.1). Proof not in source (cited to Lu Sect. 2).
 
 NODE: eqn-reflect.left
 KIND: theorem
@@ -705,13 +705,13 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | hulls are sublevel sets of T_z
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | statement is about L_t
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | uniqueness of the ODE solution identifies the transformed solution with the chain of the transformed driver
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Root (left-hull part of (2.2), R16). Proof not in source (cited to Lu Sect. 2).
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Root (left-hull part of (2.2), R16). Proof not in source (cited to Lu Sect. 2).
 
 NODE: eqn-reflect
 KIND: display
@@ -734,13 +734,13 @@ ROUTE_FOR: -
 EDGE: eqn-reflect.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L556-L556 | left-hull statement is a conjunct
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L558-L558 | "The same is true with right hulls"
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | uniqueness of ODE solutions
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical full (2.2). Proof not in source.
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Canonical full (2.2). Proof not in source.
 
 NODE: eqn-conc
 KIND: display
@@ -765,13 +765,13 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-conc@L562-L562 | hull identities
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-conc@L564-L564 | hull identities
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-conc@L562-L562 | L_t subset L_{s+t} is used in the union decomposition
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical (2.3). Proof not in source (cited to Lu Sect. 2). Used by Lemma 2.8 and slices C, D. The source writes f_{t,s+t} with a time-shifted chain, defined in the item itself (no separate node). TYPO CANDIDATE T8 (author ruling needed): the third formula of (2.3), f_t(L_{s+t}\L_t) = L_{t,s+t}, contradicts the second formula, L_{s+t} = L_t cup f_t^{-1}(L_{t,s+t}\R_t), because f_t(C\L_t) = C\R_t omits 0 in R_t cap L_{t,s+t}; read as f_t(L_{s+t}\L_t) = L_{t,s+t}\R_t. Consumers that use the third formula (step:future-point-outside-hulls, step:log-finite-exit-times, step:converse-event-converges) must be read with this correction.
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Canonical (2.3). Proof not in source (cited to Lu Sect. 2). Used by Lemma 2.8 and slices C, D. The source writes f_{t,s+t} with a time-shifted chain, defined in the item itself (no separate node). TYPO CANDIDATE T8 (author ruling needed): the third formula of (2.3), f_t(L_{s+t}\L_t) = L_{t,s+t}, contradicts the second formula, L_{s+t} = L_t cup f_t^{-1}(L_{t,s+t}\R_t), because f_t(C\L_t) = C\R_t omits 0 in R_t cap L_{t,s+t}; read as f_t(L_{s+t}\L_t) = L_{t,s+t}\R_t. Consumers that use the third formula (step:future-point-outside-hulls, step:log-finite-exit-times, step:converse-event-converges) must be read with this correction.
 
 NODE: step:driver-representation
 KIND: step
@@ -792,9 +792,9 @@ DEPS: defn-sle
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sle@L307-L307 | from increments N(0,(t-s)Sigma) one reads off the marginals and the cross-covariance of the coordinates
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -822,9 +822,9 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L315-L315 | U is the SLE_Sigma driving BM
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L317-L317 | U written as sqrt(a) B + i sqrt(b) B~
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-def-ft@L315-L315 | f_t(z) exists for t < T_z only through the well-defined chain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -851,9 +851,9 @@ ROUTE_FOR: -
 EDGE: eqn-reflect.left | source/arxiv-2203.07313v4/complex-sle-final.tex#wlog-c-nonneg@L323-L323 | conjugating the driver conjugates the left hulls (reflection property)
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#wlog-c-nonneg@L323-L323 | conjugate of an SLE_{Sigma} driver is an SLE_{Sigma with -c} driver
 EDGE: eqn-cov-matrix | source/arxiv-2203.07313v4/complex-sle-final.tex#wlog-c-nonneg@L323-L323 | covariance matrix with c replaced by -c
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -877,9 +877,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -906,9 +906,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L641-L641 | "immediate consequence of Definition 1.1": the rotated map solves the forward ODE for iU
 EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L637-L637 | reverse ODE (2.6) is the hypothesis
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-mult-by-i@L641-L641 | a solution of the ODE for iU is identified with the Loewner chain of iU by uniqueness
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -937,9 +937,9 @@ EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L626-L626 | right hulls are subsets of the real axis
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | complex chain coincides with chordal chain on H by uniqueness
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L626-L626 | the left hulls of the complex chain are claimed to be L_t cup L_t*
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -966,9 +966,9 @@ ROUTE_FOR: -
 EDGE: lem-mult-by-i | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | "second assertion follows from ... Lemma 2.3"
 EDGE: step:forward-real-driver | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | combined with the first assertion
 EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L628-L628 | the reverse chordal chain whose Schwarz extension feeds Lemma 2.3
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -995,9 +995,9 @@ ROUTE_FOR: -
 EDGE: defn-chordal-loewner | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L624-L628 | forward/reverse chordal chains are in the hypotheses
 EDGE: step:forward-real-driver | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | proof of (a)
 EDGE: step:reverse-via-mult-by-i | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-forward-reverse-ext@L648-L648 | proof of (b)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1024,9 +1024,9 @@ ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | U_0 in L_t means T_{U_0} <= t
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | T_{U_0} = 0 (no solution of positive duration starts at U_0)
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | a solution must satisfy g_s != U_s, impossible at s = 0 when g_0 = U_0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1047,18 +1047,19 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left, step:hull-closed
+DEPS: defn-hulls.left, step:hull-closed, step:hulls-compact
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | L_t is the complement of the domain of f_t
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | the planar reduction "it is enough to show" uses that L_t is closed
-TOPOLOGY_STATUS: PROPOSED
+EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | the reduction "it is enough to show that the region bounded by every such loop misses L_t" separates a hypothetical splitting L_t = A u B (A containing U_0) by a loop in the complement, which needs L_t compact (a closed unbounded set such as a point plus a distant line satisfies the loop criterion yet is disconnected)
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Planar topology reduction asserted without proof ("it is enough to show"). Note: the source says loop that "does not surround the origin"; uncertain whether this should read the starting point U_0 (T5-adjacent).
+NOTE: SOURCE_GAP: planar topology reduction asserted without proof ("it is enough to show"); it silently uses that L_t is bounded/compact (step:hulls-compact) as well as closed. The source says loops that do not surround "the origin"; after the centering f_0(z) = z - U_0 the relevant point is U_0 (uncertain; T5-adjacent), which equals 0 only when U_0 = 0.
 
 NODE: step:connected-homotopy
 KIND: step
@@ -1081,9 +1082,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_s(w) is defined for w not in L_t, s <= t
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | w not in L_t means T_w > t, so f_s(w) != 0 for s <= t
 EDGE: step:flow-continuity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | "The function (r,s) -> f_s(L(r)) is continuous"
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1109,9 +1110,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:connected-homotopy | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | homotopy of f_t o mcl L to mcl L in C\{0}
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_t is conformal (injective, holomorphic) on C\L_t so the winding number around its zero set transfers
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1140,9 +1141,9 @@ EDGE: claim:hull-nonempty | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-
 EDGE: step:connected-loop-criterion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | "enough to show" reduction
 EDGE: step:connected-homotopy | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | homotopy argument
 EDGE: step:connected-region-misses-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | conclusion of the argument
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1169,9 +1170,9 @@ ROUTE_FOR: -
 EDGE: ext:picard-lindelof | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L674-L674 | "standard existence results for solutions to ODEs": maximal solution exists until the liminf of ∣g-U∣ vanishes
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L674-L674 | T_z is the maximal existence time
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L674-L674 | solution on [0,T_z)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1197,9 +1198,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L680-L687 | integral form of the ODE gives (2.7) ∣f_{t2}-f_{t1}∣ <= int 2/∣f∣ ds + ∣U_{t1}-U_{t2}∣
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L680-L680 | f_t(z) defined on [0,T_z)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1224,9 +1225,9 @@ DEPS: step:endpt-upcrossing-bound
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:endpt-upcrossing-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L689-L690 | the lower bound eps on upcrossing durations plus disjointness of intervals
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1252,9 +1253,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L668-L668 | T_z is the absorbing time
 EDGE: step:endpt-upcrossing-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L690 | liminf = 0 plus finitely many upcrossings of every [alpha,beta] gives the limit
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1279,9 +1280,9 @@ DEPS: defn-sle
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-scaling@L779-L779 | "Brownian scaling": continuity, independent increments and Gaussian increments are preserved
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1308,9 +1309,9 @@ ROUTE_FOR: -
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-scaling@L779-L779 | "scaling property (2.1)" identifies the rescaled chain as the chain driven by r^{-1}U(r^2 .)
 EDGE: step:bm-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-scaling@L779-L779 | "Brownian scaling" gives the law of the rescaled driver
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-scaling@L775-L775 | SLE_Sigma chain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1336,9 +1337,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-markov@L788-L788 | "immediate from the strong Markov property of Brownian motion"
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-markov@L783-L783 | driver is a planar BM with covariance Sigma
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1365,9 +1366,9 @@ ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-markov@L783-L783 | f_{T,s+T} is the Loewner chain of the shifted driver U(.+T)-U(T) defined in (2.3)
 EDGE: step:markov-driver | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-markov@L788-L788 | independence and law of the shifted driver
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-markov@L783-L783 | SLE_Sigma chain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1393,9 +1394,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sle@L307-L307 | the statement asserts existence of an object satisfying the driver definition
 EDGE: ext:bm-existence | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sle@L307-L307 | existence of planar BM with covariance Sigma
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1427,9 +1428,9 @@ EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L440-L
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L441-L441 | sign condition on (II)
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L428-L432 | p is a non-negative periodic solution of (1.11) with regularity (admissibility)
 EDGE: thm-phases#assembly-sign-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1932 | "Combine Propositions 3.1 and 3.2": the four sign cases are assembled from Props 3.1/3.2 (merge adjudication, see slice C NOTE)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1457,9 +1458,9 @@ EDGE: defn-phases.thin | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-pha
 EDGE: defn-phases.swallowing | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L450-L450 | swallowing conclusion
 EDGE: defn-phases.hitting | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L450-L450 | hitting conclusion
 EDGE: thm-phases#assembly-c-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1932 | "Combine ... with Lemmas 3.11 and 3.12": the c = 0 description is the union of Lemmas 3.11 and 3.12
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1473,7 +1474,7 @@ PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2
 CONTRACT_ID: paper.thm1_10.a
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: a, b > 0 (the source a,b != 0 with PSD; R5 audit); c in [-sqrt(ab), sqrt(ab)]
-SOURCE_QUANTIFIERS: z in C\{0} (R4); a.s.
+SOURCE_QUANTIFIERS: a, b, c; probability space (Omega,P) and SLE_Sigma driver U (R6, R9); z in C\{0} (R4); a.s.
 SOURCE_CONCLUSION: exists t > 0 with z not in L_t and L_t disconnects z from infinity
 CONSTANT_SCOPE: none
 FROZEN_FILE: ComplexSLE/Frozen/Theorem_1_10_A.lean
@@ -1487,9 +1488,9 @@ EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disco
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L504-L504 | driver is an SLE_Sigma BM
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L504-L504 | statement is about left hulls L_t
 EDGE: thm-disconnects#proof-a | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2199-L2225 | proof assembly of assertion (a) in Section 4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1503,7 +1504,7 @@ PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2
 CONTRACT_ID: paper.thm1_10.b
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: a, b > 0 and c in [-sqrt(ab), sqrt(ab)]
-SOURCE_QUANTIFIERS: a.s.; for all t > 0
+SOURCE_QUANTIFIERS: a, b, c; probability space (Omega,P) and SLE_Sigma driver U (R6, R9); a.s.; for all t > 0 (P7)
 SOURCE_CONCLUSION: the set of points disconnected from infinity by L_t has nonempty interior
 CONSTANT_SCOPE: none
 FROZEN_FILE: ComplexSLE/Frozen/Theorem_1_10_B.lean
@@ -1517,9 +1518,9 @@ EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disco
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L504-L504 | driver is an SLE_Sigma BM
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L504-L504 | statement is about left hulls L_t
 EDGE: thm-disconnects#proof-b | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2199-L2225 | proof assembly of assertion (b) in Section 4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1543,9 +1544,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1569,9 +1570,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1595,9 +1596,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1621,9 +1622,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-A/sonnet
-REVIEWER: -
+REVIEWER: reviewer-A/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1649,9 +1650,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:loewner-local-solution | source/arxiv-2203.07313v4/complex-sle-final.tex#absorbing-time@L268-L268 | local uniqueness is propagated along the interval
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-loewner@L256-L256 | the solutions are solutions of (1.1)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: reviewer-A/sonnet
-REVIEWER: -
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1677,9 +1678,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | f_s(w) is defined for s < T_w; continuous dependence on w is a further property of the ODE flow
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | the domain {T_w > t} of f_t is the complement of L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: reviewer-A/sonnet
-REVIEWER: -
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1705,9 +1706,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:flow-continuity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | {w : T_w > t} is open
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L662 | L_t = {T_w <= t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: reviewer-A/sonnet
-REVIEWER: -
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1733,9 +1734,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:endpt-liminf | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L675-L675 | "We need to replace the liminf by a limit"
 EDGE: step:endpt-finite-upcrossings | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-endpt-cont@L677-L677 | "It suffices to show that there are at most finitely many upcrossings"
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: reviewer-A/sonnet
-REVIEWER: -
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1759,9 +1760,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1785,9 +1786,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1811,9 +1812,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1837,9 +1838,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1863,9 +1864,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1889,9 +1890,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1918,9 +1919,9 @@ ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L838-L838 | centered SLE_Sigma maps f_t supply f_s(z)
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L839-L839 | domain (0,T_z) of the time change uses the absorbing time
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#defn-sigma@L842-L842 | the integrand ∣f_s(z)∣^-2 uses the centered chain f_s(z) = g_s(z) - U_s, whose existence and uniqueness up to T_z is that theorem
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1947,9 +1948,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) nonvanishing and continuous for t<T_z
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) is a continuous process built from the driver
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | f_t(z) is the (unique) solution, continuous in t and nonzero for t<T_z, so the lift to the covering R -> S^1 exists
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1974,9 +1975,9 @@ DEPS: step:arg-lift
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:arg-lift | source/arxiv-2203.07313v4/complex-sle-final.tex#def-arg@L852-L852 | existence/uniqueness of the continuous lift is what makes the definition meaningful
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2009,9 +2010,9 @@ EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#l
 EDGE: step:polar-W-law | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | (W,W~) =_d (B,B~)
 EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | (2.27)
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L865-L868 | the statement fixes sigma = sigma_z and evaluates for all t~ >= 0: sigma_z is defined on (0,infinity) by Remark 2.12
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2039,9 +2040,9 @@ EDGE: eqn-def-ft | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L90
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L908-L908 | U = sqrt a B + i sqrt b B~ gives the stated martingale term
 EDGE: ext:ito-complex | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L904-L904 | Ito's lemma for complex semimartingales applied to log
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L909-L909 | polar form uses f_t = ∣f_t∣ e^{i theta_t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2069,9 +2070,9 @@ EDGE: step:polar-ito-log | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L918-L918 | identification of imaginary drift with mu
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L913-L913 | identification of real drift with nu
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L917-L917 | imaginary part of the continuous log is theta_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2097,9 +2098,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:polar-real-imag | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L922-L922 | SDEs in capacity time being time-changed
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L924-L924 | sigma and its inverse relation t~ = int ∣f∣^-2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2127,9 +2128,9 @@ EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.te
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | <W>_t~ = int_0^sigma(t~) ∣f∣^-2 ds = t~ by the definition of sigma
 EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L924-L927 | W and W~ are the stochastic integrals defined there
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L927-L927 | (B,B~) are standard BMs with cross-variation c t/sqrt(ab)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2156,9 +2157,9 @@ ROUTE_FOR: -
 EDGE: eqn-def-ft | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | differentiate the SDE for f_t(z) in z
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | time change
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-polar@L928-L928 | f_t^-2 = ∣f_t∣^-2 e^{-2i theta_t}, real part -2cos(2 theta)/∣f∣^2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2187,9 +2188,9 @@ EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-si
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L895 | the claim concerns the domain of sigma_z defined by t~ = int_0^sigma ∣f_s∣^-2 ds
 EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | SDE (2.26) for log∣hat f∣ on the domain of sigma, with bounded coefficients
 EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | SDE (2.27) for log∣hat f-prime∣ on the domain of sigma, with bounded coefficients
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2215,9 +2216,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:polar-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | (2.26) on the domain of sigma gives the semimartingale decomposition of log∣hat f∣ with bounded coefficients
 EDGE: step:polar-derivative-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-sigma@L894-L894 | (2.27) gives the semimartingale decomposition of log∣hat f-prime∣ with bounded coefficients
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2243,9 +2244,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L965-L965 | the ODE (2.13) uses mu
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L965-L965 | the ODE (2.13) and the C^1 condition use D
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2276,9 +2277,9 @@ EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#l
 EDGE: step:stat-apply-kolmogorov-noncritical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | case ∣c∣ != sqrt(ab)
 EDGE: step:stat-apply-kolmogorov-critical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L993 | case c = +-sqrt(ab)
 EDGE: step:stat-pi-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | from stationarity of e^{2i theta} to e^{i theta}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2305,9 +2306,9 @@ ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L973-L977 | SDE (2.25)
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L978-L978 | 2D = a sin^2 + b cos^2 - 2c sin cos is the quadratic variation density
 EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L979-L979 | representation dM = sqrt(h) dW' of a martingale with absolutely continuous bracket (possibly on an enlarged space when h vanishes)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2333,9 +2334,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:stat-martingale-qv | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L980-L980 | substitute dM into (2.25)
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L980-L980 | SDE (2.25)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2360,9 +2361,9 @@ DEPS: defn-sle
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | Gaussian independent-increment definition is symmetric under negation
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2392,9 +2393,9 @@ EDGE: step:stat-apply-kolmogorov-noncritical | source/arxiv-2203.07313v4/complex
 EDGE: step:stat-apply-kolmogorov-critical | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | stationarity of e^{2i theta} (case c = +-sqrt(ab)) is the premise being upgraded
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | p is pi-periodic, so -zz =_d zz
 EDGE: step:reflect-map-identity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L984-L984 | f_t^{-U}(-z) = -f_t^U(z); with -U =_d U and -zz =_d zz this gives (f_t(zz)) =_d (-f_t(zz))
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2422,9 +2423,9 @@ EDGE: lem-kolmogorov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stati
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L987-L987 | hypotheses on p to be matched
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | alpha = mu
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | beta^2 = 2D
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2449,9 +2450,9 @@ DEPS: eqn-nu-D.D
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | explicit quadratic form D(u)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2479,9 +2480,9 @@ EDGE: lem-kolmogorov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stati
 EDGE: step:stat-kolmogorov-normalization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | 2p, alpha, beta matching
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | D>0 so beta=sqrt(2D) is smooth, nonvanishing
 EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L988 | the SDE (2.30)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2510,9 +2511,9 @@ EDGE: step:stat-kolmogorov-normalization | source/arxiv-2203.07313v4/complex-sle
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L988-L992 | 2D = beta^2 and zero set of beta
 EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L989-L992 | rewrite with W'' and beta
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary@L993-L993 | value of mu(u) beta'(u) at the zeros of beta
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2540,9 +2541,9 @@ EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.te
 EDGE: step:p-wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | reduction to c>=0
 EDGE: step:p-case1 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1029-L1088 | case c<sqrt(ab)
 EDGE: step:p-case2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1091-L1110 | case c=sqrt(ab)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2569,9 +2570,9 @@ ROUTE_FOR: -
 EDGE: lem-p.exists | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L948-L950 | existence of the admissible solution
 EDGE: step:p-positive-off-discrete | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L953-L953 | strict positivity off a discrete set
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L954-L954 | Lemma 2.14 yields the stationary property of the constructed admissible p
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2598,9 +2599,9 @@ ROUTE_FOR: -
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | symmetry mu(c)(u) = -mu(-c)(-u)
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | symmetry D(c)(u) = D(-c)(-u)
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | "if p satisfies the hypotheses of Lemma 2.14 then p~ does"
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2627,9 +2628,9 @@ ROUTE_FOR: -
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1030-L1030 | D>0 on R
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1032-L1032 | integrand mu/D
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1032-L1032 | integrand D'/D, 1/D
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2655,9 +2656,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1048-L1048 | p_0+r p_1 solves (2.13) for every r; first-order ODEs
 EDGE: ext:picard-lindelof | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1063-L1063 | uniqueness gives p(u+pi)=p(u)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2684,9 +2685,9 @@ ROUTE_FOR: -
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1073-L1073 | D>0 so the antiderivative is smooth on [0,pi] (arctan branch)
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1074-L1074 | integrand mu
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1074-L1074 | integrand 1/D
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2713,9 +2714,9 @@ ROUTE_FOR: -
 EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1065-L1065 | p_0, p_1 >= 0 on [0,pi], p_1(pi)>0
 EDGE: step:p-case1-mu-over-D-integral | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1073-L1084 | sign of int mu/D
 EDGE: step:p-case1-periodic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1065-L1070 | nonnegativity extends from [0,pi] to R via pi-periodicity
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2741,9 +2742,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1086-L1086 | p_0>0 and first-order ODE
 EDGE: step:p-case1-periodic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1086-L1086 | ODE for p with constant right side k r_*
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2772,9 +2773,9 @@ EDGE: step:p-case1-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-
 EDGE: step:p-case1-zero-set | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1088-L1088 | int_0^{2pi}(p_0+r_* p_1) > 0 so k exists
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1025-L1025 | admissibility target
 EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1041-L1041 | p_0, p_1 smooth, so p is C^2 on R and D p is C^1 (x-condition vacuous)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2801,9 +2802,9 @@ ROUTE_FOR: -
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1092-L1092 | D vanishes exactly on x+piZ
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1097-L1097 | value of mu at x and x+pi
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1095-L1095 | definition of p via D
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2829,9 +2830,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1102-L1102 | numerator, denominator of (2.32) both tend to 0 at the endpoints
 EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1104-L1104 | D'(x)-mu(x) = -mu(x)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2857,9 +2858,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case2-limits | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | continuity at x+n pi and one-sided limits of [D p]'
 EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | ODE (2.33) i.e. [D p]' = 1 + mu p off the singular points (the source's "By (2.19)" is this same equation, valid in Case 2 only through (2.33))
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2886,9 +2887,9 @@ ROUTE_FOR: -
 EDGE: step:p-case2-regularity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1110-L1110 | continuity, regularity and ODE
 EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1098-L1098 | positivity of p on (x,x+pi)
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1025-L1025 | admissibility target
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2915,9 +2916,9 @@ ROUTE_FOR: -
 EDGE: step:p-case1-zero-set | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1086-L1086 | case 1
 EDGE: step:p-case2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1098-L1098 | case 2: positive on (x,x+pi) and limit (a+b)/(4 sqrt(ab))>0 at the endpoints
 EDGE: step:p-wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-p@L1026-L1026 | transfer to c<0 via p(-u)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2943,9 +2944,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p-case1-first-order-solutions | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-p0@L1137-L1137 | p_0 and its exponent
 EDGE: step:p-case1 | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-p0@L1137-L1137 | p=k(p_0+r_* p_1)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2971,9 +2972,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:p0-c0-r-star-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-p0@L1137-L1137 | oddness gives r_*=0
 EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#remark-p0@L1137-L1137 | refers to the solution p of Lemma 2.13
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3003,13 +3004,13 @@ EDGE: step:rec-renewal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-rec
 EDGE: step:rec-tau-finite | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1185-L1190 | a.s. some eps with all tau_k^eps finite
 EDGE: step:rec-angle-hit-unif | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1167-L1171 | claim (2.45) fed to renewal argument
 EDGE: step:wlog-c-nonneg-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | c>=0 WLOG for the argument process
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: R5. Statement says 'p as in Lemma 2.13': read per R7/R15 as admissible p (the proof only uses stationarity of the law of e^{2i theta}, absolute continuity of its law, and pi-periodic coefficients). In the |c|<sqrt(ab) case the source says 'Let w in bdy D'; in the critical case w = e^{2ix} is forced.
+NOTE: R5. Statement says 'p as in Lemma 2.13': read per R7/R15 as admissible p (the proof only uses stationarity of the law of e^{2i theta}, absolute continuity of its law, and pi-periodic coefficients). In the |c|<sqrt(ab) case the source says 'Let w in bdy D'; in the critical case w = e^{2ix} is forced. SOURCE_GAP (sign): for c = -sqrt(ab) the point e^{2ix}, tan x = sqrt(b/a), is not the zero of D (that is e^{-2ix}); the written proof (WLOG c >= 0, then D^{-1}(0) = x + pi Z) gives recurrence at the zero of D, which equals e^{2ix} only for c = +sqrt(ab); see step:wlog-c-nonneg-arg.
 
 NODE: step:rec-reduction-to-x
 KIND: step
@@ -3031,9 +3032,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | D^-1(0)=x+piZ in the critical case
 EDGE: step:wlog-c-nonneg-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | WLOG c>=0 for the argument process
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3058,9 +3059,9 @@ DEPS: step:rec-monotone-in-y
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:rec-monotone-in-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1229-L1229 | monotonicity in y reduces uniform bound to the worst y=x+pi-eps (itself built on the fixed-y bound)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3088,9 +3089,9 @@ EDGE: step:rec-angle-hit-unif | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1182-L1182 | strong Markov property at tau_k
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1183-L1183 | conditional Borel-Cantelli to conclude infinitely many hits
 EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1182-L1182 | pi-periodic coefficients of SDE (2.30) give the same conditional law from [theta_tau]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3117,9 +3118,9 @@ ROUTE_FOR: -
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | stationary law of e^{2i theta}
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1187-L1187 | the admissible p is a density (angle law p 1_[0,2pi]), so the image law is non-atomic
 EDGE: step:rec-renewal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1177-L1180 | the stopping times tau_k^eps are defined there
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3146,9 +3147,9 @@ ROUTE_FOR: -
 EDGE: step:stat-theta-bm-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1200-L1200 | time-change of (2.30)
 EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1208-L1208 | Z is a continuous martingale with <Z>_r = r
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1192-L1198 | D>0 on (x,x+pi) so omega is well defined before R
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3176,9 +3177,9 @@ EDGE: ext:scale-function | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-r
 EDGE: step:rec-time-change-omega | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1210-L1210 | the diffusion X to which the scale function applies
 EDGE: step:D-structure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1215-L1215 | D(x)!=0 if c<sqrt(ab) (finite limit); D(x)=0 if c=sqrt(ab)
 EDGE: step:p-case2-welldefined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1215-L1215 | mu(x)<0 gives mu/D -> -infinity as t->x when c=sqrt(ab)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3204,9 +3205,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:rec-scale-function-hit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1225-L1225 | positive probability event in r-time
 EDGE: step:rec-time-change-omega | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1225-L1225 | X is a time change of hat-theta
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3232,9 +3233,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:rec-hit-fixed-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1229-L1229 | choose y=x+pi-eps, T from the fixed-y bound
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1229-L1229 | strong Markov at the hitting time of an intermediate y' in (x,y)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3267,9 +3268,9 @@ EDGE: step:kol-semigroup-smooth | source/arxiv-2203.07313v4/complex-sle-final.te
 EDGE: step:kol-markov-semigroup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2397-L2400 | Markov property
 EDGE: step:kol-derivative-vanishes-all-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | d/ds E_p f(X_s) = 0
 EDGE: step:kol-process-stationarity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | conclusion for the process law
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3293,9 +3294,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3320,9 +3321,9 @@ DEPS: ext:ito-complex
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:ito-complex | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2365-L2365 | Ito formula (real case)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3348,9 +3349,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:kol-ito-expectation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2376-L2376 | differentiate the integral form in t
 EDGE: ext:dct | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2376-L2376 | continuity at s=0 of the integrand under dominated convergence
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3375,9 +3376,9 @@ DEPS: step:kol-derivative-at-zero
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:kol-derivative-at-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2382-L2382 | integrand to be integrated by parts
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3402,9 +3403,9 @@ DEPS: lem-hormander
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-hormander | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2396-L2396 | smoothness of u -> E_u f(X_s)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3429,9 +3430,9 @@ DEPS: ext:strong-markov-bm
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2397-L2397 | Markov property of the SDE solution
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3458,9 +3459,9 @@ ROUTE_FOR: -
 EDGE: step:kol-integration-by-parts | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | (A.4) applied to T_s f
 EDGE: step:kol-semigroup-smooth | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | T_s f is a valid test function
 EDGE: step:kol-markov-semigroup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | d/dt∣_{t=0}E_p T_s f(X_t) = d/ds E_p f(X_s)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3485,9 +3486,9 @@ DEPS: step:kol-derivative-vanishes-all-times
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:kol-derivative-vanishes-all-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-kolmogorov@L2401-L2401 | one-dimensional marginal invariance
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3514,9 +3515,9 @@ ROUTE_FOR: -
 EDGE: step:horm-stratonovich | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2346-L2349 | Stratonovich form (A.5)
 EDGE: step:horm-span-condition | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2352-L2355 | span condition equals Hormander hypothesis
 EDGE: step:horm-apply-hairer | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2351-L2351 | application of the criterion
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3540,9 +3541,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3567,9 +3568,9 @@ DEPS: step:horm-stratonovich
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:horm-stratonovich | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2353-L2353 | gamma enters the bracket
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3596,9 +3597,9 @@ ROUTE_FOR: -
 EDGE: ext:hormander-1d | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2351-L2351 | Hairer's Theorem 1.3
 EDGE: step:horm-span-condition | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2352-L2355 | hypothesis at every u in R
 EDGE: step:horm-stratonovich | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-hormander@L2351-L2351 | Stratonovich coefficients of the theorem
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-B/sonnet
-REVIEWER: -
+REVIEWER: reviewer-B/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3622,9 +3623,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3648,9 +3649,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3674,9 +3675,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3700,9 +3701,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3726,9 +3727,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3752,9 +3753,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3785,9 +3786,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | argument process theta behind theta^
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1257 | stationarity of e^{i theta^_t(zz)} for every admissible p (R7/R15); the source cites only Lemma 2.13
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1257 | p ranges over admissible densities (R7/R15)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3818,9 +3819,9 @@ EDGE: lem-swallow-distance | source/arxiv-2203.07313v4/complex-sle-final.tex#pro
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | discharges the scale-invariance/future-dependence hypotheses of Lemma 3.3 for {T_z = infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | extends a.s. T_zz = infinity to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3851,9 +3852,9 @@ EDGE: step:prop-i-b-ode-comparison | source/arxiv-2203.07313v4/complex-sle-final
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | hypotheses of Lemma 3.3 for {T_z < infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | extends a.s. T_zz < infinity to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3884,9 +3885,9 @@ EDGE: step:prop-ii-a-koebe-limit | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | discharges the hypotheses of Lemma 3.3 for the event {lim dist(z,L_t)=0}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | extends to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1459 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3907,7 +3908,7 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_2_B.lean
 FROZEN_DECL: ComplexSLE.proposition_3_2_b
 FROZEN_ANCHOR_ID: thm.proposition_3_2_b.v1
 FROZEN_ABI_SHA256: 68e7f561920bc47ded181922aa3709800fd30024d385e40bf7734750bb063c67
-DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one, step:section3-product-extension
+DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one, step:section3-product-extension, claim:hulls-monotone
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1276-L1281 | sign hypothesis on (II)
@@ -3915,9 +3916,10 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1281-L1281 | T_z in the conclusion
 EDGE: step:prop-ii-b-martingale-zero-one | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | indicator of {lim dist > 0} is a.s. >= q_*, hence equals 1
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | Fubini over the independent pair (zz, U) requires the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | L_t is increasing, so t -> dist(z,L_t) is non-increasing and the almost sure limit lim_{t->T_z-} dist(z,L_t) > 0 equals the infimum over t < T_z; this converts the proved limit statement into the frozen epsilon-form (R14) with epsilon := that infimum
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3944,9 +3946,9 @@ ROUTE_FOR: -
 EDGE: step:all-z-lambda-conull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1310 | Lambda is the whole unit circle up to a Lebesgue-null set
 EDGE: step:all-z-markov-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1316 | P(E(z)) equals the average of P(E(.)) at e^{i theta_tau(z)} for a stopping time tau < T_z
 EDGE: step:all-z-stopping-time-choice | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | tau with P(e^{i theta_tau(z)} in Lambda) >= q for any q < 1, hence P(E(z)) = 1
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3972,9 +3974,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1306 | p ranges over admissible densities (R7/R15)
 EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1306 | the source's justification: p of Lemma 2.13 is strictly positive off a discrete set
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -3999,9 +4001,9 @@ DEPS: step:all-z-null-set-density
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:all-z-null-set-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1310 | density p positive a.e. so a.s. event for zz forces P(E(z))=1 for a.e. z (Fubini over the independent zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4029,9 +4031,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1316-L1316 | strong Markov property at tau: the future chain is independent of F_tau
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1314 | the future chain f_{tau,tau+.} of (2.3)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1312 | e^{i theta_tau(z)} = f_tau(z)/∣f_tau(z)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4059,9 +4061,9 @@ EDGE: step:all-z-lambda-conull | source/arxiv-2203.07313v4/complex-sle-final.tex
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | the SDE for theta^ shows theta is non-constant (non-degenerate noise)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1312 | tau may be a sigma_z(t^)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | continuous argument process theta_t(z)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4088,9 +4090,9 @@ ROUTE_FOR: -
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_{rz} for the chain r f_{t/r^2}(./r) equals r^2 T_z, absorption time scales
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | future dependence: T_z = s + T_{f_s(z)}(chain f_{s,s+.}) on {s < T_z}
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4118,9 +4120,9 @@ EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L130
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | future dependence: relation of L_{s+t} and L_{s,s+t}
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | L_t
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4148,9 +4150,9 @@ EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: step:sde-limit-deterministic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1366-L1372 | the limit is a.s. a deterministic constant
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1374-L1375 | E(Y_1-Y_0) = E f^0(X_0), identifying the constant
 EDGE: step:sde-recurrence-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1377-L1378 | second assertion when E f^0(X_0) = 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4174,9 +4176,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4201,9 +4203,9 @@ DEPS: step:sde-stationary-increments
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1363 | stationarity of the increments of Y is used to compare Y_t/t with Y_{floor(t)}/floor(t)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4230,9 +4232,9 @@ ROUTE_FOR: -
 EDGE: ext:birkhoff | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | Birkhoff ergodic theorem for the stationary increment sequence
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | Y has stationary increments
 EDGE: step:sde-continuity-noninteger | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | passes from integer to real times
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4257,9 +4259,9 @@ DEPS: ext:strong-markov-bm
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1367-L1367 | strong Markov property of BM at the stopping time tau_k
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4286,9 +4288,9 @@ ROUTE_FOR: -
 EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1366-L1370 | the limit exists a.s.
 EDGE: step:sde-regeneration | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1367-L1372 | limit equals lim (Y_{t+tau_k}-Y_{tau_k})/t, independent of B∣[0,tau_k]
 EDGE: ext:kolmogorov-zero-one | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1372-L1372 | tail sigma-algebra of B is trivial
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4312,9 +4314,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4343,9 +4345,9 @@ EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: step:sde-limit-deterministic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | the limit is deterministic
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | that constant equals E f^0(X_0) = 0, hence E(xi_1 ∣ I) = 0
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | discharges the premise 'stationary sequence' of Lemma 3.5 for xi_n = Y_n - Y_{n-1}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4370,9 +4372,9 @@ DEPS: step:recurrent-durrett-adaptation
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:recurrent-durrett-adaptation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrent@L1356-L1356 | 'essentially identical' to Durrett Thm 7.3.2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4397,9 +4399,9 @@ DEPS: ext:durrett-7.3.2
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:durrett-7.3.2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrent@L1356-L1356 | template theorem
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4425,9 +4427,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1391-L1391 | sigma_z and hats
 EDGE: step:swallow-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1395-L1396 | passes the capacity-time limit to sigma-time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4453,9 +4455,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1395-L1395 | on {T_z < infinity}, lim_{t->T_z^-} log∣f_t(z)∣ = -infinity
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1396-L1396 | sigma(infinity) = T_z, so t^ -> infinity corresponds to t -> T_z^-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4480,9 +4482,9 @@ DEPS: lem-polar
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | SDEs for theta^, log∣f^∣ and log∣f^'∣ (drifts mu, nu, -2cos 2theta^ are pi-periodic, hence functions of X)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4512,9 +4514,9 @@ EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L
 EDGE: lem-recurrence | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | recurrence of X (hits a fixed xbar at arbitrarily large times)
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | stationarity of the law of X_t = e^{2 i theta^_t(zz)} for every admissible p
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | E f^0(X_0) = E nu(theta^_0(zz)) = (I)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4539,9 +4541,9 @@ DEPS: step:prop-i-apply-stationary-sde
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:prop-i-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1406-L1406 | case (I) > 0: log∣f^_t∣/t -> (I) > 0; case (I) = 0: arbitrarily large t with ∣log∣f^_t∣∣ < eps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4568,9 +4570,9 @@ ROUTE_FOR: -
 EDGE: step:prop-i-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1409 | log∣f^_t(zz)∣/t -> -alpha
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1410 | t^ = int_0^{sigma(t^)} ∣f_s(zz)∣^{-2} ds converts t^ to capacity time
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1409 | sigma maps (0,infinity) onto (0,T_zz): 'going back to the original parametrization' covers (t_*,T_zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4595,9 +4597,9 @@ DEPS: eqn-neg-I1-bd
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-neg-I1-bd | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1413-L1414 | rearranged to F'(t) e^{-alpha F(t)} > 1 on (t_*,T_zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4622,9 +4624,9 @@ DEPS: lem-polar
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-sde-ratio@L1441-L1441 | subtract the SDE (eqn-abs-zt) for d log∣f^∣ from (eqn-abs-zt') for d log∣f^'∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4653,9 +4655,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1441-L1444 | SDE for log(∣f^'∣/∣f^∣)
 EDGE: step:integral-ii-expectation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | expectation identity from stationarity
 EDGE: step:integral-ii-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | second part by Lemma 3.4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4682,9 +4684,9 @@ ROUTE_FOR: -
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1447 | the SDE integrated from 0 to t^ with log(∣f_0'∣/∣f_0∣) = 0
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | the stochastic-integral terms have mean zero (bounded integrands)
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | E(nu(theta^) + 2cos 2theta^) = (II) by stationarity
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4714,9 +4716,9 @@ EDGE: step:stationary-sde-X-form | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: lem-recurrence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | recurrence of X
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | stationarity of X
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | E f^0(X_0) = -(II)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4737,18 +4739,19 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left, defn-loewner.absorbing-time
+DEPS: defn-hulls.left, defn-loewner.absorbing-time, defn-sle
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | L_t = {z : T_z <= t}
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | T_0 = 0 because the driver starts at the singular point 0
-TOPOLOGY_STATUS: PROPOSED
+EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | U_0 = 0 almost surely is part of the SLE_Sigma driver (R6); this supplies the premise U_0 = 0 (T_0 = 0, so 0 in L_t) that is otherwise only a hypothesis of this node
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558. The shifted-driver statement for L_{t,s+t} used at L1768 is step:zero-in-future-left-hull.
+NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558. The shifted-driver statement for L_{t,s+t} used at L1768 is step:zero-in-future-left-hull. Premise U_0 = 0 is supplied by defn-sle (a.s. U_0 = 0, R6); for a general continuous driver the correct statement is U_0 in L_t (claim:hull-nonempty).
 
 NODE: step:zero-in-right-hull
 KIND: step
@@ -4769,9 +4772,9 @@ DEPS: defn-hulls.right
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1463 | R_t = C minus the range of f_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4799,9 +4802,9 @@ EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | L_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | R_t
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1705 | L_t closed (domain of f_t open); R_t closed because f_t is an open map on an open domain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4830,9 +4833,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-h
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1463 | f_t is a conformal bijection C\L_t -> C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1465-L1465 | R_t
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1465 | dist(f_t(zz),R_t) <= ∣f_t(zz)∣ because 0 in R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4859,9 +4862,9 @@ ROUTE_FOR: -
 EDGE: lem-integral-ii | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1459 | sigma-time limit +infinity when (II) < 0
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1460-L1462 | sigma(infinity) = T_zz, so t^ -> infinity iff t -> T_zz^-
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1460-L1460 | hats denote sigma-time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4888,9 +4891,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-a-capacity-time | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | ∣f_t'∣/∣f_t∣ -> infinity
 EDGE: eqn-hit-koebe | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1463-L1468 | dist(zz,L_t) <= C ∣f_t(zz)∣/∣f_t'(zz)∣
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | t -> dist(zz,L_t) non-increasing so limit exists and equals infimum (R14)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4916,9 +4919,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1476-L1476 | sign hypothesis on (II)
 EDGE: step:converse-conclude | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1639-L1642 | contrapositive: lim = 0 a.s. forces (II) <= 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4947,9 +4950,9 @@ EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-convers
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | L_{s+t} = {T <= s+t}
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | f_t(L_{s+t} \ L_t) = L_{t,s+t} and f_t maps C\L_t into C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -4978,9 +4981,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1708 | conformality of the future map f_{t,s+t}
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_{t,s+t}(f_t(zz)) = f_{s+t}(zz)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_t(zz) not in L_{t,s+t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5009,9 +5012,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1716 | conformality
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1719 | f_{s+t}(zz) = f_{t,s+t}(f_t(zz)) and R_{s+t} = R_{t,s+t} u f_{t,s+t}(R_t \ L_{t,s+t}) (image of the complement of the union)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1716 | f_t(zz) not in L_{t,s+t} u R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5037,9 +5040,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-two-formulas | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-dist-ratio@L1722-L1722 | first expression for ∣f_{t,s+t}'(f_t(zz))∣
 EDGE: eqn-two-formulas-b | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-dist-ratio@L1722-L1722 | second expression for the same derivative
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5069,9 +5072,9 @@ EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L17
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1728-L1728 | second asymp via (3.9)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1727 | zz not in L_{s+t}
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1728 | f_t is conformal (injective holomorphic) on C\L_t, hence on C\L_{s+t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5096,9 +5099,9 @@ DEPS: eqn-koebe-t
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-koebe-t | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-1@L1734-L1734 | re-arranging (3.10)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5122,9 +5125,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5152,9 +5155,9 @@ EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | s + t -> T_zz as s^ -> infinity
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | relates L_{s+t} and L_{t,s+t} (f_t(L_{s+t}\L_t) = L_{t,s+t})
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | L_{s+t} increasing in s
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5179,9 +5182,9 @@ DEPS: eqn-dist-event
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-cases@L1750-L1750 | definition of E_s^ as the case where the L_{t,s+t}-distance is the smaller
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5208,9 +5211,9 @@ ROUTE_FOR: -
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1756 | Koebe applied to f_t as in (3.10)
 EDGE: eqn-koebe-t | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1756 | first asymp (3.10)
 EDGE: eqn-dist-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1760 | on E the union-distance equals the L_{t,s+t}-distance
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5235,9 +5238,9 @@ DEPS: eqn-koebe-union
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-koebe-union | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-es@L1762-L1762 | divide (3.14) by ∣f_t(zz)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5264,9 +5267,9 @@ ROUTE_FOR: -
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | the asymp via (3.9)
 EDGE: eqn-dist-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | on E^c the union distance equals dist(f_t(zz),R_t)
 EDGE: step:zero-in-future-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | 0 in L_{t,s+t}, so dist(f_t(zz),L_{t,s+t}) <= ∣f_t(zz)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5295,9 +5298,9 @@ EDGE: eqn-dist-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | Koebe quarter for f_t : C\L_t -> C\R_t gives the last asymp
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | compactness
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | f_t conformal C\L_t -> C\R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5324,9 +5327,9 @@ ROUTE_FOR: -
 EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1669-L1672 | event E_s^ in the right-hand side
 EDGE: eqn-dist-es | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1780-L1780 | bound on E_s^
 EDGE: eqn-dist-esc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1780-L1780 | bound on E_s^c
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5355,9 +5358,9 @@ EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-conver
 EDGE: step:converse-event-converges | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1683-L1683 | 1_E -> 1
 EDGE: ext:dct | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1683-L1691 | dominated convergence for both terms
 EDGE: lem-log-finite-exp | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1687-L1689 | log(1/dist(zz,L_t)) is integrable, dominating the E^c term
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5384,9 +5387,9 @@ ROUTE_FOR: -
 EDGE: lem-computation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1693-L1695 | dist(f_t(zz),L_{t,s+t})/∣f_t(zz)∣ has the law of dist(zz,L_s)
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | dist(zz,L_{s+t}) <= dist(zz,L_s) (L_s subset L_{s+t})
 EDGE: lem-log-finite-exp | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | log(1/dist(zz,L_{s+t})) has finite expectation
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5413,9 +5416,9 @@ ROUTE_FOR: -
 EDGE: step:converse-rhs-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | limit of the right side, combined with the left side at L1697
 EDGE: step:converse-lhs-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | left side has nonnegative expectation
 EDGE: lem-integral-ii | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | E log(∣f_t'∣/∣f_t∣) = -t^ (II)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5439,9 +5442,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5470,9 +5473,9 @@ EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computati
 EDGE: eqn-computation-tilde-f | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1521-L1523 | definition of f~
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1523-L1524 | left hull of the rescaled chain is the rescaled left hull
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1521-L1521 | sigma(t^) is the stopping time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5498,9 +5501,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:computation-scaling-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | f~ =_D f and independent of the past
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | stationarity: f_{sigma(t^)}(zz)/∣f_{sigma(t^)}(zz)∣ =_D zz
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5527,9 +5530,9 @@ ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1538-L1538 | 'concatenation property': f_{sigma(t^),sigma(t^)+v}(f_{sigma(t^)}(zz)) = f_{sigma(t^)+v}(zz)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1540-L1542 | definition of sigma(s^+t^) via int_0^{.} ∣f_v(zz)∣^{-2} dv
 EDGE: eqn-computation-tilde-f | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1537-L1537 | unfold f~
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5555,9 +5558,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-wt-L-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1531-L1533 | joint law identity in sigma~-time
 EDGE: step:computation-time-change-identity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1542-L1542 | converts L~_{sigma~(s^)} to the future hull L_{sigma(t^),sigma(s^+t^)}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5583,9 +5586,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1553-L1553 | sigma-time parametrization
 EDGE: step:log-finite-tail-to-expectation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | tail bound implies finiteness
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5614,9 +5617,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-f
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-1@L1581-L1581 | f_{tau_k} conformal C\L_{tau_k} -> C\R_{tau_k}
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-2@L1586-L1586 | dist(f_{tau_k}(zz),R_{tau_k}) <= ∣f_{tau_k}(zz)∣
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-1@L1580-L1580 | tau_k defined through L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5642,9 +5645,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-distortion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1592-L1592 | ball inclusion (eqn-finite-exp-2)
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1592-L1597 | f_{tau_k}(L_t \ L_{tau_k}) = L_{tau_k,t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5674,9 +5677,9 @@ EDGE: step:computation-scaling-markov | source/arxiv-2203.07313v4/complex-sle-fi
 EDGE: step:log-finite-exit-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1594-L1603 | T_k as a first exit time of the rescaled chain
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1608-L1608 | concatenation property in the simplification chain
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1601-L1609 | int ∣f_.∣^{-2} is the sigma-time clock
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5701,9 +5704,9 @@ DEPS: step:log-finite-iid
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-iid | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1612-L1615 | k-independence of the law
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5730,9 +5733,9 @@ ROUTE_FOR: -
 EDGE: step:log-finite-q-choice | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1614-L1617 | P(A_k) >= 1/2
 EDGE: step:log-finite-iid | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1616-L1616 | independence of A_k from F_{tau_k} gives independence of A_1,...,A_k
 EDGE: step:log-finite-exit-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1621-L1622 | the intervals [tau_j,T_j] are disjoint (T_j <= tau_{j+1}) so int_0^{tau_k} >= sum_{j<=k} int_{tau_j}^{T_j}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5758,9 +5761,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-binomial | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1621-L1625 | P(int_0^{tau_k} <= qN) <= C_N 2^{-k}
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1625-L1625 | tau_k <= sigma(qN) iff int_0^{tau_k} ∣f_v∣^{-2} dv <= qN
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5786,9 +5789,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-log-finite-end | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1629-L1630 | choose N with qN >= t^; {dist <= 16^{-k}} subset {tau_k <= sigma(t^)} subset {tau_k <= sigma(qN)}
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1629-L1630 | sigma increasing
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5814,9 +5817,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-log-finite-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | geometric tail P(log(1/dist) >= k log 16) <= C 2^{-k+1}
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | log(1/dist(zz,L_{sigma(t^)})) >= 0 so the tail integral formula applies
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5842,9 +5845,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1791-L1791 | scale invariance of the chain
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1791-L1791 | left hulls of the rescaled chain are rescaled; limit of distance scales by 1/∣z∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5871,9 +5874,9 @@ ROUTE_FOR: -
 EDGE: lem-converse-w-o-upgrade | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | P(lim dist(zz,L_t) = 0) < 1
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | dist(zz,L_t) non-increasing so the limit exists in [0,infinity) and 'not = 0' means '> 0' (R14)
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1794-L1794 | the law of arg zz has a density p 1_[0,2pi] w.r.t. Lebesgue measure
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5900,9 +5903,9 @@ ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | SDE (eqn-theta-t) for theta^_t^(z)
 EDGE: ext:girsanov | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | 'Girsanov's theorem'
 EDGE: step:prop-ii-b-lambda-positive-measure | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1801-L1801 | positive measure of Lambda gives a positive-measure closed Lambda'
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5932,9 +5935,9 @@ EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1805-L1805 | q(w) = q(w/∣w∣) after rescaling to the unit circle
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L1805 | future dependence of the event {lim dist > 0} (same as hypothesis (ii) of Lemma 3.3)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | sigma_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5961,9 +5964,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-b-hit-lambda-prime | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1803 | P(tau < infinity) > 0
 EDGE: step:prop-ii-b-markov-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L1805 | q(z) >= E[q(e^{i theta^_tau}) ; tau < infinity] > 0 since e^{i theta^_tau} in Lambda' subset Lambda
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1799-L1799 | q(z) > 0 on the unit circle gives q(z) > 0 on C\{0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -5992,9 +5995,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | f_t conformal C\L_t -> C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | R_t
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | dist(f_t(z),R_t) <= ∣f_t(z)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6021,9 +6024,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-b-lambda-full | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1808-L1808 | q(z) > 0 for every z
 EDGE: step:prop-ii-b-koebe-ball | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1808-L1808 | q(w) >= q(z)/2 for w in B_eps(z) (eps from r with P(lim dist >= r) >= q(z)/2)
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1809-L1809 | extend from the unit circle to C\{0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6052,9 +6055,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L181
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1811 | future chain after sigma_z(t^)
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1811 | future dependence of the event {lim dist > 0}
 EDGE: step:prop-ii-b-compactness | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1814 | q >= q_* everywhere
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6081,9 +6084,9 @@ ROUTE_FOR: -
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | P(A ∣ F_{sigma_z(t^)}) -> 1_A a.s.
 EDGE: step:prop-ii-b-conditional-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1813-L1815 | the conditional probabilities are >= q_* so 1_A >= q_* a.s., hence 1_A = 1 a.s.
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | sigma_z(t^) -> T_z so the filtration F_{sigma_z(t^)} exhausts the information determining A
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6112,9 +6115,9 @@ EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phase
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1829 | D simplifies for c = 0 in the ODE
 EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1836 | p of Lemma 2.13, with r_* = 0 so p = p_0 when c = 0
 EDGE: remark-p0 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1836-L1836 | for c = 0 the periodic solution is a constant times p_0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6141,9 +6144,9 @@ ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1838-L1838 | formula for nu when c = 0
 EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1840-L1840 | (I) = int nu p
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1841-L1841 | (II) = int (nu + 2cos 2u) p
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6168,9 +6171,9 @@ DEPS: step:c0-explicit-density
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1849-L1850 | explicit pi-periodic and even (in 2u -> cos 2u) form of p
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6196,9 +6199,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-cos-reflect@L1856-L1861 | explicit reflected formula (3.23)
 EDGE: step:c0-positivity-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1855-L1855 | reduction to [0,pi/2]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6224,9 +6227,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-positivity-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1849-L1853 | reduction to [0,pi/2]
 EDGE: step:c0-positivity-reflection | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1855-L1874 | the [0,pi/2] integral is positive
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6252,9 +6255,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-c0-integrals | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | (I),(II) as multiples of int cos(2u)p(u)du
 EDGE: eqn-c0-phase-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | the common integral is > 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6281,9 +6284,9 @@ ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1836 | explicit p (and its admissibility) for c = 0
 EDGE: step:c0-sign-analysis | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1846-L1847 | signs of (I),(II) in terms of a - b
 EDGE: thm-phases#assembly-sign-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | 'our description of the phases in terms of (I),(II) (Propositions 3.1 and 3.2)' converts the signs to phases
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6308,9 +6311,9 @@ DEPS: eqn-nu-D.nu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1916-L1916 | nu(u) = (2 - a/2 + b/2) cos 2u = -2 cos 2u when a - b = 8
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6338,9 +6341,9 @@ EDGE: step:c0-bdy-drift-vanishes | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1917-L1917 | SDE for the ratio (or Lemma 2.11 directly)
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1917-L1917 | (W,W~) =_D (B,B~) independent standard BMs since c = 0
 EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1922-L1923 | continuous martingale with QV -> infinity is a time-changed BM (Dambis-Dubins-Schwarz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6367,9 +6370,9 @@ ROUTE_FOR: -
 EDGE: step:c0-bdy-martingale-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1923-L1923 | limsup in sigma-time
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1924-L1924 | sigma(infinity) = T_z so t^ -> infinity iff t -> T_z^-
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1915-L1915 | sigma_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6396,9 +6399,9 @@ ROUTE_FOR: -
 EDGE: step:c0-bdy-capacity-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | limsup ∣f_t'∣/∣f_t∣ = infinity
 EDGE: eqn-hit-koebe | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | 'see in particular (3.5)': dist(z,L_t) <= C ∣f_t(z)∣/∣f_t'(z)∣
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | t -> dist(z,L_t) is non-increasing so liminf = 0 gives lim = 0 (R14)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6426,9 +6429,9 @@ EDGE: prop-i.b | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L192
 EDGE: eqn-c0-integrals | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | (I) = (2 - a/2 + b/2) int cos(2u) p du = -2 int cos(2u)p du
 EDGE: eqn-c0-phase-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | int cos(2u) p du > 0 so (I) < 0
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | p is the explicit admissible density used in (3.20)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6455,9 +6458,9 @@ ROUTE_FOR: -
 EDGE: defn-phases.hitting | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1912-L1926 | conclusion: for each z != 0, a.s. T_z < infinity and z in closure of union_{t<T_z} L_t
 EDGE: step:c0-bdy-hitting-from-limsup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | z in the closure of union_{t<T_z} L_t
 EDGE: step:c0-bdy-finite-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | T_z < infinity
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6491,9 +6494,9 @@ EDGE: defn-phases.hitting | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-
 EDGE: defn-phases.dense | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | target property of case 4
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | L_t increasing, so inf_{t<T_z} dist(z,L_t) is the limit (R14) and 'not in the closure' translates to a positive infimum
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | L_t = {T_z <= t}, so T_z = infinity gives z not in union_t L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6519,9 +6522,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-c0-phases | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1931-L1932 | thin for a-b<=4, swallowing for 4<a-b<8, hitting for a-b>8
 EDGE: lem-c0-bdy | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1931-L1932 | hitting for a-b = 8
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6549,9 +6552,9 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | T_0 = 0 for the shifted driver U(.+t)-U(t), which starts at 0
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | L_{t,s+t} is the left hull of the chain driven by U(.+t)-U(t)
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | same argument as for L_t, applied to the shifted driver
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-C/sonnet (proposed split of step:zero-in-left-hull)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-C/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6575,9 +6578,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6601,9 +6604,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6627,9 +6630,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6659,9 +6662,9 @@ EDGE: step:haus-limit-conformal-extension | source/arxiv-2203.07313v4/complex-sl
 EDGE: step:haus-contradiction-L-t | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | extension of g_t to V is impossible since V meets L_t
 EDGE: step:haus-subsubsequence-closure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | subsequence-of-subsequence argument yields the quantitative statement for all large n
 EDGE: step:haus-right-hull-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | right hulls and reverse maps reduce to left hulls of reverse maps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6687,9 +6690,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:loewner-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2011-L2011 | cited Prop 4.43
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2011-L2011 | g_t, g^n_t are the maps whose existence and uniqueness is asserted for continuous complex drivers
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6717,9 +6720,9 @@ EDGE: step:haus-maps-converge | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t = {T_z <= t}
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t closed, so the intersection over eps of B_eps(L_t) is L_t and L' subset L_t
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | "By compactness": the L^n_t and L_t are compact and uniformly bounded, so Hausdorff-convergent subsequences exist
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6746,9 +6749,9 @@ ROUTE_FOR: -
 EDGE: step:haus-subsequence-limit-contained | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2018-L2018 | L' is the Hausdorff limit; choice of V relative to L' and L_t
 EDGE: step:haus-maps-converge | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | uniform boundedness of g^n_t on V from convergence on a set separating V from infinity, and identification of the limit with g_t on the complement of L_t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | g^n_t is conformal on V for large n
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6775,9 +6778,9 @@ ROUTE_FOR: -
 EDGE: step:haus-limit-conformal-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | supplies the conformal extension of g_t to V
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | g_t conformal from C minus L_t onto its image
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | L_t is the set of absorbed points T_z<=t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6804,9 +6807,9 @@ ROUTE_FOR: -
 EDGE: step:haus-subsequence-limit-contained | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | L' subset L_t along subsubsequences gives the inclusion
 EDGE: step:haus-contradiction-L-t | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2018-L2019 | no point set V witnessing a difference between L' and L_t, so L' and L_t disconnect the same points
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | 'disconnect the same set of points from infinity'
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6832,9 +6835,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-forward-reverse-ext | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | cited as the link between forward/reverse chains and hulls
 EDGE: lem-mult-by-i | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | reverse chain with driver U is obtained from the forward chain with iU by conjugation by multiplication by i (Lemma 2.3)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6861,9 +6864,9 @@ ROUTE_FOR: -
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | explicit zero-driver chain, hulls and map
 EDGE: step:line-small-driver-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | driver is within delta of 0 on [0,T] with positive probability
 EDGE: step:line-apply-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | Lemma 4.3 transfers closeness of drivers to closeness of hulls and maps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6890,9 +6893,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | identifies the chain driven by 0 as the unique solution of the Loewner ODE
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | left hull is {z: T_z<=t}
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | right hull is the complement of the range of f_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6918,9 +6921,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | 'positive chance to be arbitrarily close to 0 on [0,T]'
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | U is a planar BM with covariance Sigma
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6947,9 +6950,9 @@ ROUTE_FOR: -
 EDGE: lem-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | applied with U equiv 0 (sequential statement used as continuity at the zero driver)
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | limit chain explicit
 EDGE: step:line-small-driver-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | event of positive probability on which the driver is small
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -6975,9 +6978,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:re-im-ft-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2070-L2075 | real and imaginary SDEs from (1.6)
 EDGE: step:re-im-drift-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2076-L2076 | drift terms bounded by 2 on [s,t]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7003,9 +7006,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-def-ft | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-im-ft@L2070-L2070 | taking real and imaginary parts of df_t = 2/f_t dt - sqrt(a)dB - i sqrt(b)dB~ (2/f = 2 conj(f)/∣f∣^2)
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-im-ft@L2073-L2074 | identifies the noise terms with sqrt(a)B and sqrt(b)B~
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7031,9 +7034,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:re-im-ft-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2076-L2076 | SDEs applied on the interval [s,t]
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2049-L2049 | s,t in [0,rho_z] with rho_z < T_z so that f_t(z) exists at the endpoint; ∣f_t(z)∣ -> 0 at T_z < infinity forces rho_z < T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7060,9 +7063,9 @@ ROUTE_FOR: -
 EDGE: step:c-event-E1 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | conditions (cond-1) and (cond-2) on [0,1]
 EDGE: step:c-event-E2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | conditions (cond-3) and (cond-4) on [1,2]
 EDGE: step:c-event-combine | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | independence of the two events gives simultaneous positive probability
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7088,9 +7091,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | B and B~ are the standard BMs in U = sqrt(a)B + i sqrt(b)B~
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | positivity of the probability of this event on [0,1]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7117,9 +7120,9 @@ ROUTE_FOR: -
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | B and B~ standard BMs with correlation c/sqrt(ab)
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | non-negativity of the correlation is the WLOG assumption of L1951
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | positivity of the probability of this event
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7146,9 +7149,9 @@ ROUTE_FOR: -
 EDGE: step:c-event-E1 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | P(E_1)>0
 EDGE: step:c-event-E2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | P(E_2)>0
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | independent increments of the planar BM U give independence of E_1,E_2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7175,9 +7178,9 @@ ROUTE_FOR: -
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2121-L2124 | choice of C, x, y and the event
 EDGE: step:pos-segment-disjoint-L2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | disjointness of [x,y] from L_2
 EDGE: step:pos-real-part-sign-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2138 | sign change of Re f_2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7202,9 +7205,9 @@ DEPS: lem-c-event
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2121-L2121 | supplies C and the positive-probability event
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7231,9 +7234,9 @@ ROUTE_FOR: -
 EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2125-L2125 | eqn-re-ft with s=0
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2125-L2125 | (cond-2) bounds h^-(0,t;a)>=-C
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2124-L2124 | x=2C, y=7C so Re z>=2C
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7260,9 +7263,9 @@ ROUTE_FOR: -
 EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2131 | eqn-im-ft with (s,t)=(0,1) and (1,t)
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2131 | (cond-1) and (cond-4)
 EDGE: step:pos-real-part-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2130 | ∣f_t∣>=1 on [0,1] justifies the Im bound on [0,1]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7289,9 +7292,9 @@ ROUTE_FOR: -
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | ∣f_t(z)∣->0 as t->T_z, so rho_z<T_z
 EDGE: step:pos-imag-part-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | rho_z>=2
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | L_2 = {z : T_z<=2}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7319,9 +7322,9 @@ EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2137 | (cond-3) and (cond-2)
 EDGE: step:pos-imag-part-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2136 | rho_z>=2 so the bounds are valid on [0,2]
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2138-L2138 | Re f_2(x) <= 2C-3C and Re f_2(y) >= 7C-6C use x=2C, y=7C
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7346,9 +7349,9 @@ DEPS: step:disc-choose-U
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:disc-choose-U | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "this gives the lemma statement for t = T+2+K": choice of the deterministic U among U^-, U^+ with positive probability (the former edges to step:disc-independence-product and step:disc-pullback-conclusion are now consumed by step:disc-choose-U)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7374,9 +7377,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-pos-hits-before-neg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2161-L2161 | supplies x<y with 0<x<y<2T^{1/2} (via T>y^2/2)
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2165-L2165 | time-T zero-driver Loewner map z -> sqrt(z^2+4T) used to define U^+-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7404,9 +7407,9 @@ EDGE: lem-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-
 EDGE: lem-line-approx | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2180-L2180 | the Hausdorff/uniform closeness statements that give containment in eps-neighborhoods and f_T(U^+-) subset B_eps(x +- 2i eps) are those of Lemma 4.2
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | definition of E_1 and of U^+-
 EDGE: step:right-hull-connected | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | "R_T contains a left-right crossing of [x,y]x[-eps,eps]": a connected R_T Hausdorff-close to [-2T^{1/2},2T^{1/2}] supplies the crossing
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7435,9 +7438,9 @@ EDGE: lem-line-approx | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disc
 EDGE: lem-connected.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2175-L2175 | a connected hull close to the vertical segment hits every left-right crossing of the rectangle (extractor reading: connectedness of the left hull is needed)
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | the restarted chain (f_{T+2,T+2+s}) has the law of a centered SLE_Sigma chain
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2175-L2175 | definition of E_4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7464,9 +7467,9 @@ ROUTE_FOR: -
 EDGE: lem-pos-hits-before-neg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | applied to (f_{T,T+t}) instead of (f_t): L_{T,T+2} cap [x,y]=empty and Re f_{T,T+2}(x)<0<Re f_{T,T+2}(y)
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | restarted chain f_{T,T+t} has the law of a centered SLE_Sigma chain, so Lemma 4.4 applies for every T
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2171-L2171 | definition of E_2,E_3
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7495,9 +7498,9 @@ EDGE: step:disc-E4-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#le
 EDGE: step:disc-E2E3-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | P(E_2 cap E_3)>0
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | independent increments of the driver on disjoint time intervals
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | f_{t,s+t} is the chain driven by U(.+t)-U(t), a function of the increments after t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7523,9 +7526,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | concatenation at time 2 for the chain (f_{T,T+s}) transfers hits of L_{T+2,T+2+K} through f_{T,T+2}
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2183-L2193 | definitions of E_1..E_4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7553,9 +7556,9 @@ EDGE: step:disc-concatenation-transfer | source/arxiv-2203.07313v4/complex-sle-f
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | notion of disconnection from infinity
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_T contained in the eps-neighborhood of the real axis and contains the crossing S
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1: R_T within eps of the real axis and f_T(U^+-) subset B_eps(x +- 2i eps) subset B_{3eps}(x) minus R_T
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7582,9 +7585,9 @@ ROUTE_FOR: -
 EDGE: step:disc-topological-separation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection of f_T(U^+-) by L_{T,T+2+K} cup R_T
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "By the concatenation property": instance s=T, t=2+K, point in U^+-
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1 and the choice of U^+-: U^+- cap L_T = empty, so f_T is defined on U^+-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7612,9 +7615,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconne
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | hulls and absorbing times scale: L_t^{rU(./r^2)} = r L_{t/r^2}
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2203-L2203 | event defined through left hulls and T_z
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | disconnection from infinity is preserved by the scaling z -> z/∣z∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7643,9 +7646,9 @@ EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-fin
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w in U with U cap L_t = empty is disconnected before T_w
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w not in L_t iff T_w>t
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | 0 in L_t for all t, so U cap L_t = empty gives 0 not in U and z/∣z∣ is defined on U
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7674,9 +7677,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | argument process theta^
 EDGE: ext:girsanov | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | Girsanov (as in Prop 3.2(b) L1802) reduces to a diffusion hitting positive-measure sets
 EDGE: step:disc-a-positive-measure-set | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | Lambda has positive measure so such Lambda' exists
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7706,9 +7709,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | sigma_z maps (0,infinity) into (0,T_z): z is not in L_{sigma_z(tau)} so f_{sigma_z(tau)}(z) exists
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | q(f_s(z)) = q(f_s(z)/∣f_s(z)∣) = q(e^{i theta^_tau(z)}) for the restarted point
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | disconnection of f_s(z) by the restarted left hull (together with R_s) pulls back to disconnection of z by the original hull
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7735,9 +7738,9 @@ ROUTE_FOR: -
 EDGE: step:disc-a-hit-Lambda | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | P(tau<infinity)>0
 EDGE: step:disc-a-markov-restart | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | q(z)>= E[1_{tau<inf} q(e^{i theta^_tau})]>0 since e^{i theta^_tau} in Lambda'
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | reduction from C minus {0} to the unit circle
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7764,9 +7767,9 @@ ROUTE_FOR: -
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | z lies in a bounded component of the open set C minus L_t, so do nearby points
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | w not in L_t iff T_w>t
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | C minus L_t is open, so a ball around z stays inside the same bounded component and outside L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7793,9 +7796,9 @@ ROUTE_FOR: -
 EDGE: step:disc-a-q-positive-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2210 | positivity of q at every point of the circle
 EDGE: step:disc-a-open-condition | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | gives a deterministic eps with q(w)>=q(z)/2 on B_eps(z) (continuity of probability)
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2210-L2210 | extend the bound from the unit circle to C minus {0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7825,9 +7828,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: step:disc-a-uniform-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | the uniform bound q_*
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | sigma_z(t~) < T_z, so the restart point f_{sigma_z(t~)}(z) exists
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | disconnection by the restarted left hull pulls back to disconnection of z (inequality, not equality)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7854,9 +7857,9 @@ ROUTE_FOR: -
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | Levy upward convergence of the conditional probabilities
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | sigma_z(t~) increases to T_z so the filtration F_{sigma_z(t~)} exhausts the information needed for the event
 EDGE: eqn-disconnect-mart | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2214-L2217 | lower bound q_* passes to the limit
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7883,9 +7886,9 @@ ROUTE_FOR: -
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | Lemma 4.1 (and through it Lemma 4.6) is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-a-martingale-limit-one | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | final 0-1 argument gives almost sure disconnection before T_z
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2201-L2203 | 'disconnects z from infinity before T_z' means exists t<T_z with z not in L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7913,9 +7916,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconne
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | L_t^{rU(./r^2)} = r L_{t/r^2}
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | disconnected set scales with the hull
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | left hull L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7942,9 +7945,9 @@ ROUTE_FOR: -
 EDGE: lem-disconnect-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | positive probability that L_{t_0} disconnects the non-empty open set U
 EDGE: step:disc-b-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | transfers positivity from t_0 to every t>0
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | U subset set disconnected by L_{t_0}, U open and non-empty
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -7971,9 +7974,9 @@ ROUTE_FOR: -
 EDGE: step:disc-b-positive-for-all-t | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2223 | P(A_{t_n})>=p for t_n->0, so P(limsup A_{t_n})>=p>0
 EDGE: ext:blumenthal | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2223-L2223 | the limsup event is in the germ sigma-field, hence has probability 0 or 1
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2223-L2223 | filtration of the driving Brownian motion
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8000,9 +8003,9 @@ ROUTE_FOR: -
 EDGE: step:disc-b-blumenthal | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | small times t_n with A_{t_n}
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | 'the left hulls are non-decreasing'
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | enlarging the hull enlarges the disconnected set; subsets of L_t count as disconnected
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8028,9 +8031,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | Lemma 4.1 is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-b-monotone-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | conclusion for every t>0 simultaneously
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8057,9 +8060,9 @@ ROUTE_FOR: -
 EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | P(E_1 cap ... cap E_4) > 0 is what lets one of the two sets be chosen
 EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events one of U^-, U^+ is avoided and disconnected by L_{T+2+K}
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | U^+- are deterministic, bounded, open (and needed non-empty)
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8086,9 +8089,9 @@ ROUTE_FOR: -
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | statement is about R_t
 EDGE: eqn-duality | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | "The duality property (2.4) implies that R_t is also connected": R_t^U = i L_t^{i(U(t)-U(t-.))}
 EDGE: lem-connected.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | left-hull connectedness applied to the dual driver s -> i(U(t)-U(t-s)) (extended by a constant after time t)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8118,9 +8121,9 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disc
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_s is the complement of the range of f_s, so f_s(z) not in R_s
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | f_s: C\L_s -> C\R_s is a conformal bijection with f_s(w) - w bounded near infinity, so the bounded components of C\L_{s+t} correspond to the bounded components of C\(L_{s,s+t} u R_s)
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_s, R_s, L_{s,s+t} compact, so a component of the complement is unbounded iff its image is
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8148,13 +8151,13 @@ EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eq
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L547-L547 | uniqueness identifies the time-reversed flow
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L569-L569 | left hull of the original chain
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-duality@L569-L569 | right hull of the dual chain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Canonical (2.4). The source gives no proof ("easily consequences of Definition 1.1; see [Lu, Section 2]", L547). Do not fill. Consumed only through step:right-hull-connected; Prop 1.5 (the other consumer) is excluded.
+NOTE: SOURCE_GAP: the source supplies no proof (L547: "easily consequences of Definition 1.1; see [Lu, Section 2] for proofs"); the whole argument is unstated and is not filled here. Canonical (2.4). The source gives no proof ("easily consequences of Definition 1.1; see [Lu, Section 2]", L547). Do not fill. Consumed only through step:right-hull-connected; Prop 1.5 (the other consumer) is excluded.
 
 NODE: step:reflect-map-identity
 KIND: step
@@ -8177,9 +8180,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.solution | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | the conjugated / negated trajectory solves the ODE for the conjugated / negated driver
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | T_z is preserved
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-reflect@L547-L547 | uniqueness identifies the transformed trajectory with the chain of the transformed driver
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8194,7 +8197,7 @@ CONTRACT_ID: paper.step:wlog-c-nonneg-arg
 CONTRACT_VERSION: 1
 SOURCE_HYPOTHESES: a, b > 0; c in [-sqrt(ab), 0); p admissible for (a,b,c); zz on the unit circle independent of U with angle density p 1_[0,2pi]
 SOURCE_QUANTIFIERS: forall a,b,c; p
-SOURCE_CONCLUSION: the conclusion of lem-recurrence for (a,b,c,p) follows from that for (a,b,-c, p~) with p~(u) = p(-u): conjugating U gives an SLE_{Sigma~} driver, Sigma~ = [[a,-c],[-c,b]], conj(zz) has angle density p~, theta^ becomes -theta^ and e^{2i theta^} becomes its conjugate, and recurrence at w (resp. e^{2ix}) is equivalent to recurrence at conj(w)
+SOURCE_CONCLUSION: the conclusion of lem-recurrence for (a,b,c,p) follows from that for (a,b,-c, p~) with p~(u) = p(-u): conjugating U gives an SLE_{Sigma~} driver, Sigma~ = [[a,-c],[-c,b]], conj(zz) has angle density p~, theta^ becomes -theta^ and e^{2i theta^} becomes its conjugate, so recurrence at w for (a,b,-c,p~) is equivalent to recurrence at conj(w) for (a,b,c,p); in the critical case c = -sqrt(ab) the recurrent point obtained this way is conj(e^{2ix}) = e^{-2ix} (the zero of D(u) = (sqrt a sin u + sqrt b cos u)^2/2), not the printed e^{2ix} with tan x = sqrt(b/a)
 CONSTANT_SCOPE: none
 FROZEN_FILE: -
 FROZEN_DECL: -
@@ -8209,13 +8212,13 @@ EDGE: step:reflect-map-identity | source/arxiv-2203.07313v4/complex-sle-final.te
 EDGE: step:p-wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | p~(u) = p(-u) is admissible for (a,b,-c)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | the continuous lift of the conjugated process is the negated lift
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrence@L1165-L1165 | sigma-time is unchanged by conjugation (∣f_s∣ is unchanged)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: the source writes only 'Assume without loss of generality that c >= 0' for a statement about the argument process. Distinct from step:wlog-c-nonneg (hull level, used at L323/L1951) and from step:p-wlog-c-nonneg (admissibility of p~ only).
+NOTE: SOURCE_GAP: the source writes only 'Assume without loss of generality that c >= 0' for a statement about the argument process. SOURCE_GAP (sign): the printed second bullet of Lemma 2.16 (point e^{2ix}, tan x = sqrt(b/a)) is proved by the written argument only for c = +sqrt(ab); for c = -sqrt(ab) the reduction yields the point e^{-2ix}; recurrence at e^{2ix} for c = -sqrt(ab) is not supplied (it would need irreducibility of the diffusion, which is unstated). Consumers (lem-stationary-sde applications) need only some deterministic point, so e^{-2ix} suffices. Distinct from step:wlog-c-nonneg (hull level, used at L323/L1951) and from step:p-wlog-c-nonneg (admissibility of p~ only).
 
 NODE: step:section3-product-extension
 KIND: step
@@ -8237,9 +8240,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#sec-phases@L1255-L1255 | the lifted process is again a planar BM with covariance Sigma
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#sec-phases@L1255-L1255 | p is a density on [0,2pi], so P (x) p du is a probability measure
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -8252,349 +8255,75 @@ Regenerated by `proof_depgraph.py`; do not hand-edit.
 
 ### Dashboard
 
-* Total nodes: **274**
+* Total nodes: **286**
 * Frozen anchors: **31**
-* Versioned statement contracts: **274**
-* Total edges: **716**
-* Root-closure nodes: **274**
-* Dependency leaves in root closure: **34**
+* Versioned statement contracts: **286**
+* Total edges: **794**
+* Root-closure nodes: **286**
+* Dependency leaves in root closure: **33**
 * Assumption boundary leaves: **0**
 * External boundary leaves: **19**
 * Alternative routes: **0**
-* Topology review queue: **274**
-* Explicit source gaps: **41**
-* Coverage items: **300**; excluded: **98**
+* Topology review queue: **0**
+* Explicit source gaps: **62**
+* Coverage items: **306**; excluded: **96**
 
 ### Roots
 
-* `defn-loewner.well-defined` [PROPOSED; frozen] — contract `paper.def1_1.wellDefined@1`
-* `lem-p.exists` [PROPOSED; frozen] — contract `paper.lem2_13.exists@1`
-* `nonsource.exists-sle-driver` [PROPOSED; frozen] — contract `paper.nonsource.existsSLEDriver@1`
-* `thm-phases` [PROPOSED; frozen] — contract `paper.thm1_8.phases@1`
-* `thm-phases.c-zero` [PROPOSED; frozen] — contract `paper.thm1_8.cZero@1`
-* `thm-disconnects.a` [PROPOSED; frozen] — contract `paper.thm1_10.a@1`
-* `thm-disconnects.b` [PROPOSED; frozen] — contract `paper.thm1_10.b@1`
-* `prop-i.a` [PROPOSED; frozen] — contract `paper.prop3_1.a@1`
-* `prop-i.b` [PROPOSED; frozen] — contract `paper.prop3_1.b@1`
-* `prop-ii.a` [PROPOSED; frozen] — contract `paper.prop3_2.a@1`
-* `prop-ii.b` [PROPOSED; frozen] — contract `paper.prop3_2.b@1`
-* `lem-connected.left` [PROPOSED; frozen] — contract `paper.lem2_4.leftHull@1`
-* `eqn-scale.left` [PROPOSED; frozen] — contract `paper.prop2_1_scaling.leftHull@1`
-* `eqn-reflect.left` [PROPOSED; frozen] — contract `paper.prop2_2_reflection.leftHull@1`
+* `defn-loewner.well-defined` [REVIEWED; frozen] — contract `paper.def1_1.wellDefined@1`
+* `lem-p.exists` [REVIEWED; frozen] — contract `paper.lem2_13.exists@1`
+* `nonsource.exists-sle-driver` [REVIEWED; frozen] — contract `paper.nonsource.existsSLEDriver@1`
+* `thm-phases` [REVIEWED; frozen] — contract `paper.thm1_8.phases@1`
+* `thm-phases.c-zero` [REVIEWED; frozen] — contract `paper.thm1_8.cZero@1`
+* `thm-disconnects.a` [REVIEWED; frozen] — contract `paper.thm1_10.a@1`
+* `thm-disconnects.b` [REVIEWED; frozen] — contract `paper.thm1_10.b@1`
+* `prop-i.a` [REVIEWED; frozen] — contract `paper.prop3_1.a@1`
+* `prop-i.b` [REVIEWED; frozen] — contract `paper.prop3_1.b@1`
+* `prop-ii.a` [REVIEWED; frozen] — contract `paper.prop3_2.a@1`
+* `prop-ii.b` [REVIEWED; frozen] — contract `paper.prop3_2.b@1`
+* `lem-connected.left` [REVIEWED; frozen] — contract `paper.lem2_4.leftHull@1`
+* `eqn-scale.left` [REVIEWED; frozen] — contract `paper.prop2_1_scaling.leftHull@1`
+* `eqn-reflect.left` [REVIEWED; frozen] — contract `paper.prop2_2_reflection.leftHull@1`
 
 ### Topology review queue
 
-* `claim:gt-conformal` [PROPOSED] — g_t is conformal from C\L_t onto C\(R_t+U_t); z(g_t(z)-z) -> 2t
-* `claim:hull-nonempty` [PROPOSED] — L_t contains the starting point U_0
-* `claim:hulls-monotone` [PROPOSED] — Left hulls are increasing
-* `def-arg` [PROPOSED] — Argument process theta_t(z)
-* `def-disconnect` [PROPOSED] — S disconnects S' from infinity
-* `defn-chordal-loewner` [PROPOSED] — Chordal Loewner chains (forward and reverse)
-* `defn-hulls.left` [PROPOSED] — Left hull L_t
-* `defn-hulls.right` [PROPOSED] — Right hull R_t
-* `defn-loewner.absorbing-time` [PROPOSED] — Absorbing time T_z
-* `defn-loewner.solution` [PROPOSED] — Loewner initial value problem (solution predicate)
-* `defn-loewner.well-defined` [PROPOSED] — Well-definedness of the Loewner chain
-* `defn-phases.dense` [PROPOSED] — Dense phase
-* `defn-phases.hitting` [PROPOSED] — Hitting phase
-* `defn-phases.swallowing` [PROPOSED] — Swallowing phase
-* `defn-phases.thin` [PROPOSED] — Thin phase
-* `defn-sigma` [PROPOSED] — sigma-time parametrization of a centered SLE_Sigma at a fixed point
-* `defn-sle` [PROPOSED] — SLE_Sigma driving process (planar BM with covariance Sigma)
-* `defn-sle.gaussian-law` [PROPOSED] — Centered Gaussian law on C = R^2
-* `eqn-c0-integrals` [PROPOSED] — Integrals (I),(II) for c = 0 (3.20)
-* `eqn-c0-phase-show` [PROPOSED] — Positivity (3.21): int_0^{2pi} cos(2u)p(u) du > 0
-* `eqn-computation-tilde-f` [PROPOSED] — Rescaled future chain f~_u (3.3)
-* `eqn-conc` [PROPOSED] — Concatenation property (2.3)
-* `eqn-cov-matrix` [PROPOSED] — Covariance matrix Sigma
-* `eqn-def-ft` [PROPOSED] — SDE (1.6) for the centered SLE_Sigma maps f_t
-* `eqn-disconnect-mart` [PROPOSED] — Conditional lower bound P(disconnect z before T_z | F_{sigma_z(t~)}) >= q_*
-* `eqn-dist-1` [PROPOSED] — Rearrangement (3.11)
-* `eqn-dist-2` [PROPOSED] — Bound on E_s^c, first part (3.16)
-* `eqn-dist-3` [PROPOSED] — Main distance inequality (3.6)
-* `eqn-dist-cases` [PROPOSED] — Case formula (3.13)
-* `eqn-dist-es` [PROPOSED] — Bound on E_s^ (3.15)
-* `eqn-dist-esc` [PROPOSED] — Bound on E_s^c (3.17)
-* `eqn-dist-event` [PROPOSED] — Definition of the event E_s^ (3.12)
-* `eqn-hit-koebe` [PROPOSED] — Koebe estimate (3.5): |f_t'(zz)| asymp dist(f_t(zz),R_t)/dist(zz,L_t) <= |f_t(zz)|/dist(zz,L_t)
-* `eqn-integral-nu` [PROPOSED] — Integrals (I),(II) as stationary expectations (3.1)
-* `eqn-koebe-t` [PROPOSED] — Koebe for f_t on C\L_{s+t} (3.10)
-* `eqn-koebe-union` [PROPOSED] — Koebe on E_s^ (3.14)
-* `eqn-log-finite-end` [PROPOSED] — (3.2'): P(tau_k <= sigma(qN)) <= C_N 2^{-k}
-* `eqn-log-finite-show` [PROPOSED] — Tail bound (3.18): P(dist(zz,L_{sigma(t^)}) <= 16^{-k}) <= C_{t^} 2^{-k+1}
-* `eqn-neg-I1-bd` [PROPOSED] — Pathwise bound (3.2): log|f_t(zz)| < -(alpha/2) int_0^t |f_s(zz)|^{-2} ds
-* `eqn-nu-D.D` [PROPOSED] — Diffusion coefficient D(u)
-* `eqn-nu-D.mu` [PROPOSED] — Drift mu(u)
-* `eqn-nu-D.nu` [PROPOSED] — Log-drift nu(u)
-* `eqn-reflect` [PROPOSED] — Reflection property (2.2), full
-* `eqn-reflect.left` [PROPOSED] — Reflection property for left hulls
-* `eqn-scale` [PROPOSED] — Scaling property (2.1), full
-* `eqn-scale.left` [PROPOSED] — Scaling property for left hulls
-* `eqn-sde-ratio` [PROPOSED] — SDE (3.4) for log(|f^_t'|/|f^_t|)
-* `eqn-two-dist-ratio` [PROPOSED] — Comparison (3.9) of the two Koebe formulas
-* `eqn-two-formulas` [PROPOSED] — Koebe for f_{t,s+t} on C\L_{t,s+t} (3.7)
-* `eqn-two-formulas-b` [PROPOSED] — Koebe for f_{t,s+t} on C\(L_{t,s+t} u R_t) (3.8)
-* `eqn-wt-L-dist` [PROPOSED] — Joint law identity (3.4)
-* `ext:birkhoff` [PROPOSED] — Birkhoff ergodic theorem
-* `ext:blumenthal` [PROPOSED] — Blumenthal zero-one law: germ sigma-field of Brownian motion is trivial
-* `ext:bm-existence` [PROPOSED] — Existence of planar Brownian motion with covariance Sigma
-* `ext:bm-support` [PROPOSED] — Support theorem: a Brownian motion stays uniformly within delta of a given admissible continuous path on [0,T] with positive probability
-* `ext:dct` [PROPOSED] — Dominated convergence
-* `ext:durrett-7.3.2` [PROPOSED] — Durrett Theorem 7.3.2 (recurrence of Z-valued stationary sequences)
-* `ext:girsanov` [PROPOSED] — Girsanov theorem
-* `ext:hormander-1d` [PROPOSED] — Hormander criterion, one-dimensional case
-* `ext:ito-complex` [PROPOSED] — Ito formula for complex semimartingales
-* `ext:koebe-distortion` [PROPOSED] — Koebe distortion estimate (Lawler Corollary 3.23)
-* `ext:koebe-quarter` [PROPOSED] — Koebe quarter theorem (Lawler Corollary 3.18)
-* `ext:kolmogorov-zero-one` [PROPOSED] — Kolmogorov zero-one law (tail sigma-algebra of BM is trivial)
-* `ext:lawler-4.5` [PROPOSED] — Lawler Theorem 4.5: g_t is conformal onto H minus hull; z(g_t-z) -> 2t
-* `ext:levy-characterization` [PROPOSED] — Levy characterization / Dambis-Dubins-Schwarz
-* `ext:loewner-convergence` [PROPOSED] — Lawler Prop 4.43: locally uniform convergence of driving functions gives locally uniform convergence of Loewner maps away from the hull
-* `ext:martingale-convergence` [PROPOSED] — Levy upward martingale convergence (conditional Borel-Cantelli)
-* `ext:picard-lindelof` [PROPOSED] — Picard-Lindelof ODE existence and uniqueness
-* `ext:scale-function` [PROPOSED] — Scale-function hitting lemma
-* `ext:strong-markov-bm` [PROPOSED] — Strong Markov property of Brownian motion
-* `item-I` [PROPOSED] — Integral (I)
-* `item-II` [PROPOSED] — Integral (II)
-* `lem-all-z` [PROPOSED] — Lemma 3.3: from the stationary point zz to every z
-* `lem-c-event` [PROPOSED] — Positive-probability event on the increments of the driving BMs
-* `lem-c0-bdy` [PROPOSED] — Lemma 3.12: c = 0, a - b = 8 is in the hitting phase
-* `lem-c0-phases` [PROPOSED] — Lemma 3.11: phases for c = 0 away from the swallowing/hitting boundary
-* `lem-computation` [PROPOSED] — Lemma 3.9: stationarity of the pair (point, future hull)
-* `lem-connected.left` [PROPOSED] — Left hulls are connected
-* `lem-converse-w-o-upgrade` [PROPOSED] — Lemma 3.8: (II) > 0 implies P(lim dist(zz,L_t) = 0) < 1
-* `lem-disconnect-2` [PROPOSED] — Left hulls disconnect a fixed open set with positive probability
-* `lem-endpt-cont` [PROPOSED] — |f_t(z)| tends to 0 at the absorbing time
-* `lem-forward-reverse-ext` [PROPOSED] — Real and imaginary drivers recover forward and reverse chordal chains
-* `lem-haus` [PROPOSED] — Continuity of Loewner maps and of left/right hulls in the driving function
-* `lem-hormander` [PROPOSED] — Smooth density and smooth semigroup for the periodic SDE
-* `lem-integral-ii` [PROPOSED] — Lemma 3.7: E log(|f^'|/|f^|)(zz) = -t^ (II), and divergence when (II) < 0
-* `lem-kolmogorov` [PROPOSED] — Kolmogorov forward equation for periodic SDEs (stationary law)
-* `lem-line-approx` [PROPOSED] — Hulls and map of an SLE_Sigma chain are close to the zero-driver chain
-* `lem-log-finite-exp` [PROPOSED] — Lemma 3.10: E log(1/dist(zz,L_{sigma(t^)})) < infinity
-* `lem-markov` [PROPOSED] — Markov property of SLE_Sigma
-* `lem-mult-by-i` [PROPOSED] — Multiplying by i converts reverse to forward chains
-* `lem-p` [PROPOSED] — Lemma 2.13 (full): non-negative pi-periodic solution, positive off a discrete set, giving a stationary argument process
-* `lem-p.exists` [PROPOSED] — Lemma 2.13, existence of an admissible density
-* `lem-polar` [PROPOSED] — Polar decomposition of SLE_Sigma
-* `lem-pos-hits-before-neg` [PROPOSED] — Re f_2 changes sign across a segment [x,y] disjoint from L_2 with positive probability
-* `lem-recurrence` [PROPOSED] — Recurrence of the stationary argument process
-* `lem-recurrent` [PROPOSED] — Lemma 3.5: recurrence for stationary sequences with E(xi_1|I) = 0
-* `lem-scaling` [PROPOSED] — Scale invariance of SLE_Sigma
-* `lem-stationary` [PROPOSED] — Stationarity of the argument process started from an admissible density
-* `lem-stationary-sde` [PROPOSED] — Lemma 3.4: law of large numbers and recurrence for stationary SDE functionals
-* `lem-stationary.admissible` [PROPOSED] — Admissible stationary density (hypothesis package of Lemma 2.14)
-* `lem-swallow-distance` [PROPOSED] — Lemma 3.6: log|f^_t(z)| -> -infinity when T_z < infinity
-* `lem:re-im-bounds` [PROPOSED] — Pathwise bounds on increments of Re f_t(z), Im f_t(z) while |f_t(z)|>1
-* `nonsource.exists-sle-driver` [PROPOSED] — Existence of an SLE_Sigma driver
-* `prop-i.a` [PROPOSED] — Proposition 3.1(a): (I) >= 0 implies T_z = infinity
-* `prop-i.b` [PROPOSED] — Proposition 3.1(b): (I) < 0 implies T_z < infinity
-* `prop-ii.a` [PROPOSED] — Proposition 3.2(a): (II) < 0 implies dist(z,L_t) -> 0
-* `prop-ii.b` [PROPOSED] — Proposition 3.2(b): (II) > 0 implies lim dist(z,L_t) > 0
-* `remark-p0` [PROPOSED] — Remark 2.15: for c=0 the periodic solution p of Lemma 2.13 is a constant times p_0
-* `remark-sigma` [PROPOSED] — sigma_z is defined on all of (0,infty) and maps it onto (0,T_z)
-* `step:D-structure` [PROPOSED] — Structure of D: positivity if |c|<sqrt(ab); D = (1/2)(sqrt a sin -+ sqrt b cos)^2 if c = +-sqrt(ab)
-* `step:all-z-apply-Tz` [PROPOSED] — Lemma 3.3 hypotheses hold for {T_z < infinity} (and its complement)
-* `step:all-z-apply-dist` [PROPOSED] — Lemma 3.3 hypotheses hold for {lim_{t->T_z} dist(z,L_t) = 0}
-* `step:all-z-lambda-conull` [PROPOSED] — Lambda has full Lebesgue measure in the unit circle
-* `step:all-z-markov-transfer` [PROPOSED] — Conditioning at a stopping time tau < T_z
-* `step:all-z-null-set-density` [PROPOSED] — An admissible p vanishes only on a Lebesgue-null set
-* `step:all-z-stopping-time-choice` [PROPOSED] — Choice of tau with e^{i theta_tau(z)} in Lambda with probability >= q
-* `step:arg-lift` [PROPOSED] — Existence and uniqueness of the continuous argument lift
-* `step:bm-scaling` [PROPOSED] — Brownian scaling for the planar driver
-* `step:c-event-E1` [PROPOSED] — Event E_1: sqrt(b)B~_1>=4 and sqrt(a)|B_t|<=C-2t on [0,1] has positive probability for large C
-* `step:c-event-E2` [PROPOSED] — Event E_2: 2+4C<=sqrt(a)(B_2-B_1)<=5C-2 and sqrt(b)(B~_t-B~_1)>=2t-3 on [1,2] has positive probability for large C
-* `step:c-event-combine` [PROPOSED] — E_1 and E_2 are independent and positive, so all four conditions hold with positive probability
-* `step:c0-bdy-capacity-time` [PROPOSED] — limsup_{t->T_z^-} |f_t'(z)|/|f_t(z)| = infinity
-* `step:c0-bdy-drift-vanishes` [PROPOSED] — nu(.) + 2cos(2.) = 0 when c = 0 and a - b = 8
-* `step:c0-bdy-finite-time` [PROPOSED] — T_z < infinity when c = 0 and a - b = 8
-* `step:c0-bdy-hitting-from-limsup` [PROPOSED] — limsup |f_t'|/|f_t| = infinity implies dist(z,L_t) -> 0
-* `step:c0-bdy-martingale-bm` [PROPOSED] — log(|f^'|/|f^|)(z) is a time-changed BM with limsup +infinity
-* `step:c0-explicit-density` [PROPOSED] — Explicit stationary density p for c = 0 (3.19)
-* `step:c0-positivity-reduction` [PROPOSED] — Reduction of positivity of int cos(2u)p(u) du to [0,pi/2]
-* `step:c0-positivity-reflection` [PROPOSED] — Reflection across pi/4: |cos(2(pi/2-u))p(pi/2-u)| < cos(2u)p(u) on [0,pi/4)
-* `step:c0-sign-analysis` [PROPOSED] — Signs of (I),(II) for c = 0
-* `step:computation-scaling-markov` [PROPOSED] — f~ has the law of f and is independent of the evolution up to sigma(t^)
-* `step:computation-time-change-identity` [PROPOSED] — sigma~(s^) = |f_{sigma(t^)}(zz)|^{-2}(sigma(s^+t^) - sigma(t^))
-* `step:connected-homotopy` [PROPOSED] — Loop images stay in C\{0}: f_t o loop homotopic to loop
-* `step:connected-loop-criterion` [PROPOSED] — Connectedness of L_t from loops not surrounding the origin
-* `step:connected-region-misses-hull` [PROPOSED] — Winding number argument: bounded region misses L_t
-* `step:converse-conclude` [PROPOSED] — Contrapositive: lim dist = 0 a.s. implies (II) <= 0
-* `step:converse-event-converges` [PROPOSED] — 1_{E_s^} -> 1 as s^ -> infinity (under the contrapositive hypothesis)
-* `step:converse-lhs-nonneg` [PROPOSED] — E[left side of (3.6)] >= 0
-* `step:converse-rhs-limit` [PROPOSED] — Limit of E[right side of (3.6)] as s^ -> infinity
-* `step:disc-E1-positive` [PROPOSED] — P(E_1)>0 for every T, eps>0
-* `step:disc-E2E3-positive` [PROPOSED] — P(E_2 cap E_3)>0 for some eps,K and any T (Lemma 4.4 applied to the restarted chain)
-* `step:disc-E4-positive` [PROPOSED] — P(E_4)>0 for every K, eps>0 (by Markov property and Lemma 4.3)
-* `step:disc-a-hit-Lambda` [PROPOSED] — A closed positive-measure set Lambda' is hit by e^{i theta^_tz(z)} with positive probability
-* `step:disc-a-markov-restart` [PROPOSED] — Conditional probability given F at sigma_z(tau) is at least q(e^{i theta^_tau(z)})
-* `step:disc-a-martingale-limit-one` [PROPOSED] — The indicator of the disconnection event is a.s. 1 by martingale convergence
-* `step:disc-a-open-condition` [PROPOSED] — Disconnection before T_z is stable under small perturbation of the point
-* `step:disc-a-positive-measure-set` [PROPOSED] — The set of unit z with q(z)>0 has positive 1-d Lebesgue measure
-* `step:disc-a-q-positive-all-z` [PROPOSED] — q(z)>0 for every z in C minus {0}
-* `step:disc-a-q-scale-invariance` [PROPOSED] — q(z)=q(z/|z|) by scale invariance
-* `step:disc-a-uniform-lower-bound` [PROPOSED] — There is q_*>0 with q(z)>=q_* for every z in C minus {0}
-* `step:disc-b-blumenthal` [PROPOSED] — Almost surely there are arbitrarily small times t with non-empty interior of the disconnected set
-* `step:disc-b-monotone-extension` [PROPOSED] — Monotonicity extends the property from small times to all times
-* `step:disc-b-positive-for-all-t` [PROPOSED] — That probability is positive for every t>0
-* `step:disc-b-scale-invariance` [PROPOSED] — P(set disconnected by L_t has non-empty interior) is independent of t
-* `step:disc-concatenation-transfer` [PROPOSED] — On E_1..E_4, L_{T,T+2+K} meets S but not B_{3eps}(x)
-* `step:disc-independence-product` [PROPOSED] — E_1, E_2 cap E_3, E_4 are independent, hence P(E_1 cap E_2 cap E_3 cap E_4)>0
-* `step:disc-pullback-conclusion` [PROPOSED] — Pull back the disconnection through f_T by concatenation: L_{T+2+K} disconnects U^+- avoiding it
-* `step:disc-setup` [PROPOSED] — Choice of parameters T, eps, K, the sets U^{+-} and the four events E_1..E_4
-* `step:disc-topological-separation` [PROPOSED] — L_{T,T+2+K} cup R_T disconnects one of f_T(U^+-) from infinity without hitting it
-* `step:driver-negation-symmetry` [PROPOSED] — -U has the same law as U (reflection symmetry of the driver)
-* `step:driver-representation` [PROPOSED] — Representation U = sqrt(a) B + i sqrt(b) B~ for a planar BM with covariance Sigma
-* `step:endpt-finite-upcrossings` [PROPOSED] — Finitely many upcrossings before T_z
-* `step:endpt-liminf` [PROPOSED] — liminf |f_t(z)| = 0 at a finite absorbing time
-* `step:endpt-upcrossing-bound` [PROPOSED] — Upcrossings of [alpha,beta] have duration at least epsilon
-* `step:forward-real-driver` [PROPOSED] — Real driver: complex chain extends the forward chordal chain by Schwarz reflection
-* `step:future-point-outside-hulls` [PROPOSED] — zz not in L_{s+t}; f_t(zz) not in R_t u L_{t,s+t}
-* `step:haus-contradiction-L-t` [PROPOSED] — g_t cannot extend conformally to a set V meeting L_t
-* `step:haus-limit-conformal-extension` [PROPOSED] — Normal-family argument: g^n_t converges on V to a conformal limit extending g_t
-* `step:haus-maps-converge` [PROPOSED] — Convergence of forward (and reverse) Loewner maps from convergence of drivers
-* `step:haus-right-hull-reduction` [PROPOSED] — Right-hull and reverse-map versions via left hulls of reverse chains
-* `step:haus-subsequence-limit-contained` [PROPOSED] — Hausdorff-subsequential limit L' of L^n_t lies in L_t
-* `step:haus-subsubsequence-closure` [PROPOSED] — Subsequence principle: from limit identification to the quantitative statement for all large n
-* `step:horm-apply-hairer` [PROPOSED] — Application of the one-dimensional Hormander criterion
-* `step:horm-span-condition` [PROPOSED] — Hormander span condition is equivalent to: beta(u) or beta'(u)alpha(u) nonzero
-* `step:horm-stratonovich` [PROPOSED] — Stratonovich form of the SDE
-* `step:hulls-compact` [PROPOSED] — L_t and R_t are compact (premise of the Koebe theorems)
-* `step:integral-ii-apply-stationary-sde` [PROPOSED] — Apply Lemma 3.4 with Y = log(|f^'|/|f^|)(zz)
-* `step:integral-ii-expectation` [PROPOSED] — E log(|f^'|/|f^|)(zz) = -t^ (II)
-* `step:kol-derivative-at-zero` [PROPOSED] — Derivative of E_p f(X_t) at t=0 (A.3)
-* `step:kol-derivative-vanishes-all-times` [PROPOSED] — d/ds E_p f(X_s) = 0 for all s, hence E_p f(X_s) = E_p f(X_0)
-* `step:kol-integration-by-parts` [PROPOSED] — Integration by parts with vanishing boundary terms: derivative is 0 (A.4)
-* `step:kol-ito-expectation` [PROPOSED] — Ito formula for f(X_t), f in C^2 pi-periodic: integral form of E_p f(X_t)
-* `step:kol-markov-semigroup` [PROPOSED] — Markov property: E_p(T_s f(X_t)) = E_p f(X_{t+s})
-* `step:kol-process-stationarity` [PROPOSED] — From invariance of E_p f(X_s) for C^2 f to stationarity of the law of the process (e^{2iX_t})
-* `step:kol-semigroup-smooth` [PROPOSED] — T_s f is pi-periodic and smooth (so it is admissible as a test function)
-* `step:kol-shift-start` [PROPOSED] — Starting distribution may be taken on [x,x+pi]
-* `step:line-apply-haus` [PROPOSED] — Apply Lemma 4.3 with U = 0 to deduce the Hausdorff and map bounds
-* `step:line-small-driver-positive` [PROPOSED] — The planar driver stays uniformly near 0 on [0,T] with positive probability
-* `step:line-zero-driver-chain` [PROPOSED] — Zero driver: g_t = sqrt(z^2+4t), L_t=[-2 t^{1/2} i,2 t^{1/2} i], R_t=[-2 t^{1/2},2 t^{1/2}]
-* `step:loewner-glue-maximal` [PROPOSED] — Gluing: a solution exists on all of [0,T_z)
-* `step:loewner-local-solution` [PROPOSED] — Local existence and uniqueness for the Loewner ODE away from U_t
-* `step:log-finite-binomial` [PROPOSED] — Binomial tail bound on the number of successful scales
-* `step:log-finite-distortion` [PROPOSED] — Distortion estimate: f_{tau_k}(B_{16^{-k-1}}(zz))/|f_{tau_k}(zz)| in B_{1/2}
-* `step:log-finite-exit-times` [PROPOSED] — T_k <= tau_{k+1}
-* `step:log-finite-iid` [PROPOSED] — The integral int_{tau_k}^{T_k} |f_v(zz)|^{-2} dv is independent of F_{tau_k} with k-free law
-* `step:log-finite-q-choice` [PROPOSED] — Choice of the constant q = q(Sigma)
-* `step:log-finite-tail-to-expectation` [PROPOSED] — Tail bound implies E log(1/dist) < infinity
-* `step:markov-driver` [PROPOSED] — Strong Markov property for the planar driver
-* `step:p-case1` [PROPOSED] — Case 1 assembly: smooth admissible density for c<sqrt(ab) with int_0^{2pi} p = 1
-* `step:p-case1-first-order-solutions` [PROPOSED] — p_0, p_1 smooth and solve the first-order ODEs -mu p_j + [D p_j]' = j
-* `step:p-case1-mu-over-D-integral` [PROPOSED] — Evaluation of int_0^pi mu/D = 8 pi c (2 sqrt(ab-c^2)-(a+b))/(sqrt(ab-c^2)((a-b)^2+4c^2)) <= 0
-* `step:p-case1-nonneg` [PROPOSED] — r_* >= 0 and hence p >= 0
-* `step:p-case1-periodic` [PROPOSED] — p = k(p_0 + r_* p_1) is pi-periodic
-* `step:p-case1-zero-set` [PROPOSED] — p vanishes only on a discrete set (case 1)
-* `step:p-case2` [PROPOSED] — Case 2 assembly: admissible density for c = sqrt(ab) with int_0^{2pi} p = 1
-* `step:p-case2-limits` [PROPOSED] — Case 2: l'Hopital limits of p at x and x+pi equal (a+b)/(4 sqrt(ab))
-* `step:p-case2-regularity` [PROPOSED] — Case 2: periodic extension is continuous, smooth off x+piZ, solves (2.13) there and D p is C^1 with zero derivative on x+piZ
-* `step:p-case2-welldefined` [PROPOSED] — Case 2: p defined by (2.32) is well defined, positive, smooth on (x,x+pi) and solves -mu p + [D p]' = 1
-* `step:p-positive-off-discrete` [PROPOSED] — The constructed p is positive except on a discrete set
-* `step:p-wlog-c-nonneg` [PROPOSED] — Reduction to c >= 0 for the density construction
-* `step:p0-c0-r-star-zero` [PROPOSED] — For c=0, r_*=0 so that p = k p_0
-* `step:polar-W-law` [PROPOSED] — (W,W~) has the law of (B,B~)
-* `step:polar-derivative-sde` [PROPOSED] — SDE for log|f_t'(z)| and its sigma-time version
-* `step:polar-ito-log` [PROPOSED] — Ito computation of d log f_t(z)
-* `step:polar-real-imag` [PROPOSED] — Real and imaginary parts: SDEs for log|f_t| and theta_t in capacity time
-* `step:polar-time-change` [PROPOSED] — Time change by sigma: definition of W, W~ and the sigma-time SDEs
-* `step:pos-choose-C-x-y` [PROPOSED] — Choice of C>=1 on the event of Lemma 4.6 and of x=2C, y=7C
-* `step:pos-imag-part-bound` [PROPOSED] — Im f_t(z)<=-1 on [1,2] and hence rho_z>=2 for z in [x,y]
-* `step:pos-real-part-lower-bound` [PROPOSED] — Re f_t(z)>=C on [0,1] for z in [x,y] and hence rho_z>=1
-* `step:pos-real-part-sign-change` [PROPOSED] — -6C<=Re f_2(z)-Re z<=-3C so Re f_2(x)<=-C<0<C<=Re f_2(y)
-* `step:pos-segment-disjoint-L2` [PROPOSED] — [x,y] is disjoint from L_2
-* `step:prop-i-a-not-to-minus-infinity` [PROPOSED] — (I) >= 0 implies log|f^_t(zz)| does not tend to -infinity
-* `step:prop-i-apply-stationary-sde` [PROPOSED] — Apply Lemma 3.4 with Y = log|f^(zz)|, m = 2, X = e^{2 i theta^(zz)}
-* `step:prop-i-b-ode-comparison` [PROPOSED] — ODE comparison: F'(t) e^{-alpha F(t)} > 1 forces T_zz < infinity
-* `step:prop-ii-a-capacity-time` [PROPOSED] — lim_{t->T_zz^-} |f_t'(zz)|/|f_t(zz)| = infinity
-* `step:prop-ii-a-koebe-limit` [PROPOSED] — dist(zz,L_t) -> 0 as t -> T_zz
-* `step:prop-ii-b-compactness` [PROPOSED] — Uniform lower bound q >= q_* > 0 on the unit circle and on C\{0}
-* `step:prop-ii-b-conditional-lower-bound` [PROPOSED] — P(lim dist > 0 | F_{sigma_z(t^)}) >= q_* for all t^
-* `step:prop-ii-b-hit-lambda-prime` [PROPOSED] — P(tau < infinity) > 0 for the first entry time tau into a closed positive-measure subset Lambda'
-* `step:prop-ii-b-koebe-ball` [PROPOSED] — Koebe distortion: lim dist(z,L_t) >= r implies the ball B_{r/16}(z) is absorbed at T_z
-* `step:prop-ii-b-lambda-full` [PROPOSED] — Lambda is the whole unit circle
-* `step:prop-ii-b-lambda-positive-measure` [PROPOSED] — Lambda = {|z|=1 : q(z) > 0} has positive Lebesgue measure
-* `step:prop-ii-b-markov-transfer` [PROPOSED] — Conditional probability at sigma_z(tau) equals q(e^{i theta^_tau(z)})
-* `step:prop-ii-b-martingale-zero-one` [PROPOSED] — Martingale convergence upgrades to a.s. lim dist(z,L_t) > 0
-* `step:prop-ii-b-scale-reduction` [PROPOSED] — q(z) = q(z/|z|)
-* `step:re-im-drift-bound` [PROPOSED] — Drift of Re/Im f_t(z) is bounded by 2 in absolute value while |f_t(z)|>=1
-* `step:re-im-ft-sde` [PROPOSED] — Real and imaginary parts of f_t(z) satisfy a pair of SDEs
-* `step:rec-angle-hit-unif` [PROPOSED] — Uniform hitting estimate (2.45)
-* `step:rec-hit-fixed-y` [PROPOSED] — Positive probability of hitting x in finite theta-time from each y in (x,x+pi)
-* `step:rec-monotone-in-y` [PROPOSED] — Hitting probability within time T is non-increasing in y; uniform bound
-* `step:rec-reduction-to-x` [PROPOSED] — Reduction to hitting e^{2ix} for a single x
-* `step:rec-renewal` [PROPOSED] — Renewal times tau_k^eps: conditional hitting probability >= delta per window gives infinitely many hits
-* `step:rec-scale-function-hit` [PROPOSED] — Scale-function argument: with positive probability R<infinity and X_R = x
-* `step:rec-tau-finite` [PROPOSED] — A.s. exists eps with tau_k^eps<infty for all k
-* `step:rec-time-change-omega` [PROPOSED] — Time change omega(r) with r = 2 int_0^omega D: X_r satisfies dX = mu/(2D) dr + dZ
-* `step:recurrent-durrett-adaptation` [PROPOSED] — Adaptation of Durrett Thm 7.3.2 to real-valued sequences with E(xi_1|I)=0
-* `step:reverse-via-mult-by-i` [PROPOSED] — Part (b): reverse chain by combining part (a) with rotation
-* `step:sde-birkhoff-limit` [PROPOSED] — Birkhoff: Y_t/t -> E(Y_1-Y_0 | I)
-* `step:sde-continuity-noninteger` [PROPOSED] — Continuity argument for non-integer times
-* `step:sde-limit-deterministic` [PROPOSED] — lim Y_t/t is a.s. a deterministic constant
-* `step:sde-mean-zero` [PROPOSED] — Mean-zero stochastic integrals and E(Y_1-Y_0) = E f^0(X_0)
-* `step:sde-recurrence-zero` [PROPOSED] — Recurrence of Y near 0 when E f^0(X_0) = 0
-* `step:sde-regeneration` [PROPOSED] — Post-tau_k increments of Y are independent of B up to tau_k
-* `step:sde-stationary-increments` [PROPOSED] — Y has stationary increments
-* `step:sigma-bounded-coefficients` [PROPOSED] — Bounded coefficients keep |hat f| and |hat f'| away from 0 and infinity on compacts
-* `step:stat-apply-kolmogorov-critical` [PROPOSED] — Lemma A.1 applied in the critical case c = +-sqrt(ab)
-* `step:stat-apply-kolmogorov-noncritical` [PROPOSED] — Lemma A.1 applied in the nondegenerate case |c| != sqrt(ab)
-* `step:stat-kolmogorov-normalization` [PROPOSED] — Apply Lemma A.1 to 2p (normalization int_0^pi = 1 and alpha = mu, beta^2 = 2D)
-* `step:stat-martingale-qv` [PROPOSED] — Martingale part of the theta-SDE has quadratic variation 2D and is sqrt(2D) dW'
-* `step:stat-pi-reduction` [PROPOSED] — Stationarity of e^{2i theta} implies stationarity of e^{i theta}
-* `step:stat-theta-bm-sde` [PROPOSED] — One-noise SDE for the sigma-time argument process
-* `step:stationary-sde-X-form` [PROPOSED] — The SDEs for X = e^{2 i theta^(zz)} and Y have the form required by Lemma 3.4
-* `step:swallow-time-change` [PROPOSED] — Capacity-time limit to sigma-time limit
-* `step:wlog-c-nonneg` [PROPOSED] — WLOG c >= 0 by conjugation
-* `step:zero-in-left-hull` [PROPOSED] — 0 belongs to every left hull (and to the future hulls L_{t,s+t})
-* `step:zero-in-right-hull` [PROPOSED] — 0 belongs to every right hull R_t
-* `thm-disconnects#proof-a` [PROPOSED] — Proof assembly of Theorem 1.10(a) from Lemma 4.1
-* `thm-disconnects#proof-b` [PROPOSED] — Proof assembly of Theorem 1.10(b) from Lemma 4.1
-* `thm-disconnects.a` [PROPOSED] — SLE_Sigma disconnects points: (a)
-* `thm-disconnects.b` [PROPOSED] — SLE_Sigma disconnects points: (b)
-* `thm-phases` [PROPOSED] — Phases of SLE_Sigma
-* `thm-phases#assembly-c-zero` [PROPOSED] — Thm 1.8 proof: c = 0 phases from Lemmas 3.11 and 3.12
-* `thm-phases#assembly-sign-cases` [PROPOSED] — Thm 1.8 proof: Props 3.1/3.2 give the four sign-case phases
-* `thm-phases.c-zero` [PROPOSED] — Phases of SLE_Sigma when c = 0
+* _(none)_
 
 ### Dependency leaves in root closure
 
-* `def-disconnect` [PROPOSED] — S disconnects S' from infinity
-* `defn-chordal-loewner` [PROPOSED] — Chordal Loewner chains (forward and reverse)
-* `defn-loewner.solution` [PROPOSED] — Loewner initial value problem (solution predicate)
-* `defn-sle.gaussian-law` [PROPOSED] — Centered Gaussian law on C = R^2
-* `eqn-computation-tilde-f` [PROPOSED] — Rescaled future chain f~_u (3.3)
-* `eqn-cov-matrix` [PROPOSED] — Covariance matrix Sigma
-* `eqn-dist-event` [PROPOSED] — Definition of the event E_s^ (3.12)
-* `eqn-nu-D.D` [PROPOSED] — Diffusion coefficient D(u)
-* `eqn-nu-D.mu` [PROPOSED] — Drift mu(u)
-* `eqn-nu-D.nu` [PROPOSED] — Log-drift nu(u)
-* `ext:birkhoff` [PROPOSED] — Birkhoff ergodic theorem
-* `ext:blumenthal` [PROPOSED] — Blumenthal zero-one law: germ sigma-field of Brownian motion is trivial
-* `ext:bm-existence` [PROPOSED] — Existence of planar Brownian motion with covariance Sigma
-* `ext:bm-support` [PROPOSED] — Support theorem: a Brownian motion stays uniformly within delta of a given admissible continuous path on [0,T] with positive probability
-* `ext:dct` [PROPOSED] — Dominated convergence
-* `ext:durrett-7.3.2` [PROPOSED] — Durrett Theorem 7.3.2 (recurrence of Z-valued stationary sequences)
-* `ext:girsanov` [PROPOSED] — Girsanov theorem
-* `ext:hormander-1d` [PROPOSED] — Hormander criterion, one-dimensional case
-* `ext:ito-complex` [PROPOSED] — Ito formula for complex semimartingales
-* `ext:koebe-distortion` [PROPOSED] — Koebe distortion estimate (Lawler Corollary 3.23)
-* `ext:koebe-quarter` [PROPOSED] — Koebe quarter theorem (Lawler Corollary 3.18)
-* `ext:kolmogorov-zero-one` [PROPOSED] — Kolmogorov zero-one law (tail sigma-algebra of BM is trivial)
-* `ext:lawler-4.5` [PROPOSED] — Lawler Theorem 4.5: g_t is conformal onto H minus hull; z(g_t-z) -> 2t
-* `ext:levy-characterization` [PROPOSED] — Levy characterization / Dambis-Dubins-Schwarz
-* `ext:loewner-convergence` [PROPOSED] — Lawler Prop 4.43: locally uniform convergence of driving functions gives locally uniform convergence of Loewner maps away from the hull
-* `ext:martingale-convergence` [PROPOSED] — Levy upward martingale convergence (conditional Borel-Cantelli)
-* `ext:picard-lindelof` [PROPOSED] — Picard-Lindelof ODE existence and uniqueness
-* `ext:scale-function` [PROPOSED] — Scale-function hitting lemma
-* `ext:strong-markov-bm` [PROPOSED] — Strong Markov property of Brownian motion
-* `step:horm-stratonovich` [PROPOSED] — Stratonovich form of the SDE
-* `step:kol-shift-start` [PROPOSED] — Starting distribution may be taken on [x,x+pi]
-* `step:sde-continuity-noninteger` [PROPOSED] — Continuity argument for non-integer times
-* `step:sde-mean-zero` [PROPOSED] — Mean-zero stochastic integrals and E(Y_1-Y_0) = E f^0(X_0)
-* `step:sde-stationary-increments` [PROPOSED] — Y has stationary increments
+* `def-disconnect` [REVIEWED] — S disconnects S' from infinity
+* `defn-chordal-loewner` [REVIEWED] — Chordal Loewner chains (forward and reverse)
+* `defn-loewner.solution` [REVIEWED] — Loewner initial value problem (solution predicate)
+* `defn-sle.gaussian-law` [REVIEWED] — Centered Gaussian law on C = R^2
+* `eqn-computation-tilde-f` [REVIEWED] — Rescaled future chain f~_u (3.3)
+* `eqn-cov-matrix` [REVIEWED] — Covariance matrix Sigma
+* `eqn-dist-event` [REVIEWED] — Definition of the event E_s^ (3.12)
+* `eqn-nu-D.D` [REVIEWED] — Diffusion coefficient D(u)
+* `eqn-nu-D.mu` [REVIEWED] — Drift mu(u)
+* `eqn-nu-D.nu` [REVIEWED] — Log-drift nu(u)
+* `ext:birkhoff` [REVIEWED] — Birkhoff ergodic theorem
+* `ext:blumenthal` [REVIEWED] — Blumenthal zero-one law: germ sigma-field of Brownian motion is trivial
+* `ext:bm-existence` [REVIEWED] — Existence of planar Brownian motion with covariance Sigma
+* `ext:bm-support` [REVIEWED] — Support theorem: a Brownian motion stays uniformly within delta of a given admissible continuous path on [0,T] with positive probability
+* `ext:dct` [REVIEWED] — Dominated convergence
+* `ext:durrett-7.3.2` [REVIEWED] — Durrett Theorem 7.3.2 (recurrence of Z-valued stationary sequences)
+* `ext:girsanov` [REVIEWED] — Girsanov theorem
+* `ext:hormander-1d` [REVIEWED] — Hormander criterion, one-dimensional case
+* `ext:ito-complex` [REVIEWED] — Ito formula for complex semimartingales
+* `ext:koebe-distortion` [REVIEWED] — Koebe distortion estimate (Lawler Corollary 3.23)
+* `ext:koebe-quarter` [REVIEWED] — Koebe quarter theorem (Lawler Corollary 3.18)
+* `ext:kolmogorov-zero-one` [REVIEWED] — Kolmogorov zero-one law (tail sigma-algebra of BM is trivial)
+* `ext:lawler-4.5` [REVIEWED] — Lawler Theorem 4.5: g_t is conformal onto H minus hull; z(g_t-z) -> 2t
+* `ext:levy-characterization` [REVIEWED] — Levy characterization / Dambis-Dubins-Schwarz
+* `ext:loewner-convergence` [REVIEWED] — Lawler Prop 4.43: locally uniform convergence of driving functions gives locally uniform convergence of Loewner maps away from the hull
+* `ext:martingale-convergence` [REVIEWED] — Levy upward martingale convergence (conditional Borel-Cantelli)
+* `ext:picard-lindelof` [REVIEWED] — Picard-Lindelof ODE existence and uniqueness
+* `ext:scale-function` [REVIEWED] — Scale-function hitting lemma
+* `ext:strong-markov-bm` [REVIEWED] — Strong Markov property of Brownian motion
+* `step:horm-stratonovich` [REVIEWED] — Stratonovich form of the SDE
+* `step:kol-shift-start` [REVIEWED] — Starting distribution may be taken on [x,x+pi]
+* `step:sde-mean-zero` [REVIEWED] — Mean-zero stochastic integrals and E(Y_1-Y_0) = E f^0(X_0)
+* `step:sde-stationary-increments` [REVIEWED] — Y has stationary increments
 
 ### Assumption boundary leaves
 
@@ -8602,25 +8331,25 @@ Regenerated by `proof_depgraph.py`; do not hand-edit.
 
 ### External boundary leaves
 
-* `ext:birkhoff` [PROPOSED] — Birkhoff ergodic theorem
-* `ext:blumenthal` [PROPOSED] — Blumenthal zero-one law: germ sigma-field of Brownian motion is trivial
-* `ext:bm-existence` [PROPOSED] — Existence of planar Brownian motion with covariance Sigma
-* `ext:bm-support` [PROPOSED] — Support theorem: a Brownian motion stays uniformly within delta of a given admissible continuous path on [0,T] with positive probability
-* `ext:dct` [PROPOSED] — Dominated convergence
-* `ext:durrett-7.3.2` [PROPOSED] — Durrett Theorem 7.3.2 (recurrence of Z-valued stationary sequences)
-* `ext:girsanov` [PROPOSED] — Girsanov theorem
-* `ext:hormander-1d` [PROPOSED] — Hormander criterion, one-dimensional case
-* `ext:ito-complex` [PROPOSED] — Ito formula for complex semimartingales
-* `ext:koebe-distortion` [PROPOSED] — Koebe distortion estimate (Lawler Corollary 3.23)
-* `ext:koebe-quarter` [PROPOSED] — Koebe quarter theorem (Lawler Corollary 3.18)
-* `ext:kolmogorov-zero-one` [PROPOSED] — Kolmogorov zero-one law (tail sigma-algebra of BM is trivial)
-* `ext:lawler-4.5` [PROPOSED] — Lawler Theorem 4.5: g_t is conformal onto H minus hull; z(g_t-z) -> 2t
-* `ext:levy-characterization` [PROPOSED] — Levy characterization / Dambis-Dubins-Schwarz
-* `ext:loewner-convergence` [PROPOSED] — Lawler Prop 4.43: locally uniform convergence of driving functions gives locally uniform convergence of Loewner maps away from the hull
-* `ext:martingale-convergence` [PROPOSED] — Levy upward martingale convergence (conditional Borel-Cantelli)
-* `ext:picard-lindelof` [PROPOSED] — Picard-Lindelof ODE existence and uniqueness
-* `ext:scale-function` [PROPOSED] — Scale-function hitting lemma
-* `ext:strong-markov-bm` [PROPOSED] — Strong Markov property of Brownian motion
+* `ext:birkhoff` [REVIEWED] — Birkhoff ergodic theorem
+* `ext:blumenthal` [REVIEWED] — Blumenthal zero-one law: germ sigma-field of Brownian motion is trivial
+* `ext:bm-existence` [REVIEWED] — Existence of planar Brownian motion with covariance Sigma
+* `ext:bm-support` [REVIEWED] — Support theorem: a Brownian motion stays uniformly within delta of a given admissible continuous path on [0,T] with positive probability
+* `ext:dct` [REVIEWED] — Dominated convergence
+* `ext:durrett-7.3.2` [REVIEWED] — Durrett Theorem 7.3.2 (recurrence of Z-valued stationary sequences)
+* `ext:girsanov` [REVIEWED] — Girsanov theorem
+* `ext:hormander-1d` [REVIEWED] — Hormander criterion, one-dimensional case
+* `ext:ito-complex` [REVIEWED] — Ito formula for complex semimartingales
+* `ext:koebe-distortion` [REVIEWED] — Koebe distortion estimate (Lawler Corollary 3.23)
+* `ext:koebe-quarter` [REVIEWED] — Koebe quarter theorem (Lawler Corollary 3.18)
+* `ext:kolmogorov-zero-one` [REVIEWED] — Kolmogorov zero-one law (tail sigma-algebra of BM is trivial)
+* `ext:lawler-4.5` [REVIEWED] — Lawler Theorem 4.5: g_t is conformal onto H minus hull; z(g_t-z) -> 2t
+* `ext:levy-characterization` [REVIEWED] — Levy characterization / Dambis-Dubins-Schwarz
+* `ext:loewner-convergence` [REVIEWED] — Lawler Prop 4.43: locally uniform convergence of driving functions gives locally uniform convergence of Loewner maps away from the hull
+* `ext:martingale-convergence` [REVIEWED] — Levy upward martingale convergence (conditional Borel-Cantelli)
+* `ext:picard-lindelof` [REVIEWED] — Picard-Lindelof ODE existence and uniqueness
+* `ext:scale-function` [REVIEWED] — Scale-function hitting lemma
+* `ext:strong-markov-bm` [REVIEWED] — Strong Markov property of Brownian motion
 
 ### Uncovered graph nodes
 
@@ -8632,45 +8361,66 @@ Regenerated by `proof_depgraph.py`; do not hand-edit.
 
 ### Explicit source gaps
 
-* `claim:gt-conformal` [PROPOSED] — g_t is conformal from C\L_t onto C\(R_t+U_t); z(g_t(z)-z) -> 2t
-* `claim:hull-nonempty` [PROPOSED] — L_t contains the starting point U_0
-* `lem-disconnect-2` [PROPOSED] — Left hulls disconnect a fixed open set with positive probability
-* `lem-hormander` [PROPOSED] — Smooth density and smooth semigroup for the periodic SDE
-* `remark-sigma` [PROPOSED] — sigma_z is defined on all of (0,infty) and maps it onto (0,T_z)
-* `step:all-z-apply-Tz` [PROPOSED] — Lemma 3.3 hypotheses hold for {T_z < infinity} (and its complement)
-* `step:all-z-apply-dist` [PROPOSED] — Lemma 3.3 hypotheses hold for {lim_{t->T_z} dist(z,L_t) = 0}
-* `step:all-z-null-set-density` [PROPOSED] — An admissible p vanishes only on a Lebesgue-null set
-* `step:all-z-stopping-time-choice` [PROPOSED] — Choice of tau with e^{i theta_tau(z)} in Lambda with probability >= q
-* `step:arg-lift` [PROPOSED] — Existence and uniqueness of the continuous argument lift
-* `step:c0-bdy-finite-time` [PROPOSED] — T_z < infinity when c = 0 and a - b = 8
-* `step:converse-event-converges` [PROPOSED] — 1_{E_s^} -> 1 as s^ -> infinity (under the contrapositive hypothesis)
-* `step:disc-E1-positive` [PROPOSED] — P(E_1)>0 for every T, eps>0
-* `step:disc-E2E3-positive` [PROPOSED] — P(E_2 cap E_3)>0 for some eps,K and any T (Lemma 4.4 applied to the restarted chain)
-* `step:disc-a-markov-restart` [PROPOSED] — Conditional probability given F at sigma_z(tau) is at least q(e^{i theta^_tau(z)})
-* `step:disc-a-positive-measure-set` [PROPOSED] — The set of unit z with q(z)>0 has positive 1-d Lebesgue measure
-* `step:disc-setup` [PROPOSED] — Choice of parameters T, eps, K, the sets U^{+-} and the four events E_1..E_4
-* `step:disc-topological-separation` [PROPOSED] — L_{T,T+2+K} cup R_T disconnects one of f_T(U^+-) from infinity without hitting it
-* `step:forward-real-driver` [PROPOSED] — Real driver: complex chain extends the forward chordal chain by Schwarz reflection
-* `step:haus-contradiction-L-t` [PROPOSED] — g_t cannot extend conformally to a set V meeting L_t
-* `step:haus-maps-converge` [PROPOSED] — Convergence of forward (and reverse) Loewner maps from convergence of drivers
-* `step:haus-right-hull-reduction` [PROPOSED] — Right-hull and reverse-map versions via left hulls of reverse chains
-* `step:horm-apply-hairer` [PROPOSED] — Application of the one-dimensional Hormander criterion
-* `step:hulls-compact` [PROPOSED] — L_t and R_t are compact (premise of the Koebe theorems)
-* `step:kol-process-stationarity` [PROPOSED] — From invariance of E_p f(X_s) for C^2 f to stationarity of the law of the process (e^{2iX_t})
-* `step:line-apply-haus` [PROPOSED] — Apply Lemma 4.3 with U = 0 to deduce the Hausdorff and map bounds
-* `step:loewner-glue-maximal` [PROPOSED] — Gluing: a solution exists on all of [0,T_z)
-* `step:loewner-local-solution` [PROPOSED] — Local existence and uniqueness for the Loewner ODE away from U_t
-* `step:p-case2` [PROPOSED] — Case 2 assembly: admissible density for c = sqrt(ab) with int_0^{2pi} p = 1
-* `step:polar-derivative-sde` [PROPOSED] — SDE for log|f_t'(z)| and its sigma-time version
-* `step:prop-ii-b-hit-lambda-prime` [PROPOSED] — P(tau < infinity) > 0 for the first entry time tau into a closed positive-measure subset Lambda'
-* `step:prop-ii-b-koebe-ball` [PROPOSED] — Koebe distortion: lim dist(z,L_t) >= r implies the ball B_{r/16}(z) is absorbed at T_z
-* `step:rec-hit-fixed-y` [PROPOSED] — Positive probability of hitting x in finite theta-time from each y in (x,x+pi)
-* `step:rec-renewal` [PROPOSED] — Renewal times tau_k^eps: conditional hitting probability >= delta per window gives infinitely many hits
-* `step:recurrent-durrett-adaptation` [PROPOSED] — Adaptation of Durrett Thm 7.3.2 to real-valued sequences with E(xi_1|I)=0
-* `step:sde-continuity-noninteger` [PROPOSED] — Continuity argument for non-integer times
-* `step:sde-stationary-increments` [PROPOSED] — Y has stationary increments
-* `step:stat-theta-bm-sde` [PROPOSED] — One-noise SDE for the sigma-time argument process
-* `step:stationary-sde-X-form` [PROPOSED] — The SDEs for X = e^{2 i theta^(zz)} and Y have the form required by Lemma 3.4
-* `step:zero-in-right-hull` [PROPOSED] — 0 belongs to every right hull R_t
-* `thm-phases#assembly-sign-cases` [PROPOSED] — Thm 1.8 proof: Props 3.1/3.2 give the four sign-case phases
+* `claim:gt-conformal` [REVIEWED] — g_t is conformal from C\L_t onto C\(R_t+U_t); z(g_t(z)-z) -> 2t
+* `claim:hull-nonempty` [REVIEWED] — L_t contains the starting point U_0
+* `defn-chordal-loewner` [REVIEWED] — Chordal Loewner chains (forward and reverse)
+* `eqn-conc` [REVIEWED] — Concatenation property (2.3)
+* `eqn-duality` [REVIEWED] — Duality property (2.4)
+* `eqn-reflect` [REVIEWED] — Reflection property (2.2), full
+* `eqn-reflect.left` [REVIEWED] — Reflection property for left hulls
+* `eqn-scale` [REVIEWED] — Scaling property (2.1), full
+* `eqn-scale.left` [REVIEWED] — Scaling property for left hulls
+* `lem-disconnect-2` [REVIEWED] — Left hulls disconnect a fixed open set with positive probability
+* `lem-hormander` [REVIEWED] — Smooth density and smooth semigroup for the periodic SDE
+* `remark-sigma` [REVIEWED] — sigma_z is defined on all of (0,infty) and maps it onto (0,T_z)
+* `step:all-z-apply-Tz` [REVIEWED] — Lemma 3.3 hypotheses hold for {T_z < infinity} (and its complement)
+* `step:all-z-apply-dist` [REVIEWED] — Lemma 3.3 hypotheses hold for {lim_{t->T_z} dist(z,L_t) = 0}
+* `step:all-z-null-set-density` [REVIEWED] — An admissible p vanishes only on a Lebesgue-null set
+* `step:all-z-stopping-time-choice` [REVIEWED] — Choice of tau with e^{i theta_tau(z)} in Lambda with probability >= q
+* `step:arg-lift` [REVIEWED] — Existence and uniqueness of the continuous argument lift
+* `step:c0-bdy-finite-time` [REVIEWED] — T_z < infinity when c = 0 and a - b = 8
+* `step:c0-explicit-density` [REVIEWED] — Explicit stationary density p for c = 0 (3.19)
+* `step:connected-loop-criterion` [REVIEWED] — Connectedness of L_t from loops not surrounding the origin
+* `step:converse-event-converges` [REVIEWED] — 1_{E_s^} -> 1 as s^ -> infinity (under the contrapositive hypothesis)
+* `step:disc-E1-positive` [REVIEWED] — P(E_1)>0 for every T, eps>0
+* `step:disc-E2E3-positive` [REVIEWED] — P(E_2 cap E_3)>0 for some eps,K and any T (Lemma 4.4 applied to the restarted chain)
+* `step:disc-a-markov-restart` [REVIEWED] — Conditional probability given F at sigma_z(tau) is at least q(e^{i theta^_tau(z)})
+* `step:disc-a-positive-measure-set` [REVIEWED] — The set of unit z with q(z)>0 has positive 1-d Lebesgue measure
+* `step:disc-choose-U` [REVIEWED] — Choice of the deterministic set U in {U^-, U^+} by pigeonhole
+* `step:disc-concat-disconnect-general` [REVIEWED] — Concatenation transfer: disconnection by L_{s,s+t} cup R_s of f_s(z) pulls back to disconnection of z by L_{s+t}
+* `step:disc-concatenation-transfer` [REVIEWED] — On E_1..E_4, L_{T,T+2+K} meets S but not B_{3eps}(x)
+* `step:disc-setup` [REVIEWED] — Choice of parameters T, eps, K, the sets U^{+-} and the four events E_1..E_4
+* `step:disc-topological-separation` [REVIEWED] — L_{T,T+2+K} cup R_T disconnects one of f_T(U^+-) from infinity without hitting it
+* `step:flow-continuity` [REVIEWED] — Joint continuity of the Loewner flow in time and initial point
+* `step:forward-real-driver` [REVIEWED] — Real driver: complex chain extends the forward chordal chain by Schwarz reflection
+* `step:haus-contradiction-L-t` [REVIEWED] — g_t cannot extend conformally to a set V meeting L_t
+* `step:haus-maps-converge` [REVIEWED] — Convergence of forward (and reverse) Loewner maps from convergence of drivers
+* `step:haus-right-hull-reduction` [REVIEWED] — Right-hull and reverse-map versions via left hulls of reverse chains
+* `step:horm-apply-hairer` [REVIEWED] — Application of the one-dimensional Hormander criterion
+* `step:hull-closed` [REVIEWED] — L_t is closed
+* `step:hulls-compact` [REVIEWED] — L_t and R_t are compact (premise of the Koebe theorems)
+* `step:kol-process-stationarity` [REVIEWED] — From invariance of E_p f(X_s) for C^2 f to stationarity of the law of the process (e^{2iX_t})
+* `step:line-apply-haus` [REVIEWED] — Apply Lemma 4.3 with U = 0 to deduce the Hausdorff and map bounds
+* `step:loewner-global-uniqueness` [REVIEWED] — Global uniqueness of Loewner solutions on a common interval
+* `step:loewner-glue-maximal` [REVIEWED] — Gluing: a solution exists on all of [0,T_z)
+* `step:loewner-local-solution` [REVIEWED] — Local existence and uniqueness for the Loewner ODE away from U_t
+* `step:p-case1-first-order-solutions` [REVIEWED] — p_0, p_1 smooth and solve the first-order ODEs -mu p_j + [D p_j]' = j
+* `step:p-case2` [REVIEWED] — Case 2 assembly: admissible density for c = sqrt(ab) with int_0^{2pi} p = 1
+* `step:polar-derivative-sde` [REVIEWED] — SDE for log|f_t'(z)| and its sigma-time version
+* `step:prop-ii-b-hit-lambda-prime` [REVIEWED] — P(tau < infinity) > 0 for the first entry time tau into a closed positive-measure subset Lambda'
+* `step:prop-ii-b-koebe-ball` [REVIEWED] — Koebe distortion: lim dist(z,L_t) >= r implies the ball B_{r/16}(z) is absorbed at T_z
+* `step:re-im-drift-bound` [REVIEWED] — Drift of Re/Im f_t(z) is bounded by 2 in absolute value while |f_t(z)|>=1
+* `step:rec-hit-fixed-y` [REVIEWED] — Positive probability of hitting x in finite theta-time from each y in (x,x+pi)
+* `step:rec-renewal` [REVIEWED] — Renewal times tau_k^eps: conditional hitting probability >= delta per window gives infinitely many hits
+* `step:recurrent-durrett-adaptation` [REVIEWED] — Adaptation of Durrett Thm 7.3.2 to real-valued sequences with E(xi_1|I)=0
+* `step:reflect-map-identity` [REVIEWED] — Map-level reflection: f_t^{U*}(z*) = (f_t^U(z))*, f_t^{-U}(-z) = -f_t^U(z), absorbing times unchanged
+* `step:reverse-via-mult-by-i` [REVIEWED] — Part (b): reverse chain by combining part (a) with rotation
+* `step:sde-continuity-noninteger` [REVIEWED] — Continuity argument for non-integer times
+* `step:sde-stationary-increments` [REVIEWED] — Y has stationary increments
+* `step:section3-product-extension` [REVIEWED] — Product extension carrying zz: a.s. statements for (Omega,P,U) from the product space with the stationary point
+* `step:stat-theta-bm-sde` [REVIEWED] — One-noise SDE for the sigma-time argument process
+* `step:stationary-sde-X-form` [REVIEWED] — The SDEs for X = e^{2 i theta^(zz)} and Y have the form required by Lemma 3.4
+* `step:wlog-c-nonneg-arg` [REVIEWED] — WLOG c >= 0 for the stationary argument process (conjugation, p -> p(-.))
+* `step:zero-in-right-hull` [REVIEWED] — 0 belongs to every right hull R_t
+* `thm-phases#assembly-sign-cases` [REVIEWED] — Thm 1.8 proof: Props 3.1/3.2 give the four sign-case phases
 <!-- END PROOF DEPGRAPH GENERATED -->

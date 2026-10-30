@@ -111,6 +111,27 @@ may be. The argument needs a repair (for example, take U^± ⊂ ℂ∖L_T direct
 change how ε and the neighbourhood of L_T are chosen). It is recorded as a SOURCE_GAP on
 `step:disc-setup`. **Needed from the author:** a corrected argument, or a ruling on how to model it.
 
+**P11 (T8 candidate). The third formula of (2.3) as printed.** `paper.tex:L556-565`.
+f_t(L_{s+t} ∖ L_t) = L_{t,s+t} cannot hold, since f_t maps ℂ∖L_t onto ℂ∖R_t and 0 ∈ R_t ∩ L_{t,s+t}.
+**Proposed:** read it as f_t(L_{s+t} ∖ L_t) = L_{t,s+t} ∖ R_t, which agrees with the second formula
+(found by global-reviewer, confirmed by global-verifier).
+
+**P12 (T9 candidate). Lemma 2.16 for c = −√(ab).** `paper.tex:L1155-1163`. When c = −√(ab), D vanishes on
+−x + πℤ, so the argument proves recurrence at e^{−2ix} rather than e^{2ix}.
+**Proposed:** in the critical case, choose x with tan x = sgn(c)·√(b/a). Downstream (Lemma 3.4) only needs some
+deterministic recurrent point, so nothing else changes (found by global-verifier, checked by the orchestrator).
+
+**Further open modeling questions from the global reviews** (graph/reviews/global.review.md §6), currently
+modeled as SOURCE_GAP steps:
+- (2.2) is used for the maps f_t and not only the hulls (L984, L1165).
+- Right-hull connectedness and (2.4) enter the Thm 1.10 closure as ordinary nodes.
+- An admissible p vanishes only on a null set (needed by Lemma 3.3, under R7/R15).
+- Lemma 3.4's Markov state: the diffusion coefficients are only 2π-periodic in θ̂.
+- The independence claim in Lemma 3.10.
+- T_z < ∞ in Lemma 3.12.
+- The product-space extension for the random point 𝐳 (Props 3.1/3.2 over arbitrary Ω).
+- The new external `ext:kolmogorov-zero-one`.
+
 ### Typos (graph notes only)
 
 - T1 Lemma 2.6 proof `paper.tex:L732`: "f_t = f_{s,t} ∘ f_s|_{L_t}" should be "f_s|_{ℂ∖L_t}".

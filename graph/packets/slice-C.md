@@ -18,9 +18,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -44,9 +44,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -70,9 +70,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -96,9 +96,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -122,9 +122,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -148,9 +148,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -181,9 +181,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1255 | argument process theta behind theta^
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1257-L1257 | stationarity of e^{i theta^_t(zz)} for every admissible p (R7/R15); the source cites only Lemma 2.13
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1255-L1257 | p ranges over admissible densities (R7/R15)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -214,9 +214,9 @@ EDGE: lem-swallow-distance | source/arxiv-2203.07313v4/complex-sle-final.tex#pro
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | discharges the scale-invariance/future-dependence hypotheses of Lemma 3.3 for {T_z = infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1407-L1407 | extends a.s. T_zz = infinity to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -247,9 +247,9 @@ EDGE: step:prop-i-b-ode-comparison | source/arxiv-2203.07313v4/complex-sle-final
 EDGE: step:all-z-apply-Tz | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | hypotheses of Lemma 3.3 for {T_z < infinity}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1416-L1416 | extends a.s. T_zz < infinity to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -280,9 +280,9 @@ EDGE: step:prop-ii-a-koebe-limit | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | discharges the hypotheses of Lemma 3.3 for the event {lim dist(z,L_t)=0}
 EDGE: lem-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | extends to each fixed z != 0
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1459 | the proof works with zz sampled from p independently of the driver, on the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -303,7 +303,7 @@ FROZEN_FILE: ComplexSLE/Frozen/Proposition_3_2_B.lean
 FROZEN_DECL: ComplexSLE.proposition_3_2_b
 FROZEN_ANCHOR_ID: thm.proposition_3_2_b.v1
 FROZEN_ABI_SHA256: 68e7f561920bc47ded181922aa3709800fd30024d385e40bf7734750bb063c67
-DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one, step:section3-product-extension
+DEPS: item-II, defn-hulls.left, defn-loewner.absorbing-time, step:prop-ii-b-martingale-zero-one, step:section3-product-extension, claim:hulls-monotone
 ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1276-L1281 | sign hypothesis on (II)
@@ -311,9 +311,10 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1281-L1281 | T_z in the conclusion
 EDGE: step:prop-ii-b-martingale-zero-one | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | indicator of {lim dist > 0} is a.s. >= q_*, hence equals 1
 EDGE: step:section3-product-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | Fubini over the independent pair (zz, U) requires the product extension of the given probability space
-TOPOLOGY_STATUS: PROPOSED
+EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | L_t is increasing, so t -> dist(z,L_t) is non-increasing and the almost sure limit lim_{t->T_z-} dist(z,L_t) > 0 equals the infimum over t < T_z; this converts the proved limit statement into the frozen epsilon-form (R14) with epsilon := that infimum
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -340,9 +341,9 @@ ROUTE_FOR: -
 EDGE: step:all-z-lambda-conull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1310 | Lambda is the whole unit circle up to a Lebesgue-null set
 EDGE: step:all-z-markov-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1316 | P(E(z)) equals the average of P(E(.)) at e^{i theta_tau(z)} for a stopping time tau < T_z
 EDGE: step:all-z-stopping-time-choice | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | tau with P(e^{i theta_tau(z)} in Lambda) >= q for any q < 1, hence P(E(z)) = 1
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -368,9 +369,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1306 | p ranges over admissible densities (R7/R15)
 EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1306 | the source's justification: p of Lemma 2.13 is strictly positive off a discrete set
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -395,9 +396,9 @@ DEPS: step:all-z-null-set-density
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:all-z-null-set-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1306-L1310 | density p positive a.e. so a.s. event for zz forces P(E(z))=1 for a.e. z (Fubini over the independent zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -425,9 +426,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1316-L1316 | strong Markov property at tau: the future chain is independent of F_tau
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1314 | the future chain f_{tau,tau+.} of (2.3)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1312 | e^{i theta_tau(z)} = f_tau(z)/∣f_tau(z)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -455,9 +456,9 @@ EDGE: step:all-z-lambda-conull | source/arxiv-2203.07313v4/complex-sle-final.tex
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | the SDE for theta^ shows theta is non-constant (non-degenerate noise)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1312-L1312 | tau may be a sigma_z(t^)
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1318-L1318 | continuous argument process theta_t(z)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -484,9 +485,9 @@ ROUTE_FOR: -
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_{rz} for the chain r f_{t/r^2}(./r) equals r^2 T_z, absorption time scales
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | future dependence: T_z = s + T_{f_s(z)}(chain f_{s,s+.}) on {s < T_z}
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -514,9 +515,9 @@ EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L130
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | future dependence: relation of L_{s+t} and L_{s,s+t}
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | L_t
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1303-L1303 | T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -544,9 +545,9 @@ EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: step:sde-limit-deterministic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1366-L1372 | the limit is a.s. a deterministic constant
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1374-L1375 | E(Y_1-Y_0) = E f^0(X_0), identifying the constant
 EDGE: step:sde-recurrence-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1377-L1378 | second assertion when E f^0(X_0) = 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -570,9 +571,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -597,9 +598,9 @@ DEPS: step:sde-stationary-increments
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1363 | stationarity of the increments of Y is used to compare Y_t/t with Y_{floor(t)}/floor(t)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -626,9 +627,9 @@ ROUTE_FOR: -
 EDGE: ext:birkhoff | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | Birkhoff ergodic theorem for the stationary increment sequence
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | Y has stationary increments
 EDGE: step:sde-continuity-noninteger | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1361-L1361 | passes from integer to real times
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -653,9 +654,9 @@ DEPS: ext:strong-markov-bm
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:strong-markov-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1367-L1367 | strong Markov property of BM at the stopping time tau_k
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -682,9 +683,9 @@ ROUTE_FOR: -
 EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1366-L1370 | the limit exists a.s.
 EDGE: step:sde-regeneration | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1367-L1372 | limit equals lim (Y_{t+tau_k}-Y_{tau_k})/t, independent of B∣[0,tau_k]
 EDGE: ext:kolmogorov-zero-one | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1372-L1372 | tail sigma-algebra of B is trivial
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -708,9 +709,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -739,9 +740,9 @@ EDGE: step:sde-birkhoff-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: step:sde-limit-deterministic | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | the limit is deterministic
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | that constant equals E f^0(X_0) = 0, hence E(xi_1 ∣ I) = 0
 EDGE: step:sde-stationary-increments | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1378-L1378 | discharges the premise 'stationary sequence' of Lemma 3.5 for xi_n = Y_n - Y_{n-1}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -766,9 +767,9 @@ DEPS: step:recurrent-durrett-adaptation
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:recurrent-durrett-adaptation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrent@L1356-L1356 | 'essentially identical' to Durrett Thm 7.3.2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -793,9 +794,9 @@ DEPS: ext:durrett-7.3.2
 ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:durrett-7.3.2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrent@L1356-L1356 | template theorem
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -821,9 +822,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1391-L1391 | sigma_z and hats
 EDGE: step:swallow-time-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1395-L1396 | passes the capacity-time limit to sigma-time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -849,9 +850,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1395-L1395 | on {T_z < infinity}, lim_{t->T_z^-} log∣f_t(z)∣ = -infinity
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1396-L1396 | sigma(infinity) = T_z, so t^ -> infinity corresponds to t -> T_z^-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -876,9 +877,9 @@ DEPS: lem-polar
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | SDEs for theta^, log∣f^∣ and log∣f^'∣ (drifts mu, nu, -2cos 2theta^ are pi-periodic, hence functions of X)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -908,9 +909,9 @@ EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L
 EDGE: lem-recurrence | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | recurrence of X (hits a fixed xbar at arbitrarily large times)
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1403-L1403 | stationarity of the law of X_t = e^{2 i theta^_t(zz)} for every admissible p
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1402-L1402 | E f^0(X_0) = E nu(theta^_0(zz)) = (I)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -935,9 +936,9 @@ DEPS: step:prop-i-apply-stationary-sde
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:prop-i-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1406-L1406 | case (I) > 0: log∣f^_t∣/t -> (I) > 0; case (I) = 0: arbitrarily large t with ∣log∣f^_t∣∣ < eps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -964,9 +965,9 @@ ROUTE_FOR: -
 EDGE: step:prop-i-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1409 | log∣f^_t(zz)∣/t -> -alpha
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1410 | t^ = int_0^{sigma(t^)} ∣f_s(zz)∣^{-2} ds converts t^ to capacity time
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1409-L1409 | sigma maps (0,infinity) onto (0,T_zz): 'going back to the original parametrization' covers (t_*,T_zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -991,9 +992,9 @@ DEPS: eqn-neg-I1-bd
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-neg-I1-bd | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1413-L1414 | rearranged to F'(t) e^{-alpha F(t)} > 1 on (t_*,T_zz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1018,9 +1019,9 @@ DEPS: lem-polar
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-sde-ratio@L1441-L1441 | subtract the SDE (eqn-abs-zt) for d log∣f^∣ from (eqn-abs-zt') for d log∣f^'∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1049,9 +1050,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1441-L1444 | SDE for log(∣f^'∣/∣f^∣)
 EDGE: step:integral-ii-expectation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | expectation identity from stationarity
 EDGE: step:integral-ii-apply-stationary-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | second part by Lemma 3.4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1078,9 +1079,9 @@ ROUTE_FOR: -
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1447 | the SDE integrated from 0 to t^ with log(∣f_0'∣/∣f_0∣) = 0
 EDGE: step:sde-mean-zero | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | the stochastic-integral terms have mean zero (bounded integrands)
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1447-L1450 | E(nu(theta^) + 2cos 2theta^) = (II) by stationarity
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1110,9 +1111,9 @@ EDGE: step:stationary-sde-X-form | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: lem-recurrence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | recurrence of X
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | stationarity of X
 EDGE: eqn-integral-nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1451-L1451 | E f^0(X_0) = -(II)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1133,18 +1134,19 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: defn-hulls.left, defn-loewner.absorbing-time
+DEPS: defn-hulls.left, defn-loewner.absorbing-time, defn-sle
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | L_t = {z : T_z <= t}
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | T_0 = 0 because the driver starts at the singular point 0
-TOPOLOGY_STATUS: PROPOSED
+EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1558-L1558 | U_0 = 0 almost surely is part of the SLE_Sigma driver (R6); this supplies the premise U_0 = 0 (T_0 = 0, so 0 in L_t) that is otherwise only a hypothesis of this node
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558. The shifted-driver statement for L_{t,s+t} used at L1768 is step:zero-in-future-left-hull.
+NOTE: R4: U_0 = 0, so T_0 = 0 and 0 in L_t for all t. Used at L1558. The shifted-driver statement for L_{t,s+t} used at L1768 is step:zero-in-future-left-hull. Premise U_0 = 0 is supplied by defn-sle (a.s. U_0 = 0, R6); for a general continuous driver the correct statement is U_0 in L_t (claim:hull-nonempty).
 
 NODE: step:zero-in-right-hull
 KIND: step
@@ -1165,9 +1167,9 @@ DEPS: defn-hulls.right
 ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1463 | R_t = C minus the range of f_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1195,9 +1197,9 @@ EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | L_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1702 | R_t
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1702-L1705 | L_t closed (domain of f_t open); R_t closed because f_t is an open map on an open domain
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1226,9 +1228,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-h
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1463 | f_t is a conformal bijection C\L_t -> C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1465-L1465 | R_t
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1463-L1465 | dist(f_t(zz),R_t) <= ∣f_t(zz)∣ because 0 in R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1255,9 +1257,9 @@ ROUTE_FOR: -
 EDGE: lem-integral-ii | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1459-L1459 | sigma-time limit +infinity when (II) < 0
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1460-L1462 | sigma(infinity) = T_zz, so t^ -> infinity iff t -> T_zz^-
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1460-L1460 | hats denote sigma-time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1284,9 +1286,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-a-capacity-time | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | ∣f_t'∣/∣f_t∣ -> infinity
 EDGE: eqn-hit-koebe | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1463-L1468 | dist(zz,L_t) <= C ∣f_t(zz)∣/∣f_t'(zz)∣
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1468-L1468 | t -> dist(zz,L_t) non-increasing so limit exists and equals infimum (R14)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1312,9 +1314,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1476-L1476 | sign hypothesis on (II)
 EDGE: step:converse-conclude | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1639-L1642 | contrapositive: lim = 0 a.s. forces (II) <= 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1343,9 +1345,9 @@ EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-convers
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | L_{s+t} = {T <= s+t}
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | f_t(L_{s+t} \ L_t) = L_{t,s+t} and f_t maps C\L_t into C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1707-L1707 | R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1374,9 +1376,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1708 | conformality of the future map f_{t,s+t}
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_{t,s+t}(f_t(zz)) = f_{s+t}(zz)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1708-L1712 | f_t(zz) not in L_{t,s+t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1405,9 +1407,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1716 | conformality
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1719 | f_{s+t}(zz) = f_{t,s+t}(f_t(zz)) and R_{s+t} = R_{t,s+t} u f_{t,s+t}(R_t \ L_{t,s+t}) (image of the complement of the union)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1716-L1716 | f_t(zz) not in L_{t,s+t} u R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1433,9 +1435,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-two-formulas | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-dist-ratio@L1722-L1722 | first expression for ∣f_{t,s+t}'(f_t(zz))∣
 EDGE: eqn-two-formulas-b | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-dist-ratio@L1722-L1722 | second expression for the same derivative
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1465,9 +1467,9 @@ EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L17
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1728-L1728 | second asymp via (3.9)
 EDGE: step:future-point-outside-hulls | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1727 | zz not in L_{s+t}
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1727-L1728 | f_t is conformal (injective holomorphic) on C\L_t, hence on C\L_{s+t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1492,9 +1494,9 @@ DEPS: eqn-koebe-t
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-koebe-t | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-1@L1734-L1734 | re-arranging (3.10)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1518,9 +1520,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1548,9 +1550,9 @@ EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | s + t -> T_zz as s^ -> infinity
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | relates L_{s+t} and L_{t,s+t} (f_t(L_{s+t}\L_t) = L_{t,s+t})
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1748-L1748 | L_{s+t} increasing in s
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1575,9 +1577,9 @@ DEPS: eqn-dist-event
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-cases@L1750-L1750 | definition of E_s^ as the case where the L_{t,s+t}-distance is the smaller
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1604,9 +1606,9 @@ ROUTE_FOR: -
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1756 | Koebe applied to f_t as in (3.10)
 EDGE: eqn-koebe-t | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1756 | first asymp (3.10)
 EDGE: eqn-dist-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1756-L1760 | on E the union-distance equals the L_{t,s+t}-distance
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1631,9 +1633,9 @@ DEPS: eqn-koebe-union
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-koebe-union | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-es@L1762-L1762 | divide (3.14) by ∣f_t(zz)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1660,9 +1662,9 @@ ROUTE_FOR: -
 EDGE: eqn-two-dist-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | the asymp via (3.9)
 EDGE: eqn-dist-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | on E^c the union distance equals dist(f_t(zz),R_t)
 EDGE: step:zero-in-future-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | 0 in L_{t,s+t}, so dist(f_t(zz),L_{t,s+t}) <= ∣f_t(zz)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1691,9 +1693,9 @@ EDGE: eqn-dist-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@
 EDGE: ext:koebe-quarter | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | Koebe quarter for f_t : C\L_t -> C\R_t gives the last asymp
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | compactness
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1778-L1778 | f_t conformal C\L_t -> C\R_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1720,9 +1722,9 @@ ROUTE_FOR: -
 EDGE: eqn-dist-event | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1669-L1672 | event E_s^ in the right-hand side
 EDGE: eqn-dist-es | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1780-L1780 | bound on E_s^
 EDGE: eqn-dist-esc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1780-L1780 | bound on E_s^c
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1751,9 +1753,9 @@ EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-conver
 EDGE: step:converse-event-converges | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1683-L1683 | 1_E -> 1
 EDGE: ext:dct | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1683-L1691 | dominated convergence for both terms
 EDGE: lem-log-finite-exp | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1687-L1689 | log(1/dist(zz,L_t)) is integrable, dominating the E^c term
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1780,9 +1782,9 @@ ROUTE_FOR: -
 EDGE: lem-computation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1693-L1695 | dist(f_t(zz),L_{t,s+t})/∣f_t(zz)∣ has the law of dist(zz,L_s)
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | dist(zz,L_{s+t}) <= dist(zz,L_s) (L_s subset L_{s+t})
 EDGE: lem-log-finite-exp | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | log(1/dist(zz,L_{s+t})) has finite expectation
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1809,9 +1811,9 @@ ROUTE_FOR: -
 EDGE: step:converse-rhs-limit | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1697 | limit of the right side, combined with the left side at L1697
 EDGE: step:converse-lhs-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | left side has nonnegative expectation
 EDGE: lem-integral-ii | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1697-L1698 | E log(∣f_t'∣/∣f_t∣) = -t^ (II)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1835,9 +1837,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1866,9 +1868,9 @@ EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computati
 EDGE: eqn-computation-tilde-f | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1521-L1523 | definition of f~
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1523-L1524 | left hull of the rescaled chain is the rescaled left hull
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1521-L1521 | sigma(t^) is the stopping time
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1894,9 +1896,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:computation-scaling-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | f~ =_D f and independent of the past
 EDGE: lem-stationary | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1526-L1526 | stationarity: f_{sigma(t^)}(zz)/∣f_{sigma(t^)}(zz)∣ =_D zz
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1923,9 +1925,9 @@ ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1538-L1538 | 'concatenation property': f_{sigma(t^),sigma(t^)+v}(f_{sigma(t^)}(zz)) = f_{sigma(t^)+v}(zz)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1540-L1542 | definition of sigma(s^+t^) via int_0^{.} ∣f_v(zz)∣^{-2} dv
 EDGE: eqn-computation-tilde-f | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1537-L1537 | unfold f~
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1951,9 +1953,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-wt-L-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1531-L1533 | joint law identity in sigma~-time
 EDGE: step:computation-time-change-identity | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1542-L1542 | converts L~_{sigma~(s^)} to the future hull L_{sigma(t^),sigma(s^+t^)}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1979,9 +1981,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1553-L1553 | sigma-time parametrization
 EDGE: step:log-finite-tail-to-expectation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | tail bound implies finiteness
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2010,9 +2012,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-f
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-1@L1581-L1581 | f_{tau_k} conformal C\L_{tau_k} -> C\R_{tau_k}
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-2@L1586-L1586 | dist(f_{tau_k}(zz),R_{tau_k}) <= ∣f_{tau_k}(zz)∣
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-1@L1580-L1580 | tau_k defined through L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2038,9 +2040,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-distortion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1592-L1592 | ball inclusion (eqn-finite-exp-2)
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1592-L1597 | f_{tau_k}(L_t \ L_{tau_k}) = L_{tau_k,t}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2070,9 +2072,9 @@ EDGE: step:computation-scaling-markov | source/arxiv-2203.07313v4/complex-sle-fi
 EDGE: step:log-finite-exit-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1594-L1603 | T_k as a first exit time of the rescaled chain
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1608-L1608 | concatenation property in the simplification chain
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1601-L1609 | int ∣f_.∣^{-2} is the sigma-time clock
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2097,9 +2099,9 @@ DEPS: step:log-finite-iid
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-iid | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1612-L1615 | k-independence of the law
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2126,9 +2128,9 @@ ROUTE_FOR: -
 EDGE: step:log-finite-q-choice | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1614-L1617 | P(A_k) >= 1/2
 EDGE: step:log-finite-iid | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1616-L1616 | independence of A_k from F_{tau_k} gives independence of A_1,...,A_k
 EDGE: step:log-finite-exit-times | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1621-L1622 | the intervals [tau_j,T_j] are disjoint (T_j <= tau_{j+1}) so int_0^{tau_k} >= sum_{j<=k} int_{tau_j}^{T_j}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2154,9 +2156,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:log-finite-binomial | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1621-L1625 | P(int_0^{tau_k} <= qN) <= C_N 2^{-k}
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1625-L1625 | tau_k <= sigma(qN) iff int_0^{tau_k} ∣f_v∣^{-2} dv <= qN
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2182,9 +2184,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-log-finite-end | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1629-L1630 | choose N with qN >= t^; {dist <= 16^{-k}} subset {tau_k <= sigma(t^)} subset {tau_k <= sigma(qN)}
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1629-L1630 | sigma increasing
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2210,9 +2212,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-log-finite-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | geometric tail P(log(1/dist) >= k log 16) <= C 2^{-k+1}
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1577-L1577 | log(1/dist(zz,L_{sigma(t^)})) >= 0 so the tail integral formula applies
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2238,9 +2240,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1791-L1791 | scale invariance of the chain
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1791-L1791 | left hulls of the rescaled chain are rescaled; limit of distance scales by 1/∣z∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2267,9 +2269,9 @@ ROUTE_FOR: -
 EDGE: lem-converse-w-o-upgrade | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | P(lim dist(zz,L_t) = 0) < 1
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1793-L1793 | dist(zz,L_t) non-increasing so the limit exists in [0,infinity) and 'not = 0' means '> 0' (R14)
 EDGE: lem-stationary.admissible | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1794-L1794 | the law of arg zz has a density p 1_[0,2pi] w.r.t. Lebesgue measure
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2296,9 +2298,9 @@ ROUTE_FOR: -
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | SDE (eqn-theta-t) for theta^_t^(z)
 EDGE: ext:girsanov | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | 'Girsanov's theorem'
 EDGE: step:prop-ii-b-lambda-positive-measure | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1801-L1801 | positive measure of Lambda gives a positive-measure closed Lambda'
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2328,9 +2330,9 @@ EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1805-L1805 | q(w) = q(w/∣w∣) after rescaling to the unit circle
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L1805 | future dependence of the event {lim dist > 0} (same as hypothesis (ii) of Lemma 3.3)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1802 | sigma_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2357,9 +2359,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-b-hit-lambda-prime | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1802-L1803 | P(tau < infinity) > 0
 EDGE: step:prop-ii-b-markov-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1804-L1805 | q(z) >= E[q(e^{i theta^_tau}) ; tau < infinity] > 0 since e^{i theta^_tau} in Lambda' subset Lambda
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1799-L1799 | q(z) > 0 on the unit circle gives q(z) > 0 on C\{0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2388,9 +2390,9 @@ EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | f_t conformal C\L_t -> C\R_t
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | R_t
 EDGE: step:zero-in-right-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1806-L1806 | dist(f_t(z),R_t) <= ∣f_t(z)∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2417,9 +2419,9 @@ ROUTE_FOR: -
 EDGE: step:prop-ii-b-lambda-full | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1808-L1808 | q(z) > 0 for every z
 EDGE: step:prop-ii-b-koebe-ball | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1808-L1808 | q(w) >= q(z)/2 for w in B_eps(z) (eps from r with P(lim dist >= r) >= q(z)/2)
 EDGE: step:prop-ii-b-scale-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1809-L1809 | extend from the unit circle to C\{0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2448,9 +2450,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L181
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1811 | future chain after sigma_z(t^)
 EDGE: step:all-z-apply-dist | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1811 | future dependence of the event {lim dist > 0}
 EDGE: step:prop-ii-b-compactness | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1811-L1814 | q >= q_* everywhere
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2477,9 +2479,9 @@ ROUTE_FOR: -
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | P(A ∣ F_{sigma_z(t^)}) -> 1_A a.s.
 EDGE: step:prop-ii-b-conditional-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1813-L1815 | the conditional probabilities are >= q_* so 1_A >= q_* a.s., hence 1_A = 1 a.s.
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1815-L1815 | sigma_z(t^) -> T_z so the filtration F_{sigma_z(t^)} exhausts the information determining A
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2508,9 +2510,9 @@ EDGE: eqn-nu-D.mu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phase
 EDGE: eqn-nu-D.D | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1829 | D simplifies for c = 0 in the ODE
 EDGE: lem-p | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1836 | p of Lemma 2.13, with r_* = 0 so p = p_0 when c = 0
 EDGE: remark-p0 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1836-L1836 | for c = 0 the periodic solution is a constant times p_0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2537,9 +2539,9 @@ ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1838-L1838 | formula for nu when c = 0
 EDGE: item-I | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1840-L1840 | (I) = int nu p
 EDGE: item-II | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1841-L1841 | (II) = int (nu + 2cos 2u) p
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2564,9 +2566,9 @@ DEPS: step:c0-explicit-density
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1849-L1850 | explicit pi-periodic and even (in 2u -> cos 2u) form of p
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2592,9 +2594,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-cos-reflect@L1856-L1861 | explicit reflected formula (3.23)
 EDGE: step:c0-positivity-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1855-L1855 | reduction to [0,pi/2]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2620,9 +2622,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:c0-positivity-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1849-L1853 | reduction to [0,pi/2]
 EDGE: step:c0-positivity-reflection | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1855-L1874 | the [0,pi/2] integral is positive
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2648,9 +2650,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-c0-integrals | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | (I),(II) as multiples of int cos(2u)p(u)du
 EDGE: eqn-c0-phase-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | the common integral is > 0
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2677,9 +2679,9 @@ ROUTE_FOR: -
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1829-L1836 | explicit p (and its admissibility) for c = 0
 EDGE: step:c0-sign-analysis | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1846-L1847 | signs of (I),(II) in terms of a - b
 EDGE: thm-phases#assembly-sign-cases | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1847-L1847 | 'our description of the phases in terms of (I),(II) (Propositions 3.1 and 3.2)' converts the signs to phases
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2704,9 +2706,9 @@ DEPS: eqn-nu-D.nu
 ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-nu-D.nu | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1916-L1916 | nu(u) = (2 - a/2 + b/2) cos 2u = -2 cos 2u when a - b = 8
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2734,9 +2736,9 @@ EDGE: step:c0-bdy-drift-vanishes | source/arxiv-2203.07313v4/complex-sle-final.t
 EDGE: eqn-sde-ratio | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1917-L1917 | SDE for the ratio (or Lemma 2.11 directly)
 EDGE: lem-polar | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1917-L1917 | (W,W~) =_D (B,B~) independent standard BMs since c = 0
 EDGE: ext:levy-characterization | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1922-L1923 | continuous martingale with QV -> infinity is a time-changed BM (Dambis-Dubins-Schwarz)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2763,9 +2765,9 @@ ROUTE_FOR: -
 EDGE: step:c0-bdy-martingale-bm | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1923-L1923 | limsup in sigma-time
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1924-L1924 | sigma(infinity) = T_z so t^ -> infinity iff t -> T_z^-
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1915-L1915 | sigma_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2792,9 +2794,9 @@ ROUTE_FOR: -
 EDGE: step:c0-bdy-capacity-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | limsup ∣f_t'∣/∣f_t∣ = infinity
 EDGE: eqn-hit-koebe | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | 'see in particular (3.5)': dist(z,L_t) <= C ∣f_t(z)∣/∣f_t'(z)∣
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | t -> dist(z,L_t) is non-increasing so liminf = 0 gives lim = 0 (R14)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2822,9 +2824,9 @@ EDGE: prop-i.b | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L192
 EDGE: eqn-c0-integrals | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | (I) = (2 - a/2 + b/2) int cos(2u) p du = -2 int cos(2u)p du
 EDGE: eqn-c0-phase-show | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | int cos(2u) p du > 0 so (I) < 0
 EDGE: step:c0-explicit-density | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | p is the explicit admissible density used in (3.20)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2851,9 +2853,9 @@ ROUTE_FOR: -
 EDGE: defn-phases.hitting | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1912-L1926 | conclusion: for each z != 0, a.s. T_z < infinity and z in closure of union_{t<T_z} L_t
 EDGE: step:c0-bdy-hitting-from-limsup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | z in the closure of union_{t<T_z} L_t
 EDGE: step:c0-bdy-finite-time | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1926-L1926 | T_z < infinity
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2887,9 +2889,9 @@ EDGE: defn-phases.hitting | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-
 EDGE: defn-phases.dense | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | target property of case 4
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | L_t increasing, so inf_{t<T_z} dist(z,L_t) is the limit (R14) and 'not in the closure' translates to a positive infimum
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1930-L1931 | L_t = {T_z <= t}, so T_z = infinity gives z not in union_t L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2915,9 +2917,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-c0-phases | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1931-L1932 | thin for a-b<=4, swallowing for 4<a-b<8, hitting for a-b>8
 EDGE: lem-c0-bdy | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-phases@L1931-L1932 | hitting for a-b = 8
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2945,9 +2947,9 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist
 EDGE: defn-loewner.absorbing-time | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | T_0 = 0 for the shifted driver U(.+t)-U(t), which starts at 0
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | L_{t,s+t} is the left hull of the chain driven by U(.+t)-U(t)
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1768-L1768 | same argument as for L_t, applied to the shifted driver
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-C/sonnet (proposed split of step:zero-in-left-hull)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-C/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -2961,747 +2963,747 @@ KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1250@L1250-L1250
 DISPOSITION: EXCLUDED
 REASON: structural heading (section title), no mathematical content
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-integral-nu
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-integral-nu@L1258-L1258
 DISPOSITION: NODE eqn-integral-nu
 REASON: display (3.1)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:prop-i
 KIND: proposition
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#prop-i@L1265-L1271
 DISPOSITION: NODE prop-i.a, prop-i.b
 REASON: Proposition 3.1, split into roots (a),(b) (R17)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:prop-ii
 KIND: proposition
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#prop-ii@L1276-L1284
 DISPOSITION: NODE prop-ii.a, prop-ii.b
 REASON: Proposition 3.2, split into roots (a),(b) (R17)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:item-ii-a
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-ii-a@L1279-L1279
 DISPOSITION: NODE prop-ii.a
 REASON: label of item (a) of Prop 3.2
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:item-ii-b
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-ii-b@L1281-L1281
 DISPOSITION: NODE prop-ii.b
 REASON: label of item (b) of Prop 3.2
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:heading:L1290
 KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1290@L1290-L1290
 DISPOSITION: EXCLUDED
 REASON: structural heading
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-all-z
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-all-z@L1294-L1301
 DISPOSITION: NODE lem-all-z
 REASON: Lemma 3.3
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1305
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1305@L1305-L1319
 DISPOSITION: NODE lem-all-z, step:all-z-null-set-density, step:all-z-lambda-conull, step:all-z-markov-transfer, step:all-z-stopping-time-choice
 REASON: proof of Lemma 3.3
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-nohit-set
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-nohit-set@L1307-L1307
 DISPOSITION: NODE step:all-z-lambda-conull
 REASON: display defining Lambda
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-stationary-sde
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-stationary-sde@L1327-L1343
 DISPOSITION: NODE lem-stationary-sde
 REASON: Lemma 3.4
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-recurrent
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-recurrent@L1349-L1352
 DISPOSITION: NODE lem-recurrent
 REASON: Lemma 3.5
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1355
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1355@L1355-L1357
 DISPOSITION: NODE lem-recurrent, step:recurrent-durrett-adaptation
 REASON: proof of Lemma 3.5 (delegated to Durrett)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:cite:L1356:durrett
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L1356:durrett@L1356-L1356
 DISPOSITION: NODE ext:durrett-7.3.2
 REASON: citation Durrett Thm 7.3.2
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1360
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1360@L1360-L1379
 DISPOSITION: NODE lem-stationary-sde, step:sde-stationary-increments, step:sde-continuity-noninteger, step:sde-birkhoff-limit, step:sde-regeneration, step:sde-limit-deterministic, step:sde-mean-zero, step:sde-recurrence-zero, ext:birkhoff, ext:kolmogorov-zero-one, ext:strong-markov-bm
 REASON: proof of Lemma 3.4
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:cite:L1374:revuz-yor
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L1374:revuz-yor@L1374-L1374
 DISPOSITION: EXCLUDED
 REASON: citation occurs only inside a %-comment tail on line 1374 (not part of the paper); the mean-zero fact it supports is step:sde-mean-zero
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:heading:L1383
 KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1383@L1383-L1383
 DISPOSITION: EXCLUDED
 REASON: structural heading
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-swallow-distance
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-swallow-distance@L1389-L1392
 DISPOSITION: NODE lem-swallow-distance
 REASON: Lemma 3.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1394
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1394@L1394-L1397
 DISPOSITION: NODE lem-swallow-distance, step:swallow-time-change
 REASON: proof of Lemma 3.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1401
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1401@L1401-L1418
 DISPOSITION: NODE prop-i.a, prop-i.b, step:prop-i-apply-stationary-sde, step:prop-i-a-not-to-minus-infinity, eqn-neg-I1-bd, step:prop-i-b-ode-comparison, step:stationary-sde-X-form
 REASON: proof of Prop 3.1
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-neg-I1-bd
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-neg-I1-bd@L1410-L1410
 DISPOSITION: NODE eqn-neg-I1-bd
 REASON: display (3.2)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:heading:L1421
 KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1421@L1421-L1421
 DISPOSITION: EXCLUDED
 REASON: structural heading
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-integral-ii
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-integral-ii@L1430-L1437
 DISPOSITION: NODE lem-integral-ii
 REASON: Lemma 3.7
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1440
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1440@L1440-L1452
 DISPOSITION: NODE lem-integral-ii, eqn-sde-ratio, step:integral-ii-expectation, step:integral-ii-apply-stationary-sde
 REASON: proof of Lemma 3.7
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-sde-ratio
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-sde-ratio@L1444-L1444
 DISPOSITION: NODE eqn-sde-ratio
 REASON: display (3.4)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1458
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1458@L1458-L1469
 DISPOSITION: NODE prop-ii.a, step:prop-ii-a-capacity-time, step:prop-ii-a-koebe-limit, eqn-hit-koebe, step:zero-in-right-hull, step:hulls-compact
 REASON: proof of Prop 3.2(a)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:cite:L1463:lawler-book
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L1463:lawler-book@L1463-L1463
 DISPOSITION: NODE ext:koebe-quarter
 REASON: citation Lawler Cor 3.18 (Koebe quarter)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-hit-koebe
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-hit-koebe@L1464-L1464
 DISPOSITION: NODE eqn-hit-koebe
 REASON: display (3.5)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-converse-w-o-upgrade
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-converse-w-o-upgrade@L1475-L1478
 DISPOSITION: NODE lem-converse-w-o-upgrade
 REASON: Lemma 3.8
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-3-outline
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3-outline@L1488-L1488
 DISPOSITION: EXCLUDED
 REASON: outline restatement of eqn-dist-3 in the proof outline (L1481-1498); content captured by eqn-dist-3
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-stationary-outline
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-stationary-outline@L1494-L1494
 DISPOSITION: EXCLUDED
 REASON: outline restatement of Lemma 3.9 (equality in law); content captured by lem-computation
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-computation
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-computation@L1506-L1513
 DISPOSITION: NODE lem-computation
 REASON: Lemma 3.9
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1515
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1515@L1515-L1543
 DISPOSITION: NODE lem-computation, eqn-computation-tilde-f, step:computation-scaling-markov, eqn-wt-L-dist, step:computation-time-change-identity
 REASON: proof of Lemma 3.9
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-computation-tilde-f
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-computation-tilde-f@L1518-L1518
 DISPOSITION: NODE eqn-computation-tilde-f
 REASON: display (3.3)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-wt-L-dist
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-wt-L-dist@L1532-L1532
 DISPOSITION: NODE eqn-wt-L-dist
 REASON: display (3.4)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-log-finite-exp
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-log-finite-exp@L1550-L1556
 DISPOSITION: NODE lem-log-finite-exp
 REASON: Lemma 3.10
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1572
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1572@L1572-L1631
 DISPOSITION: NODE lem-log-finite-exp, step:log-finite-distortion, step:log-finite-exit-times, step:log-finite-iid, step:log-finite-q-choice, step:log-finite-binomial, eqn-log-finite-end, eqn-log-finite-show, step:log-finite-tail-to-expectation
 REASON: proof of Lemma 3.10
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-log-finite-show
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-log-finite-show@L1574-L1574
 DISPOSITION: NODE eqn-log-finite-show
 REASON: display (3.18)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:cite:L1581:lawler-book
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L1581:lawler-book@L1581-L1581
 DISPOSITION: NODE ext:koebe-distortion
 REASON: citation Lawler Cor 3.23 (Koebe distortion)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-finite-exp-1
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-1@L1584-L1584
 DISPOSITION: NODE step:log-finite-distortion
 REASON: display inside the distortion step
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-finite-exp-2
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-2@L1589-L1589
 DISPOSITION: NODE step:log-finite-distortion
 REASON: display inside the distortion step
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-finite-exp-3
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-3@L1595-L1595
 DISPOSITION: NODE step:log-finite-exit-times
 REASON: display (rescaled chain at tau_k)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-finite-exp-4
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-finite-exp-4@L1602-L1602
 DISPOSITION: NODE step:log-finite-iid
 REASON: display (integral independent of F_{tau_k})
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-log-finite-end
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-log-finite-end@L1626-L1626
 DISPOSITION: NODE eqn-log-finite-end
 REASON: display
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1638
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1638@L1638-L1781
 DISPOSITION: NODE lem-converse-w-o-upgrade, step:converse-rhs-limit, step:converse-lhs-nonneg, step:converse-conclude, step:converse-event-converges, step:future-point-outside-hulls, eqn-dist-3
 REASON: proof of Lemma 3.8 (Steps 1-4)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-converse-show0
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-converse-show0@L1640-L1640
 DISPOSITION: NODE step:converse-conclude
 REASON: display (contrapositive form)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-3
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-3@L1672-L1672
 DISPOSITION: NODE eqn-dist-3
 REASON: display (3.6)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:cite:L1705:lawler-book
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L1705:lawler-book@L1705-L1705
 DISPOSITION: NODE ext:koebe-quarter, step:hulls-compact
 REASON: citation Lawler Cor 3.18; premise recalled at L1702
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-two-formulas
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas@L1713-L1713
 DISPOSITION: NODE eqn-two-formulas
 REASON: display (3.7)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-two-formulas-prime
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-formulas'@L1720-L1720
 DISPOSITION: NODE eqn-two-formulas-b
 REASON: display (3.8)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-two-dist-ratio
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-two-dist-ratio@L1723-L1723
 DISPOSITION: NODE eqn-two-dist-ratio
 REASON: display (3.9)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-koebe-t
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-t@L1729-L1729
 DISPOSITION: NODE eqn-koebe-t
 REASON: display (3.10)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-1
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-1@L1737-L1737
 DISPOSITION: NODE eqn-dist-1
 REASON: display (3.11)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-event
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-event@L1745-L1745
 DISPOSITION: NODE eqn-dist-event, step:converse-event-converges
 REASON: display (3.12) and the convergence claim of L1748
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-cases
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-cases@L1751-L1751
 DISPOSITION: NODE eqn-dist-cases
 REASON: display (3.13)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-koebe-union
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-koebe-union@L1757-L1757
 DISPOSITION: NODE eqn-koebe-union
 REASON: display (3.14)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-es
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-es@L1765-L1765
 DISPOSITION: NODE eqn-dist-es
 REASON: display (3.15)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-2
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-2@L1771-L1771
 DISPOSITION: NODE eqn-dist-2
 REASON: display (3.16)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-dist-esc
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-dist-esc@L1776-L1776
 DISPOSITION: NODE eqn-dist-esc
 REASON: display (3.17)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1786
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1786@L1786-L1816
 DISPOSITION: NODE prop-ii.b, step:prop-ii-b-scale-reduction, step:prop-ii-b-lambda-positive-measure, step:prop-ii-b-hit-lambda-prime, step:prop-ii-b-markov-transfer, step:prop-ii-b-lambda-full, step:prop-ii-b-koebe-ball, step:prop-ii-b-compactness, step:prop-ii-b-conditional-lower-bound, step:prop-ii-b-martingale-zero-one, ext:girsanov, ext:koebe-distortion, ext:martingale-convergence
 REASON: proof of Prop 3.2(b)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:heading:L1819
 KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1819@L1819-L1819
 DISPOSITION: EXCLUDED
 REASON: structural heading
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-c0-phases
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-phases@L1824-L1827
 DISPOSITION: NODE lem-c0-phases
 REASON: Lemma 3.11
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1828
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1828@L1828-L1875
 DISPOSITION: NODE lem-c0-phases, step:c0-explicit-density, step:c0-positivity-reduction, step:c0-positivity-reflection, step:c0-sign-analysis
 REASON: proof of Lemma 3.11
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-c0-p
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-p@L1830-L1830
 DISPOSITION: NODE step:c0-explicit-density
 REASON: display (3.19)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-c0-integrals
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-integrals@L1839-L1839
 DISPOSITION: NODE eqn-c0-integrals
 REASON: display (3.20)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-c0-phase-show
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-phase-show@L1844-L1844
 DISPOSITION: NODE eqn-c0-phase-show
 REASON: display (3.21)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-c0-phase-show-prime
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-c0-phase-show'@L1851-L1851
 DISPOSITION: NODE step:c0-positivity-reduction
 REASON: display (3.22)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:eqn-cos-reflect
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-cos-reflect@L1856-L1856
 DISPOSITION: NODE step:c0-positivity-reflection
 REASON: display (3.23)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:lem-c0-bdy
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c0-bdy@L1910-L1913
 DISPOSITION: NODE lem-c0-bdy
 REASON: Lemma 3.12
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1914
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1914@L1914-L1927
 DISPOSITION: NODE lem-c0-bdy, step:c0-bdy-drift-vanishes, step:c0-bdy-martingale-bm, step:c0-bdy-capacity-time, step:c0-bdy-hitting-from-limsup, step:c0-bdy-finite-time
 REASON: proof of Lemma 3.12
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:proof:L1930
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L1930@L1930-L1932
 DISPOSITION: NODE thm-phases#assembly-sign-cases, thm-phases#assembly-c-zero
 REASON: proof of Thm 1.8 (statement-level roots thm-phases, thm-phases.c-zero are slice A)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1303:all-z-examples
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1303:all-z-examples@L1303-L1303
 DISPOSITION: NODE step:all-z-apply-Tz, step:all-z-apply-dist
 REASON: unlabeled claim: the hypotheses of Lemma 3.3 hold for {T_z<infinity} and the dist-event (SOURCE_GAP)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1345:recurrence-premise
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1345:recurrence-premise@L1345-L1345
 DISPOSITION: NODE step:prop-i-apply-stationary-sde, step:integral-ii-apply-stationary-sde
 REASON: unlabeled claim: X = e^{2 i theta^} satisfies the premises of Lemma 3.4 (recurrence from Lemma 2.16)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1403:sde-premises
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1403:sde-premises@L1402-L1403
 DISPOSITION: NODE step:stationary-sde-X-form
 REASON: unlabeled claim: SDEs for X and Y come from Lemma 2.11 with pi-periodic coefficients (SOURCE_GAP)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1463:zero-in-right-hull
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1463:zero-in-right-hull@L1463-L1463
 DISPOSITION: NODE step:zero-in-right-hull
 REASON: unlabeled claim 'the fact that 0 in R_t' (SOURCE_GAP)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1558:zero-in-left-hull
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1558:zero-in-left-hull@L1558-L1558
 DISPOSITION: NODE step:zero-in-left-hull, step:zero-in-future-left-hull
 REASON: unlabeled claim |zz| = 1 and 0 in L_{sigma(t^)}; also used at L1768 for L_{t,s+t}
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1702:koebe-premise
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1702:koebe-premise@L1702-L1705
 DISPOSITION: NODE step:hulls-compact, ext:koebe-quarter
 REASON: Koebe quarter statement recalled with compact K1,K2; compactness of L_t,R_t is never established (SOURCE_GAP)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1707:future-point-outside
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1707:future-point-outside@L1707-L1707
 DISPOSITION: NODE step:future-point-outside-hulls
 REASON: unlabeled claim zz not in L_{s+t}, f_t(zz) not in R_t u L_{t,s+t}
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1806:koebe-ball
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1806:koebe-ball@L1806-L1807
 DISPOSITION: NODE step:prop-ii-b-koebe-ball
 REASON: unlabeled Koebe-distortion absorption claim (SOURCE_GAP); the %-commented sketch at L1807 is not part of the paper
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1471:prop-ii-b-commentary
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1471:prop-ii-b-commentary@L1471-L1473
 DISPOSITION: EXCLUDED
 REASON: commentary on the difficulty of Prop 3.2(b); no claim beyond Lemma 3.8
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1481:outline
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1481:outline@L1481-L1498
 DISPOSITION: EXCLUDED
 REASON: proof outline of Lemma 3.8; every claim recurs in the full proof (eqn-dist-3, lem-computation, lem-log-finite-exp)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1426:asymp-notation
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1426:asymp-notation@L1426-L1426
 DISPOSITION: EXCLUDED
 REASON: notation for asymp and <~ (no mathematical claim)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ITEM: inv:L1504:stationarity-intro
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1504:stationarity-intro@L1504-L1504
 DISPOSITION: EXCLUDED
 REASON: restates stationarity of e^{i theta^(zz)} (Lemma 2.13), recorded as edges from lem-computation's proof nodes
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-C/sonnet
-REVIEWER: -
+REVIEWER: reviewer-C/sonnet
 
 ## Report
 

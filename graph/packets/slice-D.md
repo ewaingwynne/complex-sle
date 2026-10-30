@@ -18,9 +18,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -44,9 +44,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -70,9 +70,9 @@ FROZEN_ABI_SHA256: -
 DEPS: -
 ROUTES: -
 ROUTE_FOR: -
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: EXTERNAL
 LEAN_REF: -
 LEAN_NOTE: -
@@ -102,9 +102,9 @@ EDGE: step:haus-limit-conformal-extension | source/arxiv-2203.07313v4/complex-sl
 EDGE: step:haus-contradiction-L-t | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | extension of g_t to V is impossible since V meets L_t
 EDGE: step:haus-subsubsequence-closure | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | subsequence-of-subsequence argument yields the quantitative statement for all large n
 EDGE: step:haus-right-hull-reduction | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | right hulls and reverse maps reduce to left hulls of reverse maps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -130,9 +130,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:loewner-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2011-L2011 | cited Prop 4.43
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2011-L2011 | g_t, g^n_t are the maps whose existence and uniqueness is asserted for continuous complex drivers
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -160,9 +160,9 @@ EDGE: step:haus-maps-converge | source/arxiv-2203.07313v4/complex-sle-final.tex#
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t = {T_z <= t}
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t closed, so the intersection over eps of B_eps(L_t) is L_t and L' subset L_t
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | "By compactness": the L^n_t and L_t are compact and uniformly bounded, so Hausdorff-convergent subsequences exist
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -189,9 +189,9 @@ ROUTE_FOR: -
 EDGE: step:haus-subsequence-limit-contained | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2018-L2018 | L' is the Hausdorff limit; choice of V relative to L' and L_t
 EDGE: step:haus-maps-converge | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | uniform boundedness of g^n_t on V from convergence on a set separating V from infinity, and identification of the limit with g_t on the complement of L_t
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | g^n_t is conformal on V for large n
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -218,9 +218,9 @@ ROUTE_FOR: -
 EDGE: step:haus-limit-conformal-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | supplies the conformal extension of g_t to V
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | g_t conformal from C minus L_t onto its image
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2019-L2019 | L_t is the set of absorbed points T_z<=t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -247,9 +247,9 @@ ROUTE_FOR: -
 EDGE: step:haus-subsequence-limit-contained | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | L' subset L_t along subsubsequences gives the inclusion
 EDGE: step:haus-contradiction-L-t | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2018-L2019 | no point set V witnessing a difference between L' and L_t, so L' and L_t disconnect the same points
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | 'disconnect the same set of points from infinity'
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -275,9 +275,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-forward-reverse-ext | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | cited as the link between forward/reverse chains and hulls
 EDGE: lem-mult-by-i | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2013-L2013 | reverse chain with driver U is obtained from the forward chain with iU by conjugation by multiplication by i (Lemma 2.3)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -304,9 +304,9 @@ ROUTE_FOR: -
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | explicit zero-driver chain, hulls and map
 EDGE: step:line-small-driver-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | driver is within delta of 0 on [0,T] with positive probability
 EDGE: step:line-apply-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | Lemma 4.3 transfers closeness of drivers to closeness of hulls and maps
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -333,9 +333,9 @@ ROUTE_FOR: -
 EDGE: defn-loewner.well-defined | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | identifies the chain driven by 0 as the unique solution of the Loewner ODE
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | left hull is {z: T_z<=t}
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | right hull is the complement of the range of f_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -361,9 +361,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | 'positive chance to be arbitrarily close to 0 on [0,T]'
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2023-L2023 | U is a planar BM with covariance Sigma
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -390,9 +390,9 @@ ROUTE_FOR: -
 EDGE: lem-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | applied with U equiv 0 (sequential statement used as continuity at the zero driver)
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | limit chain explicit
 EDGE: step:line-small-driver-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L2024-L2024 | event of positive probability on which the driver is small
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -418,9 +418,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:re-im-ft-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2070-L2075 | real and imaginary SDEs from (1.6)
 EDGE: step:re-im-drift-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2076-L2076 | drift terms bounded by 2 on [s,t]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -446,9 +446,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-def-ft | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-im-ft@L2070-L2070 | taking real and imaginary parts of df_t = 2/f_t dt - sqrt(a)dB - i sqrt(b)dB~ (2/f = 2 conj(f)/∣f∣^2)
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-im-ft@L2073-L2074 | identifies the noise terms with sqrt(a)B and sqrt(b)B~
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -474,9 +474,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:re-im-ft-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2076-L2076 | SDEs applied on the interval [s,t]
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2049-L2049 | s,t in [0,rho_z] with rho_z < T_z so that f_t(z) exists at the endpoint; ∣f_t(z)∣ -> 0 at T_z < infinity forces rho_z < T_z
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -503,9 +503,9 @@ ROUTE_FOR: -
 EDGE: step:c-event-E1 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | conditions (cond-1) and (cond-2) on [0,1]
 EDGE: step:c-event-E2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | conditions (cond-3) and (cond-4) on [1,2]
 EDGE: step:c-event-combine | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | independence of the two events gives simultaneous positive probability
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -531,9 +531,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | B and B~ are the standard BMs in U = sqrt(a)B + i sqrt(b)B~
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2106-L2106 | positivity of the probability of this event on [0,1]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -560,9 +560,9 @@ ROUTE_FOR: -
 EDGE: step:driver-representation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | B and B~ standard BMs with correlation c/sqrt(ab)
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | non-negativity of the correlation is the WLOG assumption of L1951
 EDGE: ext:bm-support | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | positivity of the probability of this event
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -589,9 +589,9 @@ ROUTE_FOR: -
 EDGE: step:c-event-E1 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | P(E_1)>0
 EDGE: step:c-event-E2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | P(E_2)>0
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-c-event@L2107-L2107 | independent increments of the planar BM U give independence of E_1,E_2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -618,9 +618,9 @@ ROUTE_FOR: -
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2121-L2124 | choice of C, x, y and the event
 EDGE: step:pos-segment-disjoint-L2 | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | disjointness of [x,y] from L_2
 EDGE: step:pos-real-part-sign-change | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2138 | sign change of Re f_2
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -645,9 +645,9 @@ DEPS: lem-c-event
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2121-L2121 | supplies C and the positive-probability event
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -674,9 +674,9 @@ ROUTE_FOR: -
 EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2125-L2125 | eqn-re-ft with s=0
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2125-L2125 | (cond-2) bounds h^-(0,t;a)>=-C
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2124-L2124 | x=2C, y=7C so Re z>=2C
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -703,9 +703,9 @@ ROUTE_FOR: -
 EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2131 | eqn-im-ft with (s,t)=(0,1) and (1,t)
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2131 | (cond-1) and (cond-4)
 EDGE: step:pos-real-part-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2130-L2130 | ∣f_t∣>=1 on [0,1] justifies the Im bound on [0,1]
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -732,9 +732,9 @@ ROUTE_FOR: -
 EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | ∣f_t(z)∣->0 as t->T_z, so rho_z<T_z
 EDGE: step:pos-imag-part-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | rho_z>=2
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2134-L2134 | L_2 = {z : T_z<=2}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -762,9 +762,9 @@ EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2137 | (cond-3) and (cond-2)
 EDGE: step:pos-imag-part-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2136 | rho_z>=2 so the bounds are valid on [0,2]
 EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2138-L2138 | Re f_2(x) <= 2C-3C and Re f_2(y) >= 7C-6C use x=2C, y=7C
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -789,9 +789,9 @@ DEPS: step:disc-choose-U
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:disc-choose-U | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "this gives the lemma statement for t = T+2+K": choice of the deterministic U among U^-, U^+ with positive probability (the former edges to step:disc-independence-product and step:disc-pullback-conclusion are now consumed by step:disc-choose-U)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -817,9 +817,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-pos-hits-before-neg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2161-L2161 | supplies x<y with 0<x<y<2T^{1/2} (via T>y^2/2)
 EDGE: step:line-zero-driver-chain | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2165-L2165 | time-T zero-driver Loewner map z -> sqrt(z^2+4T) used to define U^+-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -847,9 +847,9 @@ EDGE: lem-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-
 EDGE: lem-line-approx | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2180-L2180 | the Hausdorff/uniform closeness statements that give containment in eps-neighborhoods and f_T(U^+-) subset B_eps(x +- 2i eps) are those of Lemma 4.2
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | definition of E_1 and of U^+-
 EDGE: step:right-hull-connected | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | "R_T contains a left-right crossing of [x,y]x[-eps,eps]": a connected R_T Hausdorff-close to [-2T^{1/2},2T^{1/2}] supplies the crossing
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -878,9 +878,9 @@ EDGE: lem-line-approx | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disc
 EDGE: lem-connected.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2175-L2175 | a connected hull close to the vertical segment hits every left-right crossing of the rectangle (extractor reading: connectedness of the left hull is needed)
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | the restarted chain (f_{T+2,T+2+s}) has the law of a centered SLE_Sigma chain
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2175-L2175 | definition of E_4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -907,9 +907,9 @@ ROUTE_FOR: -
 EDGE: lem-pos-hits-before-neg | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | applied to (f_{T,T+t}) instead of (f_t): L_{T,T+2} cap [x,y]=empty and Re f_{T,T+2}(x)<0<Re f_{T,T+2}(y)
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | restarted chain f_{T,T+t} has the law of a centered SLE_Sigma chain, so Lemma 4.4 applies for every T
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2171-L2171 | definition of E_2,E_3
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -938,9 +938,9 @@ EDGE: step:disc-E4-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#le
 EDGE: step:disc-E2E3-positive | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | P(E_2 cap E_3)>0
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | independent increments of the driver on disjoint time intervals
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2179 | f_{t,s+t} is the chain driven by U(.+t)-U(t), a function of the increments after t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -966,9 +966,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | concatenation at time 2 for the chain (f_{T,T+s}) transfers hits of L_{T+2,T+2+K} through f_{T,T+2}
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2183-L2193 | definitions of E_1..E_4
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -996,9 +996,9 @@ EDGE: step:disc-concatenation-transfer | source/arxiv-2203.07313v4/complex-sle-f
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | notion of disconnection from infinity
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_T contained in the eps-neighborhood of the real axis and contains the crossing S
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1: R_T within eps of the real axis and f_T(U^+-) subset B_eps(x +- 2i eps) subset B_{3eps}(x) minus R_T
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1025,9 +1025,9 @@ ROUTE_FOR: -
 EDGE: step:disc-topological-separation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection of f_T(U^+-) by L_{T,T+2+K} cup R_T
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "By the concatenation property": instance s=T, t=2+K, point in U^+-
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1 and the choice of U^+-: U^+- cap L_T = empty, so f_T is defined on U^+-
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1055,9 +1055,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconne
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | hulls and absorbing times scale: L_t^{rU(./r^2)} = r L_{t/r^2}
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2203-L2203 | event defined through left hulls and T_z
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | disconnection from infinity is preserved by the scaling z -> z/∣z∣
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1086,9 +1086,9 @@ EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-fin
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w in U with U cap L_t = empty is disconnected before T_w
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w not in L_t iff T_w>t
 EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | 0 in L_t for all t, so U cap L_t = empty gives 0 not in U and z/∣z∣ is defined on U
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1117,9 +1117,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: def-arg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | argument process theta^
 EDGE: ext:girsanov | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | Girsanov (as in Prop 3.2(b) L1802) reduces to a diffusion hitting positive-measure sets
 EDGE: step:disc-a-positive-measure-set | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | Lambda has positive measure so such Lambda' exists
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1149,9 +1149,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | sigma_z maps (0,infinity) into (0,T_z): z is not in L_{sigma_z(tau)} so f_{sigma_z(tau)}(z) exists
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | q(f_s(z)) = q(f_s(z)/∣f_s(z)∣) = q(e^{i theta^_tau(z)}) for the restarted point
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | disconnection of f_s(z) by the restarted left hull (together with R_s) pulls back to disconnection of z by the original hull
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1178,9 +1178,9 @@ ROUTE_FOR: -
 EDGE: step:disc-a-hit-Lambda | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | P(tau<infinity)>0
 EDGE: step:disc-a-markov-restart | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | q(z)>= E[1_{tau<inf} q(e^{i theta^_tau})]>0 since e^{i theta^_tau} in Lambda'
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | reduction from C minus {0} to the unit circle
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1207,9 +1207,9 @@ ROUTE_FOR: -
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | z lies in a bounded component of the open set C minus L_t, so do nearby points
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | w not in L_t iff T_w>t
 EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | C minus L_t is open, so a ball around z stays inside the same bounded component and outside L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1236,9 +1236,9 @@ ROUTE_FOR: -
 EDGE: step:disc-a-q-positive-all-z | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2210 | positivity of q at every point of the circle
 EDGE: step:disc-a-open-condition | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | gives a deterministic eps with q(w)>=q(z)/2 on B_eps(z) (continuity of probability)
 EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2210-L2210 | extend the bound from the unit circle to C minus {0}
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1268,9 +1268,9 @@ EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnec
 EDGE: step:disc-a-uniform-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | the uniform bound q_*
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | sigma_z(t~) < T_z, so the restart point f_{sigma_z(t~)}(z) exists
 EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | disconnection by the restarted left hull pulls back to disconnection of z (inequality, not equality)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1297,9 +1297,9 @@ ROUTE_FOR: -
 EDGE: ext:martingale-convergence | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | Levy upward convergence of the conditional probabilities
 EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | sigma_z(t~) increases to T_z so the filtration F_{sigma_z(t~)} exhausts the information needed for the event
 EDGE: eqn-disconnect-mart | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2214-L2217 | lower bound q_* passes to the limit
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1326,9 +1326,9 @@ ROUTE_FOR: -
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | Lemma 4.1 (and through it Lemma 4.6) is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-a-martingale-limit-one | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | final 0-1 argument gives almost sure disconnection before T_z
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2201-L2203 | 'disconnects z from infinity before T_z' means exists t<T_z with z not in L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1356,9 +1356,9 @@ EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconne
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | L_t^{rU(./r^2)} = r L_{t/r^2}
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | disconnected set scales with the hull
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2221-L2221 | left hull L_t
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1385,9 +1385,9 @@ ROUTE_FOR: -
 EDGE: lem-disconnect-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | positive probability that L_{t_0} disconnects the non-empty open set U
 EDGE: step:disc-b-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | transfers positivity from t_0 to every t>0
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | U subset set disconnected by L_{t_0}, U open and non-empty
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1414,9 +1414,9 @@ ROUTE_FOR: -
 EDGE: step:disc-b-positive-for-all-t | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2223 | P(A_{t_n})>=p for t_n->0, so P(limsup A_{t_n})>=p>0
 EDGE: ext:blumenthal | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2223-L2223 | the limsup event is in the germ sigma-field, hence has probability 0 or 1
 EDGE: defn-sle | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2223-L2223 | filtration of the driving Brownian motion
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1443,9 +1443,9 @@ ROUTE_FOR: -
 EDGE: step:disc-b-blumenthal | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | small times t_n with A_{t_n}
 EDGE: claim:hulls-monotone | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | 'the left hulls are non-decreasing'
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | enlarging the hull enlarges the disconnected set; subsets of L_t count as disconnected
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1471,9 +1471,9 @@ ROUTES: -
 ROUTE_FOR: -
 EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | Lemma 4.1 is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-b-monotone-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | conclusion for every t>0 simultaneously
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1500,9 +1500,9 @@ ROUTE_FOR: -
 EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | P(E_1 cap ... cap E_4) > 0 is what lets one of the two sets be chosen
 EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events one of U^-, U^+ is avoided and disconnected by L_{T+2+K}
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | U^+- are deterministic, bounded, open (and needed non-empty)
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1529,9 +1529,9 @@ ROUTE_FOR: -
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L659-L659 | statement is about R_t
 EDGE: eqn-duality | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | "The duality property (2.4) implies that R_t is also connected": R_t^U = i L_t^{i(U(t)-U(t-.))}
 EDGE: lem-connected.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-connected@L662-L663 | left-hull connectedness applied to the dual driver s -> i(U(t)-U(t-s)) (extended by a constant after time t)
-TOPOLOGY_STATUS: PROPOSED
+TOPOLOGY_STATUS: REVIEWED
 EXTRACTOR: global-reviewer/sonnet
-REVIEWER: -
+REVIEWER: global-verifier/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1561,9 +1561,9 @@ EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disc
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_s is the complement of the range of f_s, so f_s(z) not in R_s
 EDGE: claim:gt-conformal | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | f_s: C\L_s -> C\R_s is a conformal bijection with f_s(w) - w bounded near infinity, so the bounded components of C\L_{s+t} correspond to the bounded components of C\(L_{s,s+t} u R_s)
 EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_s, R_s, L_{s,s+t} compact, so a component of the complement is unbounded iff its image is
-TOPOLOGY_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+TOPOLOGY_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
@@ -1577,432 +1577,432 @@ KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L1947@L1947-L1947
 DISPOSITION: EXCLUDED
 REASON: structural heading (section title); its theorem is carried by nodes below
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:lem-disconnect-2
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L1960-L1963
 DISPOSITION: NODE lem-disconnect-2
 REASON: Lemma 4.1 statement
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:item-behavior-a
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-behavior-a@L1971-L1971
 DISPOSITION: EXCLUDED
 REASON: heuristic outline of the strategy (property (a)); formalized in the proof by events E_1..E_4 (steps step:disc-setup, step:disc-E1-positive); not an independent claim
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:item-behavior-b
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#item-behavior-b@L1974-L1974
 DISPOSITION: EXCLUDED
 REASON: heuristic outline of the strategy (property (b)); formalized by E_2..E_4 (steps step:disc-E2E3-positive, step:disc-E4-positive); not an independent claim
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:lem-line-approx
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-line-approx@L1991-L1993
 DISPOSITION: NODE lem-line-approx
 REASON: Lemma 4.2 statement
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:lem-haus
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L1998-L2009
 DISPOSITION: NODE lem-haus
 REASON: Lemma 4.3 statement
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2010
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2010@L2010-L2020
 DISPOSITION: NODE step:haus-maps-converge, step:haus-subsequence-limit-contained, step:haus-limit-conformal-extension, step:haus-contradiction-L-t, step:haus-subsubsequence-closure, step:haus-right-hull-reduction, lem-haus
 REASON: proof of Lemma 4.3 split into the cited convergence, the subsequence/containment step, the normal-family extension, the contradiction, the subsubsequence closure and the right-hull reduction
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2011:lawler-book
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2011:lawler-book@L2011-L2011
 DISPOSITION: NODE ext:loewner-convergence
 REASON: Lawler Prop 4.43 invoked by the proof of Lemma 4.3
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2022
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2022@L2022-L2025
 DISPOSITION: NODE step:line-zero-driver-chain, step:line-small-driver-positive, step:line-apply-haus, lem-line-approx
 REASON: proof of Lemma 4.2
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:lem-pos-hits-before-neg
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2036-L2039
 DISPOSITION: NODE lem-pos-hits-before-neg
 REASON: Lemma 4.4 statement
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:eqn-re-ft.2
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-ft.2@L2043-L2067
 DISPOSITION: NODE lem:re-im-bounds
 REASON: unlabeled Lemma 4.5 (spec ID lem:re-im-bounds)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:eqn-re-ft
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-ft@L2055-L2055
 DISPOSITION: NODE lem:re-im-bounds
 REASON: display (eqn-re-ft) is part of the statement of Lemma 4.5
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:eqn-im-ft
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-im-ft@L2060-L2060
 DISPOSITION: NODE lem:re-im-bounds
 REASON: display (eqn-im-ft) is part of the statement of Lemma 4.5
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2069
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2069@L2069-L2077
 DISPOSITION: NODE step:re-im-ft-sde, step:re-im-drift-bound, lem:re-im-bounds
 REASON: proof of Lemma 4.5
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:eqn-re-im-ft
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-re-im-ft@L2072-L2072
 DISPOSITION: NODE step:re-im-ft-sde
 REASON: SDEs for real and imaginary parts
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cond-2.2
 KIND: lemma
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cond-2.2@L2082-L2103
 DISPOSITION: NODE lem-c-event
 REASON: Lemma 4.6 statement (spec ID lem-c-event)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cond-2
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cond-2@L2085-L2085
 DISPOSITION: NODE lem-c-event
 REASON: display condition inside the statement of Lemma 4.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cond-3
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cond-3@L2090-L2090
 DISPOSITION: NODE lem-c-event
 REASON: display condition inside the statement of Lemma 4.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cond-1
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cond-1@L2094-L2094
 DISPOSITION: NODE lem-c-event
 REASON: display condition inside the statement of Lemma 4.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cond-4
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cond-4@L2099-L2099
 DISPOSITION: NODE lem-c-event
 REASON: display condition inside the statement of Lemma 4.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2105
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2105@L2105-L2108
 DISPOSITION: NODE step:c-event-E1, step:c-event-E2, step:c-event-combine, lem-c-event
 REASON: proof of Lemma 4.6
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2120
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2120@L2120-L2139
 DISPOSITION: NODE step:pos-choose-C-x-y, step:pos-real-part-lower-bound, step:pos-imag-part-bound, step:pos-segment-disjoint-L2, step:pos-real-part-sign-change, lem-pos-hits-before-neg
 REASON: proof of Lemma 4.4
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2160
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2160@L2160-L2195
 DISPOSITION: NODE step:disc-setup, step:disc-E1-positive, step:right-hull-connected, step:disc-E4-positive, step:disc-E2E3-positive, step:disc-independence-product, step:disc-concatenation-transfer, step:disc-topological-separation, step:disc-pullback-conclusion, step:disc-concat-disconnect-general, step:disc-choose-U, lem-disconnect-2
 REASON: proof of Lemma 4.1
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:proof:L2199
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2199@L2199-L2225
 DISPOSITION: NODE thm-disconnects#proof-a, thm-disconnects#proof-b, step:disc-a-q-scale-invariance, step:disc-a-positive-measure-set, step:disc-a-hit-Lambda, step:disc-a-markov-restart, step:disc-a-q-positive-all-z, step:disc-a-open-condition, step:disc-a-uniform-lower-bound, eqn-disconnect-mart, step:disc-a-martingale-limit-one, step:disc-concat-disconnect-general, step:disc-b-scale-invariance, step:disc-b-positive-for-all-t, step:disc-b-blumenthal, step:disc-b-monotone-extension
 REASON: proof of Theorem 1.10: assembly nodes proof-a and proof-b with their step nodes
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:eqn-disconnect-mart
 KIND: display
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#eqn-disconnect-mart@L2213-L2213
 DISPOSITION: NODE eqn-disconnect-mart
 REASON: display (eqn-disconnect-mart)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:heading:L2230
 KIND: heading
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#heading:L2230@L2230-L2230
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2237
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2237@L2237-L2239
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2242:bp-lqg-notes
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2242:bp-lqg-notes@L2242-L2242
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2242:shef-zipper
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2242:shef-zipper@L2242-L2242
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2242:ss-contour
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2242:ss-contour@L2242-L2242
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2246
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2246@L2246-L2248
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2252:wang-ld-survey
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2252:wang-ld-survey@L2252-L2252
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2254
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2254@L2254-L2263
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2269:zhan-duality1
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2269:zhan-duality1@L2269-L2269
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2271
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2271@L2271-L2273
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2275:lawler-werness-multipoint
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2275:lawler-werness-multipoint@L2275-L2275
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques-transient
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques-transient@L2277-L2279
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:cite:L2283:beffara-dim
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2283:beffara-dim@L2283-L2283
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root (bibliographic citation)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2285
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2285@L2285-L2293
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:ques:L2299
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#ques:L2299@L2299-L2301
 DISPOSITION: EXCLUDED
 REASON: Section 5 open problems: excluded (R2, spec section 7); feeds no root
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L1950:wlog
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1950:wlog@L1950-L1951
 DISPOSITION: NODE step:wlog-c-nonneg
 REASON: WLOG c>=0 sentence: represented by the slice-A node step:wlog-c-nonneg (cross-slice); consumed by thm-disconnects#proof-a, #proof-b and step:c-event-E2
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L1953:notation
 KIND: definition
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1953:notation@L1953-L1956
 DISPOSITION: EXCLUDED
 REASON: notation for rectangles [x,y]x[x',y'] only; no mathematical claim
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L1966:outline
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L1966:outline@L1966-L1977
 DISPOSITION: EXCLUDED
 REASON: informal proof strategy for Lemma 4.1 (properties (a),(b), 'Properties (a) and (b) together imply ...'); the rigorous content is in the proof of Lemma 4.1 (L2160-2195)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L2027:outline-b
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L2027:outline-b@L2027-L2034
 DISPOSITION: EXCLUDED
 REASON: informal outline of how property (b) is obtained (two forcing conditions); formalized by events E_2..E_4 in the proof of Lemma 4.1
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L2041:reduction
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L2041:reduction@L2041-L2041
 DISPOSITION: NODE step:pos-segment-disjoint-L2
 REASON: outline remark that |f_t(z)|>1 on [0,2] implies [x,y] disjoint from L_2 by Remark 2.12: captured as step:pos-segment-disjoint-L2 (alternate citation of remark-sigma in its NOTE)
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L2162:def-crossing
 KIND: definition
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L2162:def-crossing@L2162-L2162
 DISPOSITION: NODE step:disc-setup
 REASON: definition of left-right crossing, used in events E_1..E_4
-COVERAGE_STATUS: PROPOSED
+COVERAGE_STATUS: REVIEWED
 EXTRACTOR: extractor-D/sonnet
-REVIEWER: -
+REVIEWER: reviewer-D/sonnet
 
 ITEM: inv:L2023:bm-support
 KIND: claim
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L2023:bm-support@L2023-L2023
 DISPOSITION: NODE ext:bm-support
 REASON: 'The driving Brownian motion has a positive chance to be arbitrarily close to 0 on [0,T]' is an uncited standard (support) theorem used by Lemma 4.2; first citation point of ext:bm-support (also used at L2106-2107)
-COVERAGE_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+COVERAGE_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 
 ITEM: inv:cite:L2223:blumenthal
 KIND: citation
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2223:blumenthal@L2223-L2223
 DISPOSITION: NODE ext:blumenthal
 REASON: Blumenthal's zero-one law invoked by name in the proof of Theorem 1.10(b)
-COVERAGE_STATUS: PROPOSED
-EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
-REVIEWER: -
+COVERAGE_STATUS: REVIEWED
+EXTRACTOR: reviewer-D/sonnet
+REVIEWER: global-reviewer/sonnet
 
 
 ## Report
