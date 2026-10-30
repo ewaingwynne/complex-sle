@@ -18,16 +18,18 @@ DRAFT_ANCHORS: 10
   ComplexSLE/Frozen/Lemma_2_4_LeftHull.lean    ComplexSLE.lemma_2_4_leftHull
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-SEALED_THIS_TURN: 4 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity)
-SEALED DEFINITIONS: 17 (M1)
+SEALED_THIS_TURN: 6 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity,
+  loewnerMap_eq, loewnerMap_exists_solution)
+SEALED DEFINITIONS: 20 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21)
 EXTERNALS: 0 frozen
-PROVED: 4   PROVED_REL: 0
+PROVED: 6   PROVED_REL: 0
+  PROVED  ComplexSLE.loewnerMap_eq, ComplexSLE.loewnerMap_exists_solution  (AU-M4-gt; characterization of g_t)
   PROVED  ComplexSLE.exists_admissibleDensity  (AU-M4-D3; Case 1 by an authorised route replacing step:p-case1-*)
   PROVED  ComplexSLE.scaling_leftHull, ComplexSLE.reflection_leftHull  (AU-M4-D1b; left-hull parts of (2.1)/(2.2) per R16)
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 31 anchors. Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 36 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review

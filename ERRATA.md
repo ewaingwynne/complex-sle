@@ -34,6 +34,10 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
 - R20 (2026-10-30) P10 resolved: the two-scale construction of U^± and E_1(δ) proposed below replaces the
   printed choice at L2163-2169 in the proof of Lemma 4.1. The statement of Lemma 4.1 and the Thm 1.10 anchors
   are unchanged.
+- R21 (2026-10-30) The author approved, as written, the definitions `loewnerMap` (g_t on ℂ∖L_t, by unique
+  choice from `loewner_wellDefined`), `centeredLoewnerMap` (f_t = g_t − U_t) and `rightHull` (R_t = complement of
+  the range of f_t), with the characterization theorems `loewnerMap_eq` and `loewnerMap_exists_solution`, as one
+  semantic unit (pre-approval review: reviewer-M4-gt/sonnet). The two characterizations are separate (not split) exports.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
