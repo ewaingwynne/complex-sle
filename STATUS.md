@@ -1,19 +1,17 @@
 # Status ledger
 
-M6 in progress — paused 2026-10-30 (session limit). Approval packet review/approvals/M6.md answered: all approved
-(R27 P13 fix, R28 Prop 1.5 coupling frozen as DRAFT_SORRY anchor ComplexSLE.sle_duality, AUTO-1 and T12 confirmed). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3) (PROVED), driver-level lemmas
-(Internal/Driver: scaling, symmetries, shift independence, time reversal).
-Resume: two Fable jobs were stopped mid-work; their unfinished files are parked (untracked) in .lake/wip/:
-  M6-polar/Polar/*            → ComplexSLE/Internal/Polar/      (brief briefs/M6-S2-polar.md, Lemma 2.11)
-  M6-stationary/Stationary/*  → ComplexSLE/Internal/Stationary/ (brief briefs/M6-S3-stationarity.md, Lemmas A.1/A.2)
-  M6-stochastic/Stochastic/*  → ComplexSLE/Infrastructure/Stochastic/ (shared helpers of both)
-  Not checked for sorry-freeness or compilation; restore, build, then relaunch the briefs with "continue from these files".
-  The stationarity prover reported a compiling Markov-property draft; a new external may be needed (see brief).
+M6 in progress — 2026-10-30. M6 packet answered (R27, R28). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3)
+(PROVED), sle_duality / Prop 1.5 (PROVED), driver lemmas, stochastic infrastructure (optional stopping, local-martingale
+algebra, continuous versions, conditioning), polar deterministic layer + measurability, stationarity layer (Lemma A.1
+modulo the Markov hypothesis, pending external markov_oneDim in review/approvals/M7.md), recurrence Lemma 2.16 (Markov-free,
+both signs of c) and the R27 hitting lemma, stationarity→recurrence bridge. Running: polar Itô step / Remark 2.12 / time
+change (brief briefs/M6-S8-polar-ito.md). M7 design note: Lemma 3.3 needs path-level stationarity of (θ̂, increments of
+log|f̂|) — SOURCE_GAP step:sde-stationary-increments; plan: θ̂ after t̃ is a deterministic functional of θ̂_t̃ and the driver
+after σ(t̃) (concatenation + scaling), independent by strongMarkov_sleDriver, with θ̂_t̃ ~ stationary law ⇒ stationarity.
 Proof-route substitutions (graph models the source; Lean follows the ruling): step:p-case1-* → Lemma 2.13
 periodic-solution route; lem-connected.left → max-modulus route; step:prop-ii-b-hit-lambda-prime and
-step:disc-a-hit-Lambda → R27 hitting lemma (ext:girsanov stays in the source graph but is not consumed in Lean).
-Then: recurrence (Lemma 2.16) + P13 hitting lemma, prove sle_duality (driver part: Internal/Driver time reversal + mul_I;
-hull part: Internal/Loewner/Duality.lean), graph amendments for R27, close M6.
+step:disc-a-hit-Lambda → R27 hitting lemma (ext:girsanov not consumed); Lemma 2.16 renewal → deterministic windows +
+conditioning lemma (no Markov external).
 M5 complete — 2026-10-30: EXTERNAL state live; external boundary frozen (R23, R25). Open author item P13 (Girsanov, critical case) (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
 M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative to loewnerMap_conformal). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
