@@ -38,6 +38,10 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   choice from `loewner_wellDefined`), `centeredLoewnerMap` (f_t = g_t − U_t) and `rightHull` (R_t = complement of
   the range of f_t), with the characterization theorems `loewnerMap_eq` and `loewnerMap_exists_solution`, as one
   semantic unit (pre-approval review: reviewer-M4-gt/sonnet). The two characterizations are separate (not split) exports.
+- R22 (2026-10-30) The author approved, as written, the remaining R16 parts: `scaling_centeredLoewnerMap`,
+  `scaling_rightHull` ((2.1)), `reflection_rightHull` ((2.2)), `lemma_2_4_rightHull` (Lemma 2.4), and
+  `reflection_centeredLoewnerMap` (reflection for the maps f_t, which the source uses at L984/L1165 but states only for
+  hulls; resolves that ERRATA modeling question). Pre-approval review: reviewer-M4-R/sonnet.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 

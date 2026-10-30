@@ -5,7 +5,12 @@ M4 in progress — 2026-10-30. P10 resolved by R20; P11/P12 accepted as R18/R19.
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 10
+DRAFT_ANCHORS: 15
+  ComplexSLE/Frozen/Scaling_CenteredLoewnerMap.lean     ComplexSLE.scaling_centeredLoewnerMap
+  ComplexSLE/Frozen/Scaling_RightHull.lean              ComplexSLE.scaling_rightHull
+  ComplexSLE/Frozen/Reflection_RightHull.lean           ComplexSLE.reflection_rightHull
+  ComplexSLE/Frozen/Reflection_CenteredLoewnerMap.lean  ComplexSLE.reflection_centeredLoewnerMap
+  ComplexSLE/Frozen/Lemma_2_4_RightHull.lean            ComplexSLE.lemma_2_4_rightHull
   ComplexSLE/Frozen/ExistsSLEDriver.lean       ComplexSLE.exists_sleDriver
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
@@ -29,7 +34,7 @@ PROVED: 6   PROVED_REL: 0
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 36 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 41 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review

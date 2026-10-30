@@ -1826,6 +1826,321 @@
         "frozen_paths": [],
         "audit_paths": []
       }
+    },
+    {
+      "id": "thm.scaling_centeredLoewnerMap.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R22; review by reviewer-M4-R/sonnet",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:549-552"
+      },
+      "contract": {
+        "id": "paper.prop2_1_scaling.map",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Scaling_CenteredLoewnerMap.lean",
+      "export": "ComplexSLE.scaling_centeredLoewnerMap",
+      "split_policy": {
+        "source_group": "paper.prop2_1_scaling.map",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R16, R22"
+      },
+      "abi_sha256": "2b6119038fa137c1593400434789f07724bc9ac6aadfb06633b918be4f7df9d1",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Scaling_CenteredLoewnerMap",
+        "export": "ComplexSLE.Internal.scaling_centeredLoewnerMap"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "1af4d2ef57d8bdb5cadbc69cc50cb1b8c939e9be5bd24c2888ad4ec5c55a30a6",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.scaling_rightHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R22; review by reviewer-M4-R/sonnet",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:549-552"
+      },
+      "contract": {
+        "id": "paper.prop2_1_scaling.rightHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Scaling_RightHull.lean",
+      "export": "ComplexSLE.scaling_rightHull",
+      "split_policy": {
+        "source_group": "paper.prop2_1_scaling.rightHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R16, R22"
+      },
+      "abi_sha256": "6c193c0080839c9d896bc1d258f58403ec33e75d8a67384d708b676fcc4bb2e4",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Scaling_RightHull",
+        "export": "ComplexSLE.Internal.scaling_rightHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "37b7343dcbd00c192da0c4a0fe4098bdc21d6616099c062178d83a05bdc0d014",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.reflection_rightHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R22; review by reviewer-M4-R/sonnet",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:553-557"
+      },
+      "contract": {
+        "id": "paper.prop2_2_reflection.rightHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Reflection_RightHull.lean",
+      "export": "ComplexSLE.reflection_rightHull",
+      "split_policy": {
+        "source_group": "paper.prop2_2_reflection.rightHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R16, R22"
+      },
+      "abi_sha256": "ff6d7d713f9085ceecafff176b39d466f903172bb376b8e8609a09875fc41ee2",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Reflection_RightHull",
+        "export": "ComplexSLE.Internal.reflection_rightHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "879baae2f79b553f4f020bcf25e1bb052d0dd90b283a21f5b85141af25c90818",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.lemma_2_4_rightHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R22; review by reviewer-M4-R/sonnet",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:658-666"
+      },
+      "contract": {
+        "id": "paper.lem2_4.rightHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Lemma_2_4_RightHull.lean",
+      "export": "ComplexSLE.lemma_2_4_rightHull",
+      "split_policy": {
+        "source_group": "paper.lem2_4.rightHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R16, R22"
+      },
+      "abi_sha256": "0f847c6daca6e8ed5e22f74d2c722791f6c55d5f8a6413495db0364950ea4b35",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Lemma_2_4_RightHull",
+        "export": "ComplexSLE.Internal.lemma_2_4_rightHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "46e36e3c3c3325c82209c2c478499dfb685eba0c3af6b4a0fef4627bd403a1ce",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.reflection_centeredLoewnerMap.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md R22; review by reviewer-M4-R/sonnet",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:553-557"
+      },
+      "contract": {
+        "id": "paper.prop2_2_reflection.map",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Reflection_CenteredLoewnerMap.lean",
+      "export": "ComplexSLE.reflection_centeredLoewnerMap",
+      "split_policy": {
+        "source_group": "paper.prop2_2_reflection.map",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R16, R22"
+      },
+      "abi_sha256": "726a223c4264d8be8e5a57de4e2eeea4a7784ea67b0bf0f7d8d03662fb89f2b0",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Reflection_CenteredLoewnerMap",
+        "export": "ComplexSLE.Internal.reflection_centeredLoewnerMap"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "d1fc4586c727b894b4baf6976fa1b9a7f87a4a0f7936a9c598d4a42942e31d99",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     }
   ]
 }
