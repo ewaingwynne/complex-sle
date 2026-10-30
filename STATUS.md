@@ -6,8 +6,7 @@ M4 complete — 2026-10-30 (Tier D, except Lemma 2.4 which needs the external ex
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 10
-  ComplexSLE/Frozen/Lemma_2_4_RightHull.lean            ComplexSLE.lemma_2_4_rightHull
+DRAFT_ANCHORS: 9
   ComplexSLE/Frozen/ExistsSLEDriver.lean       ComplexSLE.exists_sleDriver
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
@@ -25,8 +24,9 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 20 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21)
 EXTERNALS: 4 frozen (R23): exists_isBrownianReal, support_sleDriver, loewnerMap_conformal,
   loewnerMap_tendstoUniformly  (ComplexSLE/External/)
-PROVED: 10   PROVED_REL: 1
+PROVED: 10   PROVED_REL: 2
   PROVED_REL{loewnerMap_conformal}  ComplexSLE.lemma_2_4_leftHull  (AU-M4-D2)
+  PROVED_REL{loewnerMap_conformal}  ComplexSLE.lemma_2_4_rightHull (AU-M4-D2b; duality (2.4) proved in-project)
   PROVED  scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull, reflection_centeredLoewnerMap (AU-M4-D1c)
   Source items fully proved: Def 1.1 well-definedness, (2.1), (2.2), Lemma 2.13 (existence).
   PROVED  ComplexSLE.loewnerMap_eq, ComplexSLE.loewnerMap_exists_solution  (AU-M4-gt; characterization of g_t)

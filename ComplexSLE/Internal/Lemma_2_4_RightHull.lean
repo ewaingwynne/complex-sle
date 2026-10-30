@@ -4,9 +4,34 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 -/
 module
 
+public import ComplexSLE.Frozen.Defs.RightHull
+public import ComplexSLE.Frozen.Lemma_2_4_LeftHull
+public import ComplexSLE.Internal.Loewner.Duality
+
 /-!
 # Provider for `ComplexSLE.lemma_2_4_rightHull`
 
 Implementation module for the frozen anchor `ComplexSLE/Frozen/Lemma_2_4_RightHull.lean`.
-Quarantined while that anchor is `DRAFT_SORRY`: only the anchor itself may import it.
+The anchor is SEALED: it is proved by this module.
+
+By the duality property (2.4) (`ComplexSLE.Internal.rightHull_eq_image_leftHull_revDriver`),
+`R_t^U = (-i) L_t^V` for the continuous reversed driver `V(s) = i (U(t - s) - U_t)`; the left
+hull `L_t^V` is connected by `lemma_2_4_leftHull`, and multiplication by `-i` is continuous.
 -/
+
+public section
+
+open scoped NNReal
+
+namespace ComplexSLE.Internal
+
+/-- See `ComplexSLE.lemma_2_4_rightHull`. -/
+theorem lemma_2_4_rightHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (t : ℝ≥0) :
+    IsConnected (rightHull U hU t) := by
+  rw [rightHull_eq_image_leftHull_revDriver hU t]
+  exact (ComplexSLE.lemma_2_4_leftHull (revDriver U t) (continuous_revDriver hU t) t).image _
+    (by fun_prop)
+
+end ComplexSLE.Internal
+
+end
