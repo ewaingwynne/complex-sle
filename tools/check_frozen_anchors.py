@@ -478,8 +478,12 @@ class Guard:
             return
         if actual_export != expected_export:
             self.fail(f"{label}: lexically resolved declaration name does not match fully qualified export")
+        # A definition anchor is a literal `def`, or (ComplexSLE amendment, 2026-10-30) a
+        # Prop-valued `structure` whose fields are the literal defining clauses.
         if expected_kind and actual_kind != expected_kind:
-            self.fail(f"{label}: definition anchor must use literal `def`")
+            if not (actual_kind == "structure" and re.search(r":\s*Prop\s+where\b", text)):
+                self.fail(f"{label}: definition anchor must use literal `def` "
+                          "or a Prop-valued `structure`")
         if kind == "theorem" and actual_kind not in {"theorem", "lemma"}:
             self.fail(f"{label}: theorem anchor must declare theorem or lemma")
 

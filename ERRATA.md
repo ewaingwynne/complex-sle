@@ -8,7 +8,11 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
 - R2 (2026-10-30) Scope: skip §2.4, §5, Remarks 1.3/1.6/1.11, footnote 2; Lemma 2.6 deferred.
 - R3 (2026-10-30) GitHub: private `ewaingwynne/complex-sle`, push at each milestone.
 
-## Proposed rulings (M1, awaiting the author)
+- R4–R12 (2026-10-30) The author approved proposals P1–P9 below, as amended by audit AU-M1,
+  together with the carrier declarations in the M1 probe (definitions, `loewner_wellDefined`,
+  `exists_admissibleDensity`). P1→R4, P2→R5, P3→R6, P4→R7, P5→R8, P6→R9, P7→R10, P8→R11, P9→R12.
+
+## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
 Each item gives the problem, where it is, and the **proposed ruling**. "Substantive" items
 change what a frozen statement says. "Typo" items only affect graph notes.

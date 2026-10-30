@@ -27,7 +27,7 @@ MANIFEST = ROOT / "frozen-anchor-manifest.json"
 sys.path.insert(0, str(ROOT / "tools"))
 import leanprobe  # noqa: E402
 
-REVISION = "arXiv:2411.06301v2 fixed-pt-finite-type.tex sha256:b0fb466bfd59b1fd0e03757eddca48f8e67aa194a43b66880d2caeb677061670"
+REVISION = "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252"
 
 
 def sha(path: str) -> str:

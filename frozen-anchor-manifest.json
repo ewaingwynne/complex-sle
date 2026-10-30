@@ -1,0 +1,743 @@
+{
+  "schema_version": 1,
+  "manifest_state": "AUTHOR_APPROVED",
+  "seal_limits": {
+    "max_body_lines": 3,
+    "max_body_bytes": 240
+  },
+  "anchors": [
+    {
+      "id": "def.IsLoewnerSolution.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:251-263"
+      },
+      "contract": {
+        "id": "paper.def.IsLoewnerSolution",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+      "export": "ComplexSLE.IsLoewnerSolution",
+      "split_policy": {
+        "source_group": "paper.def.IsLoewnerSolution",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "bbe2299b871e2374841a91b93b4f6762ad46fdaed6a82c43893c005089db4d29",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+    },
+    {
+      "id": "def.absorbingTime.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:268"
+      },
+      "contract": {
+        "id": "paper.def.absorbingTime",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+      "export": "ComplexSLE.absorbingTime",
+      "split_policy": {
+        "source_group": "paper.def.absorbingTime",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "f831e140c92a7542b39fb4f416dbd3ffaf931cb64e30ff1cd9362379efa590f1",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+    },
+    {
+      "id": "def.leftHull.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:271-277"
+      },
+      "contract": {
+        "id": "paper.def.leftHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+      "export": "ComplexSLE.leftHull",
+      "split_policy": {
+        "source_group": "paper.def.leftHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "c203d2a3a6eb3db7f822226cccc6b9ad6add6cd583a36c32bc8619bd900e809e",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+    },
+    {
+      "id": "def.DisconnectsFromInfinity.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:497-499"
+      },
+      "contract": {
+        "id": "paper.def.DisconnectsFromInfinity",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/DisconnectsFromInfinity.lean",
+      "export": "ComplexSLE.DisconnectsFromInfinity",
+      "split_policy": {
+        "source_group": "paper.def.DisconnectsFromInfinity",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "396f675756de6faa68b7c805e29e8d726cae4320d590f5a714e96ee80ee540c2",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "1e8a65b2018da50a8bd65bca45834c3e01d348009856255e2433bdd1318794fc"
+    },
+    {
+      "id": "def.covMatrix.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:304-306"
+      },
+      "contract": {
+        "id": "paper.def.covMatrix",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+      "export": "ComplexSLE.covMatrix",
+      "split_policy": {
+        "source_group": "paper.def.covMatrix",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R6"
+      },
+      "abi_sha256": "9c7db20131aa7365837343dbfe0137f267d6d9583f10c6217364b322317c9dc2",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+    },
+    {
+      "id": "def.complexGaussian.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:301-308"
+      },
+      "contract": {
+        "id": "paper.def.complexGaussian",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+      "export": "ComplexSLE.complexGaussian",
+      "split_policy": {
+        "source_group": "paper.def.complexGaussian",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R6"
+      },
+      "abi_sha256": "35770535322d991e762fad0a8fe630fa74e550a8a476439b08129e00de75c486",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+    },
+    {
+      "id": "def.IsSLEDriver.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:301-319"
+      },
+      "contract": {
+        "id": "paper.def.IsSLEDriver",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+      "export": "ComplexSLE.IsSLEDriver",
+      "split_policy": {
+        "source_group": "paper.def.IsSLEDriver",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R6"
+      },
+      "abi_sha256": "a3e7b316bc3a0ef59101d633fadad41bf1cf76893aaccc318657527c33d60af5",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+    },
+    {
+      "id": "def.IsThinPhase.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:409-417 (item 412)"
+      },
+      "contract": {
+        "id": "paper.def.IsThinPhase",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsThinPhase.lean",
+      "export": "ComplexSLE.IsThinPhase",
+      "split_policy": {
+        "source_group": "paper.def.IsThinPhase",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4, R12"
+      },
+      "abi_sha256": "7727fa4e3bd47573921bd91b01e159429ee6bf9918604c734f8eae2575c8142c",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "06efb0a1eeb69b837ebcb1037a2771720f7d3022d1933358f94eef9a4d3223b7"
+    },
+    {
+      "id": "def.IsSwallowingPhase.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:409-417 (item 413)"
+      },
+      "contract": {
+        "id": "paper.def.IsSwallowingPhase",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsSwallowingPhase.lean",
+      "export": "ComplexSLE.IsSwallowingPhase",
+      "split_policy": {
+        "source_group": "paper.def.IsSwallowingPhase",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4, R12"
+      },
+      "abi_sha256": "da5f6acbe728f180308ef886460f4e1cb38a7ac67b56a6fa0a79da36708ee72f",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "6a9c722f9983f180c8ba43ca637202ecb4d791be0e9fc9355c0b3837fe6ab667"
+    },
+    {
+      "id": "def.IsHittingPhase.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:409-417 (item 414)"
+      },
+      "contract": {
+        "id": "paper.def.IsHittingPhase",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsHittingPhase.lean",
+      "export": "ComplexSLE.IsHittingPhase",
+      "split_policy": {
+        "source_group": "paper.def.IsHittingPhase",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4, R12"
+      },
+      "abi_sha256": "f226bef104f2e8332fb32fce332025566773b0e16564ff8d199410f001b307d0",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "27821548990cded3b0a18039987b0d19bbb119d29c45106ef818a30effce7ba9"
+    },
+    {
+      "id": "def.IsDensePhase.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:409-417 (item 415)"
+      },
+      "contract": {
+        "id": "paper.def.IsDensePhase",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsDensePhase.lean",
+      "export": "ComplexSLE.IsDensePhase",
+      "split_policy": {
+        "source_group": "paper.def.IsDensePhase",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4, R12"
+      },
+      "abi_sha256": "1ee346e80cf2a6167b73f56641824ee302db6becb222740bf3701d7971e7e5df",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "b272aec3934134d17649f82391440360431140d790d1510eba25815daeb61104"
+    },
+    {
+      "id": "def.mu.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:424"
+      },
+      "contract": {
+        "id": "paper.def.mu",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/Mu.lean",
+      "export": "ComplexSLE.mu",
+      "split_policy": {
+        "source_group": "paper.def.mu",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "cd3369a3cc72d9850889657ec3f058716a2c7cbc084efbddfcc84738b784297b",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "003ba593812682c9844d7f7ed9697e06cbe8f5956891f4295bb05381d34325c3"
+    },
+    {
+      "id": "def.nu.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:425"
+      },
+      "contract": {
+        "id": "paper.def.nu",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/Nu.lean",
+      "export": "ComplexSLE.nu",
+      "split_policy": {
+        "source_group": "paper.def.nu",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "f9ff6a5f33ed2c7350371531fdb5f1700586fdc010eb37a4a4c11857b1ce23e3",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "c28a5e9ab6633e4ca4b899587a66bf53d6644684b009d162146339f5915f9bb6"
+    },
+    {
+      "id": "def.diffusionD.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:426"
+      },
+      "contract": {
+        "id": "paper.def.diffusionD",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/DiffusionD.lean",
+      "export": "ComplexSLE.diffusionD",
+      "split_policy": {
+        "source_group": "paper.def.diffusionD",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "ae71cf207fc738d3a8f3b0629a9e5bc1c4b8e6c767665016cbbb6630db368cc2",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "b651977d26fc7122821af775db06ad13ff37e82e5b6f17f0863c0bab8f003ddb"
+    },
+    {
+      "id": "def.IsAdmissibleDensity.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:963-966"
+      },
+      "contract": {
+        "id": "paper.def.IsAdmissibleDensity",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IsAdmissibleDensity.lean",
+      "export": "ComplexSLE.IsAdmissibleDensity",
+      "split_policy": {
+        "source_group": "paper.def.IsAdmissibleDensity",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R7"
+      },
+      "abi_sha256": "2429786912c3915fecf74d5df2467dd2b5c0a7d89ff34a4e3f77a86c0af43b7c",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/Mu.lean",
+          "sha256": "003ba593812682c9844d7f7ed9697e06cbe8f5956891f4295bb05381d34325c3"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/DiffusionD.lean",
+          "sha256": "b651977d26fc7122821af775db06ad13ff37e82e5b6f17f0863c0bab8f003ddb"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "cf194969a66a4fa6cdaba57747c976e1fb1445b7b9b4bc647e9b0314b520aa35"
+    },
+    {
+      "id": "def.integralI.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:440"
+      },
+      "contract": {
+        "id": "paper.def.integralI",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IntegralI.lean",
+      "export": "ComplexSLE.integralI",
+      "split_policy": {
+        "source_group": "paper.def.integralI",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R7"
+      },
+      "abi_sha256": "5971ead00dfc488c751540f8e58da9f1b4f95e192413d7e6f2712586ba7823ad",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/Nu.lean",
+          "sha256": "c28a5e9ab6633e4ca4b899587a66bf53d6644684b009d162146339f5915f9bb6"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "4555dfe1d9345cc6c5ddcade789364a2e259b3a9275f36c23684672d59ec7697"
+    },
+    {
+      "id": "def.integralII.v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:441"
+      },
+      "contract": {
+        "id": "paper.def.integralII",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Defs/IntegralII.lean",
+      "export": "ComplexSLE.integralII",
+      "split_policy": {
+        "source_group": "paper.def.integralII",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R7"
+      },
+      "abi_sha256": "f79d30902daa10ab3c6b8002e63af5af5c565a7558faa9d8067507619f09211c",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/Nu.lean",
+          "sha256": "c28a5e9ab6633e4ca4b899587a66bf53d6644684b009d162146339f5915f9bb6"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "cb976744949a8c39e598000cf1048518b1422d408f00d234610a50d5fd0a83bc"
+    },
+    {
+      "id": "thm.loewner_wellDefined.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md; ERRATA.md R4-R12",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:251-268"
+      },
+      "contract": {
+        "id": "paper.def1_1.wellDefined",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/LoewnerWellDefined.lean",
+      "export": "ComplexSLE.loewner_wellDefined",
+      "split_policy": {
+        "source_group": "paper.def1_1.wellDefined",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R4-R12"
+      },
+      "abi_sha256": "627a9c24bc589b835afd7829fa4c0ca50499a5167908b24c5ac70bd838f0257f",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.LoewnerWellDefined",
+        "export": "ComplexSLE.Internal.loewner_wellDefined"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "80b5b7aa6222cef25b1240aaa4da6f3de20fcd5e49cb3b5036f9616459645185",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.exists_admissibleDensity.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "review/audits/AU-M1-carriers.md (R3); ERRATA.md R5, R7",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:941-955"
+      },
+      "contract": {
+        "id": "paper.lem2_13.exists",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Lemma_2_13_Exists.lean",
+      "export": "ComplexSLE.exists_admissibleDensity",
+      "split_policy": {
+        "source_group": "paper.lem2_13.exists",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R5, R7"
+      },
+      "abi_sha256": "8f546735c8b4d71b3075c5f4038fdc3cd05cd83517ffa087db4f91baec22d461",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsAdmissibleDensity.lean",
+          "sha256": "cf194969a66a4fa6cdaba57747c976e1fb1445b7b9b4bc647e9b0314b520aa35"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/Mu.lean",
+          "sha256": "003ba593812682c9844d7f7ed9697e06cbe8f5956891f4295bb05381d34325c3"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/DiffusionD.lean",
+          "sha256": "b651977d26fc7122821af775db06ad13ff37e82e5b6f17f0863c0bab8f003ddb"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Lemma_2_13_Exists",
+        "export": "ComplexSLE.Internal.exists_admissibleDensity"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "59f7428e74e416885d8db52c4b6ca488b706e2a2a60b88e44cf0a0f79766c9e4",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    }
+  ]
+}
