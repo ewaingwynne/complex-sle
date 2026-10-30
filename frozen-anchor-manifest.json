@@ -731,7 +731,7 @@
         "module": "ComplexSLE.Internal.Lemma_2_13_Exists",
         "export": "ComplexSLE.Internal.exists_admissibleDensity"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "59f7428e74e416885d8db52c4b6ca488b706e2a2a60b88e44cf0a0f79766c9e4",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

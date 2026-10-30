@@ -22,7 +22,7 @@ For `a, b > 0` and `c² ≤ ab`, there is a density satisfying the hypotheses of
 theorem exists_admissibleDensity (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) :
     ∃ p, IsAdmissibleDensity a b c p :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.exists_admissibleDensity a b c ha hb hc
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
