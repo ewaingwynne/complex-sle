@@ -27,7 +27,7 @@ theorem concatenation_centeredLoewnerMap (U : ℝ≥0 → ℂ) (hU : Continuous 
       centeredLoewnerMap (fun r => U (r + t) - U t) (by fun_prop) s
         ⟨centeredLoewnerMap U hU t ⟨z, hz₁⟩, hz₂⟩ :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.concatenation_centeredLoewnerMap U hU s t z hz hz₁ hz₂
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

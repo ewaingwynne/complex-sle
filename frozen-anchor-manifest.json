@@ -3321,7 +3321,7 @@
         "module": "ComplexSLE.Internal.Concatenation_CenteredLoewnerMap",
         "export": "ComplexSLE.Internal.concatenation_centeredLoewnerMap"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "6d6d5a9d0ea1dcac5de2c0dc7dedb52f3427f1046965089f5dc1e5cc0c5675cd",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -3384,7 +3384,7 @@
         "module": "ComplexSLE.Internal.Concatenation_LeftHull",
         "export": "ComplexSLE.Internal.concatenation_leftHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "0dd4c379d8ec4f12a7e6c0287787caaaeea4adad50ccfc1936c6f8a733dca0b2",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -3447,7 +3447,7 @@
         "module": "ComplexSLE.Internal.Concatenation_ImageLeftHull",
         "export": "ComplexSLE.Internal.concatenation_image_leftHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "b5bb0d61ef2c5f37beb31ca0cf0171472979f2bd5e5e5dc1272044d08931974f",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -3510,7 +3510,7 @@
         "module": "ComplexSLE.Internal.Concatenation_RightHull",
         "export": "ComplexSLE.Internal.concatenation_rightHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "9ed6df4513e8b53ce180d7f8cb5d8a177c3578dc8becb7aa3ac73b916ee4aa2a",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

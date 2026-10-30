@@ -24,7 +24,7 @@ theorem concatenation_image_leftHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (
     (fun z : ↥(leftHull U t)ᶜ => centeredLoewnerMap U hU t z) '' {z | (z : ℂ) ∈ leftHull U (s + t)} =
       leftHull (fun r => U (r + t) - U t) s \ rightHull U hU t :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.concatenation_image_leftHull U hU s t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

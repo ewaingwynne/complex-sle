@@ -27,7 +27,7 @@ theorem concatenation_rightHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (s t :
             centeredLoewnerMap (fun r => U (r + t) - U t) (by fun_prop) s w) ''
           {w | (w : ℂ) ∈ rightHull U hU t} :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.concatenation_rightHull U hU s t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
