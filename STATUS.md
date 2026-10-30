@@ -1,7 +1,7 @@
 # Status ledger
 
 M5 complete — 2026-10-30: EXTERNAL state live; external boundary frozen (R23, R25). Open author item P13 (Girsanov, critical case) (tools/leanprobe.py externals-all computes PROVED/PROVED_REL in check.sh).
-M4 complete — 2026-10-30 (Tier D, except Lemma 2.4 which needs the external ext:lawler-4.5 and duality (2.4); see M5). P10 resolved by R20; P11/P12 accepted as R18/R19.
+M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative to loewnerMap_conformal). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
