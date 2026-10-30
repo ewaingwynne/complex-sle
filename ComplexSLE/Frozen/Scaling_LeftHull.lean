@@ -24,7 +24,7 @@ theorem scaling_leftHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (r : ℝ≥0)
     leftHull (fun s => (r : ℂ) * U (s / r ^ 2)) t =
       (fun z => (r : ℂ) * z) '' leftHull U (t / r ^ 2) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.scaling_leftHull U hU r hr t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

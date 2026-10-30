@@ -1520,7 +1520,7 @@
         "module": "ComplexSLE.Internal.Scaling_LeftHull",
         "export": "ComplexSLE.Internal.scaling_leftHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "166fdd935afcd00a183d9be922935343308ee7f6504ba00a533809eabc6b82e1",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -1571,7 +1571,7 @@
         "module": "ComplexSLE.Internal.Reflection_LeftHull",
         "export": "ComplexSLE.Internal.reflection_leftHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "a6a2b79c01eaaff5aeb577ed1a703014267b2f49c11b115191d69691779e2f77",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

@@ -24,7 +24,7 @@ theorem reflection_leftHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (t : ℝ�
     leftHull (fun s => conj (U s)) t = conj '' leftHull U t ∧
       leftHull (fun s => -U s) t = Neg.neg '' leftHull U t :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.reflection_leftHull U hU t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

@@ -5,7 +5,7 @@ M4 in progress — 2026-10-30. P10 resolved by R20; P11/P12 accepted as R18/R19.
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 13
+DRAFT_ANCHORS: 11
   ComplexSLE/Frozen/Lemma_2_13_Exists.lean     ComplexSLE.exists_admissibleDensity
   ComplexSLE/Frozen/ExistsSLEDriver.lean       ComplexSLE.exists_sleDriver
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
@@ -17,14 +17,13 @@ DRAFT_ANCHORS: 13
   ComplexSLE/Frozen/Proposition_3_2_A.lean     ComplexSLE.proposition_3_2_a
   ComplexSLE/Frozen/Proposition_3_2_B.lean     ComplexSLE.proposition_3_2_b
   ComplexSLE/Frozen/Lemma_2_4_LeftHull.lean    ComplexSLE.lemma_2_4_leftHull
-  ComplexSLE/Frozen/Scaling_LeftHull.lean      ComplexSLE.scaling_leftHull
-  ComplexSLE/Frozen/Reflection_LeftHull.lean   ComplexSLE.reflection_leftHull
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-SEALED_THIS_TURN: 1 (ComplexSLE.loewner_wellDefined)
+SEALED_THIS_TURN: 3 (loewner_wellDefined, scaling_leftHull, reflection_leftHull)
 SEALED DEFINITIONS: 17 (M1)
 EXTERNALS: 0 frozen
-PROVED: 1   PROVED_REL: 0
+PROVED: 3   PROVED_REL: 0
+  PROVED  ComplexSLE.scaling_leftHull, ComplexSLE.reflection_leftHull  (AU-M4-D1b; left-hull parts of (2.1)/(2.2) per R16)
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 

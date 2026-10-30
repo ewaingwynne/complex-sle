@@ -11,7 +11,7 @@ public import Mathlib.Analysis.ODE.ExistUnique
 # Provider for `ComplexSLE.loewner_wellDefined`
 
 Implementation module for the frozen anchor `ComplexSLE/Frozen/LoewnerWellDefined.lean`.
-Quarantined while that anchor is `DRAFT_SORRY`: only the anchor itself may import it.
+The anchor is SEALED: it is proved by this module.
 
 Uniqueness follows from Mathlib's Grönwall-type ODE uniqueness on compact intervals, using that
 solutions stay a positive distance away from the driving function there. Existence on
