@@ -12,6 +12,22 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   together with the carrier declarations in the M1 probe (definitions, `loewner_wellDefined`,
   `exists_admissibleDensity`). P1→R4, P2→R5, P3→R6, P4→R7, P5→R8, P6→R9, P7→R10, P8→R11, P9→R12.
 
+- R13 (2026-10-30) Adopt the non-source root `exists_sleDriver` (for a, b > 0, c² ≤ ab, some
+  probability space carries an SLE_Σ driver), so the probabilistic roots are not vacuous
+  (audit AU-M2 C1). Its proof may consume an external input for the existence of Brownian motion.
+- R14 (2026-10-30) Amends R8: lim_{t→T_z−} dist(z, L_t) = 0 is encoded as
+  `∀ ε > 0, ∃ t < T_z, infDist z (L t) < ε`, and lim > 0 as `∃ ε > 0, ∀ t < T_z, ε ≤ infDist z (L t)`
+  (AU-M2 C2). The literal ℝ-valued nested ⨅ equals 0 whenever T_z < ∞; the ε-forms agree
+  with the limit whenever T_z > 0, which holds a.s. for z ≠ 0.
+- R15 (2026-10-30) R7 extends to Props 3.1 and 3.2: they hold for every admissible p (AU-M2 C3).
+- R16 (2026-10-30) Lemma 2.4, (2.1) and (2.2) are split, and their left-hull parts frozen now. The
+  right-hull and f_t parts are frozen once g_t is defined. Each source node counts as proved only
+  when all of its parts are proved (AU-M2 C4).
+
+- R17 (2026-10-30) Splits approved with the M2 batch: Thm 1.8 → `theorem_1_8` + `theorem_1_8_c_zero`;
+  Thm 1.10 → (a), (b); Prop 3.1 → (a), (b); Prop 3.2 → (a), (b). They are independent anchors: no
+  witness or constant is shared across them.
+
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
 Each item gives the problem, where it is, and the **proposed ruling**. "Substantive" items
