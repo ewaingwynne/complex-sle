@@ -1,15 +1,11 @@
 # Status ledger
 
-M4 in progress — 2026-10-30. P10 resolved by R20; P11/P12 accepted as R18/R19.
+M4 complete — 2026-10-30 (Tier D, except Lemma 2.4 which needs the external ext:lawler-4.5 and duality (2.4); see M5). P10 resolved by R20; P11/P12 accepted as R18/R19.
 
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 15
-  ComplexSLE/Frozen/Scaling_CenteredLoewnerMap.lean     ComplexSLE.scaling_centeredLoewnerMap
-  ComplexSLE/Frozen/Scaling_RightHull.lean              ComplexSLE.scaling_rightHull
-  ComplexSLE/Frozen/Reflection_RightHull.lean           ComplexSLE.reflection_rightHull
-  ComplexSLE/Frozen/Reflection_CenteredLoewnerMap.lean  ComplexSLE.reflection_centeredLoewnerMap
+DRAFT_ANCHORS: 11
   ComplexSLE/Frozen/Lemma_2_4_RightHull.lean            ComplexSLE.lemma_2_4_rightHull
   ComplexSLE/Frozen/ExistsSLEDriver.lean       ComplexSLE.exists_sleDriver
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
@@ -23,11 +19,14 @@ DRAFT_ANCHORS: 15
   ComplexSLE/Frozen/Lemma_2_4_LeftHull.lean    ComplexSLE.lemma_2_4_leftHull
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-SEALED_THIS_TURN: 6 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity,
-  loewnerMap_eq, loewnerMap_exists_solution)
+SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity,
+  loewnerMap_eq, loewnerMap_exists_solution, scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull,
+  reflection_centeredLoewnerMap)
 SEALED DEFINITIONS: 20 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21)
 EXTERNALS: 0 frozen
-PROVED: 6   PROVED_REL: 0
+PROVED: 10   PROVED_REL: 0
+  PROVED  scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull, reflection_centeredLoewnerMap (AU-M4-D1c)
+  Source items fully proved: Def 1.1 well-definedness, (2.1), (2.2), Lemma 2.13 (existence).
   PROVED  ComplexSLE.loewnerMap_eq, ComplexSLE.loewnerMap_exists_solution  (AU-M4-gt; characterization of g_t)
   PROVED  ComplexSLE.exists_admissibleDensity  (AU-M4-D3; Case 1 by an authorised route replacing step:p-case1-*)
   PROVED  ComplexSLE.scaling_leftHull, ComplexSLE.reflection_leftHull  (AU-M4-D1b; left-hull parts of (2.1)/(2.2) per R16)

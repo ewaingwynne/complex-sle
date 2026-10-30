@@ -24,7 +24,7 @@ theorem reflection_rightHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (t : ℝ�
     rightHull (fun s => conj (U s)) (by fun_prop) t = conj '' rightHull U hU t ∧
       rightHull (fun s => -U s) (by fun_prop) t = Neg.neg '' rightHull U hU t :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.reflection_rightHull U hU t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

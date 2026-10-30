@@ -25,7 +25,7 @@ theorem scaling_centeredLoewnerMap (U : ℝ≥0 → ℂ) (hU : Continuous U) (r 
     centeredLoewnerMap (fun s => (r : ℂ) * U (s / r ^ 2)) (by fun_prop) t ⟨z, hz⟩ =
       r * centeredLoewnerMap U hU (t / r ^ 2) ⟨z / r, hz'⟩ :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.scaling_centeredLoewnerMap U hU r hr t z hz hz'
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

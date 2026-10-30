@@ -1882,7 +1882,7 @@
         "module": "ComplexSLE.Internal.Scaling_CenteredLoewnerMap",
         "export": "ComplexSLE.Internal.scaling_centeredLoewnerMap"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "1af4d2ef57d8bdb5cadbc69cc50cb1b8c939e9be5bd24c2888ad4ec5c55a30a6",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -1945,7 +1945,7 @@
         "module": "ComplexSLE.Internal.Scaling_RightHull",
         "export": "ComplexSLE.Internal.scaling_rightHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "37b7343dcbd00c192da0c4a0fe4098bdc21d6616099c062178d83a05bdc0d014",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -2008,7 +2008,7 @@
         "module": "ComplexSLE.Internal.Reflection_RightHull",
         "export": "ComplexSLE.Internal.reflection_rightHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "879baae2f79b553f4f020bcf25e1bb052d0dd90b283a21f5b85141af25c90818",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -2134,7 +2134,7 @@
         "module": "ComplexSLE.Internal.Reflection_CenteredLoewnerMap",
         "export": "ComplexSLE.Internal.reflection_centeredLoewnerMap"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "d1fc4586c727b894b4baf6976fa1b9a7f87a4a0f7936a9c598d4a42942e31d99",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

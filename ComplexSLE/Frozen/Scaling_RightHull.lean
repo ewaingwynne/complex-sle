@@ -23,7 +23,7 @@ theorem scaling_rightHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (r : ℝ≥0
     rightHull (fun s => (r : ℂ) * U (s / r ^ 2)) (by fun_prop) t =
       (fun z => (r : ℂ) * z) '' rightHull U hU (t / r ^ 2) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.scaling_rightHull U hU r hr t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
