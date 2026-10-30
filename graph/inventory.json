@@ -1,0 +1,2058 @@
+[
+ {
+  "id": "inv:heading:L225",
+  "kind": "heading",
+  "start": 225,
+  "end": 225,
+  "note": "Introduction",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L228",
+  "kind": "heading",
+  "start": 228,
+  "end": 228,
+  "note": "Context and motivation",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L230:lsw-lerw-ust",
+  "kind": "citation",
+  "start": 230,
+  "end": 230,
+  "note": " lsw-lerw-ust",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L230:schramm0",
+  "kind": "citation",
+  "start": 230,
+  "end": 230,
+  "note": " schramm0",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L230:smirnov-cardy",
+  "kind": "citation",
+  "start": 230,
+  "end": 230,
+  "note": " smirnov-cardy,camia-newman-sle6",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L230:smirnov-ising",
+  "kind": "citation",
+  "start": 230,
+  "end": 230,
+  "note": " smirnov-ising",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L230:ss-contour",
+  "kind": "citation",
+  "start": 230,
+  "end": 230,
+  "note": " ss-contour",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L231:ss-contour",
+  "kind": "citation",
+  "start": 231,
+  "end": 231,
+  "note": " ss-contour,dubedat-coupling,ig1,shef-zipper,wedges",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L232:lawler-book",
+  "kind": "citation",
+  "start": 232,
+  "end": 232,
+  "note": " lawler-book,bn-sle-notes,werner-notes",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L240:dg-supercritical-lfpp",
+  "kind": "citation",
+  "start": 240,
+  "end": 240,
+  "note": " dg-supercritical-lfpp,pfeffer-supercritical-lqg,dg-confluence,dg-uniqueness",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L240:huang-complex-insertion",
+  "kind": "citation",
+  "start": 240,
+  "end": 240,
+  "note": " huang-complex-insertion",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L240:rhodes-vargas-complex-gmt",
+  "kind": "citation",
+  "start": 240,
+  "end": 240,
+  "note": " rhodes-vargas-complex-gmt,jsw-imaginary-gmc,jsw-decompositions,lacoin-complex-gmc",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L244",
+  "kind": "heading",
+  "start": 244,
+  "end": 244,
+  "note": "Basic definitions",
+  "slice": "A"
+ },
+ {
+  "id": "inv:defn-loewner",
+  "kind": "definition",
+  "start": 251,
+  "end": 263,
+  "note": "Loewner chain with complex driving function",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-forward-loewner",
+  "kind": "display",
+  "start": 255,
+  "end": 255,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:defn:L271",
+  "kind": "definition",
+  "start": 271,
+  "end": 277,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L283:lu-complex-loewner",
+  "kind": "citation",
+  "start": 283,
+  "end": 283,
+  "note": " lu-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L286:lawler-book",
+  "kind": "citation",
+  "start": 286,
+  "end": 286,
+  "note": "Theorem 4.5 lawler-book",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L292:rs-complex-sle",
+  "kind": "citation",
+  "start": 292,
+  "end": 292,
+  "note": " rs-complex-sle",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L293:bcd-evolution-families1",
+  "kind": "citation",
+  "start": 293,
+  "end": 293,
+  "note": " bcd-evolution-families1",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L293:tran-complex-loewner",
+  "kind": "citation",
+  "start": 293,
+  "end": 293,
+  "note": " tran-complex-loewner,lu-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:remark-radial",
+  "kind": "claim",
+  "start": 295,
+  "end": 297,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:defn-sle",
+  "kind": "definition",
+  "start": 301,
+  "end": 308,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-cov-matrix",
+  "kind": "display",
+  "start": 304,
+  "end": 304,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-def-gt",
+  "kind": "display",
+  "start": 312,
+  "end": 312,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-def-ft",
+  "kind": "display",
+  "start": 318,
+  "end": 318,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:prop-duality",
+  "kind": "proposition",
+  "start": 329,
+  "end": 335,
+  "note": "$\\SLEG$ duality",
+  "slice": "A"
+ },
+ {
+  "id": "inv:remark-duality",
+  "kind": "claim",
+  "start": 341,
+  "end": 359,
+  "note": "The special case when $c = \\sqrt{ab}$",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-sle-kappa-def",
+  "kind": "display",
+  "start": 345,
+  "end": 345,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-cc",
+  "kind": "display",
+  "start": 352,
+  "end": 352,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L358:dg-supercritical-lfpp",
+  "kind": "citation",
+  "start": 358,
+  "end": 358,
+  "note": " dg-supercritical-lfpp,pfeffer-supercritical-lqg,dg-confluence,dg-uniqueness",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L403",
+  "kind": "heading",
+  "start": 403,
+  "end": 403,
+  "note": "Main results",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L406:schramm-sle",
+  "kind": "citation",
+  "start": 406,
+  "end": 406,
+  "note": " schramm-sle",
+  "slice": "A"
+ },
+ {
+  "id": "inv:defn-phases",
+  "kind": "definition",
+  "start": 409,
+  "end": 417,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-nu-D",
+  "kind": "display",
+  "start": 423,
+  "end": 423,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-p-ode",
+  "kind": "display",
+  "start": 431,
+  "end": 431,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:item-I.2",
+  "kind": "theorem",
+  "start": 437,
+  "end": 453,
+  "note": "Phases of $\\SLEG$",
+  "slice": "A"
+ },
+ {
+  "id": "inv:item-I",
+  "kind": "display",
+  "start": 440,
+  "end": 440,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:item-II",
+  "kind": "display",
+  "start": 441,
+  "end": 441,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L477:rs-complex-sle",
+  "kind": "citation",
+  "start": 477,
+  "end": 477,
+  "note": " rs-complex-sle",
+  "slice": "A"
+ },
+ {
+  "id": "inv:def-disconnect",
+  "kind": "definition",
+  "start": 497,
+  "end": 499,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:thm-disconnects",
+  "kind": "theorem",
+  "start": 502,
+  "end": 511,
+  "note": "$\\SLEG$ disconnects points",
+  "slice": "A"
+ },
+ {
+  "id": "inv:item-disconnect-z",
+  "kind": "display",
+  "start": 506,
+  "end": 506,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:item-disconnect-t",
+  "kind": "display",
+  "start": 508,
+  "end": 508,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L514:lu-complex-loewner",
+  "kind": "citation",
+  "start": 514,
+  "end": 514,
+  "note": " lu-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:remark-curve",
+  "kind": "claim",
+  "start": 516,
+  "end": 524,
+  "note": "Generated by a curve?",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L517:schramm-sle",
+  "kind": "citation",
+  "start": 517,
+  "end": 517,
+  "note": " schramm-sle",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L521:schramm-sle",
+  "kind": "citation",
+  "start": 521,
+  "end": 521,
+  "note": " schramm-sle",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L529",
+  "kind": "heading",
+  "start": 529,
+  "end": 529,
+  "note": "Context and basic properties",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L540",
+  "kind": "heading",
+  "start": 540,
+  "end": 540,
+  "note": "Basic properties of Loewner evolution with complex driving function",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L543",
+  "kind": "heading",
+  "start": 543,
+  "end": 543,
+  "note": "Simple operations on driving functions",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L547:lu-complex-loewner",
+  "kind": "citation",
+  "start": 547,
+  "end": 547,
+  "note": "Section 2 lu-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-scale",
+  "kind": "display",
+  "start": 551,
+  "end": 551,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-reflect",
+  "kind": "display",
+  "start": 555,
+  "end": 555,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-conc",
+  "kind": "display",
+  "start": 560,
+  "end": 560,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-duality",
+  "kind": "display",
+  "start": 568,
+  "end": 568,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L582",
+  "kind": "heading",
+  "start": 582,
+  "end": 582,
+  "note": "Relationship to Loewner evolution with a real driving function",
+  "slice": "A"
+ },
+ {
+  "id": "inv:defn-chordal-loewner",
+  "kind": "definition",
+  "start": 588,
+  "end": 601,
+  "note": "Chordal Loewner chains",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-chordal-loewner",
+  "kind": "display",
+  "start": 592,
+  "end": 592,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-reverse-loewner",
+  "kind": "display",
+  "start": 597,
+  "end": 597,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-forward-reverse-ext",
+  "kind": "lemma",
+  "start": 620,
+  "end": 630,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-mult-by-i",
+  "kind": "lemma",
+  "start": 635,
+  "end": 639,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L640",
+  "kind": "proof-region",
+  "start": 640,
+  "end": 642,
+  "note": "proof (preceding statement)",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L647",
+  "kind": "proof-region",
+  "start": 647,
+  "end": 649,
+  "note": "proof of lem-forward-reverse-ext",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L648:lu-complex-loewner",
+  "kind": "citation",
+  "start": 648,
+  "end": 648,
+  "note": "Section 2 lu-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L654",
+  "kind": "heading",
+  "start": 654,
+  "end": 654,
+  "note": "Regularity lemmas",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-connected",
+  "kind": "lemma",
+  "start": 658,
+  "end": 660,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L661",
+  "kind": "proof-region",
+  "start": 661,
+  "end": 663,
+  "note": "proof (preceding statement)",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-endpt-cont",
+  "kind": "lemma",
+  "start": 667,
+  "end": 672,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L673",
+  "kind": "proof-region",
+  "start": 673,
+  "end": 691,
+  "note": "proof (preceding statement)",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-endpt-cont-bd",
+  "kind": "display",
+  "start": 681,
+  "end": 681,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L696",
+  "kind": "heading",
+  "start": 696,
+  "end": 696,
+  "note": "Cutting and gluing description",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-cut-glue",
+  "kind": "lemma",
+  "start": 712,
+  "end": 719,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-cut-glue",
+  "kind": "display",
+  "start": 716,
+  "end": 716,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L722:tran-complex-loewner",
+  "kind": "citation",
+  "start": 722,
+  "end": 722,
+  "note": "Theorem 1.2 tran-complex-loewner",
+  "slice": "A"
+ },
+ {
+  "id": "inv:cite:L723:pom-book",
+  "kind": "citation",
+  "start": 723,
+  "end": 723,
+  "note": "Theorem 2.15 pom-book",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L730",
+  "kind": "proof-region",
+  "start": 730,
+  "end": 761,
+  "note": "proof of lem-cut-glue",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-simple-conc",
+  "kind": "display",
+  "start": 733,
+  "end": 733,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-simple-tip",
+  "kind": "display",
+  "start": 738,
+  "end": 738,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-simple-lim",
+  "kind": "display",
+  "start": 742,
+  "end": 742,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:eqn-simple-increment",
+  "kind": "display",
+  "start": 747,
+  "end": 747,
+  "note": "",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L768",
+  "kind": "heading",
+  "start": 768,
+  "end": 768,
+  "note": "Basic properties of $\\SLEG$",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-scaling",
+  "kind": "lemma",
+  "start": 774,
+  "end": 776,
+  "note": "Scale invariance",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L778",
+  "kind": "proof-region",
+  "start": 778,
+  "end": 780,
+  "note": "proof (preceding statement)",
+  "slice": "A"
+ },
+ {
+  "id": "inv:lem-markov",
+  "kind": "lemma",
+  "start": 782,
+  "end": 785,
+  "note": "Markov property",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L787",
+  "kind": "proof-region",
+  "start": 787,
+  "end": 789,
+  "note": "proof (preceding statement)",
+  "slice": "A"
+ },
+ {
+  "id": "inv:proof:L795",
+  "kind": "proof-region",
+  "start": 795,
+  "end": 797,
+  "note": "proof of prop-duality",
+  "slice": "A"
+ },
+ {
+  "id": "inv:heading:L805",
+  "kind": "heading",
+  "start": 805,
+  "end": 805,
+  "note": "Simulations of $\\SLEG$",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L808:kennedy-sle-sim",
+  "kind": "citation",
+  "start": 808,
+  "end": 808,
+  "note": " kennedy-sle-sim",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-sim-map",
+  "kind": "display",
+  "start": 815,
+  "end": 815,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-sim-driving",
+  "kind": "display",
+  "start": 819,
+  "end": 819,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-sim-set",
+  "kind": "display",
+  "start": 825,
+  "end": 825,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:heading:L831",
+  "kind": "heading",
+  "start": 831,
+  "end": 831,
+  "note": "Polar decomposition of $\\SLEG$",
+  "slice": "B"
+ },
+ {
+  "id": "inv:defn-sigma",
+  "kind": "definition",
+  "start": 836,
+  "end": 844,
+  "note": "A time parametrization of $\\SLEG$ run until it absorbs a fixed point",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-defn-sigma",
+  "kind": "display",
+  "start": 841,
+  "end": 841,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:def-arg",
+  "kind": "definition",
+  "start": 851,
+  "end": 853,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-polar",
+  "kind": "lemma",
+  "start": 856,
+  "end": 890,
+  "note": "Polar decomposition of $\\SLEG$",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-def-mu",
+  "kind": "display",
+  "start": 860,
+  "end": 860,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-theta-t",
+  "kind": "display",
+  "start": 873,
+  "end": 873,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-abs-zt",
+  "kind": "display",
+  "start": 877,
+  "end": 877,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-abs-zt'",
+  "kind": "display",
+  "start": 882,
+  "end": 882,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:remark-sigma",
+  "kind": "claim",
+  "start": 893,
+  "end": 896,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L903",
+  "kind": "proof-region",
+  "start": 903,
+  "end": 929,
+  "note": "proof of lem-polar",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L904:protter",
+  "kind": "citation",
+  "start": 904,
+  "end": 904,
+  "note": "Chapter II, Theorem 35 protter",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-abs-zt-op",
+  "kind": "display",
+  "start": 914,
+  "end": 914,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-theta-t-op",
+  "kind": "display",
+  "start": 919,
+  "end": 919,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:heading:L936",
+  "kind": "heading",
+  "start": 936,
+  "end": 936,
+  "note": "The stationary argument process",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-p",
+  "kind": "lemma",
+  "start": 941,
+  "end": 955,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-def-D",
+  "kind": "display",
+  "start": 945,
+  "end": 945,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-p-ODE",
+  "kind": "display",
+  "start": 951,
+  "end": 951,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-stationary",
+  "kind": "lemma",
+  "start": 963,
+  "end": 967,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L972",
+  "kind": "proof-region",
+  "start": 972,
+  "end": 994,
+  "note": "proof of lem-stationary",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-theta-t-bm",
+  "kind": "display",
+  "start": 981,
+  "end": 981,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-theta-t-bm'",
+  "kind": "display",
+  "start": 989,
+  "end": 989,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L1024",
+  "kind": "proof-region",
+  "start": 1024,
+  "end": 1111,
+  "note": "proof of lem-p",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-defn-p0",
+  "kind": "display",
+  "start": 1033,
+  "end": 1033,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-defn-p1",
+  "kind": "display",
+  "start": 1039,
+  "end": 1039,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-p0-p1-ODE",
+  "kind": "display",
+  "start": 1044,
+  "end": 1044,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-critical-p",
+  "kind": "display",
+  "start": 1094,
+  "end": 1094,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-critical-p-ode",
+  "kind": "display",
+  "start": 1099,
+  "end": 1099,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-lhop-down",
+  "kind": "display",
+  "start": 1103,
+  "end": 1103,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-lhop-up",
+  "kind": "display",
+  "start": 1107,
+  "end": 1107,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:remark-p0",
+  "kind": "claim",
+  "start": 1136,
+  "end": 1138,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:heading:L1149",
+  "kind": "heading",
+  "start": 1149,
+  "end": 1149,
+  "note": "Recurrence of the stationary argument process",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-recurrence",
+  "kind": "lemma",
+  "start": 1155,
+  "end": 1163,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L1164",
+  "kind": "proof-region",
+  "start": 1164,
+  "end": 1230,
+  "note": "proof (preceding statement)",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-angle-hit-unif",
+  "kind": "display",
+  "start": 1168,
+  "end": 1168,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-omega-time",
+  "kind": "display",
+  "start": 1193,
+  "end": 1193,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-omega-sde",
+  "kind": "display",
+  "start": 1201,
+  "end": 1201,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L1210:lawler-book",
+  "kind": "citation",
+  "start": 1210,
+  "end": 1210,
+  "note": "Lemma 1.24 lawler-book",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L1223:lawler-book",
+  "kind": "citation",
+  "start": 1223,
+  "end": 1223,
+  "note": "Lemma 1.24 lawler-book",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-angle-hit-fixed",
+  "kind": "display",
+  "start": 1226,
+  "end": 1226,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:heading:L1250",
+  "kind": "heading",
+  "start": 1250,
+  "end": 1250,
+  "note": "Phases of $\\SLEG$",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-integral-nu",
+  "kind": "display",
+  "start": 1258,
+  "end": 1258,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:prop-i",
+  "kind": "proposition",
+  "start": 1265,
+  "end": 1271,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:prop-ii",
+  "kind": "proposition",
+  "start": 1276,
+  "end": 1284,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:item-ii-a",
+  "kind": "display",
+  "start": 1279,
+  "end": 1279,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:item-ii-b",
+  "kind": "display",
+  "start": 1281,
+  "end": 1281,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:heading:L1290",
+  "kind": "heading",
+  "start": 1290,
+  "end": 1290,
+  "note": "Preliminary lemmas",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-all-z",
+  "kind": "lemma",
+  "start": 1294,
+  "end": 1301,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1305",
+  "kind": "proof-region",
+  "start": 1305,
+  "end": 1319,
+  "note": "proof of lem-all-z",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-nohit-set",
+  "kind": "display",
+  "start": 1307,
+  "end": 1307,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-stationary-sde",
+  "kind": "lemma",
+  "start": 1327,
+  "end": 1343,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-recurrent",
+  "kind": "lemma",
+  "start": 1349,
+  "end": 1352,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1355",
+  "kind": "proof-region",
+  "start": 1355,
+  "end": 1357,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:cite:L1356:durrett",
+  "kind": "citation",
+  "start": 1356,
+  "end": 1356,
+  "note": "Theorem 7.3.2 durrett",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1360",
+  "kind": "proof-region",
+  "start": 1360,
+  "end": 1379,
+  "note": "proof of lem-stationary-sde",
+  "slice": "C"
+ },
+ {
+  "id": "inv:cite:L1374:revuz-yor",
+  "kind": "citation",
+  "start": 1374,
+  "end": 1374,
+  "note": "Theorem IV.2.2 revuz-yor",
+  "slice": "C"
+ },
+ {
+  "id": "inv:heading:L1383",
+  "kind": "heading",
+  "start": 1383,
+  "end": 1383,
+  "note": "Proof of Proposition~\\ref{prop-i} ",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-swallow-distance",
+  "kind": "lemma",
+  "start": 1389,
+  "end": 1392,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1394",
+  "kind": "proof-region",
+  "start": 1394,
+  "end": 1397,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1401",
+  "kind": "proof-region",
+  "start": 1401,
+  "end": 1418,
+  "note": "proof of prop-i",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-neg-I1-bd",
+  "kind": "display",
+  "start": 1410,
+  "end": 1410,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:heading:L1421",
+  "kind": "heading",
+  "start": 1421,
+  "end": 1421,
+  "note": "Proof of Proposition~\\ref{prop-ii}",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-integral-ii",
+  "kind": "lemma",
+  "start": 1430,
+  "end": 1437,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1440",
+  "kind": "proof-region",
+  "start": 1440,
+  "end": 1452,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-sde-ratio",
+  "kind": "display",
+  "start": 1444,
+  "end": 1444,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1458",
+  "kind": "proof-region",
+  "start": 1458,
+  "end": 1469,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:cite:L1463:lawler-book",
+  "kind": "citation",
+  "start": 1463,
+  "end": 1463,
+  "note": "Corollary 3.18 lawler-book",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-hit-koebe",
+  "kind": "display",
+  "start": 1464,
+  "end": 1464,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-converse-w-o-upgrade",
+  "kind": "lemma",
+  "start": 1475,
+  "end": 1478,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-3-outline",
+  "kind": "display",
+  "start": 1488,
+  "end": 1488,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-stationary-outline",
+  "kind": "display",
+  "start": 1494,
+  "end": 1494,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-computation",
+  "kind": "lemma",
+  "start": 1506,
+  "end": 1513,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1515",
+  "kind": "proof-region",
+  "start": 1515,
+  "end": 1543,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-computation-tilde-f",
+  "kind": "display",
+  "start": 1518,
+  "end": 1518,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-wt-L-dist",
+  "kind": "display",
+  "start": 1532,
+  "end": 1532,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-log-finite-exp",
+  "kind": "lemma",
+  "start": 1550,
+  "end": 1556,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1572",
+  "kind": "proof-region",
+  "start": 1572,
+  "end": 1631,
+  "note": "proof of lem-log-finite-exp",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-log-finite-show",
+  "kind": "display",
+  "start": 1574,
+  "end": 1574,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:cite:L1581:lawler-book",
+  "kind": "citation",
+  "start": 1581,
+  "end": 1581,
+  "note": "Corollary 3.23 lawler-book",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-finite-exp-1",
+  "kind": "display",
+  "start": 1584,
+  "end": 1584,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-finite-exp-2",
+  "kind": "display",
+  "start": 1589,
+  "end": 1589,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-finite-exp-3",
+  "kind": "display",
+  "start": 1595,
+  "end": 1595,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-finite-exp-4",
+  "kind": "display",
+  "start": 1602,
+  "end": 1602,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-log-finite-end",
+  "kind": "display",
+  "start": 1626,
+  "end": 1626,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1638",
+  "kind": "proof-region",
+  "start": 1638,
+  "end": 1781,
+  "note": "proof of lem-converse-w-o-upgrade",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-converse-show0",
+  "kind": "display",
+  "start": 1640,
+  "end": 1640,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-3",
+  "kind": "display",
+  "start": 1672,
+  "end": 1672,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:cite:L1705:lawler-book",
+  "kind": "citation",
+  "start": 1705,
+  "end": 1705,
+  "note": "Corollary 3.18 lawler-book",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-two-formulas",
+  "kind": "display",
+  "start": 1713,
+  "end": 1713,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-two-formulas'",
+  "kind": "display",
+  "start": 1720,
+  "end": 1720,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-two-dist-ratio",
+  "kind": "display",
+  "start": 1723,
+  "end": 1723,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-koebe-t",
+  "kind": "display",
+  "start": 1729,
+  "end": 1729,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-1",
+  "kind": "display",
+  "start": 1737,
+  "end": 1737,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-event",
+  "kind": "display",
+  "start": 1745,
+  "end": 1745,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-cases",
+  "kind": "display",
+  "start": 1751,
+  "end": 1751,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-koebe-union",
+  "kind": "display",
+  "start": 1757,
+  "end": 1757,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-es",
+  "kind": "display",
+  "start": 1765,
+  "end": 1765,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-2",
+  "kind": "display",
+  "start": 1771,
+  "end": 1771,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-dist-esc",
+  "kind": "display",
+  "start": 1776,
+  "end": 1776,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1786",
+  "kind": "proof-region",
+  "start": 1786,
+  "end": 1816,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:heading:L1819",
+  "kind": "heading",
+  "start": 1819,
+  "end": 1819,
+  "note": "Explicit phase formulas when the correlation is zero",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-c0-phases",
+  "kind": "lemma",
+  "start": 1824,
+  "end": 1827,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1828",
+  "kind": "proof-region",
+  "start": 1828,
+  "end": 1875,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-c0-p",
+  "kind": "display",
+  "start": 1830,
+  "end": 1830,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-c0-integrals",
+  "kind": "display",
+  "start": 1839,
+  "end": 1839,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-c0-phase-show",
+  "kind": "display",
+  "start": 1844,
+  "end": 1844,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-c0-phase-show'",
+  "kind": "display",
+  "start": 1851,
+  "end": 1851,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:eqn-cos-reflect",
+  "kind": "display",
+  "start": 1856,
+  "end": 1856,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:lem-c0-bdy",
+  "kind": "lemma",
+  "start": 1910,
+  "end": 1913,
+  "note": "",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1914",
+  "kind": "proof-region",
+  "start": 1914,
+  "end": 1927,
+  "note": "proof (preceding statement)",
+  "slice": "C"
+ },
+ {
+  "id": "inv:proof:L1930",
+  "kind": "proof-region",
+  "start": 1930,
+  "end": 1932,
+  "note": "proof of thm-phases",
+  "slice": "C"
+ },
+ {
+  "id": "inv:heading:L1947",
+  "kind": "heading",
+  "start": 1947,
+  "end": 1947,
+  "note": "$\\SLEG$ disconnects points",
+  "slice": "D"
+ },
+ {
+  "id": "inv:lem-disconnect-2",
+  "kind": "lemma",
+  "start": 1960,
+  "end": 1963,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:item-behavior-a",
+  "kind": "display",
+  "start": 1971,
+  "end": 1971,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:item-behavior-b",
+  "kind": "display",
+  "start": 1974,
+  "end": 1974,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:lem-line-approx",
+  "kind": "lemma",
+  "start": 1991,
+  "end": 1993,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:lem-haus",
+  "kind": "lemma",
+  "start": 1998,
+  "end": 2009,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2010",
+  "kind": "proof-region",
+  "start": 2010,
+  "end": 2020,
+  "note": "proof (preceding statement)",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2011:lawler-book",
+  "kind": "citation",
+  "start": 2011,
+  "end": 2011,
+  "note": "Proposition 4.43 lawler-book",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2022",
+  "kind": "proof-region",
+  "start": 2022,
+  "end": 2025,
+  "note": "proof of lem-line-approx",
+  "slice": "D"
+ },
+ {
+  "id": "inv:lem-pos-hits-before-neg",
+  "kind": "lemma",
+  "start": 2036,
+  "end": 2039,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:eqn-re-ft.2",
+  "kind": "lemma",
+  "start": 2043,
+  "end": 2067,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:eqn-re-ft",
+  "kind": "display",
+  "start": 2055,
+  "end": 2055,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:eqn-im-ft",
+  "kind": "display",
+  "start": 2060,
+  "end": 2060,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2069",
+  "kind": "proof-region",
+  "start": 2069,
+  "end": 2077,
+  "note": "proof (preceding statement)",
+  "slice": "D"
+ },
+ {
+  "id": "inv:eqn-re-im-ft",
+  "kind": "display",
+  "start": 2072,
+  "end": 2072,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cond-2.2",
+  "kind": "lemma",
+  "start": 2082,
+  "end": 2103,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cond-2",
+  "kind": "display",
+  "start": 2085,
+  "end": 2085,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cond-3",
+  "kind": "display",
+  "start": 2090,
+  "end": 2090,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cond-1",
+  "kind": "display",
+  "start": 2094,
+  "end": 2094,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cond-4",
+  "kind": "display",
+  "start": 2099,
+  "end": 2099,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2105",
+  "kind": "proof-region",
+  "start": 2105,
+  "end": 2108,
+  "note": "proof (preceding statement)",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2120",
+  "kind": "proof-region",
+  "start": 2120,
+  "end": 2139,
+  "note": "proof of lem-pos-hits-before-neg",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2160",
+  "kind": "proof-region",
+  "start": 2160,
+  "end": 2195,
+  "note": "proof of lem-disconnect-2",
+  "slice": "D"
+ },
+ {
+  "id": "inv:proof:L2199",
+  "kind": "proof-region",
+  "start": 2199,
+  "end": 2225,
+  "note": "proof of thm-disconnects",
+  "slice": "D"
+ },
+ {
+  "id": "inv:eqn-disconnect-mart",
+  "kind": "display",
+  "start": 2213,
+  "end": 2213,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:heading:L2230",
+  "kind": "heading",
+  "start": 2230,
+  "end": 2230,
+  "note": "Open problems",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2237",
+  "kind": "claim",
+  "start": 2237,
+  "end": 2239,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2242:bp-lqg-notes",
+  "kind": "citation",
+  "start": 2242,
+  "end": 2242,
+  "note": " bp-lqg-notes,shef-gff",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2242:shef-zipper",
+  "kind": "citation",
+  "start": 2242,
+  "end": 2242,
+  "note": " shef-zipper,wedges",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2242:ss-contour",
+  "kind": "citation",
+  "start": 2242,
+  "end": 2242,
+  "note": " ss-contour,dubedat-coupling,ig1,ig4",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2246",
+  "kind": "claim",
+  "start": 2246,
+  "end": 2248,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2252:wang-ld-survey",
+  "kind": "citation",
+  "start": 2252,
+  "end": 2252,
+  "note": " wang-ld-survey",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2254",
+  "kind": "claim",
+  "start": 2254,
+  "end": 2263,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2269:zhan-duality1",
+  "kind": "citation",
+  "start": 2269,
+  "end": 2269,
+  "note": " zhan-duality1,zhan-duality2,dubedat-duality,ig1,ig4",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2271",
+  "kind": "claim",
+  "start": 2271,
+  "end": 2273,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2275:lawler-werness-multipoint",
+  "kind": "citation",
+  "start": 2275,
+  "end": 2275,
+  "note": " lawler-werness-multipoint",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques-transient",
+  "kind": "claim",
+  "start": 2277,
+  "end": 2279,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:cite:L2283:beffara-dim",
+  "kind": "citation",
+  "start": 2283,
+  "end": 2283,
+  "note": " beffara-dim,alberts-shef-bdy-dim,miller-wu-dim",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2285",
+  "kind": "claim",
+  "start": 2285,
+  "end": 2293,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:ques:L2299",
+  "kind": "claim",
+  "start": 2299,
+  "end": 2301,
+  "note": "",
+  "slice": "D"
+ },
+ {
+  "id": "inv:heading:L2314",
+  "kind": "heading",
+  "start": 2314,
+  "end": 2314,
+  "note": "Kolmogorov forward equation for periodic SDEs",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-kolmogorov",
+  "kind": "lemma",
+  "start": 2318,
+  "end": 2334,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-kolmogorov-sde",
+  "kind": "display",
+  "start": 2320,
+  "end": 2320,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-hormander-cond",
+  "kind": "display",
+  "start": 2324,
+  "end": 2324,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-kolmogorov",
+  "kind": "display",
+  "start": 2329,
+  "end": 2329,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:lem-hormander",
+  "kind": "lemma",
+  "start": 2340,
+  "end": 2344,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L2345",
+  "kind": "proof-region",
+  "start": 2345,
+  "end": 2356,
+  "note": "proof (preceding statement)",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-stratanovich",
+  "kind": "display",
+  "start": 2347,
+  "end": 2347,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L2351:hairer-hormander",
+  "kind": "citation",
+  "start": 2351,
+  "end": 2351,
+  "note": "Theorem 1.3 hairer-hormander",
+  "slice": "B"
+ },
+ {
+  "id": "inv:proof:L2360",
+  "kind": "proof-region",
+  "start": 2360,
+  "end": 2402,
+  "note": "proof of lem-kolmogorov",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-periodic-deriv0",
+  "kind": "display",
+  "start": 2377,
+  "end": 2377,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:eqn-periodic-deriv",
+  "kind": "display",
+  "start": 2389,
+  "end": 2389,
+  "note": "",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L2396:ethier-semigroups",
+  "kind": "citation",
+  "start": 2396,
+  "end": 2396,
+  "note": "Theorem 1 ethier-semigroups",
+  "slice": "B"
+ },
+ {
+  "id": "inv:cite:L2396:gikhman-skorokhod",
+  "kind": "citation",
+  "start": 2396,
+  "end": 2396,
+  "note": "Theorem 3, Section 8.4 gikhman-skorokhod",
+  "slice": "B"
+ }
+]

@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PACKETS = ROOT / "graph" / "packets"
-CORPUS = "source/arxiv-2411.06301v2/fixed-pt-finite-type.tex sha256:b0fb466bfd59b1fd0e03757eddca48f8e67aa194a43b66880d2caeb677061670"
+CORPUS = "source/arxiv-2203.07313v4/complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252"
 
 
 def section(text: str, name: str) -> str:
@@ -64,7 +64,7 @@ def main() -> None:
         if gen:
             db = db.replace("<!-- BEGIN PROOF DEPGRAPH GENERATED -->\n<!-- END PROOF DEPGRAPH GENERATED -->", gen.group(0))
     existing.write_text(db, encoding="utf-8")
-    cov = (f"# Proof-source coverage manifest — arXiv:2411.06301v2\n\nCORPUS: {CORPUS}\n\n"
+    cov = (f"# Proof-source coverage manifest — arXiv:2203.07313v4\n\nCORPUS: {CORPUS}\n\n"
            "Every theorem-like source unit, definition, reused display, citation, and candidate "
            "substantive proof paragraph receives exactly one disposition.\n\n## Inventory\n\n"
            + "\n\n".join(items) + "\n")

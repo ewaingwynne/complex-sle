@@ -1,0 +1,281 @@
+[
+ {
+  "node": "defn-loewner.solution",
+  "kind": "definition",
+  "id": "def.IsLoewnerSolution.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+  "export": "ComplexSLE.IsLoewnerSolution",
+  "contract": "paper.def.IsLoewnerSolution",
+  "abi": "bbe2299b871e2374841a91b93b4f6762ad46fdaed6a82c43893c005089db4d29"
+ },
+ {
+  "node": "defn-loewner.absorbing-time",
+  "kind": "definition",
+  "id": "def.absorbingTime.v1",
+  "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+  "export": "ComplexSLE.absorbingTime",
+  "contract": "paper.def.absorbingTime",
+  "abi": "f831e140c92a7542b39fb4f416dbd3ffaf931cb64e30ff1cd9362379efa590f1"
+ },
+ {
+  "node": "defn-hulls.left",
+  "kind": "definition",
+  "id": "def.leftHull.v1",
+  "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+  "export": "ComplexSLE.leftHull",
+  "contract": "paper.def.leftHull",
+  "abi": "c203d2a3a6eb3db7f822226cccc6b9ad6add6cd583a36c32bc8619bd900e809e"
+ },
+ {
+  "node": "def-disconnect",
+  "kind": "definition",
+  "id": "def.DisconnectsFromInfinity.v1",
+  "path": "ComplexSLE/Frozen/Defs/DisconnectsFromInfinity.lean",
+  "export": "ComplexSLE.DisconnectsFromInfinity",
+  "contract": "paper.def.DisconnectsFromInfinity",
+  "abi": "396f675756de6faa68b7c805e29e8d726cae4320d590f5a714e96ee80ee540c2"
+ },
+ {
+  "node": "eqn-cov-matrix",
+  "kind": "definition",
+  "id": "def.covMatrix.v1",
+  "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
+  "export": "ComplexSLE.covMatrix",
+  "contract": "paper.def.covMatrix",
+  "abi": "9c7db20131aa7365837343dbfe0137f267d6d9583f10c6217364b322317c9dc2"
+ },
+ {
+  "node": "defn-sle.gaussian-law",
+  "kind": "definition",
+  "id": "def.complexGaussian.v1",
+  "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
+  "export": "ComplexSLE.complexGaussian",
+  "contract": "paper.def.complexGaussian",
+  "abi": "35770535322d991e762fad0a8fe630fa74e550a8a476439b08129e00de75c486"
+ },
+ {
+  "node": "defn-sle",
+  "kind": "definition",
+  "id": "def.IsSLEDriver.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
+  "export": "ComplexSLE.IsSLEDriver",
+  "contract": "paper.def.IsSLEDriver",
+  "abi": "a3e7b316bc3a0ef59101d633fadad41bf1cf76893aaccc318657527c33d60af5"
+ },
+ {
+  "node": "defn-phases.thin",
+  "kind": "definition",
+  "id": "def.IsThinPhase.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsThinPhase.lean",
+  "export": "ComplexSLE.IsThinPhase",
+  "contract": "paper.def.IsThinPhase",
+  "abi": "7727fa4e3bd47573921bd91b01e159429ee6bf9918604c734f8eae2575c8142c"
+ },
+ {
+  "node": "defn-phases.swallowing",
+  "kind": "definition",
+  "id": "def.IsSwallowingPhase.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsSwallowingPhase.lean",
+  "export": "ComplexSLE.IsSwallowingPhase",
+  "contract": "paper.def.IsSwallowingPhase",
+  "abi": "da5f6acbe728f180308ef886460f4e1cb38a7ac67b56a6fa0a79da36708ee72f"
+ },
+ {
+  "node": "defn-phases.hitting",
+  "kind": "definition",
+  "id": "def.IsHittingPhase.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsHittingPhase.lean",
+  "export": "ComplexSLE.IsHittingPhase",
+  "contract": "paper.def.IsHittingPhase",
+  "abi": "f226bef104f2e8332fb32fce332025566773b0e16564ff8d199410f001b307d0"
+ },
+ {
+  "node": "defn-phases.dense",
+  "kind": "definition",
+  "id": "def.IsDensePhase.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsDensePhase.lean",
+  "export": "ComplexSLE.IsDensePhase",
+  "contract": "paper.def.IsDensePhase",
+  "abi": "1ee346e80cf2a6167b73f56641824ee302db6becb222740bf3701d7971e7e5df"
+ },
+ {
+  "node": "eqn-nu-D.mu",
+  "kind": "definition",
+  "id": "def.mu.v1",
+  "path": "ComplexSLE/Frozen/Defs/Mu.lean",
+  "export": "ComplexSLE.mu",
+  "contract": "paper.def.mu",
+  "abi": "cd3369a3cc72d9850889657ec3f058716a2c7cbc084efbddfcc84738b784297b"
+ },
+ {
+  "node": "eqn-nu-D.nu",
+  "kind": "definition",
+  "id": "def.nu.v1",
+  "path": "ComplexSLE/Frozen/Defs/Nu.lean",
+  "export": "ComplexSLE.nu",
+  "contract": "paper.def.nu",
+  "abi": "f9ff6a5f33ed2c7350371531fdb5f1700586fdc010eb37a4a4c11857b1ce23e3"
+ },
+ {
+  "node": "eqn-nu-D.D",
+  "kind": "definition",
+  "id": "def.diffusionD.v1",
+  "path": "ComplexSLE/Frozen/Defs/DiffusionD.lean",
+  "export": "ComplexSLE.diffusionD",
+  "contract": "paper.def.diffusionD",
+  "abi": "ae71cf207fc738d3a8f3b0629a9e5bc1c4b8e6c767665016cbbb6630db368cc2"
+ },
+ {
+  "node": "lem-stationary.admissible",
+  "kind": "definition",
+  "id": "def.IsAdmissibleDensity.v1",
+  "path": "ComplexSLE/Frozen/Defs/IsAdmissibleDensity.lean",
+  "export": "ComplexSLE.IsAdmissibleDensity",
+  "contract": "paper.def.IsAdmissibleDensity",
+  "abi": "2429786912c3915fecf74d5df2467dd2b5c0a7d89ff34a4e3f77a86c0af43b7c"
+ },
+ {
+  "node": "item-I",
+  "kind": "definition",
+  "id": "def.integralI.v1",
+  "path": "ComplexSLE/Frozen/Defs/IntegralI.lean",
+  "export": "ComplexSLE.integralI",
+  "contract": "paper.def.integralI",
+  "abi": "5971ead00dfc488c751540f8e58da9f1b4f95e192413d7e6f2712586ba7823ad"
+ },
+ {
+  "node": "item-II",
+  "kind": "definition",
+  "id": "def.integralII.v1",
+  "path": "ComplexSLE/Frozen/Defs/IntegralII.lean",
+  "export": "ComplexSLE.integralII",
+  "contract": "paper.def.integralII",
+  "abi": "f79d30902daa10ab3c6b8002e63af5af5c565a7558faa9d8067507619f09211c"
+ },
+ {
+  "node": "defn-loewner.well-defined",
+  "kind": "theorem",
+  "id": "thm.loewner_wellDefined.v1",
+  "path": "ComplexSLE/Frozen/LoewnerWellDefined.lean",
+  "export": "ComplexSLE.loewner_wellDefined",
+  "contract": "paper.def1_1.wellDefined",
+  "abi": "627a9c24bc589b835afd7829fa4c0ca50499a5167908b24c5ac70bd838f0257f"
+ },
+ {
+  "node": "lem-p.exists",
+  "kind": "theorem",
+  "id": "thm.exists_admissibleDensity.v1",
+  "path": "ComplexSLE/Frozen/Lemma_2_13_Exists.lean",
+  "export": "ComplexSLE.exists_admissibleDensity",
+  "contract": "paper.lem2_13.exists",
+  "abi": "8f546735c8b4d71b3075c5f4038fdc3cd05cd83517ffa087db4f91baec22d461"
+ },
+ {
+  "node": "nonsource.exists-sle-driver",
+  "kind": "theorem",
+  "id": "thm.exists_sleDriver.v1",
+  "path": "ComplexSLE/Frozen/ExistsSLEDriver.lean",
+  "export": "ComplexSLE.exists_sleDriver",
+  "contract": "paper.nonsource.existsSLEDriver",
+  "abi": "cb6850fe26b9549e5e5795f68670c65beb5f354084bfe7c0b086b6192ca62fdc"
+ },
+ {
+  "node": "thm-phases",
+  "kind": "theorem",
+  "id": "thm.theorem_1_8.v1",
+  "path": "ComplexSLE/Frozen/Theorem_1_8.lean",
+  "export": "ComplexSLE.theorem_1_8",
+  "contract": "paper.thm1_8.phases",
+  "abi": "a6e1ebdf58aaf0db8d9b0eecfdd5cb139c91a84c01bda7b0b4de6db3e4f5475b"
+ },
+ {
+  "node": "thm-phases.c-zero",
+  "kind": "theorem",
+  "id": "thm.theorem_1_8_c_zero.v1",
+  "path": "ComplexSLE/Frozen/Theorem_1_8_CZero.lean",
+  "export": "ComplexSLE.theorem_1_8_c_zero",
+  "contract": "paper.thm1_8.cZero",
+  "abi": "2ac1a2c03ab122e2d2b04cd9d4f8d9ceaa4f35e452106838a9322f0c47d08bcd"
+ },
+ {
+  "node": "thm-disconnects.a",
+  "kind": "theorem",
+  "id": "thm.theorem_1_10_a.v1",
+  "path": "ComplexSLE/Frozen/Theorem_1_10_A.lean",
+  "export": "ComplexSLE.theorem_1_10_a",
+  "contract": "paper.thm1_10.a",
+  "abi": "4075bd36d6a8503eb38319a978b1826157dc31f0b0800820be15fde67340548a"
+ },
+ {
+  "node": "thm-disconnects.b",
+  "kind": "theorem",
+  "id": "thm.theorem_1_10_b.v1",
+  "path": "ComplexSLE/Frozen/Theorem_1_10_B.lean",
+  "export": "ComplexSLE.theorem_1_10_b",
+  "contract": "paper.thm1_10.b",
+  "abi": "a4e294f2aeaf5af14560b8ff75ed1e705bf450412093f7d1877c04ce72501f47"
+ },
+ {
+  "node": "prop-i.a",
+  "kind": "theorem",
+  "id": "thm.proposition_3_1_a.v1",
+  "path": "ComplexSLE/Frozen/Proposition_3_1_A.lean",
+  "export": "ComplexSLE.proposition_3_1_a",
+  "contract": "paper.prop3_1.a",
+  "abi": "98149ac34067ca49e2b3a5155685d35078ede80ef870a1e3917076c77a93a902"
+ },
+ {
+  "node": "prop-i.b",
+  "kind": "theorem",
+  "id": "thm.proposition_3_1_b.v1",
+  "path": "ComplexSLE/Frozen/Proposition_3_1_B.lean",
+  "export": "ComplexSLE.proposition_3_1_b",
+  "contract": "paper.prop3_1.b",
+  "abi": "80b1301f8349878a927cecf5bb3e25558a8e4f99a13edc51752231df161fa236"
+ },
+ {
+  "node": "prop-ii.a",
+  "kind": "theorem",
+  "id": "thm.proposition_3_2_a.v1",
+  "path": "ComplexSLE/Frozen/Proposition_3_2_A.lean",
+  "export": "ComplexSLE.proposition_3_2_a",
+  "contract": "paper.prop3_2.a",
+  "abi": "7bbf7b70ad8ac1714e12908c49ba28298a6e77844f927984651fff3b2fc3f161"
+ },
+ {
+  "node": "prop-ii.b",
+  "kind": "theorem",
+  "id": "thm.proposition_3_2_b.v1",
+  "path": "ComplexSLE/Frozen/Proposition_3_2_B.lean",
+  "export": "ComplexSLE.proposition_3_2_b",
+  "contract": "paper.prop3_2.b",
+  "abi": "68e7f561920bc47ded181922aa3709800fd30024d385e40bf7734750bb063c67"
+ },
+ {
+  "node": "lem-connected.left",
+  "kind": "theorem",
+  "id": "thm.lemma_2_4_leftHull.v1",
+  "path": "ComplexSLE/Frozen/Lemma_2_4_LeftHull.lean",
+  "export": "ComplexSLE.lemma_2_4_leftHull",
+  "contract": "paper.lem2_4.leftHull",
+  "abi": "346e1871675ffbff3149f1eba8ce7064deda3bae36480f3631f217663d08e7ab"
+ },
+ {
+  "node": "eqn-scale.left",
+  "kind": "theorem",
+  "id": "thm.scaling_leftHull.v1",
+  "path": "ComplexSLE/Frozen/Scaling_LeftHull.lean",
+  "export": "ComplexSLE.scaling_leftHull",
+  "contract": "paper.prop2_1_scaling.leftHull",
+  "abi": "0b072ed0d86d49729df12aafd3234c5371ca05e7bd4e7563aca829a4ad0259f5"
+ },
+ {
+  "node": "eqn-reflect.left",
+  "kind": "theorem",
+  "id": "thm.reflection_leftHull.v1",
+  "path": "ComplexSLE/Frozen/Reflection_LeftHull.lean",
+  "export": "ComplexSLE.reflection_leftHull",
+  "contract": "paper.prop2_2_reflection.leftHull",
+  "abi": "a622f14fdc883f8e0806d2d8df7ef10f345eba58d229d3bea9f50da620fc7cb7"
+ }
+]
