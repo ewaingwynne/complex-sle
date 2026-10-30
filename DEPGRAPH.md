@@ -6705,18 +6705,20 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:haus-maps-converge, defn-hulls.left
+DEPS: step:haus-maps-converge, defn-hulls.left, step:hull-closed, step:hulls-compact
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:haus-maps-converge | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | g^n_t -> g_t on C minus B_eps(L_t) gives L' subset B_eps(L_t) for each eps
-EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t is closed so intersection over eps of B_eps(L_t) equals L_t
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t = {T_z <= t}
+EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2017-L2017 | L_t closed, so the intersection over eps of B_eps(L_t) is L_t and L' subset L_t
+EDGE: step:hulls-compact | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-haus@L2015-L2015 | "By compactness": the L^n_t and L_t are compact and uniformly bounded, so Hausdorff-convergent subsequences exist
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Existence of a Hausdorff-convergent subsequence uses (unstated) uniform boundedness of L^n_t; closedness of L_t is used implicitly (uncertain).
+NOTE: Existence of a Hausdorff-convergent subsequence uses compactness/uniform boundedness of L^n_t (step:hulls-compact, itself a SOURCE_GAP of slice C) and closedness of L_t (step:hull-closed, SOURCE_GAP of slice A); neither is cited at L2015-L2017.
 
 NODE: step:haus-limit-conformal-extension
 KIND: step
@@ -7019,17 +7021,18 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:re-im-ft-sde
+DEPS: step:re-im-ft-sde, lem-endpt-cont
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:re-im-ft-sde | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2076-L2076 | SDEs applied on the interval [s,t]
+EDGE: lem-endpt-cont | source/arxiv-2203.07313v4/complex-sle-final.tex#lem:re-im-bounds@L2049-L2049 | s,t in [0,rho_z] with rho_z < T_z so that f_t(z) exists at the endpoint; ∣f_t(z)∣ -> 0 at T_z < infinity forces rho_z < T_z
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: The source uses |f_r|>=1 on [s,t] where the definition of rho gives |f_r|>1 on [0,rho). Existence of f_t(z) up to rho (rho<T_z) is implicit (cf. lem-endpt-cont, not cited here).
+NOTE: The source uses |f_r|>=1 on [s,t] where the definition of rho gives |f_r|>1 on [0,rho). SOURCE_GAP: existence of f_rho(z) (rho < T_z; also the case T_z = infinity with |f_t|>1 for all t, where [0,rho] is not an interval of definition) is not addressed in L2043-L2077; lem-endpt-cont is the ingredient the proof of Lemma 4.4 later cites (L2134) for the same inference.
 
 NODE: lem-c-event
 KIND: lemma
@@ -7304,12 +7307,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem:re-im-bounds, lem-c-event, step:pos-imag-part-bound
+DEPS: lem:re-im-bounds, lem-c-event, step:pos-imag-part-bound, step:pos-choose-C-x-y
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem:re-im-bounds | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2137 | eqn-re-ft with (s,t)=(1,2) and (0,1)
 EDGE: lem-c-event | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2137 | (cond-3) and (cond-2)
 EDGE: step:pos-imag-part-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2136-L2136 | rho_z>=2 so the bounds are valid on [0,2]
+EDGE: step:pos-choose-C-x-y | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-pos-hits-before-neg@L2138-L2138 | Re f_2(x) <= 2C-3C and Re f_2(y) >= 7C-6C use x=2C, y=7C
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7333,11 +7337,10 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:disc-independence-product, step:disc-pullback-conclusion
+DEPS: step:disc-choose-U
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2179-L2181 | P(E_1 cap E_2 cap E_3 cap E_4)>0
-EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events L_{T+2+K} disconnects U^- or U^+ from infinity avoiding it
+EDGE: step:disc-choose-U | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "this gives the lemma statement for t = T+2+K": choice of the deterministic U among U^-, U^+ with positive probability (the former edges to step:disc-independence-product and step:disc-pullback-conclusion are now consumed by step:disc-choose-U)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7372,7 +7375,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: existence of non-empty open U^+- satisfying both requirements (distance >=2eps from the imaginary axis; mapped into B_{eps/2}(x -+ 2i eps)) is asserted, not shown (uncertain: a quick estimate suggests the preimage lies within distance of order eps*x/sqrt(4T-x^2) of the imaginary axis, which is <2eps when x^2<2T; reviewer should check). The text also writes (B_t) for measurability; the hulls depend on U=(B,B~).
+NOTE: SOURCE_GAP: existence of non-empty open U^+- satisfying both requirements (distance >= 2 eps from the imaginary axis; mapped by z -> sqrt(z^2+4T) into B_{eps/2}(x -+ 2 i eps)) is asserted at L2165, not shown. Reviewer computation (to be confirmed by the orchestrator): the preimage of w = x -+ 2 i eps is z with z^2 = w^2-4T, |Re z| ~ 2 x eps / sqrt(4T-x^2), and the preimage of B_{eps/2}(w) has |Re z| <= ~ 2.5 x eps / sqrt(4T-x^2) as eps -> 0. A point at distance >= 2 eps from the imaginary axis therefore needs x / sqrt(4T-x^2) >~ 0.8. For the choice made in the proof of Lemma 4.4 (x = 2C, y = 7C, so x/y = 2/7) and any T > y^2/2 one has x / sqrt(4T-x^2) < 0.21 (numerically max |Re z|/eps = 0.72 at C = 1, T = 13, eps = 0.01), so U^+- would be empty. Lemma 4.4 is stated existentially ('we can choose 0<x<y'), so the proof of Lemma 4.1 may not re-pick x, y. The text also writes (B_t) for measurability; the hulls depend on U = (B, B~).
 
 NODE: step:disc-E1-positive
 KIND: step
@@ -7389,19 +7392,20 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-haus, lem-line-approx, step:disc-setup
+DEPS: lem-haus, lem-line-approx, step:disc-setup, step:right-hull-connected
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-haus | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2180-L2180 | cited as the source of P(E_1)>0
 EDGE: lem-line-approx | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2180-L2180 | the Hausdorff/uniform closeness statements that give containment in eps-neighborhoods and f_T(U^+-) subset B_eps(x +- 2i eps) are those of Lemma 4.2
 EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | definition of E_1 and of U^+-
+EDGE: step:right-hull-connected | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | "R_T contains a left-right crossing of [x,y]x[-eps,eps]": a connected R_T Hausdorff-close to [-2T^{1/2},2T^{1/2}] supplies the crossing
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: (i) the source cites Lemma 4.3 directly; the closeness statements it needs are those of Lemma 4.2, recorded as an additional dependency; (ii) 'R_T contains a left-right crossing of [x,y]x[-eps,eps]' requires R_T connected (right-hull analogue of Lemma 2.4, not a graph node: slice A froze only the left-hull part, R16) and is not argued.
+NOTE: SOURCE_GAP: (i) the source cites Lemma 4.3 directly; the closeness statements it needs are those of Lemma 4.2, recorded as an additional dependency; (ii) the crossing needs connectedness of R_T, now carried by step:right-hull-connected (itself a SOURCE_GAP); (iii) 'for each T, eps > 0' cannot hold for eps large compared with 2T^{1/2} - y, and the existence of U^+- is in doubt (see step:disc-setup, F6).
 
 NODE: step:disc-E4-positive
 KIND: step
@@ -7461,7 +7465,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: SOURCE_GAP: Lemma 4.4 gives disjointness of the segment [x,y] from L_2 and a sign change of Re f_2 on the endpoints. E_2 requires (a) disjointness from the thickened rectangle [x,y]x[-eps,eps], (b) that the image of every left-right crossing of this rectangle contains a left-right crossing of [-eps,eps]x[-2K^{1/2}+eps,2K^{1/2}-eps] (needs continuity/compactness and a choice of eps,K), and E_3 needs a continuity estimate near x. This bridge, including the choice 'for some eps,K', is not argued.
+NOTE: SOURCE_GAP: Lemma 4.4 gives disjointness of the segment [x,y] from L_2 and a sign change of Re f_2 on the endpoints. E_2 requires (a) disjointness from the thickened rectangle [x,y]x[-eps,eps], (b) that the image of every left-right crossing of this rectangle contains a left-right crossing of [-eps,eps]x[-2K^{1/2}+eps,2K^{1/2}-eps] (needs continuity/compactness and a choice of eps,K, and eps small compared with |Re f_2(x)|, |Re f_2(y)|, which Lemma 4.4's statement does not quantify). E_3 needs B_{3eps}(x) cap L_{T,T+2} = empty (domain of f_{T,T+2}) and a continuity estimate near x. This bridge, including the choice 'for some eps,K', is not argued.
 
 NODE: step:disc-independence-product
 KIND: step
@@ -7520,7 +7524,7 @@ REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Typo: the third bullet writes f_{T+2}(B_{3eps}(x)); read f_{T,T+2}. The transfer via (2.3) also involves the term R_{T,T+2} in L_{T,T+2+K} = L_{T,T+2} cup f_{T,T+2}^{-1}(L_{T+2,T+2+K}\R_{T,T+2}); this is not discussed (potential SOURCE_GAP).
+NOTE: Typo: the third bullet writes f_{T+2}(B_{3eps}(x)); read f_{T,T+2}. SOURCE_GAP: (i) 'L_{T,T+2+K} does not intersect B_{3eps}(x)' needs L_{T,T+2} cap B_{3eps}(x) = empty (this is also the domain condition for f_{T,T+2}(B_{3eps}(x)) in E_3), but E_2 only gives L_{T,T+2} disjoint from the thin rectangle [x,y]x[-eps,eps], which does not contain B_{3eps}(x). (ii) The transfer via (2.3) also involves the term R_{T,T+2} in L_{T,T+2+K} = L_{T,T+2} cup f_{T,T+2}^{-1}(L_{T+2,T+2+K}\R_{T,T+2}); this is not discussed. (iii) 'S avoids f_T(U^+-)' is automatic only because f_T(U^+-) lies in the range of f_T, i.e. needs U^+- cap L_T = empty.
 
 NODE: step:disc-topological-separation
 KIND: step
@@ -7537,12 +7541,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:disc-concatenation-transfer, def-disconnect, defn-hulls.right
+DEPS: step:disc-concatenation-transfer, def-disconnect, defn-hulls.right, step:disc-setup
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:disc-concatenation-transfer | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{T,T+2+K} meets S but not B_{3eps}(x)
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | notion of disconnection from infinity
 EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_T contained in the eps-neighborhood of the real axis and contains the crossing S
+EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1: R_T within eps of the real axis and f_T(U^+-) subset B_eps(x +- 2i eps) subset B_{3eps}(x) minus R_T
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7566,20 +7571,19 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: step:disc-topological-separation, eqn-conc, def-disconnect, defn-hulls.left
+DEPS: step:disc-topological-separation, step:disc-concat-disconnect-general, step:disc-setup
 ROUTES: -
 ROUTE_FOR: -
 EDGE: step:disc-topological-separation | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection of f_T(U^+-) by L_{T,T+2+K} cup R_T
-EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{s+t} = L_t cup f_t^{-1}(L_{t,s+t}\R_t) with t=T, s=2+K
-EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection from infinity and disjointness
-EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | left hull L_{T+2+K}
+EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | "By the concatenation property": instance s=T, t=2+K, point in U^+-
+EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | E_1 and the choice of U^+-: U^+- cap L_T = empty, so f_T is defined on U^+-
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
 LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
-NOTE: Carrier change z <-> f_T(z). Reused as a black box by the proof-a assembly (restart-at-sigma-time transfer), see step:disc-a-markov-restart. Which of U^-,U^+ occurs is random; U is then the deterministic union (read).
+NOTE: Carrier change z <-> f_T(z); an instance of step:disc-concat-disconnect-general. Which of U^-, U^+ occurs is random; the deterministic choice is made in step:disc-choose-U (the earlier reading 'U is the deterministic union' is withdrawn).
 
 NODE: step:disc-a-q-scale-invariance
 KIND: step
@@ -7596,12 +7600,13 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-scaling, eqn-scale, defn-hulls.left
+DEPS: lem-scaling, eqn-scale, defn-hulls.left, def-disconnect
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | law of the chain is invariant under r^{-1} f_{r^2 t}(r.)
 EDGE: eqn-scale | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | hulls and absorbing times scale: L_t^{rU(./r^2)} = r L_{t/r^2}
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2203-L2203 | event defined through left hulls and T_z
+EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2205-L2205 | disconnection from infinity is preserved by the scaling z -> z/∣z∣
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7625,13 +7630,14 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-disconnect-2, step:disc-a-q-scale-invariance, def-disconnect, defn-hulls.left
+DEPS: lem-disconnect-2, step:disc-a-q-scale-invariance, def-disconnect, defn-hulls.left, step:zero-in-left-hull
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-disconnect-2 | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | positive probability that L_t disconnects U from infinity avoiding it
-EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | q(w)>0 for w in U transfers to z/∣z∣; the radial projection of a nonempty open set is a nonempty open arc set
+EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | q(w)>0 for w in U transfers to z/∣z∣; the radial projection of a non-empty open set is a non-empty open arc set
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w in U with U cap L_t = empty is disconnected before T_w
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | w not in L_t iff T_w>t
+EDGE: step:zero-in-left-hull | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | 0 in L_t for all t, so U cap L_t = empty gives 0 not in U and z/∣z∣ is defined on U
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7686,13 +7692,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-scaling, lem-markov, defn-sigma, step:disc-pullback-conclusion
+DEPS: lem-scaling, lem-markov, defn-sigma, remark-sigma, step:disc-a-q-scale-invariance, step:disc-concat-disconnect-general
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | rescale the restarted chain to unit-circle start (Prop 3.2(b) L1804)
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | domain Markov property at the stopping time sigma_z(tau)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | sigma_z(tau) is a stopping time for the driver filtration
-EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | disconnection by the restarted left hull together with R_s pulls back to disconnection of z by the original hull (concatenation)
+EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | sigma_z maps (0,infinity) into (0,T_z): z is not in L_{sigma_z(tau)} so f_{sigma_z(tau)}(z) exists
+EDGE: step:disc-a-q-scale-invariance | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | q(f_s(z)) = q(f_s(z)/∣f_s(z)∣) = q(e^{i theta^_tau(z)}) for the restarted point
+EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207 | disconnection of f_s(z) by the restarted left hull (together with R_s) pulls back to disconnection of z by the original hull
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7745,11 +7753,12 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: def-disconnect, defn-hulls.left
+DEPS: def-disconnect, defn-hulls.left, step:hull-closed
 ROUTES: -
 ROUTE_FOR: -
 EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | z lies in a bounded component of the open set C minus L_t, so do nearby points
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | w not in L_t iff T_w>t
+EDGE: step:hull-closed | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2209-L2209 | C minus L_t is open, so a ball around z stays inside the same bounded component and outside L_t
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7802,14 +7811,15 @@ FROZEN_FILE: -
 FROZEN_DECL: -
 FROZEN_ANCHOR_ID: -
 FROZEN_ABI_SHA256: -
-DEPS: lem-scaling, lem-markov, defn-sigma, step:disc-a-uniform-lower-bound, step:disc-pullback-conclusion
+DEPS: lem-scaling, lem-markov, defn-sigma, remark-sigma, step:disc-a-uniform-lower-bound, step:disc-concat-disconnect-general
 ROUTES: -
 ROUTE_FOR: -
 EDGE: lem-scaling | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | scale invariance of the restarted chain
 EDGE: lem-markov | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | strong Markov property at sigma_z(t~)
 EDGE: defn-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2216-L2216 | sigma_z as in Definition 2.9
 EDGE: step:disc-a-uniform-lower-bound | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | the uniform bound q_*
-EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | transfer from the restarted chain to the original event (concatenation)
+EDGE: remark-sigma | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | sigma_z(t~) < T_z, so the restart point f_{sigma_z(t~)}(z) exists
+EDGE: step:disc-concat-disconnect-general | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2212-L2212 | disconnection by the restarted left hull pulls back to disconnection of z (inequality, not equality)
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
 REVIEWER: -
@@ -7865,7 +7875,7 @@ FROZEN_ABI_SHA256: -
 DEPS: step:wlog-c-nonneg, step:disc-a-martingale-limit-one, defn-hulls.left
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L1950-L1951 | reduction to c>=0 needed for lem-disconnect-2 (conjugation maps L_t to its conjugate, preserving the event)
+EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2206-L2206 | Lemma 4.1 (and through it Lemma 4.6) is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-a-martingale-limit-one | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2217-L2217 | final 0-1 argument gives almost sure disconnection before T_z
 EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2201-L2203 | 'disconnects z from infinity before T_z' means exists t<T_z with z not in L_t
 TOPOLOGY_STATUS: PROPOSED
@@ -8011,7 +8021,7 @@ FROZEN_ABI_SHA256: -
 DEPS: step:wlog-c-nonneg, step:disc-b-monotone-extension
 ROUTES: -
 ROUTE_FOR: -
-EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L1950-L1951 | reduction to c>=0 needed for lem-disconnect-2
+EDGE: step:wlog-c-nonneg | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2222-L2222 | Lemma 4.1 is only proved for c>=0, so the Lemma 4.1 invocation presupposes the section's WLOG reduction
 EDGE: step:disc-b-monotone-extension | source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2224-L2224 | conclusion for every t>0 simultaneously
 TOPOLOGY_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
@@ -8020,6 +8030,92 @@ LEAN_STATUS: NOT_STARTED
 LEAN_REF: -
 LEAN_NOTE: -
 NOTE: Step node consumed by root thm-disconnects.b. Independent of proof-a (R17).
+
+NODE: step:disc-choose-U
+KIND: step
+TITLE: Choice of the deterministic set U in {U^-, U^+} by pigeonhole
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194
+CONTRACT_ID: paper.step:disc-choose-U
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: P(E_1 cap E_2 cap E_3 cap E_4) > 0 for the chosen T, eps, K; on E_1..E_4, t = T+2+K has U^- cap L_t = empty and L_t disconnects U^-, or the same for U^+ (step:disc-pullback-conclusion)
+SOURCE_QUANTIFIERS: T, eps, K fixed deterministic; then a sign s in {-,+}
+SOURCE_CONCLUSION: there is a deterministic sign s with P(U^s cap L_t = empty and L_t disconnects U^s from infinity) > 0 for t = T+2+K, hence the statement of Lemma 4.1 with U = U^s (non-empty, bounded, open) and t = T+2+K
+CONSTANT_SCOPE: T, eps, K, s deterministic
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: step:disc-independence-product, step:disc-pullback-conclusion, step:disc-setup
+ROUTES: -
+ROUTE_FOR: -
+EDGE: step:disc-independence-product | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2181-L2181 | P(E_1 cap ... cap E_4) > 0
+EDGE: step:disc-pullback-conclusion | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | on the four events one of U^-, U^+ is disconnected by L_{T+2+K} and avoided by it
+EDGE: step:disc-setup | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2165-L2165 | U^+- are deterministic, bounded, open and (needed) non-empty
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: Quantifier closure / witness choice. SOURCE_GAP: the source says only 'this gives the lemma statement for t = T+2+K'. The disconnected set is random (U^- or U^+ depending on omega), and the lemma needs one deterministic U; P(A^-) + P(A^+) >= P(E_1 cap ... cap E_4) > 0 selects a sign. The extractor's reading 'U is the deterministic union' (NOTE of step:disc-pullback-conclusion) is not valid: on the event only one of the two sets is disconnected, so the union is not. Non-emptiness of U^+- depends on step:disc-setup (see F6).
+
+NODE: step:right-hull-connected
+KIND: step
+TITLE: Right hulls R_t are connected
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169
+CONTRACT_ID: paper.step:right-hull-connected
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U : [0,infinity) -> C continuous; t >= 0 (used for T)
+SOURCE_QUANTIFIERS: U; t >= 0
+SOURCE_CONCLUSION: R_t is connected (and non-empty)
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: defn-hulls.right
+ROUTES: -
+ROUTE_FOR: -
+EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2169-L2169 | R_T = C minus the range of f_T
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: SOURCE_GAP: the source never states connectedness of right hulls. Slice A froze only the left-hull part of Lemma 2.4 (R16) and records that the right hull would follow from the duality (2.4) (not a node) and Lemma 2.4. E_1 (crossing of [x,y]x[-eps,eps] by R_T) and the topological step at L2194 consume it, so right-hull connectedness now feeds a root and the orchestrator must decide whether to graph eqn-duality / a right-hull analogue of lem-connected.left.
+
+NODE: step:disc-concat-disconnect-general
+KIND: step
+TITLE: Concatenation transfer: disconnection by L_{s,s+t} cup R_s of f_s(z) pulls back to disconnection of z by L_{s+t}
+STATEMENT_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194
+PROOF_SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#thm-disconnects@L2207-L2207
+CONTRACT_ID: paper.step:disc-concat-disconnect-general
+CONTRACT_VERSION: 1
+SOURCE_HYPOTHESES: U continuous; s, t >= 0; z in C with z not in L_s (T_z > s); L_{s,s+t}, R_s as in (2.3); L_{s,s+t} cup R_s disconnects f_s(z) from infinity and f_s(z) is not in L_{s,s+t}
+SOURCE_QUANTIFIERS: U; s,t; z (pathwise, s may be a stopping time)
+SOURCE_CONCLUSION: z not in L_{s+t} and L_{s+t} disconnects z from infinity
+CONSTANT_SCOPE: none
+FROZEN_FILE: -
+FROZEN_DECL: -
+FROZEN_ANCHOR_ID: -
+FROZEN_ABI_SHA256: -
+DEPS: eqn-conc, def-disconnect, defn-hulls.left, defn-hulls.right
+ROUTES: -
+ROUTE_FOR: -
+EDGE: eqn-conc | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{s+t} = L_s cup f_s^{-1}(L_{s,s+t}\R_s); f_s maps C\L_s into C\R_s
+EDGE: def-disconnect | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | disconnection from infinity and disjointness
+EDGE: defn-hulls.left | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | L_{s+t}, L_s, z not in L_{s+t} iff T_z > s+t
+EDGE: defn-hulls.right | source/arxiv-2203.07313v4/complex-sle-final.tex#lem-disconnect-2@L2194-L2194 | R_s is the complement of the range of f_s, so f_s(z) not in R_s
+TOPOLOGY_STATUS: PROPOSED
+EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+REVIEWER: -
+LEAN_STATUS: NOT_STARTED
+LEAN_REF: -
+LEAN_NOTE: -
+NOTE: SOURCE_GAP: the source states this transfer only inside the proof of Lemma 4.1 ('By the concatenation property (2.3)', instance s = T, point in U^+-) and again, tacitly, as 'exactly as in the proof of Proposition 3.2(b)' at L2207/L2212 with s = sigma_z(tau) or sigma_z(t~) and an arbitrary z. The general form is the reused claim; it is the inequality (not the equality of Prop 3.2(b)) because disconnection may already occur before s.
 
 ## Append-only structural amendments
 

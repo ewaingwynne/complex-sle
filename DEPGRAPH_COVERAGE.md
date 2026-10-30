@@ -2394,7 +2394,7 @@ REVIEWER: -
 ITEM: inv:proof:L2160
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2160@L2160-L2195
-DISPOSITION: NODE step:disc-setup, step:disc-E1-positive, step:disc-E4-positive, step:disc-E2E3-positive, step:disc-independence-product, step:disc-concatenation-transfer, step:disc-topological-separation, step:disc-pullback-conclusion, lem-disconnect-2
+DISPOSITION: NODE step:disc-setup, step:disc-E1-positive, step:right-hull-connected, step:disc-E4-positive, step:disc-E2E3-positive, step:disc-independence-product, step:disc-concatenation-transfer, step:disc-topological-separation, step:disc-pullback-conclusion, step:disc-concat-disconnect-general, step:disc-choose-U, lem-disconnect-2
 REASON: proof of Lemma 4.1
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
@@ -2403,7 +2403,7 @@ REVIEWER: -
 ITEM: inv:proof:L2199
 KIND: proof-region
 SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#proof:L2199@L2199-L2225
-DISPOSITION: NODE thm-disconnects#proof-a, thm-disconnects#proof-b, step:disc-a-q-scale-invariance, step:disc-a-positive-measure-set, step:disc-a-hit-Lambda, step:disc-a-markov-restart, step:disc-a-q-positive-all-z, step:disc-a-open-condition, step:disc-a-uniform-lower-bound, eqn-disconnect-mart, step:disc-a-martingale-limit-one, step:disc-b-scale-invariance, step:disc-b-positive-for-all-t, step:disc-b-blumenthal, step:disc-b-monotone-extension
+DISPOSITION: NODE thm-disconnects#proof-a, thm-disconnects#proof-b, step:disc-a-q-scale-invariance, step:disc-a-positive-measure-set, step:disc-a-hit-Lambda, step:disc-a-markov-restart, step:disc-a-q-positive-all-z, step:disc-a-open-condition, step:disc-a-uniform-lower-bound, eqn-disconnect-mart, step:disc-a-martingale-limit-one, step:disc-concat-disconnect-general, step:disc-b-scale-invariance, step:disc-b-positive-for-all-t, step:disc-b-blumenthal, step:disc-b-monotone-extension
 REASON: proof of Theorem 1.10: assembly nodes proof-a and proof-b with their step nodes
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
@@ -2605,6 +2605,24 @@ DISPOSITION: NODE step:disc-setup
 REASON: definition of left-right crossing, used in events E_1..E_4
 COVERAGE_STATUS: PROPOSED
 EXTRACTOR: extractor-D/sonnet
+REVIEWER: -
+
+ITEM: inv:L2023:bm-support
+KIND: claim
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#L2023:bm-support@L2023-L2023
+DISPOSITION: NODE ext:bm-support
+REASON: 'The driving Brownian motion has a positive chance to be arbitrarily close to 0 on [0,T]' is an uncited standard (support) theorem used by Lemma 4.2; first citation point of ext:bm-support (also used at L2106-2107)
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
+REVIEWER: -
+
+ITEM: inv:cite:L2223:blumenthal
+KIND: citation
+SOURCE: source/arxiv-2203.07313v4/complex-sle-final.tex#cite:L2223:blumenthal@L2223-L2223
+DISPOSITION: NODE ext:blumenthal
+REASON: Blumenthal's zero-one law invoked by name in the proof of Theorem 1.10(b)
+COVERAGE_STATUS: PROPOSED
+EXTRACTOR: reviewer-D/sonnet (proposed by reviewer; orchestrator to adopt)
 REVIEWER: -
 
 ITEM: inv:ext:picard-lindelof

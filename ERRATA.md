@@ -100,6 +100,17 @@ for a, b > 0 (see P2).
 P3 …". Ω is in universe 0 (Type). Statements are about a.s. events, and a.s. is read as
 "the complement is P-null", so no measurability of the event is presupposed.
 
+### Open (found during M3; awaiting the author)
+
+**P10. Lemma 4.1's sets U^± cannot be at distance ≥ 2ε from the imaginary axis.** `paper.tex:L2163-2167`
+(proof of Lemma 4.1, found by reviewer-D and confirmed by the orchestrator). With the zero driver
+f_T(z) = √(z² + 4T), x = 2C (Lemma 4.4) and T > y²/2 = 24.5C², the preimage of B_{ε/2}(x ± 2iε)
+has |Re z| ≈ 2Cε/√(T − C²) ≤ 0.42ε (numerically 0.577ε at C=1, T=13; 0.41ε at T=24.6). So no
+U^± with both required properties exists, and U^± lies inside the ε-neighbourhood of iℝ, where L_T
+may be. The argument needs a repair (for example, take U^± ⊂ ℂ∖L_T directly from the event E_1, or
+change how ε and the neighbourhood of L_T are chosen). It is recorded as a SOURCE_GAP on
+`step:disc-setup`. **Needed from the author:** a corrected argument, or a ruling on how to model it.
+
 ### Typos (graph notes only)
 
 - T1 Lemma 2.6 proof `paper.tex:L732`: "f_t = f_{s,t} ∘ f_s|_{L_t}" should be "f_s|_{ℂ∖L_t}".
