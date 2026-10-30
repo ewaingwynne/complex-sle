@@ -62,6 +62,13 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet
   per milestone; milestones roll over without a question. Full text: CLAUDE.md "Approvals (ruling R26)".
 
+### Auto-approved items (R26; author may veto retroactively)
+
+- AUTO-1 (2026-10-30, M6) Concatenation property (2.3) frozen as four DRAFT_SORRY anchors in the R21/R22 pattern
+  (one per formula; third formula read per R18): `concatenation_centeredLoewnerMap`, `concatenation_leftHull`,
+  `concatenation_image_leftHull`, `concatenation_rightHull`. Two independent ACCEPT reviews
+  (reviewer-M6-conc-1/sonnet, reviewer-M6-conc-2/sonnet), who also checked the four together are equivalent to (2.3).
+
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 
 Each item gives the problem, where it is, and the **proposed ruling**. "Substantive" items

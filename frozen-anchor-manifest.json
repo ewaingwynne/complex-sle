@@ -3265,6 +3265,258 @@
       "state": "EXTERNAL",
       "prefix_sha256": "11b9b44815953ff41846ede86fe57d376e7459a02865d4ef0fbdb1f99fce0f44",
       "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+    },
+    {
+      "id": "thm.concatenation_centeredLoewnerMap.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md AUTO-1 (R26); reviews reviewer-M6-conc-1, reviewer-M6-conc-2",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:559-565"
+      },
+      "contract": {
+        "id": "paper.eqn2_3_conc.map",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Concatenation_CenteredLoewnerMap.lean",
+      "export": "ComplexSLE.concatenation_centeredLoewnerMap",
+      "split_policy": {
+        "source_group": "paper.eqn2_3_conc.map",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R18, R26"
+      },
+      "abi_sha256": "232f51d7d7fc83b23b3200bdda7db2fa27ad20f2ca942e2123db2b9a03a691da",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Concatenation_CenteredLoewnerMap",
+        "export": "ComplexSLE.Internal.concatenation_centeredLoewnerMap"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "6d6d5a9d0ea1dcac5de2c0dc7dedb52f3427f1046965089f5dc1e5cc0c5675cd",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.concatenation_leftHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md AUTO-1 (R26); reviews reviewer-M6-conc-1, reviewer-M6-conc-2",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:559-565"
+      },
+      "contract": {
+        "id": "paper.eqn2_3_conc.leftHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Concatenation_LeftHull.lean",
+      "export": "ComplexSLE.concatenation_leftHull",
+      "split_policy": {
+        "source_group": "paper.eqn2_3_conc.leftHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R18, R26"
+      },
+      "abi_sha256": "d9eb04d7ec2664dd9bcc8765cb4c1ed087d7527c34db5c6df3c562eb54a67f8c",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Concatenation_LeftHull",
+        "export": "ComplexSLE.Internal.concatenation_leftHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "0dd4c379d8ec4f12a7e6c0287787caaaeea4adad50ccfc1936c6f8a733dca0b2",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.concatenation_image_leftHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md AUTO-1 (R26); reviews reviewer-M6-conc-1, reviewer-M6-conc-2",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:559-565"
+      },
+      "contract": {
+        "id": "paper.eqn2_3_conc.image",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Concatenation_ImageLeftHull.lean",
+      "export": "ComplexSLE.concatenation_image_leftHull",
+      "split_policy": {
+        "source_group": "paper.eqn2_3_conc.image",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R18, R26"
+      },
+      "abi_sha256": "8029eabd8ab98979a2f971e00777f2e7b9092ca670f7154aea2db9aa4de81e63",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Concatenation_ImageLeftHull",
+        "export": "ComplexSLE.Internal.concatenation_image_leftHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "b5bb0d61ef2c5f37beb31ca0cf0171472979f2bd5e5e5dc1272044d08931974f",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "thm.concatenation_rightHull.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-30",
+        "approval_ref": "ERRATA.md AUTO-1 (R26); reviews reviewer-M6-conc-1, reviewer-M6-conc-2",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "paper.tex:559-565"
+      },
+      "contract": {
+        "id": "paper.eqn2_3_conc.rightHull",
+        "version": "1"
+      },
+      "path": "ComplexSLE/Frozen/Concatenation_RightHull.lean",
+      "export": "ComplexSLE.concatenation_rightHull",
+      "split_policy": {
+        "source_group": "paper.eqn2_3_conc.rightHull",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R18, R26"
+      },
+      "abi_sha256": "9078ecc02fdf25d2100a919977bfa348cf3808c326bd03aa28bd05e1226e1e13",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsLoewnerSolution.lean",
+          "sha256": "c64137d93e2a9f9de19de823a60b89b13f044142bc23a43c0296e55f9005f3fa"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/AbsorbingTime.lean",
+          "sha256": "1b5d7457f4fee92965d45f86f02c20d57bc240959d3f58eb0d21c33e93b45343"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LeftHull.lean",
+          "sha256": "5fb65b252789858c30022f2895849fde9e9f3271cffbc0200782291a6be66913"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/LoewnerMap.lean",
+          "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/CenteredLoewnerMap.lean",
+          "sha256": "1768e3610313cc795ab176ede6764918c5e0a43ccf7e2bb5f96c0ab4f13b133e"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/RightHull.lean",
+          "sha256": "2c9b5d55c42e5f9dc7fd7c06b8d54392ceba6728c6f83c9e82baa47ba3ebca06"
+        }
+      ],
+      "implementation": {
+        "module": "ComplexSLE.Internal.Concatenation_RightHull",
+        "export": "ComplexSLE.Internal.concatenation_rightHull"
+      },
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "9ed6df4513e8b53ce180d7f8cb5d8a177c3578dc8becb7aa3ac73b916ee4aa2a",
+      "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     }
   ]
 }

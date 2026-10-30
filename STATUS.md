@@ -7,7 +7,8 @@ M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative t
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 8
+DRAFT_ANCHORS: 12
+  ComplexSLE/Frozen/Concatenation_{CenteredLoewnerMap,LeftHull,ImageLeftHull,RightHull}.lean  (AUTO-1)
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
   ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
@@ -36,7 +37,7 @@ PROVED: 10   PROVED_REL: 3
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 62 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 66 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review
