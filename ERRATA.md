@@ -47,6 +47,9 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   `External.loewnerMap_conformal` (ext:lawler-4.5), `External.loewnerMap_tendstoUniformly` (ext:loewner-convergence,
   E12; the source's K_T read as L_T). Graph externals ext:dct, ext:martingale-convergence and ext:picard-lindelof are
   supplied by Mathlib and get no EXTERNAL file.
+- R24 (2026-10-30) Stochastic externals (Itô, Lévy characterization, strong Markov, Girsanov, Hörmander, Blumenthal,
+  Kolmogorov 0-1, Birkhoff, …) are stated in martingale / law form using only Mathlib notions (filtrations, stopping
+  times, `Martingale`, conditional expectation, `HasLaw`, independence); no stochastic integral is built in-project.
 
 ## Rulings P1–P9 (approved 2026-10-30 as R4–R12)
 

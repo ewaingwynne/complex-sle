@@ -23,7 +23,7 @@ connected (in particular nonempty). -/
 theorem lemma_2_4_leftHull (U : ℝ≥0 → ℂ) (hU : Continuous U) (t : ℝ≥0) :
     IsConnected (leftHull U t) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.lemma_2_4_leftHull U hU t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

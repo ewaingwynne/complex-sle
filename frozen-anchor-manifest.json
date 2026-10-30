@@ -1469,7 +1469,7 @@
         "module": "ComplexSLE.Internal.Lemma_2_4_LeftHull",
         "export": "ComplexSLE.Internal.lemma_2_4_leftHull"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "6b6e0846ad50fb3f4f15ed6f0959a428bc326497c13f1761fc56d32fe7f81e77",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
