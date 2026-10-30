@@ -234,6 +234,7 @@ HOLDS_WITH_CAVEATS, with every caveat folded in below. Replace the Girsanov step
 - T7 §2.1.1 `paper.tex:L545`: "U : [0,∞) → ℝ" should be "→ ℂ".
 - T10 Lemma 4.3 `paper.tex:L1995`: "[−2T^{−1/2} i, 2T^{1/2} i]" should be "[−2T^{1/2} i, 2T^{1/2} i]".
 - T11 §2.1 `paper.tex:L281`: "lim_{t→∞} z(g_t(z) − z) = 2t" should be "lim_{z→∞}".
+- T12 Lemma A.1 `paper.tex:L2321`: "α, β : ℝ → [0,∞)" should be "→ ℝ" (µ and √a sin − √b cos change sign). AUTO (R26).
 - T6 Lemma 4.3 `paper.tex:L1991-2030`: [Law05, Prop 4.43] "extends to ℂ by replacing ℍ by
   ℂ". This is an external input whose extension is asserted, not proved (SOURCE_GAP, and
   part of E12).
