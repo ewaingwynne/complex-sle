@@ -1,5 +1,14 @@
 # Status ledger
 
+M8 complete — 2026-10-31 (§4: Theorem 1.10). Both roots sealed: Theorem 1.10(a) and 1.10(b) (AU-M8-A, AU-M8-B).
+No DRAFT anchors remain. Lemma 4.1 (Internal/Disconnect/Lemma41*.lean, R20) from Lemma 4.4 in deterministic form (a single
+driver path in range(Σ) plus the support theorem replaces the c-event of Lemma 4.6), Lemmas 4.2/4.3 (lineApprox: E12 for
+upper semicontinuity, the Koebe distance bound for lower semicontinuity, duality for right hulls; no Hurwitz), and planar
+topology proved in-project without the Jordan curve theorem (Infrastructure/Planar: chain argument, separation by two
+connected sets, chain crossing, pullback of disconnection). 1.10(a): the M7 upgrade pattern for the disconnection event
+(R27 hitting lemma, one-sided restart, lower semicontinuity, Lévy 0-1). 1.10(b): scaling + path-law equality, Blumenthal,
+monotonicity of hulls. Next (M9): closure audit, remaining source results (e.g. Lemma 2.5), README/RESULTS, release.
+
 M7 complete — 2026-10-31 (§3: Theorem 1.8). All six §3 roots sealed and audited: Props 3.1(a,b), 3.2(a,b),
 Theorem 1.8 and Theorem 1.8 for c = 0 (AU-M7-C2, AU-M7-D2, AU-M7-E, AU-M7-G). Lemma 3.9 (converse without the upgrade,
 Internal/Phases/ConverseMain.lean) and the upgrade from the random point to every z (Internal/Phases/Prop32BUp*.lean,
@@ -29,9 +38,7 @@ M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative t
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 2
-  ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
-  ComplexSLE/Frozen/Theorem_1_10_B.lean        ComplexSLE.theorem_1_10_b
+DRAFT_ANCHORS: 0
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
 SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity,
@@ -40,7 +47,11 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
 EXTERNALS: 18 frozen (R29: markov_oneDim added) (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
-PROVED: 17   PROVED_REL: 7
+PROVED: 17   PROVED_REL: 9
+SEALED_THIS_TURN (M8): 2 (theorem_1_10_a, theorem_1_10_b)
+  PROVED_REL{ito, koebe_quarter, loewnerMap_tendstoUniformly, strongMarkov, support, timeChange}
+             ComplexSLE.theorem_1_10_a (AU-M8-A)
+  PROVED_REL{blumenthal, koebe_quarter, loewnerMap_tendstoUniformly, support}  ComplexSLE.theorem_1_10_b (AU-M8-B)
 SEALED_THIS_TURN (M7 close): 3 (proposition_3_2_b, theorem_1_8, theorem_1_8_c_zero)
   PROVED_REL{birkhoff, dambis_dubins_schwarz, hormander, ito, koebe_quarter, markov_oneDim, recurrence, strongMarkov,
              timeChange}  ComplexSLE.theorem_1_8_c_zero (AU-M7-G)
