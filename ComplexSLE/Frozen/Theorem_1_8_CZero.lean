@@ -25,7 +25,7 @@ theorem theorem_1_8_c_zero (a b : ℝ) (ha : 0 < a) (hb : 0 < b) :
     (4 < a - b → a - b < 8 → IsSwallowingPhase a b 0) ∧
     (8 ≤ a - b → IsHittingPhase a b 0) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.theorem_1_8_c_zero a b ha hb
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

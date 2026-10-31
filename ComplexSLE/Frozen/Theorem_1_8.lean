@@ -32,7 +32,7 @@ theorem theorem_1_8 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * 
     (integralI a b c p < 0 → integralII a b c p < 0 → IsHittingPhase a b c) ∧
     (0 ≤ integralI a b c p → integralII a b c p < 0 → IsDensePhase a b c) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.theorem_1_8 a b c ha hb hc p hp
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

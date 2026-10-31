@@ -34,7 +34,7 @@ theorem proposition_3_2_b (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 �
     ∀ᵐ ω ∂P, ∃ ε > 0, ∀ t : ℝ≥0, (t : ℝ≥0∞) < absorbingTime (U · ω) z →
       ε ≤ infDist z (leftHull (U · ω) t) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.proposition_3_2_b a b c ha hb hc p hp hII Ω P U hU z hz
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

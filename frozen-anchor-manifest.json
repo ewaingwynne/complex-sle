@@ -885,7 +885,7 @@
         "module": "ComplexSLE.Internal.Theorem_1_8",
         "export": "ComplexSLE.Internal.theorem_1_8"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "f9a1ef36f0f23701428e1699d041a81d0ac5256ae6fb650eea95c13003cdff1f",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -960,7 +960,7 @@
         "module": "ComplexSLE.Internal.Theorem_1_8_CZero",
         "export": "ComplexSLE.Internal.theorem_1_8_c_zero"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "d06967a2e275d4d6951fad21a78a65b5fdbc9e58f34df9ded213fa00fa799676",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -1418,7 +1418,7 @@
         "module": "ComplexSLE.Internal.Proposition_3_2_B",
         "export": "ComplexSLE.Internal.proposition_3_2_b"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "e1c2d852e06655fb40a742d8f99166884528c378ebdeb354c4445e28b154a6ed",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

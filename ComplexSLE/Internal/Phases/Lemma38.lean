@@ -6,6 +6,7 @@ module
 
 public import ComplexSLE.Internal.Phases.Lemma38Rec
 public import ComplexSLE.Internal.Phases.Lemma38Joint
+public import ComplexSLE.Internal.Stationary.SLEStatKernel
 
 /-!
 # Lemma 3.8 (`lem-log-finite-exp`): `E log (1 / dist(z, L_{σ_z(t̃)})) < ∞` (M7/E2)
@@ -94,10 +95,10 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 variable (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0)
 
 /-- The measurable set where `σ_z(t̃)` is defined and `U 0 = 0`. -/
-@[expose] def goodSet (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0) : Set (Ω × ℝ) :=
+@[expose] def goodSetAt (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0) : Set (Ω × ℝ) :=
   {p | (tt : ℝ) ∈ sigmaDom (fun s => U s p.1) (hU.cont p.1) (unitPt p.2) ∧ U 0 p.1 = 0}
 
-theorem measurableSet_goodSet : MeasurableSet (goodSet hU tt) := by
+theorem measurableSet_goodSetAt : MeasurableSet (goodSetAt hU tt) := by
   have hd : MeasurableSet {p : Ω × ℝ | (tt : ℝ) ∈ sigmaDom (fun s => U s p.1) (hU.cont p.1)
       (unitPt p.2)} := measurableSet_sigmaDom_unit hU.cont hU.adapted tt
   have : Measurable fun p : Ω × ℝ => U 0 p.1 :=
@@ -106,12 +107,12 @@ theorem measurableSet_goodSet : MeasurableSet (goodSet hU tt) := by
     measurableSet_eq_fun this measurable_const
   exact hd.inter h2
 
-theorem ae_goodSet [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (ν : Measure ℝ)
-    [SFinite ν] : ∀ᵐ p ∂(P.prod ν), p ∈ goodSet hU tt := by
-  rw [Measure.ae_prod_mem_iff_ae_ae_mem (measurableSet_goodSet hU tt)]
+theorem ae_goodSetAt [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (ν : Measure ℝ)
+    [SFinite ν] : ∀ᵐ p ∂(P.prod ν), p ∈ goodSetAt hU tt := by
+  rw [Measure.ae_prod_mem_iff_ae_ae_mem (measurableSet_goodSetAt hU tt)]
   have hU0 := hU.toIsSLEDriver.zero
   rw [Measure.ae_ae_comm (μ := P) (ν := ν)
-    (p := fun ω u => (ω, u) ∈ goodSet hU tt) (measurableSet_goodSet hU tt)]
+    (p := fun ω u => (ω, u) ∈ goodSetAt hU tt) (measurableSet_goodSetAt hU tt)]
   refine Eventually.of_forall fun u => ?_
   have hz : unitPt u ≠ 0 := by
     unfold unitPt; exact Complex.exp_ne_zero _
@@ -120,10 +121,7 @@ theorem ae_goodSet [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b) 
   show (tt : ℝ) ∈ sigmaDom (fun s => U s ω) (hU.cont ω) (unitPt u)
   rw [hω]; exact tt.coe_nonneg
 
-theorem norm_unitPt (u : ℝ) : ‖unitPt u‖ = 1 := by
-  unfold unitPt; exact Complex.norm_exp_ofReal_mul_I u
-
-theorem distSigma_le_one {p : Ω × ℝ} (hp : p ∈ goodSet hU tt) : distSigma hU tt p ≤ 1 := by
+theorem distSigma_le_one {p : Ω × ℝ} (hp : p ∈ goodSetAt hU tt) : distSigma hU tt p ≤ 1 := by
   obtain ⟨hdom, h0⟩ := hp
   unfold distSigma
   have hmem : (0 : ℂ) ∈ leftHull (fun s => U s p.1)
@@ -158,7 +156,7 @@ theorem measure_level_le [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a
         exact hω.2
     _ = _ := by simp
 
-theorem log_inv_distSigma_nonneg {p : Ω × ℝ} (hp : p ∈ goodSet hU tt) :
+theorem log_inv_distSigma_nonneg {p : Ω × ℝ} (hp : p ∈ goodSetAt hU tt) :
     0 ≤ Real.log (1 / distSigma hU tt p) := by
   have h1 := distSigma_le_one hU tt hp
   have h0 : 0 ≤ distSigma hU tt p := infDist_nonneg
@@ -176,7 +174,7 @@ theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
     sigmaDom (fun s => U s p.1) (hU.cont p.1) (unitPt p.2) ∧ distSigma hU tt p ≤ lvl k} with hE
   have hpt : ∀ᵐ p ∂(P.prod ν), ENNReal.ofReal (Real.log (1 / distSigma hU tt p)) ≤
       ENNReal.ofReal (Real.log 16) * ∑' k, (E k).indicator (fun _ => (1 : ℝ≥0∞)) p := by
-    filter_upwards [ae_goodSet hU tt ha hc ν] with p hp
+    filter_upwards [ae_goodSetAt hU tt ha hc ν] with p hp
     refine ofReal_log_inv_le_tsum _ infDist_nonneg (distSigma_le_one hU tt hp) _ fun k hk => ?_
     exact Set.indicator_of_mem (show p ∈ E k from ⟨hp.1, hk⟩) _
   have hg : ∀ k, MeasurableSet (E k) := fun k => measurableSet_level hU tt k
@@ -195,7 +193,8 @@ theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
         exact hmeas k
     _ < ⊤ := by
         rw [ENNReal.tsum_mul_left, ENNReal.tsum_geometric]
-        refine ENNReal.mul_lt_top ENNReal.ofReal_lt_top (ENNReal.mul_lt_top ENNReal.ofReal_lt_top ?_)
+        refine ENNReal.mul_lt_top ENNReal.ofReal_lt_top
+          (ENNReal.mul_lt_top ENNReal.ofReal_lt_top ?_)
         rw [ENNReal.inv_lt_top]
         exact tsub_pos_of_lt (by rw [← ENNReal.ofReal_one]; exact
           (ENNReal.ofReal_lt_ofReal_iff one_pos).2 hr1)
@@ -206,7 +205,7 @@ theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
 theorem integrable_log_inv_distSigma [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)
     (ν : Measure ℝ) [IsProbabilityMeasure ν] :
     Integrable (fun p : Ω × ℝ => Real.log (1 / distSigma hU tt p)) (P.prod ν) := by
-  have hgood := ae_goodSet hU tt ha hc ν
+  have hgood := ae_goodSetAt hU tt ha hc ν
   have hmeasf : Measurable fun p : Ω × ℝ => Real.log (1 / distSigmaTilde hU tt p) :=
     Real.measurable_log.comp (measurable_const.div (measurable_distSigmaTilde hU tt))
   have hae : (fun p : Ω × ℝ => Real.log (1 / distSigma hU tt p)) =ᵐ[P.prod ν]
@@ -219,8 +218,8 @@ theorem integrable_log_inv_distSigma [IsProbabilityMeasure P] (ha : 0 < a) (hc :
   · filter_upwards [hgood] with p hp
     exact log_inv_distSigma_nonneg hU tt hp
 
-/-- **The distance `dist(z, L_{σ_z(t̃)})` is a.s. positive** (so the junk value `log (1/0) = 0` of the
-integrand is on a null set): `P ⊗ ν (dist ≤ 16^{-k}) → 0`. -/
+/-- **The distance `dist(z, L_{σ_z(t̃)})` is a.s. positive** (so the junk value `log (1/0) = 0`
+of the integrand is on a null set): `P ⊗ ν (dist ≤ 16^{-k}) → 0`. -/
 theorem ae_distSigma_pos [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)
     (ν : Measure ℝ) [IsProbabilityMeasure ν] : ∀ᵐ p ∂(P.prod ν), 0 < distSigma hU tt p := by
   obtain ⟨r, hr0, hr1, hmeas⟩ := measure_level_le hU tt ha hc ν
@@ -240,7 +239,7 @@ theorem ae_distSigma_pos [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a
     have := ge_of_tendsto' htend hSle
     rw [mul_zero] at this
     exact le_antisymm this bot_le
-  filter_upwards [ae_goodSet hU tt ha hc ν, measure_eq_zero_iff_ae_notMem.1 hS0] with p hp hpS
+  filter_upwards [ae_goodSetAt hU tt ha hc ν, measure_eq_zero_iff_ae_notMem.1 hS0] with p hp hpS
   by_contra hcon
   exact hpS ⟨hp.1, not_lt.1 hcon⟩
 

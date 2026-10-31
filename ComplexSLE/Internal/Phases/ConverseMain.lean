@@ -6,7 +6,7 @@ module
 
 public import ComplexSLE.Internal.Phases.ConverseChain
 public import ComplexSLE.Internal.Phases.ConverseMean
-public import ComplexSLE.Internal.Phases.ConverseLemma38
+public import ComplexSLE.Internal.Phases.Lemma38Admissible
 public import ComplexSLE.Internal.Phases.Lemma37
 import ComplexSLE.External.MarkovOneDim
 
@@ -44,8 +44,8 @@ Assume `lim dist = 0` `μ`-a.s. Fix `t̃, s̃ ≥ 0`, `t = σ(t̃)`, `s = σ(s̃
 
 The proof consumes the EXTERNALs consumed by Lemmas 3.7, 3.6 and 3.8 and by `koebe_chain`
 (`koebe_quarter`, `strongMarkov_sleDriver`, `hormander_oneDim`, `ito_formula`,
-`timeChange_isContLocalMartingale`, `markov_oneDim`). Lemma 3.8 is taken from the import-clash copy
-`ConverseLemma38.lean`.
+`timeChange_isContLocalMartingale`, `markov_oneDim`). Lemma 3.8 is taken from
+`Lemma38Admissible.lean`.
 -/
 
 public section
@@ -186,7 +186,7 @@ include ha hc hp in
 /-- **Lemma 3.8** for `log dist` (rather than `log (1/dist)`). -/
 theorem integrable_log_distSigma (s : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => Real.log (distSigma hU s q)) (P.prod (admissibleMeasure p)) := by
-  refine (Converse38.integrable_log_inv_distSigma_admissible hU ha hc hp s).neg.congr
+  refine (integrable_log_inv_distSigma_admissible hU ha hc hp s).neg.congr
     (Eventually.of_forall fun q => ?_)
   simp [Real.log_inv]
 
@@ -220,7 +220,7 @@ theorem integral_log_sub_nonneg (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
   have hBC : ∫ q, Real.log (distSigma hU (ss + tt) q) ∂(P.prod (admissibleMeasure p)) ≤
       ∫ q, Real.log (distSigma hU ss q) ∂(P.prod (admissibleMeasure p)) := by
     refine integral_mono_ae hB hC ?_
-    filter_upwards [Converse38.ae_distSigma_pos_admissible hU ha hc hp (ss + tt),
+    filter_upwards [ae_distSigma_pos_admissible hU ha hc hp (ss + tt),
       ae_mem_goodSet hU ha hc (ν := admissibleMeasure p)] with q hpos hq
     exact Real.log_le_log hpos (distSigma_add_le hU hq tt ss)
   rw [integral_sub hA hB, hAC]
@@ -234,7 +234,7 @@ theorem aestronglyMeasurable_boundH (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
   have hFn := nullMeasurableSet_eventF hMO hU ha hb hc hp tt ss
   have hR := aestronglyMeasurable_sigmaLogRatio hMO hU ha hb hc hp tt
   have hL :=
-    (Converse38.integrable_log_inv_distSigma_admissible hU ha hc hp tt).aestronglyMeasurable
+    (integrable_log_inv_distSigma_admissible hU ha hc hp tt).aestronglyMeasurable
   exact ((hR.add aestronglyMeasurable_const).indicator₀ hFn).add
     ((hL.add aestronglyMeasurable_const).indicator₀ hFn.compl)
 
@@ -245,7 +245,7 @@ theorem integrable_boundH_bound (hMO : MarkovOneDim) (tt : ℝ≥0) :
       |Real.log (1 / distSigma hU tt q)| + Real.log 64) (P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
   exact ((integrable_sigmaLogRatio hMO hU ha hb hc hp tt).abs.add
-    (Converse38.integrable_log_inv_distSigma_admissible hU ha hc hp tt).abs).add
+    (integrable_log_inv_distSigma_admissible hU ha hc hp tt).abs).add
     (integrable_const _)
 
 include ha hb hc hp in

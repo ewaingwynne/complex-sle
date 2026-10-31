@@ -1,5 +1,13 @@
 # Status ledger
 
+M7 complete — 2026-10-31 (§3: Theorem 1.8). All six §3 roots sealed and audited: Props 3.1(a,b), 3.2(a,b),
+Theorem 1.8 and Theorem 1.8 for c = 0 (AU-M7-C2, AU-M7-D2, AU-M7-E, AU-M7-G). Lemma 3.9 (converse without the upgrade,
+Internal/Phases/ConverseMain.lean) and the upgrade from the random point to every z (Internal/Phases/Prop32BUp*.lean,
+R27 hitting lemma at a fixed rational σ-time; no Girsanov) give Prop 3.2(b); Theorem 1.8 is the deterministic glue of
+Props 3.1/3.2 (every hull contains U 0), and the c = 0 case adds Lemmas 3.11 (c0_integral_signs) and 3.12 (lemma_3_12).
+Clean-up: the duplicate `goodSet` of Lemma38.lean renamed `goodSetAt`; the import-clash copy ConverseLemma38.lean deleted.
+Next (M8): Theorem 1.10(a,b) — Lemmas 4.1–4.6 (R20), externals bm-support, loewner-convergence, koebe_quarter, Blumenthal.
+
 M6 complete — 2026-10-30 (§2.3–2.7 SLE_Σ layer). Packet answered (R27, R28). Done: exists_sleDriver (PROVED_REL),
 concatenation (2.3) and sle_duality / Prop 1.5 (PROVED), Lemma 2.4 upgraded to PROVED (no externals), driver lemmas,
 stochastic infrastructure (optional stopping, local-martingale algebra, continuous versions, conditioning, progressive
@@ -21,12 +29,9 @@ M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative t
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 5
-  ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
-  ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
+DRAFT_ANCHORS: 2
   ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
   ComplexSLE/Frozen/Theorem_1_10_B.lean        ComplexSLE.theorem_1_10_b
-  ComplexSLE/Frozen/Proposition_3_2_B.lean     ComplexSLE.proposition_3_2_b
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
 SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_leftHull, exists_admissibleDensity,
@@ -35,7 +40,13 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
 EXTERNALS: 18 frozen (R29: markov_oneDim added) (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
-PROVED: 17   PROVED_REL: 4
+PROVED: 17   PROVED_REL: 7
+SEALED_THIS_TURN (M7 close): 3 (proposition_3_2_b, theorem_1_8, theorem_1_8_c_zero)
+  PROVED_REL{birkhoff, dambis_dubins_schwarz, hormander, ito, koebe_quarter, markov_oneDim, recurrence, strongMarkov,
+             timeChange}  ComplexSLE.theorem_1_8_c_zero (AU-M7-G)
+  PROVED_REL{birkhoff, hormander, ito, koebe_quarter, markov_oneDim, recurrence, strongMarkov, timeChange}
+             ComplexSLE.theorem_1_8 (AU-M7-G)
+  PROVED_REL{hormander, ito, koebe_quarter, markov_oneDim, strongMarkov, timeChange}  ComplexSLE.proposition_3_2_b (AU-M7-E)
   PROVED_REL{birkhoff, hormander, ito, koebe_quarter, markov_oneDim, strongMarkov, timeChange}  ComplexSLE.proposition_3_2_a (AU-M7-D2)
   PROVED_REL{birkhoff, hormander, ito, markov_oneDim, recurrence, strongMarkov, timeChange}  ComplexSLE.proposition_3_1_a (AU-M7-C2)
   PROVED_REL{birkhoff, hormander, ito, markov_oneDim, strongMarkov, timeChange}  ComplexSLE.proposition_3_1_b (AU-M7-C2)
