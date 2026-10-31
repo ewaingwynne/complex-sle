@@ -23,3 +23,4 @@
    deleted after use.
 10. Report exactly: files changed, approach, the exact commands run and their output,
     `#print axioms` for every new public theorem, and anything unproved or uncertain.
+11. Do not spawn subagents, forks or parallel workers of your own (the orchestrator enforces a two-agent cap).
