@@ -35,12 +35,12 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
 EXTERNALS: 17 frozen (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
-PROVED: 15   PROVED_REL: 3
+PROVED: 17   PROVED_REL: 1
   PROVED  ComplexSLE.sle_duality (Prop 1.5, coupling form R28; AU-M6-S4)
   PROVED  concatenation_{centeredLoewnerMap,leftHull,image_leftHull,rightHull}  (AUTO-1; AU-M6-D1d) — (2.3) fully proved
   PROVED_REL{exists_isBrownianReal}  ComplexSLE.exists_sleDriver (AU-M6-S0)
-  PROVED_REL{loewnerMap_conformal}  ComplexSLE.lemma_2_4_leftHull  (AU-M4-D2)
-  PROVED_REL{loewnerMap_conformal}  ComplexSLE.lemma_2_4_rightHull (AU-M4-D2b; duality (2.4) proved in-project)
+  PROVED  ComplexSLE.lemma_2_4_leftHull, ComplexSLE.lemma_2_4_rightHull  (upgraded from PROVED_REL{loewnerMap_conformal};
+          AU-M7-U1 — no external; duality (2.4) proved in-project)
   PROVED  scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull, reflection_centeredLoewnerMap (AU-M4-D1c)
   Source items fully proved: Def 1.1 well-definedness, (2.1), (2.2), Lemma 2.13 (existence).
   PROVED  ComplexSLE.loewnerMap_eq, ComplexSLE.loewnerMap_exists_solution  (AU-M4-gt; characterization of g_t)
