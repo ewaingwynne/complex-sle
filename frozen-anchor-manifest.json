@@ -1027,7 +1027,7 @@
         "module": "ComplexSLE.Internal.Theorem_1_10_A",
         "export": "ComplexSLE.Internal.theorem_1_10_a"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "4558634374d76377455fac1a1495ec94b0322394aef0fb96a4c0fb9288771eab",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

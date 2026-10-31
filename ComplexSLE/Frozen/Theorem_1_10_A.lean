@@ -31,7 +31,7 @@ theorem theorem_1_10_a (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a
     ∀ᵐ ω ∂P, ∃ t : ℝ≥0, 0 < t ∧ z ∉ leftHull (U · ω) t ∧
       DisconnectsFromInfinity (leftHull (U · ω) t) {z} :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.theorem_1_10_a a b c ha hb hc Ω P U hU z hz
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
