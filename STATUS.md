@@ -1,13 +1,16 @@
 # Status ledger
 
-M6 in progress — 2026-10-30. M6 packet answered (R27, R28). Done in M6: exists_sleDriver (PROVED_REL), concatenation (2.3)
-(PROVED), sle_duality / Prop 1.5 (PROVED), driver lemmas, stochastic infrastructure (optional stopping, local-martingale
-algebra, continuous versions, conditioning), polar deterministic layer + measurability, stationarity layer (Lemma A.1
-modulo the Markov hypothesis, pending external markov_oneDim in review/approvals/M7.md), recurrence Lemma 2.16 (Markov-free,
-both signs of c) and the R27 hitting lemma, stationarity→recurrence bridge. Running: polar Itô step / Remark 2.12 / time
-change (brief briefs/M6-S8-polar-ito.md). M7 design note: Lemma 3.3 needs path-level stationarity of (θ̂, increments of
-log|f̂|) — SOURCE_GAP step:sde-stationary-increments; plan: θ̂ after t̃ is a deterministic functional of θ̂_t̃ and the driver
-after σ(t̃) (concatenation + scaling), independent by strongMarkov_sleDriver, with θ̂_t̃ ~ stationary law ⇒ stationarity.
+M6 complete — 2026-10-30 (§2.3–2.7 SLE_Σ layer). Packet answered (R27, R28). Done: exists_sleDriver (PROVED_REL),
+concatenation (2.3) and sle_duality / Prop 1.5 (PROVED), Lemma 2.4 upgraded to PROVED (no externals), driver lemmas,
+stochastic infrastructure (optional stopping, local-martingale algebra, continuous versions, conditioning, progressive
+path integrals), polar layer = Lemma 2.11 complete (Def 2.9/2.10, path measurability, Itô for log|f| and θ, Remark 2.12,
+σ-time change; isDiffusionSolution_thetaHat and the joint decomposition thetaHat_sigmaLogMart_decomposition,
+PROVED_REL{ito_formula, timeChange}), derivative of g_t and (2.27) (PROVED), stationarity layer (Lemma A.1 modulo the
+Markov hypothesis — external markov_oneDim pending in review/approvals/M7.md), recurrence Lemma 2.16 (both signs of c,
+Markov-free) and the R27 hitting lemma, stationarity→recurrence bridge, c = 0 analytic layer (M7-F1, PROVED).
+Next (M7, plan review/plans/M7.md): M7-A Lemma 3.3 SLE form incl. the product extension with the random point 𝐳
+(SOURCE_GAP step:section3-product-extension) and path-level stationarity; M7-B Lemma 3.2; M7-C/D/E Props 3.1, 3.2(a), 3.2(b);
+M7-F2 c = 0 boundary; assembly. Fable budget: the author asked (2026-10-30) to be conservative — default to Sonnet.
 Proof-route substitutions (graph models the source; Lean follows the ruling): step:p-case1-* → Lemma 2.13
 periodic-solution route; lem-connected.left → max-modulus route; step:prop-ii-b-hit-lambda-prime and
 step:disc-a-hit-Lambda → R27 hitting lemma (ext:girsanov not consumed); Lemma 2.16 renewal → deterministic windows +
