@@ -1173,7 +1173,7 @@
         "module": "ComplexSLE.Internal.Proposition_3_1_A",
         "export": "ComplexSLE.Internal.proposition_3_1_a"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "a984f32b033e6fbd2b809579160317eb3971c44e521f572ac5dc3b23a071ec6d",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
@@ -1252,7 +1252,7 @@
         "module": "ComplexSLE.Internal.Proposition_3_1_B",
         "export": "ComplexSLE.Internal.proposition_3_1_b"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "99281c5075fe1aefb903df0e0807e2d50da7c8066952582d1754eaa4ee66b00a",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {

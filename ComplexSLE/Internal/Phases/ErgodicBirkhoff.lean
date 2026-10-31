@@ -140,7 +140,7 @@ theorem ae_logFHat_zero [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c 
   rw [hω 0, sigmaLogMart_zero]
   simp [pathIntegral]
 
-/-- **Birkhoff for `log |f̂|`** (M7/A5a). Under `hMO : MarkovOneDim` (the pending
+/-- **Birkhoff for `log |f̂|`** (M7/A5a). Under `hMO : MarkovOneDim` (the EXTERNAL (R29)
 `markov_oneDim`): there is an integrable `L` on `(Ω × ℝ, P ⊗ ν)` with `∫ L = (I)` and
 `log |f̂_n(e^{iu})| / n → L` almost surely along the integers. -/
 theorem exists_birkhoff_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)

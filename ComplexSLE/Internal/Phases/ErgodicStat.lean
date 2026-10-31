@@ -23,7 +23,7 @@ With `Y_t(ω, u) = log |f̂_t(e^{iu})(ω)|` (`logFHat`) and `ξ_n = Y_{n+1} - Y_
 
 Consumes the EXTERNAL `birkhoff_stationary` (E7), and (through the stationarity layer)
 `hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, `strongMarkov_sleDriver`
-and the pending `markov_oneDim` as the explicit hypothesis `hMO : MarkovOneDim`.
+and the EXTERNAL `markov_oneDim` (R29) as the explicit hypothesis `hMO : MarkovOneDim`.
 -/
 
 @[expose] public section

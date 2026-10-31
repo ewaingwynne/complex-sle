@@ -21,13 +21,11 @@ M4 complete — 2026-10-30 (Tier D; Lemma 2.4 both hulls proved in M5 relative t
 M3 dependency graph published — 2026-10-30 (M2 roots frozen earlier the same day).
 
 ```text
-DRAFT_ANCHORS: 8
+DRAFT_ANCHORS: 6
   ComplexSLE/Frozen/Theorem_1_8.lean           ComplexSLE.theorem_1_8
   ComplexSLE/Frozen/Theorem_1_8_CZero.lean     ComplexSLE.theorem_1_8_c_zero
   ComplexSLE/Frozen/Theorem_1_10_A.lean        ComplexSLE.theorem_1_10_a
   ComplexSLE/Frozen/Theorem_1_10_B.lean        ComplexSLE.theorem_1_10_b
-  ComplexSLE/Frozen/Proposition_3_1_A.lean     ComplexSLE.proposition_3_1_a
-  ComplexSLE/Frozen/Proposition_3_1_B.lean     ComplexSLE.proposition_3_1_b
   ComplexSLE/Frozen/Proposition_3_2_A.lean     ComplexSLE.proposition_3_2_a
   ComplexSLE/Frozen/Proposition_3_2_B.lean     ComplexSLE.proposition_3_2_b
 UNREGISTERED_SORRIES: 0
@@ -38,7 +36,9 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
 EXTERNALS: 18 frozen (R29: markov_oneDim added) (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
-PROVED: 17   PROVED_REL: 1
+PROVED: 17   PROVED_REL: 3
+  PROVED_REL{birkhoff, hormander, ito, markov_oneDim, recurrence, strongMarkov, timeChange}  ComplexSLE.proposition_3_1_a (AU-M7-C2)
+  PROVED_REL{birkhoff, hormander, ito, markov_oneDim, strongMarkov, timeChange}  ComplexSLE.proposition_3_1_b (AU-M7-C2)
   PROVED  ComplexSLE.sle_duality (Prop 1.5, coupling form R28; AU-M6-S4)
   PROVED  concatenation_{centeredLoewnerMap,leftHull,image_leftHull,rightHull}  (AUTO-1; AU-M6-D1d) — (2.3) fully proved
   PROVED_REL{exists_isBrownianReal}  ComplexSLE.exists_sleDriver (AU-M6-S0)

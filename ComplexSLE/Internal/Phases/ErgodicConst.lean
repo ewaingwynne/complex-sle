@@ -14,7 +14,7 @@ public import ComplexSLE.Internal.Phases.ErgodicConstRecur
 # Lemma 3.3, second half: the Birkhoff limit is a.s. constant (M7/A5b)
 
 On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_s = log |f̂_s(e^{iu})|` (`logFHat`),
-`(I) = integralI a b c p`. Under `hMO : MarkovOneDim` (the pending `markov_oneDim`):
+`(I) = integralI a b c p`. Under `hMO : MarkovOneDim` (the EXTERNAL `markov_oneDim` (R29)):
 
 * `birkhoff_logFHat_const`: `P ⊗ ν`-a.s. `Y_s / s → (I)` as `s → ∞` in `ℝ≥0`.
   Proof (paper.tex:L1361-1372, `step:sde-limit-deterministic`, `step:sde-regeneration`): the
@@ -32,7 +32,7 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_s = log |f̂_s(e^{
 
 Consumes the EXTERNALs `strongMarkov_sleDriver`, `birkhoff_stationary`, `recurrence_stationary`
 and, through the polar and stationarity layers, `ito_formula`, `hormander_oneDim`,
-`timeChange_isContLocalMartingale`; the pending `markov_oneDim` is the hypothesis
+`timeChange_isContLocalMartingale`; the EXTERNAL `markov_oneDim` (R29) is the hypothesis
 `hMO : MarkovOneDim`.
 -/
 

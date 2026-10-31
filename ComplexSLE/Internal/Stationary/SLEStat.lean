@@ -27,8 +27,8 @@ integral is `T_s f([u]_{2π}) = T_s f(u)` by the representation clause and `π`-
 trigonometric-polynomial density argument (`map_addCircle_eq_of_forall_integral_eq`).
 
 The point `e^{iu}` is `Polar.unitPt u`. The transition kernel and its Markov property are the
-explicit hypothesis `MarkovOneDimFor (µ) β` (resp. `MarkovOneDim`), the statement of the *pending*
-external `markov_oneDim` (`review/approvals/drafts/MarkovOneDim.lean.txt`); it is neither
+explicit hypothesis `MarkovOneDimFor (µ) β` (resp. `MarkovOneDim`), the statement of the EXTERNAL (R29)
+external `markov_oneDim` (`ComplexSLE/External/MarkovOneDim.lean`); it is neither
 imported nor postulated. Modulo that hypothesis the results consume the externals
 `hormander_oneDim`, `ito_formula` and `timeChange_isContLocalMartingale`, so are `PROVED_REL`.
 -/
@@ -150,7 +150,7 @@ theorem exists_beta (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) :
   · exact ⟨betaCrit a c, contDiff_betaCrit a c, sq_betaCrit ha h, hormander_betaCrit ha hb h⟩
 
 /-- **One-time stationarity of `θ̂` on the product space, mod `π`**, given the conclusions of the
-pending external `markov_oneDim` for `(µ, β)`. For `s ≥ 0`, under `P ⊗ ν` with
+EXTERNAL `markov_oneDim` (R29) for `(µ, β)`. For `s ≥ 0`, under `P ⊗ ν` with
 `ν = p(u) 1_{[0,2π]}(u) du`, the law of `θ̂_s(e^{iu}) mod π` is the law of `u mod π`. -/
 theorem map_addCircle_thetaHat_prod_eq [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -165,7 +165,7 @@ theorem map_addCircle_thetaHat_prod_eq [IsProbabilityMeasure P]
     (hβ.of_le (WithTop.coe_le_coe.mpr le_top)) hβsq K hp s
 
 /-- **One-time stationarity of `θ̂` on the product space, `e^{2iθ̂}`**, given the conclusions of the
-pending external `markov_oneDim` for `(µ, β)`: under `P ⊗ ν`, `e^{2iθ̂_s(e^{iu})}` has the law of
+EXTERNAL `markov_oneDim` (R29) for `(µ, β)`: under `P ⊗ ν`, `e^{2iθ̂_s(e^{iu})}` has the law of
 `u ↦ e^{2iu}` under `ν`. -/
 theorem map_exp_thetaHat_prod_eq [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -179,7 +179,7 @@ theorem map_exp_thetaHat_prod_eq [IsProbabilityMeasure P]
   exact map_exp_thetaHat_prod_eq_of_kernel hU ha hb hc
     (hβ.of_le (WithTop.coe_le_coe.mpr le_top)) hβsq K hp s
 
-/-- **A4a, headline (mod `π`).** With the pending external `markov_oneDim` as the hypothesis
+/-- **A4a, headline (mod `π`).** With the EXTERNAL `markov_oneDim` (R29) as the hypothesis
 `hMO : MarkovOneDim`, for every `s ≥ 0`, `θ̂_s(e^{iu}) mod π` under `P ⊗ ν` has the law of
 `u mod π` under `ν = p(u) 1_{[0,2π]}(u) du`. -/
 theorem map_addCircle_thetaHat_prod_eq_of_markovOneDim [IsProbabilityMeasure P]
@@ -193,7 +193,7 @@ theorem map_addCircle_thetaHat_prod_eq_of_markovOneDim [IsProbabilityMeasure P]
     (hMO (mu a b c) β (contDiff_mu a b c) hβ (mu_periodic a b c)
       (fun u => sq_periodic_of_sq_eq_two_mul_diffusionD hβsq u) hH) hp s
 
-/-- **A4a, headline (`e^{2iθ̂}`).** With the pending external `markov_oneDim` as the hypothesis
+/-- **A4a, headline (`e^{2iθ̂}`).** With the EXTERNAL `markov_oneDim` (R29) as the hypothesis
 `hMO : MarkovOneDim`, for every `s ≥ 0`, the law of `(ω, u) ↦ e^{2iθ̂_s(e^{iu})(ω)}` under `P ⊗ ν`
 equals the law of `u ↦ e^{2iu}` under `ν = p(u) 1_{[0,2π]}(u) du`. -/
 theorem map_exp_thetaHat_prod_eq_of_markovOneDim [IsProbabilityMeasure P]

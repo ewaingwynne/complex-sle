@@ -42,7 +42,7 @@ and `hren` is the fibrewise statement of `sle_markov_transport` integrated over 
 The reflection `θ ↦ -θ`, `c ↦ -c` handles `c ≤ 0` as in `sle_recurrence_nonpos`.
 
 Consumes `ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim` (through the polar
-and stationarity layers) and the pending `markov_oneDim` as the explicit hypothesis
+and stationarity layers) and the EXTERNAL `markov_oneDim` (R29) as the explicit hypothesis
 `hMO : MarkovOneDim`.
 -/
 

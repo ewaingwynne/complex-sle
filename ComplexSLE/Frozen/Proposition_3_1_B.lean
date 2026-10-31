@@ -31,7 +31,7 @@ theorem proposition_3_1_b (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 �
     (U : ℝ≥0 → Ω → ℂ) (hU : IsSLEDriver a b c U P) (z : ℂ) (hz : z ≠ 0) :
     ∀ᵐ ω ∂P, absorbingTime (U · ω) z < ∞ :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.proposition_3_1_b a b c ha hb hc p hp hI Ω P U hU z hz
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

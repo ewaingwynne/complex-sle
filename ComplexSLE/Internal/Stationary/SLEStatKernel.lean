@@ -18,8 +18,8 @@ For `a, b > 0`, `c² ≤ ab` and an adapted SLE_Σ driver `U`, the time-changed 
 coefficients `α = µ`, `β² = 2D` (`Polar.isDiffusionSolution_thetaHat`). This file packages the
 transition-kernel input of `Stationary/KernelLaw.lean` for these coefficients:
 
-* `MarkovOneDimFor α β` is the statement of the *pending* external `markov_oneDim`
-  (`review/approvals/drafts/MarkovOneDim.lean.txt`) for the coefficients `α, β`, with the
+* `MarkovOneDimFor α β` is the statement of the EXTERNAL `markov_oneDim` (R29)
+  (`ComplexSLE/External/MarkovOneDim.lean`) for the coefficients `α, β`, with the
   coefficient hypotheses already discharged; `MarkovOneDim` is the full statement of that
   external. Neither is assumed here: they appear as explicit hypotheses of the consumers.
 * `IsDiffusionSolution` only depends on `β` through `β²`
@@ -40,9 +40,9 @@ open MeasureTheory ProbabilityTheory Filter Set Function Real
 
 namespace ComplexSLE.Internal
 
-/-! ### The statement of the pending external `markov_oneDim` -/
+/-! ### The statement of the EXTERNAL `markov_oneDim` (R29) -/
 
-/-- The conclusions of the pending external `markov_oneDim` for a transition kernel `p`:
+/-- The conclusions of the EXTERNAL `markov_oneDim` (R29) for a transition kernel `p`:
 `π`-equivariance of `p`, and the Markov property in conditional-expectation form. -/
 @[expose] def MarkovOneDimConclusion (α β : ℝ → ℝ) (p : ℝ≥0 → ℝ → ℝ → ℝ) : Prop :=
   (∀ t : ℝ≥0, 0 < t → ∀ u v, p t (u + π) (v + π) = p t u v) ∧
@@ -63,8 +63,8 @@ property. (Pending external; here only an explicit hypothesis.) -/
         ∀ t : ℝ≥0, 0 < t → P.map (X t) = volume.withDensity fun v => ENNReal.ofReal (p t u v)) →
     MarkovOneDimConclusion α β p
 
-/-- The full statement of the pending external `markov_oneDim`
-(`review/approvals/drafts/MarkovOneDim.lean.txt`), as a `Prop`. -/
+/-- The full statement of the EXTERNAL `markov_oneDim` (R29)
+(`ComplexSLE/External/MarkovOneDim.lean`), as a `Prop`. -/
 @[expose] def MarkovOneDim : Prop :=
   ∀ (α β : ℝ → ℝ), ContDiff ℝ (⊤ : ℕ∞) α → ContDiff ℝ (⊤ : ℕ∞) β →
     (∀ u, α (u + Real.pi) = α u) → (∀ u, β (u + Real.pi) ^ 2 = β u ^ 2) →
@@ -185,7 +185,7 @@ theorem exists_thetaHat_solution [IsProbabilityMeasure P]
 
 /-- **The transition kernel of `θ̂`.** Let `p` be the transition density of
 `External.hormander_oneDim` for `(µ, β)` (`β² = 2D`, `β` smooth with (A.1)). If the conclusions of
-the pending external `markov_oneDim` hold for `(µ, β)` (hypothesis `hMO`), then `p` is an
+the EXTERNAL `markov_oneDim` (R29) hold for `(µ, β)` (hypothesis `hMO`), then `p` is an
 `IsDiffusionKernel`; existence of solutions from every start comes from `θ̂`. -/
 theorem exists_isDiffusionKernel [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)

@@ -16,13 +16,13 @@ Let `α, β` be the coefficients of Lemma A.1 and `p : ℝ≥0 → ℝ → ℝ �
 a kernel that the stationarity argument uses:
 
 * `nonneg`, `continuous`, `law_eq`: the representation clause of `External.hormander_oneDim`
-  (and the hypotheses `hp0`, `hpc`, `hp` of the pending external `markov_oneDim`,
-  `review/approvals/drafts/MarkovOneDim.lean.txt`);
+  (and the hypotheses `hp0`, `hpc`, `hp` of the EXTERNAL `markov_oneDim` (R29),
+  `ComplexSLE/External/MarkovOneDim.lean`);
 * `smooth`: `u ↦ ∫ f(v) p t u v dv` is `C²` for bounded measurable `f` and `t > 0`
   (`External.hormander_oneDim`, third clause, which gives `C^∞`);
 * `exists_solution`: a solution from every starting point `u` exists on some probability space
   (for `θ̂` this is supplied by `isDiffusionSolution_thetaHat`);
-* `equivariant` and `markov`: the two conclusions of the pending external `markov_oneDim`
+* `equivariant` and `markov`: the two conclusions of the EXTERNAL `markov_oneDim` (R29)
   (`π`-equivariance of `p`, and the Markov property in conditional-expectation form).
 
 None of these is assumed from an external here; they are explicit hypotheses of the consumer.

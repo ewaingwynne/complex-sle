@@ -16,7 +16,7 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du` (`admissibleMeasure p`
 `D_t(ω, u) = ∫₀ᵗ ν(θ̂_v(e^{iu})(ω)) dv` (`driftInt`).
 
 * `integral_nu_comp_thetaHat`: `E ν(θ̂_t) = ∫ ν dν = integralI` (one-time stationarity of
-  `θ̂ mod π`, `ν` is `π`-periodic; modulo the pending `markov_oneDim` as the hypothesis
+  `θ̂ mod π`, `ν` is `π`-periodic; modulo the EXTERNAL `markov_oneDim` (R29) as the hypothesis
   `hMO : MarkovOneDim`);
 * `integral_driftInt`: `E D_t = t · integralI` (Riemann sums, dominated convergence along the
   a.s. event `goodSet` on which every path of `θ̂` is continuous);
@@ -133,7 +133,7 @@ theorem ae_mem_goodSet [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U
   change (n : ℝ) ∈ sigmaDom (fun r => U r ω) (hU.cont ω) (unitPt u)
   rw [hω]; exact Nat.cast_nonneg n
 
-/-- **One-time stationarity for continuous `π`-periodic functions** (from the pending
+/-- **One-time stationarity for continuous `π`-periodic functions** (from the EXTERNAL (R29)
 `markov_oneDim`, as `hMO : MarkovOneDim`): `E_{P ⊗ ν} f(θ̂_s(e^{iu})) = ∫ f dν`. -/
 theorem integral_comp_thetaHat_prod_of_markovOneDim [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)

@@ -38,7 +38,7 @@ and `-w` has the same law as `w` (`-U =_d U`). So `H_F` is a function of `e^{2i�
 `e^{2iθ̂_s}`-stationarity gives `E H_F(θ̂_s) = ∫ H_F dν`, independent of `s`.
 
 Uses the EXTERNAL `strongMarkov_sleDriver`, and (through the one-time stationarity)
-`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, and the pending
+`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, and the EXTERNAL (R29)
 `markov_oneDim` as the explicit hypothesis `hMO : MarkovOneDim`.
 -/
 
@@ -176,7 +176,7 @@ theorem lintegral_pathObs_eq [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   refine lintegral_congr fun u => ?_
   exact lintegral_pathObsAt hU ha hc (unitPt_ne_zero u) s hF
 
-/-- **Path-level stationarity of the polar data started at `𝐳` (A4c).** With the pending external
+/-- **Path-level stationarity of the polar data started at `𝐳` (A4c).** With the EXTERNAL (R29)
 `markov_oneDim` as the hypothesis `hMO : MarkovOneDim`: for every `s ≥ 0`, the law of
 `Ξ_s = (e^{2iθ̂_s(𝐳)}, (θ̂_{s+r}(𝐳) - θ̂_s(𝐳))_r, (log |f̂_{s+r}(𝐳)| - log |f̂_s(𝐳)|)_r)` under
 `P ⊗ ν` is `(Λ ⊗ ν).map obsC`, the law of the observable of the chain driven by an independent
