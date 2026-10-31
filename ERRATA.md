@@ -187,7 +187,7 @@ deterministic recurrent point, so nothing else changes (found by global-verifier
 modeled as SOURCE_GAP steps:
 - (2.2) is used for the maps f_t and not only the hulls (L984, L1165).
 - Right-hull connectedness and (2.4) enter the Thm 1.10 closure as ordinary nodes.
-- An admissible p vanishes only on a null set (needed by Lemma 3.3, under R7/R15).
+- An admissible p vanishes only on a null set (needed by Lemma 3.3, under R7/R15). **Resolved in M7 (proved, not a ruling):** every admissible p is positive off a countable set, in particular off a null set (`Internal/Phases/AllZPositivity.lean`, PROVED).
 - Lemma 3.4's Markov state: the diffusion coefficients are only 2π-periodic in θ̂.
 - The independence claim in Lemma 3.10.
 - T_z < ∞ in Lemma 3.12.
