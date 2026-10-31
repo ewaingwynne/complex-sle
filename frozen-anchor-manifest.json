@@ -1335,7 +1335,7 @@
         "module": "ComplexSLE.Internal.Proposition_3_2_A",
         "export": "ComplexSLE.Internal.proposition_3_2_a"
       },
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "4e21184e8e50ed48cffca1c736221ba90a20858b23510b1adbe5abb3daa49641",
       "suffix_sha256": "6edf0b9f8329b97b48a364896b65d3767b51f2d6127ca088ee03b9eabf59251e",
       "draft_allowlist": {
