@@ -3592,6 +3592,49 @@
         "frozen_paths": [],
         "audit_paths": []
       }
+    },
+    {
+      "id": "ext.markov_oneDim.v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Ewain Gwynne",
+        "approved_at": "2026-10-31",
+        "approval_ref": "ERRATA.md R29; reviews reviewer-M7-markov-1, reviewer-M7-markov-2; review/approvals/M7.md",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
+        "range": "external:StroockVaradhan-6.2.2"
+      },
+      "contract": {
+        "id": "ext.markov_oneDim",
+        "version": "1"
+      },
+      "path": "ComplexSLE/External/MarkovOneDim.lean",
+      "export": "ComplexSLE.External.markov_oneDim",
+      "split_policy": {
+        "source_group": "ext.markov_oneDim",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "ERRATA.md R1, R24, R29"
+      },
+      "abi_sha256": "47c370a0bce097f33aeb103b2a024636e87e2e313d8f3dc19da575ca49149bf5",
+      "definition_closure": [
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsContLocalMartingale.lean",
+          "sha256": "4d1b83a23585c9f062cda1a900914fd3bb1bc76f0790fede79a49caaec31aa2f"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/IsDiffusionSolution.lean",
+          "sha256": "c238291ffe563b9dd0055d0b1ed94b1fd5b21186a6fde227f40c5eda57208194"
+        },
+        {
+          "path": "ComplexSLE/Frozen/Defs/PathIntegral.lean",
+          "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
+        }
+      ],
+      "state": "EXTERNAL",
+      "prefix_sha256": "2c8f36c8334f1fa1d7ece738e7d1095a648d7db4ecc823625dc7bead247755b0",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
     }
   ]
 }

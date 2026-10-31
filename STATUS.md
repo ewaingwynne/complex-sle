@@ -36,7 +36,7 @@ SEALED_THIS_TURN (M4): 10 (loewner_wellDefined, scaling_leftHull, reflection_lef
   loewnerMap_eq, loewnerMap_exists_solution, scaling_centeredLoewnerMap, scaling_rightHull, reflection_rightHull,
   reflection_centeredLoewnerMap)
 SEALED DEFINITIONS: 24 (17 in M1; loewnerMap, centeredLoewnerMap, rightHull in M4, R21; 4 martingale-form vocabulary, R25)
-EXTERNALS: 17 frozen (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
+EXTERNALS: 18 frozen (R29: markov_oneDim added) (R23 batch 1: 4; R25 batch 2: 13) in ComplexSLE/External/ — complete external boundary
   of the graph (ext:dct, ext:martingale-convergence, ext:picard-lindelof, ext:kolmogorov-zero-one are Mathlib-supplied)
 PROVED: 17   PROVED_REL: 1
   PROVED  ComplexSLE.sle_duality (Prop 1.5, coupling form R28; AU-M6-S4)
@@ -52,7 +52,7 @@ PROVED: 17   PROVED_REL: 1
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 67 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 68 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review

@@ -62,6 +62,10 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
 - R28 (2026-10-30, M6 packet) Prop 1.5 frozen as the pathwise coupling `sle_duality` (hypotheses a, b ≥ 0, c² ≤ ab, t > 0;
   driver Ũ(s) = i(U((t−s)⁺) − U t) + i(U(max s t) − U t), the opposite sign to the paper's (2.4) driver, needed pathwise).
 - AUTO-1 and T12 confirmed by the author (M6 packet).
+- R29 (2026-10-31, M7 packet) EXTERNAL `markov_oneDim` approved and frozen (ComplexSLE/External/MarkovOneDim.lean): Markov
+  property and π-equivariance of the transition kernel of a 1-D diffusion with smooth π-periodic coefficients satisfying the
+  Hörmander condition (Stroock–Varadhan 6.2.2, Ethier–Kurtz 4.4.2). Reviews: reviewer-M7-markov-1 (found it false without
+  p ≥ 0, fixed), reviewer-M7-markov-2 (ACCEPT). Consumers use it exactly as the hypothesis `MarkovOneDim`.
 - R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
   transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet
