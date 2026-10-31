@@ -187,6 +187,13 @@ f_t(L_{s+t} ∖ L_t) = L_{t,s+t} cannot hold, since f_t maps ℂ∖L_t onto ℂ�
 **Proposed:** in the critical case, choose x with tan x = sgn(c)·√(b/a). Downstream (Lemma 3.4) only needs some
 deterministic recurrent point, so nothing else changes (found by global-verifier, checked by the orchestrator).
 
+**Observation (resolved in the proof, M7-E2): Lemma 3.8, L1590-1600.** The claim that the clock increment ∫_{τ_k}^{T_k} |f_v|⁻² dv
+"is independent from F_{τ_k} and its law does not depend on k" is not correct as stated, because the restart point
+f_{τ_k}(𝐳)/|f_{τ_k}(𝐳)| is random. The Lean proof (Internal/Phases/Lemma38*.lean) uses a good event depending only on the driver
+(|V_s| ≤ 1/16 on [0, u₀]), on which the clock increment is ≥ u₀/4 uniformly in the restart direction, and an exponential-moment
+recursion in place of the binomial count. It also proves the tacit step that the hull does not jump over a level, so
+dist(𝐳, L_{τ_k}) ≥ 16^{-k}. The lemma's statement is unaffected, and no ruling is needed.
+
 **Further open modeling questions from the global reviews** (graph/reviews/global.review.md §6), currently
 modeled as SOURCE_GAP steps:
 - (2.2) is used for the maps f_t and not only the hulls (L984, L1165).
