@@ -2664,9 +2664,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "85d9ced51e61e37f1241a2aebced5d2734de10a081d673653e8f28504c9d86d9",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "7e5027f429232a8b3d248f3593d5f9e77e33e7bea084270ad55c8d5e57dbe34a",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.BirkhoffStationary",
+        "export": "ComplexSLE.Internal.ExternalProofs.birkhoff_stationary"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.recurrence_stationary.v1",

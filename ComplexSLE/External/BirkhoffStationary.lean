@@ -14,12 +14,13 @@ public import Mathlib.Probability.Process.Stopping
 public import Mathlib.Probability.Process.HittingTime
 public import Mathlib.Analysis.Calculus.ContDiff.Basic
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import ComplexSLE.Internal.ExternalProofs.BirkhoffStationary
 
 /-!
-# EXTERNAL input: `birkhoff_stationary`
+# Classical input (proved): `birkhoff_stationary`
 
-Author-approved classical input (ERRATA.md R24, R25). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R24, R25). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.birkhoff_stationary`.
 -/
 
 public section
@@ -42,7 +43,7 @@ theorem birkhoff_stationary {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
     ∃ L : Ω → ℝ, Integrable L P ∧ ∫ ω, L ω ∂P = ∫ ω, ξ 0 ω ∂P ∧
       ∀ᵐ ω ∂P, Tendsto (fun n : ℕ => (∑ k ∈ Finset.range n, ξ k ω) / n) atTop (𝓝 (L ω)) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.birkhoff_stationary ξ hmeas hstat hint
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
