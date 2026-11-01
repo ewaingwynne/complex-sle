@@ -34,8 +34,8 @@ two repairs, reported in the handoff:
    `P(V_k ∈ 𝒢 | ℱ_{τ̂_k}) = Λ(𝒢) ≥ 1/2` from the strong Markov property.
 
 The tacit "no swallowing jump at `τ_k`" (`dist(z, L_{τ_k}) ≥ lvl k`) is proved
-(`ball_subset_compl_leftHull_of_forall_lt`). Uses the EXTERNAL `strongMarkov_sleDriver`; the Koebe
-step uses the proved covering constant `1/48` (`KoebeChainInv.lean`) and `koebe_distortion` is not
+(`ball_subset_compl_leftHull_of_forall_lt`). Uses `strongMarkov_sleDriver` (proved in M10); the
+Koebe step uses the proved covering constant `1/48` (`KoebeChainInv.lean`); no distortion theorem is
 needed.
 -/
 

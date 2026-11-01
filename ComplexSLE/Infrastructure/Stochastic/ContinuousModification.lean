@@ -17,7 +17,7 @@ path continuity. Many arguments (optional stopping, `IsSLEDriverAdapted`, …) n
 be continuous. Redefining a process on a null set `N` keeps it indistinguishable, but destroys
 adaptedness unless the null set is in the σ-algebras of the filtration. So the continuous version
 lives on the completed filtration
-`𝒢 t = ℱ t ⊔ σ(measurable P-null sets)` (compare `External.levy_characterization`, last clause).
+`𝒢 t = ℱ t ⊔ σ(measurable P-null sets)`.
 
 Main results (all external-free):
 

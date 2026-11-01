@@ -7,24 +7,22 @@ Lean 4 / Mathlib formalization of
 
 ## Status
 
-Complete for the planned scope: every author-frozen root is proved, either outright or relative to approved externals.
-- **Frozen theorems.** There are 14 frozen roots and 26 sealed theorems in total. 17 sealed theorems are proved outright
-  and 9 are proved relative to externals. None is left as a draft.
-- **Main results.** All of these are `PROVED_REL`, meaning proved relative to approved external inputs:
-  - Theorem 1.8, the four phases and the explicit c = 0 description.
-  - Theorem 1.10(a) and (b).
-  - Propositions 3.1(a,b) and 3.2(a,b).
-- **Deterministic results.** These are proved with no external input:
-  - well-definedness of the Loewner chain;
-  - the existence part of Lemma 2.13;
-  - Lemma 2.4 (connected hulls);
-  - (2.1)–(2.3);
-  - Proposition 1.5, in the coupling form of ruling R28.
+Every author-frozen root is proved. Six §3 roots still rest on the last two external inputs.
+- **Frozen theorems:** 14 frozen roots and 36 sealed theorems, including 10 classical inputs proved in-project in M10.
+  30 are proved outright and 6 relative to externals. None is left as a draft.
+- **Proved outright:**
+  - Theorem 1.10(a) and (b);
+  - well-definedness of the Loewner chain, the existence part of Lemma 2.13, Lemma 2.4 and (2.1)–(2.3);
+  - Proposition 1.5, in the coupling form of ruling R28;
+  - existence of the SLE_Σ driver;
+  - the classical inputs: existence of Brownian motion, Itô's formula (martingale form), time change of local
+    martingales, the strong Markov and Blumenthal properties and the support theorem for the driver, the Birkhoff
+    ergodic theorem, the recurrence of stationary sums, and the conformality and driver-continuity of the Loewner maps.
+- **Proved relative to `hormander_oneDim` and `markov_oneDim`:** Theorem 1.8 (including c = 0) and Propositions 3.1(a,b)
+  and 3.2(a,b). These two are the only remaining `sorry`s (`ComplexSLE/External/`, manifest state `EXTERNAL`).
 
-Results that use classical theorems absent from Mathlib (Itô's formula, the strong Markov property, Hörmander's
-theorem, the Koebe quarter theorem, …) are reported as **proved relative to** explicitly listed, author-approved external
-statements (`ComplexSLE/External/`, manifest state `EXTERNAL`). They are never counted as unconditionally proved. 13 of the
-18 approved externals are actually consumed; RESULTS.md §5 lists which root uses which.
+Some code is ported from leobon12/lean-formalizations @31e7483 and marked so in `ComplexSLE/Infrastructure/Zipper/`.
+That repository has no license file.
 
 ## Where to look
 
