@@ -104,7 +104,7 @@ SEALED_THIS_TURN (M7 close): 3 (proposition_3_2_b, theorem_1_8, theorem_1_8_c_ze
   PROVED  ComplexSLE.loewner_wellDefined  (audit review/audits/AU-M4-D1-loewner.md)
 ```
 
-Manifest: 68 anchors (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
+Manifest: 62 anchors after M10 (68 at M9; six externals deleted) (graph header FROZEN_MANIFEST hash refreshed after each manifest change; graph anchor fields unchanged). Gate: `tools/check.sh` passes (build, modules, guard, ABI, forbidden).
 
 Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 external leaves,
 62 explicit SOURCE_GAP nodes, 306 coverage items (96 excluded). Every record has an independent review
