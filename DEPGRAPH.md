@@ -7,7 +7,7 @@ CONVENTIONS: see graph/EXTRACTION_SPEC.md §3 (rulings R4-R17: z ≠ 0; a, b > 0
 STANDING_ASSUMPTIONS: -
 EXTERNAL_POLICY: cited literature results and named standard theorems explicitly invoked by a proof are KIND external leaves (graph/EXTRACTION_SPEC.md §5); routine facts below the step threshold are not nodes
 FROZEN_ANCHORS: defn-loewner.solution, defn-loewner.absorbing-time, defn-hulls.left, def-disconnect, eqn-cov-matrix, defn-sle.gaussian-law, defn-sle, defn-phases.thin, defn-phases.swallowing, defn-phases.hitting, defn-phases.dense, eqn-nu-D.mu, eqn-nu-D.nu, eqn-nu-D.D, lem-stationary.admissible, item-I, item-II, defn-loewner.well-defined, lem-p.exists, nonsource.exists-sle-driver, thm-phases, thm-phases.c-zero, thm-disconnects.a, thm-disconnects.b, prop-i.a, prop-i.b, prop-ii.a, prop-ii.b, lem-connected.left, eqn-scale.left, eqn-reflect.left
-FROZEN_MANIFEST: frozen-anchor-manifest.json | sha256:1dc2c74895e3e07945250f5565190822b138fdb6863627352f70a4c74baaee87
+FROZEN_MANIFEST: frozen-anchor-manifest.json | sha256:141233ca17d7f1dd30d9fd50b803a1a380ba0e71fa2388c5bcbbc9728a0478d0
 WRITER: orchestrator/opus-5.5/session-a85056b9
 GLOBAL_REVIEWER: global-verifier/sonnet
 GLOBAL_REVIEW_REF: graph/reviews/global-verify.review.md (final verification; first global review graph/reviews/global.review.md)

@@ -14,12 +14,13 @@ public import Mathlib.Probability.Process.Stopping
 public import Mathlib.Probability.Process.HittingTime
 public import Mathlib.Analysis.Calculus.ContDiff.Basic
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import ComplexSLE.Internal.ExternalProofs.ItoFormula
 
 /-!
-# EXTERNAL input: `ito_formula`
+# Classical input (proved): `ito_formula`
 
-Author-approved classical input (ERRATA.md R24, R25). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R24, R25). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.ito_formula`.
 -/
 
 public section
@@ -66,7 +67,8 @@ theorem ito_formula {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabi
           (1 / 2) * ∑ i, ∑ j,
             iteratedFDeriv ℝ 2 F (X s ω) ![Pi.single i 1, Pi.single j 1] * Q s ω i j) t ω) P :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.ito_formula ℱ X A Q hX hXc hA hAint hQ hQint
+      hM hMM D hD F hFm hF hXD
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

@@ -2814,9 +2814,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "d9b25155719605acb6fd8a21e75179c43ec83d8f249cfb5e1f5b03f82cffe2a2",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "9514a671b307e60c14402559c00c6afc09fb5fdee4e336743343f46c0edb0643",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.ItoFormula",
+        "export": "ComplexSLE.Internal.ExternalProofs.ito_formula"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.timeChange_isContLocalMartingale.v1",
