@@ -74,6 +74,7 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   Third-party code is ported, with provenance headers, from leobon12/lean-formalizations @31e7483, at the author's
   direction, into `ComplexSLE/Infrastructure/Zipper/`. That repository has no license file; this is to be settled
   before any public release.
+  Deleted as unused (2026-11-01): `girsanov_law_equiv`, `scale_function_hit`, `levy_characterization`, `koebe_distortion`.
 - R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
   transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet
