@@ -3168,9 +3168,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "2cd44e23a6055f171483f2b61af4fef92b0ffb47f0bfc3784a5f5c5ab83bc873",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "8ca8ef09b4a0271842e3c087739616d005c9afd63f02f36e83aa8619bbbfdbc5",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.TimeChangeIsContLocalMartingale",
+        "export": "ComplexSLE.Internal.ExternalProofs.timeChange_isContLocalMartingale"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.girsanov_law_equiv.v1",

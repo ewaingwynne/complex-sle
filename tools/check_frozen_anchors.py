@@ -480,7 +480,7 @@ class Guard:
             # colon, so the export may be applied to bare local names that are binders of the
             # frozen declaration itself (`by exact Impl.foo μ hI hII`). No other terms allowed.
             sealed = re.fullmatch(r"\s*by\s+(?:exact\s+|simpa\s+using\s+)" + escaped
-                                  + r"(?P<args>(?:[ \t]+[^\s()\[\]{}.,:;@`]+)*)\s*", body)
+                                  + r"(?P<args>(?:\s+[^\s()\[\]{}.,:;@`]+)*)\s*", body)
             binders = binder_names(prefix)
             if sealed is None or any(arg not in binders for arg in sealed.group("args").split()):
                 self.fail(f"{label}: SEALED body must be trivial assembly of exactly implementation.export")
