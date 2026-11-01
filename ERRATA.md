@@ -66,6 +66,14 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   property and π-equivariance of the transition kernel of a 1-D diffusion with smooth π-periodic coefficients satisfying the
   Hörmander condition (Stroock–Varadhan 6.2.2, Ethier–Kurtz 4.4.2). Reviews: reviewer-M7-markov-1 (found it false without
   p ≥ 0, fixed), reviewer-M7-markov-2 (ACCEPT). Consumers use it exactly as the hypothesis `MarkovOneDim`.
+- R30 (2026-11-01, author request "remove all instances of sorry", M10) Externals are to be proved. An EXTERNAL whose
+  exact statement is proved is SEALED in place: same path, export and ABI. Its frozen prefix gains `import` of the
+  provider (`ComplexSLE.Internal.ExternalProofs.*`), and its module docstring says it is proved. `tools/seal_external.py`
+  performs the edit and the checker accepts proved externals under `ComplexSLE/External/`. An external that no theorem
+  consumes, or that a proof-route substitution makes unused, is deleted with its manifest entry (M9 option 2(a)).
+  Third-party code is ported, with provenance headers, from leobon12/lean-formalizations @31e7483, at the author's
+  direction, into `ComplexSLE/Infrastructure/Zipper/`. That repository has no license file; this is to be settled
+  before any public release.
 - R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
   transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet

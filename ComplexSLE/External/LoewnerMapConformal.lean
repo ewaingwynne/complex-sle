@@ -6,12 +6,13 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 module
 
 public import ComplexSLE.Frozen.Defs.LoewnerMap
+import ComplexSLE.Internal.ExternalProofs.LoewnerMapConformal
 
 /-!
-# EXTERNAL input: Conformality of the Loewner maps
+# Classical input (proved): Conformality of the Loewner maps
 
-Author-approved classical input (ERRATA.md R23). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R23). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.loewnerMap_conformal`.
 -/
 
 public section
@@ -31,7 +32,7 @@ theorem loewnerMap_conformal (U : ℝ≥0 → ℂ) (hU : Continuous U) (t : ℝ�
         DifferentiableOn ℂ G (leftHull U t)ᶜ ∧ Set.InjOn G (leftHull U t)ᶜ ∧
         Tendsto (fun z => z * (G z - z)) (Bornology.cobounded ℂ) (𝓝 (2 * (t : ℂ))) :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.loewnerMap_conformal U hU t
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

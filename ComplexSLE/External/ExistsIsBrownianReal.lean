@@ -6,12 +6,13 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 module
 
 public import Mathlib.Probability.BrownianMotion.Basic
+import ComplexSLE.Internal.ExternalProofs.ExistsIsBrownianReal
 
 /-!
-# EXTERNAL input: Existence of Brownian motion
+# Classical input (proved): Existence of Brownian motion
 
-Author-approved classical input (ERRATA.md R23). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R23). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.exists_isBrownianReal`.
 -/
 
 public section
@@ -28,7 +29,7 @@ theorem exists_isBrownianReal :
     ∃ (Ω : Type) (_ : MeasurableSpace Ω) (P : Measure Ω) (_ : IsProbabilityMeasure P)
       (B : ℝ≥0 → Ω → ℝ), IsBrownianReal B P :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.exists_isBrownianReal
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

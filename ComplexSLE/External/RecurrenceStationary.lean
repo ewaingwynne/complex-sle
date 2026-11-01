@@ -14,12 +14,13 @@ public import Mathlib.Probability.Process.Stopping
 public import Mathlib.Probability.Process.HittingTime
 public import Mathlib.Analysis.Calculus.ContDiff.Basic
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import ComplexSLE.Internal.ExternalProofs.RecurrenceStationary
 
 /-!
-# EXTERNAL input: `recurrence_stationary`
+# Classical input (proved): `recurrence_stationary`
 
-Author-approved classical input (ERRATA.md R24, R25). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R24, R25). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.recurrence_stationary`.
 -/
 
 public section
@@ -45,7 +46,7 @@ theorem recurrence_stationary {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
     (hlim : ∀ᵐ ω ∂P, Tendsto (fun n : ℕ => (∑ k ∈ Finset.range n, ξ k ω) / n) atTop (𝓝 0)) :
     ∀ᵐ ω ∂P, ∀ ε : ℝ, 0 < ε → ∃ᶠ n in atTop, |∑ k ∈ Finset.range n, ξ k ω| < ε :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.recurrence_stationary ξ hmeas hstat hint hlim
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

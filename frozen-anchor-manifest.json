@@ -2168,9 +2168,17 @@
       },
       "abi_sha256": "943eb7dd012d4b4fa6a7d326283526fbe87bbccb6c8519b63c00dba329f798cb",
       "definition_closure": [],
-      "state": "EXTERNAL",
-      "prefix_sha256": "416ed6ef8dc01dfed7b41573afd70d7a3ae5536a72af6e7e4004e0d32c1592d4",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "4efa5ae4bfb6af2ffcf58d908feb03d904b8d34be2932c7aefc8d99af35ead87",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.ExistsIsBrownianReal",
+        "export": "ComplexSLE.Internal.ExternalProofs.exists_isBrownianReal"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.support_sleDriver.v1",
@@ -2258,9 +2266,17 @@
           "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "ddbfe4d8c081f939315414a116eacf43279e96722ad3a7ca6e64f26eb740c31b",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "cd35e3dbb6d6429fc90f2bd1158ffb853121270e34d5b39f6ba5090089d077bf",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.LoewnerMapConformal",
+        "export": "ComplexSLE.Internal.ExternalProofs.loewnerMap_conformal"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.loewnerMap_tendstoUniformly.v1",
@@ -2305,9 +2321,17 @@
           "sha256": "00c1535da27edcba1fffc60e90f1997f707d3258d9a08acf8666c295a4f28336"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "412a8a63418d717f0c6446029f1dc8a5b7e53bc5e6c1f2af3148c2aa30df0610",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "a15d5d7cc1bbcd4b31ffac1ff4cd31f6be35211e478af70da34d836f398b4e6d",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.LoewnerMapTendstoUniformly",
+        "export": "ComplexSLE.Internal.ExternalProofs.loewnerMap_tendstoUniformly"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "def.pathIntegral.v1",
@@ -2695,9 +2719,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "933a9c8cf7359d4a3c079c6e8a4d999a4ebd143ad52a2c45acd543b974519b9e",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "f39f057d531b5d701d2b9637e92e117cc6eca842d5772eda33ef0dc0dbcb9071",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.RecurrenceStationary",
+        "export": "ComplexSLE.Internal.ExternalProofs.recurrence_stationary"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.scale_function_hit.v1",

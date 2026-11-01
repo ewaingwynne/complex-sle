@@ -297,8 +297,11 @@ class Guard:
             self.fail(f"{label}.state: must be DRAFT_SORRY, SEALED or EXTERNAL")
         if kind == "theorem" and state == "EXTERNAL":
             self.check_external_path(anchor, label)
-        elif isinstance(anchor.get("path"), str) and anchor["path"].startswith(EXTERNAL_DIR + "/"):
-            self.fail(f"{label}.path: only EXTERNAL theorem anchors may live under {EXTERNAL_DIR}/")
+        elif (isinstance(anchor.get("path"), str) and anchor["path"].startswith(EXTERNAL_DIR + "/")
+              and not (kind == "theorem" and state == "SEALED")):
+            # Project amendment (M10, 2026-11-01): an external whose exact statement has been proved is
+            # SEALED in place (same path, export and ABI; the prefix imports its provider).
+            self.fail(f"{label}.path: only EXTERNAL or proved (SEALED) theorem anchors may live under {EXTERNAL_DIR}/")
         common = {"id", "kind", "author_approval", "source", "contract", "path", "export",
                   "abi_sha256", "definition_closure", "state", "split_policy"}
         if kind == "theorem" and state == "EXTERNAL":
@@ -645,15 +648,18 @@ class Guard:
         external = {self.module_name(path): path for anchor, path, _ in parsed
                     if anchor.get("kind") == "theorem" and anchor.get("state") == "EXTERNAL"}
         definitions = {self.module_name(path) for anchor, path, _ in parsed if anchor.get("kind") == "definition"}
+        proved = [path for anchor, path, _ in parsed
+                  if anchor.get("kind") == "theorem" and anchor.get("state") == "SEALED"
+                  and self.module_name(path).startswith(EXTERNAL_MODULE_PREFIX)]
         directory = self.root / EXTERNAL_DIR
-        listed = {path.resolve() for path in external.values()}
+        listed = {path.resolve() for path in list(external.values()) + proved}
         if directory.is_dir():
-            listed_exact = {path.absolute() for path in external.values()}
+            listed_exact = {path.absolute() for path in list(external.values()) + proved}
             for path in sorted(directory.rglob("*")):
                 if path.is_symlink():
                     self.fail(f"{path.relative_to(self.root)}: symlinks are not allowed under {EXTERNAL_DIR}/")
                 elif path.is_file() and (path.resolve() not in listed or path.absolute() not in listed_exact):
-                    self.fail(f"{path.relative_to(self.root)}: file under {EXTERNAL_DIR}/ is not an EXTERNAL manifest anchor")
+                    self.fail(f"{path.relative_to(self.root)}: file under {EXTERNAL_DIR}/ is not an EXTERNAL or proved-external manifest anchor")
         for anchor, _frozen, implementation in parsed:
             if (anchor.get("state") != "EXTERNAL" and implementation is not None
                     and self.module_name(implementation).startswith(EXTERNAL_MODULE_PREFIX)):
