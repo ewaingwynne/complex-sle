@@ -2219,9 +2219,17 @@
           "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "b44a07a9f99e06a32235ed50faab502caeb4a56cee258a0591a642e61f69485f",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "ae01139218d71786a85275b7dbdf0b8c459c8e807f13004eb13ca809bb172361",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.SupportSLEDriver",
+        "export": "ComplexSLE.Internal.ExternalProofs.support_sleDriver"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.loewnerMap_conformal.v1",

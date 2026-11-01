@@ -6,12 +6,13 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 module
 
 public import ComplexSLE.Frozen.Defs.IsSLEDriver
+import ComplexSLE.Internal.ExternalProofs.SupportSLEDriver
 
 /-!
-# EXTERNAL input: Support theorem for the planar driver
+# Classical input (proved): Support theorem for the planar driver
 
-Author-approved classical input (ERRATA.md R23). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R23). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.support_sleDriver`.
 -/
 
 public section
@@ -33,7 +34,8 @@ theorem support_sleDriver {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} [IsP
     (T : ℝ≥0) (δ : ℝ) (hδ : 0 < δ) :
     0 < P {ω | ∀ t ≤ T, ‖U t ω - φ t‖ < δ} :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.support_sleDriver a b c ha hb hc U hU φ hφ hφ0 hφS
+      T δ hδ
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
