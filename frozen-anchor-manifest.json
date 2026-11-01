@@ -2530,9 +2530,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "b07d527148e583bce9f4d53a320f6c96923132238986326600d3b42a5fe786ad",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "06e310106d2fc41fc02874ddb695ba11ba48e254d5498a3f2c86aa8e033bfbaa",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.StrongMarkovSLEDriver",
+        "export": "ComplexSLE.Internal.ExternalProofs.strongMarkov_sleDriver"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.blumenthal_sleDriver.v1",

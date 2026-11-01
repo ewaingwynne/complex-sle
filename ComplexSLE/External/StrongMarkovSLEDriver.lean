@@ -14,12 +14,13 @@ public import Mathlib.Probability.Process.Stopping
 public import Mathlib.Probability.Process.HittingTime
 public import Mathlib.Analysis.Calculus.ContDiff.Basic
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import ComplexSLE.Internal.ExternalProofs.StrongMarkovSLEDriver
 
 /-!
-# EXTERNAL input: `strongMarkov_sleDriver`
+# Classical input (proved): `strongMarkov_sleDriver`
 
-Author-approved classical input (ERRATA.md R24, R25). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R24, R25). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.strongMarkov_sleDriver`.
 -/
 
 public section
@@ -52,7 +53,7 @@ theorem strongMarkov_sleDriver {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
         MeasurableSet[⨆ t, ℱ t] A ∧ ∀ t : ℝ≥0, MeasurableSet[ℱ t] (A ∩ {ω | τ ω + s ≤ t})) →
       IsSLEDriverAdapted a b c (fun s ω => U ((τ ω).untopA + s) ω - U (τ ω).untopA ω) P 𝒢 :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.strongMarkov_sleDriver hU τ hτ hfin
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
