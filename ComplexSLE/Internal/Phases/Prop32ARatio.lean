@@ -23,10 +23,10 @@ let `R_s = log(|f̂'_s(e^{iu})| / |f̂_s(e^{iu})|)` (`sigmaLogRatio`). By (2.27)
   `Y_s / s → (I)` (`birkhoff_logFHat_const`) and `C_s / s → ∫ cos(2u) dν`
   (`birkhoff_cosInt_const`);
 * `ae_ae_hull_approach`: if `(II) < 0` then `R_s → +∞` and, by the Koebe hitting bound in σ-time
-  (`ae_exists_infDist_leftHull_lt_of_tendsto`, EXTERNAL `koebe_quarter`), for `ν`-a.e. `u`, a.s.
+  (`ae_exists_infDist_leftHull_lt_of_tendsto`), for `ν`-a.e. `u`, a.s.
   `∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` at `z = e^{iu}` (the R14 `ε`-form of Proposition 3.2(a)).
 
-Consumes the EXTERNALs consumed by `ErgodicRatioConst.lean` and `koebe_quarter`; the EXTERNAL
+Consumes the EXTERNALs consumed by `ErgodicRatioConst.lean`; the EXTERNAL
 `markov_oneDim` (R29) is the hypothesis `hMO : MarkovOneDim`.
 -/
 

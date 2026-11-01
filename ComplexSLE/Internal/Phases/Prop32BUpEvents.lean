@@ -25,12 +25,12 @@ of "`lim_{t → T_z⁻} dist(z, L_t) > 0`".
 * **Koebe ball** (paper.tex:L1806-1810, deterministic): `StaysAwayBy r u z` implies
   `StaysAway u w` for every `w ∈ B(z, r/16)` (`staysAway_of_staysAwayBy`). By the Koebe
   distortion theorem the paper shows `dist(f_t(w), R_t) → 0` as `t → T_z`; here the Grönwall form
-  of the Koebe step (`norm_fPath_sub_le_of_ball`, which consumes only the EXTERNAL
-  `koebe_quarter`) gives `|f_t(w) - f_t(z)| ≤ (e^K - 1)|f_t(z)|` on `B(z, r)`, hence
+  of the Koebe step (`norm_fPath_sub_le_of_ball`, which uses the proved Koebe covering constant
+  `1/48`, `KoebeChainInv.lean`) gives `|f_t(w) - f_t(z)| ≤ (e^K - 1)|f_t(z)|` on `B(z, r)`, hence
   `f_t(w) → 0` as `t → T_z⁻` (Lemma 2.5, `tendsto_norm_fPath_nhdsWithin`), and then `T_w ≤ T_z`
   because `f_{T_z}(w) ≠ 0` if `T_z < T_w` (`fPath_ne_zero`, continuity of `f_·(w)` at `T_z`).
 
-Every result consuming the Koebe step is `PROVED_REL{koebe_quarter}`.
+The radius `r/16` is not tuned to the Koebe constant: any `‖w - z‖ < r` would do.
 -/
 
 @[expose] public section
@@ -122,7 +122,7 @@ theorem absorbingTime_le_of_staysAwayBy (hu : Continuous u) {z w : ℂ} {r : ℝ
     exact hlt
   have hfT : Polar.fPath u hu w T ≠ 0 := Polar.fPath_ne_zero hu hTw
   -- the Koebe step on `B(z, r)`
-  set K : ℝ := 4 * ‖w - z‖ / (r - ‖w - z‖) with hK
+  set K : ℝ := KoebeChain.koebeK * ‖w - z‖ / (r - ‖w - z‖) with hK
   have hbound : ∀ t ∈ Polar.lifeSet u z,
       ‖Polar.fPath u hu w t‖ ≤ Real.exp K * ‖Polar.fPath u hu z t‖ := by
     intro t ht

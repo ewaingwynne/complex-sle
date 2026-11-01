@@ -4,7 +4,7 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 -/
 module
 
-public import ComplexSLE.External.KoebeQuarter
+public import ComplexSLE.Infrastructure.Zipper.QuantumZipper.Proofs.Complex.KoebeCovering
 public import Mathlib.Topology.MetricSpace.HausdorffDistance
 import Mathlib.Analysis.Complex.CauchyIntegral
 import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
@@ -12,23 +12,28 @@ import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
 /-!
 # Two-sided Koebe comparison for an injective holomorphic map (M7/E3, general)
 
-Source: paper.tex:L1700-1705 (the Koebe quarter theorem in the form
+Source: paper.tex:L1700-1705 (the Koebe `1/4` theorem in the form
 `|φ'(z)| dist(z, K₁) ≍ dist(φ(z), K₂)` for a conformal map `φ : ℂ ∖ K₁ → ℂ ∖ K₂`), with the
-implicit constants made explicit (`1/4` and `4`). Deterministic; no Loewner input.
+implicit constants made explicit. The sharp Koebe constant `1/4` is not available (it needs the
+area theorem); this file uses the covering theorem with the non-sharp constant `1/48`
+(`QuantumZipper.CA.Koebe.ball_subset_image_koebe`, fully proved, ported from a third-party
+repository), i.e. the universal constant `koebeK = 48` in place of `4`. The paper only uses
+"some universal constant". Deterministic; no Loewner input.
 
 Let `F : ℂ → ℂ` be holomorphic and injective on `Kᶜ`, `z ∉ K`.
 
-* `ball_subset_image_ball`: the Koebe quarter theorem rescaled to a disc `B(z, ρ)`: the image of
-  `B(z, ρ)` under `F` contains `B(F z, |F'(z)| ρ / 4)`.
+* `koebeK = 48`: the Koebe constant of this project (`1 / koebeCovConst`).
+* `ball_subset_image_ball`: the Koebe covering theorem on a disc `B(z, ρ)`: the image of
+  `B(z, ρ)` under `F` contains `B(F z, |F'(z)| ρ / koebeK)`.
 * `norm_deriv_mul_infDist_le` (**lower bound for the image distance**): if `F` maps `Kᶜ` into
-  `K'ᶜ` then `|F'(z)| · dist(z, K) ≤ 4 · dist(F z, K')`.
+  `K'ᶜ` then `|F'(z)| · dist(z, K) ≤ koebeK · dist(F z, K')`.
 * `infDist_image_le` (**upper bound for the image distance**): if `Kᶜ` is open, `F' ≠ 0` on `Kᶜ`
-  and `K'ᶜ ⊆ F(Kᶜ)`, then `dist(F z, K') ≤ 4 · |F'(z)| · dist(z, K)`. Proof: the inverse
+  and `K'ᶜ ⊆ F(Kᶜ)`, then `dist(F z, K') ≤ koebeK · |F'(z)| · dist(z, K)`. Proof: the inverse
   `G = F⁻¹ : F(Kᶜ) → Kᶜ` is holomorphic on the disc `B(F z, dist(F z, K')) ⊆ F(Kᶜ)` (inverse
   function theorem, one complex variable) and injective, with `G'(F z) = 1 / F'(z)`; apply
   `ball_subset_image_ball` to `G`.
 
-Every result here consumes the EXTERNAL `koebe_quarter` (`PROVED_REL{koebe_quarter}`).
+No EXTERNAL input is consumed here.
 -/
 
 public section
@@ -38,44 +43,29 @@ open Set Metric Filter Function
 
 namespace ComplexSLE.Internal.KoebeChain
 
-/-- **Koebe quarter theorem on a disc** (rescaled `koebe_quarter`): if `F` is holomorphic and
-injective on `B(z, ρ)`, `ρ > 0`, then `F(B(z, ρ)) ⊇ B(F z, |F'(z)| ρ / 4)`. -/
-theorem ball_subset_image_ball (F : ℂ → ℂ) {z : ℂ} {ρ : ℝ} (hρ : 0 < ρ)
+/-- **The Koebe constant** `K = 48` of this project: the (non-sharp) Koebe covering theorem
+`QuantumZipper.CA.Koebe.ball_subset_image_koebe` covers a disc of radius `|f'(c)| r / 48`. It
+replaces the sharp constant `4` (`= 1 / (1/4)`) of the paper's Koebe `1/4` theorem. -/
+@[expose] def koebeK : ℝ := 48
+
+theorem koebeK_eq : koebeK = 48 := rfl
+
+theorem koebeK_pos : 0 < koebeK := by norm_num [koebeK]
+
+theorem one_le_koebeK : 1 ≤ koebeK := by norm_num [koebeK]
+
+theorem koebeCovConst_eq_inv : QuantumZipper.CA.Koebe.koebeCovConst = koebeK⁻¹ := by
+  norm_num [QuantumZipper.CA.Koebe.koebeCovConst, koebeK]
+
+/-- **Koebe covering theorem on a disc**: if `F` is holomorphic and injective on `B(z, ρ)`,
+`ρ > 0`, then `F(B(z, ρ)) ⊇ B(F z, |F'(z)| ρ / koebeK)` (`koebeK = 48`). -/
+theorem ball_subset_image_ball (F : ℂ → ℂ) {z : ℂ} {ρ : ℝ} (_hρ : 0 < ρ)
     (hF : DifferentiableOn ℂ F (ball z ρ)) (hinj : InjOn F (ball z ρ)) :
-    ball (F z) (‖deriv F z‖ * ρ / 4) ⊆ F '' ball z ρ := by
-  set H : ℂ → ℂ := fun ζ => F (z + (ρ : ℂ) * ζ) with hH
-  have hmaps : ∀ ζ ∈ ball (0 : ℂ) 1, z + (ρ : ℂ) * ζ ∈ ball z ρ := by
-    intro ζ hζ
-    rw [mem_ball, dist_eq_norm, add_sub_cancel_left, norm_mul, Complex.norm_real,
-      Real.norm_of_nonneg hρ.le]
-    have : ‖ζ‖ < 1 := by simpa using hζ
-    nlinarith
-  have hFat : ∀ ζ ∈ ball (0 : ℂ) 1, DifferentiableAt ℂ F (z + (ρ : ℂ) * ζ) := fun ζ hζ =>
-    (hF _ (hmaps ζ hζ)).differentiableAt (isOpen_ball.mem_nhds (hmaps ζ hζ))
-  have hderiv : ∀ ζ ∈ ball (0 : ℂ) 1,
-      HasDerivAt H (deriv F (z + (ρ : ℂ) * ζ) * (ρ : ℂ)) ζ := by
-    intro ζ hζ
-    have h2 : HasDerivAt (fun ζ : ℂ => z + (ρ : ℂ) * ζ) (ρ : ℂ) ζ := by
-      simpa using ((hasDerivAt_id ζ).const_mul (ρ : ℂ)).const_add z
-    exact (hFat ζ hζ).hasDerivAt.comp ζ h2
-  have hdiff : DifferentiableOn ℂ H (ball (0 : ℂ) 1) := fun ζ hζ =>
-    (hderiv ζ hζ).differentiableAt.differentiableWithinAt
-  have hρ0 : (ρ : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hρ.ne'
-  have hHinj : InjOn H (ball (0 : ℂ) 1) := by
-    intro ζ₁ h₁ ζ₂ h₂ h
-    exact mul_left_cancel₀ hρ0
-      (add_left_cancel (hinj (hmaps ζ₁ h₁) (hmaps ζ₂ h₂) h))
-  have hkoebe := External.koebe_quarter H hdiff hHinj
-  have hH0 : H 0 = F z := by simp [hH]
-  have hdH0 : deriv H 0 = deriv F z * (ρ : ℂ) := by
-    have := hderiv 0 (mem_ball_self one_pos)
-    simpa using this.deriv
-  intro y hy
-  have hy' : y ∈ ball (H 0) (‖deriv H 0‖ / 4) := by
-    rw [hH0, hdH0, norm_mul, Complex.norm_real, Real.norm_of_nonneg hρ.le]
-    exact hy
-  obtain ⟨ζ, hζ, rfl⟩ := hkoebe hy'
-  exact ⟨z + (ρ : ℂ) * ζ, hmaps ζ hζ, rfl⟩
+    ball (F z) (‖deriv F z‖ * ρ / koebeK) ⊆ F '' ball z ρ := by
+  have h := QuantumZipper.CA.Koebe.ball_subset_image_koebe hF hinj
+  have e : ‖deriv F z‖ * ρ / koebeK = QuantumZipper.CA.Koebe.koebeCovConst * ρ * ‖deriv F z‖ := by
+    rw [koebeCovConst_eq_inv]; ring
+  rwa [e]
 
 /-- A disc `B(z, ρ)` with `ρ = dist(z, K)` does not meet `K`. -/
 theorem ball_infDist_subset_compl (z : ℂ) (K : Set ℂ) : ball z (infDist z K) ⊆ Kᶜ := by
@@ -91,26 +81,26 @@ theorem le_infDist_of_ball_subset {z : ℂ} {K : Set ℂ} {r : ℝ} (hK : K.None
   by_contra hlt
   exact h (mem_ball.2 (by rw [dist_comm]; exact not_le.1 hlt)) hk
 
-/-- **Koebe quarter, lower bound for the image distance**: if `F` is holomorphic and injective on
+/-- **Koebe, lower bound for the image distance**: if `F` is holomorphic and injective on
 `Kᶜ` and maps `Kᶜ` into `K'ᶜ` (`K'` nonempty), then for `z ∉ K`,
-`|F'(z)| · dist(z, K) ≤ 4 · dist(F z, K')`. -/
+`|F'(z)| · dist(z, K) ≤ koebeK · dist(F z, K')`. -/
 theorem norm_deriv_mul_infDist_le (F : ℂ → ℂ) {K K' : Set ℂ} (hK' : K'.Nonempty)
     (hF : DifferentiableOn ℂ F Kᶜ) (hinj : InjOn F Kᶜ) (hmaps : ∀ x, x ∉ K → F x ∉ K')
     {z : ℂ} :
-    ‖deriv F z‖ * infDist z K ≤ 4 * infDist (F z) K' := by
+    ‖deriv F z‖ * infDist z K ≤ koebeK * infDist (F z) K' := by
   set ρ : ℝ := infDist z K with hρ
   rcases (infDist_nonneg (x := z) (s := K)).eq_or_lt with h0 | hpos
   · have hρ0 : ρ = 0 := h0.symm
     rw [hρ0, mul_zero]
-    exact mul_nonneg (by norm_num) infDist_nonneg
+    exact mul_nonneg koebeK_pos.le infDist_nonneg
   have hball : ball z ρ ⊆ Kᶜ := ball_infDist_subset_compl z K
   have hkoebe := ball_subset_image_ball F hpos (hF.mono hball) (hinj.mono hball)
-  have hsub : ball (F z) (‖deriv F z‖ * ρ / 4) ⊆ K'ᶜ := by
+  have hsub : ball (F z) (‖deriv F z‖ * ρ / koebeK) ⊆ K'ᶜ := by
     intro y hy
     obtain ⟨x, hx, rfl⟩ := hkoebe hy
     exact hmaps x (hball hx)
   have := le_infDist_of_ball_subset hK' hsub
-  linarith
+  rwa [div_le_iff₀ koebeK_pos, mul_comm (infDist (F z) K')] at this
 
 /-- The local inverse of an injective holomorphic map with nonzero derivative on an open set
 `Ω`: `G = invFunOn F Ω` is differentiable at `u = F p`, `p ∈ Ω`, with derivative `(F' p)⁻¹`. -/
@@ -136,19 +126,19 @@ theorem hasDerivAt_invFunOn (F : ℂ → ℂ) {Ω : Set ℂ} (hΩ : IsOpen Ω)
     exact h3.symm
   exact hGl_d.hasDerivAt.congr_of_eventuallyEq heq.symm
 
-/-- **Koebe quarter, upper bound for the image distance**: if `Kᶜ` is open, `F` is holomorphic and
+/-- **Koebe, upper bound for the image distance**: if `Kᶜ` is open, `F` is holomorphic and
 injective on `Kᶜ` with `F' ≠ 0` there, and `K'ᶜ ⊆ F(Kᶜ)` (`K, K'` nonempty), then for `z ∉ K`,
-`dist(F z, K') ≤ 4 · |F'(z)| · dist(z, K)`. -/
+`dist(F z, K') ≤ koebeK · |F'(z)| · dist(z, K)`. -/
 theorem infDist_image_le (F : ℂ → ℂ) {K K' : Set ℂ} (hK : K.Nonempty) (hKo : IsOpen Kᶜ)
     (hF : DifferentiableOn ℂ F Kᶜ) (hinj : InjOn F Kᶜ) (hd : ∀ p ∈ Kᶜ, deriv F p ≠ 0)
     (hsurj : K'ᶜ ⊆ F '' Kᶜ) {z : ℂ} (hz : z ∉ K) :
-    infDist (F z) K' ≤ 4 * (‖deriv F z‖ * infDist z K) := by
+    infDist (F z) K' ≤ koebeK * (‖deriv F z‖ * infDist z K) := by
   set w : ℂ := F z with hw
   set ρ : ℝ := infDist w K' with hρ
   rcases (infDist_nonneg (x := w) (s := K')).eq_or_lt with h0 | hpos
   · have hρ0 : ρ = 0 := h0.symm
     rw [hρ0]
-    exact mul_nonneg (by norm_num) (mul_nonneg (norm_nonneg _) infDist_nonneg)
+    exact mul_nonneg koebeK_pos.le (mul_nonneg (norm_nonneg _) infDist_nonneg)
   set G : ℂ → ℂ := invFunOn F Kᶜ with hG
   have hball : ball w ρ ⊆ F '' Kᶜ := fun y hy =>
     hsurj (ball_infDist_subset_compl w K' hy)
@@ -169,14 +159,14 @@ theorem infDist_image_le (F : ℂ → ℂ) {K K' : Set ℂ} (hK : K.Nonempty) (h
     have := (hGd w (mem_ball_self hpos)).deriv
     rwa [hGw] at this
   rw [hGw, hderivw] at hkoebe
-  have hsub : ball z (‖(deriv F z)⁻¹‖ * ρ / 4) ⊆ Kᶜ := by
+  have hsub : ball z (‖(deriv F z)⁻¹‖ * ρ / koebeK) ⊆ Kᶜ := by
     intro y hy
     obtain ⟨x, hx, rfl⟩ := hkoebe hy
     exact hGmem x hx
   have hle := le_infDist_of_ball_subset hK hsub
   have hFz : 0 < ‖deriv F z‖ := norm_pos_iff.2 (hd z hz)
-  rw [norm_inv] at hle
-  have h1 : ‖deriv F z‖⁻¹ * ρ ≤ 4 * infDist z K := by linarith
+  rw [norm_inv, div_le_iff₀ koebeK_pos] at hle
+  have h1 : ‖deriv F z‖⁻¹ * ρ ≤ koebeK * infDist z K := by linarith
   have h2 := mul_le_mul_of_nonneg_left h1 hFz.le
   rw [← mul_assoc, mul_inv_cancel₀ hFz.ne', one_mul] at h2
   linarith

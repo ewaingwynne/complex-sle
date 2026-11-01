@@ -14,8 +14,8 @@ public import ComplexSLE.Internal.Polar.PolarSigmaTop
 Fix an adapted `SLE_Σ` driver `U`, a point `z`, a level `t̃` and put `θ = σ_z(t̃)`
 (`sigmaTop`, an a.s. finite stopping time). For `k : ℕ` let
 
-* `hitK k = hitTime U z (16^{-k})` (the paper's `τ_k`), `tauHat k = min (hitK k) θ`
-  (an a.s. finite `ℱ`-stopping time);
+* `hitK k = hitTime U z (lvl k)` (the paper's `τ_k`, with `lvl k = 16^{-k}` there),
+  `tauHat k = min (hitK k) θ` (an a.s. finite `ℱ`-stopping time);
 * `rhoK k = |f_{τ̂_k}(z)|` and `Yk k = 1_{τ_k ≤ θ} exp (-A(τ̂_k))`, where `A` is the clock; the pair
   `(rhoK k, Yk k)` is measurable for the σ-algebra `ℱ_{τ̂_k}`.
 
@@ -45,7 +45,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 variable (hU : IsSLEDriverAdapted a b c U P ℱ) (z : ℂ) (tt : ℝ≥0)
 
-/-- The first time at which `dist(z, L_t) ≤ 16^{-k}` (the paper's `τ_k`). -/
+/-- The first time at which `dist(z, L_t) ≤ lvl k` (the paper's `τ_k`). -/
 @[expose] noncomputable def hitK (k : ℕ) (ω : Ω) : WithTop ℝ≥0 :=
   hitTime (fun s => U s ω) z (lvl k)
 

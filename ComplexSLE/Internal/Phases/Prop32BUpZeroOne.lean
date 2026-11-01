@@ -27,7 +27,7 @@ Source: paper.tex:L1811-1816. If `P(StaysAway(U, ξ)) ≥ q_* > 0` for every `ξ
   `P(A ∩ StaysAway) = ∫_A q(f̂_n(z)) dP ≥ q_* P(A)` for `A ∈ 𝒢_n` is the Markov step at `σ_z(n)`
   (`measure_inter_event_eq_lintegral`).
 
-Uses the EXTERNALs `strongMarkov_sleDriver` and `koebe_quarter`.
+Uses the EXTERNAL `strongMarkov_sleDriver`.
 -/
 
 public section

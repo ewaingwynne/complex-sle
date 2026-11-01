@@ -15,10 +15,11 @@ import Mathlib.Analysis.Complex.Liouville
 arXiv:2203.07313v4, Lemma 4.3 (`lem-haus`, paper.tex:L2008-2019). The paper proves that the hull
 `L^V_T` of a small driver reaches the tips `±2 √T i` of the zero-driver slit by a Hurwitz argument.
 Here lower semicontinuity of the hulls is obtained instead from the Koebe distance bound
-`norm_deriv_fPath_mul_infDist_le` (`|f_T'(z)| · dist(z, L_T) ≤ 4 |f_T(z)|`) at `z = i (2 √T + δ')`,
-together with the Cauchy estimate for `f^V_T' - zeroMap'` coming from `exists_small_driver_approx`.
+`norm_deriv_fPath_mul_infDist_le` (`|f_T'(z)| · dist(z, L_T) ≤ koebeK |f_T(z)|`, `koebeK = 48`)
+at `z = i (2 √T + δ')`, together with the Cauchy estimate for `f^V_T' - zeroMap'` coming from
+`exists_small_driver_approx`.
 
-This file consumes the EXTERNALs `loewnerMap_tendstoUniformly` and `koebe_quarter`.
+This file consumes the EXTERNAL `loewnerMap_tendstoUniformly`.
 -/
 
 public section
@@ -28,18 +29,21 @@ open Set Filter Metric
 
 namespace ComplexSLE.Internal
 
+open KoebeChain (koebeK koebeK_pos)
+
 /-- **Koebe estimate for the top of the hull.** For `T > 0` and `δ' > 0` there is `ρ > 0` such that
 every continuous driver `V` with `|V t| < ρ` on `[0, T]` has
-`dist (i (2 √T + δ'), L^V_T) ≤ 32 δ'`.
+`dist (i (2 √T + δ'), L^V_T) ≤ 8 koebeK δ'` (`= 384 δ'`; `32 δ'` for the sharp Koebe constant).
 
 Proof (paper.tex:L2008-2019, with Koebe replacing the Hurwitz argument). Put `z₀ = i (2 √T + δ')`,
 `w = zeroMap T z₀`. Then `|w|² = δ' (4 √T + δ')` and `w · w' = z₀` for `w' = (zeroMap T)'(z₀)`.
 `exists_small_driver_approx` (with `ε = δ'/2`) gives `|f^V_T - zeroMap T| < η` on the closed disc
-`B(z₀, δ'/2)`; the Cauchy estimate then bounds `|(f^V_T)'(z₀) - w'| ≤ 2η/δ'`. The EXTERNAL Koebe
-bound `|f_T'(z₀)| · dist(z₀, L_T) ≤ 4 |f_T(z₀)|` (`norm_deriv_fPath_mul_infDist_le`) finishes. -/
+`B(z₀, δ'/2)`; the Cauchy estimate then bounds `|(f^V_T)'(z₀) - w'| ≤ 2η/δ'`. The Koebe
+bound `|f_T'(z₀)| · dist(z₀, L_T) ≤ koebeK |f_T(z₀)|` (`norm_deriv_fPath_mul_infDist_le`)
+finishes. -/
 theorem infDist_leftHull_top_le (T : ℝ≥0) (hT : 0 < T) {δ' : ℝ} (hδ' : 0 < δ') :
     ∃ ρ > 0, ∀ (V : ℝ≥0 → ℂ) (_hV : Continuous V), (∀ t ≤ T, ‖V t‖ < ρ) →
-      infDist (((2 * Real.sqrt T + δ' : ℝ) : ℂ) * Complex.I) (leftHull V T) ≤ 32 * δ' := by
+      infDist (((2 * Real.sqrt T + δ' : ℝ) : ℂ) * Complex.I) (leftHull V T) ≤ 8 * koebeK * δ' := by
   set c : ℝ := 2 * Real.sqrt T with hc
   have hsq : 0 < Real.sqrt T := Real.sqrt_pos.2 (by exact_mod_cast hT)
   have hc0 : 0 < c := by positivity
@@ -139,15 +143,18 @@ theorem infDist_leftHull_top_le (T : ℝ≥0) (hT : 0 < T) {δ' : ℝ} (hδ' : 0
   by_cases hd : 0 < infDist z₀ (leftHull V T)
   · have hk := Polar.norm_deriv_fPath_mul_infDist_le hV hd
     set d := infDist z₀ (leftHull V T) with hdd
-    have h1 : ‖w'‖ / 2 * d ≤ 4 * (2 * ‖w‖) := by
+    have h1 : ‖w'‖ / 2 * d ≤ koebeK * (2 * ‖w‖) := by
       calc ‖w'‖ / 2 * d ≤ ‖deriv F z₀‖ * d := by gcongr
-        _ ≤ 4 * ‖F z₀‖ := hk
-        _ ≤ 4 * (2 * ‖w‖) := by linarith
-    have h2 : (c + δ') * d ≤ 16 * (δ' * (2 * c + δ')) := by
+        _ ≤ koebeK * ‖F z₀‖ := hk
+        _ ≤ koebeK * (2 * ‖w‖) := mul_le_mul_of_nonneg_left hFz₀ koebeK_pos.le
+    have h2 : (c + δ') * d ≤ 4 * koebeK * (δ' * (2 * c + δ')) := by
       rw [← hmm', ← hm2]
       nlinarith [mul_le_mul_of_nonneg_left h1 hmpos.le]
-    nlinarith
+    have h3 : (c + δ') * d ≤ (c + δ') * (8 * koebeK * δ') := by
+      nlinarith [mul_nonneg koebeK_pos.le (sq_nonneg δ')]
+    exact le_of_mul_le_mul_left h3 (by positivity)
   · push Not at hd
+    have := mul_pos koebeK_pos hδ'
     linarith
 
 
@@ -157,20 +164,25 @@ point `z ∈ L^V_T` with `Im z > 2 √T - δ`. -/
 theorem exists_mem_leftHull_im_gt (T : ℝ≥0) (hT : 0 < T) {δ : ℝ} (hδ : 0 < δ) :
     ∃ ρ > 0, ∀ (V : ℝ≥0 → ℂ), Continuous V → (∀ t ≤ T, ‖V t‖ < ρ) →
       ∃ z ∈ leftHull V T, 2 * Real.sqrt T - δ < z.im := by
-  obtain ⟨ρ, hρ, h⟩ := infDist_leftHull_top_le T hT (δ' := δ / 64) (by positivity)
+  have hK := koebeK_pos
+  obtain ⟨ρ, hρ, h⟩ := infDist_leftHull_top_le T hT (δ' := δ / (16 * koebeK)) (by positivity)
   refine ⟨ρ, hρ, fun V hV hs => ?_⟩
   have hd := h V hV hs
+  have e : 8 * koebeK * (δ / (16 * koebeK)) = δ / 2 := by field_simp; ring
+  rw [e] at hd
+  have hδ'pos : 0 < δ / (16 * koebeK) := by positivity
+  generalize hr : 2 * Real.sqrt T + δ / (16 * koebeK) = r at hd
   have hclosed : IsClosed (leftHull V T) := isOpen_compl_iff.1 (Polar.isOpen_compl_leftHull V hV T)
   obtain ⟨z, hzL, hzd⟩ := hclosed.exists_infDist_eq_dist (leftHull_nonempty V T)
-    (((2 * Real.sqrt T + δ / 64 : ℝ) : ℂ) * Complex.I)
+    (((r : ℝ) : ℂ) * Complex.I)
   refine ⟨z, hzL, ?_⟩
-  have h1 : |((((2 * Real.sqrt T + δ / 64 : ℝ) : ℂ) * Complex.I) - z).im| ≤
-      dist (((2 * Real.sqrt T + δ / 64 : ℝ) : ℂ) * Complex.I) z := by
+  have h1 : |((((r : ℝ) : ℂ) * Complex.I) - z).im| ≤
+      dist (((r : ℝ) : ℂ) * Complex.I) z := by
     rw [dist_eq_norm]; exact Complex.abs_im_le_norm _
-  have h2 : ((((2 * Real.sqrt T + δ / 64 : ℝ) : ℂ) * Complex.I) - z).im =
-      2 * Real.sqrt T + δ / 64 - z.im := by simp
+  have h2 : ((((r : ℝ) : ℂ) * Complex.I) - z).im =
+      r - z.im := by simp
   rw [h2] at h1
-  have h3 := le_abs_self (2 * Real.sqrt T + δ / 64 - z.im)
+  have h3 := le_abs_self (r - z.im)
   linarith
 
 /-- **Lemma 4.3, second bullet, lower half**, by the symmetry `V ↦ -V`

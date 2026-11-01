@@ -15,10 +15,10 @@ and the pathwise inequality `Y_{k+1} ≤ Y_k (1 - κ 1_{V_k ∈ 𝒢})` (`Yk_suc
   `a_{k+1} + κ Λ(𝒢) a_k ≤ a_k`,
 
 and `Λ(𝒢) ≥ 1/2` for a suitable `u₀ ∈ (0, 1/64)` (path continuity at `0`, `exists_u₀`). Hence
-`a_k ≤ (1 - κ/2)^k`. Since `{dist(z, L_{σ_z(t̃)}) ≤ 16^{-k}} ⊆ {τ_k ≤ θ}` and `A(τ_k) ≤ A(θ) = t̃`
+`a_k ≤ (1 - κ/2)^k`. Since `{dist(z, L_{σ_z(t̃)}) ≤ lvl k} ⊆ {τ_k ≤ θ}` and `A(τ_k) ≤ A(θ) = t̃`
 there, `1 ≤ e^{t̃} Y_k` on that event, so
 
-  `P(dist(z, L_{σ_z(t̃)}) ≤ 16^{-k}) ≤ e^{t̃} (1 - κ/2)^k`   (`tail_bound`),
+  `P(dist(z, L_{σ_z(t̃)}) ≤ lvl k) ≤ e^{t̃} (1 - κ/2)^k`   (`tail_bound`),
 
 uniformly over the unit points `z`. This replaces the paper's `C_N 2^{-k}` (which needs the
 independence of the events and a uniform lower bound for the exit clock): the Markov step is used
@@ -203,10 +203,10 @@ theorem exists_rate [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)
 /-- **The geometric tail bound** (paper (3.20)-(3.21), `eqn-log-finite-show`): there is `r < 1`,
 depending only on the law of the driver, such that for every unit `z`, every `t̃ ≥ 0`, and every `k`,
 
-  `P(dist(z, L_{σ_z(t̃)}) ≤ 16^{-k}) ≤ e^{t̃} r^k`.
+  `P(dist(z, L_{σ_z(t̃)}) ≤ lvl k) ≤ e^{t̃} r^k`   (`lvl k = lvlBase^{-k}`).
 
-The constants do not depend on the point `z`. Uses the EXTERNAL `koebe_quarter` and, through the
-Markov step, `strongMarkov_sleDriver`. -/
+The constants do not depend on the point `z`. Uses, through the Markov step, the EXTERNAL
+`strongMarkov_sleDriver`; the Koebe step is proved (covering constant `1/48`). -/
 theorem tail_bound [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b) :
     ∃ r : ℝ, 0 ≤ r ∧ r < 1 ∧ ∀ (z : ℂ) (tt : ℝ≥0), ‖z‖ = 1 → ∀ k : ℕ,
       P {ω | infDist z (leftHull (fun s => U s ω)

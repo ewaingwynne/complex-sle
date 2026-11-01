@@ -33,11 +33,11 @@ Proof (paper.tex:L1430-1466):
   (`futureDependentEvents_hull_approach`);
 * at the random point, by Lemma 3.7 (`ae_tendsto_sigmaLogRatio_div`)
   `log(|f̂'_s|/|f̂_s|) / s → -(II) > 0`, so `log(|f̂'_s|/|f̂_s|) → +∞`, and the Koebe hitting bound
-  in σ-time (`koebe_quarter`, `ae_exists_infDist_leftHull_lt_of_tendsto`) gives the `ε`-form
+  in σ-time (`ae_exists_infDist_leftHull_lt_of_tendsto`) gives the `ε`-form
   (`ae_ae_hull_approach`).
 
 Consumes the EXTERNALs `markov_oneDim`, `birkhoff_stationary`, `strongMarkov_sleDriver`,
-`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale` and `koebe_quarter`.
+`hormander_oneDim`, `ito_formula` and `timeChange_isContLocalMartingale`.
 -/
 
 public section

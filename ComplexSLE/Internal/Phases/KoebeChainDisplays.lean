@@ -12,8 +12,9 @@ import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
 # The displays (3.7)-(3.17) of Step 3 of `lem-converse-w-o-upgrade`, with explicit constants (M7/E3)
 
 Companion of `KoebeChain.lean`: the individual `≍` displays of the paper's Koebe chain
-(paper.tex:L1700-1785), each with its universal constants made explicit (`1/4` and `4` from the
-Koebe quarter theorem; products of these elsewhere). The final inequality `eqn-dist-3`
+(paper.tex:L1700-1785), each with its universal constants made explicit (`1/koebeK` and `koebeK`
+from the Koebe covering theorem, `koebeK = 48` in place of the sharp `4`; products of these
+elsewhere). The final inequality `eqn-dist-3`
 (`KoebeChain.koebe_chain`) does not consume (3.7)-(3.9), (3.11), (3.16) (see the route remark
 there); they are provided for the dependency graph and for any consumer that wants the paper's
 intermediate statements. Notation, for `z ∉ L_{s+t}`:
@@ -24,19 +25,20 @@ intermediate statements. Notation, for `z ∉ L_{s+t}`:
 
 | paper display | Lean |
 | --- | --- |
-| (3.7) `eqn-two-formulas` | `eqn_two_formulas` (constants `4`, `4`) |
-| (3.8) `eqn-two-formulas'` | `eqn_two_formulas_b` (`4`, `4`) |
-| (3.9) `eqn-two-dist-ratio` | `eqn_two_dist_ratio` (`16`, `16`) |
-| (3.10) `eqn-koebe-t` | `eqn_koebe_t` (`4`, `4`) |
-| (3.11) `eqn-dist-1` | `eqn_dist_1` (`64`) |
+| (3.7) `eqn-two-formulas` | `eqn_two_formulas` (`koebeK`, `koebeK`) |
+| (3.8) `eqn-two-formulas'` | `eqn_two_formulas_b` (`koebeK`, `koebeK`) |
+| (3.9) `eqn-two-dist-ratio` | `eqn_two_dist_ratio` (`koebeK ^ 2`, `koebeK ^ 2`) |
+| (3.10) `eqn-koebe-t` | `eqn_koebe_t` (`koebeK`, `koebeK`) |
+| (3.11) `eqn-dist-1` | `eqn_dist_1` (`koebeK ^ 3`) |
 | (3.13) `eqn-dist-cases` | `eqn_dist_cases` |
-| (3.14), (3.15) `eqn-koebe-union`, `eqn-dist-es` | `eqn_koebe_union`, `eqn_dist_es` (`4`) |
-| (3.16) `eqn-dist-2` | `eqn_dist_2` (`16`) |
-| (3.17) `eqn-dist-esc` | `eqn_dist_esc` (`4`, `4`, `4`); `koebe_chain_of_not_event` (`16`) |
+| (3.14), (3.15) `eqn-koebe-union`, `eqn-dist-es` | `eqn_koebe_union`, `eqn_dist_es` (`koebeK`) |
+| (3.16) `eqn-dist-2` | `eqn_dist_2` (`koebeK ^ 2`) |
+| (3.17) `eqn-dist-esc` | `eqn_dist_esc` (`koebeK`, `koebeK`, `koebeK`);
+  `koebe_chain_of_not_event` (`koebeK ^ 2`) |
 | `step:converse-event-converges` | `eventually_koebeEvent` (deterministic form) |
 
-Every result here consumes the EXTERNAL `koebe_quarter` (`PROVED_REL{koebe_quarter}`), except the
-topological and algebraic ones.
+No EXTERNAL input is consumed here (the Koebe covering constant `1/48` is proved, see
+`KoebeChainInv.lean`).
 -/
 
 public section
@@ -97,14 +99,14 @@ theorem compl_rightHull_subset_image (hU : Continuous U) (t : ℝ≥0) :
 
 /-! ### Two-sided Koebe for `f_t : ℂ ∖ L_t → ℂ ∖ R_t` (`eqn-hit-koebe`, `asymp`) -/
 
-/-- **`eqn-hit-koebe` (3.5) as a two-sided estimate** (paper.tex:L1463-1467, L1778), constants `4`:
-for `z ∉ L_t`,
-`|f_t'(z)| dist(z, L_t) ≤ 4 dist(f_t z, R_t)` and `dist(f_t z, R_t) ≤ 4 |f_t'(z)| dist(z, L_t)`. -/
+/-- **`eqn-hit-koebe` (3.5) as a two-sided estimate** (paper.tex:L1463-1467, L1778), constants
+`koebeK`: for `z ∉ L_t`, `|f_t'(z)| dist(z, L_t) ≤ koebeK dist(f_t z, R_t)` and
+`dist(f_t z, R_t) ≤ koebeK |f_t'(z)| dist(z, L_t)`. -/
 theorem koebe_two_sided (hU : Continuous U) (t : ℝ≥0) {z : ℂ} (hz : z ∉ leftHull U t) :
     ‖derivPath U hU z t‖ * infDist z (leftHull U t) ≤
-        4 * infDist (fPath U hU z t) (rightHull U hU t) ∧
+        koebeK * infDist (fPath U hU z t) (rightHull U hU t) ∧
       infDist (fPath U hU z t) (rightHull U hU t) ≤
-        4 * (‖derivPath U hU z t‖ * infDist z (leftHull U t)) := by
+        koebeK * (‖derivPath U hU z t‖ * infDist z (leftHull U t)) := by
   refine ⟨norm_derivPath_mul_infDist_le_infDist_rightHull hU hz, ?_⟩
   have := KoebeChain.infDist_image_le (fun w => fPath U hU w t)
     (K := leftHull U t) (K' := rightHull U hU t) (leftHull_nonempty U t)
@@ -118,15 +120,15 @@ section Displays
 
 variable (hU : Continuous U) {t s : ℝ≥0} {z : ℂ}
 
-/-- **(3.7) `eqn-two-formulas`** (paper.tex:L1708-1714), constants `4`: Koebe for
+/-- **(3.7) `eqn-two-formulas`** (paper.tex:L1708-1714), constants `koebeK`: Koebe for
 `f_{t,s+t} : ℂ ∖ L_{t,s+t} → ℂ ∖ R_{t,s+t}` at `f_t z`, with `f_{t,s+t}(f_t z) = f_{s+t}(z)`:
-`|f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t}) ≤ 4 dist(f_{s+t} z, R_{t,s+t})` and
-`dist(f_{s+t} z, R_{t,s+t}) ≤ 4 |f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t})`. -/
+`|f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t}) ≤ koebeK dist(f_{s+t} z, R_{t,s+t})` and
+`dist(f_{s+t} z, R_{t,s+t}) ≤ koebeK |f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t})`. -/
 theorem eqn_two_formulas (hz : z ∉ leftHull U (s + t)) :
     ‖futureDeriv U hU t s z‖ * infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ≤
-        4 * infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) ∧
+        koebeK * infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) ∧
       infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) ≤
-        4 * (‖futureDeriv U hU t s z‖ *
+        koebeK * (‖futureDeriv U hU t s z‖ *
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s)) := by
   rw [fPath_add_eq hU t s hz]
   exact koebe_two_sided (continuous_futureDriver hU t) s (fPath_notMem_futureHull hU hz)
@@ -136,17 +138,17 @@ theorem fPath_notMem_rightHull_add (hz : z ∉ leftHull U (s + t)) :
     fPath U hU z ((s + t : ℝ≥0) : ℝ) ∉ rightHull U hU (s + t) :=
   fPath_notMem_rightHull hU (s + t) hz
 
-/-- **(3.8) `eqn-two-formulas'`** (paper.tex:L1716-1721), constants `4`: Koebe for
+/-- **(3.8) `eqn-two-formulas'`** (paper.tex:L1716-1721), constants `koebeK`: Koebe for
 `f_{t,s+t}` restricted to `ℂ ∖ (L_{t,s+t} ∪ R_t) → ℂ ∖ R_{s+t}` (by `R_{s+t} = R_{t,s+t} ∪ ...`
 this is the image, `mem_range_centeredLoewnerMap_add_iff`):
-`|f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t} ∪ R_t) ≤ 4 dist(f_{s+t} z, R_{s+t})` and
-`dist(f_{s+t} z, R_{s+t}) ≤ 4 |f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t} ∪ R_t)`. -/
+`|f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t} ∪ R_t) ≤ koebeK dist(f_{s+t} z, R_{s+t})` and
+`dist(f_{s+t} z, R_{s+t}) ≤ koebeK |f_{t,s+t}'(f_t z)| dist(f_t z, L_{t,s+t} ∪ R_t)`. -/
 theorem eqn_two_formulas_b (hz : z ∉ leftHull U (s + t)) :
     ‖futureDeriv U hU t s z‖ *
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ≤
-        4 * infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) ∧
+        koebeK * infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) ∧
       infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) ≤
-        4 * (‖futureDeriv U hU t s z‖ *
+        koebeK * (‖futureDeriv U hU t s z‖ *
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t)) := by
   have hV := continuous_futureDriver hU t
   have hsub : (leftHull (futureDriver U t) s ∪ rightHull U hU t)ᶜ ⊆
@@ -191,15 +193,15 @@ theorem eqn_two_formulas_b (hz : z ∉ leftHull U (s + t)) :
       (fun p hp => deriv_fPath_ne_zero hV (hsub hp)) hsurj hw
     rwa [hnorm] at this
 
-/-- **(3.10) `eqn-koebe-t`** (paper.tex:L1727-1733), the first `≍`, constants `4`: Koebe for
+/-- **(3.10) `eqn-koebe-t`** (paper.tex:L1727-1733), the first `≍`, constants `koebeK`: Koebe for
 `f_t : ℂ ∖ L_{s+t} → ℂ ∖ (L_{t,s+t} ∪ R_t)`:
-`|f_t'(z)| dist(z, L_{s+t}) ≤ 4 dist(f_t z, L_{t,s+t} ∪ R_t)` and
-`dist(f_t z, L_{t,s+t} ∪ R_t) ≤ 4 |f_t'(z)| dist(z, L_{s+t})`. -/
+`|f_t'(z)| dist(z, L_{s+t}) ≤ koebeK dist(f_t z, L_{t,s+t} ∪ R_t)` and
+`dist(f_t z, L_{t,s+t} ∪ R_t) ≤ koebeK |f_t'(z)| dist(z, L_{s+t})`. -/
 theorem eqn_koebe_t (hz : z ∉ leftHull U (s + t)) :
     ‖derivPath U hU z t‖ * infDist z (leftHull U (s + t)) ≤
-        4 * infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ∧
+        koebeK * infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ≤
-        4 * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := by
+        koebeK * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := by
   refine ⟨?_, infDist_union_le hU hz⟩
   have hz₁ := notMem_leftHull_of_notMem_add t s hz
   have hsub : (leftHull U (s + t))ᶜ ⊆ (leftHull U t)ᶜ := compl_subset_compl.2
@@ -233,37 +235,37 @@ theorem infDist_futureRightHull_pos (hz : z ∉ leftHull U (s + t)) :
     ⟨0, zero_mem_rightHull hV s⟩).1
     (fPath_notMem_rightHull hV s (fPath_notMem_futureHull hU hz))
 
-/-- Algebra of (3.9): from the four Koebe bounds, the two ratios agree up to the factor `16`. -/
-theorem ratio_aux {a b c e D : ℝ} (ha : 0 < a) (hb : 0 < b) (h1 : D * a ≤ 4 * c)
-    (h2 : c ≤ 4 * (D * a)) (h3 : D * b ≤ 4 * e) (h4 : e ≤ 4 * (D * b)) :
-    c / a ≤ 16 * (e / b) ∧ e / b ≤ 16 * (c / a) := by
-  have hD : D ≤ 4 * e / b := by rw [le_div_iff₀ hb]; linarith
-  have hD' : D ≤ 4 * c / a := by rw [le_div_iff₀ ha]; linarith
-  have hca : c / a ≤ 4 * D := by rw [div_le_iff₀ ha]; linarith
-  have heb : e / b ≤ 4 * D := by rw [div_le_iff₀ hb]; linarith
+/-- Algebra of (3.9): from the four Koebe bounds, the two ratios agree up to the factor `K ^ 2`. -/
+theorem ratio_aux {K a b c e D : ℝ} (hK : 0 < K) (ha : 0 < a) (hb : 0 < b) (h1 : D * a ≤ K * c)
+    (h2 : c ≤ K * (D * a)) (h3 : D * b ≤ K * e) (h4 : e ≤ K * (D * b)) :
+    c / a ≤ K ^ 2 * (e / b) ∧ e / b ≤ K ^ 2 * (c / a) := by
+  have hD : D ≤ K * e / b := by rw [le_div_iff₀ hb]; linarith
+  have hD' : D ≤ K * c / a := by rw [le_div_iff₀ ha]; linarith
+  have hca : c / a ≤ K * D := by rw [div_le_iff₀ ha]; linarith
+  have heb : e / b ≤ K * D := by rw [div_le_iff₀ hb]; linarith
   constructor
-  · calc c / a ≤ 4 * D := hca
-      _ ≤ 4 * (4 * e / b) := by linarith
-      _ = 16 * (e / b) := by ring
-  · calc e / b ≤ 4 * D := heb
-      _ ≤ 4 * (4 * c / a) := by linarith
-      _ = 16 * (c / a) := by ring
+  · calc c / a ≤ K * D := hca
+      _ ≤ K * (K * e / b) := mul_le_mul_of_nonneg_left hD hK.le
+      _ = K ^ 2 * (e / b) := by ring
+  · calc e / b ≤ K * D := heb
+      _ ≤ K * (K * c / a) := mul_le_mul_of_nonneg_left hD' hK.le
+      _ = K ^ 2 * (c / a) := by ring
 
-/-- **(3.9) `eqn-two-dist-ratio`** (paper.tex:L1722-1725), constants `16`:
+/-- **(3.9) `eqn-two-dist-ratio`** (paper.tex:L1722-1725), constants `koebeK ^ 2`:
 `dist(f_{s+t} z, R_{t,s+t}) / dist(f_t z, L_{t,s+t})
   ≍ dist(f_{s+t} z, R_{s+t}) / dist(f_t z, L_{t,s+t} ∪ R_t)`. -/
 theorem eqn_two_dist_ratio (hz : z ∉ leftHull U (s + t)) :
     infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ≤
-        16 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) /
+        koebeK ^ 2 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t)) ∧
       infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ≤
-        16 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
+        koebeK ^ 2 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s)) := by
   obtain ⟨h1, h2⟩ := eqn_two_formulas hU hz
   obtain ⟨h3, h4⟩ := eqn_two_formulas_b hU hz
-  exact ratio_aux (infDist_futureHull_pos hU hz) (infDist_union_pos hU hz) h1 h2 h3 h4
+  exact ratio_aux koebeK_pos (infDist_futureHull_pos hU hz) (infDist_union_pos hU hz) h1 h2 h3 h4
 
 /-! ### The case analysis (3.13)-(3.17) -/
 
@@ -290,93 +292,95 @@ theorem eqn_dist_cases [Decidable (koebeEvent U hU t s z)] :
   · simp only [hE, ↓reduceIte]; exact min_eq_left hE
   · simp only [hE, ↓reduceIte]; exact min_eq_right (not_le.1 hE).le
 
-/-- **(3.14) `eqn-koebe-union`** (paper.tex:L1756-1761), on `E_s`, constants `4`:
-`|f_t'(z)| dist(z, L_{s+t}) ≤ 4 dist(f_t z, L_{t,s+t})` and
-`dist(f_t z, L_{t,s+t}) ≤ 4 |f_t'(z)| dist(z, L_{s+t})`. -/
+/-- **(3.14) `eqn-koebe-union`** (paper.tex:L1756-1761), on `E_s`, constants `koebeK`:
+`|f_t'(z)| dist(z, L_{s+t}) ≤ koebeK dist(f_t z, L_{t,s+t})` and
+`dist(f_t z, L_{t,s+t}) ≤ koebeK |f_t'(z)| dist(z, L_{s+t})`. -/
 theorem eqn_koebe_union (hz : z ∉ leftHull U (s + t)) (hE : koebeEvent U hU t s z) :
     ‖derivPath U hU z t‖ * infDist z (leftHull U (s + t)) ≤
-        4 * infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ∧
+        koebeK * infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ≤
-        4 * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := by
+        koebeK * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := by
   have hmin : infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) =
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) := by
     rw [infDist_union_eq_min' hU t s]; exact min_eq_left hE
   have := eqn_koebe_t hU hz
   rwa [hmin] at this
 
-/-- **(3.15) `eqn-dist-es`** (paper.tex:L1762-1766), on `E_s`, constants `4`:
+/-- **(3.15) `eqn-dist-es`** (paper.tex:L1762-1766), on `E_s`, constants `koebeK`:
 `dist(f_t z, L_{t,s+t}) / (|f_t z| dist(z, L_{s+t})) ≍ |f_t'(z)| / |f_t z|`. -/
 theorem eqn_dist_es (hz : z ∉ leftHull U (s + t)) (hE : koebeEvent U hU t s z) :
-    (1 / 4) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) ≤
+    (1 / koebeK) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) ≤
         infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) ≤
-        4 * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) := by
+        koebeK * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) := by
   obtain ⟨h1, h2⟩ := eqn_koebe_union hU hz hE
   have hdL : 0 < infDist z (leftHull U (s + t)) := infDist_leftHull_pos hU hz
   have hw : 0 < ‖fPath U hU z t‖ := norm_fPath_pos' hU hz
   have hp := mul_pos hw hdL
+  have hK := koebeK_pos
   constructor
-  · rw [show (1 / 4 : ℝ) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) =
+  · rw [show (1 / koebeK : ℝ) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) =
         ‖derivPath U hU z t‖ * infDist z (leftHull U (s + t)) /
-          (4 * (‖fPath U hU z t‖ * infDist z (leftHull U (s + t)))) by field_simp,
+          (koebeK * (‖fPath U hU z t‖ * infDist z (leftHull U (s + t)))) by field_simp,
       div_le_div_iff₀ (by positivity) hp]
     nlinarith
   · rw [div_le_iff₀ hp]
     calc infDist (fPath U hU z t) (leftHull (futureDriver U t) s)
-        ≤ 4 * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := h2
-      _ = 4 * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) *
+        ≤ koebeK * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) := h2
+      _ = koebeK * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) *
             (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) := by field_simp
 
 /-- Algebra of (3.11): from (3.9) and (3.10) in cleared form. -/
-theorem dist1_aux {a b c e D dL w : ℝ} (ha : 0 < a) (hb : 0 < b) (hc : 0 ≤ c) (he : 0 < e)
-    (hdL : 0 < dL) (hw : 0 < w) (hD : 0 < D) (k1 : D * dL ≤ 4 * b) (k2 : b ≤ 4 * (D * dL))
-    (r1 : c / a ≤ 16 * (e / b)) (r2 : e / b ≤ 16 * (c / a)) :
-    (1 / 64) * (D / w * (c / e)) ≤ a / (w * dL) ∧ a / (w * dL) ≤ 64 * (D / w * (c / e)) := by
-  have r1' : c * b ≤ 16 * (a * e) := by
+theorem dist1_aux {K a b c e D dL w : ℝ} (hK : 0 < K) (ha : 0 < a) (hb : 0 < b) (hc : 0 ≤ c)
+    (he : 0 < e) (hdL : 0 < dL) (hw : 0 < w) (hD : 0 < D) (k1 : D * dL ≤ K * b)
+    (k2 : b ≤ K * (D * dL)) (r1 : c / a ≤ K ^ 2 * (e / b)) (r2 : e / b ≤ K ^ 2 * (c / a)) :
+    (1 / K ^ 3) * (D / w * (c / e)) ≤ a / (w * dL) ∧ a / (w * dL) ≤ K ^ 3 * (D / w * (c / e)) := by
+  have r1' : c * b ≤ K ^ 2 * (a * e) := by
     have := mul_le_mul_of_nonneg_right r1 (by positivity : 0 ≤ a * b)
     have e1 : c / a * (a * b) = c * b := by field_simp
-    have e2 : 16 * (e / b) * (a * b) = 16 * (a * e) := by field_simp
+    have e2 : K ^ 2 * (e / b) * (a * b) = K ^ 2 * (a * e) := by field_simp
     rwa [e1, e2] at this
-  have r2' : e * a ≤ 16 * (c * b) := by
+  have r2' : e * a ≤ K ^ 2 * (c * b) := by
     have := mul_le_mul_of_nonneg_right r2 (by positivity : 0 ≤ a * b)
     have e1 : e / b * (a * b) = e * a := by field_simp
-    have e2 : 16 * (c / a) * (a * b) = 16 * (c * b) := by field_simp
+    have e2 : K ^ 2 * (c / a) * (a * b) = K ^ 2 * (c * b) := by field_simp
     rwa [e1, e2] at this
   have hwe : 0 < w * e := mul_pos hw he
   have hwdL : 0 < w * dL := mul_pos hw hdL
+  have hK2 : 0 ≤ K ^ 2 := by positivity
   constructor
-  · rw [show (1 / 64 : ℝ) * (D / w * (c / e)) = D * c / (64 * (w * e)) by field_simp,
+  · rw [show (1 / K ^ 3 : ℝ) * (D / w * (c / e)) = D * c / (K ^ 3 * (w * e)) by field_simp,
       div_le_div_iff₀ (by positivity) hwdL]
-    have h : D * c * dL ≤ 64 * (a * e) := by
+    have h : D * c * dL ≤ K ^ 3 * (a * e) := by
       calc D * c * dL = c * (D * dL) := by ring
-        _ ≤ c * (4 * b) := by gcongr
-        _ = 4 * (c * b) := by ring
-        _ ≤ 4 * (16 * (a * e)) := by gcongr
-        _ = 64 * (a * e) := by ring
+        _ ≤ c * (K * b) := by gcongr
+        _ = K * (c * b) := by ring
+        _ ≤ K * (K ^ 2 * (a * e)) := by gcongr
+        _ = K ^ 3 * (a * e) := by ring
     nlinarith [mul_le_mul_of_nonneg_left h hw.le]
-  · rw [show 64 * (D / w * (c / e)) = 64 * D * c / (w * e) by field_simp,
+  · rw [show K ^ 3 * (D / w * (c / e)) = K ^ 3 * D * c / (w * e) by field_simp,
       div_le_div_iff₀ hwdL hwe]
-    have h : a * e ≤ 64 * D * c * dL := by
+    have h : a * e ≤ K ^ 3 * D * c * dL := by
       calc a * e = e * a := by ring
-        _ ≤ 16 * (c * b) := r2'
-        _ ≤ 16 * (c * (4 * (D * dL))) := by gcongr
-        _ = 64 * D * c * dL := by ring
+        _ ≤ K ^ 2 * (c * b) := r2'
+        _ ≤ K ^ 2 * (c * (K * (D * dL))) := by gcongr
+        _ = K ^ 3 * D * c * dL := by ring
     nlinarith [mul_le_mul_of_nonneg_left h hw.le]
 
-/-- **(3.11) `eqn-dist-1`** (paper.tex:L1734-1738), constant `64`:
+/-- **(3.11) `eqn-dist-1`** (paper.tex:L1734-1738), constant `koebeK ^ 3`:
 `dist(f_t z, L_{t,s+t}) / (|f_t z| dist(z, L_{s+t}))
   ≍ (|f_t'(z)| / |f_t z|) · dist(f_{s+t} z, R_{t,s+t}) / dist(f_{s+t} z, R_{s+t})`. -/
 theorem eqn_dist_1 (hz : z ∉ leftHull U (s + t)) :
-    (1 / 64) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖ *
+    (1 / koebeK ^ 3) * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖ *
         (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
           infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)))) ≤
         infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) ≤
-        64 * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖ *
+        koebeK ^ 3 * (‖derivPath U hU z t‖ / ‖fPath U hU z t‖ *
           (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
             infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)))) := by
   set a := infDist (fPath U hU z t) (leftHull (futureDriver U t) s) with ha_def
@@ -395,40 +399,43 @@ theorem eqn_dist_1 (hz : z ∉ leftHull U (s + t)) :
   have hD : 0 < D := norm_pos_iff.2 (derivPath_ne_zero hU z t)
   obtain ⟨k1, k2⟩ := eqn_koebe_t hU hz
   obtain ⟨r1, r2⟩ := eqn_two_dist_ratio hU hz
-  exact dist1_aux ha hb infDist_nonneg he hdL hw hD k1 k2 r1 r2
+  exact dist1_aux koebeK_pos ha hb infDist_nonneg he hdL hw hD k1 k2 r1 r2
 
-/-- Algebra of (3.16): the ratios `c / e` and `a / b` agree up to the factor `16`. -/
-theorem dist2_aux {a b c e : ℝ} (ha : 0 < a) (hb : 0 < b) (he : 0 < e)
-    (r1 : c / a ≤ 16 * (e / b)) (r2 : e / b ≤ 16 * (c / a)) :
-    c / e ≤ 16 * (a / b) ∧ a / b ≤ 16 * (c / e) := by
-  have r1' : c * b ≤ 16 * (a * e) := by
+/-- Algebra of (3.16): the ratios `c / e` and `a / b` agree up to the factor `K ^ 2`. -/
+theorem dist2_aux {K a b c e : ℝ} (ha : 0 < a) (hb : 0 < b) (he : 0 < e)
+    (r1 : c / a ≤ K ^ 2 * (e / b)) (r2 : e / b ≤ K ^ 2 * (c / a)) :
+    c / e ≤ K ^ 2 * (a / b) ∧ a / b ≤ K ^ 2 * (c / e) := by
+  have r1' : c * b ≤ K ^ 2 * (a * e) := by
     have := mul_le_mul_of_nonneg_right r1 (by positivity : 0 ≤ a * b)
     have e1 : c / a * (a * b) = c * b := by field_simp
-    have e2 : 16 * (e / b) * (a * b) = 16 * (a * e) := by field_simp
+    have e2 : K ^ 2 * (e / b) * (a * b) = K ^ 2 * (a * e) := by field_simp
     rwa [e1, e2] at this
-  have r2' : e * a ≤ 16 * (c * b) := by
+  have r2' : e * a ≤ K ^ 2 * (c * b) := by
     have := mul_le_mul_of_nonneg_right r2 (by positivity : 0 ≤ a * b)
     have e1 : e / b * (a * b) = e * a := by field_simp
-    have e2 : 16 * (c / a) * (a * b) = 16 * (c * b) := by field_simp
+    have e2 : K ^ 2 * (c / a) * (a * b) = K ^ 2 * (c * b) := by field_simp
     rwa [e1, e2] at this
   constructor
-  · rw [div_le_iff₀ he, show 16 * (a / b) * e = 16 * (a * e) / b by field_simp, le_div_iff₀ hb]
+  · rw [div_le_iff₀ he, show K ^ 2 * (a / b) * e = K ^ 2 * (a * e) / b by field_simp,
+      le_div_iff₀ hb]
     linarith
-  · rw [div_le_iff₀ hb, show 16 * (c / e) * b = 16 * (c * b) / e by field_simp, le_div_iff₀ he]
+  · rw [div_le_iff₀ hb, show K ^ 2 * (c / e) * b = K ^ 2 * (c * b) / e by field_simp,
+      le_div_iff₀ he]
     linarith
 
-/-- **(3.16) `eqn-dist-2`** (paper.tex:L1768-1772), constants `16`: the ratio of `R`-distances
+/-- **(3.16) `eqn-dist-2`** (paper.tex:L1768-1772), constants `koebeK ^ 2`: the ratio of
+`R`-distances
 `dist(f_{s+t} z, R_{t,s+t}) / dist(f_{s+t} z, R_{s+t})` is `≍` to
 `dist(f_t z, L_{t,s+t}) / dist(f_t z, L_{t,s+t} ∪ R_t)`, and on the complement of `E_s` the latter
 is `≤ |f_t z| / dist(f_t z, R_t)` (`0 ∈ L_{t,s+t}`, `eqn-dist-cases`). -/
 theorem eqn_dist_2 (hz : z ∉ leftHull U (s + t)) (hE : ¬ koebeEvent U hU t s z) :
     infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
           infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t)) ≤
-        16 * (infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
+        koebeK ^ 2 * (infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t)) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ≤
-        16 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
+        koebeK ^ 2 * (infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (futureRightHull U hU t s) /
           infDist (fPath U hU z ((s + t : ℝ≥0) : ℝ)) (rightHull U hU (s + t))) ∧
       infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           infDist (fPath U hU z t) (leftHull (futureDriver U t) s ∪ rightHull U hU t) ≤
@@ -444,19 +451,20 @@ theorem eqn_dist_2 (hz : z ∉ leftHull U (s + t)) (hE : ¬ koebeEvent U hU t s 
   rw [hbR] at hb ⊢
   exact div_le_div_of_nonneg_right (infDist_futureHull_le_norm hU t s z) hb.le
 
-/-- **(3.17) `eqn-dist-esc`** (paper.tex:L1773-1778), on the complement of `E_s`, constants `4`:
-`dist(f_t z, L_{t,s+t}) / (|f_t z| dist(z, L_{s+t})) ≤ 4 |f_t'(z)| / dist(f_t z, R_t)` and
+/-- **(3.17) `eqn-dist-esc`** (paper.tex:L1773-1778), on the complement of `E_s`, constants
+`koebeK`:
+`dist(f_t z, L_{t,s+t}) / (|f_t z| dist(z, L_{s+t})) ≤ koebeK |f_t'(z)| / dist(f_t z, R_t)` and
 `|f_t'(z)| / dist(f_t z, R_t) ≍ 1 / dist(z, L_t)` (Koebe for `f_t : ℂ ∖ L_t → ℂ ∖ R_t`). (The
-paper's route gives `≲` with a larger constant; the direct bound `16 / dist(z, L_t)` is
+paper's route gives `≲` with a larger constant; the direct bound `koebeK ^ 2 / dist(z, L_t)` is
 `KoebeChain.koebe_chain_of_not_event`.) -/
 theorem eqn_dist_esc (hz : z ∉ leftHull U (s + t)) (hE : ¬ koebeEvent U hU t s z) :
     infDist (fPath U hU z t) (leftHull (futureDriver U t) s) /
           (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) ≤
-        4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) ∧
+        koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) ∧
       ‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t) ≤
-        4 * (1 / infDist z (leftHull U t)) ∧
+        koebeK * (1 / infDist z (leftHull U t)) ∧
       1 / infDist z (leftHull U t) ≤
-        4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) := by
+        koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) := by
   have hz₁ := notMem_leftHull_of_notMem_add t s hz
   have hdL : 0 < infDist z (leftHull U (s + t)) := infDist_leftHull_pos hU hz
   have hdt : 0 < infDist z (leftHull U t) := infDist_leftHull_pos hU hz₁
@@ -477,27 +485,28 @@ theorem eqn_dist_esc (hz : z ∉ leftHull U (s + t)) (hE : ¬ koebeEvent U hU t 
   refine ⟨?_, ?_, ?_⟩
   · rw [div_le_iff₀ (mul_pos hw hdL)]
     have ha := infDist_futureHull_le_norm hU t s z
-    have h1 : 1 ≤ 4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
+    have h1 : 1 ≤ koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
         infDist z (leftHull U (s + t)) := by
-      rw [show 4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
+      rw [show koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
           infDist z (leftHull U (s + t)) =
-          4 * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) /
+          koebeK * (‖derivPath U hU z t‖ * infDist z (leftHull U (s + t))) /
             infDist (fPath U hU z t) (rightHull U hU t) by field_simp, le_div_iff₀ hbR]
       linarith
     calc infDist (fPath U hU z t) (leftHull (futureDriver U t) s) ≤ ‖fPath U hU z t‖ := ha
       _ = ‖fPath U hU z t‖ * 1 := (mul_one _).symm
-      _ ≤ ‖fPath U hU z t‖ * (4 * (‖derivPath U hU z t‖ /
+      _ ≤ ‖fPath U hU z t‖ * (koebeK * (‖derivPath U hU z t‖ /
             infDist (fPath U hU z t) (rightHull U hU t)) * infDist z (leftHull U (s + t))) :=
           mul_le_mul_of_nonneg_left h1 hw.le
-      _ = 4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
+      _ = koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) *
             (‖fPath U hU z t‖ * infDist z (leftHull U (s + t))) := by ring
-  · rw [div_le_iff₀ hbR, show 4 * (1 / infDist z (leftHull U t)) *
+  · rw [div_le_iff₀ hbR, show koebeK * (1 / infDist z (leftHull U t)) *
         infDist (fPath U hU z t) (rightHull U hU t) =
-        4 * infDist (fPath U hU z t) (rightHull U hU t) / infDist z (leftHull U t) by field_simp,
+        koebeK * infDist (fPath U hU z t) (rightHull U hU t) /
+          infDist z (leftHull U t) by field_simp,
       le_div_iff₀ hdt]
     linarith
-  · rw [show 4 * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) =
-        4 * ‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t) by ring,
+  · rw [show koebeK * (‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t)) =
+        koebeK * ‖derivPath U hU z t‖ / infDist (fPath U hU z t) (rightHull U hU t) by ring,
       div_le_div_iff₀ hdt hbR]
     linarith
 
@@ -534,7 +543,7 @@ fixed) and let `l` be a filter on the times `s` along which `dist(z, L_{s+t}) �
 `s = σ(ŝ + t̂) - σ(t̂)`, `ŝ → ∞`, so `s + t → T_z`, with
 `lim_{u → T_z⁻} dist(z, L_u) = 0`). Then eventually `E_s` holds:
 `dist(f_t z, L_{t,s+t}) ≤ dist(f_t z, R_t)`. (The fixed positive distance `dist(f_t z, R_t) ≥
-|f_t'(z)| dist(z, L_t) / 4` comes from the Koebe quarter theorem.) -/
+|f_t'(z)| dist(z, L_t) / koebeK` comes from the Koebe covering theorem.) -/
 theorem eventually_koebeEvent (hU : Continuous U) {t : ℝ≥0} {z : ℂ} (hz₁ : z ∉ leftHull U t)
     {l : Filter ℝ≥0}
     (h : Tendsto (fun s : ℝ≥0 => infDist z (leftHull U (s + t))) l (𝓝 0)) :
@@ -543,7 +552,7 @@ theorem eventually_koebeEvent (hU : Continuous U) {t : ℝ≥0} {z : ℂ} (hz₁
   have hD : 0 < ‖derivPath U hU z t‖ := norm_pos_iff.2 (derivPath_ne_zero hU z t)
   have hε : 0 < infDist (fPath U hU z t) (rightHull U hU t) := by
     have := norm_derivPath_mul_infDist_le_infDist_rightHull hU hz₁
-    nlinarith [mul_pos hD hdt]
+    exact (mul_pos_iff_of_pos_left koebeK_pos).1 (lt_of_lt_of_le (mul_pos hD hdt) this)
   obtain ⟨δ, hδ, hδ'⟩ := exists_infDist_futureHull_lt hU hz₁ hε
   filter_upwards [h.eventually (Iio_mem_nhds hδ)] with s hs
   exact (hδ' s hs).le

@@ -38,7 +38,7 @@ Proof (paper.tex:L1786-1816 with the approved correction R27: the hitting lemma 
 4. Koebe ball and compactness of the unit circle: `q ≥ q_* > 0` (`exists_lowerBound`).
 5. Martingale 0-1 step (`ae_staysAway_of_lowerBound`, Prop32BUpZeroOne): Lévy's upward theorem.
 
-Consumes the EXTERNALs `koebe_quarter`, `strongMarkov_sleDriver`, and through the polar layer
+Consumes the EXTERNALs `strongMarkov_sleDriver`, and through the polar layer
 `ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim`; no Girsanov.
 -/
 

@@ -19,15 +19,19 @@ Source: paper.tex:L1650-1672 (Step 1), L1740-1790 (Steps 3-4). Deterministic hal
 * `hullDist U hU z s̃ = dist(z, L_{σ_z(s̃)})`,
 * `sigmaRatioDet U hU z t̃ = log(|f_t'(z)| / |f_t z|)` (the value of `sigmaLogRatio` on a path).
 
-Results (all deterministic, `PROVED_REL{koebe_quarter}` through `KoebeChain.koebe_chain`):
+Results (all deterministic, through `KoebeChain.koebe_chain`; the Koebe constant is
+`koebeK = 48`, see `KoebeChainInv.lean`; the sharp `1/4` would give `koebeK = 4`):
 
 * `chain_sigma_of_event`, `chain_sigma_of_not_event` (`eqn-dist-3` in σ-time, with the event
-  `koebeEventSigma` of `eqn-dist-event` and the explicit constant `log 16`), and the unconditional
-  consequence `chain_sigma_le` (`≤ log(1/dist(z, L_t)) + log 64`);
-* `sigmaRatioDet_le` (`eqn-hit-koebe`): `log(|f_t'|/|f_t|) ≤ log(1/dist(z, L_t)) + log 4`;
+  `koebeEventSigma` of `eqn-dist-event` and the explicit constant `koebeC = log (koebeK ^ 2)`),
+  and the unconditional consequence `chain_sigma_le`
+  (`≤ log(1/dist(z, L_t)) + koebeC₃`, `koebeC₃ = log (koebeK ^ 3)`);
+* `sigmaRatioDet_le` (`eqn-hit-koebe`):
+  `log(|f_t'|/|f_t|) ≤ log(1/dist(z, L_t)) + log koebeK`;
 * `koebeEventSigma_of_le` and `eventually_le_koebeBound`: the measurable surrogate
-  `X_s̃ ≤ koebeBound` of the event `E_s̃` (`dist(f_t z, L_{t,s+t}) ≤ |f_t'(z)| dist(z, L_t) / 4 ≤
-  dist(f_t z, R_t)`), which holds for all large `s̃` under the assumption
+  `X_s̃ ≤ koebeBound` of the event `E_s̃` (`dist(f_t z, L_{t,s+t}) ≤
+  |f_t'(z)| dist(z, L_t) / koebeK ≤ dist(f_t z, R_t)`), which holds for all large `s̃` under the
+  assumption
   `lim_{u → T_z} dist(z, L_u) = 0` in the R14 ε-form (`step:converse-event-converges`).
 -/
 
@@ -52,11 +56,26 @@ variable {U : ℝ≥0 → ℂ}
   koebeEvent U hU (sigmaTime U hU z tt).toNNReal
     (sigmaTime U hU z ((ss : ℝ) + tt) - sigmaTime U hU z tt).toNNReal z
 
-/-- The threshold `|f_t'(z)| dist(z, L_t) / (4 |f_t z|)` for `futureDistRatio`
-(`= exp(sigmaRatioDet) · dist(z, L_t) / 4`). -/
+/-- The threshold `|f_t'(z)| dist(z, L_t) / (koebeK |f_t z|)` for `futureDistRatio`
+(`= exp(sigmaRatioDet) · dist(z, L_t) / koebeK`). -/
 @[expose] noncomputable def koebeBound (U : ℝ≥0 → ℂ) (hU : Continuous U) (z : ℂ) (tt : ℝ≥0) :
     ℝ :=
-  Real.exp (sigmaRatioDet U hU z tt) * hullDist U hU z tt / 4
+  Real.exp (sigmaRatioDet U hU z tt) * hullDist U hU z tt / koebeK
+
+/-- The constant `log (koebeK ^ 3) = log 110592` of `chain_sigma_le` (`log 64` for the sharp Koebe
+constant `1/4`); `koebeC₃ = log koebeK + koebeC`. -/
+@[expose] noncomputable def koebeC₃ : ℝ := Real.log (koebeK ^ 3)
+
+theorem koebeC₃_eq : koebeC₃ = Real.log koebeK + koebeC := by
+  rw [koebeC₃, koebeC, ← Real.log_mul koebeK_pos.ne' (pow_pos koebeK_pos 2).ne']
+  congr 1; ring
+
+theorem koebeC_le_koebeC₃ : koebeC ≤ koebeC₃ := by
+  rw [koebeC₃_eq]
+  have : 0 ≤ Real.log koebeK := Real.log_nonneg one_le_koebeK
+  linarith
+
+theorem koebeC₃_nonneg : 0 ≤ koebeC₃ := koebeC_nonneg.trans koebeC_le_koebeC₃
 
 section Basic
 
@@ -140,11 +159,11 @@ variable (hU : Continuous U) {z : ℂ} {tt ss : ℝ≥0}
 
 include htt hts
 
-/-- **`eqn-dist-3` in σ-time on the event `E_s̃`** (paper.tex:L1668-1672), constant `log 16`:
-`log X_s̃ - log dist(z, L_{σ(s̃ + t̃)}) ≤ log(|f_t'|/|f_t|) + log 16`. -/
+/-- **`eqn-dist-3` in σ-time on the event `E_s̃`** (paper.tex:L1668-1672), constant `koebeC`:
+`log X_s̃ - log dist(z, L_{σ(s̃ + t̃)}) ≤ log(|f_t'|/|f_t|) + koebeC`. -/
 theorem chain_sigma_of_event (hE : koebeEventSigma U hU z tt ss) :
     Real.log (futureDistRatio U hU z tt ss) - Real.log (hullDist U hU z (ss + tt)) ≤
-      sigmaRatioDet U hU z tt + Real.log 16 := by
+      sigmaRatioDet U hU z tt + koebeC := by
   classical
   have h := koebe_chain hU (notMem_leftHull_sigmaTime_add hU htt hts)
   have hE' : koebeEvent U hU (sigmaTime U hU z tt).toNNReal
@@ -158,10 +177,10 @@ theorem chain_sigma_of_event (hE : koebeEventSigma U hU z tt ss) :
   exact h
 
 /-- **`eqn-dist-3` in σ-time off the event `E_s̃`**:
-`log X_s̃ - log dist(z, L_{σ(s̃ + t̃)}) ≤ log(1/dist(z, L_t)) + log 16`. -/
+`log X_s̃ - log dist(z, L_{σ(s̃ + t̃)}) ≤ log(1/dist(z, L_t)) + koebeC`. -/
 theorem chain_sigma_of_not_event (hE : ¬ koebeEventSigma U hU z tt ss) :
     Real.log (futureDistRatio U hU z tt ss) - Real.log (hullDist U hU z (ss + tt)) ≤
-      Real.log (1 / hullDist U hU z tt) + Real.log 16 := by
+      Real.log (1 / hullDist U hU z tt) + koebeC := by
   classical
   have h := koebe_chain hU (notMem_leftHull_sigmaTime_add hU htt hts)
   have hE' : ¬ koebeEvent U hU (sigmaTime U hU z tt).toNNReal
@@ -171,10 +190,10 @@ theorem chain_sigma_of_not_event (hE : ¬ koebeEventSigma U hU z tt ss) :
   exact h
 
 omit hts in
-/-- `eqn-hit-koebe` (paper.tex:L1463): `log(|f_t'|/|f_t|) ≤ log(1/dist(z, L_t)) + log 4`
-(`|f_t'(z)| dist(z, L_t) ≤ 4 dist(f_t z, R_t) ≤ 4 |f_t z|` as `0 ∈ R_t`). -/
+/-- `eqn-hit-koebe` (paper.tex:L1463): `log(|f_t'|/|f_t|) ≤ log(1/dist(z, L_t)) + log koebeK`
+(`|f_t'(z)| dist(z, L_t) ≤ koebeK dist(f_t z, R_t) ≤ koebeK |f_t z|` as `0 ∈ R_t`). -/
 theorem sigmaRatioDet_le :
-    sigmaRatioDet U hU z tt ≤ Real.log (1 / hullDist U hU z tt) + Real.log 4 := by
+    sigmaRatioDet U hU z tt ≤ Real.log (1 / hullDist U hU z tt) + Real.log koebeK := by
   have hf := norm_fPath_pos hU (sigmaTime_mem_lifeSet hU htt)
   have hd := hullDist_pos hU htt
   have hc := coe_toNNReal_sigmaTime hU htt
@@ -188,32 +207,32 @@ theorem sigmaRatioDet_le :
       (zero_mem_rightHull hU (sigmaTime U hU z tt).toNNReal)
     simpa [dist_eq_norm] using this
   have h3 : ‖derivPath U hU z (sigmaTime U hU z tt)‖ * hullDist U hU z tt ≤
-      4 * ‖fPath U hU z (sigmaTime U hU z tt)‖ := by
+      koebeK * ‖fPath U hU z (sigmaTime U hU z tt)‖ := by
     have : hullDist U hU z tt = infDist z (leftHull U (sigmaTime U hU z tt).toNNReal) := rfl
     rw [this]
+    have := mul_le_mul_of_nonneg_left h2 koebeK_pos.le
     linarith
-  rw [← Real.log_mul (by positivity) (by norm_num), sigmaRatioDet,
+  rw [← Real.log_mul (by positivity) koebeK_pos.ne', sigmaRatioDet,
     ← Real.log_div (derivNorm_pos hU z _).ne' hf.ne']
   refine Real.log_le_log (div_pos (derivNorm_pos hU z _) hf) ?_
   rw [div_le_iff₀ hf]
-  have : 1 / hullDist U hU z tt * 4 * ‖fPath U hU z (sigmaTime U hU z tt)‖ =
-      4 * ‖fPath U hU z (sigmaTime U hU z tt)‖ / hullDist U hU z tt := by field_simp
+  have : 1 / hullDist U hU z tt * koebeK * ‖fPath U hU z (sigmaTime U hU z tt)‖ =
+      koebeK * ‖fPath U hU z (sigmaTime U hU z tt)‖ / hullDist U hU z tt := by field_simp
   rw [this, le_div_iff₀ hd]
   exact h3
 
 /-- **Unconditional form of `eqn-dist-3`**: `log X_s̃ - log dist(z, L_{σ(s̃ + t̃)}) ≤
-log(1/dist(z, L_t)) + log 64`. -/
+log(1/dist(z, L_t)) + koebeC₃` (`koebeC₃ = log (koebeK ^ 3)`). -/
 theorem chain_sigma_le :
     Real.log (futureDistRatio U hU z tt ss) - Real.log (hullDist U hU z (ss + tt)) ≤
-      Real.log (1 / hullDist U hU z tt) + Real.log 64 := by
-  have h64 : Real.log 64 = Real.log 4 + Real.log 16 := by
-    rw [← Real.log_mul (by norm_num) (by norm_num)]; norm_num
+      Real.log (1 / hullDist U hU z tt) + koebeC₃ := by
+  have h64 := koebeC₃_eq
   by_cases hE : koebeEventSigma U hU z tt ss
   · have := chain_sigma_of_event hU htt hts hE
     have h2 := sigmaRatioDet_le hU htt
     linarith
   · have := chain_sigma_of_not_event hU htt hts hE
-    have h4 : 0 ≤ Real.log 4 := Real.log_nonneg (by norm_num)
+    have h4 : 0 ≤ Real.log koebeK := Real.log_nonneg one_le_koebeK
     linarith
 
 omit hts in
@@ -232,11 +251,13 @@ theorem koebeEventSigma_of_le (h : futureDistRatio U hU z tt ss ≤ koebeBound U
   unfold koebeBound
   rw [exp_sigmaRatioDet hU htt]
   have : ‖derivPath U hU z (sigmaTime U hU z tt)‖ / ‖fPath U hU z (sigmaTime U hU z tt)‖ *
-      hullDist U hU z tt / 4 * ‖fPath U hU z (sigmaTime U hU z tt)‖ =
-      ‖derivPath U hU z (sigmaTime U hU z tt)‖ * hullDist U hU z tt / 4 := by field_simp
+      hullDist U hU z tt / koebeK * ‖fPath U hU z (sigmaTime U hU z tt)‖ =
+      ‖derivPath U hU z (sigmaTime U hU z tt)‖ * hullDist U hU z tt / koebeK := by
+    have := koebeK_pos
+    field_simp
   rw [this]
   have : hullDist U hU z tt = infDist z (leftHull U (sigmaTime U hU z tt).toNNReal) := rfl
-  rw [this]
+  rw [this, div_le_iff₀ koebeK_pos]
   linarith
 
 end Chain
@@ -260,7 +281,8 @@ theorem eventually_le_koebeBound (hdom : sigmaDom U hU z = Ici 0)
   have hf := norm_fPath_pos hU (sigmaTime_mem_lifeSet hU htt)
   have hd := hullDist_pos hU htt
   have hD := derivNorm_pos hU z (sigmaTime U hU z tt)
-  set ε₀ : ℝ := ‖derivPath U hU z (sigmaTime U hU z tt)‖ * hullDist U hU z tt / 4 with hε₀
+  have hK := koebeK_pos
+  set ε₀ : ℝ := ‖derivPath U hU z (sigmaTime U hU z tt)‖ * hullDist U hU z tt / koebeK with hε₀
   have hε₀pos : 0 < ε₀ := by positivity
   obtain ⟨δ, hδ, hδ'⟩ := exists_infDist_futureHull_lt hU hz hε₀pos
   obtain ⟨t₀, ht₀, hd₀⟩ := hlim δ hδ
@@ -292,7 +314,7 @@ theorem eventually_le_koebeBound (hdom : sigmaDom U hU z = Ici 0)
   unfold koebeBound
   rw [exp_sigmaRatioDet hU htt]
   have : ‖derivPath U hU z (sigmaTime U hU z tt)‖ / ‖fPath U hU z (sigmaTime U hU z tt)‖ *
-      hullDist U hU z tt / 4 * ‖fPath U hU z (sigmaTime U hU z tt)‖ = ε₀ := by
+      hullDist U hU z tt / koebeK * ‖fPath U hU z (sigmaTime U hU z tt)‖ = ε₀ := by
     rw [hε₀]; field_simp
   rw [this]
   rw [hc] at h1

@@ -11,16 +11,17 @@ public import ComplexSLE.Internal.Phases.Lemma38Hull
 # Lemma 3.10, the deterministic multi-scale step (M7/E2)
 
 Source: paper.tex:L1569-1600. For a continuous driver `U` with `U 0 = 0` and a unit point `z` let
-`dd t = dist(z, L_t)` (non-increasing in `t`), `lvl k = 16^{-k}` and
+`dd t = dist(z, L_t)` (non-increasing in `t`), `lvl k = lvlBase^{-k}` (`lvlBase = koebeN + 1 = 158`;
+the paper's `16` for the sharp Koebe constant, `koebeN = 14`) and
 `hitTime U z r = inf {t | dd t ≤ r}` (`⊤` if empty; the infimum is attained, `dd_hitTime_le`, by the
 right-continuity of `dd`).
 
-* `lvl_le_dd_hitTime` (`dist(z, L_{τ_k}) ≥ 16^{-k}`, paper (3.18)): the hull does not jump over the
+* `lvl_le_dd_hitTime` (`dist(z, L_{τ_k}) ≥ lvl k`, paper (3.18)): the hull does not jump over the
   level (`ball_subset_compl_leftHull_of_forall_lt`);
 * `step_good` (the Koebe step plus the clock increment): if `τ ∈ [0, T_z)` has
-  `dist(z, L_τ) ≥ 16^{-k}`, `R = |f_τ(z)|`, and the restarted rescaled driver
+  `dist(z, L_τ) ≥ lvl k`, `R = |f_τ(z)|`, and the restarted rescaled driver
   `V_s = R⁻¹ (U_{τ + R² s} - U_τ)` satisfies `|V_s| ≤ 1/16` for `s ≤ u₀` (`u₀ < 1/64`), then
-  `τ + R² u₀ < T_z`, `dist(z, L_{τ + R² s}) ≥ 16^{-k}/14` for `s ≤ u₀`, and the clock increment
+  `τ + R² u₀ < T_z`, `dist(z, L_{τ + R² s}) ≥ lvl k / koebeN` for `s ≤ u₀`, and the clock increment
   `A(τ + R² u₀) - A(τ) ≥ u₀/4`. This holds uniformly over the restart direction `f_τ(z)/R`, which is
   the point the paper glosses over.
 -/
@@ -34,24 +35,39 @@ namespace ComplexSLE.Internal.Polar
 
 variable {U : ℝ≥0 → ℂ}
 
-/-- The level `16^{-k}`. -/
-@[expose] noncomputable def lvl (k : ℕ) : ℝ := (1 / 16 : ℝ) ^ k
+/-- The level ratio `lvlBase = koebeN + 1 = 158`: the base of the geometric levels `lvl k`. It is
+any number `> koebeN` (the paper's `16 > 14`, for the sharp Koebe constant). -/
+@[expose] noncomputable def lvlBase : ℝ := koebeN + 1
 
-theorem lvl_pos (k : ℕ) : 0 < lvl k := by unfold lvl; positivity
+theorem koebeN_lt_lvlBase : koebeN < lvlBase := by unfold lvlBase; linarith
+
+theorem lvlBase_pos : 0 < lvlBase := koebeN_pos.trans koebeN_lt_lvlBase
+
+theorem one_lt_lvlBase : 1 < lvlBase := one_lt_koebeN.trans koebeN_lt_lvlBase
+
+/-- The level `lvlBase^{-k}` (the paper's `16^{-k}`). -/
+@[expose] noncomputable def lvl (k : ℕ) : ℝ := (1 / lvlBase) ^ k
+
+theorem one_div_lvlBase_le_one : 1 / lvlBase ≤ 1 := by
+  rw [div_le_one lvlBase_pos]; exact one_lt_lvlBase.le
+
+theorem lvl_pos (k : ℕ) : 0 < lvl k := by
+  unfold lvl; have := lvlBase_pos; positivity
 
 theorem lvl_le_one (k : ℕ) : lvl k ≤ 1 := by
-  unfold lvl; exact pow_le_one₀ (by norm_num) (by norm_num)
+  unfold lvl; exact pow_le_one₀ (by have := lvlBase_pos; positivity) one_div_lvlBase_le_one
 
-theorem lvl_succ (k : ℕ) : lvl (k + 1) = lvl k / 16 := by
-  unfold lvl; rw [pow_succ]; ring
+theorem lvl_succ (k : ℕ) : lvl (k + 1) = lvl k / lvlBase := by
+  have := lvlBase_pos
+  unfold lvl; rw [pow_succ]; field_simp
 
-theorem lvl_succ_lt_div (k : ℕ) : lvl (k + 1) < lvl k / 14 := by
+theorem lvl_succ_lt_div (k : ℕ) : lvl (k + 1) < lvl k / koebeN := by
   rw [lvl_succ]
-  have := lvl_pos k
-  linarith
+  exact div_lt_div_of_pos_left (lvl_pos k) koebeN_pos koebeN_lt_lvlBase
 
 theorem lvl_anti {k l : ℕ} (h : k ≤ l) : lvl l ≤ lvl k := by
-  unfold lvl; exact pow_le_pow_of_le_one (by norm_num) (by norm_num) h
+  unfold lvl
+  exact pow_le_pow_of_le_one (by have := lvlBase_pos; positivity) one_div_lvlBase_le_one h
 
 /-- With `U 0 = 0` and `‖z‖ = 1`, `L_0 = {0}` and `dist(z, L_0) = 1`. -/
 theorem infDist_leftHull_zero (hU : Continuous U) (h0 : U 0 = 0) {z : ℂ} (hz : ‖z‖ = 1) :
@@ -141,7 +157,7 @@ theorem hitTime_mono {z : ℂ} {r r' : ℝ} (h : r' ≤ r) : hitTime U z r ≤ h
     exact csInf_le_csInf (OrderBot.bddBelow _) h' fun t ht => ht.trans h
   · simp only [h', ↓reduceIte]; exact le_top
 
-/-- **No jump at the hitting time** (paper (3.18): `dist(z, L_{τ_k}) ≥ 16^{-k}`). -/
+/-- **No jump at the hitting time** (paper (3.18): `dist(z, L_{τ_k}) ≥ lvl k`). -/
 theorem lvl_le_infDist_hitTime (hU : Continuous U) (h0 : U 0 = 0) {z : ℂ} (hz : ‖z‖ = 1) {k : ℕ}
     {τ : ℝ≥0} (h : hitTime U z (lvl k) = (τ : WithTop ℝ≥0))
     (hτ : (τ : ℝ) ∈ lifeSet U z) : lvl k ≤ infDist z (leftHull U τ) := by
@@ -162,17 +178,17 @@ theorem lvl_le_infDist_hitTime (hU : Continuous U) (h0 : U 0 = 0) {z : ℂ} (hz 
 /-! ### The good step -/
 
 /-- **The Koebe step with the clock increment** (paper (3.19) and the clock identity of the proof of
-Lemma 3.10). Let `τ ∈ [0, T_z)` with `dist(z, L_τ) ≥ 16^{-k}`, `R = |f_τ(z)|`, and suppose the
+Lemma 3.10). Let `τ ∈ [0, T_z)` with `dist(z, L_τ) ≥ lvl k`, `R = |f_τ(z)|`, and suppose the
 restarted rescaled driver `V_s = R⁻¹ (U_{τ + R² s} - U_τ)` satisfies `|V_s| ≤ 1/16` for `s ≤ u₀`,
-where `u₀ < 1/64`. Then `τ + R² u₀ < T_z`; `dist(z, L_{τ + R² s}) ≥ 16^{-k} / 14` for `s ≤ u₀`; and
-`A(τ + R² u₀) - A(τ) ≥ u₀ / 4`. The conclusion does not depend on the restart direction
-`f_τ(z) / R`. Uses the EXTERNAL `koebe_quarter`. -/
+where `u₀ < 1/64`. Then `τ + R² u₀ < T_z`; `dist(z, L_{τ + R² s}) ≥ lvl k / koebeN` for `s ≤ u₀`;
+and `A(τ + R² u₀) - A(τ) ≥ u₀ / 4`. The conclusion does not depend on the restart direction
+`f_τ(z) / R`. -/
 theorem step_good (hU : Continuous U) {z : ℂ} {k : ℕ} {τ : ℝ≥0}
     (hτ : (τ : ℝ) ∈ lifeSet U z) (hdd : lvl k ≤ infDist z (leftHull U τ))
     {u₀ : ℝ≥0} (hu₀ : (u₀ : ℝ) < 1 / 64) {R : ℝ≥0} (hR : (R : ℝ) = ‖fPath U hU z τ‖)
     (hgood : ∀ s : ℝ≥0, s ≤ u₀ → ‖restartDriver U τ R s‖ ≤ 1 / 16) :
     ((τ : ℝ) + (R : ℝ) ^ 2 * u₀ ∈ lifeSet U z) ∧
-    (∀ s : ℝ≥0, s ≤ u₀ → lvl k / 14 ≤ infDist z (leftHull U (τ + R ^ 2 * s))) ∧
+    (∀ s : ℝ≥0, s ≤ u₀ → lvl k / koebeN ≤ infDist z (leftHull U (τ + R ^ 2 * s))) ∧
     (u₀ : ℝ) / 4 ≤ clock U hU z ((τ : ℝ) + (R : ℝ) ^ 2 * u₀) - clock U hU z τ := by
   have hzτ : z ∉ leftHull U τ := coe_mem_lifeSet_iff.1 hτ
   have hRpos : 0 < R := by

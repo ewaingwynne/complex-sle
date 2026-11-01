@@ -16,10 +16,11 @@ public import Mathlib.Data.EReal.Basic
 Source: paper.tex:L1460-1466 (`eqn-hit-koebe`), the consequence used to prove Proposition 3.2(a)
 and the closure clause of the hitting phase (Definition 1.7).
 
-By the Koebe hitting bound (`norm_derivPath_mul_infDist_le`, EXTERNAL `koebe_quarter`), for
-`s ∈ sigmaDom` and `t = σ_z(s)`,
+By the Koebe hitting bound (`norm_derivPath_mul_infDist_le`; Koebe constant `koebeK = 48`, see
+`KoebeChainInv.lean`), for `s ∈ sigmaDom` and `t = σ_z(s)`,
 
-  `dist(z, L_{σ_z(s)}) ≤ 4 |f̂_s(z)| / |f̂'_s(z)| = 4 exp(-(log|f̂'_s(z)| - log|f̂_s(z)|))`
+  `dist(z, L_{σ_z(s)}) ≤ koebeK |f̂_s(z)| / |f̂'_s(z)|
+     = koebeK exp(-(log|f̂'_s(z)| - log|f̂_s(z)|))`
 
 (`infDist_leftHull_sigmaTime_le_div`, `infDist_leftHull_sigmaTime_le_exp`; for an adapted driver
 the exponent is `-sigmaLogRatio hU z s ω`, `infDist_leftHull_sigmaTime_le_exp_sigmaLogRatio`).
@@ -37,8 +38,7 @@ The two conditions are equivalent (`mem_closure_iUnion_leftHull_iff`), and by mo
 the `ε`-form upgrades to the genuine limit `lim_{t → T_z⁻} dist(z, L_t) = 0`
 (`eventually_infDist_leftHull_lt`). For an adapted driver the hypothesis "`limsup_{s → ∞}
 sigmaLogRatio = +∞`" (or the limit `= +∞`) can be fed in a.s.: Remark 2.12 gives
-`sigmaDom = [0, ∞)` a.s. Every result here that consumes the Koebe bound is
-`PROVED_REL{koebe_quarter}`.
+`sigmaDom = [0, ∞)` a.s.
 -/
 
 public section
@@ -48,6 +48,8 @@ open Set Metric Filter MeasureTheory
 
 namespace ComplexSLE.Internal.Polar
 
+open ComplexSLE.Internal.KoebeChain (koebeK koebeK_pos)
+
 /-! ### Deterministic σ-time form -/
 
 section Deterministic
@@ -56,12 +58,12 @@ variable {U : ℝ≥0 → ℂ}
 
 /-- **Koebe hitting bound at the time `t = σ_z(s)`** (as a quotient): for `s ∈ sigmaDom` and
 `t : ℝ≥0` with `t = σ_z(s)`,
-`dist(z, L_t) ≤ 4 ‖f̂_s(z)‖ / ‖f̂'_s(z)‖`, where `f̂_s(z) = f_{σ_z(s)}(z)` and
+`dist(z, L_t) ≤ koebeK ‖f̂_s(z)‖ / ‖f̂'_s(z)‖`, where `f̂_s(z) = f_{σ_z(s)}(z)` and
 `f̂'_s(z) = f'_{σ_z(s)}(z) = derivPath`. -/
 theorem infDist_leftHull_le_div (hU : Continuous U) {z : ℂ} {s : ℝ} {t : ℝ≥0}
     (hs : s ∈ sigmaDom U hU z) (ht : (t : ℝ) = sigmaTime U hU z s) :
     infDist z (leftHull U t) ≤
-      4 * ‖fPath U hU z (sigmaTime U hU z s)‖ / ‖derivPath U hU z (sigmaTime U hU z s)‖ := by
+      koebeK * ‖fPath U hU z (sigmaTime U hU z s)‖ / ‖derivPath U hU z (sigmaTime U hU z s)‖ := by
   have hlife : (t : ℝ) ∈ lifeSet U z := by rw [ht]; exact sigmaTime_mem_lifeSet hU hs
   have hz : z ∈ (leftHull U t)ᶜ := coe_mem_lifeSet_iff.1 hlife
   have hDpos : 0 < ‖derivPath U hU z (sigmaTime U hU z s)‖ :=
@@ -72,11 +74,11 @@ theorem infDist_leftHull_le_div (hU : Continuous U) {z : ℂ} {s : ℝ} {t : ℝ
 /-- **Koebe hitting bound at the time `t = σ_z(s)`** (exponential form): for `s ∈ sigmaDom` and
 `t : ℝ≥0` with `t = σ_z(s)`,
 
-  `dist(z, L_t) ≤ 4 exp(-(log‖f̂'_s(z)‖ - log‖f̂_s(z)‖))`. -/
+  `dist(z, L_t) ≤ koebeK exp(-(log‖f̂'_s(z)‖ - log‖f̂_s(z)‖))`. -/
 theorem infDist_leftHull_le_exp (hU : Continuous U) {z : ℂ} {s : ℝ} {t : ℝ≥0}
     (hs : s ∈ sigmaDom U hU z) (ht : (t : ℝ) = sigmaTime U hU z s) :
     infDist z (leftHull U t) ≤
-      4 * Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
+      koebeK * Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
         Real.log ‖fPath U hU z (sigmaTime U hU z s)‖)) := by
   have hlife : sigmaTime U hU z s ∈ lifeSet U z := sigmaTime_mem_lifeSet hU hs
   have hDpos : 0 < ‖derivPath U hU z (sigmaTime U hU z s)‖ :=
@@ -89,7 +91,7 @@ theorem infDist_leftHull_le_exp (hU : Continuous U) {z : ℂ} {s : ℝ} {t : ℝ
 theorem infDist_leftHull_sigmaTime_le_exp (hU : Continuous U) {z : ℂ} {s : ℝ}
     (hs : s ∈ sigmaDom U hU z) :
     infDist z (leftHull U (sigmaTime U hU z s).toNNReal) ≤
-      4 * Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
+      koebeK * Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
         Real.log ‖fPath U hU z (sigmaTime U hU z s)‖)) :=
   infDist_leftHull_le_exp hU hs (Real.coe_toNNReal _ (sigmaTime_nonneg hU hs))
 
@@ -97,7 +99,7 @@ theorem infDist_leftHull_sigmaTime_le_exp (hU : Continuous U) {z : ℂ} {s : ℝ
 theorem infDist_leftHull_sigmaTime_le_div (hU : Continuous U) {z : ℂ} {s : ℝ}
     (hs : s ∈ sigmaDom U hU z) :
     infDist z (leftHull U (sigmaTime U hU z s).toNNReal) ≤
-      4 * ‖fPath U hU z (sigmaTime U hU z s)‖ / ‖derivPath U hU z (sigmaTime U hU z s)‖ :=
+      koebeK * ‖fPath U hU z (sigmaTime U hU z s)‖ / ‖derivPath U hU z (sigmaTime U hU z s)‖ :=
   infDist_leftHull_le_div hU hs (Real.coe_toNNReal _ (sigmaTime_nonneg hU hs))
 
 /-- The time `(σ_z(s)).toNNReal` is before the absorbing time `T_z`. -/
@@ -144,16 +146,20 @@ theorem exists_infDist_leftHull_lt_of_ratio_unbounded (hU : Continuous U) {z : �
         Real.log ‖fPath U hU z (sigmaTime U hU z s)‖) :
     ∀ ε > 0, ∃ t : ℝ≥0, (t : ℝ≥0∞) < absorbingTime U z ∧ infDist z (leftHull U t) < ε := by
   intro ε hε
-  obtain ⟨s, hs, hM⟩ := h (-Real.log (ε / 4) + 1)
+  have hK := koebeK_pos
+  obtain ⟨s, hs, hM⟩ := h (-Real.log (ε / koebeK) + 1)
   refine ⟨(sigmaTime U hU z s).toNNReal, sigmaTime_toNNReal_lt_absorbingTime hU hs, ?_⟩
   refine lt_of_le_of_lt (infDist_leftHull_sigmaTime_le_exp hU hs) ?_
-  have hε4 : 0 < ε / 4 := by positivity
+  have hεK : 0 < ε / koebeK := by positivity
   have h1 : Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
-        Real.log ‖fPath U hU z (sigmaTime U hU z s)‖)) < ε / 4 := by
-    rw [← Real.exp_log hε4]
+        Real.log ‖fPath U hU z (sigmaTime U hU z s)‖)) < ε / koebeK := by
+    rw [← Real.exp_log hεK]
     refine Real.exp_lt_exp.2 ?_
     linarith
-  linarith
+  calc koebeK * Real.exp (-(Real.log ‖derivPath U hU z (sigmaTime U hU z s)‖ -
+        Real.log ‖fPath U hU z (sigmaTime U hU z s)‖)) < koebeK * (ε / koebeK) :=
+        mul_lt_mul_of_pos_left h1 hK
+    _ = ε := by field_simp
 
 /-- **The closure clause of the hitting phase from unboundedness of `log(|f̂'|/|f̂|)`**
 (deterministic): under the hypothesis of `exists_infDist_leftHull_lt_of_ratio_unbounded`,
@@ -210,11 +216,12 @@ variable (hU : IsSLEDriverAdapted a b c U P ℱ) (z : ℂ)
 /-- **Koebe hitting bound in σ-time for an adapted driver** (paper.tex:L1460-1466): for
 `s ∈ sigmaDom`,
 
-  `dist(z, L_{σ_z(s)}) ≤ 4 exp(-log(|f̂'_s(z)| / |f̂_s(z)|)) = 4 exp(-sigmaLogRatio_s)`. -/
+  `dist(z, L_{σ_z(s)}) ≤ koebeK exp(-log(|f̂'_s(z)| / |f̂_s(z)|))
+    = koebeK exp(-sigmaLogRatio_s)`. -/
 theorem infDist_leftHull_le_exp_sigmaLogRatio {s : ℝ≥0} {ω : Ω} {t : ℝ≥0}
     (hs : (s : ℝ) ∈ sigmaDom (fun r => U r ω) (hU.cont ω) z)
     (ht : (t : ℝ) = sigmaTime (fun r => U r ω) (hU.cont ω) z s) :
-    infDist z (leftHull (fun r => U r ω) t) ≤ 4 * Real.exp (-(sigmaLogRatio hU z s ω)) :=
+    infDist z (leftHull (fun r => U r ω) t) ≤ koebeK * Real.exp (-(sigmaLogRatio hU z s ω)) :=
   infDist_leftHull_le_exp (hU.cont ω) hs ht
 
 /-- The closure clause of the hitting phase, for an adapted driver and a fixed `ω` with

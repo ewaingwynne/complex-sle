@@ -39,7 +39,7 @@ Proof (fixed `z ≠ 0`):
   (`ae_mem_closure_c0_bdy`).
 * The adapted version agrees with `U` a.s., which transfers the closure clause back to `U`.
 
-`lemma_3_12` is `PROVED_REL{dambis_dubins_schwarz, koebe_quarter, …}`: it consumes the EXTERNAL
+`lemma_3_12` is `PROVED_REL{dambis_dubins_schwarz, …}`: it consumes the EXTERNAL
 inputs through the sealed anchor `proposition_3_1_b`, `KoebeHitSigma` and
 `dambis_dubins_schwarz`.
 -/

@@ -16,13 +16,17 @@ Source: paper.tex:L1569-1576. For a continuous driver `U`, a time `t` and a disc
 from the left hull `L_t`, the centered map `f_t = g_t - U_t` varies by a controlled factor on `B(x, ρ)`:
 
 * `norm_fPath_sub_le_of_ball`: for `w ∈ B(x, ρ)`,
-  `‖f_t(w) - f_t(x)‖ ≤ (exp (4 ‖w - x‖ / (ρ - ‖w - x‖)) - 1) ‖f_t(x)‖`;
-* `norm_fPath_sub_le_half`: in particular `‖f_t(w) - f_t(x)‖ ≤ (4/9) ‖f_t(x)‖` if `‖w - x‖ ≤ ρ/14`.
+  `‖f_t(w) - f_t(x)‖ ≤ (exp (koebeK ‖w - x‖ / (ρ - ‖w - x‖)) - 1) ‖f_t(x)‖`;
+* `norm_fPath_sub_le_ninth`: in particular `‖f_t(w) - f_t(x)‖ ≤ (4/9) ‖f_t(x)‖` if
+  `‖w - x‖ ≤ ρ / koebeN`, where `koebeN = 1 + 13 koebeK / 4 = 157`.
 
-The paper derives (3.9) from the EXTERNAL Koebe distortion theorem. Here only the EXTERNAL Koebe
-one-quarter theorem is used (through `norm_derivPath_mul_infDist_le_of_notMem`, which gives
-`|f_t'(y)| ≤ 4 |f_t(y)| / dist(y, L_t)`), followed by a Grönwall estimate along the segment `[x, w]`.
-Every result here is `PROVED_REL{koebe_quarter}`.
+The paper derives (3.9) from the Koebe distortion theorem. Here only the Koebe covering theorem
+with the non-sharp constant `koebeK = 48` (`KoebeChainInv.lean`; the paper's sharp `1/4` would give
+`koebeK = 4` and `koebeN = 14`) is used (through `norm_derivPath_mul_infDist_le_of_notMem`, which
+gives `|f_t'(y)| ≤ koebeK |f_t(y)| / dist(y, L_t)`), followed by a Grönwall estimate along the
+segment `[x, w]`. The radius ratio `koebeN` is chosen so that the bound `4/9` (hence `5/9 > 1/2`
+for `|f_t(w)| / |f_t(x)|`) is the same for every `koebeK`: `koebeK / (koebeN - 1) = 4/13`.
+No EXTERNAL input is consumed.
 -/
 
 public section
@@ -33,8 +37,22 @@ open Set Metric
 namespace ComplexSLE.Internal.Polar
 
 open ComplexSLE.Internal
+open ComplexSLE.Internal.KoebeChain (koebeK koebeK_pos one_le_koebeK)
 
 variable {U : ℝ≥0 → ℂ}
+
+/-- The radius ratio `koebeN = 1 + 13 koebeK / 4 = 157` of the Koebe step: for
+`‖w - x‖ ≤ ρ / koebeN` one has `koebeK ‖w - x‖ / (ρ - ‖w - x‖) ≤ 4/13`
+(for the sharp Koebe constant `koebeK = 4` this is the paper's `14`). -/
+@[expose] noncomputable def koebeN : ℝ := 1 + 13 * koebeK / 4
+
+theorem koebeN_eq : koebeN = 157 := by
+  rw [koebeN, KoebeChain.koebeK_eq]; norm_num
+
+theorem one_lt_koebeN : 1 < koebeN := by
+  rw [koebeN]; linarith [koebeK_pos]
+
+theorem koebeN_pos : 0 < koebeN := one_pos.trans one_lt_koebeN
 
 /-- A point `y` of a disc `B(x, ρ)` disjoint from `L_t` is at distance `≥ ρ - ‖y - x‖` from `L_t`. -/
 theorem le_infDist_leftHull_of_ball {t : ℝ≥0} {x y : ℂ} {ρ : ℝ}
@@ -50,13 +68,13 @@ theorem le_infDist_leftHull_of_ball {t : ℝ≥0} {x y : ℂ} {ρ : ℝ}
   linarith [norm_sub_rev y x]
 
 /-- **Koebe step, general form.** If `B(x, ρ) ∩ L_t = ∅` and `‖w - x‖ < ρ`, then
-`‖f_t(w) - f_t(x)‖ ≤ (exp (4 ‖w - x‖ / (ρ - ‖w - x‖)) - 1) ‖f_t(x)‖`. -/
+`‖f_t(w) - f_t(x)‖ ≤ (exp (koebeK ‖w - x‖ / (ρ - ‖w - x‖)) - 1) ‖f_t(x)‖`. -/
 theorem norm_fPath_sub_le_of_ball (hU : Continuous U) {t : ℝ≥0} {x w : ℂ} {ρ : ℝ}
     (hball : ball x ρ ⊆ (leftHull U t)ᶜ) (hw : ‖w - x‖ < ρ) :
     ‖fPath U hU w t - fPath U hU x t‖ ≤
-      (Real.exp (4 * ‖w - x‖ / (ρ - ‖w - x‖)) - 1) * ‖fPath U hU x t‖ := by
+      (Real.exp (koebeK * ‖w - x‖ / (ρ - ‖w - x‖)) - 1) * ‖fPath U hU x t‖ := by
   set δ : ℂ := w - x with hδ
-  set K : ℝ := 4 * ‖δ‖ / (ρ - ‖δ‖) with hK
+  set K : ℝ := koebeK * ‖δ‖ / (ρ - ‖δ‖) with hK
   have hρδ : 0 < ρ - ‖δ‖ := by linarith
   have hmem : ∀ s : ℝ, s ∈ Icc (0 : ℝ) 1 → x + (s : ℂ) * δ ∈ ball x ρ := by
     intro s hs
@@ -95,32 +113,32 @@ theorem norm_fPath_sub_le_of_ball (hU : Continuous U) {t : ℝ≥0} {x w : ℂ} 
           _ = ‖δ‖ := one_mul _
       linarith
     have hdpos : 0 < infDist y (leftHull U t) := lt_of_lt_of_le hρδ hdist
-    have hnorm : ‖derivPath U hU y t‖ ≤ 4 * ‖fPath U hU y t‖ / (ρ - ‖δ‖) := by
+    have hnorm : ‖derivPath U hU y t‖ ≤ koebeK * ‖fPath U hU y t‖ / (ρ - ‖δ‖) := by
       rw [le_div_iff₀ hρδ]
       calc ‖derivPath U hU y t‖ * (ρ - ‖δ‖)
           ≤ ‖derivPath U hU y t‖ * infDist y (leftHull U t) :=
             mul_le_mul_of_nonneg_left hdist (norm_nonneg _)
-        _ ≤ 4 * ‖fPath U hU y t‖ := hkoebe
+        _ ≤ koebeK * ‖fPath U hU y t‖ := hkoebe
     have hφs : ‖φ s‖ ≤ ‖ψ s‖ + ‖φ 0‖ := by
       have : φ s = ψ s + φ 0 := by simp [hψ]
       calc ‖φ s‖ = ‖ψ s + φ 0‖ := by rw [← this]
         _ ≤ ‖ψ s‖ + ‖φ 0‖ := norm_add_le _ _
     have : ‖φ' s‖ ≤ K * ‖φ s‖ := by
       simp only [hφ', norm_mul]
-      calc ‖derivPath U hU y t‖ * ‖δ‖ ≤ 4 * ‖fPath U hU y t‖ / (ρ - ‖δ‖) * ‖δ‖ :=
+      calc ‖derivPath U hU y t‖ * ‖δ‖ ≤ koebeK * ‖fPath U hU y t‖ / (ρ - ‖δ‖) * ‖δ‖ :=
             mul_le_mul_of_nonneg_right hnorm (norm_nonneg _)
         _ = K * ‖φ s‖ := by simp only [hK, hφ, hy]; ring
     calc ‖φ' s‖ ≤ K * ‖φ s‖ := this
       _ ≤ K * (‖ψ s‖ + ‖φ 0‖) := by
           refine mul_le_mul_of_nonneg_left hφs ?_
-          rw [hK]; positivity
+          rw [hK]; have := koebeK_pos; positivity
       _ = K * ‖ψ s‖ + K * ‖φ 0‖ := by ring
   have hψ0 : ‖ψ 0‖ ≤ 0 := by simp [hψ]
   have hG := norm_le_gronwallBound_of_norm_deriv_right_le hψcont hψderiv hψ0 hbound 1
     ⟨zero_le_one, le_rfl⟩
   have hφ1 : φ 1 = fPath U hU w t := by simp [hφ, hδ]
   have hφ0 : φ 0 = fPath U hU x t := by simp [hφ]
-  have hK0 : 0 ≤ K := by rw [hK]; positivity
+  have hK0 : 0 ≤ K := by rw [hK]; have := koebeK_pos; positivity
   have hexp : gronwallBound 0 K (K * ‖φ 0‖) (1 - 0) = (Real.exp K - 1) * ‖φ 0‖ := by
     by_cases hKz : K = 0
     · simp [gronwallBound, hKz]
@@ -131,22 +149,24 @@ theorem norm_fPath_sub_le_of_ball (hU : Continuous U) {t : ℝ≥0} {x w : ℂ} 
   rw [this, hφ0] at hG
   exact hG
 
-/-- **Koebe step, quantitative form** (paper (3.9), `eqn-finite-exp-1`, constants `1/14`, `4/9`): if
-`B(x, ρ) ∩ L_t = ∅` and `‖w - x‖ ≤ ρ / 14` then `‖f_t(w) - f_t(x)‖ ≤ (4/9) ‖f_t(x)‖`. -/
+/-- **Koebe step, quantitative form** (paper (3.9), `eqn-finite-exp-1`, constants `1/koebeN`,
+`4/9`): if `B(x, ρ) ∩ L_t = ∅` and `‖w - x‖ ≤ ρ / koebeN` then `‖f_t(w) - f_t(x)‖ ≤ (4/9) ‖f_t(x)‖`. -/
 theorem norm_fPath_sub_le_ninth (hU : Continuous U) {t : ℝ≥0} {x w : ℂ} {ρ : ℝ} (hρ : 0 < ρ)
-    (hball : ball x ρ ⊆ (leftHull U t)ᶜ) (hw : ‖w - x‖ ≤ ρ / 14) :
+    (hball : ball x ρ ⊆ (leftHull U t)ᶜ) (hw : ‖w - x‖ ≤ ρ / koebeN) :
     ‖fPath U hU w t - fPath U hU x t‖ ≤ (4 / 9) * ‖fPath U hU x t‖ := by
-  have hw' : ‖w - x‖ < ρ := by linarith
+  have hw' : ‖w - x‖ < ρ := lt_of_le_of_lt hw (div_lt_self hρ one_lt_koebeN)
   refine (norm_fPath_sub_le_of_ball hU hball hw').trans ?_
   refine mul_le_mul_of_nonneg_right ?_ (norm_nonneg _)
   set a : ℝ := ‖w - x‖ with ha
   have ha0 : 0 ≤ a := norm_nonneg _
   have hden : 0 < ρ - a := by linarith
-  have hK : 4 * a / (ρ - a) ≤ 4 / 13 := by
-    rw [div_le_iff₀ hden]; linarith
-  have hK0 : 0 ≤ 4 * a / (ρ - a) := by positivity
-  have hexp : Real.exp (4 * a / (ρ - a)) ≤ 13 / 9 := by
-    have h1 : Real.exp (4 * a / (ρ - a)) ≤ Real.exp (4 / 13) := Real.exp_le_exp.2 hK
+  have hK : koebeK * a / (ρ - a) ≤ 4 / 13 := by
+    rw [div_le_iff₀ hden]
+    rw [le_div_iff₀ koebeN_pos, koebeN] at hw
+    linarith
+  have hK0 : 0 ≤ koebeK * a / (ρ - a) := by have := koebeK_pos; positivity
+  have hexp : Real.exp (koebeK * a / (ρ - a)) ≤ 13 / 9 := by
+    have h1 : Real.exp (koebeK * a / (ρ - a)) ≤ Real.exp (4 / 13) := Real.exp_le_exp.2 hK
     have h2 : (1 : ℝ) - 4 / 13 ≤ Real.exp (-(4 / 13)) := by
       have := Real.add_one_le_exp (-(4 / 13 : ℝ)); linarith
     have h3 : Real.exp (4 / 13) * Real.exp (-(4 / 13)) = 1 := by
@@ -162,14 +182,14 @@ theorem norm_fPath_sub_le_ninth (hU : Continuous U) {t : ℝ≥0} {x w : ℂ} {�
     exact h1.trans h5
   linarith
 
-/-- The ball of radius `r / 14` around `z` stays disjoint from the left hull `L_{t₀ + R² s}` of a
-Loewner chain restarted at `t₀` and rescaled by `R = |f_{t₀}(z)|`, as long as the hull of the
+/-- The ball of radius `r / koebeN` around `z` stays disjoint from the left hull `L_{t₀ + R² s}` of
+a Loewner chain restarted at `t₀` and rescaled by `R = |f_{t₀}(z)|`, as long as the hull of the
 restarted chain at time `s` stays in `B(0, 1/2)` (paper (3.19), `eqn-finite-exp-2`). -/
 theorem ball_subset_compl_leftHull_restart (hU : Continuous U) {z : ℂ} {t₀ : ℝ≥0} {r : ℝ}
     (hr : 0 < r) (hball : ball z r ⊆ (leftHull U t₀)ᶜ) {R : ℝ≥0}
     (hRf : (R : ℝ) = ‖fPath U hU z t₀‖) {s : ℝ≥0}
     (hs : leftHull (restartDriver U t₀ R) s ⊆ ball 0 (1 / 2)) :
-    ball z (r / 14) ⊆ (leftHull U (t₀ + R ^ 2 * s))ᶜ := by
+    ball z (r / koebeN) ⊆ (leftHull U (t₀ + R ^ 2 * s))ᶜ := by
   intro w hw hwL
   have hz0 : z ∈ (leftHull U t₀)ᶜ := hball (mem_ball_self hr)
   have hzf : fPath U hU z t₀ ≠ 0 := fPath_coe_ne_zero hU hz0
@@ -177,7 +197,8 @@ theorem ball_subset_compl_leftHull_restart (hU : Continuous U) {z : ℂ} {t₀ :
     have : (0 : ℝ) < R := by rw [hRf]; exact norm_pos_iff.2 hzf
     exact_mod_cast this
   have hwr : w ∈ ball z r := by
-    refine ball_subset_ball (by linarith) hw
+    refine ball_subset_ball ?_ hw
+    exact (div_lt_self hr one_lt_koebeN).le
   have hw0 : w ∈ (leftHull U t₀)ᶜ := hball hwr
   have hmem := (mem_leftHull_add_iff hU (R ^ 2 * s) t₀ w hw0).1 (by
     rw [add_comm]; exact hwL)
@@ -213,7 +234,8 @@ theorem ball_subset_compl_leftHull_restart (hU : Continuous U) {z : ℂ} {t₀ :
 open Filter Topology in
 /-- **No swallowing jump near a non-swallowed point.** Let `τ > 0`, `z ∉ L_τ`, and suppose the disc
 `B(z, r)` is disjoint from `L_t` for every `t < τ`. Then `B(z, r)` is disjoint from `L_τ` as well
-(the paper uses this tacitly: "by the definition of `τ_k` we have `dist(z, L_{τ_k}) ≥ 16^{-k}`").
+(the paper uses this tacitly: "by the definition of `τ_k` we have `dist(z, L_{τ_k}) ≥ 16^{-k}`",
+where our `lvl k` replaces `16^{-k}`).
 
 Proof: `B(z, r) ∩ L_τ` is closed in `B(z, r)`; it is also open, because for `x ∈ B(z, r) ∩ L_τ` one
 has `T_x = τ`, so `|f_t(x)| → 0` as `t ↑ τ` (Lemma 2.5), while the Koebe step gives
@@ -228,7 +250,8 @@ theorem ball_subset_compl_leftHull_of_forall_lt (hU : Continuous U) {z : ℂ} {�
     set ρx : ℝ := r - ‖x - z‖ with hρx
     have hxz : ‖x - z‖ < r := by rwa [mem_ball, dist_eq_norm] at hxB
     have hρxpos : 0 < ρx := by linarith
-    refine ⟨ball x (ρx / 28), ?_, isOpen_ball, mem_ball_self (by positivity)⟩
+    have hN := koebeN_pos
+    refine ⟨ball x (ρx / (2 * koebeN)), ?_, isOpen_ball, mem_ball_self (by positivity)⟩
     intro x' hx'
     by_contra hx'L
     -- the absorbing time of `x` is `τ`
@@ -260,7 +283,9 @@ theorem ball_subset_compl_leftHull_of_forall_lt (hU : Continuous U) {z : ℂ} {�
       have hball' : ball x' (ρx / 2) ⊆ (leftHull U t')ᶜ := by
         refine fun y hy => hbefore t' ht'lt ?_
         rw [mem_ball, dist_eq_norm] at hy ⊢
-        have hxx' : ‖x' - x‖ < ρx / 28 := by rwa [mem_ball, dist_eq_norm] at hx'
+        have hxx' : ‖x' - x‖ < ρx / (2 * koebeN) := by rwa [mem_ball, dist_eq_norm] at hx'
+        have hρN : ρx / (2 * koebeN) ≤ ρx / 2 :=
+          div_le_div_of_nonneg_left hρxpos.le (by norm_num) (by linarith [one_lt_koebeN])
         have : ‖y - z‖ ≤ ‖y - x'‖ + ‖x' - x‖ + ‖x - z‖ := by
           calc ‖y - z‖ = ‖(y - x') + (x' - x) + (x - z)‖ := by congr 1; ring
             _ ≤ ‖(y - x') + (x' - x)‖ + ‖x - z‖ := norm_add_le _ _
@@ -269,7 +294,7 @@ theorem ball_subset_compl_leftHull_of_forall_lt (hU : Continuous U) {z : ℂ} {�
       have h1 := norm_fPath_sub_le_ninth hU (by positivity : (0 : ℝ) < ρx / 2) hball'
         (x := x') (w := x) (by
           rw [mem_ball, dist_eq_norm] at hx'
-          rw [norm_sub_rev]; linarith)
+          rw [norm_sub_rev, div_div]; linarith)
       have h2 : ‖fPath U hU x' t'‖ - ‖fPath U hU x t'‖ ≤ ‖fPath U hU x t' - fPath U hU x' t'‖ := by
         have := norm_sub_norm_le (fPath U hU x' t') (fPath U hU x t')
         rwa [norm_sub_rev] at this

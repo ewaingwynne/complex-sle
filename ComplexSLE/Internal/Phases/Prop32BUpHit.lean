@@ -31,7 +31,7 @@ Girsanov). Let `U` be an adapted `SLE_Σ` driver and `q(ξ) = P(StaysAway(U, ξ)
   openness of `Λ` is what makes this possible.)
 * `evProb_pos`: `q(z) > 0` for all `z ≠ 0` (scale invariance).
 
-Consumes the EXTERNALs `strongMarkov_sleDriver`, `koebe_quarter` and (through the polar layer)
+Consumes the EXTERNALs `strongMarkov_sleDriver` and (through the polar layer)
 `ito_formula`, `timeChange_isContLocalMartingale`.
 -/
 

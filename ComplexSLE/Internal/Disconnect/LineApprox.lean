@@ -110,7 +110,7 @@ every continuous driver `V` with `|V t| < η` on `[0, T]` satisfies:
 * for every `z ∉ L^V_T` at distance `≥ δ` from `slitI T`, `|f^V_T (z) - zeroMap T z| < δ`.
 
 (`zeroMap T` is `f⁰_T`, `slitI T = L⁰_T`, `slitR T = R⁰_T`: `leftHull_zero`, `rightHull_zero`,
-`centeredLoewnerMap_zero`.) Uses the EXTERNALs `loewnerMap_tendstoUniformly` and `koebe_quarter`. -/
+`centeredLoewnerMap_zero`.) Uses the EXTERNAL `loewnerMap_tendstoUniformly`. -/
 theorem lineApprox (T : ℝ≥0) (hT : 0 < T) (δ : ℝ) (hδ : 0 < δ) :
     ∃ η > 0, ∀ (V : ℝ≥0 → ℂ) (hV : Continuous V), (∀ t ≤ T, ‖V t‖ < η) →
       (∀ z ∈ leftHull V T, infDist z (slitI T) < δ) ∧

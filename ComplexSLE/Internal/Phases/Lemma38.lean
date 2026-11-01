@@ -18,7 +18,8 @@ point `𝐳 = e^{iu}`, see `Lemma38Admissible.lean`). With `z = e^{iu}` and `μ 
 * `lintegral_log_inv_distSigma_lt_top` and `integrable_log_inv_distSigma`:
   `∫ log (1 / dist(z, L_{σ_z(t̃)})) dμ < ∞` (the integrand is `≥ 0` a.e., `|z| = 1`, `0 ∈ L_t`).
 
-This follows from the geometric tail bound `P(dist(z, L_{σ_z(t̃)}) ≤ 16^{-k}) ≤ e^{t̃} r^k`
+This follows from the geometric tail bound `P(dist(z, L_{σ_z(t̃)}) ≤ lvl k) ≤ e^{t̃} r^k`
+(`lvl k = lvlBase^{-k}`, `lvlBase = 158`; the paper's `16^{-k}` for the sharp Koebe constant)
 (`tail_bound`, uniformly over unit `z`), which is proved by the paper's multi-scale argument with
 two repairs, reported in the handoff:
 
@@ -32,9 +33,10 @@ two repairs, reported in the handoff:
    `E[1_{τ_k ≤ θ} e^{-A(τ̂_k)}] ≤ r^k`, using only the conditional probability
    `P(V_k ∈ 𝒢 | ℱ_{τ̂_k}) = Λ(𝒢) ≥ 1/2` from the strong Markov property.
 
-The tacit "no swallowing jump at `τ_k`" (`dist(z, L_{τ_k}) ≥ 16^{-k}`) is proved
-(`ball_subset_compl_leftHull_of_forall_lt`). Uses the EXTERNALs `koebe_quarter` and
-`strongMarkov_sleDriver`; `koebe_distortion` is not needed.
+The tacit "no swallowing jump at `τ_k`" (`dist(z, L_{τ_k}) ≥ lvl k`) is proved
+(`ball_subset_compl_leftHull_of_forall_lt`). Uses the EXTERNAL `strongMarkov_sleDriver`; the Koebe
+step uses the proved covering constant `1/48` (`KoebeChainInv.lean`) and `koebe_distortion` is not
+needed.
 -/
 
 public section
@@ -46,14 +48,14 @@ namespace ComplexSLE.Internal
 
 open Polar
 
-/-- The elementary bound: for `d ∈ [0, 1]`, `log (1/d) ≤ log 16 · #{k | d ≤ 16^{-k}}`. -/
+/-- The elementary bound: for `d ∈ [0, 1]`, `log (1/d) ≤ log lvlBase · #{k | d ≤ lvl k}`. -/
 theorem ofReal_log_inv_le_tsum (d : ℝ) (hd0 : 0 ≤ d) (hd1 : d ≤ 1) (g : ℕ → ℝ≥0∞)
     (hg : ∀ k, d ≤ lvl k → g k = 1) :
-    ENNReal.ofReal (Real.log (1 / d)) ≤ ENNReal.ofReal (Real.log 16) * ∑' k, g k := by
+    ENNReal.ofReal (Real.log (1 / d)) ≤ ENNReal.ofReal (Real.log lvlBase) * ∑' k, g k := by
   rcases hd0.eq_or_lt with h | hpos
   · subst h; simp
-  · set L : ℝ := Real.log 16 with hL
-    have hLpos : 0 < L := Real.log_pos (by norm_num)
+  · set L : ℝ := Real.log lvlBase with hL
+    have hLpos : 0 < L := Real.log_pos one_lt_lvlBase
     set x : ℝ := Real.log (1 / d) with hx
     have hx0 : 0 ≤ x := by
       rw [hx]; apply Real.log_nonneg
@@ -77,7 +79,7 @@ theorem ofReal_log_inv_le_tsum (d : ℝ) (hd0 : 0 ≤ d) (hd1 : d ≤ 1) (g : �
       have := (Real.log_le_iff_le_exp hpos).1 hlog
       refine this.trans (le_of_eq ?_)
       unfold lvl
-      rw [Real.exp_neg, Real.exp_nat_mul, hL, Real.exp_log (by norm_num), one_div,
+      rw [Real.exp_neg, Real.exp_nat_mul, hL, Real.exp_log lvlBase_pos, one_div,
         inv_pow]
     calc ENNReal.ofReal x ≤ ENNReal.ofReal (L * ((n : ℝ) + 1)) := ENNReal.ofReal_le_ofReal h1.le
       _ = ENNReal.ofReal L * ∑ k ∈ Finset.range (n + 1), g k := by
@@ -132,7 +134,7 @@ theorem distSigma_le_one {p : Ω × ℝ} (hp : p ∈ goodSetAt hU tt) : distSigm
   calc _ ≤ dist (unitPt p.2) 0 := infDist_le_dist_of_mem hmem
     _ = 1 := by rw [dist_zero_right, norm_unitPt]
 
-/-- The level sets `E_k = {t̃ ∈ sigmaDom, dist(z, L_{σ_z(t̃)}) ≤ 16^{-k}}` are measurable. -/
+/-- The level sets `E_k = {t̃ ∈ sigmaDom, dist(z, L_{σ_z(t̃)}) ≤ lvl k}` are measurable. -/
 theorem measurableSet_level (k : ℕ) :
     MeasurableSet {p : Ω × ℝ | (tt : ℝ) ∈ sigmaDom (fun s => U s p.1) (hU.cont p.1) (unitPt p.2) ∧
       distSigma hU tt p ≤ lvl k} :=
@@ -173,21 +175,21 @@ theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
   set E : ℕ → Set (Ω × ℝ) := fun k => {p : Ω × ℝ | (tt : ℝ) ∈
     sigmaDom (fun s => U s p.1) (hU.cont p.1) (unitPt p.2) ∧ distSigma hU tt p ≤ lvl k} with hE
   have hpt : ∀ᵐ p ∂(P.prod ν), ENNReal.ofReal (Real.log (1 / distSigma hU tt p)) ≤
-      ENNReal.ofReal (Real.log 16) * ∑' k, (E k).indicator (fun _ => (1 : ℝ≥0∞)) p := by
+      ENNReal.ofReal (Real.log lvlBase) * ∑' k, (E k).indicator (fun _ => (1 : ℝ≥0∞)) p := by
     filter_upwards [ae_goodSetAt hU tt ha hc ν] with p hp
     refine ofReal_log_inv_le_tsum _ infDist_nonneg (distSigma_le_one hU tt hp) _ fun k hk => ?_
     exact Set.indicator_of_mem (show p ∈ E k from ⟨hp.1, hk⟩) _
   have hg : ∀ k, MeasurableSet (E k) := fun k => measurableSet_level hU tt k
   calc ∫⁻ p, ENNReal.ofReal (Real.log (1 / distSigma hU tt p)) ∂(P.prod ν)
-      ≤ ∫⁻ p, ENNReal.ofReal (Real.log 16) *
+      ≤ ∫⁻ p, ENNReal.ofReal (Real.log lvlBase) *
           ∑' k, (E k).indicator (fun _ => (1 : ℝ≥0∞)) p ∂(P.prod ν) := lintegral_mono_ae hpt
-    _ = ENNReal.ofReal (Real.log 16) * ∑' k, P.prod ν (E k) := by
+    _ = ENNReal.ofReal (Real.log lvlBase) * ∑' k, P.prod ν (E k) := by
         rw [lintegral_const_mul' _ _ ENNReal.ofReal_ne_top,
           lintegral_tsum fun k => (measurable_const.indicator (hg k)).aemeasurable]
         congr 1
         refine tsum_congr fun k => ?_
         rw [lintegral_indicator_const (hg k), one_mul]
-    _ ≤ ENNReal.ofReal (Real.log 16) * ∑' k : ℕ,
+    _ ≤ ENNReal.ofReal (Real.log lvlBase) * ∑' k : ℕ,
           ENNReal.ofReal (Real.exp tt) * ENNReal.ofReal r ^ k := by
         gcongr with k
         exact hmeas k
@@ -219,7 +221,7 @@ theorem integrable_log_inv_distSigma [IsProbabilityMeasure P] (ha : 0 < a) (hc :
     exact log_inv_distSigma_nonneg hU tt hp
 
 /-- **The distance `dist(z, L_{σ_z(t̃)})` is a.s. positive** (so the junk value `log (1/0) = 0`
-of the integrand is on a null set): `P ⊗ ν (dist ≤ 16^{-k}) → 0`. -/
+of the integrand is on a null set): `P ⊗ ν (dist ≤ lvl k) → 0`. -/
 theorem ae_distSigma_pos [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)
     (ν : Measure ℝ) [IsProbabilityMeasure ν] : ∀ᵐ p ∂(P.prod ν), 0 < distSigma hU tt p := by
   obtain ⟨r, hr0, hr1, hmeas⟩ := measure_level_le hU tt ha hc ν

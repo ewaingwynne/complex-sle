@@ -29,21 +29,24 @@ Assume `lim dist = 0` `μ`-a.s. Fix `t̃, s̃ ≥ 0`, `t = σ(t̃)`, `s = σ(s̃
 (`sigmaLogRatio`), `L = log(1/dist(𝐳, L_t))`.
 
 * `eqn-dist-3` (`ConverseChain.lean`, the deterministic Koebe chain): pointwise
-  `log X_s̃ - log dist(𝐳, L_{s+t}) ≤ 1_{E_s̃} R + 1_{E_s̃^c} L + log 16`.
-* `E_s̃` is replaced by the null-measurable event `F_s̃ = {X_s̃ ≤ |f_t'| dist(𝐳, L_t) / (4 |f_t|)}`
-  `⊆ E_s̃` (this avoids the measurability of `dist(f_t 𝐳, R_t)`), and on `F_s̃^c` the cruder bound
-  `log X_s̃ - log dist(𝐳, L_{s+t}) ≤ L + log 64` is used (`chain_sigma_le`).
-  Thus `log X_s̃ - log dist ≤ H_s̃ := 1_{F} (R + log 16) + 1_{F^c} (L + log 64)`.
+  `log X_s̃ - log dist(𝐳, L_{s+t}) ≤ 1_{E_s̃} R + 1_{E_s̃^c} L + koebeC`
+  (`koebeC = log (koebeK ^ 2)`, `koebeK = 48`, see `KoebeChainInv.lean`).
+* `E_s̃` is replaced by the null-measurable event
+  `F_s̃ = {X_s̃ ≤ |f_t'| dist(𝐳, L_t) / (koebeK |f_t|)}` `⊆ E_s̃` (this avoids the measurability
+  of `dist(f_t 𝐳, R_t)`), and on `F_s̃^c` the cruder bound
+  `log X_s̃ - log dist(𝐳, L_{s+t}) ≤ L + koebeC₃` (`koebeC₃ = log (koebeK ^ 3)`) is used
+  (`chain_sigma_le`).
+  Thus `log X_s̃ - log dist ≤ H_s̃ := 1_{F} (R + koebeC) + 1_{F^c} (L + koebeC₃)`.
 * Left side: by Lemma 3.9 (`integral_comp_lemma_3_9`), `E log X_s̃ = E log dist(𝐳, L_{σ(s̃)}) ≥
   E log dist(𝐳, L_{σ(s̃ + t̃)})`, all integrable by Lemma 3.10; so `E[LHS] ≥ 0`, hence `E H_s̃ ≥ 0`.
 * Right side: as `s̃ → ∞` the `μ`-a.s. assumption gives `1_{F_s̃} → 1`
   (`eventually_le_koebeBound`), and
-  `|H_s̃| ≤ |R| + |L| + log 64` is integrable (Lemma 3.7 mean, `integrable_sigmaLogRatio`), so by
-  dominated convergence `E H_s̃ → E R + log 16 = -t̃ (II) + log 16` (`integral_sigmaLogRatio`).
-* So `t̃ (II) ≤ log 16` for all `t̃`, contradicting `(II) > 0`.
+  `|H_s̃| ≤ |R| + |L| + koebeC₃` is integrable (Lemma 3.7 mean, `integrable_sigmaLogRatio`), so by
+  dominated convergence `E H_s̃ → E R + koebeC = -t̃ (II) + koebeC` (`integral_sigmaLogRatio`).
+* So `t̃ (II) ≤ koebeC` for all `t̃`, contradicting `(II) > 0`.
 
 The proof consumes the EXTERNALs consumed by Lemmas 3.9, 3.7 and 3.10 and by `koebe_chain`
-(`koebe_quarter`, `strongMarkov_sleDriver`, `hormander_oneDim`, `ito_formula`,
+(`strongMarkov_sleDriver`, `hormander_oneDim`, `ito_formula`,
 `timeChange_isContLocalMartingale`, `markov_oneDim`). Lemma 3.10 is taken from
 `Lemma38Admissible.lean`.
 -/
@@ -56,6 +59,7 @@ open Set Metric MeasureTheory ProbabilityTheory Filter
 namespace ComplexSLE.Internal
 
 open Polar
+open KoebeChain (koebeC koebeC_nonneg)
 
 variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration ℝ≥0 m} {a b c : ℝ}
   {U : ℝ≥0 → Ω → ℂ}
@@ -63,7 +67,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 /-! ### The Koebe bound along the driver, and measurability -/
 
 /-- The threshold of the event `F_s̃` along the random point:
-`|f_t'(𝐳)| dist(𝐳, L_t) / (4 |f_t(𝐳)|)` at `t = σ_𝐳(t̃)`. -/
+`|f_t'(𝐳)| dist(𝐳, L_t) / (koebeK |f_t(𝐳)|)` at `t = σ_𝐳(t̃)`. -/
 @[expose] noncomputable def koebeBoundRV (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0)
     (q : Ω × ℝ) : ℝ :=
   koebeBound (fun r => U r q.1) (hU.cont q.1) (unitPt q.2) tt
@@ -74,7 +78,8 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 theorem koebeBoundRV_eq (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0) (q : Ω × ℝ) :
     koebeBoundRV hU tt q =
-      Real.exp (sigmaLogRatio hU (unitPt q.2) tt q.1) * distSigma hU tt q / 4 := rfl
+      Real.exp (sigmaLogRatio hU (unitPt q.2) tt q.1) * distSigma hU tt q / KoebeChain.koebeK :=
+  rfl
 
 /-- On the good set `σ_𝐳` is defined on all of `[0, ∞)`. -/
 theorem sigmaDom_eq_Ici_of_mem_goodSet (hU : IsSLEDriverAdapted a b c U P ℱ) {q : Ω × ℝ}
@@ -99,7 +104,7 @@ theorem aestronglyMeasurable_koebeBoundRV [IsProbabilityMeasure P] (hMO : Markov
   have hν := isProbabilityMeasure_admissibleMeasure hp
   have hR := (aestronglyMeasurable_sigmaLogRatio hMO hU ha hb hc hp tt).aemeasurable
   have hD := aemeasurable_distSigma hU ha hc (ν := admissibleMeasure p) tt
-  exact ((Real.measurable_exp.comp_aemeasurable hR).mul hD).div_const 4
+  exact ((Real.measurable_exp.comp_aemeasurable hR).mul hD).div_const KoebeChain.koebeK
 
 theorem nullMeasurableSet_eventF [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -113,33 +118,33 @@ theorem nullMeasurableSet_eventF [IsProbabilityMeasure P] (hMO : MarkovOneDim)
 
 /-! ### The pointwise bound -/
 
-/-- `H_s̃ = 1_{F_s̃} (R + log 16) + 1_{F_s̃^c} (L + log 64)`, the integrable majorant of
+/-- `H_s̃ = 1_{F_s̃} (R + koebeC) + 1_{F_s̃^c} (L + koebeC₃)`, the integrable majorant of
 `log X_s̃ - log dist(𝐳, L_{σ(s̃ + t̃)})`. -/
 @[expose] noncomputable def boundH (hU : IsSLEDriverAdapted a b c U P ℱ) (tt ss : ℝ≥0)
     (q : Ω × ℝ) : ℝ :=
   (eventF hU tt ss).indicator
-      (fun q => sigmaLogRatio hU (unitPt q.2) tt q.1 + Real.log 16) q +
+      (fun q => sigmaLogRatio hU (unitPt q.2) tt q.1 + koebeC) q +
     (eventF hU tt ss)ᶜ.indicator
-      (fun q => Real.log (1 / distSigma hU tt q) + Real.log 64) q
+      (fun q => Real.log (1 / distSigma hU tt q) + koebeC₃) q
 
-/-- `|H_s̃| ≤ |R| + |L| + log 64`. -/
+/-- `|H_s̃| ≤ |R| + |L| + koebeC₃`. -/
 theorem abs_boundH_le (hU : IsSLEDriverAdapted a b c U P ℱ) (tt ss : ℝ≥0) (q : Ω × ℝ) :
     |boundH hU tt ss q| ≤ |sigmaLogRatio hU (unitPt q.2) tt q.1| +
-      |Real.log (1 / distSigma hU tt q)| + Real.log 64 := by
-  have h16 : 0 ≤ Real.log 16 := Real.log_nonneg (by norm_num)
-  have h64 : 0 ≤ Real.log 64 := Real.log_nonneg (by norm_num)
-  have h1664 : Real.log 16 ≤ Real.log 64 := Real.log_le_log (by norm_num) (by norm_num)
+      |Real.log (1 / distSigma hU tt q)| + koebeC₃ := by
+  have h16 : 0 ≤ koebeC := koebeC_nonneg
+  have h64 : 0 ≤ koebeC₃ := koebeC₃_nonneg
+  have h1664 : koebeC ≤ koebeC₃ := koebeC_le_koebeC₃
   have hR := abs_nonneg (sigmaLogRatio hU (unitPt q.2) tt q.1)
   have hL := abs_nonneg (Real.log (1 / distSigma hU tt q))
   unfold boundH
   by_cases hF : q ∈ eventF hU tt ss
   · rw [Set.indicator_of_mem hF, Set.indicator_of_notMem (by simpa using hF), add_zero]
-    calc |sigmaLogRatio hU (unitPt q.2) tt q.1 + Real.log 16|
-        ≤ |sigmaLogRatio hU (unitPt q.2) tt q.1| + |Real.log 16| := abs_add_le _ _
+    calc |sigmaLogRatio hU (unitPt q.2) tt q.1 + koebeC|
+        ≤ |sigmaLogRatio hU (unitPt q.2) tt q.1| + |koebeC| := abs_add_le _ _
       _ ≤ _ := by rw [abs_of_nonneg h16]; linarith
   · rw [Set.indicator_of_notMem hF, Set.indicator_of_mem (by simpa using hF), zero_add]
-    calc |Real.log (1 / distSigma hU tt q) + Real.log 64|
-        ≤ |Real.log (1 / distSigma hU tt q)| + |Real.log 64| := abs_add_le _ _
+    calc |Real.log (1 / distSigma hU tt q) + koebeC₃|
+        ≤ |Real.log (1 / distSigma hU tt q)| + |koebeC₃| := abs_add_le _ _
       _ ≤ _ := by rw [abs_of_nonneg h64]; linarith
 
 /-- **`eqn-dist-3` majorization**: on the good set, for all `t̃, s̃`,
@@ -239,10 +244,10 @@ theorem aestronglyMeasurable_boundH (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
     ((hL.add aestronglyMeasurable_const).indicator₀ hFn.compl)
 
 include ha hb hc hp in
-/-- The dominating function `|R| + |L| + log 64` is integrable (Lemmas 3.7 and 3.10). -/
+/-- The dominating function `|R| + |L| + koebeC₃` is integrable (Lemmas 3.7 and 3.10). -/
 theorem integrable_boundH_bound (hMO : MarkovOneDim) (tt : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => |sigmaLogRatio hU (unitPt q.2) tt q.1| +
-      |Real.log (1 / distSigma hU tt q)| + Real.log 64) (P.prod (admissibleMeasure p)) := by
+      |Real.log (1 / distSigma hU tt q)| + koebeC₃) (P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
   exact ((integrable_sigmaLogRatio hMO hU ha hb hc hp tt).abs.add
     (integrable_log_inv_distSigma_admissible hU ha hc hp tt).abs).add
@@ -270,13 +275,13 @@ theorem integral_boundH_nonneg (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
 
 include ha hb hc hp in
 /-- **Step 2, the limit `s̃ → ∞`** (dominated convergence): under the a.s. assumption
-`lim_{t → T_𝐳} dist(𝐳, L_t) = 0` (R14 ε-form), `E H_s̃ → E (R + log 16)`. -/
+`lim_{t → T_𝐳} dist(𝐳, L_t) = 0` (R14 ε-form), `E H_s̃ → E (R + koebeC)`. -/
 theorem tendsto_integral_boundH (hMO : MarkovOneDim)
     (hlim : ∀ᵐ q ∂(P.prod (admissibleMeasure p)), ∀ ε > 0, ∃ t : ℝ≥0,
       (t : ℝ≥0∞) < absorbingTime (fun s => U s q.1) (unitPt q.2) ∧
         infDist (unitPt q.2) (leftHull (fun s => U s q.1) t) < ε) (tt : ℝ≥0) :
     Tendsto (fun ss : ℝ≥0 => ∫ q, boundH hU tt ss q ∂(P.prod (admissibleMeasure p))) atTop
-      (𝓝 (∫ q, (sigmaLogRatio hU (unitPt q.2) tt q.1 + Real.log 16)
+      (𝓝 (∫ q, (sigmaLogRatio hU (unitPt q.2) tt q.1 + koebeC)
         ∂(P.prod (admissibleMeasure p)))) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
   refine tendsto_integral_filter_of_dominated_convergence _
@@ -294,12 +299,12 @@ theorem tendsto_integral_boundH (hMO : MarkovOneDim)
   rw [Set.indicator_of_mem hF, Set.indicator_of_notMem (by simpa using hF), add_zero]
 
 include hU ha hb hc hp in
-/-- **Step 2, conclusion**: under the a.s. assumption, `0 ≤ -t̃ (II) + log 16` for every `t̃`. -/
+/-- **Step 2, conclusion**: under the a.s. assumption, `0 ≤ -t̃ (II) + koebeC` for every `t̃`. -/
 theorem le_log_of_ae_hull_approach (hMO : MarkovOneDim)
     (hlim : ∀ᵐ q ∂(P.prod (admissibleMeasure p)), ∀ ε > 0, ∃ t : ℝ≥0,
       (t : ℝ≥0∞) < absorbingTime (fun s => U s q.1) (unitPt q.2) ∧
         infDist (unitPt q.2) (leftHull (fun s => U s q.1) t) < ε) (tt : ℝ≥0) :
-    0 ≤ -(tt * integralII a b c p) + Real.log 16 := by
+    0 ≤ -(tt * integralII a b c p) + koebeC := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
   have h := ge_of_tendsto' (tendsto_integral_boundH hU ha hb hc hp hMO hlim tt)
     (integral_boundH_nonneg hU ha hb hc hp hMO tt)
@@ -329,7 +334,7 @@ theorem converse_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with q hq
     push Not at hq
     exact hq
-  obtain ⟨n, hn⟩ := exists_nat_gt (Real.log 16 / integralII a b c p)
+  obtain ⟨n, hn⟩ := exists_nat_gt (koebeC / integralII a b c p)
   have key := le_log_of_ae_hull_approach hU ha hb hc hp hMO hlim (n : ℝ≥0)
   rw [div_lt_iff₀ hII] at hn
   simp only [NNReal.coe_natCast] at key
