@@ -21,7 +21,7 @@ variables `integral_comp_sigmaTime` gives (2.27) in integrated form,
 
 Probabilistic layer, for an adapted `SLE_Σ` driver: combined with the martingale form of (2.26)
 (`sigmaLogMart`, `isContLocalMartingale_sigmaLogMart`) this yields the decomposition
-(`eqn-sde-ratio`, paper.tex:L1437-1440) that Lemma 3.3 (`lem-integral-ii`) and the `c = 0`
+(`eqn-sde-ratio`, paper.tex:L1437-1440) that Lemma 3.7 (`lem-integral-ii`) and the `c = 0`
 boundary lemma (`lem-c0-bdy`) consume:
 
   `log(|f̂'_s|/|f̂_s|) = -log|f̂_0| - ∫₀ˢ (ν(θ̂_v) + 2 cos 2θ̂_v) dv - sigmaLogMart_s`
@@ -100,7 +100,7 @@ integral (II) evaluated along `θ̂`. -/
 @[expose] noncomputable def sigmaLogNorm (s : ℝ≥0) (ω : Ω) : ℝ :=
   Real.log ‖fPath (fun r => U r ω) (hU.cont ω) z (sigmaTime (fun r => U r ω) (hU.cont ω) z s)‖
 
-/-- **`log(|f̂'_s(z)| / |f̂_s(z)|)`**, the process of Lemma 3.3 (junk off `sigmaDom`). -/
+/-- **`log(|f̂'_s(z)| / |f̂_s(z)|)`**, the process of Lemma 3.7 (junk off `sigmaDom`). -/
 @[expose] noncomputable def sigmaLogRatio (s : ℝ≥0) (ω : Ω) : ℝ :=
   sigmaLogDeriv hU z s ω - sigmaLogNorm hU z s ω
 

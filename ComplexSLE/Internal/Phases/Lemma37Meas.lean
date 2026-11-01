@@ -9,9 +9,9 @@ public import ComplexSLE.Internal.Phases.EventMeasDist
 public import ComplexSLE.Internal.Stationary.PathStatMeas
 
 /-!
-# Lemma 3.7, measurability on the canonical path space (M7/E1)
+# Lemma 3.9, measurability on the canonical path space (M7/E1)
 
-The two sides of Lemma 3.7 (`futureDistRatio`, `hullDist`, `Lemma37Hull.lean`) are evaluated at the
+The two sides of Lemma 3.9 (`futureDistRatio`, `hullDist`, `Lemma37Hull.lean`) are evaluated at the
 random time `σ_z(s̃)` of the hull, so their measurability in (driver path, direction) needs
 
 * **right continuity of the hull distance in time** (`tendsto_infDist_leftHull`): if `t_n → t` with
@@ -27,7 +27,7 @@ random time `σ_z(s̃)` of the hull, so their measurability in (driver path, dir
   `sigmaTop`.
 
 Consequently `hullDistC s̃ v z = dist(z, L_{σ_z(s̃)}(v))` is jointly measurable in `(v, e^{iu})`
-(`measurable_hullDistC_unit`), and the left side of Lemma 3.7 agrees with a jointly measurable
+(`measurable_hullDistC_unit`), and the left side of Lemma 3.9 agrees with a jointly measurable
 function on the event that `σ_z` is defined at `t̃` and `t̃ + s̃`
 (`exists_measurable_futureDistRatio`).
 -/
@@ -269,7 +269,7 @@ theorem measurable_hullDistC_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (ss : 
 
 end Meas
 
-/-! ### The left side of Lemma 3.7 as a measurable function -/
+/-! ### The left side of Lemma 3.9 as a measurable function -/
 
 /-- The time shift `v ↦ v(· + t) - v(t)` of a continuous path. -/
 def CPath.shift (v : CPath) (t : ℝ≥0) : CPath :=
@@ -284,7 +284,7 @@ theorem CPath.measurable_shift : Measurable fun p : CPath × ℝ≥0 => CPath.sh
     CPath.measurable_eval_uncurry.comp (measurable_snd.prodMk measurable_fst)
   exact h1.sub h2
 
-/-- A measurable representative of the left side of Lemma 3.7:
+/-- A measurable representative of the left side of Lemma 3.9:
 `dist(f̂, L^{shift}_{(σ(s̃ + t̃) - σ(t̃))}) / |f̂|` written through `θ̂`, `log |f̂|` and `σ`. -/
 noncomputable def futureDistRatioC (tt ss : ℝ≥0) (v : CPath) (z : ℂ) : ℝ :=
   infDist (Complex.exp ((logfC tt v z : ℝ) + (thetaC tt v z : ℝ) * Complex.I))
@@ -318,7 +318,7 @@ section Meas2
 variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration ℝ≥0 m} {a b c : ℝ}
   {U : ℝ≥0 → Ω → ℂ}
 
-/-- **Joint measurability of the representative of the left side of Lemma 3.7.** -/
+/-- **Joint measurability of the representative of the left side of Lemma 3.9.** -/
 theorem measurable_futureDistRatioC_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (tt ss : ℝ≥0) :
     Measurable fun q : CPath × ℝ => futureDistRatioC tt ss q.1 (unitPt q.2) := by
   have hlog := measurable_logfC_unit hU tt

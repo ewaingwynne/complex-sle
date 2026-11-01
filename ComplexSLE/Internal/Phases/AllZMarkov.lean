@@ -11,12 +11,12 @@ public import Mathlib.Probability.Independence.Basic
 public import Mathlib.MeasureTheory.Measure.Prod
 
 /-!
-# The strong Markov step of Lemma 3.2
+# The strong Markov step of Lemma 3.3
 
 For an adapted `SLE_Σ` driver `U` and an a.s. finite `ℱ`-stopping time `τ`, the post-`τ` driver
 `V_s = U_{τ+s} - U_τ` (`postDriver`) is again an `SLE_Σ` driver, independent of `ℱ_τ`
 (`External.strongMarkov_sleDriver`, EXTERNAL E3). Combined with the uniqueness of the path law
-(`AllZDriverLaw.lean`) this gives the conditional form used in the proof of Lemma 3.2
+(`AllZDriverLaw.lean`) this gives the conditional form used in the proof of Lemma 3.3
 (paper.tex:L1315-1318, "the conditional law of this latter Loewner chain given `(f_t)_{t ≤ τ}` is
 the same as the law of `(f_t)_{t ≥ 0}`"):
 
@@ -63,7 +63,7 @@ theorem continuous_postDriver (hU : IsSLEDriverAdapted a b c U P ℱ) (τ : Ω �
   unfold postDriver
   exact ((hU.cont ω).comp (continuous_const.add continuous_id)).sub continuous_const
 
-/-- **Conditional form of the strong Markov property** (for the proof of Lemma 3.2). -/
+/-- **Conditional form of the strong Markov property** (for the proof of Lemma 3.3). -/
 theorem ae_mem_postDriver (hU : IsSLEDriverAdapted a b c U P ℱ) {τ : Ω → WithTop ℝ≥0}
     (hτ : IsStoppingTime ℱ τ) (hfin : ∀ᵐ ω ∂P, τ ω ≠ ⊤) {X : Ω → ℂ}
     (hX : Measurable[hτ.measurableSpace] X) {M : Set ((ℝ≥0 → ℂ) × ℂ)} (hM : MeasurableSet M)

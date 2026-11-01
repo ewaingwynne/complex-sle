@@ -14,8 +14,8 @@ import ComplexSLE.Internal.Phases.Prop32A
 # Provider for `ComplexSLE.proposition_3_2_a`
 
 Implementation module for the frozen anchor `ComplexSLE/Frozen/Proposition_3_2_A.lean`. The anchor is SEALED: it is
-proved by `Internal.proposition_3_2_a_main` (`Internal/Phases/Prop32A.lean`: Lemma 3.6 ratio limit, the Koebe hitting
-bound, Lemma 3.2) with the EXTERNAL `markov_oneDim` (ERRATA.md R29).
+proved by `Internal.proposition_3_2_a_main` (`Internal/Phases/Prop32A.lean`: Lemma 3.7 ratio limit, the Koebe hitting
+bound, Lemma 3.3) with the EXTERNAL `markov_oneDim` (ERRATA.md R29).
 -/
 
 public section

@@ -17,7 +17,7 @@ import ComplexSLE.External.MarkovOneDim
 Implementation module for the frozen anchor `ComplexSLE/Frozen/Proposition_3_1_A.lean`. The anchor
 is SEALED: it is
 proved here from `Internal.proposition_3_1_a_of_markov` (`Internal/Phases/Prop31A.lean`; Lemmas
-3.2, 3.3, 3.5) with the
+3.3, 3.4, 3.6) with the
 EXTERNAL `markov_oneDim` (ERRATA.md R29).
 -/
 

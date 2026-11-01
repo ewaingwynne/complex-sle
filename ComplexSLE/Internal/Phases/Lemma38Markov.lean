@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Stationary.PathStatMarkov
 public import ComplexSLE.Internal.Polar.PolarSigmaTop
 
 /-!
-# Lemma 3.8, the stopping times and the strong Markov step (M7/E2)
+# Lemma 3.10, the stopping times and the strong Markov step (M7/E2)
 
 Fix an adapted `SLE_Σ` driver `U`, a point `z`, a level `t̃` and put `θ = σ_z(t̃)`
 (`sigmaTop`, an a.s. finite stopping time). For `k : ℕ` let

@@ -1,6 +1,6 @@
 # M7 / E3 — Step 3 of the proof of lem-converse-w-o-upgrade: the Koebe chain (3.17)–(3.28) (prover brief, Sonnet)
 
-Source: source/arxiv-2203.07313v4/complex-sle-final.tex, proof of Lemma 3.9 (lem-converse-w-o-upgrade), Step 1 setup L1655-1670 and
+Source: source/arxiv-2203.07313v4/complex-sle-final.tex, proof of Lemma 3.8 (lem-converse-w-o-upgrade), Step 1 setup L1655-1670 and
 Step 3 L1700-1785 (eqn-dist-event, eqn-two-formulas, eqn-two-formulas-b, eqn-two-dist-ratio, eqn-koebe-t, eqn-dist-1, eqn-dist-cases,
 eqn-koebe-union, eqn-dist-es, eqn-dist-2, eqn-dist-esc; graph steps step:hulls-compact, step:future-point-outside-hulls,
 step:zero-in-future-left-hull, step:converse-event-converges — several are SOURCE_GAP in DEPGRAPH.md; read those records).

@@ -10,7 +10,7 @@ public import ComplexSLE.Internal.Polar.PolarItoState
 public import ComplexSLE.Internal.Polar.PolarTimeSigma
 
 /-!
-# Lemma 3.8, adaptedness (M7/E2)
+# Lemma 3.10, adaptedness (M7/E2)
 
 For an adapted driver `U` (continuous paths) and a point `z`:
 

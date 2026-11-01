@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Phases.Lemma38Markov
 
 /-!
-# Lemma 3.8, the pathwise one-step inequality (M7/E2)
+# Lemma 3.10, the pathwise one-step inequality (M7/E2)
 
 Fix an adapted driver `U` with `U 0 = 0`, a unit point `z`, `t̃` and `u₀ < 1/64`, `q = u₀/4`,
 `κ = 1 - e^{-q}`. On a path with `σ_z` defined on `[0, ∞)` (a.s., Remark 2.12), put

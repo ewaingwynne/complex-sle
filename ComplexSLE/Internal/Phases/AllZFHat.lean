@@ -19,7 +19,7 @@ public import ComplexSLE.Internal.Polar.PolarThetaHat
 * `fHat_eq_fPath`: on `{s ∈ sigmaDom}`, `fHat s = f_{σ_z(s)}(z)`.
 
 It is the random value `f_τ(z)` at the stopping time `τ = σ_z(s)` used in the strong Markov step
-of Lemma 3.2.
+of Lemma 3.3.
 -/
 
 public section

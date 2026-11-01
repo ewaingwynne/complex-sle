@@ -8,7 +8,7 @@ public import ComplexSLE.Internal.Hull.EndpointCont
 public import ComplexSLE.Internal.Polar.Sigma
 
 /-!
-# Lemma 3.5 (`lem-swallow-distance`) in σ-time: deterministic part (M7/C1)
+# Lemma 3.6 (`lem-swallow-distance`) in σ-time: deterministic part (M7/C1)
 
 Source: paper.tex:L1389-1398. For a continuous driver `U` and a point `z` with
 `sigmaDom = [0, ∞)` (`clockSup = ∞`, a.s. by Remark 2.12) and `T_z < ∞`,
@@ -66,7 +66,7 @@ theorem tendsto_sigmaTime_nhdsWithin (hU : Continuous U) {z : ℂ}
       exact lt_trans this.2 hb
   · filter_upwards [eventually_ge_atTop (0 : ℝ)] with s hs using hmem s hs
 
-/-- **Lemma 3.5** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
+/-- **Lemma 3.6** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
 continuous driver `U` and `z` with `sigmaDom = [0, ∞)` and `T_z < ∞`, `|f̂_s(z)| → 0` as
 `s → ∞`. -/
 theorem tendsto_norm_fPath_sigmaTime (hU : Continuous U) {z : ℂ}
@@ -74,7 +74,7 @@ theorem tendsto_norm_fPath_sigmaTime (hU : Continuous U) {z : ℂ}
     Tendsto (fun s : ℝ => ‖fPath U hU z (sigmaTime U hU z s)‖) atTop (𝓝 0) :=
   (tendsto_norm_fPath_nhdsWithin hU hT).comp (tendsto_sigmaTime_nhdsWithin hU hdom hT)
 
-/-- **Lemma 3.5** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
+/-- **Lemma 3.6** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
 continuous driver `U` and `z` with `sigmaDom = [0, ∞)` and `T_z < ∞`, `log|f̂_s(z)| → -∞` as
 `s → ∞`, where `f̂_s(z) = f_{σ_z(s)}(z)`. -/
 theorem tendsto_log_norm_fPath_sigmaTime (hU : Continuous U) {z : ℂ}

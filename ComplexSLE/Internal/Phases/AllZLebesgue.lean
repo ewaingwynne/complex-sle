@@ -10,7 +10,7 @@ public import Mathlib.MeasureTheory.Group.Measure
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 
 /-!
-# The law of `arg 𝐳` and its null sets (Lemma 3.2, first step)
+# The law of `arg 𝐳` and its null sets (Lemma 3.3, first step)
 
 Section 3 of the paper samples `𝐳` on the unit circle with `arg 𝐳` having density
 `p(u) 1_{[0,2π]}(u)` (paper.tex:L939, L1255). For an admissible density `p`:

@@ -20,7 +20,7 @@ R14 `ε`-form is
 
   `𝓔(z) = {∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε}`.
 
-Both algebraic hypotheses of Lemma 3.2 hold pathwise for every continuous driver:
+Both algebraic hypotheses of Lemma 3.3 hold pathwise for every continuous driver:
 
 * `scaleInvariantEvents_hull_approach`: `T_{rz}(r u(·/r²)) = r² T_z(u)`
   (`absorbingTime_scale`) and `L_t(r u(·/r²)) = r L_{t/r²}(u)` (`leftHull_scale`), and the

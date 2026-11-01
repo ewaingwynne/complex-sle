@@ -10,7 +10,7 @@ public import ComplexSLE.Internal.Phases.KoebeHitSigma
 public import ComplexSLE.Frozen.Defs.IntegralII
 
 /-!
-# Lemma 3.6: the limit of `log(|f̂'_s|/|f̂_s|) / s` and the fibrewise `ε`-form (M7/D2)
+# Lemma 3.7: the limit of `log(|f̂'_s|/|f̂_s|) / s` and the fibrewise `ε`-form (M7/D2)
 
 Source: paper.tex:L1430-1455 (`lem-integral-ii`). On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`,
 let `R_s = log(|f̂'_s(e^{iu})| / |f̂_s(e^{iu})|)` (`sigmaLogRatio`). By (2.27) in σ-time
@@ -83,7 +83,7 @@ theorem sigmaLogRatio_eq_cos_sub_logFHat {q : Ω × ℝ} (hq : q ∈ goodSet hU)
 
 variable [IsProbabilityMeasure P]
 
-/-- **Lemma 3.6 (`lem-integral-ii`): `R_s / s → -(II)`** (paper.tex:L1430-1455). Under
+/-- **Lemma 3.7 (`lem-integral-ii`): `R_s / s → -(II)`** (paper.tex:L1430-1455). Under
 `hMO : MarkovOneDim`: `P ⊗ ν`-a.s.,
 `log(|f̂'_s(e^{iu})| / |f̂_s(e^{iu})|) / s → -(II)` as `s → ∞` along `ℝ≥0`. -/
 theorem ae_tendsto_sigmaLogRatio_div (hMO : MarkovOneDim) (ha : 0 < a) (hb : 0 < b)
@@ -105,7 +105,7 @@ theorem ae_tendsto_sigmaLogRatio_div (hMO : MarkovOneDim) (ha : 0 < a) (hb : 0 <
 
 include hU in
 /-- **Proposition 3.2(a) at the unit points.** If `(II) < 0` then for `ν`-a.e. `u`, almost surely
-`∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` at `z = e^{iu}`. (Lemma 3.6: `R_s / s → -(II) > 0`, so
+`∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` at `z = e^{iu}`. (Lemma 3.7: `R_s / s → -(II) > 0`, so
 `R_s → +∞`; the Koebe hitting bound in σ-time turns this into the `ε`-form.) -/
 theorem ae_ae_hull_approach (hMO : MarkovOneDim) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hII : integralII a b c p < 0) :

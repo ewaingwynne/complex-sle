@@ -11,7 +11,7 @@ public import ComplexSLE.Internal.Phases.AllZLebesgue
 public import ComplexSLE.Internal.Polar.PolarSigmaTop
 
 /-!
-# Lemma 3.2 (`lem-all-z`): from the random point `𝐳` to every `z`
+# Lemma 3.3 (`lem-all-z`): from the random point `𝐳` to every `z`
 
 Source: paper.tex:L1294-1325. Let `{𝓔(z)}` be an event family with scale invariance and future
 dependence (`ScaleInvariantEvents`, `FutureDependentEvents`, measurable in the sense of
@@ -28,7 +28,7 @@ independent of the driver, then `P(𝓔(z)) = 1` for every `z ≠ 0`.
   and the equality of laws it suffices that `f_τ(z)/|f_τ(z)| = e^{iθ̂_1(z)}` lie in the set `Λ` of
   good unit points. `θ̂_1(z)` has a Lebesgue density (EXTERNAL `hormander_oneDim`,
   `map_thetaHat_absolutelyContinuous`), and `Λ` is conull, so `e^{iθ̂_1} ∈ Λ` a.s.
-* `lemma_3_2`: the statement with the product extension: `P(𝓔(𝐳)) = 1` for `𝐳` on
+* `lemma_3_3`: the statement with the product extension: `P(𝓔(𝐳)) = 1` for `𝐳` on
   `Ω × ℝ` with measure `P.prod (admissibleLaw p)`, together with the positivity of the admissible
   density (`IsAdmissibleDensity.ae_pos`), gives `P(𝓔(z)) = 1` for every `z ≠ 0`.
 
@@ -48,7 +48,7 @@ section Core
 variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration ℝ≥0 m}
   {a b c : ℝ} {U : ℝ≥0 → Ω → ℂ}
 
-/-- **Core of Lemma 3.2.** For an adapted `SLE_Σ` driver and an event family `E` (scale
+/-- **Core of Lemma 3.3.** For an adapted `SLE_Σ` driver and an event family `E` (scale
 invariant, future dependent, measurable section `M`): if for Lebesgue-a.e. `u ∈ ℝ` the event holds
 a.s. at the unit point `e^{iu}`, then it holds a.s. at every `z ≠ 0`. -/
 theorem ae_mem_of_ae_unit [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -130,13 +130,13 @@ section Main
 
 variable {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} {a b c : ℝ} {U : ℝ≥0 → Ω → ℂ}
 
-/-- **Lemma 3.2 (`lem-all-z`)** (paper.tex:L1294-1325). Let `a, b > 0`, `c² ≤ ab`, `U` an `SLE_Σ`
+/-- **Lemma 3.3 (`lem-all-z`)** (paper.tex:L1294-1325). Let `a, b > 0`, `c² ≤ ab`, `U` an `SLE_Σ`
 driver on an arbitrary probability space and `p` an admissible density. Let `E` be an event family
 (a predicate of a continuous driver path and a point) that is scale invariant, future dependent
 and measurable (`ScaleInvariantEvents`, `FutureDependentEvents`, `MeasurableEvents`). If
 `P(𝓔(𝐳)) = 1` for the random point `𝐳 = e^{i𝐮}` of the product extension `Ω × ℝ` with
 `𝐮 ∼ p 1_{[0,2π]} du` independent of the driver, then `P(𝓔(z)) = 1` for every `z ≠ 0`. -/
-theorem lemma_3_2 (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
+theorem lemma_3_3 (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     (hU : IsSLEDriver a b c U P) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p)
     {E : (ℝ≥0 → ℂ) → ℂ → Prop} (hEm : MeasurableEvents E) (hEs : ScaleInvariantEvents E)
     (hEf : FutureDependentEvents E)

@@ -11,9 +11,9 @@ public import ComplexSLE.Internal.Loewner.MapTransform
 public import ComplexSLE.Internal.Driver.BridgeAdapted
 
 /-!
-# Event families for Lemma 3.2 (`lem-all-z`)
+# Event families for Lemma 3.3 (`lem-all-z`)
 
-The hypotheses of Lemma 3.2 (paper.tex:L1294-1302) on a collection of events
+The hypotheses of Lemma 3.3 (paper.tex:L1294-1302) on a collection of events
 `{𝓔(z)}_{z ∈ ℂ∖{0}}` of the `SLE_Σ` process, formalised as a predicate `E u z` on a (driver path,
 point) pair, "pathwise for continuous drivers":
 
@@ -45,13 +45,13 @@ open MeasureTheory ProbabilityTheory Filter Set
 
 namespace ComplexSLE.Internal
 
-/-- **Scale invariance** of an event family (Lemma 3.2, paper.tex:L1297), pathwise for continuous
+/-- **Scale invariance** of an event family (Lemma 3.3, paper.tex:L1297), pathwise for continuous
 drivers. -/
 def ScaleInvariantEvents (E : (ℝ≥0 → ℂ) → ℂ → Prop) : Prop :=
   ∀ u : ℝ≥0 → ℂ, Continuous u → ∀ r : ℝ≥0, 0 < r → ∀ z : ℂ,
     E u z ↔ E (fun s => (r : ℂ) * u (s / r ^ 2)) ((r : ℂ) * z)
 
-/-- **Future dependence** of an event family (Lemma 3.2, paper.tex:L1298), pathwise for
+/-- **Future dependence** of an event family (Lemma 3.3, paper.tex:L1298), pathwise for
 continuous drivers: for `z ∉ L_s`, `E(z)` occurs iff `E(f_s(z))` occurs for the chain driven by
 `u(· + s) - u s`. -/
 def FutureDependentEvents (E : (ℝ≥0 → ℂ) → ℂ → Prop) : Prop :=

@@ -14,7 +14,7 @@ public import Mathlib.Analysis.Calculus.MeanValue
 /-!
 # An admissible density vanishes only on a countable set
 
-Part 1 of Lemma 3.2 (`lem-all-z`, paper.tex:L1294-1325): the proof begins with "the density
+Part 1 of Lemma 3.3 (`lem-all-z`, paper.tex:L1294-1325): the proof begins with "the density
 `p 1_{[0,2π]}` of the law of `arg 𝐳` is non-zero on `[0, 2π]` except possibly on a discrete set";
 Lemma 2.14 does not state this (ERRATA: "an admissible `p` vanishes only on a null set").
 

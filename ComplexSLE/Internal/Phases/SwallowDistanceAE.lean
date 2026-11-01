@@ -10,10 +10,10 @@ public import ComplexSLE.Internal.Polar.PolarDerivSigma
 public import ComplexSLE.Internal.Polar.PolarSigmaTop
 
 /-!
-# Lemma 3.5 and the Proposition 3.1(b) comparison, almost surely (M7/C1)
+# Lemma 3.6 and the Proposition 3.1(b) comparison, almost surely (M7/C1)
 
 Almost sure forms, for an adapted `SLE_Σ` driver (`0 < a`, `c² ≤ ab`) and `z ≠ 0`, of the
-deterministic results `tendsto_log_norm_fPath_sigmaTime` (Lemma 3.5, `lem-swallow-distance`,
+deterministic results `tendsto_log_norm_fPath_sigmaTime` (Lemma 3.6, `lem-swallow-distance`,
 paper.tex:L1389-1398) and `absorbingTime_ne_top_of_tendsto_log_norm_div` (the ODE comparison of
 Proposition 3.1(b), paper.tex:L1405-1418) in terms of the process
 `sigmaLogNorm hU z s ω = log|f̂_s(z)|` of `PolarDerivSigma.lean`.
@@ -38,7 +38,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 variable (hU : IsSLEDriverAdapted a b c U P ℱ) [IsProbabilityMeasure P] {z : ℂ}
 
-/-- **Lemma 3.5** (`lem-swallow-distance`, paper.tex:L1389-1398): for an adapted `SLE_Σ` driver
+/-- **Lemma 3.6** (`lem-swallow-distance`, paper.tex:L1389-1398): for an adapted `SLE_Σ` driver
 and `z ≠ 0`, almost surely, if `T_z < ∞` then `log|f̂_s(z)| → -∞` as `s → ∞`. -/
 theorem ae_tendsto_sigmaLogNorm_atBot (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (hz : z ≠ 0) :
     ∀ᵐ ω ∂P, absorbingTime (fun s => U s ω) z < ⊤ →

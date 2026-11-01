@@ -17,7 +17,7 @@ Goal (INTERNAL lemmas) — finish Lemma 2.11 for θ:
    check how IsDiffusionSolution (Frozen/Defs/IsDiffusionSolution.lean) wants X off a null set; use
    IsDiffusionSolution-compatible modifications, Infrastructure/Stochastic/ContinuousModification.lean, if needed) — and
    record the bracket identity 2D(u) = a sin²u + b cos²u − 2c sin u cos u (diffusionD def). Also state the joint
-   (θ̂, log|f̂|) decomposition (drifts µ, ν; brackets 2D, Γ̂ = a cos² + b sin² + 2c sin cos; cross bracket) that Lemma 3.3
+   (θ̂, log|f̂|) decomposition (drifts µ, ν; brackets 2D, Γ̂ = a cos² + b sin² + 2c sin cos; cross bracket) that Lemma 3.4
    (lem-stationary-sde) will consume.
 Read first: ComplexSLE/Internal/Polar/{PolarTheta*,PolarIto*,PolarTime*,PolarSigmaTop,PolarDerivSigma}.lean and the
 Infrastructure/Stochastic files.

@@ -1,11 +1,11 @@
-# M7 / C1 — Lemma 2.5 (endpoint continuity), Lemma 3.5 (swallow distance), Prop 3.1(b) ODE comparison (prover brief, Sonnet)
+# M7 / C1 — Lemma 2.5 (endpoint continuity), Lemma 3.6 (swallow distance), Prop 3.1(b) ODE comparison (prover brief, Sonnet)
 
 All deterministic; INTERNAL lemmas in new files ComplexSLE/Internal/Phases/Swallow*.lean (and Internal/Hull/EndpointCont.lean).
 1. Lemma 2.5 (lem-endpt-cont, source L667-690): for continuous U and z with T_z < ∞, ‖fPath U hU z t‖ → 0 as t → T_z⁻
    (within lifeSet; Internal/Polar/Path.lean). The liminf is already proved (exists_norm_fPath_lt); replace it by a limit with
    the paper's upcrossing argument (uniform continuity of U on [0, T_z], each upcrossing of [α, β] takes time ≥ ε, so finitely
    many). Note the paper's bound |f_{t₂} − f_{t₁}| ≤ ∫2/|f| + |U_{t₁} − U_{t₂}| uses g' = 2/f (solPath derivative).
-2. Lemma 3.5 (lem-swallow-distance, L1389-1398) in σ-time: for continuous U, z ≠ 0 with clockSup = ⊤ (sigmaDom = Ici 0) and
+2. Lemma 3.6 (lem-swallow-distance, L1389-1398) in σ-time: for continuous U, z ≠ 0 with clockSup = ⊤ (sigmaDom = Ici 0) and
    T_z < ∞: log‖f̂_s(z)‖ → −∞ as s → ∞ (f̂_s = fPath at sigmaTime s; sigmaTime s → T_z as s → ∞ since σ_z maps [0, ∞) onto
    [0, T_z), Internal/Polar/Sigma.lean image_sigmaTime, monotonicity). Also the a.s. form for an adapted driver via
    ae_sigmaDom_eq_Ici (Polar/PolarSigmaTop.lean).

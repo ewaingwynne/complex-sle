@@ -7,10 +7,10 @@ upper semicontinuity, the Koebe distance bound for lower semicontinuity, duality
 topology proved in-project without the Jordan curve theorem (Infrastructure/Planar: chain argument, separation by two
 connected sets, chain crossing, pullback of disconnection). 1.10(a): the M7 upgrade pattern for the disconnection event
 (R27 hitting lemma, one-sided restart, lower semicontinuity, Lévy 0-1). 1.10(b): scaling + path-law equality, Blumenthal,
-monotonicity of hulls. Next (M9): closure audit, remaining source results (e.g. Lemma 2.5), README/RESULTS, release.
+monotonicity of hulls. Next (M9): closure audit, RESULTS.md (paper → Lean map; Lemma 2.5 is proved, Internal/Hull/EndpointCont.lean), README, release.
 
 M7 complete — 2026-10-31 (§3: Theorem 1.8). All six §3 roots sealed and audited: Props 3.1(a,b), 3.2(a,b),
-Theorem 1.8 and Theorem 1.8 for c = 0 (AU-M7-C2, AU-M7-D2, AU-M7-E, AU-M7-G). Lemma 3.9 (converse without the upgrade,
+Theorem 1.8 and Theorem 1.8 for c = 0 (AU-M7-C2, AU-M7-D2, AU-M7-E, AU-M7-G). Lemma 3.8 (converse without the upgrade,
 Internal/Phases/ConverseMain.lean) and the upgrade from the random point to every z (Internal/Phases/Prop32BUp*.lean,
 R27 hitting lemma at a fixed rational σ-time; no Girsanov) give Prop 3.2(b); Theorem 1.8 is the deterministic glue of
 Props 3.1/3.2 (every hull contains U 0), and the c = 0 case adds Lemmas 3.11 (c0_integral_signs) and 3.12 (lemma_3_12).
@@ -25,8 +25,8 @@ path integrals), polar layer = Lemma 2.11 complete (Def 2.9/2.10, path measurabi
 PROVED_REL{ito_formula, timeChange}), derivative of g_t and (2.27) (PROVED), stationarity layer (Lemma A.1 modulo the
 Markov hypothesis — external markov_oneDim pending in review/approvals/M7.md), recurrence Lemma 2.16 (both signs of c,
 Markov-free) and the R27 hitting lemma, stationarity→recurrence bridge, c = 0 analytic layer (M7-F1, PROVED).
-Next (M7, plan review/plans/M7.md): M7-A Lemma 3.3 SLE form incl. the product extension with the random point 𝐳
-(SOURCE_GAP step:section3-product-extension) and path-level stationarity; M7-B Lemma 3.2; M7-C/D/E Props 3.1, 3.2(a), 3.2(b);
+Next (M7, plan review/plans/M7.md): M7-A Lemma 3.4 SLE form incl. the product extension with the random point 𝐳
+(SOURCE_GAP step:section3-product-extension) and path-level stationarity; M7-B Lemma 3.3; M7-C/D/E Props 3.1, 3.2(a), 3.2(b);
 M7-F2 c = 0 boundary; assembly. Fable budget: the author asked (2026-10-30) to be conservative — default to Sonnet.
 Proof-route substitutions (graph models the source; Lean follows the ruling): step:p-case1-* → Lemma 2.13
 periodic-solution route; lem-connected.left → max-modulus route; step:prop-ii-b-hit-lambda-prime and

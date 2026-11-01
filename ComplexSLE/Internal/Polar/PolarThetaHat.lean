@@ -34,7 +34,7 @@ inputs is
 
 (`isDiffusionSolution_thetaHat`), with the bracket identity
 `2 D(u) = a sin² u + b cos² u - 2c sin u cos u` (`thetaBracketPolar_eq_two_mul_diffusionD`).
-The joint decomposition of `(θ̂, log|f̂|)` consumed by Lemma 3.3 (`lem-stationary-sde`) is
+The joint decomposition of `(θ̂, log|f̂|)` consumed by Lemma 3.4 (`lem-stationary-sde`) is
 recorded in `thetaHat_sigmaLogMart_decomposition`.
 -/
 
@@ -470,7 +470,7 @@ theorem isDiffusionSolution_thetaHat (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (hz : z
     refine intervalIntegral.integral_congr fun v _ => ?_
     simp only [thetaBracketHat, sq_sqrt_two_mul_diffusionD ha hc]
 
-/-! ### The joint decomposition of `(θ̂, log|f̂|)` for Lemma 3.3 -/
+/-! ### The joint decomposition of `(θ̂, log|f̂|)` for Lemma 3.4 -/
 
 /-- `sigmaLogMart` in terms of `θ̂`, on the a.s. event `sigmaDom = [0, ∞)`:
 `ρ̂_s - ρ̂_0 - ∫₀ˢ ν(θ̂_v) dv` with `ρ̂_s = log|f_{σ_z(s)}(z)|`. -/
@@ -485,7 +485,7 @@ theorem ae_sigmaLogMart_eq (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (hz : z ≠ 0) :
   rfl
 
 /-- **The joint decomposition of `(θ̂, log|f̂|)` in martingale form** (Lemma 2.11, the input to
-Lemma 3.3): with `M^θ_s = θ̂_s - θ̂_0 - ∫₀ˢ µ(θ̂)` and `M^ρ = sigmaLogMart` (a.s. equal to
+Lemma 3.4): with `M^θ_s = θ̂_s - θ̂_0 - ∫₀ˢ µ(θ̂)` and `M^ρ = sigmaLogMart` (a.s. equal to
 `ρ̂_s - ρ̂_0 - ∫₀ˢ ν(θ̂)`, `ae_sigmaLogMart_eq`), the processes `M^θ`, `M^ρ`,
 `(M^θ)² - ∫₀ˢ 2 D(θ̂)`, `(M^ρ)² - ∫₀ˢ (a cos² θ̂ + b sin² θ̂ + 2c sin θ̂ cos θ̂)` and
 `M^θ M^ρ - ∫₀ˢ ((b - a) sin θ̂ cos θ̂ + c (cos² θ̂ - sin² θ̂))` are continuous `𝒢`-local

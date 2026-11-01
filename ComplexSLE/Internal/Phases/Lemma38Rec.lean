@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Phases.Lemma38Prob
 
 /-!
-# Lemma 3.8, the recursion and the geometric tail bound (M7/E2)
+# Lemma 3.10, the recursion and the geometric tail bound (M7/E2)
 
 Source: paper.tex:L1600-1630. Let `a_k = E[Y_k]`. The strong Markov step (`lintegral_Gset_mul_Yk`)
 and the pathwise inequality `Y_{k+1} ≤ Y_k (1 - κ 1_{V_k ∈ 𝒢})` (`Yk_succ_le`) give

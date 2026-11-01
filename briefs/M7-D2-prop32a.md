@@ -3,10 +3,10 @@
 Goal: ComplexSLE.Internal.proposition_3_2_a with EXACTLY the type of the frozen anchor ComplexSLE.proposition_3_2_a
 (ComplexSLE/Frozen/Proposition_3_2_A.lean, read-only), in new files ComplexSLE/Internal/Phases/Prop32A*.lean (and Ergodic
 helpers prefixed ErgodicRatio*). Use the approved EXTERNAL ComplexSLE.External.markov_oneDim directly (discharging the
-MarkovOneDim hypotheses of the existing lemmas). Source: Lemma 3.6 (lem-integral-ii, L1430-1455) and the proof of Prop 3.2(a)
+MarkovOneDim hypotheses of the existing lemmas). Source: Lemma 3.7 (lem-integral-ii, L1430-1455) and the proof of Prop 3.2(a)
 (L1456-1466).
 Steps:
-1. Ratio limit for the random point (Lemma 3.6 + Lemma 3.3): on μ = P.prod (admissibleMeasure p), with
+1. Ratio limit for the random point (Lemma 3.7 + Lemma 3.4): on μ = P.prod (admissibleMeasure p), with
    R_s = log‖f̂'_s(e^{iu})‖ − log‖f̂_s(e^{iu})‖ (sigmaLogRatio, Polar/PolarDerivSigma.lean; R_s = −Y_s − 2∫₀ˢ cos 2θ̂ with
    Y = logFHat, using sigmaLogDeriv_eq / ae_sigmaLogRatio_eq), prove R_s / s → −integralII a b c p μ-a.e.
    Route: Y_s/s → integralI (Phases/ErgodicConst.lean birkhoff_logFHat_const) and (1/s)∫₀ˢ cos 2θ̂ → ∫₀^{2π} cos(2u) p(u) du a.e.
@@ -19,7 +19,7 @@ Steps:
 2. If integralII < 0 then R_s → +∞, so by Phases/KoebeHitSigma.lean (ae_exists_infDist_leftHull_lt_of_tendsto or its fixed-ω
    form at z = e^{iu}) the R14 ε-form "∀ ε > 0, ∃ t < T_z, infDist z (L_t) < ε" holds for the random point (Fubini: Phases/Prop31Core.lean
    ae_prod_unit_of_ae_ae / ae_event_of_ae_ae_unit).
-3. All z via Lemma 3.2 (Phases/AllZ.lean lemma_3_2, through Prop31Core.ae_event_of_ae_ae_unit): E u z := the ε-form;
+3. All z via Lemma 3.3 (Phases/AllZ.lean lemma_3_3, through Prop31Core.ae_event_of_ae_ae_unit): E u z := the ε-form;
    MeasurableEvents: Phases/EventMeasEvents.lean measurableEvents_hull_approach; prove ScaleInvariantEvents (scaling of hulls
    Frozen/Scaling_LeftHull + absorbingTime_scale, infDist scales by r) and FutureDependentEvents (concatenation (2.3):
    Frozen/Concatenation_LeftHull, Internal/Loewner/Concatenation.lean; T_z = s + T^V_{f_s z}; the distance from z to L_{s+t}

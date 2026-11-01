@@ -8,7 +8,7 @@ public import ComplexSLE.Internal.Phases.ErgodicBirkhoff
 public import ComplexSLE.External.RecurrenceStationary
 
 /-!
-# Recurrence of `log |f̂_s(𝐳)|` when `(I) = 0`, and the consumer shapes (M7/A5b, Lemma 3.3)
+# Recurrence of `log |f̂_s(𝐳)|` when `(I) = 0`, and the consumer shapes (M7/A5b, Lemma 3.4)
 
 On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_s = log |f̂_s(e^{iu})|` (`logFHat`),
 `ξ_n = Y_{n+1} - Y_n` (`xiInc`). The a.s. constancy of the Birkhoff limit is taken as the explicit
@@ -44,7 +44,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 /-! ### Recurrence when `(I) = 0` -/
 
-/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.3, last clause). Under `hMO : MarkovOneDim`
+/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.4, last clause). Under `hMO : MarkovOneDim`
 and the a.s. constancy `hconst` of the Birkhoff limit: if `(I) = 0`, then `P ⊗ ν`-a.s. for every
 `ε > 0` and `S ≥ 0` there is `s ≥ S` with `|log |f̂_s(e^{iu})|| < ε`. -/
 theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)

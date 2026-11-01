@@ -1,11 +1,11 @@
-# M7 / E1 — Lemma 3.7 (lem-computation) in the form Prop 3.2(b) consumes (prover brief, Sonnet)
+# M7 / E1 — Lemma 3.9 (lem-computation) in the form Prop 3.2(b) consumes (prover brief, Sonnet)
 
 Source: source/arxiv-2203.07313v4/complex-sle-final.tex L1506-1548. Goal (INTERNAL, new files
 ComplexSLE/Internal/Phases/Lemma37*.lean): on μ = P.prod (admissibleMeasure p) with the random point z = e^{iu}, for fixed
 t̃, s̃ ≥ 0, with t = σ_z(t̃) and t + s = σ_z(s̃ + t̃) (so s = σ_z(s̃ + t̃) − σ_z(t̃)), and the future hull
 L_{t,s+t} = leftHull (u ↦ U(· + t) − U t) s (concatenation (2.3)), prove the equality in law
    dist(f_t(z), L_{t,s+t}) / |f_t(z)|  =_d  dist(z, L_{σ_z(s̃)})
-(as real random variables under μ). This is the only consequence of Lemma 3.7 used later (Step 2 of the proof of
+(as real random variables under μ). This is the only consequence of Lemma 3.9 used later (Step 2 of the proof of
 lem-converse-w-o-upgrade, L1690). Note the source states the stronger joint law of (f_t/|f_t|, L_{t,s+t}/|f_t|); only e^{2iθ̂} is
 stationary (not e^{iθ̂}), but the distance is invariant under the simultaneous negation (direction, hull) ↦ (−direction, −hull)
 (Stationary/PathStatNeg.lean; Loewner/Transform.lean leftHull_neg; IsSLEDriver.neg), so the stated consequence is fine —

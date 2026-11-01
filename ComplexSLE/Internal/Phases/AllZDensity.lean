@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Stationary.Coefficients
 public import ComplexSLE.Internal.Polar.PolarThetaHat
 
 /-!
-# `θ̂_s(z)` has a density for `s > 0` (Lemma 3.2, the Hörmander step)
+# `θ̂_s(z)` has a density for `s > 0` (Lemma 3.3, the Hörmander step)
 
 For `a, b > 0`, `c² ≤ ab`, an adapted `SLE_Σ` driver `U` and `z ≠ 0`, the time-changed argument
 `θ̂ = θ̂(z)` (`Polar.thetaHat`) solves the martingale problem (2.25) for `(µ, √(2D))`

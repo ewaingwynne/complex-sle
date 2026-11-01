@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Phases.ErgodicRatioRegen
 public import ComplexSLE.Internal.Phases.ErgodicConst
 
 /-!
-# The Birkhoff limit of `∫₀ˢ cos 2θ̂` is a.s. constant (M7/D2, Lemma 3.6)
+# The Birkhoff limit of `∫₀ˢ cos 2θ̂` is a.s. constant (M7/D2, Lemma 3.7)
 
 The 0-1 law of `ErgodicConstFibre.lean` (paper.tex:L1361-1372, regeneration at the times where
 `e^{2iθ̂} = 1`), generalised from `log |f̂_s(z)|` to an arbitrary measurable functional `Φ` of the
@@ -208,7 +208,7 @@ end ZeroOne
 
 section Main
 
-/-- **Lemma 3.6, ergodic input: the Birkhoff limit of `∫₀ˢ cos 2θ̂` is a.s. constant, equal to
+/-- **Lemma 3.7, ergodic input: the Birkhoff limit of `∫₀ˢ cos 2θ̂` is a.s. constant, equal to
 `∫ cos(2u) dν`.** Under `hMO : MarkovOneDim`: `P ⊗ ν`-a.s., `C_s / s → ∫ cos(2u) dν` as
 `s → ∞` along `ℝ≥0`, `C_s = ∫₀ˢ cos 2θ̂_v(e^{iu}) dv`. -/
 theorem birkhoff_cosInt_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)

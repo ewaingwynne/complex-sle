@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Phases.ErgodicRatioFun
 
 /-!
-# Birkhoff for `∫₀ˢ cos 2θ̂_v dv` (M7/D2, Lemma 3.6)
+# Birkhoff for `∫₀ˢ cos 2θ̂_v dv` (M7/D2, Lemma 3.7)
 
 On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, with `C_t(ω, u) = ∫₀ᵗ cos 2θ̂_v(e^{iu}) dv`
 (`cosInt`) and the unit-interval increments `η_n = ∫_n^{n+1} cos 2θ̂_v dv`, encoded as the

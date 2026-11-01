@@ -1,4 +1,4 @@
-# M7 / E2 — Lemma 3.8 (lem-log-finite-exp): E log(1/dist(𝐳, L_{σ(t̃)})) < ∞ (prover brief, Sonnet)
+# M7 / E2 — Lemma 3.10 (lem-log-finite-exp): E log(1/dist(𝐳, L_{σ(t̃)})) < ∞ (prover brief, Sonnet)
 
 Source: source/arxiv-2203.07313v4/complex-sle-final.tex L1550-1630 (multi-scale argument). Goal (INTERNAL, new files
 ComplexSLE/Internal/Phases/Lemma38*.lean): on μ = P.prod (admissibleMeasure p) with z = e^{iu}, for each t̃ > 0,

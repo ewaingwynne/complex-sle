@@ -14,9 +14,9 @@ public import ComplexSLE.Internal.Phases.Prop31Core
 `hMO : MarkovOneDim` (the statement of the EXTERNAL `markov_oneDim` (R29)):
 if `(I) < 0` then a.s. `T_z < ∞`, for every `z ≠ 0`.
 
-Proof (paper.tex:L1401-1418): by Lemma 3.2 (`lemma_3_2`, event family `{T_z < ∞}`) it suffices to
+Proof (paper.tex:L1401-1418): by Lemma 3.3 (`lemma_3_3`, event family `{T_z < ∞}`) it suffices to
 treat the random point `𝐳 = e^{i𝐮}`. By the driver bridge we may work with an adapted version.
-By Lemma 3.3 (`tendsto_logFHat_div_of_integralI_neg`) a.s. `log |f̂_s(𝐳)| / s → (I) < 0`, and the
+By Lemma 3.4 (`tendsto_logFHat_div_of_integralI_neg`) a.s. `log |f̂_s(𝐳)| / s → (I) < 0`, and the
 ODE comparison (`ae_absorbingTime_lt_top_of_tendsto_sigmaLogNorm_div`, with `α = -(I)`) gives
 `T_z < ∞` (`ae_ae_absorbingTime_lt_top`).
 -/

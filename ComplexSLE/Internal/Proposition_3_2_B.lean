@@ -17,7 +17,7 @@ import ComplexSLE.Internal.Phases.ConverseMain
 Implementation module for the frozen anchor `ComplexSLE/Frozen/Proposition_3_2_B.lean`. The
 anchor is SEALED: it is proved by `Internal.proposition_3_2_b_of_conv_on`
 (`Internal/Phases/Prop32BUp.lean`: the upgrade from the random point `𝐳` to every `z`, with the
-hitting lemma of ruling R27 in place of Girsanov), whose input `hconv` is Lemma 3.9
+hitting lemma of ruling R27 in place of Girsanov), whose input `hconv` is Lemma 3.8
 (`lem-converse-w-o-upgrade`, `Internal.converse_w_o_upgrade` in
 `Internal/Phases/ConverseMain.lean`, with the EXTERNAL `markov_oneDim`, ERRATA.md R29).
 -/

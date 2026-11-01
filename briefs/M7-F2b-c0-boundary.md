@@ -2,7 +2,7 @@
 
 Goal: ComplexSLE.Internal.lemma_3_12 : ∀ a b, 0 < a → 0 < b → a − b = 8 → IsHittingPhase a b 0
 (ComplexSLE/Frozen/Defs/IsHittingPhase.lean), in new files ComplexSLE/Internal/Phases/C0Bdy*.lean. Source L1910-1930.
-Per fixed z ≠ 0 (no Lemma 3.2 needed), for hU : IsSLEDriver a b 0 U P on Ω : Type:
+Per fixed z ≠ 0 (no Lemma 3.3 needed), for hU : IsSLEDriver a b 0 U P on Ω : Type:
 1. T_z < ∞ a.s.: Prop 3.1(b) (the SEALED anchor ComplexSLE.proposition_3_1_b, Frozen/Proposition_3_1_B.lean — you may import
    it, it is SEALED) with integralI < 0, which holds since a − b = 8 > 4 (Phases/C0Integrals.lean integralI_c0_neg_iff; you need
    an admissible density: Frozen/Lemma_2_13_Exists.lean exists_admissibleDensity, SEALED).

@@ -1,4 +1,4 @@
-# M7 / B — Lemma 3.2 (lem-all-z): from the random point 𝐳 to every z (prover brief, Sonnet)
+# M7 / B — Lemma 3.3 (lem-all-z): from the random point 𝐳 to every z (prover brief, Sonnet)
 
 Source: source/arxiv-2203.07313v4/complex-sle-final.tex L1294-1325. Goal (INTERNAL lemmas, new files
 ComplexSLE/Internal/Phases/AllZ*.lean):
@@ -9,7 +9,7 @@ ComplexSLE/Internal/Phases/AllZ*.lean):
    minimum so p'(u₀) = 0 and J = 0; then the linear ODE (Dp)' = µp with Dp(u₀) = 0 forces p ≡ 0 on the component of {D > 0},
    which is all of ℝ mod π (D > 0 off x + πℤ: Internal/Density/Basic.lean, Stationary/Coefficients.lean), contradicting
    ∫ p = 1. (For c² < ab, D > 0 everywhere.)
-2. Lemma 3.2 in the following form (proposed route, simpler than the paper's stopping-time choice, which is one-sided in the
+2. Lemma 3.3 in the following form (proposed route, simpler than the paper's stopping-time choice, which is one-sided in the
    critical case): an event family E(z), formalised as a predicate on (driver path, point), with (i) scale invariance and
    (ii) future dependence exactly as in the source (state them pathwise for continuous drivers, using
    Internal/Loewner/Transform.lean scaling and Internal/Loewner/Concatenation.lean), and P(E(𝐳)) = 1 for the random point of

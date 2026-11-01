@@ -11,7 +11,7 @@ public import ComplexSLE.Internal.Phases.Lemma37
 import ComplexSLE.External.MarkovOneDim
 
 /-!
-# Lemma 3.9 (`lem-converse-w-o-upgrade`): the converse, Step 2 of the proof (M7/E4)
+# Lemma 3.8 (`lem-converse-w-o-upgrade`): the converse, Step 2 of the proof (M7/E4)
 
 Source: paper.tex:L1475-1480 (statement), L1640-1700 (Steps 1-2). Let `a, b > 0`, `c² ≤ ab`,
 `hU : IsSLEDriverAdapted a b c U P ℱ`, `p` an admissible density with `(II) > 0`,
@@ -34,17 +34,17 @@ Assume `lim dist = 0` `μ`-a.s. Fix `t̃, s̃ ≥ 0`, `t = σ(t̃)`, `s = σ(s̃
   `⊆ E_s̃` (this avoids the measurability of `dist(f_t 𝐳, R_t)`), and on `F_s̃^c` the cruder bound
   `log X_s̃ - log dist(𝐳, L_{s+t}) ≤ L + log 64` is used (`chain_sigma_le`).
   Thus `log X_s̃ - log dist ≤ H_s̃ := 1_{F} (R + log 16) + 1_{F^c} (L + log 64)`.
-* Left side: by Lemma 3.7 (`integral_comp_lemma_3_7`), `E log X_s̃ = E log dist(𝐳, L_{σ(s̃)}) ≥
-  E log dist(𝐳, L_{σ(s̃ + t̃)})`, all integrable by Lemma 3.8; so `E[LHS] ≥ 0`, hence `E H_s̃ ≥ 0`.
+* Left side: by Lemma 3.9 (`integral_comp_lemma_3_9`), `E log X_s̃ = E log dist(𝐳, L_{σ(s̃)}) ≥
+  E log dist(𝐳, L_{σ(s̃ + t̃)})`, all integrable by Lemma 3.10; so `E[LHS] ≥ 0`, hence `E H_s̃ ≥ 0`.
 * Right side: as `s̃ → ∞` the `μ`-a.s. assumption gives `1_{F_s̃} → 1`
   (`eventually_le_koebeBound`), and
-  `|H_s̃| ≤ |R| + |L| + log 64` is integrable (Lemma 3.6 mean, `integrable_sigmaLogRatio`), so by
+  `|H_s̃| ≤ |R| + |L| + log 64` is integrable (Lemma 3.7 mean, `integrable_sigmaLogRatio`), so by
   dominated convergence `E H_s̃ → E R + log 16 = -t̃ (II) + log 16` (`integral_sigmaLogRatio`).
 * So `t̃ (II) ≤ log 16` for all `t̃`, contradicting `(II) > 0`.
 
-The proof consumes the EXTERNALs consumed by Lemmas 3.7, 3.6 and 3.8 and by `koebe_chain`
+The proof consumes the EXTERNALs consumed by Lemmas 3.9, 3.7 and 3.10 and by `koebe_chain`
 (`koebe_quarter`, `strongMarkov_sleDriver`, `hormander_oneDim`, `ito_formula`,
-`timeChange_isContLocalMartingale`, `markov_oneDim`). Lemma 3.8 is taken from
+`timeChange_isContLocalMartingale`, `markov_oneDim`). Lemma 3.10 is taken from
 `Lemma38Admissible.lean`.
 -/
 
@@ -183,7 +183,7 @@ variable [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 
   (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p)
 
 include ha hc hp in
-/-- **Lemma 3.8** for `log dist` (rather than `log (1/dist)`). -/
+/-- **Lemma 3.10** for `log dist` (rather than `log (1/dist)`). -/
 theorem integrable_log_distSigma (s : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => Real.log (distSigma hU s q)) (P.prod (admissibleMeasure p)) := by
   refine (integrable_log_inv_distSigma_admissible hU ha hc hp s).neg.congr
@@ -191,7 +191,7 @@ theorem integrable_log_distSigma (s : ℝ≥0) :
   simp [Real.log_inv]
 
 include ha hb hc hp in
-/-- `log X_s̃` is integrable: by Lemma 3.7 it has the law of `log dist(𝐳, L_{σ(s̃)})`. -/
+/-- `log X_s̃` is integrable: by Lemma 3.9 it has the law of `log dist(𝐳, L_{σ(s̃)})`. -/
 theorem integrable_log_futureDistRatioRV (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => Real.log (futureDistRatioRV hU tt ss q))
       (P.prod (admissibleMeasure p)) := by
@@ -201,11 +201,11 @@ theorem integrable_log_futureDistRatioRV (hMO : MarkovOneDim) (tt ss : ℝ≥0) 
   have hY : Integrable Real.log ((P.prod (admissibleMeasure p)).map (hullDistRV hU ss)) :=
     (integrable_map_measure Real.measurable_log.aestronglyMeasurable hYae).2
       (integrable_log_distSigma hU ha hc hp ss)
-  rw [← lemma_3_7_of_markov hMO hU ha hb hc hp tt ss] at hY
+  rw [← lemma_3_9_of_markov hMO hU ha hb hc hp tt ss] at hY
   exact (integrable_map_measure Real.measurable_log.aestronglyMeasurable hXae).1 hY
 
 include ha hb hc hp in
-/-- **Step 2, left side**: `E[log X_s̃ - log dist(𝐳, L_{σ(s̃ + t̃)})] ≥ 0` (Lemma 3.7 and
+/-- **Step 2, left side**: `E[log X_s̃ - log dist(𝐳, L_{σ(s̃ + t̃)})] ≥ 0` (Lemma 3.9 and
 `dist(𝐳, L_{σ(s̃ + t̃)}) ≤ dist(𝐳, L_{σ(s̃)})`). -/
 theorem integral_log_sub_nonneg (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
     0 ≤ ∫ q, (Real.log (futureDistRatioRV hU tt ss q) - Real.log (distSigma hU (ss + tt) q))
@@ -216,7 +216,7 @@ theorem integral_log_sub_nonneg (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
   have hC := integrable_log_distSigma hU ha hc hp ss
   have hAC : ∫ q, Real.log (futureDistRatioRV hU tt ss q) ∂(P.prod (admissibleMeasure p)) =
       ∫ q, Real.log (distSigma hU ss q) ∂(P.prod (admissibleMeasure p)) :=
-    integral_comp_lemma_3_7_of_markov hMO hU ha hb hc hp tt ss Real.measurable_log
+    integral_comp_lemma_3_9_of_markov hMO hU ha hb hc hp tt ss Real.measurable_log
   have hBC : ∫ q, Real.log (distSigma hU (ss + tt) q) ∂(P.prod (admissibleMeasure p)) ≤
       ∫ q, Real.log (distSigma hU ss q) ∂(P.prod (admissibleMeasure p)) := by
     refine integral_mono_ae hB hC ?_
@@ -239,7 +239,7 @@ theorem aestronglyMeasurable_boundH (hMO : MarkovOneDim) (tt ss : ℝ≥0) :
     ((hL.add aestronglyMeasurable_const).indicator₀ hFn.compl)
 
 include ha hb hc hp in
-/-- The dominating function `|R| + |L| + log 64` is integrable (Lemmas 3.6 and 3.8). -/
+/-- The dominating function `|R| + |L| + log 64` is integrable (Lemmas 3.7 and 3.10). -/
 theorem integrable_boundH_bound (hMO : MarkovOneDim) (tt : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => |sigmaLogRatio hU (unitPt q.2) tt q.1| +
       |Real.log (1 / distSigma hU tt q)| + Real.log 64) (P.prod (admissibleMeasure p)) := by
@@ -309,9 +309,9 @@ theorem le_log_of_ae_hull_approach (hMO : MarkovOneDim)
 
 end Integrals
 
-/-! ### Lemma 3.9 -/
+/-! ### Lemma 3.8 -/
 
-/-- **Lemma 3.9 (`lem-converse-w-o-upgrade`), with the EXTERNAL `markov_oneDim` as `hMO`.**
+/-- **Lemma 3.8 (`lem-converse-w-o-upgrade`), with the EXTERNAL `markov_oneDim` as `hMO`.**
 If `(II) > 0` then, on `μ = P ⊗ ν_p` with the random point `𝐳 = e^{iu}`, the event that
 `dist(𝐳, L_t)` stays bounded away from `0` for `t < T_𝐳` (the R14 ε-form of `lim > 0`) has
 positive probability. -/
@@ -335,8 +335,8 @@ theorem converse_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   simp only [NNReal.coe_natCast] at key
   linarith
 
-/-- **Lemma 3.9 (`lem-converse-w-o-upgrade`)**, `markov_oneDim` discharged
-(`PROVED_REL` the EXTERNALs consumed by Lemmas 3.7, 3.6, 3.8 and the Koebe chain). -/
+/-- **Lemma 3.8 (`lem-converse-w-o-upgrade`)**, `markov_oneDim` discharged
+(`PROVED_REL` the EXTERNALs consumed by Lemmas 3.9, 3.7, 3.10 and the Koebe chain). -/
 theorem converse_w_o_upgrade [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hII : 0 < integralII a b c p) :

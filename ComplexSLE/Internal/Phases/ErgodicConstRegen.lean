@@ -10,7 +10,7 @@ public import ComplexSLE.Internal.Stationary.PathStat
 # Regeneration data for the 0-1 law of the Birkhoff limit (M7/A5b)
 
 For an adapted driver `hU`, a point `z` and `k : ℕ`, a `RegenDatum hU z k` packages the output of
-the construction of the regeneration time of Lemma 3.3 (paper.tex:L1361-1372): an a.s. finite
+the construction of the regeneration time of Lemma 3.4 (paper.tex:L1361-1372): an a.s. finite
 `ℱ`-stopping time `S` (the first `ℱ`-time at which `e^{2iθ_t(z)} = 1` after `σ_z(k)`), and its
 σ-time `τ` (so `σ_z(τ) = S`, `τ ≥ k`, `e^{2iθ̂_τ} = 1`), such that the path observable after `τ`
 is the observable of the rescaled post-`S` driver started at the `ℱ_S`-measurable state

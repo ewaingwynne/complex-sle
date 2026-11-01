@@ -10,10 +10,10 @@ public import ComplexSLE.Internal.Polar.PolarDerivShift
 public import ComplexSLE.Internal.Hull.Basic
 
 /-!
-# Lemma 3.8, deterministic hull estimates (M7/E2)
+# Lemma 3.10, deterministic hull estimates (M7/E2)
 
 Two elementary facts about left hulls of a continuous driver `U`, used for the multi-scale argument
-of Lemma 3.8 (paper.tex:L1550-1630):
+of Lemma 3.10 (paper.tex:L1550-1630):
 
 * `infDist_leftHull_le_of_forall_gt` (**right-continuity of `t ↦ dist(z, L_t)`**): if
   `dist(z, L_s) ≤ r` for all `s > t` then `dist(z, L_t) ≤ r`. Hence the first time `t` at which

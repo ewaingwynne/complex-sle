@@ -1,4 +1,4 @@
-# M7 / A5b — Lemma 3.3, second half: the Birkhoff limit is a.s. constant; recurrence when (I) = 0 (prover brief, Sonnet)
+# M7 / A5b — Lemma 3.4, second half: the Birkhoff limit is a.s. constant; recurrence when (I) = 0 (prover brief, Sonnet)
 
 Goal (INTERNAL, new files ComplexSLE/Internal/Phases/ErgodicConst*.lean). Setting as in Phases/ErgodicBirkhoff.lean
 (μ = P.prod (admissibleMeasure p), Y = logFHat hU, L from exists_birkhoff_logFHat_ae, hMO : MarkovOneDim hypothesis).

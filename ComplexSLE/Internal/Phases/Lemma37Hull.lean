@@ -11,7 +11,7 @@ public import Mathlib.Analysis.Normed.Module.Ball.Pointwise
 public import Mathlib.Topology.MetricSpace.HausdorffDistance
 
 /-!
-# Lemma 3.7 (`lem-computation`), deterministic half: the future hull after the restart (M7/E1)
+# Lemma 3.9 (`lem-computation`), deterministic half: the future hull after the restart (M7/E1)
 
 For a continuous driver `U`, a point `z`, and times `t̃, s̃ ≥ 0` put (`paper.tex:L1506-1548`)
 
@@ -19,7 +19,7 @@ For a continuous driver `U`, a point `z`, and times `t̃, s̃ ≥ 0` put (`paper
 * the *future hull* `L_{t,s+t} = leftHull (r ↦ U(r + t) - U t) s` (the hull of the concatenation
   property (2.3), `ComplexSLE.concatenation_leftHull`).
 
-The two quantities compared in Lemma 3.7 are
+The two quantities compared in Lemma 3.9 are
 
 * `futureDistRatio U hU z t̃ s̃ = dist(f_t(z), L_{t,s+t}) / |f_t(z)|` (with
   `f_t(z) = fPath U hU z t`, which equals `centeredLoewnerMap U hU t ⟨z, _⟩`,
@@ -28,7 +28,7 @@ The two quantities compared in Lemma 3.7 are
 
 Both use the project's junk convention off the domain of `σ_z` (an almost sure event, Remark 2.12).
 
-* `futureDistRatio_eq_hullDist_restart` (the pathwise identity behind Lemma 3.7): if `t̃` and
+* `futureDistRatio_eq_hullDist_restart` (the pathwise identity behind Lemma 3.9): if `t̃` and
   `t̃ + s̃` lie in the domain of `σ_z`, then `futureDistRatio U hU z t̃ s̃` equals
   `hullDist V hV z' s̃` for the rescaled shifted driver `V = sigmaRestartDriver U hU z t̃`
   (`V_s = |f_t(z)|⁻¹ (U_{t + |f_t(z)|² s} - U_t)`) and the direction `z' = f_t(z)/|f_t(z)|`
@@ -54,7 +54,7 @@ open Polar
 
 variable {U : ℝ≥0 → ℂ}
 
-/-- **The left side of Lemma 3.7.** With `t = σ_z(t̃)` and `t + s = σ_z(s̃ + t̃)`, the quantity
+/-- **The left side of Lemma 3.9.** With `t = σ_z(t̃)` and `t + s = σ_z(s̃ + t̃)`, the quantity
 `dist(f_t(z), L_{t,s+t}) / |f_t(z)|`, where `L_{t,s+t}` is the left hull of the future driver
 `r ↦ U(r + t) - U t` at time `s`. -/
 noncomputable def futureDistRatio (U : ℝ≥0 → ℂ) (hU : Continuous U) (z : ℂ)
@@ -65,7 +65,7 @@ noncomputable def futureDistRatio (U : ℝ≥0 → ℂ) (hU : Continuous U) (z :
         (sigmaTime U hU z ((ss : ℝ) + tt) - sigmaTime U hU z tt).toNNReal) /
     ‖fPath U hU z (sigmaTime U hU z tt)‖
 
-/-- **The right side of Lemma 3.7.** `dist(z, L_{σ_z(s̃)})`. -/
+/-- **The right side of Lemma 3.9.** `dist(z, L_{σ_z(s̃)})`. -/
 noncomputable def hullDist (U : ℝ≥0 → ℂ) (hU : Continuous U) (z : ℂ)
     (ss : ℝ≥0) : ℝ :=
   infDist z (leftHull U (sigmaTime U hU z ss).toNNReal)
@@ -156,7 +156,7 @@ theorem leftHull_restart_sigma {tt : ℝ≥0} {z : ℂ} (hU : Continuous U)
   rfl
 
 
-/-- **The pathwise identity behind Lemma 3.7.** If `t̃` and `s̃ + t̃` lie in the domain of `σ_z`,
+/-- **The pathwise identity behind Lemma 3.9.** If `t̃` and `s̃ + t̃` lie in the domain of `σ_z`,
 the left side `dist(f_t(z), L_{t,s+t}) / |f_t(z)|` equals `dist(z', L^V_{σ^V_{z'}(s̃)})` for the
 rescaled shifted driver `V = sigmaRestartDriver U hU z t̃` and `z' = f_t(z)/|f_t(z)|`. -/
 theorem futureDistRatio_eq_hullDist_restart (hU : Continuous U) {z : ℂ} {tt ss : ℝ≥0}

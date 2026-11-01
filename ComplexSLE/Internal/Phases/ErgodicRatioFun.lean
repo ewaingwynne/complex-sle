@@ -7,9 +7,9 @@ module
 public import ComplexSLE.Internal.Phases.ErgodicBirkhoff
 
 /-!
-# The cosine functional of a path observable (M7/D2, Lemma 3.6)
+# The cosine functional of a path observable (M7/D2, Lemma 3.7)
 
-For the proof of Lemma 3.6 (paper.tex:L1430-1455) one needs the ergodic average
+For the proof of Lemma 3.7 (paper.tex:L1430-1455) one needs the ergodic average
 `(1/s) ∫₀ˢ cos 2θ̂_v dv` of the second additive functional of the polar chain. The integrals are
 not measurable functionals of a general element of the observable space
 `ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ)` (product σ-algebra), so they are encoded through Riemann sums:

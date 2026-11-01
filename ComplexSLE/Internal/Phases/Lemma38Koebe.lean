@@ -10,7 +10,7 @@ public import ComplexSLE.Internal.Hull.EndpointCont
 public import Mathlib.Analysis.ODE.Gronwall
 
 /-!
-# Lemma 3.8, deterministic Koebe step (M7/E2, `eqn-finite-exp-1`, `eqn-finite-exp-2`)
+# Lemma 3.10, deterministic Koebe step (M7/E2, `eqn-finite-exp-1`, `eqn-finite-exp-2`)
 
 Source: paper.tex:L1569-1576. For a continuous driver `U`, a time `t` and a disc `B(x, ρ)` disjoint
 from the left hull `L_t`, the centered map `f_t = g_t - U_t` varies by a controlled factor on `B(x, ρ)`:

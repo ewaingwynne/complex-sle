@@ -11,7 +11,7 @@ public import ComplexSLE.Internal.Phases.ErgodicConstFibre
 public import ComplexSLE.Internal.Phases.ErgodicConstRecur
 
 /-!
-# Lemma 3.3, second half: the Birkhoff limit is a.s. constant (M7/A5b)
+# Lemma 3.4, second half: the Birkhoff limit is a.s. constant (M7/A5b)
 
 On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_s = log |f̂_s(e^{iu})|` (`logFHat`),
 `(I) = integralI a b c p`. Under `hMO : MarkovOneDim` (the EXTERNAL `markov_oneDim` (R29)):
@@ -50,7 +50,7 @@ section Main
 variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration ℝ≥0 m} {a b c : ℝ}
   {U : ℝ≥0 → Ω → ℂ}
 
-/-- **Lemma 3.3: the Birkhoff limit is a.s. constant, equal to `(I)`.** Under
+/-- **Lemma 3.4: the Birkhoff limit is a.s. constant, equal to `(I)`.** Under
 `hMO : MarkovOneDim`: `P ⊗ ν`-a.s., `log |f̂_s(e^{iu})| / s → (I)` as `s → ∞` along `ℝ≥0`. -/
 theorem birkhoff_logFHat_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -113,7 +113,7 @@ theorem birkhoff_logFHat_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   filter_upwards [hLreal', hprod] with q h1 h2
   rwa [h2, hκI] at h1
 
-/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.3, last clause): under `hMO` and
+/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.4, last clause): under `hMO` and
 `(I) = 0`, `P ⊗ ν`-a.s. for every `ε > 0` there are arbitrarily large `s` with
 `|log |f̂_s(e^{iu})|| < ε`. -/
 theorem recurrent_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)

@@ -8,12 +8,12 @@ ComplexSLE.Internal.proposition_3_1_a_of_markov / proposition_3_1_b_of_markov, i
 Ingredients (all proved):
 - Driver bridge: Internal/Driver/Bridge*.lean (IsSLEDriver → adapted version on a completed filtration; transfer of a.s. hull
   statements back to U).
-- Lemma 3.3 consequences for the random point: Internal/Phases/ErgodicConst.lean not_tendsto_atBot_logFHat (I ≥ 0),
+- Lemma 3.4 consequences for the random point: Internal/Phases/ErgodicConst.lean not_tendsto_atBot_logFHat (I ≥ 0),
   tendsto_logFHat_div_of_integralI_neg (I < 0), on μ = P.prod (admissibleMeasure p).
-- Lemma 3.5 / ODE comparison: Internal/Phases/SwallowDistanceAE.lean (ae_tendsto_sigmaLogNorm_atBot: T_z < ∞ ⇒ log|f̂| → −∞;
+- Lemma 3.6 / ODE comparison: Internal/Phases/SwallowDistanceAE.lean (ae_tendsto_sigmaLogNorm_atBot: T_z < ∞ ⇒ log|f̂| → −∞;
   ae_absorbingTime_lt_top_of_tendsto_sigmaLogNorm_div: log|f̂|/s → −α < 0 ⇒ T_z < ∞). Note these are per fixed z; apply them
   fibrewise at z = e^{iu} (Fubini on the product, or restate on the product) — logFHat hU s (ω,u) = log‖fHat hU (unitPt u) s ω‖.
-- Lemma 3.2: Internal/Phases/AllZ.lean lemma_3_2 with E = {T_z = ∞} (resp. {T_z < ∞}); MeasurableEvents from
+- Lemma 3.3: Internal/Phases/AllZ.lean lemma_3_3 with E = {T_z = ∞} (resp. {T_z < ∞}); MeasurableEvents from
   Internal/Phases/EventMeasEvents.lean; ScaleInvariantEvents / FutureDependentEvents from Internal/Phases/AllZExamples.lean
   (proved for {T_z < ∞}; derive the {= ∞} version by negation — MeasurableEvents.not).
 Allowed inputs: Mathlib; sealed defs/anchors; Internal/Infrastructure lemmas; existing EXTERNAL uses upstream.

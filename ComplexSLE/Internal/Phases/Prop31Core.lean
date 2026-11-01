@@ -21,16 +21,16 @@ The shared part of the proofs of Proposition 3.1(a) and (b) (paper.tex:L1265-127
   a.s. at `e^{iu}`, then it holds `P ⊗ ν`-a.s. on the product space `Ω × ℝ`.
 * `ae_event_of_ae_ae_unit`: from the fibrewise statement for the adapted version of the driver
   given by the driver bridge (`IsSLEDriver.exists_adapted`) to the statement for every `z ≠ 0` and
-  the original driver `U`, by Lemma 3.2 (`lemma_3_2`).
+  the original driver `U`, by Lemma 3.3 (`lemma_3_3`).
 * `scaleInvariantEvents_absorbingTime_eq_top`, `futureDependentEvents_absorbingTime_eq_top`: the
   event `{T_z = ∞}` is the negation of `{T_z < ∞}` (`AllZExamples.lean`), hence scale invariant and
   future dependent;
 * `ae_ae_absorbingTime_eq_top`, `ae_ae_absorbingTime_lt_top`: the fibrewise consequences of
-  Lemma 3.3 (`not_tendsto_atBot_logFHat`, `tendsto_logFHat_div_of_integralI_neg`) and the
-  almost sure forms of Lemma 3.5 and of the ODE comparison (`SwallowDistanceAE.lean`) at the unit
+  Lemma 3.4 (`not_tendsto_atBot_logFHat`, `tendsto_logFHat_div_of_integralI_neg`) and the
+  almost sure forms of Lemma 3.6 and of the ODE comparison (`SwallowDistanceAE.lean`) at the unit
   points `z = e^{iu}`.
 
-The results consume the externals of the Lemma 3.2, Lemma 3.3 and Lemma 3.5 layers, and the
+The results consume the externals of the Lemma 3.3, Lemma 3.4 and Lemma 3.6 layers, and the
 EXTERNAL `markov_oneDim` as the hypothesis `hMO : MarkovOneDim`.
 -/
 
@@ -70,7 +70,7 @@ theorem ae_prod_unit_of_ae_ae {ℱ : Filtration ℝ≥0 m} {U' : ℝ≥0 → Ω 
     exact hmeas hMm
   exact ae_prod_of_ae_ae_snd hS h
 
-/-- **Assembly through Lemma 3.2.** Let `U` be an `SLE_Σ` driver, `p` an admissible density and
+/-- **Assembly through Lemma 3.3.** Let `U` be an `SLE_Σ` driver, `p` an admissible density and
 `E` a measurable, scale invariant and future dependent event family. If for the adapted version
 `U'` of `U` (any adapted version) the event `E (U' ·) e^{iu}` holds a.s. for `ν`-a.e. `u`
 (`ν = p 1_{[0,2π]} du`), then `E (U ·) z` holds a.s. for every `z ≠ 0`. -/
@@ -87,7 +87,7 @@ theorem ae_event_of_ae_ae_unit {U : ℝ≥0 → Ω → ℂ} (ha : 0 < a) (hb : 0
   have : IsProbabilityMeasure (admissibleLaw p) := isProbabilityMeasure_admissibleLaw hp
   obtain ⟨ℱ, U', hUU', -, -, hU'⟩ := hU.exists_adapted
   have hprod := ae_prod_unit_of_ae_ae hU' hEm (h ℱ U' hU')
-  refine lemma_3_2 ha hb hc hU hp hEm hEs hEf ?_
+  refine lemma_3_3 ha hb hc hU hp hEm hEs hEf ?_
   have hae : ∀ᵐ x ∂(P.prod (admissibleLaw p) : Measure (Ω × ℝ)), ∀ t, U' t x.1 = U t x.1 :=
     (measurePreserving_fst (μ := P) (ν := admissibleLaw p)).quasiMeasurePreserving.ae hUU'
   -- `admissibleLaw p` and `admissibleMeasure p` are the same measure
@@ -135,7 +135,7 @@ theorem logFHat_eq_sigmaLogNorm (hU : IsSLEDriverAdapted a b c U P ℱ) {u : ℝ
   simp only [logFHat, fHat_of_mem hU hs, sigmaLogNorm]
 
 /-- **Proposition 3.1(a), fibrewise at the unit points.** If `(I) ≥ 0`, then for `ν`-a.e. `u`,
-almost surely `T_{e^{iu}} = ∞`. (Lemma 3.3: `log |f̂_s| ↛ -∞`; Lemma 3.5: `T_z < ∞` forces
+almost surely `T_{e^{iu}} = ∞`. (Lemma 3.4: `log |f̂_s| ↛ -∞`; Lemma 3.6: `T_z < ∞` forces
 `log |f̂_s| → -∞`.) -/
 theorem ae_ae_absorbingTime_eq_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -152,7 +152,7 @@ theorem ae_ae_absorbingTime_eq_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   exact (h2 (lt_top_iff_ne_top.2 hT)).congr fun s => (logFHat_eq_sigmaLogNorm hU h3 s).symm
 
 /-- **Proposition 3.1(b), fibrewise at the unit points.** If `(I) < 0`, then for `ν`-a.e. `u`,
-almost surely `T_{e^{iu}} < ∞`. (Lemma 3.3: `log |f̂_s| / s → (I) < 0`; the ODE comparison turns
+almost surely `T_{e^{iu}} < ∞`. (Lemma 3.4: `log |f̂_s| / s → (I) < 0`; the ODE comparison turns
 this into `T_z < ∞`.) -/
 theorem ae_ae_absorbingTime_lt_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)

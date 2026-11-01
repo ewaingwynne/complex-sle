@@ -9,8 +9,8 @@ public import ComplexSLE.Internal.Polar.PolarRestartPolar
 /-!
 # Deterministic restart identity (M7/A4b): the restart at `σ_z(t̃)`
 
-The "future dependence" and "scale invariance" identities behind Lemma 3.2 and the regeneration step
-of Lemma 3.3 (`paper.tex:L1804`, `L2207-2212`), deterministic and unconditional.
+The "future dependence" and "scale invariance" identities behind Lemma 3.3 and the regeneration step
+of Lemma 3.4 (`paper.tex:L1804`, `L2207-2212`), deterministic and unconditional.
 
 Fix a continuous driver `U`, a point `z` and `t̃ ∈ sigmaDom U hU z` (so `T_z > 0`). Put
 

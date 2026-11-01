@@ -26,12 +26,12 @@ every `z ≠ 0`.
 
 Proof (paper.tex:L1430-1466):
 
-* by Lemma 3.2 (`lemma_3_2`, through `ae_event_of_ae_ae_unit`) it suffices to treat the random
+* by Lemma 3.3 (`lemma_3_3`, through `ae_event_of_ae_ae_unit`) it suffices to treat the random
   point `𝐳 = e^{i𝐮}`, for the event family `𝓔(z) = {∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε}`, which is
   measurable (`measurableEvents_hull_approach`), scale invariant
   (`scaleInvariantEvents_hull_approach`) and future dependent
   (`futureDependentEvents_hull_approach`);
-* at the random point, by Lemma 3.6 (`ae_tendsto_sigmaLogRatio_div`)
+* at the random point, by Lemma 3.7 (`ae_tendsto_sigmaLogRatio_div`)
   `log(|f̂'_s|/|f̂_s|) / s → -(II) > 0`, so `log(|f̂'_s|/|f̂_s|) → +∞`, and the Koebe hitting bound
   in σ-time (`koebe_quarter`, `ae_exists_infDist_leftHull_lt_of_tendsto`) gives the `ε`-form
   (`ae_ae_hull_approach`).

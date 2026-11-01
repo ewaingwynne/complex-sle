@@ -12,8 +12,8 @@ r U(·/r²) is again an SLE_Σ driver); Λ nonempty (Fubini from `hconv`), open 
 for the continuous version of θ̂, `2π`-periodic level shift, openness of Λ gives a rational σ-time with `P(θ̂_s ∈ Λ) > 0`, then
 `q(z) = ∫ q(f̂_s) dP > 0`; the fixed-time substitution for the hitting-time strong Markov step is sound); Lévy 0-1 step
 (`staysAwaySeq ∈ ⨆ 𝒢_n`, 𝒢_n = ℱ_{σ_z(n)}, `{hitTime_r ≤ σ_z(n)} ∈ ℱ_{σ_z(n)}`, a.s. equal to the event, Lévy upward + `q_*`);
-Lemma 3.9 (F ⊆ E by Koebe quarter, `chain_sigma_of_event` with log 16 on F, `chain_sigma_le` with log 64 on Fᶜ, `E[LHS] ≥ 0` by
-Lemma 3.7, dominated convergence to `−t̃(II) + log 16 ≥ 0`, contradiction for large t̃).
+Lemma 3.8 (F ⊆ E by Koebe quarter, `chain_sigma_of_event` with log 16 on F, `chain_sigma_le` with log 64 on Fᶜ, `E[LHS] ≥ 0` by
+Lemma 3.9, dominated convergence to `−t̃(II) + log 16 ≥ 0`, contradiction for large t̃).
 No hypothesis smuggling: `hconv` of `proposition_3_2_b_of_conv_on` is discharged by `converse_w_o_upgrade` (identical statement),
 whose `MarkovOneDim` input is `External.markov_oneDim` (R29). An independent closure probe finds exactly six `sorryAx` users
 (the six externals above, all in `ComplexSLE/External/`, registered EXTERNAL, author-approved R25/R29); no `sorry` in `Internal/`

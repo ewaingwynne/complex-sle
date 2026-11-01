@@ -10,7 +10,7 @@ public import ComplexSLE.Internal.Polar.PolarContMeas
 public import ComplexSLE.Internal.Stationary.PathStatCanon
 
 /-!
-# Lemma 3.8, joint measurability of `dist(e^{iu}, L_{σ_{e^{iu}}(t̃)})` on `Ω × ℝ` (M7/E2)
+# Lemma 3.10, joint measurability of `dist(e^{iu}, L_{σ_{e^{iu}}(t̃)})` on `Ω × ℝ` (M7/E2)
 
 For an adapted driver `U` (continuous paths) put `ddU t (ω, u) = dist(e^{iu}, L_t(U(ω)))` and
 `distSigma t̃ (ω, u) = dist(e^{iu}, L_{σ_{e^{iu}}(t̃)}(U(ω)))`.

@@ -8,7 +8,7 @@ public import ComplexSLE.Internal.Phases.Lemma38Koebe
 public import ComplexSLE.Internal.Phases.Lemma38Hull
 
 /-!
-# Lemma 3.8, the deterministic multi-scale step (M7/E2)
+# Lemma 3.10, the deterministic multi-scale step (M7/E2)
 
 Source: paper.tex:L1569-1600. For a continuous driver `U` with `U 0 = 0` and a unit point `z` let
 `dd t = dist(z, L_t)` (non-increasing in `t`), `lvl k = 16^{-k}` and
@@ -162,7 +162,7 @@ theorem lvl_le_infDist_hitTime (hU : Continuous U) (h0 : U 0 = 0) {z : ℂ} (hz 
 /-! ### The good step -/
 
 /-- **The Koebe step with the clock increment** (paper (3.19) and the clock identity of the proof of
-Lemma 3.8). Let `τ ∈ [0, T_z)` with `dist(z, L_τ) ≥ 16^{-k}`, `R = |f_τ(z)|`, and suppose the
+Lemma 3.10). Let `τ ∈ [0, T_z)` with `dist(z, L_τ) ≥ 16^{-k}`, `R = |f_τ(z)|`, and suppose the
 restarted rescaled driver `V_s = R⁻¹ (U_{τ + R² s} - U_τ)` satisfies `|V_s| ≤ 1/16` for `s ≤ u₀`,
 where `u₀ < 1/64`. Then `τ + R² u₀ < T_z`; `dist(z, L_{τ + R² s}) ≥ 16^{-k} / 14` for `s ≤ u₀`; and
 `A(τ + R² u₀) - A(τ) ≥ u₀ / 4`. The conclusion does not depend on the restart direction

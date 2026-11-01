@@ -13,7 +13,7 @@ Prove, for all s ≥ 0:
  (iii) polar data: argPath V z' (sigmaTime V z' s) − argPath V z' 0 = argPath U z (sigmaTime U z (t̃+s)) − argPath U z T, and
      log‖fPath V z' (sigmaTime V z' s)‖ = log‖fPath U z (sigmaTime U z (t̃+s))‖ − log‖fPath U z T‖; with e^{i argPath V z' 0} = z'
      = e^{iθ̂_t̃(z)} (Polar/Argument.lean argPath_unique / exp form).
-These are the "future dependence" + "scale invariance" identities behind Lemma 3.2 and the regeneration step of Lemma 3.3.
+These are the "future dependence" + "scale invariance" identities behind Lemma 3.3 and the regeneration step of Lemma 3.4.
 Allowed inputs: Mathlib; sealed defs/anchors; Internal lemmas. No externals (target PROVED).
 Ownership: new files ComplexSLE/Internal/Polar/PolarRestart*.lean only. Another Sonnet works on Phases/AllZ*.lean.
 Checks: lake build of your modules; leanprobe externals; tools/check.sh --quick. Budget ~3 hours.

@@ -9,8 +9,8 @@ public import ComplexSLE.Internal.Phases.AllZEvents
 /-!
 # The event `{T_z < ∞}` is scale invariant and future dependent
 
-The first example of events in the statement of Lemma 3.2 (paper.tex:L1304) is `{T_z < ∞}`. For
-every continuous driver it satisfies the two algebraic hypotheses of Lemma 3.2 pathwise:
+The first example of events in the statement of Lemma 3.3 (paper.tex:L1304) is `{T_z < ∞}`. For
+every continuous driver it satisfies the two algebraic hypotheses of Lemma 3.3 pathwise:
 
 * `scaleInvariantEvents_absorbingTime_lt_top`: `T_{rz}(r u(·/r²)) = r² T_z(u)`
   (`absorbingTime_scale`);

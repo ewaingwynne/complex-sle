@@ -11,11 +11,11 @@ public import ComplexSLE.Internal.Polar.PolarSigmaTop
 public import ComplexSLE.Internal.Recurrence.Renewal
 
 /-!
-# The regeneration times of Lemma 3.3 (M7/A5b)
+# The regeneration times of Lemma 3.4 (M7/A5b)
 
 For an adapted driver `hU`, `z ≠ 0` and `k : ℕ`, `hitTime hU z k` is the first `ℱ`-time
 `t ≥ σ_z(k)` with `t < T_z` and `e^{2iθ_t(z)} = 1` (`θ_t` the continuous argument `argPath`). It is
-the stopping time `S` at which the proof of Lemma 3.3 (paper.tex:L1361-1372) regenerates:
+the stopping time `S` at which the proof of Lemma 3.4 (paper.tex:L1361-1372) regenerates:
 
 * `isStoppingTime_hitTime`: `S` is an `ℱ`-stopping time. With `ρ = σ_z(k)` and `τ_n` the exit times
   of the annuli, `{S ≤ u} = ⋃_n {R_n < τ_n} ∩ {R_n ≤ u}` where `R_n` is the first time after `ρ`

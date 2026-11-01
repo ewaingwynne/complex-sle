@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Phases.ErgodicStat
 
 /-!
-# Birkhoff for `log |f̂_t(𝐳)|` (M7/A5a, Lemma 3.3, first half)
+# Birkhoff for `log |f̂_t(𝐳)|` (M7/A5a, Lemma 3.4, first half)
 
 On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_t = log |f̂_t(e^{iu})|`
 (`logFHat`), `ξ_n = Y_{n+1} - Y_n`:

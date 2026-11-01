@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Phases.Lemma38Joint
 public import ComplexSLE.Internal.Stationary.SLEStatKernel
 
 /-!
-# Lemma 3.8 (`lem-log-finite-exp`): `E log (1 / dist(z, L_{σ_z(t̃)})) < ∞` (M7/E2)
+# Lemma 3.10 (`lem-log-finite-exp`): `E log (1 / dist(z, L_{σ_z(t̃)})) < ∞` (M7/E2)
 
 Source: paper.tex:L1550-1630. Let `U` be an adapted `SLE_Σ` driver (`a > 0`, `c² ≤ ab`), `t̃ ≥ 0`,
 and `ν` a probability measure on `ℝ` (for the paper, `ν = p(u) 1_{[0,2π]}(u) du` with the random
@@ -165,7 +165,7 @@ theorem log_inv_distSigma_nonneg {p : Ω × ℝ} (hp : p ∈ goodSetAt hU tt) :
   · apply Real.log_nonneg
     rw [le_div_iff₀ hpos]; linarith
 
-/-- **Lemma 3.8, lintegral form**: `∫ log (1 / dist(z, L_{σ_z(t̃)})) d(P ⊗ ν) < ∞`. -/
+/-- **Lemma 3.10, lintegral form**: `∫ log (1 / dist(z, L_{σ_z(t̃)})) d(P ⊗ ν) < ∞`. -/
 theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
     (hc : c ^ 2 ≤ a * b) (ν : Measure ℝ) [IsProbabilityMeasure ν] :
     ∫⁻ p, ENNReal.ofReal (Real.log (1 / distSigma hU tt p)) ∂(P.prod ν) < ⊤ := by
@@ -199,7 +199,7 @@ theorem lintegral_log_inv_distSigma_lt_top [IsProbabilityMeasure P] (ha : 0 < a)
         exact tsub_pos_of_lt (by rw [← ENNReal.ofReal_one]; exact
           (ENNReal.ofReal_lt_ofReal_iff one_pos).2 hr1)
 
-/-- **Lemma 3.8** (`lem-log-finite-exp`, paper.tex:L1550-1630): for an adapted `SLE_Σ` driver
+/-- **Lemma 3.10** (`lem-log-finite-exp`, paper.tex:L1550-1630): for an adapted `SLE_Σ` driver
 (`a > 0`, `c² ≤ ab`), every `t̃ ≥ 0` and every probability measure `ν` for the random point
 `𝐳 = e^{iu}`, the random variable `log (1 / dist(𝐳, L_{σ_𝐳(t̃)}))` is integrable for `P ⊗ ν`. -/
 theorem integrable_log_inv_distSigma [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)

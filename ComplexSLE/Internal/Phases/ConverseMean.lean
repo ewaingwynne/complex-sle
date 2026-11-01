@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Phases.Prop32ARatio
 
 /-!
-# The mean of `log(|f̂'_t̃|/|f̂_t̃|)` (Lemma 3.6 in expectation, M7/E4)
+# The mean of `log(|f̂'_t̃|/|f̂_t̃|)` (Lemma 3.7 in expectation, M7/E4)
 
 Source: paper.tex:L1430-1440 (the first part of `lem-integral-ii`) and Step 2 of the proof of
 `lem-converse-w-o-upgrade` (paper.tex:L1677-1690). On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`,
@@ -162,7 +162,7 @@ theorem integrable_sigmaLogRatio [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   have h2 := (integrable_integral_logFHat hMO hU ha hb hc hp t).1
   exact ((h1.const_mul (-2)).sub h2).congr (ae_sigmaLogRatio_eq hU ha hc t).symm
 
-/-- **Lemma 3.6 in expectation: `E log(|f̂'_t̃|/|f̂_t̃|) = - t̃ · (II)`** (paper.tex:L1430-1440). -/
+/-- **Lemma 3.7 in expectation: `E log(|f̂'_t̃|/|f̂_t̃|) = - t̃ · (II)`** (paper.tex:L1430-1440). -/
 theorem integral_sigmaLogRatio [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :

@@ -1,4 +1,4 @@
-# M7 / A5a — Lemma 3.3, first half: Birkhoff for log|f̂(𝐳)| (prover brief, Sonnet)
+# M7 / A5a — Lemma 3.4, first half: Birkhoff for log|f̂(𝐳)| (prover brief, Sonnet)
 
 Goal (INTERNAL, new files ComplexSLE/Internal/Phases/Ergodic*.lean): on Ω × ℝ with P.prod ν (ν = admissibleMeasure p), with
 Y_s(ω,u) := log‖f̂_s(e^{iu})(ω)‖ (Y_0 = 0 since |e^{iu}| = 1 and U 0 = 0 — check), prove

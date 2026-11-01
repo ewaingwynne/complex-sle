@@ -1,4 +1,4 @@
-# M7 / E4 — Lemma 3.9 (lem-converse-w-o-upgrade) (prover brief, Sonnet)
+# M7 / E4 — Lemma 3.8 (lem-converse-w-o-upgrade) (prover brief, Sonnet)
 
 Source: L1475-1480 (statement), L1640-1700 (Steps 1-2 of the proof). Goal (INTERNAL, new files
 ComplexSLE/Internal/Phases/Converse*.lean): if integralII a b c p > 0 then, on μ = P.prod (admissibleMeasure p) with z = e^{iu},
@@ -10,13 +10,13 @@ Ingredients (all proved):
   eventually_koebeEvent (Phases/KoebeChainDisplays.lean) gives 1_{E_s} → 1 as s̃ → ∞ IF dist(z, L_{s+t}) → 0 — supply the
   probabilistic half: under the contrapositive assumption, dist(z, L_u) → 0 as u → T_z, and σ_z(s̃ + t̃) → T_z (Remark 2.12,
   Polar/PolarSigmaTop.lean; Phases/SwallowDistance.lean tendsto_sigmaTime_nhdsWithin).
-- Lemma 3.7: Phases/Lemma37.lean lemma_3_7 / integral_comp_lemma_3_7 (law of dist(f_t z, L_{t,s+t})/|f_t z| = law of dist(z, L_{σ(s̃)})).
-- Lemma 3.8: Phases/Lemma38Admissible.lean integrable_log_inv_distSigma_admissible (log(1/dist) integrable at every σ-time).
-- Lemma 3.6 in expectation: E log(|f'|/|f|)_{σ(t̃)} = −t̃ · integralII (from the decomposition R_t̃ = −2C_t̃ − Y_t̃,
+- Lemma 3.9: Phases/Lemma37.lean lemma_3_9 / integral_comp_lemma_3_9 (law of dist(f_t z, L_{t,s+t})/|f_t z| = law of dist(z, L_{σ(s̃)})).
+- Lemma 3.10: Phases/Lemma38Admissible.lean integrable_log_inv_distSigma_admissible (log(1/dist) integrable at every σ-time).
+- Lemma 3.7 in expectation: E log(|f'|/|f|)_{σ(t̃)} = −t̃ · integralII (from the decomposition R_t̃ = −2C_t̃ − Y_t̃,
   Phases/Prop32ARatio.lean sigmaLogRatio_eq_cos_sub_logFHat, E Y_t̃ = t̃·integralI (Phases/ErgodicMean.lean integrable_integral_logFHat),
   E C_t̃ = t̃·∫cos(2u)p (Phases/ErgodicRatio*.lean integral_cos_thetaHat), integralII_eq); integrability of R_t̃.
 Step 2 of the paper: take expectations of (eqn-dist-3); dominated convergence as s̃ → ∞ (the left side has nonnegative expectation by
-Lemma 3.7 + monotonicity dist(z, L_{s+t}) ≤ dist(z, L_s) + Lemma 3.8; the right side tends to E log(|f'|/|f|) + C = −t̃·(II) + C);
+Lemma 3.9 + monotonicity dist(z, L_{s+t}) ≤ dist(z, L_s) + Lemma 3.10; the right side tends to E log(|f'|/|f|) + C = −t̃·(II) + C);
 so 0 ≤ −t̃·(II) + C for all t̃, hence (II) ≤ 0. Careful with the a.s. sets (sigmaDom = Ici 0 a.s.) and with the derivative factor: koebe_chain
 uses derivPath and fPath at the original time t = σ_z(t̃); relate to sigmaLogRatio (Polar/PolarDerivSigma.lean).
 Allowed inputs: Mathlib; sealed defs/anchors; Internal lemmas; approved EXTERNALs as already used upstream. Ownership: new files

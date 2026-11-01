@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Phases.EventMeasDist
 /-!
 # `MeasurableEvents` for the event families of §3 (M7/B2)
 
-The event families of Lemma 3.2 (`lem-all-z`) that the §3 roots use are jointly measurable in
+The event families of Lemma 3.3 (`lem-all-z`) that the §3 roots use are jointly measurable in
 (driver path, point), in the sense of `MeasurableEvents` (`AllZEvents.lean`):
 
 * (a) `T_z < ∞` and `T_z = ∞` (`measurableEvents_absorbingTime_lt_top`, `_eq_top`);
