@@ -2,7 +2,7 @@
 
 M9 complete — 2026-11-01 (closure and release). RESULTS.md maps every in-scope item to Lean, with computed statuses and a gap list.
 §3 docstring numbering now follows the paper (`lemma_3_3`, `lemma_3_9`). A fresh clone of the final pushed commit builds and passes the
-full gate (hash recorded below). The closure audit (AU-M9-closure) passes. The author replied "continue working" to the M9 packet
+full gate (verified on 1582cdf, 2026-11-01: lake build, tools/check.sh and the graph gate all pass). The closure audit (AU-M9-closure) passes. The author replied "continue working" to the M9 packet
 (review/approvals/M9.md) without choosing, so the orchestrator took the defaults that change nothing: release as is, and keep the five
 unused externals marked unused. Either can be revisited.
 
