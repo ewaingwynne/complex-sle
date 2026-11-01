@@ -7,8 +7,7 @@ module
 public import ComplexSLE.Frozen.Defs.IsHittingPhase
 public import ComplexSLE.Frozen.Proposition_3_1_B
 public import ComplexSLE.Frozen.Lemma_2_13_Exists
-public import ComplexSLE.External.DambisDubinsSchwarz
-public import ComplexSLE.Infrastructure.Stochastic.BrownianOscillation
+public import ComplexSLE.Infrastructure.Stochastic.BracketInfinity
 public import ComplexSLE.Internal.Driver.BridgeAdapted
 public import ComplexSLE.Internal.Phases.C0Integrals
 public import ComplexSLE.Internal.Phases.KoebeHitSigma
@@ -31,17 +30,17 @@ Proof (fixed `z ≠ 0`):
   (`log_norm_fPath_zero`). `M` is a continuous local martingale for the σ-time filtration with
   `M² - A` a continuous local martingale, `A = M² - sigmaLogMartSq`; a.s. `A_s = ∫₀ˢ Γ̂` with
   `Γ̂ = a cos² θ̂ + b sin² θ̂ ≥ min a b > 0` (`logBracketHat_ge`), so `A` is continuous,
-  nondecreasing, `A_0 = 0` and `A_s → ∞` (`ae_sigmaLogBracket_props`). The EXTERNAL
-  `dambis_dubins_schwarz` writes `M_s = β_{A_s}` for a Brownian motion `β`, hence
-  `liminf M = -∞` (`ae_forall_exists_le_of_timeChange`), i.e. `limsup sigmaLogRatio = +∞`
-  (paper.tex:L1921-1925). The Koebe hitting bound `mem_closure_iUnion_leftHull_of_ratio_unbounded`
-  (paper.tex:L1460-1466, `eqn-hit-koebe`) then gives `z ∈ closure (⋃_{t < T_z} L_t)`
-  (`ae_mem_closure_c0_bdy`).
+  nondecreasing, `A_0 = 0` and `A_s → ∞` (`ae_sigmaLogBracket_props`). Hence `liminf M = -∞`
+  (`Infrastructure.ae_forall_exists_le_of_bracket_tendsto_atTop`, a direct gambler's-ruin proof for
+  continuous local martingales whose bracket tends to infinity; the paper obtains it from the
+  Dambis–Dubins–Schwarz representation `M_s = β_{A_s}` by a Brownian motion `β`, which is not
+  needed here), i.e. `limsup sigmaLogRatio = +∞` (paper.tex:L1921-1925). The Koebe hitting bound
+  `mem_closure_iUnion_leftHull_of_ratio_unbounded` (paper.tex:L1460-1466, `eqn-hit-koebe`) then
+  gives `z ∈ closure (⋃_{t < T_z} L_t)` (`ae_mem_closure_c0_bdy`).
 * The adapted version agrees with `U` a.s., which transfers the closure clause back to `U`.
 
-`lemma_3_12` is `PROVED_REL{dambis_dubins_schwarz, …}`: it consumes the EXTERNAL
-inputs through the sealed anchor `proposition_3_1_b`, `KoebeHitSigma` and
-`dambis_dubins_schwarz`.
+`lemma_3_12` is `PROVED_REL{…}`: it consumes the EXTERNAL inputs through the sealed anchor
+`proposition_3_1_b` and `KoebeHitSigma`; the oscillation step `liminf M = -∞` is external-free.
 -/
 
 public section
@@ -146,7 +145,8 @@ theorem ae_sigmaLogBracket_props [IsProbabilityMeasure P]
 
 /-- **`log(|f̂'|/|f̂|)` is unbounded above** (`c = 0`, `a - b = 8`, paper.tex:L1921-1925): for an
 adapted driver, a.s. `limsup_{s → ∞} sigmaLogRatio_s = +∞`, in the form
-`∀ K, ∃ s, K ≤ sigmaLogRatio_s`. Uses the EXTERNAL `dambis_dubins_schwarz`. -/
+`∀ K, ∃ s, K ≤ sigmaLogRatio_s`. Uses the external-free
+`Infrastructure.ae_forall_exists_le_of_bracket_tendsto_atTop` (no Dambis–Dubins–Schwarz). -/
 theorem ae_sigmaLogRatio_unbounded [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b 0 U P ℱ) {z : ℂ} (ha : 0 < a) (hb : 0 < b) (hab : a - b = 8)
     (hz : z ≠ 0) :
@@ -164,9 +164,7 @@ theorem ae_sigmaLogRatio_unbounded [IsProbabilityMeasure P]
     have hT := zero_mem_lifeSet_iff.2 (pos_absorbingTime_of_mem_sigmaDom (hU.cont ω) h0)
     rw [sigmaLogMart, ite_eq_left (by simpa using h0)]
     simp [sigmaTime_zero (hU.cont ω) hT]
-  -- the bracket process is progressively measurable and `M² - A` is a local martingale
-  have hAprog : IsStronglyProgressive (sigmaFiltration hU z) (sigmaLogBracket hU z) :=
-    fun i => ((hNm.1 i).pow 2).sub (hNsqm.1 i)
+  -- `M² - A` is a local martingale, with `A = sigmaLogBracket`
   have hAmart : IsContLocalMartingale (sigmaFiltration hU z)
       (fun t ω => sigmaLogMart hU z t ω ^ 2 - sigmaLogBracket hU z t ω) P := by
     have : (fun t ω => sigmaLogMart hU z t ω ^ 2 - sigmaLogBracket hU z t ω) =
@@ -175,20 +173,18 @@ theorem ae_sigmaLogRatio_unbounded [IsProbabilityMeasure P]
       simp [sigmaLogBracket]
     rw [this]
     exact hNsqm
-  have hAc : ∀ᵐ ω ∂P, Continuous (fun t => sigmaLogBracket hU z t ω) ∧
-      Monotone (fun t => sigmaLogBracket hU z t ω) ∧ sigmaLogBracket hU z 0 ω = 0 := by
-    filter_upwards [hAprops] with ω h using ⟨h.1, h.2.1, h.2.2.1⟩
+  have hAm : ∀ᵐ ω ∂P, Monotone (fun t => sigmaLogBracket hU z t ω) ∧
+      sigmaLogBracket hU z 0 ω = 0 := by
+    filter_upwards [hAprops] with ω h using ⟨h.2.1, h.2.2.1⟩
   have hAtop : ∀ᵐ ω ∂P, Tendsto (fun t => sigmaLogBracket hU z t ω) atTop atTop := by
     filter_upwards [hAprops] with ω h
     have hpos : 0 < min a b := lt_min ha hb
     refine tendsto_atTop_mono (fun s => (h.2.2.2 s)) ?_
     exact (Filter.Tendsto.const_mul_atTop hpos (NNReal.tendsto_coe_atTop.2 tendsto_id))
-  obtain ⟨β, hβ, hMβ⟩ := External.dambis_dubins_schwarz (sigmaFiltration hU z)
-    (sigmaLogMart hU z) (sigmaLogBracket hU z) hNm hN0 hAprog hAc hAmart hAtop
-  have hosc := Infrastructure.ae_forall_exists_le_of_timeChange hβ hMβ
-    (by filter_upwards [hAc] with ω h using h.1) hAtop
+  have hosc := Infrastructure.ae_forall_exists_le_of_bracket_tendsto_atTop (sigmaFiltration hU z)
+    (sigmaLogMart hU z) (sigmaLogBracket hU z) hNm hN0 hAm hAmart hAtop
   filter_upwards [hosc, hdom] with ω h1 hω K
-  obtain ⟨t, -, ht⟩ := h1 (K + Real.log ‖fPath (fun r => U r ω) (hU.cont ω) z 0‖) 0
+  obtain ⟨t, ht⟩ := h1 (K + Real.log ‖fPath (fun r => U r ω) (hU.cont ω) z 0‖)
   refine ⟨t, ?_⟩
   have hts : (t : ℝ) ∈ sigmaDom (fun r => U r ω) (hU.cont ω) z := by rw [hω]; exact t.coe_nonneg
   rw [sigmaLogRatio_eq_neg hU hab hts]
@@ -213,7 +209,7 @@ section Main
 
 /-- **Lemma 3.12** (`lem-c0-bdy`, paper.tex:L1910-1930): for `c = 0` and `a - b = 8`, the
 `SLE_Σ` driver is in the hitting phase. `PROVED_REL` to the externals consumed by the sealed
-anchor `proposition_3_1_b`, by `KoebeHitSigma` and by `dambis_dubins_schwarz`. -/
+anchor `proposition_3_1_b` and by `KoebeHitSigma`. -/
 theorem lemma_3_12 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a - b = 8) :
     IsHittingPhase a b 0 := by
   intro Ω _ P _ U hU z hz

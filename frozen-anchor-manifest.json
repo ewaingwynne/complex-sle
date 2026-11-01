@@ -2795,69 +2795,6 @@
       "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
     },
     {
-      "id": "ext.dambis_dubins_schwarz.v1",
-      "kind": "theorem",
-      "author_approval": {
-        "approved_by": "Ewain Gwynne",
-        "approved_at": "2026-10-30",
-        "approval_ref": "ERRATA.md R25; reviews reviewer-M5-ext2, reviewer-M5-ext2b",
-        "approval_version": "1"
-      },
-      "source": {
-        "revision": "arXiv:2203.07313v4 complex-sle-final.tex sha256:6f182d3af83b14781ad6c96c634a6d211230b0a54490453aca70cb52f77db252",
-        "range": "external:RevuzYor-V.1.6"
-      },
-      "contract": {
-        "id": "ext.dambis_dubins_schwarz",
-        "version": "1"
-      },
-      "path": "ComplexSLE/External/DambisDubinsSchwarz.lean",
-      "export": "ComplexSLE.External.dambis_dubins_schwarz",
-      "split_policy": {
-        "source_group": "ext.dambis_dubins_schwarz",
-        "mode": "NOT_SPLIT",
-        "ruling_ref": "ERRATA.md R1, R24, R25"
-      },
-      "abi_sha256": "ac06862474efc18b17dfa5362a63184ad6004478d0232d3838f1e6adf9e3081a",
-      "definition_closure": [
-        {
-          "path": "ComplexSLE/Frozen/Defs/ComplexGaussian.lean",
-          "sha256": "f31f2a3a4f660f60413d368224b54fcf3024d91fe7060ed9b446ce5369c84e30"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/CovMatrix.lean",
-          "sha256": "92df43c9c68a8b5f0fe208eef2369a78fe463b95d0f5bac6e1d3788a3571cfd9"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/DiffusionD.lean",
-          "sha256": "b651977d26fc7122821af775db06ad13ff37e82e5b6f17f0863c0bab8f003ddb"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/IsContLocalMartingale.lean",
-          "sha256": "4d1b83a23585c9f062cda1a900914fd3bb1bc76f0790fede79a49caaec31aa2f"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/IsDiffusionSolution.lean",
-          "sha256": "c238291ffe563b9dd0055d0b1ed94b1fd5b21186a6fde227f40c5eda57208194"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/IsSLEDriver.lean",
-          "sha256": "1dee2cbe46f1d4cee6630809eb7f68f6cfe62f03de876792415e3cc382e6d95a"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/IsSLEDriverAdapted.lean",
-          "sha256": "2317a89e2cf7303d8e826de892c6955f14d48315343c50ce3c460ec1f29c9409"
-        },
-        {
-          "path": "ComplexSLE/Frozen/Defs/PathIntegral.lean",
-          "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
-        }
-      ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "c343ee421a1ca636c1733c91bcdff55e13bead795b3271a64b4f3b5d2d7c1678",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
-    },
-    {
       "id": "ext.timeChange_isContLocalMartingale.v1",
       "kind": "theorem",
       "author_approval": {
