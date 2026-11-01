@@ -1,5 +1,11 @@
 # Status ledger
 
+M9 complete — 2026-11-01 (closure and release). RESULTS.md maps every in-scope item to Lean, with computed statuses and a gap list.
+§3 docstring numbering now follows the paper (`lemma_3_3`, `lemma_3_9`). A fresh clone of the final pushed commit builds and passes the
+full gate (hash recorded below). The closure audit (AU-M9-closure) passes. The author replied "continue working" to the M9 packet
+(review/approvals/M9.md) without choosing, so the orchestrator took the defaults that change nothing: release as is, and keep the five
+unused externals marked unused. Either can be revisited.
+
 M8 complete — 2026-10-31 (§4: Theorem 1.10). Both roots sealed: Theorem 1.10(a) and 1.10(b) (AU-M8-A, AU-M8-B).
 No DRAFT anchors remain. Lemma 4.1 (Internal/Disconnect/Lemma41*.lean, R20) from Lemma 4.4 in deterministic form (a single
 driver path in range(Σ) plus the support theorem replaces the c-event of Lemma 4.6), Lemmas 4.2/4.3 (lineApprox: E12 for
@@ -84,7 +90,7 @@ Graph: DEPGRAPH.md / DEPGRAPH_COVERAGE.md. 286 nodes, 794 edges, 31 anchors, 19 
 Author items open: the modeling questions in ERRATA.md. Graph amendments R20-disc-setup and
 R20-disc-E1-positive (reviewed: graph/reviews/R20-amend.review.md) encode R20.
 
-Next (M4): Lean proofs of the Tier-D frontier (deterministic Loewner core, stationary density).
+(Historical, M3.) Next (M4): Lean proofs of the Tier-D frontier (deterministic Loewner core, stationary density).
 Deferred anchors: g_t / f_t / R_t (after `loewner_wellDefined` is proved), Prop 1.5,
 right-hull and f_t parts of (2.1)–(2.4) and Lemma 2.4, the concatenation property, Lemma 2.5,
 Lemma 4.3, and the externals E1–E13 (M5).

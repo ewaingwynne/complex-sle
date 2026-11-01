@@ -3,7 +3,7 @@
 Formalization of arXiv:2203.07313v4 (Gwynne–Pfeffer, *Loewner evolution driven by complex Brownian motion*).
 Source `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 `6f182d3a…`), cited `paper.tex:Lx-Ly`.
 Item numbers are those of the PDF v4 (they agree with the `\label`/`\begin` environments of the .tex and with the
-DEPGRAPH.md node IDs). Snapshot 2026-10-31, after M8 (git HEAD `e3ee94b`; this file uncommitted). Manifest
+DEPGRAPH.md node IDs). Snapshot 2026-11-01, M9 (statuses computed after M8; rechecked by the closure audit AU-M9-closure). Manifest
 `frozen-anchor-manifest.json` sha256 `f06c7d34…` (68 anchors: 24 definitions SEALED, 26 theorems SEALED, 18 theorems
 EXTERNAL). Lean tree: 297 modules, 49,419 lines. No `sorry` outside the 18 `External/` files (one `by sorry` each).
 
@@ -25,8 +25,11 @@ EXTERNAL). Lean tree: 297 modules, 49,419 lines. No `sorry` outside the 18 `Exte
   `RULED` = formalized with author-approved modifications (R-items named); `PARTIAL` = weaker, instance-only,
   driver-level or hypothesis-form (details given); `EXT` = content is an assumed EXTERNAL, no in-project proof;
   `NONE` = no Lean counterpart.
-- **Paper vs. Lean-docstring numbering.** The Lean docstrings now follow the paper numbering; the read-only ERRATA.md ("Lemma 3.8, L1590-1600") and
-  STATUS.md still use the earlier numbers for some §3 lemmas; see §8.1. This file uses the paper numbering and names the label.
+- **Numbering.** This file, the Lean docstrings, ERRATA.md and STATUS.md all use the paper numbering (§8.1 lists the earlier
+  internal numbers, which survive only in the module file names `Lemma37*.lean`, `Lemma38*.lean`).
+- **Adapted drivers.** Some internal theorems are stated for `IsSLEDriverAdapted` drivers (an `IsSLEDriver` with everywhere-continuous
+  paths, adapted to a filtration with independent increments), a stronger hypothesis than the source's. Every `IsSLEDriver` has such
+  a version almost surely (`IsSLEDriver.exists_adapted`), and the sealed roots take plain `IsSLEDriver`.
 
 ## 1. Summary
 
@@ -94,7 +97,7 @@ The other 12 sealed theorems (not graph roots) all have status PROVED with no ex
 | 16 | Lemma 2.2 `lem-forward-reverse-ext` L620-630 (proof L647-649) | none | none | NOT FORMALIZED | NONE. Real-driver chordal chains, Schwarz-reflection continuation f̂_t and the identification of left/right hulls with L_t ∪ L_t^* and iR_t ∪ iR_t^* are absent. Not needed by any root: the paper's only later use is the reverse-map / right-hull clause of Lemma 4.3 (L2209), replaced by duality (row 15). DEPGRAPH steps `step:forward-real-driver`, `step:reverse-via-mult-by-i` are SOURCE_GAPs. |
 | 17 | Lemma 2.3 `lem-mult-by-i` L635-639 (proof L640-642) | none as a statement; content in `ComplexSLE.Internal.closedSol_reverse`, `revDriver` (Internal/Loewner/Duality.lean) | none | NOT FORMALIZED | NONE. The reverse chordal chain is not defined, so the statement "z ↦ i f_t(−iz) is the centered chain driven by iU" is not stated. Its algebra (time reversal plus multiplication by a with a² = −1) is inlined in `closedSol_reverse`, and Prop 1.5 is proved directly from it (and from `IsSLEDriver.mul_I`, Internal/Driver/Transform.lean). |
 | 18 | Lemma 2.4 `lem-connected` L658-660 (proof L661-663) | `ComplexSLE.lemma_2_4_leftHull` (Frozen/Lemma_2_4_LeftHull.lean), `ComplexSLE.lemma_2_4_rightHull` (Frozen/Lemma_2_4_RightHull.lean); external-free providers `ComplexSLE.Internal.lemma_2_4_leftHull'`, `lemma_2_4_rightHull'` (Internal/Hull/ConnectedNoExt.lean) | frozen anchor ×2; internal theorem ×2 | `lemma_2_4_leftHull` PROVED; `lemma_2_4_rightHull` PROVED; both primed providers PROVED | FULL (R16, R22). L_t and R_t connected. Upgraded from PROVED_REL{loewnerMap_conformal} to PROVED in M7 (AU-M7-U1): left hulls by a max-modulus route replacing the source's homotopy sketch (typo T5 and SOURCE_GAP `step:connected-loop-criterion`), right hulls by duality (row 15). Audits AU-M4-D2, AU-M4-D2b, AU-M7-U1. |
-| 19 | Lemma 2.5 `lem-endpt-cont` L667-672 (proof L673-691) | `ComplexSLE.Internal.Polar.tendsto_norm_fPath_nhdsWithin` (Internal/Hull/EndpointCont.lean); also `…norm_fPath_sub_le` (paper (2.7)), `…exists_pos_upcrossing_length`, `…exists_forall_norm_fPath_lt`, `…tendsto_log_norm_fPath_nhdsWithin` | internal theorem | PROVED (also `tendsto_log_norm_fPath_nhdsWithin` PROVED) | FULL. If T_z < ∞ then ‖f_t(z)‖ → 0 as t → T_z⁻, by the paper's upcrossing argument. (STATUS.md "Next (M9)" still lists Lemma 2.5 as a remaining source result; it is proved.) |
+| 19 | Lemma 2.5 `lem-endpt-cont` L667-672 (proof L673-691) | `ComplexSLE.Internal.Polar.tendsto_norm_fPath_nhdsWithin` (Internal/Hull/EndpointCont.lean); also `…norm_fPath_sub_le` (paper (2.7)), `…exists_pos_upcrossing_length`, `…exists_forall_norm_fPath_lt`, `…tendsto_log_norm_fPath_nhdsWithin` | internal theorem | PROVED (also `tendsto_log_norm_fPath_nhdsWithin` PROVED) | FULL. If T_z < ∞ then ‖f_t(z)‖ → 0 as t → T_z⁻, by the paper's upcrossing argument. |
 | 20 | Lemma 2.7 scale invariance `lem-scaling` L774-776 (proof L778-780) | `ComplexSLE.IsSLEDriver.scale`, `IsSLEDriver.scale_real` (Internal/Driver/Transform.lean); chain level = (2.1), row 12 | internal theorem | `scale` PROVED | PARTIAL (driver level). If U is an SLE_Σ driver and r > 0 then s ↦ r U(s/r²) is an SLE_Σ driver with the same (a,b,c). The statement "the collection r⁻¹ f_{r²t}(r·) has the law of a centered SLE_Σ chain" is not a declaration: since SLE_Σ is a predicate on the driver (row 3), it is the composition of this theorem with (2.1). Probability-space-level uses: `ScaleInvariantEvents` (Internal/Phases/AllZEvents.lean). |
 | 21 | Lemma 2.8 Markov property `lem-markov` L782-785 (proof L787-789) | `ComplexSLE.IsSLEDriver.shift`, `IsSLEDriver.indep_shift_past` (Internal/Driver/Shift.lean); stopping times: `ComplexSLE.External.strongMarkov_sleDriver` (External/StrongMarkovSLEDriver.lean, E3) | internal theorem ×2; external | `shift` PROVED; `indep_shift_past` PROVED; `strongMarkov_sleDriver` EXTERNAL | PARTIAL / EXT. Deterministic times t are proved in-project: s ↦ U(t+s) − U t is an SLE_Σ driver independent of σ(U_r, r ≤ t). For a stopping time T the statement is the external E3 (also adds the shifted-filtration clause). Driver level only: the chain f_{T,s+T} of (2.3) is the Loewner chain of the shifted driver (by `concatenation_*`), but no declaration says so. |
 | 22 | Def 2.9 σ-time `defn-sigma` L836-844 | `ComplexSLE.Internal.Polar.sigmaTime`, `clockSup`, `sigmaDom` (Internal/Polar/Sigma.lean); characterization `ComplexSLE.Internal.Polar.clock_sigmaTime`, `image_sigmaTime` | internal definition; internal theorem | definitions internal; `clock_sigmaTime` PROVED; `image_sigmaTime` PROVED | FULL. σ_z is the inverse of the clock A(t) = ∫₀ᵗ ‖f_s(z)‖⁻² ds on the honest domain [0, clockSup); `clock_sigmaTime` is (eqn-defn-sigma), `image_sigmaTime` says σ_z maps the domain onto [0, T_z). Measurability and stopping-time layer: Internal/Polar/PolarTimeSigma.lean. |
@@ -256,8 +259,8 @@ these are now `lemma_3_3`, `lemma_3_9` and the correspondingly renamed helpers.
 | Lemma 3.10 | lem-log-finite-exp | Lemma 3.8 | `integrable_log_inv_distSigma` |
 
 Lemmas 3.11, 3.12, all of §2, §4 and Appendix A agreed all along; Lemma 3.5 (`lem-recurrent`) is the external `recurrence_stationary` and is cited by label only. Props 3.1/3.2 agree.
-Module file names (`Lemma37*.lean`, `Lemma38*.lean`) keep the earlier numbers. The read-only ERRATA.md and STATUS.md mix both numberings: ERRATA.md
-"Lemma 3.8, L1590-1600" is paper Lemma 3.10, and STATUS.md "Lemma 3.9 (converse without the upgrade" is paper Lemma 3.8, while ERRATA.md "Lemma 3.3" (all-z) and "Lemma 3.4" (stationary-sde) are already the paper numbers.
+Module file names (`Lemma37*.lean`, `Lemma38*.lean`) keep the earlier numbers. ERRATA.md and STATUS.md were switched to the paper
+numbering in commit 940e9c4.
 
 ### 8.2 DEPGRAPH.md keeps source-only Lean fields by design
 

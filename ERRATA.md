@@ -194,8 +194,9 @@ f_{τ_k}(𝐳)/|f_{τ_k}(𝐳)| is random. The Lean proof (Internal/Phases/Lemma
 recursion in place of the binomial count. It also proves the tacit step that the hull does not jump over a level, so
 dist(𝐳, L_{τ_k}) ≥ 16^{-k}. The lemma's statement is unaffected, and no ruling is needed.
 
-**Further open modeling questions from the global reviews** (graph/reviews/global.review.md §6), currently
-modeled as SOURCE_GAP steps:
+**Further open modeling questions from the global reviews** (graph/reviews/global.review.md §6), modeled as SOURCE_GAP steps in the
+graph. All were handled in the Lean proofs by M8 (see RESULTS.md for each item); the Markov-state item used the external
+markov_oneDim (R29), and none of the others needed a ruling:
 - (2.2) is used for the maps f_t and not only the hulls (L984, L1165).
 - Right-hull connectedness and (2.4) enter the Thm 1.10 closure as ordinary nodes.
 - An admissible p vanishes only on a null set (needed by Lemma 3.3, under R7/R15). **Resolved in M7 (proved, not a ruling):** every admissible p is positive off a countable set, in particular off a null set (`Internal/Phases/AllZPositivity.lean`, PROVED).
