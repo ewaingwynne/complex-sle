@@ -2601,9 +2601,17 @@
           "sha256": "8d1d3d5b8632f439d14f62ee8feea1d380b1f2834239269829e102e63f4e6ff8"
         }
       ],
-      "state": "EXTERNAL",
-      "prefix_sha256": "c31563ff72cce8f1e173d5861705a7e27cf775d8e8cc13045d19b4bceee78839",
-      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338"
+      "state": "SEALED",
+      "prefix_sha256": "01e030af8bb1a88322b693407b771a7dfc6eef6ea66c44f03ab8b0387462f7dc",
+      "suffix_sha256": "3f410cb668dd32d2f35eaf7e932cfcf4dde4d29bad83cf7521e1f54c6c311338",
+      "implementation": {
+        "module": "ComplexSLE.Internal.ExternalProofs.BlumenthalSLEDriver",
+        "export": "ComplexSLE.Internal.ExternalProofs.blumenthal_sleDriver"
+      },
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
     },
     {
       "id": "ext.birkhoff_stationary.v1",

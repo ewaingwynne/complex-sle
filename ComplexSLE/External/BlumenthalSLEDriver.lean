@@ -14,12 +14,13 @@ public import Mathlib.Probability.Process.Stopping
 public import Mathlib.Probability.Process.HittingTime
 public import Mathlib.Analysis.Calculus.ContDiff.Basic
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import ComplexSLE.Internal.ExternalProofs.BlumenthalSLEDriver
 
 /-!
-# EXTERNAL input: `blumenthal_sleDriver`
+# Classical input (proved): `blumenthal_sleDriver`
 
-Author-approved classical input (ERRATA.md R24, R25). Assumed, not proved: its body is a permanent
-`sorry`, and every result that uses it is reported `PROVED_REL`.
+Author-approved classical input (ERRATA.md R24, R25). Proved in-project (M10, ruling R30) by
+`ComplexSLE.Internal.ExternalProofs.blumenthal_sleDriver`.
 -/
 
 public section
@@ -43,7 +44,7 @@ theorem blumenthal_sleDriver {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
         P (symmDiff A B) = 0) :
     P A = 0 ∨ P A = 1 :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact ComplexSLE.Internal.ExternalProofs.blumenthal_sleDriver hU A hA
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 
