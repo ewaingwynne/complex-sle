@@ -20,14 +20,8 @@ Not yours, read-only: `ComplexSLE/Frozen/`, `ComplexSLE/External/`, the manifest
 so).
 
 Steps:
-1. **Lemma 3.3** (`Phases/AllZ.lean`, `ae_mem_of_ae_unit`).
-   - Replace the use of `map_thetaHat_absolutelyContinuous` at time `1` by
-     `exists_pos_measure_thetaHat_preimage_eq_zero`. With `N` the measurable null superset already in the proof,
-     take `t > 0` with `P(θ̂_t(z) ∈ N) = 0`, and run the same argument at `τ = σ_z(t)` (`Polar.sigmaTop hU z t`)
-     instead of `σ_z(1)`. Every `1` becomes `t`.
-   - Remove the import of `AllZDensity`, and update the docstring: the density step becomes "θ̂ spends zero time in
-     null sets (occupation estimate), so some `t ∈ (0, ∞)` works". Delete `Phases/AllZDensity.lean` if nothing else
-     imports it.
+1. **Lemma 3.3** is already done (commit 0bfe1e6): `Phases/AllZ.lean` uses the occupation estimate, and
+   `AllZDensity.lean` is deleted. Nothing to do here.
 2. **One-time stationarity.**
    - Replace every use of `integral_comp_thetaHat_prod_of_markovOneDim` (`Phases/ErgodicMean.lean`),
      `map_addCircle_thetaHat_prod_eq_of_markovOneDim` and `map_exp_thetaHat_prod_eq_of_markovOneDim`
