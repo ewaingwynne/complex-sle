@@ -6,7 +6,7 @@ module
 
 public import ComplexSLE.Internal.Phases.AllZEvents
 public import ComplexSLE.Internal.Phases.AllZFHat
-public import ComplexSLE.Internal.Phases.AllZDensity
+public import ComplexSLE.Internal.Stationary.OccupationThetaHat
 public import ComplexSLE.Internal.Phases.AllZLebesgue
 public import ComplexSLE.Internal.Polar.PolarSigmaTop
 
@@ -21,19 +21,22 @@ independent of the driver, then `P(𝓔(z)) = 1` for every `z ≠ 0`.
 * `ae_mem_of_ae_unit` (core): for an adapted driver, if for Lebesgue-a.e. `u` the event holds a.s.
   at `e^{iu}`, it holds a.s. at every `z ≠ 0`.
   Proof (a simplification of the source's stopping-time choice, which is one-sided in the critical
-  case): `τ = σ_z(1)` is an a.s. finite `ℱ`-stopping time lying in the life set of `z`. By future
-  dependence (pathwise, at `s = τ`), `𝓔(z)` holds iff `𝓔(f_τ(z))` holds for the post-`τ` driver
-  `V = U_{τ+·} - U_τ`. By the strong Markov property (EXTERNAL `strongMarkov_sleDriver`) `V` is an
-  `SLE_Σ` driver independent of `ℱ_τ ∋ f_τ(z)` (`ae_mem_postDriver`), and by scale invariance
-  and the equality of laws it suffices that `f_τ(z)/|f_τ(z)| = e^{iθ̂_1(z)}` lie in the set `Λ` of
-  good unit points. `θ̂_1(z)` has a Lebesgue density (EXTERNAL `hormander_oneDim`,
-  `map_thetaHat_absolutelyContinuous`), and `Λ` is conull, so `e^{iθ̂_1} ∈ Λ` a.s.
+  case): pick `t₀ > 0` such that `θ̂_{t₀}(z)` a.s. avoids the Lebesgue-null set of bad angles. Such
+  a time exists because `θ̂(z)` spends zero time in null sets (occupation estimate,
+  `exists_pos_measure_thetaHat_preimage_eq_zero`). Then `τ = σ_z(t₀)` is an a.s. finite
+  `ℱ`-stopping time lying in the life set of `z`. By future dependence (pathwise, at `s = τ`),
+  `𝓔(z)` holds iff `𝓔(f_τ(z))` holds for the post-`τ` driver `V = U_{τ+·} - U_τ`. By the strong
+  Markov property `V` is an `SLE_Σ` driver independent of `ℱ_τ ∋ f_τ(z)` (`ae_mem_postDriver`),
+  and by scale invariance and the equality of laws it suffices that
+  `f_τ(z)/|f_τ(z)| = e^{iθ̂_{t₀}(z)}` lie in the set `Λ` of good unit points, which holds a.s. by
+  the choice of `t₀`. (The source uses that `θ̂_1(z)` has a density, via Hörmander's theorem; the
+  occupation estimate replaces it.)
 * `lemma_3_3`: the statement with the product extension: `P(𝓔(𝐳)) = 1` for `𝐳` on
   `Ω × ℝ` with measure `P.prod (admissibleLaw p)`, together with the positivity of the admissible
   density (`IsAdmissibleDensity.ae_pos`), gives `P(𝓔(z)) = 1` for every `z ≠ 0`.
 
-Uses the EXTERNALs `strongMarkov_sleDriver`, `hormander_oneDim` (and `ito_formula`, `timeChange`
-upstream through the polar layer).
+Uses no external input: the strong Markov property, Itô's formula and the time change are proved
+in-project (ruling R30).
 -/
 
 public section
@@ -62,35 +65,32 @@ theorem ae_mem_of_ae_unit [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b) (hc
     ∀ᵐ ω ∂P, ((fun t => U t ω), z) ∈ M := by
   -- the set of good points
   set Z : Set ℂ := {ξ | ∀ᵐ ω ∂P, ((fun t => U t ω), ξ) ∈ M} with hZdef
-  -- the stopping time `τ = σ_z(1)`
-  set τ : Ω → WithTop ℝ≥0 := Polar.sigmaTop hU z 1 with hτdef
-  have hτ : IsStoppingTime ℱ τ := Polar.isStoppingTime_sigmaTop hU z 1
+  -- a good time `t₀ > 0`: `θ̂_{t₀}(z)` a.s. avoids the null set of bad angles (occupation estimate)
+  obtain ⟨N, hNsub, hNm, hN0⟩ := exists_measurable_superset_of_null (ae_iff.1 hΛ)
+  obtain ⟨t₀, -, hPN⟩ := exists_pos_measure_thetaHat_preimage_eq_zero hU ha hb hc hz hN0
+  -- the stopping time `τ = σ_z(t₀)`
+  set τ : Ω → WithTop ℝ≥0 := Polar.sigmaTop hU z t₀ with hτdef
+  have hτ : IsStoppingTime ℱ τ := Polar.isStoppingTime_sigmaTop hU z t₀
   have hgood := Polar.ae_thetaHat_eq_and_continuous hU ha hc hz
   have hfin : ∀ᵐ ω ∂P, τ ω ≠ ⊤ := by
     filter_upwards [hgood] with ω hω
-    rw [hτdef, Polar.sigmaTop_of_mem hU (hω.1 1)]
+    rw [hτdef, Polar.sigmaTop_of_mem hU (hω.1 t₀)]
     exact WithTop.coe_ne_top
   -- `f_τ(z)` is `ℱ_τ`-measurable
-  have hX : Measurable[hτ.measurableSpace] (Polar.fHat hU z 1) := Polar.measurable_fHat hU 1
-  -- the direction `e^{iθ̂_1}` is a.s. a good point
-  have hθmeas : Measurable (Polar.thetaHat hU z 1) :=
-    (((Polar.isStronglyProgressive_thetaHat hU (z := z)).stronglyAdapted 1).mono
-      ((Polar.sigmaFiltration hU z).le 1)).measurable
-  have hac := map_thetaHat_absolutelyContinuous hU ha hb hc hz (s := 1) one_pos
-  have hdirZ : ∀ᵐ ω ∂P, Complex.exp ((Polar.thetaHat hU z 1 ω : ℂ) * Complex.I) ∈ Z := by
-    obtain ⟨N, hNsub, hNm, hN0⟩ := exists_measurable_superset_of_null
-      (ae_iff.1 hΛ)
-    have hPN : P ((Polar.thetaHat hU z 1) ⁻¹' N) = 0 := by
-      rw [← Measure.map_apply hθmeas hNm]
-      exact hac hN0
+  have hX : Measurable[hτ.measurableSpace] (Polar.fHat hU z t₀) := Polar.measurable_fHat hU t₀
+  -- the direction `e^{iθ̂_{t₀}}` is a.s. a good point
+  have hθmeas : Measurable (Polar.thetaHat hU z t₀) :=
+    (((Polar.isStronglyProgressive_thetaHat hU (z := z)).stronglyAdapted t₀).mono
+      ((Polar.sigmaFiltration hU z).le t₀)).measurable
+  have hdirZ : ∀ᵐ ω ∂P, Complex.exp ((Polar.thetaHat hU z t₀ ω : ℂ) * Complex.I) ∈ Z := by
     rw [ae_iff]
     refine measure_mono_null (fun ω hω => ?_) hPN
     apply hNsub
     exact hω
   -- `f_τ(z)` is a.s. a good point (scale invariance)
-  have hXZ : ∀ᵐ ω ∂P, Polar.fHat hU z 1 ω ∈ Z := by
+  have hXZ : ∀ᵐ ω ∂P, Polar.fHat hU z t₀ ω ∈ Z := by
     filter_upwards [hgood, hdirZ] with ω hω hZω
-    have hmem := hω.1 1
+    have hmem := hω.1 t₀
     have hlife := Polar.sigmaTime_mem_lifeSet (hU.cont ω) hmem
     have hne := Polar.fPath_ne_zero (hU.cont ω) hlife
     have hexp := Polar.exp_argPath_mul_I (hU.cont ω) hlife
@@ -101,9 +101,9 @@ theorem ae_mem_of_ae_unit [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b) (hc
   have hmark := ae_mem_postDriver hU hτ hfin hX hMm hZ' hXZ
   filter_upwards [hmark, hgood] with ω hω hgω
   -- the pathwise identification `E z ↔ E (f_τ z)` for the post-`τ` driver
-  have hmem := hgω.1 1
+  have hmem := hgω.1 t₀
   have hlife := Polar.sigmaTime_mem_lifeSet (hU.cont ω) hmem
-  set σ := Polar.sigmaTime (fun t => U t ω) (hU.cont ω) z 1 with hσ
+  set σ := Polar.sigmaTime (fun t => U t ω) (hU.cont ω) z t₀ with hσ
   have hσ0 : 0 ≤ σ := Polar.sigmaTime_nonneg (hU.cont ω) hmem
   have hτω : τ ω = ((σ.toNNReal : ℝ≥0) : WithTop ℝ≥0) := Polar.sigmaTop_of_mem hU hmem
   have hs : (τ ω).untopA = σ.toNNReal := by rw [hτω]; rfl
@@ -112,15 +112,15 @@ theorem ae_mem_of_ae_unit [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b) (hc
   have hz' : z ∈ (leftHull (fun t => U t ω) s)ᶜ := by
     rw [← Polar.coe_mem_lifeSet_iff, hsσ]; exact hlife
   have hfut := hEf (fun t => U t ω) (hU.cont ω) s z hz'
-  have hcl : centeredLoewnerMap (fun t => U t ω) (hU.cont ω) s ⟨z, hz'⟩ = Polar.fHat hU z 1 ω := by
+  have hcl : centeredLoewnerMap (fun t => U t ω) (hU.cont ω) s ⟨z, hz'⟩ =
+      Polar.fHat hU z t₀ ω := by
     rw [Polar.centeredLoewnerMap_eq_fPath (hU.cont ω) s hz', Polar.fHat_of_mem hU hmem, hsσ]
-    rfl
   have hpath : (fun r => (fun t => U t ω) (r + s) - (fun t => U t ω) s) =
       fun r => postDriver U τ r ω := by
     funext r
     simp only [postDriver, hs, add_comm r]
   rw [hcl, hpath] at hfut
-  have hV : E (fun r => postDriver U τ r ω) (Polar.fHat hU z 1 ω) :=
+  have hV : E (fun r => postDriver U τ r ω) (Polar.fHat hU z t₀ ω) :=
     (hEM _ _ (continuous_postDriver hU τ ω)).2 hω
   exact (hEM _ _ (hU.cont ω)).1 (hfut.2 hV)
 
