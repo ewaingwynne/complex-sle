@@ -205,7 +205,7 @@ depending only on the law of the driver, such that for every unit `z`, every `t�
 
   `P(dist(z, L_{σ_z(t̃)}) ≤ lvl k) ≤ e^{t̃} r^k`   (`lvl k = lvlBase^{-k}`).
 
-The constants do not depend on the point `z`. Uses, through the Markov step, the EXTERNAL
+The constants do not depend on the point `z`. Uses, through the Markov step, the classical input
 `strongMarkov_sleDriver`; the Koebe step is proved (covering constant `1/48`). -/
 theorem tail_bound [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b) :
     ∃ r : ℝ, 0 ≤ r ∧ r < 1 ∧ ∀ (z : ℂ) (tt : ℝ≥0), ‖z‖ = 1 → ∀ k : ℕ,

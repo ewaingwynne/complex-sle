@@ -8,7 +8,8 @@ public import ComplexSLE.Frozen.Defs.IsAdmissibleDensity
 public import ComplexSLE.Frozen.Defs.IntegralII
 public import ComplexSLE.Frozen.Defs.IsSLEDriver
 public import ComplexSLE.Frozen.Defs.LeftHull
-public import ComplexSLE.Internal.Stationary.SLEStatLaw
+public import ComplexSLE.Internal.Stationary.ThetaHatSolution
+public import ComplexSLE.Internal.Stationary.AdmissibleMeasure
 public import Mathlib.Topology.MetricSpace.HausdorffDistance
 import ComplexSLE.Internal.Phases.Prop32BUpEvents
 import ComplexSLE.Internal.Phases.Prop32BUpMarkov
@@ -38,8 +39,9 @@ Proof (paper.tex:L1786-1816 with the approved correction R27: the hitting lemma 
 4. Koebe ball and compactness of the unit circle: `q ≥ q_* > 0` (`exists_lowerBound`).
 5. Martingale 0-1 step (`ae_staysAway_of_lowerBound`, Prop32BUpZeroOne): Lévy's upward theorem.
 
-Consumes the EXTERNALs `strongMarkov_sleDriver`, and through the polar layer
-`ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim`; no Girsanov.
+Uses the classical inputs `strongMarkov_sleDriver` and, through the polar layer, `ito_formula` and
+`timeChange_isContLocalMartingale`, all proved in-project (`Internal/ExternalProofs/`); no
+Girsanov.
 -/
 
 public section

@@ -16,8 +16,7 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du` (`admissibleMeasure p`
 `D_t(ω, u) = ∫₀ᵗ ν(θ̂_v(e^{iu})(ω)) dv` (`driftInt`).
 
 * `integral_nu_comp_thetaHat`: `E ν(θ̂_t) = ∫ ν dν = integralI` (one-time stationarity of
-  `θ̂ mod π`, `ν` is `π`-periodic; modulo the EXTERNAL `markov_oneDim` (R29) as the hypothesis
-  `hMO : MarkovOneDim`);
+  `θ̂ mod π` (`integral_comp_thetaHat_prod_admissible`), `ν` is `π`-periodic);
 * `integral_driftInt`: `E D_t = t · integralI` (Riemann sums, dominated convergence along the
   a.s. event `goodSet` on which every path of `θ̂` is continuous);
 * `integrable_logFHat_sub_driftInt`: `Y_t - D_t` is integrable with mean zero (fibrewise it is the
@@ -133,28 +132,13 @@ theorem ae_mem_goodSet [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U
   change (n : ℝ) ∈ sigmaDom (fun r => U r ω) (hU.cont ω) (unitPt u)
   rw [hω]; exact Nat.cast_nonneg n
 
-/-- **One-time stationarity for continuous `π`-periodic functions** (from the EXTERNAL (R29)
-`markov_oneDim`, as `hMO : MarkovOneDim`): `E_{P ⊗ ν} f(θ̂_s(e^{iu})) = ∫ f dν`. -/
-theorem integral_comp_thetaHat_prod_of_markovOneDim [IsProbabilityMeasure P] (hMO : MarkovOneDim)
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) {f : ℝ → ℝ} (hf : Continuous f)
-    (hfper : Function.Periodic f π) :
-    ∫ q, f (thetaHat hU (unitPt q.2) s q.1) ∂(P.prod (admissibleMeasure p)) =
-      ∫ u, f u ∂(admissibleMeasure p) := by
-  obtain ⟨β, hβ, hβsq, hH⟩ := exists_beta ha hb hc
-  obtain ⟨p', K⟩ := exists_isDiffusionKernel hU ha hb hc hβ hβsq hH
-    (hMO (mu a b c) β (contDiff_mu a b c) hβ (mu_periodic a b c)
-      (fun u => sq_periodic_of_sq_eq_two_mul_diffusionD hβsq u) hH)
-  exact integral_comp_thetaHat_prod hU ha hb hc (hβ.of_le (WithTop.coe_le_coe.mpr le_top)) hβsq K
-    hp s hf hfper
-
 /-- `E ν(θ̂_s(e^{iu})) = ∫ ν dν = (I)` for every `s ≥ 0`. -/
-theorem integral_nu_comp_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_nu_comp_thetaHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :
     ∫ q, nu a b c (thetaHat hU (unitPt q.2) s q.1) ∂(P.prod (admissibleMeasure p)) =
       integralI a b c p := by
-  rw [integral_comp_thetaHat_prod_of_markovOneDim hMO hU ha hb hc hp s (continuous_nu a b c)
+  rw [integral_comp_thetaHat_prod_admissible hU ha hb hc hp s (continuous_nu a b c)
     (periodic_nu a b c)]
   exact integral_nu_admissibleMeasure hp
 
@@ -207,7 +191,7 @@ theorem integrable_nu_comp_thetaHat [IsProbabilityMeasure P] (hU : IsSLEDriverAd
       simpa [Real.norm_eq_abs] using abs_nu_le a b c _)
 
 /-- **The mean of the drift integral**: `E D_t = t · (I)`; `D_t` is a.e. strongly measurable. -/
-theorem integral_driftInt [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_driftInt [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     AEStronglyMeasurable (driftInt hU t) (P.prod (admissibleMeasure p)) ∧
@@ -228,7 +212,7 @@ theorem integral_driftInt [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     have hNpos : (0 : ℝ) < N := by exact_mod_cast hN
     unfold driftRiemann
     rw [integral_finsetSum _ fun k _ => (integrable_nu_comp_thetaHat hU _).const_mul _]
-    simp only [integral_const_mul, integral_nu_comp_thetaHat hMO hU ha hb hc hp]
+    simp only [integral_const_mul, integral_nu_comp_thetaHat hU ha hb hc hp]
     rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
     field_simp
   have hev : ∀ᶠ N : ℕ in atTop, ∫ q, driftRiemann hU t N q ∂(P.prod (admissibleMeasure p)) =
@@ -246,7 +230,7 @@ theorem ae_logFHat_sub_driftInt [IsProbabilityMeasure P] (hU : IsSLEDriverAdapte
   rw [hω t]; ring
 
 /-- **`Y_t - D_t` is integrable on `Ω × ℝ` with mean zero.** -/
-theorem integrable_logFHat_sub_driftInt [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integrable_logFHat_sub_driftInt [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     Integrable (fun q => logFHat hU t q - driftInt hU t q) (P.prod (admissibleMeasure p)) ∧
@@ -255,7 +239,7 @@ theorem integrable_logFHat_sub_driftInt [IsProbabilityMeasure P] (hMO : MarkovOn
   set F : Ω × ℝ → ℝ := fun q => logFHat hU t q - driftInt hU t q with hF
   have hFm : AEStronglyMeasurable F (P.prod (admissibleMeasure p)) :=
     (measurable_logFHat hU t).aestronglyMeasurable.sub
-      (integral_driftInt hMO hU ha hb hc hp t).1
+      (integral_driftInt hU ha hb hc hp t).1
   have hfib := ae_logFHat_sub_driftInt hU ha hc t
   have hint : Integrable F (P.prod (admissibleMeasure p)) := by
     refine ⟨hFm, ?_⟩
@@ -301,14 +285,14 @@ theorem abs_driftInt_le (hU : IsSLEDriverAdapted a b c U P ℱ) (t : ℝ≥0) (q
 
 /-- **`E Y_t = t · (I)`**: `Y_t = log |f̂_t(𝐳)|` is integrable on `(Ω × ℝ, P ⊗ ν)` with mean
 `t ∫₀^{2π} ν p` (paper.tex:L440, eqn-integral-nu). -/
-theorem integrable_integral_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integrable_integral_logFHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     Integrable (logFHat hU t) (P.prod (admissibleMeasure p)) ∧
       ∫ q, logFHat hU t q ∂(P.prod (admissibleMeasure p)) = t * integralI a b c p := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨hMint, hM0⟩ := integrable_logFHat_sub_driftInt hMO hU ha hb hc hp t
-  obtain ⟨hDm, hD⟩ := integral_driftInt hMO hU ha hb hc hp t
+  obtain ⟨hMint, hM0⟩ := integrable_logFHat_sub_driftInt hU ha hb hc hp t
+  obtain ⟨hDm, hD⟩ := integral_driftInt hU ha hb hc hp t
   have hDint : Integrable (driftInt hU t) (P.prod (admissibleMeasure p)) :=
     (integrable_const ((|2 - a / 2 + b / 2| + |c|) * t)).mono' hDm
       (Eventually.of_forall fun q => by simpa [Real.norm_eq_abs] using abs_driftInt_le hU t q)

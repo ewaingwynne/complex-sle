@@ -25,9 +25,9 @@ every time `s₀`:
   `L` of `exists_birkhoff_cosInt` is a.s. equal to `∫ cos(2u) dν`: `P ⊗ ν`-a.s.
   `C_s / s → ∫ cos(2u) dν`.
 
-Consumes the EXTERNALs `strongMarkov_sleDriver` and `birkhoff_stationary` (and, through the
-stationarity layer, `hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`); the
-EXTERNAL `markov_oneDim` (R29) is the hypothesis `hMO : MarkovOneDim`.
+Uses the classical inputs `strongMarkov_sleDriver` and `birkhoff_stationary` (and, through the
+stationarity layer, `ito_formula` and `timeChange_isContLocalMartingale`), all proved in-project
+(`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -209,9 +209,9 @@ end ZeroOne
 section Main
 
 /-- **Lemma 3.7, ergodic input: the Birkhoff limit of `∫₀ˢ cos 2θ̂` is a.s. constant, equal to
-`∫ cos(2u) dν`.** Under `hMO : MarkovOneDim`: `P ⊗ ν`-a.s., `C_s / s → ∫ cos(2u) dν` as
+`∫ cos(2u) dν`.** `P ⊗ ν`-a.s., `C_s / s → ∫ cos(2u) dν` as
 `s → ∞` along `ℝ≥0`, `C_s = ∫₀ˢ cos 2θ̂_v(e^{iu}) dv`. -/
-theorem birkhoff_cosInt_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem birkhoff_cosInt_const [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
@@ -228,7 +228,7 @@ theorem birkhoff_cosInt_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   suffices h : ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
       Tendsto (fun s : ℝ≥0 => cosIntU hU' s q / s) atTop (𝓝 (cosMean p)) from h
   -- the Birkhoff limit, with a measurable representative
-  obtain ⟨L, hLint, hLmean, hLreal⟩ := exists_birkhoff_cosInt hMO hU' ha hb hc hp
+  obtain ⟨L, hLint, hLmean, hLreal⟩ := exists_birkhoff_cosInt hU' ha hb hc hp
   set L' : Ω × ℝ → ℝ := hLint.1.mk L with hL'
   have hL'm : Measurable L' := hLint.1.stronglyMeasurable_mk.measurable
   have hLL' : L =ᵐ[P.prod (admissibleMeasure p)] L' := hLint.1.ae_eq_mk
@@ -240,7 +240,7 @@ theorem birkhoff_cosInt_const [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   set κ : ℝ := ∫ x, x ∂((driverLaw hU').map (fun w : CPath => cosLim (obsC (w, 0))))
     with hκ
   have hfib : ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P, L' (ω, u) = κ := by
-    filter_upwards [ae_ae_of_ae_prod_snd hLreal', ae_recurrent_unit hMO hU' ha hb hc hp] with u
+    filter_upwards [ae_ae_of_ae_prod_snd hLreal', ae_recurrent_unit hU' ha hb hc hp] with u
       h1 h2
     have hz := unitPt_ne_zero u
     have D : ∀ k : ℕ, ∃ D : RegenDatum hU' (unitPt u) k,

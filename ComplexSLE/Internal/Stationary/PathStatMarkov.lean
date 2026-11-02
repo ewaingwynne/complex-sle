@@ -11,11 +11,11 @@ public import ComplexSLE.Internal.Phases.AllZMarkov
 # The strong Markov step in integral form (M7/A4c)
 
 For an adapted `SLE_Σ` driver `U`, an a.s. finite `ℱ`-stopping time `τ`, the post-`τ` driver
-`V = postDriver U τ` is an `SLE_Σ` driver independent of `ℱ_τ` (EXTERNAL `strongMarkov_sleDriver`).
-Let `X = (ρ, β) : Ω → ℝ≥0 × ℝ` be `ℱ_τ`-measurable with `ρ > 0` a.s. (the restart scale and a
-real-valued state). Then the rescaled post-`τ` path `CPath.scale ρ⁻¹ (postPath hU τ)` is, jointly
-with `β`, distributed as `Λ ⊗ law β`, where `Λ = P.map (CPath.ofDriver U _)` is the law of the
-driver `U` itself on `CPath`:
+`V = postDriver U τ` is an `SLE_Σ` driver independent of `ℱ_τ` (classical input
+`strongMarkov_sleDriver`). Let `X = (ρ, β) : Ω → ℝ≥0 × ℝ` be `ℱ_τ`-measurable with `ρ > 0` a.s. (the
+restart scale and a real-valued state). Then the rescaled post-`τ` path
+`CPath.scale ρ⁻¹ (postPath hU τ)` is, jointly with `β`, distributed as `Λ ⊗ law β`, where
+`Λ = P.map (CPath.ofDriver U _)` is the law of the driver `U` itself on `CPath`:
 
 * `lintegral_comp_scale_postPath`: for every measurable `F : CPath × ℝ → ℝ≥0∞`,
   `E F(ρ⁻¹-scaled post-τ path, β) = E ∫ F(w, β) dΛ(w)`.
@@ -23,7 +23,7 @@ driver `U` itself on `CPath`:
 Proof: independence of `postPath` and `X` gives the product law; scaling by a fixed `r > 0`
 preserves `Λ` (`map_scale_eq`, Brownian scaling and uniqueness of the path law); Fubini.
 
-Uses the EXTERNAL `strongMarkov_sleDriver`.
+Uses the classical input `strongMarkov_sleDriver` (proved in-project).
 -/
 
 @[expose] public section

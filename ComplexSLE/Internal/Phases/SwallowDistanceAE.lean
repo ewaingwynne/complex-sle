@@ -19,9 +19,8 @@ Proposition 3.1(b), paper.tex:L1405-1418) in terms of the process
 `sigmaLogNorm hU z s ω = log|f̂_s(z)|` of `PolarDerivSigma.lean`.
 
 The only input beyond the deterministic files is Remark 2.12 (`ae_sigmaDom_eq_Ici`: a.s.
-`sigmaDom = [0, ∞)`), whose proof consumes the external Itô formula (`ito_formula`); hence the
-results of this file are `PROVED_REL{ito_formula}` (inherited), while the deterministic files
-`EndpointCont`, `SwallowDistance` and `SwallowODE` use no external input.
+`sigmaDom = [0, ∞)`), whose proof uses the Itô formula (`ito_formula`, proved in-project), while the
+deterministic files `EndpointCont`, `SwallowDistance` and `SwallowODE` use no classical input.
 -/
 
 public section

@@ -27,7 +27,7 @@ Both exist under the single hypothesis
 `l ≤ y₀ < u`, constants `T, δ > 0` depending only on `(α, β, l, y₀, u)` such that every solution
 with `X₀ ∈ [l, y₀]` a.s. hits `l` by time `T` with probability `≥ δ`
 (`step:rec-hit-fixed-y`, `step:rec-monotone-in-y`, `step:rec-angle-hit-unif`, and the hitting
-lemma of R27). No Markov property is used. `PROVED_REL{ito_formula}`.
+lemma of R27). No Markov property is used. Uses `ito_formula` (proved in-project).
 -/
 
 public section

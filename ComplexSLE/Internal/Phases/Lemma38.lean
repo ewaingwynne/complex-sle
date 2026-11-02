@@ -6,7 +6,7 @@ module
 
 public import ComplexSLE.Internal.Phases.Lemma38Rec
 public import ComplexSLE.Internal.Phases.Lemma38Joint
-public import ComplexSLE.Internal.Stationary.SLEStatKernel
+public import ComplexSLE.Internal.Stationary.ThetaHatSolution
 
 /-!
 # Lemma 3.10 (`lem-log-finite-exp`): `E log (1 / dist(z, L_{σ_z(t̃)})) < ∞` (M7/E2)

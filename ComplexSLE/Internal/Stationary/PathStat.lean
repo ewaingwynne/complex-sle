@@ -5,7 +5,7 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 module
 
 public import ComplexSLE.Internal.Stationary.PathStatKernel
-public import ComplexSLE.Internal.Stationary.SLEStat
+public import ComplexSLE.Internal.Stationary.InvarianceStationary
 public import ComplexSLE.Internal.Phases.AllZLebesgue
 
 /-!
@@ -27,19 +27,19 @@ the equality of **laws of the whole path observable**, for every `s ≥ 0`:
 * `map_pathObs_eq_zero`: `(P ⊗ ν).map Ξ_s = (P ⊗ ν).map Ξ_0` (this is the law of `Ξ_0 =
   (e^{2iu}, (θ̂_r - θ̂_0)_r, (log |f̂_r|)_r)`, as `θ̂_0 = u mod 2π`, `|f̂_0| = 1`).
 
-**mod π versus mod 2π.** The one-time stationarity available (`SLEStat.lean`, A4a) concerns
-`θ̂_s mod π`, equivalently `e^{2iθ̂_s}`; the law of `θ̂_s mod 2π` is not available. This is why
-the observable records `e^{2iθ̂_s}` and not `e^{iθ̂_s}`. It suffices: conditionally on `ℱ_{σ_z(s)}`
-the rescaled post-`σ_z(s)` driver is an `SLE_Σ` driver independent of the state
-(strong Markov and Brownian scaling), so `E F(Ξ_s) = E H_F(θ̂_s)` with
-`H_F(β) = ∫ F(obsC (w, β)) dΛ(w)`; and `H_F(β + π) = H_F(β)`, because
-`obsC (-w, β) = obsC (w, β + π)` (`PathStatMeas.lean`, pathwise reflection `f^{-V}(z) = -f^V(-z)`)
-and `-w` has the same law as `w` (`-U =_d U`). So `H_F` is a function of `e^{2iβ}` only, and the
-`e^{2iθ̂_s}`-stationarity gives `E H_F(θ̂_s) = ∫ H_F dν`, independent of `s`.
+**mod π versus mod 2π.** The one-time stationarity available (`InvarianceStationary.lean`, A4a)
+concerns `θ̂_s mod π`, equivalently `e^{2iθ̂_s}`; the law of `θ̂_s mod 2π` is not available. This is
+why the observable records `e^{2iθ̂_s}` and not `e^{iθ̂_s}`. It suffices: conditionally on
+`ℱ_{σ_z(s)}` the rescaled post-`σ_z(s)` driver is an `SLE_Σ` driver independent of the state (strong
+Markov and Brownian scaling), so `E F(Ξ_s) = E H_F(θ̂_s)` with `H_F(β) = ∫ F(obsC (w, β)) dΛ(w)`;
+and `H_F(β + π) = H_F(β)`, because `obsC (-w, β) = obsC (w, β + π)` (`PathStatMeas.lean`, pathwise
+reflection `f^{-V}(z) = -f^V(-z)`) and `-w` has the same law as `w` (`-U =_d U`). So `H_F` is a
+function of `e^{2iβ}` only, and the `e^{2iθ̂_s}`-stationarity gives `E H_F(θ̂_s) = ∫ H_F dν`,
+independent of `s`.
 
-Uses the EXTERNAL `strongMarkov_sleDriver`, and (through the one-time stationarity)
-`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, and the EXTERNAL (R29)
-`markov_oneDim` as the explicit hypothesis `hMO : MarkovOneDim`.
+Uses the classical input `strongMarkov_sleDriver` and (through the one-time stationarity)
+`ito_formula` and `timeChange_isContLocalMartingale`, all proved in-project
+(`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -59,7 +59,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 /-- **Stationarity of the expectation of `H_F(θ̂_s)`**, from the one-time stationarity of
 `e^{2iθ̂_s}`. -/
-theorem lintegral_obsKernel_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lintegral_obsKernel_thetaHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0)
     {F : ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ) → ℝ≥0∞} (hF : Measurable F) :
@@ -73,7 +73,7 @@ theorem lintegral_obsKernel_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDi
   have hHm : Measurable H := hK.comp (Complex.measurable_arg.div_const 2)
   have hexp : ∀ β : ℝ, obsKernel (driverLaw hU) F β =
       H (Complex.exp (2 * Complex.I * (β : ℂ))) := fun β => periodic_eq_comp_exp hper β
-  have hlaw := map_exp_thetaHat_prod_eq_of_markovOneDim hMO hU ha hb hc hp s
+  have hlaw := map_exp_thetaHat_prod_eq_admissible hU ha hb hc hp s
   have hY : Measurable fun q : Ω × ℝ =>
       Complex.exp (2 * Complex.I * (thetaHat hU (unitPt q.2) s q.1 : ℝ)) := by
     have := measurable_thetaHat_unit hU s
@@ -95,7 +95,7 @@ theorem lintegral_obsKernel_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDi
 /-- **Path-level stationarity, integral form.** For every `s ≥ 0` and measurable
 `F : ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ) → ℝ≥0∞`,
 `E_{P ⊗ ν} F(Ξ_s) = ∫ H_F dν`, a quantity independent of `s`. -/
-theorem lintegral_pathObs_eq [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lintegral_pathObs_eq [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0)
     {F : ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ) → ℝ≥0∞} (hF : Measurable F) :
@@ -112,16 +112,15 @@ theorem lintegral_pathObs_eq [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   have e2 := lintegral_prod_symm (μ := P) (ν := admissibleMeasure p)
     (fun q : Ω × ℝ => obsKernel (driverLaw hU) F (thetaHat hU (unitPt q.2) s q.1))
     hGm.aemeasurable
-  rw [← lintegral_obsKernel_thetaHat hMO hU ha hb hc hp s hF, e1, e2]
+  rw [← lintegral_obsKernel_thetaHat hU ha hb hc hp s hF, e1, e2]
   refine lintegral_congr fun u => ?_
   exact lintegral_pathObsAt hU ha hc (unitPt_ne_zero u) s hF
 
-/-- **Path-level stationarity of the polar data started at `𝐳` (A4c).** With the EXTERNAL (R29)
-`markov_oneDim` as the hypothesis `hMO : MarkovOneDim`: for every `s ≥ 0`, the law of
-`Ξ_s = (e^{2iθ̂_s(𝐳)}, (θ̂_{s+r}(𝐳) - θ̂_s(𝐳))_r, (log |f̂_{s+r}(𝐳)| - log |f̂_s(𝐳)|)_r)` under
+/-- **Path-level stationarity of the polar data started at `𝐳` (A4c).** For every `s ≥ 0`, the law
+of `Ξ_s = (e^{2iθ̂_s(𝐳)}, (θ̂_{s+r}(𝐳) - θ̂_s(𝐳))_r, (log |f̂_{s+r}(𝐳)| - log |f̂_s(𝐳)|)_r)` under
 `P ⊗ ν` is `(Λ ⊗ ν).map obsC`, the law of the observable of the chain driven by an independent
 copy of `U` started at `e^{iu}`, `u ∼ ν`. -/
-theorem map_pathObs_eq_canonical [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem map_pathObs_eq_canonical [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :
     (P.prod (admissibleMeasure p)).map (pathObs hU s) =
@@ -132,19 +131,19 @@ theorem map_pathObs_eq_canonical [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   have e3 := lintegral_prod_symm (μ := driverLaw hU) (ν := admissibleMeasure p)
     (fun q : CPath × ℝ => F (obsC q)) (hF.comp (measurable_obsC hU)).aemeasurable
   rw [lintegral_map hF (measurable_pathObs hU s), lintegral_map hF (measurable_obsC hU),
-    lintegral_pathObs_eq hMO hU ha hb hc hp s hF, e3]
+    lintegral_pathObs_eq hU ha hb hc hp s hF, e3]
   rfl
 
 /-- **Path-level stationarity of the polar data started at `𝐳` (A4c), headline.** For every
 `s ≥ 0`, the law of `Ξ_s` under `P ⊗ ν` equals the law of `Ξ_0`, as measures on
 `ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ)` (product σ-algebras), `ν = p(u) 1_{[0,2π]}(u) du`. -/
-theorem map_pathObs_eq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem map_pathObs_eq_zero [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :
     (P.prod (admissibleMeasure p)).map (pathObs hU s) =
       (P.prod (admissibleMeasure p)).map (pathObs hU 0) :=
-  (map_pathObs_eq_canonical hMO hU ha hb hc hp s).trans
-    (map_pathObs_eq_canonical hMO hU ha hb hc hp 0).symm
+  (map_pathObs_eq_canonical hU ha hb hc hp s).trans
+    (map_pathObs_eq_canonical hU ha hb hc hp 0).symm
 
 end ComplexSLE.Internal
 

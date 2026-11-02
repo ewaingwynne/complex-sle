@@ -17,17 +17,17 @@ hypothesis
 proved elsewhere (`ErgodicConst*.lean`).
 
 * `recurrent_logFHat_of_integralI_eq_zero` (paper.tex:L1384-1388, via `lem-recurrent`): if
-  `(I) = 0`, a.s. for every `ε > 0` there are arbitrarily large `s` with `|Y_s| < ε`. The EXTERNAL
-  `recurrence_stationary` applies to `(ξ_n)` (stationary: `xiInc_stationary`; integrable;
+  `(I) = 0`, a.s. for every `ε > 0` there are arbitrarily large `s` with `|Y_s| < ε`. The classical
+  input `recurrence_stationary` applies to `(ξ_n)` (stationary: `xiInc_stationary`; integrable;
   `S_n / n = Y_n / n → 0` by `hconst`), and `∑_{k<n} ξ_k = Y_n` a.s.
 * `not_tendsto_atBot_logFHat_of_integralI_nonneg` (Prop 3.1(a) shape): if `(I) ≥ 0`, a.s.
   `Y_s ↛ -∞`.
 * `tendsto_atBot_logFHat_of_integralI_neg` (Prop 3.1(b) shape): if `(I) < 0`, a.s. `Y_s → -∞`
   (since `Y_s / s → (I)`).
 
-Consumes the EXTERNALs `recurrence_stationary` (E7') and, through the stationarity layer,
-`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, `strongMarkov_sleDriver`,
-and the EXTERNAL `markov_oneDim` (R29) as the hypothesis `hMO : MarkovOneDim`.
+Uses the classical input `recurrence_stationary` (E7') and, through the stationarity layer,
+`ito_formula`, `timeChange_isContLocalMartingale` and `strongMarkov_sleDriver`, all proved
+in-project (`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -44,10 +44,10 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 /-! ### Recurrence when `(I) = 0` -/
 
-/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.4, last clause). Under `hMO : MarkovOneDim`
-and the a.s. constancy `hconst` of the Birkhoff limit: if `(I) = 0`, then `P ⊗ ν`-a.s. for every
+/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.4, last clause). Under
+the a.s. constancy `hconst` of the Birkhoff limit: if `(I) = 0`, then `P ⊗ ν`-a.s. for every
 `ε > 0` and `S ≥ 0` there is `s ≥ S` with `|log |f̂_s(e^{iu})|| < ε`. -/
-theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hI : integralI a b c p = 0)
     (hconst : ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
@@ -56,8 +56,8 @@ theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P] (hMO : M
       ∃ s : ℝ≥0, S ≤ s ∧ |logFHat hU s q| < ε := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
   -- integrability of `ξ 0`
-  obtain ⟨h1, -⟩ := integrable_integral_logFHat hMO hU ha hb hc hp 1
-  obtain ⟨h0, -⟩ := integrable_integral_logFHat hMO hU ha hb hc hp 0
+  obtain ⟨h1, -⟩ := integrable_integral_logFHat hU ha hb hc hp 1
+  obtain ⟨h0, -⟩ := integrable_integral_logFHat hU ha hb hc hp 0
   have hint : Integrable (xiInc hU 0) (P.prod (admissibleMeasure p)) := by
     have e : xiInc hU 0 = logFHat hU 1 - logFHat hU 0 := by
       funext q; simp [xiInc]
@@ -79,7 +79,7 @@ theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P] (hMO : M
     refine h.congr fun n => ?_
     simp [Function.comp, hs n]
   have hrec := External.recurrence_stationary (P := P.prod (admissibleMeasure p)) (xiInc hU)
-    (measurable_xiInc hU) (fun k => xiInc_stationary hMO hU ha hb hc hp k) hint hlim
+    (measurable_xiInc hU) (fun k => xiInc_stationary hU ha hb hc hp k) hint hlim
   filter_upwards [hrec, hsum] with q hq hs ε hε S
   obtain ⟨n, hn1, hn2⟩ := ((hq ε hε).and_eventually (eventually_ge_atTop ⌈S⌉₊)).exists
   refine ⟨(n : ℝ≥0), le_trans (Nat.le_ceil S) (by exact_mod_cast hn2), ?_⟩
@@ -91,7 +91,7 @@ theorem recurrent_logFHat_of_integralI_eq_zero [IsProbabilityMeasure P] (hMO : M
 /-- **Prop 3.1(a) shape.** If `(I) ≥ 0`, then `P ⊗ ν`-a.s. `log |f̂_s(e^{iu})|` does not tend to
 `-∞` as `s → ∞`. -/
 theorem not_tendsto_atBot_logFHat_of_integralI_nonneg [IsProbabilityMeasure P]
-    (hMO : MarkovOneDim) (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b)
+    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b)
     (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p)
     (hI : 0 ≤ integralI a b c p)
     (hconst : ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
@@ -110,7 +110,7 @@ theorem not_tendsto_atBot_logFHat_of_integralI_nonneg [IsProbabilityMeasure P]
     have := (div_pos_iff_of_pos_right hs3').1 hs1
     linarith
   · -- `(I) = 0`: recurrence
-    have hrec := recurrent_logFHat_of_integralI_eq_zero hMO hU ha hb hc hp hzero.symm hconst
+    have hrec := recurrent_logFHat_of_integralI_eq_zero hU ha hb hc hp hzero.symm hconst
     filter_upwards [hrec] with q hq hbot
     obtain ⟨S, hS⟩ := eventually_atTop.1 (hbot.eventually (eventually_le_atBot (-1)))
     obtain ⟨s, hsS, hs⟩ := hq 1 one_pos S

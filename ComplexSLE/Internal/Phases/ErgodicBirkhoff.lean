@@ -14,8 +14,8 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_t = log |f̂_t(e^{
 
 * `exists_birkhoff_logFHat`: there is an integrable `L` with `∫ L = (I) = integralI a b c p` and
   `Y_n / n → L` almost surely. (`ξ_0` is integrable with mean `(I)` by
-  `integrable_integral_logFHat`, `(ξ_n)` is stationary by `xiInc_stationary`, and the EXTERNAL
-  `birkhoff_stationary` applies; `∑_{k<n} ξ_k = Y_n - Y_0` and `Y_0 = 0` a.s.)
+  `integrable_integral_logFHat`, `(ξ_n)` is stationary by `xiInc_stationary`, and the classical
+  input `birkhoff_stationary` applies; `∑_{k<n} ξ_k = Y_n - Y_0` and `Y_0 = 0` a.s.)
 * `exists_birkhoff_logFHat_real`: the same with, in addition, the limit along *real* times,
   fibrewise: for `ν`-a.e. `u`, almost surely `Y_s / s → L(ω, u)` as `s → ∞` in `ℝ≥0`.
 * `exists_birkhoff_logFHat_ae`: the same with the real-time limit `P ⊗ ν`-almost surely (product
@@ -26,7 +26,7 @@ Real times are reduced to integer times by `tendsto_div_of_floor`: `Y = D + M`
 (`ae_log_norm_fHat_eq`), `D` is `C_ν`-Lipschitz and `M_s / s → 0` almost surely
 (`fiber_sigmaLogMart`, i.e. the bounded-bracket martingale `M` of `BoundedBracket.lean`).
 
-Consumes the EXTERNAL `birkhoff_stationary` (E7) and everything consumed by `ErgodicStat.lean`.
+Uses the classical input `birkhoff_stationary` (E7) and everything used by `ErgodicStat.lean`.
 -/
 
 @[expose] public section
@@ -140,10 +140,9 @@ theorem ae_logFHat_zero [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c 
   rw [hω 0, sigmaLogMart_zero]
   simp [pathIntegral]
 
-/-- **Birkhoff for `log |f̂|`** (M7/A5a). Under `hMO : MarkovOneDim` (the EXTERNAL (R29)
-`markov_oneDim`): there is an integrable `L` on `(Ω × ℝ, P ⊗ ν)` with `∫ L = (I)` and
-`log |f̂_n(e^{iu})| / n → L` almost surely along the integers. -/
-theorem exists_birkhoff_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+/-- **Birkhoff for `log |f̂|`** (M7/A5a). There is an integrable `L` on `(Ω × ℝ, P ⊗ ν)` with
+`∫ L = (I)` and `log |f̂_n(e^{iu})| / n → L` almost surely along the integers. -/
+theorem exists_birkhoff_logFHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∃ L : Ω × ℝ → ℝ, Integrable L (P.prod (admissibleMeasure p)) ∧
@@ -151,8 +150,8 @@ theorem exists_birkhoff_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
       ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
         Tendsto (fun n : ℕ => logFHat hU (n : ℝ≥0) q / n) atTop (𝓝 (L q)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨h1, e1⟩ := integrable_integral_logFHat hMO hU ha hb hc hp 1
-  obtain ⟨h0, e0⟩ := integrable_integral_logFHat hMO hU ha hb hc hp 0
+  obtain ⟨h1, e1⟩ := integrable_integral_logFHat hU ha hb hc hp 1
+  obtain ⟨h0, e0⟩ := integrable_integral_logFHat hU ha hb hc hp 0
   have hint : Integrable (xiInc hU 0) (P.prod (admissibleMeasure p)) := by
     have e : xiInc hU 0 = logFHat hU 1 - logFHat hU 0 := by
       funext q; simp [xiInc]
@@ -163,7 +162,7 @@ theorem exists_birkhoff_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     simp
   obtain ⟨L, hLint, hLmean, hLlim⟩ := External.birkhoff_stationary
     (P := P.prod (admissibleMeasure p)) (xiInc hU) (measurable_xiInc hU)
-    (fun k => xiInc_stationary hMO hU ha hb hc hp k) hint
+    (fun k => xiInc_stationary hU ha hb hc hp k) hint
   refine ⟨L, hLint, hLmean.trans hmean, ?_⟩
   filter_upwards [hLlim, ae_logFHat_zero hU ha hc (ν := admissibleMeasure p)] with q hq hq0
   refine hq.congr fun n => ?_
@@ -175,7 +174,7 @@ theorem exists_birkhoff_logFHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
 /-- **Birkhoff for `log |f̂|`, real times** (M7/A5a). In addition to
 `exists_birkhoff_logFHat`: for `ν`-a.e. `u`, almost surely
 `log |f̂_s(e^{iu})| / s → L(ω, u)` as `s → ∞` along `ℝ≥0`. -/
-theorem exists_birkhoff_logFHat_real [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem exists_birkhoff_logFHat_real [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∃ L : Ω × ℝ → ℝ, Integrable L (P.prod (admissibleMeasure p)) ∧
@@ -185,7 +184,7 @@ theorem exists_birkhoff_logFHat_real [IsProbabilityMeasure P] (hMO : MarkovOneDi
       ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P,
         Tendsto (fun s : ℝ≥0 => logFHat hU s (ω, u) / s) atTop (𝓝 (L (ω, u))) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨L, hLint, hLmean, hLlim⟩ := exists_birkhoff_logFHat hMO hU ha hb hc hp
+  obtain ⟨L, hLint, hLmean, hLlim⟩ := exists_birkhoff_logFHat hU ha hb hc hp
   refine ⟨L, hLint, hLmean, hLlim, ?_⟩
   filter_upwards [ae_ae_of_ae_prod_snd hLlim] with u hu
   have hz := unitPt_ne_zero u
@@ -209,12 +208,12 @@ theorem exists_birkhoff_logFHat_real [IsProbabilityMeasure P] (hMO : MarkovOneDi
     _ ≤ (|2 - a / 2 + b / 2| + |c|) * 1 := mul_le_mul_of_nonneg_left hs1 hC
     _ = _ := mul_one _
 
-/-- **Birkhoff for `log |f̂|`, real times, product form** (M7/A5a). Under `hMO : MarkovOneDim`:
-there is an integrable `L` on `(Ω × ℝ, P ⊗ ν)` with `∫ L = (I)` such that `P ⊗ ν`-almost surely
+/-- **Birkhoff for `log |f̂|`, real times, product form** (M7/A5a).
+There is an integrable `L` on `(Ω × ℝ, P ⊗ ν)` with `∫ L = (I)` such that `P ⊗ ν`-almost surely
 `log |f̂_s(e^{iu})| / s → L` as `s → ∞` along `ℝ≥0` (and along the integers). The exceptional
 set is controlled through the measurable event on which the (continuous, on `goodSet`) paths
 `s ↦ Y_s` have the limit along the rational times. -/
-theorem exists_birkhoff_logFHat_ae [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem exists_birkhoff_logFHat_ae [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∃ L : Ω × ℝ → ℝ, Integrable L (P.prod (admissibleMeasure p)) ∧
@@ -224,7 +223,7 @@ theorem exists_birkhoff_logFHat_ae [IsProbabilityMeasure P] (hMO : MarkovOneDim)
       ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
         Tendsto (fun s : ℝ≥0 => logFHat hU s q / s) atTop (𝓝 (L q)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨L, hLint, hLmean, hLn, hLfib⟩ := exists_birkhoff_logFHat_real hMO hU ha hb hc hp
+  obtain ⟨L, hLint, hLmean, hLn, hLfib⟩ := exists_birkhoff_logFHat_real hU ha hb hc hp
   refine ⟨L, hLint, hLmean, hLn, ?_⟩
   -- a measurable representative of `L`
   set L' : Ω × ℝ → ℝ := hLint.1.mk L with hL'

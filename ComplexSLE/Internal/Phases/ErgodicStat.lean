@@ -13,17 +13,17 @@ public import ComplexSLE.External.BirkhoffStationary
 With `Y_t(ω, u) = log |f̂_t(e^{iu})(ω)|` (`logFHat`) and `ξ_n = Y_{n+1} - Y_n` (`xiInc`):
 
 * `xiInc_stationary`: `(ξ_{n+k})_n` and `(ξ_n)_n` have the same law on `ℕ → ℝ` under
-  `P ⊗ ν` (hypothesis shape of the EXTERNAL `birkhoff_stationary`). Indeed
+  `P ⊗ ν` (hypothesis shape of the classical input `birkhoff_stationary`). Indeed
   `(ξ_{n+k})_n = G (Ξ_k)` with the measurable map
   `G (_, _, ℓ) = (ℓ(n + 1) - ℓ(n))_n`, `Ξ_k` the path observable of `PathStat.lean`, and the law of
-  `Ξ_k` does not depend on `k` (`map_pathObs_eq_zero`, modulo `hMO : MarkovOneDim`);
+  `Ξ_k` does not depend on `k` (`map_pathObs_eq_zero`);
 * `exists_birkhoff_logFHat`: there is an integrable `L` with `∫ L = (I)` and
   `Y_n / n → L` almost surely (`n → ∞`). Telescoping `∑_{k<n} ξ_k = Y_n - Y_0` and
   `Y_0 = 0` a.s.
 
-Consumes the EXTERNAL `birkhoff_stationary` (E7), and (through the stationarity layer)
-`hormander_oneDim`, `ito_formula`, `timeChange_isContLocalMartingale`, `strongMarkov_sleDriver`
-and the EXTERNAL `markov_oneDim` (R29) as the explicit hypothesis `hMO : MarkovOneDim`.
+Uses the classical input `birkhoff_stationary` (E7) and (through the stationarity layer)
+`ito_formula`, `timeChange_isContLocalMartingale` and `strongMarkov_sleDriver`, all proved
+in-project (`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -67,7 +67,7 @@ theorem incrementsOf_pathObs (hU : IsSLEDriverAdapted a b c U P ℱ) (k : ℕ) (
   ring
 
 /-- **Stationarity of `(ξ_n)`**: the laws of the shifted increment sequences on `ℕ → ℝ` agree. -/
-theorem xiInc_stationary [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem xiInc_stationary [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (k : ℕ) :
     (P.prod (admissibleMeasure p)).map (fun q (n : ℕ) => xiInc hU (n + k) q) =
@@ -83,7 +83,7 @@ theorem xiInc_stationary [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   rw [h1, h2, ← Measure.map_map measurable_incrementsOf (measurable_pathObs hU _),
     ← Measure.map_map measurable_incrementsOf (measurable_pathObs hU _)]
   congr 1
-  exact map_pathObs_eq_zero hMO hU ha hb hc hp (k : ℝ≥0)
+  exact map_pathObs_eq_zero hU ha hb hc hp (k : ℝ≥0)
 
 end Stat
 

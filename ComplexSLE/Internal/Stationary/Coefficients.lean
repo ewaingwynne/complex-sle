@@ -21,8 +21,9 @@ The deterministic coefficient facts used when Lemma A.1 is applied to `θ̂` wit
   for `c = ±√(ab)`) is smooth with `β² = 2D`, and at every zero of `β` one has
   `β'(u) µ(u) ≠ 0` (indeed `µ(u) = -4c/(a+b)` there), so (A.1) holds.
 
-Together with `mu_periodic` and `diffusionD_periodic` these are exactly the coefficient
-hypotheses of `External.hormander_oneDim` and of `IsAdmissibleDensity.isKolmogorovDensity`.
+Together with `mu_periodic` and `diffusionD_periodic` these are the coefficient facts used by
+`IsAdmissibleDensity.isKolmogorovDensity` and by the periodic Poisson equation
+(`InvariancePoisson.lean`).
 -/
 
 public section

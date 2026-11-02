@@ -5,7 +5,8 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 module
 
 public import ComplexSLE.Internal.Phases.Lemma38
-public import ComplexSLE.Internal.Stationary.SLEStatLaw
+public import ComplexSLE.Internal.Stationary.ThetaHatSolution
+public import ComplexSLE.Internal.Stationary.AdmissibleMeasure
 
 /-!
 # Lemma 3.10 for the random point `𝐳 = e^{iu}`, `u ∼ ν = p(u) 1_{[0,2π]}(u) du` (M7/E2)

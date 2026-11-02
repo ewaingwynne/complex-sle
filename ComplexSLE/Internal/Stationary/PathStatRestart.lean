@@ -27,7 +27,8 @@ as an element of `ℂ × (ℝ≥0 → ℝ) × (ℝ≥0 → ℝ)`, and `pathObs h
 * `lintegral_pathObsAt` (strong Markov step): for `z ≠ 0` and measurable `F`,
   `E F(Ξ_s) = E ∫ F(obsC (w, θ̂_s(z))) dΛ(w)`, `Λ` = law of the driver on `CPath`.
 
-Uses the EXTERNAL `strongMarkov_sleDriver` (through `lintegral_comp_scale_postPath`).
+Uses the classical input `strongMarkov_sleDriver`, proved in-project (through
+`lintegral_comp_scale_postPath`).
 -/
 
 @[expose] public section

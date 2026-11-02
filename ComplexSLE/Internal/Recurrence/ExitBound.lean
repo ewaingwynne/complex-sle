@@ -29,7 +29,7 @@ function `f` with generator `Lf = f'α + ½f''β²`, Itô's formula (`ito_formul
 This is the "work directly in `t̃`-time with the scale function and optional stopping" route of
 ERRATA.md R27 for Lemma 2.16 (`step:rec-scale-function-hit`, `step:rec-hit-fixed-y`), replacing
 the time change `ω(r)` of paper.tex:L1192-1208 and the finiteness of `ω(R)` omitted at L1226 by
-the Lyapunov bound `E[R] ≤ 2C`. Everything consumes `ito_formula`, so is `PROVED_REL{ito_formula}`.
+the Lyapunov bound `E[R] ≤ 2C`. Everything uses `ito_formula` (proved in-project).
 -/
 
 public section

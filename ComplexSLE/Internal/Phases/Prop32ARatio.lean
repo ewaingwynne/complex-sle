@@ -26,8 +26,7 @@ let `R_s = log(|f̂'_s(e^{iu})| / |f̂_s(e^{iu})|)` (`sigmaLogRatio`). By (2.27)
   (`ae_exists_infDist_leftHull_lt_of_tendsto`), for `ν`-a.e. `u`, a.s.
   `∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` at `z = e^{iu}` (the R14 `ε`-form of Proposition 3.2(a)).
 
-Consumes the EXTERNALs consumed by `ErgodicRatioConst.lean`; the EXTERNAL
-`markov_oneDim` (R29) is the hypothesis `hMO : MarkovOneDim`.
+Uses the classical inputs used by `ErgodicRatioConst.lean` (all proved in-project).
 -/
 
 public section
@@ -83,17 +82,17 @@ theorem sigmaLogRatio_eq_cos_sub_logFHat {q : Ω × ℝ} (hq : q ∈ goodSet hU)
 
 variable [IsProbabilityMeasure P]
 
-/-- **Lemma 3.7 (`lem-integral-ii`): `R_s / s → -(II)`** (paper.tex:L1430-1455). Under
-`hMO : MarkovOneDim`: `P ⊗ ν`-a.s.,
+/-- **Lemma 3.7 (`lem-integral-ii`): `R_s / s → -(II)`** (paper.tex:L1430-1455).
+`P ⊗ ν`-a.s.,
 `log(|f̂'_s(e^{iu})| / |f̂_s(e^{iu})|) / s → -(II)` as `s → ∞` along `ℝ≥0`. -/
-theorem ae_tendsto_sigmaLogRatio_div (hMO : MarkovOneDim) (ha : 0 < a) (hb : 0 < b)
+theorem ae_tendsto_sigmaLogRatio_div (ha : 0 < a) (hb : 0 < b)
     (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
       Tendsto (fun s : ℝ≥0 => sigmaLogRatio hU (unitPt q.2) s q.1 / s) atTop
         (𝓝 (-integralII a b c p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  filter_upwards [birkhoff_logFHat_const hMO hU ha hb hc hp,
-    birkhoff_cosInt_const hMO hU ha hb hc hp,
+  filter_upwards [birkhoff_logFHat_const hU ha hb hc hp,
+    birkhoff_cosInt_const hU ha hb hc hp,
     ae_mem_goodSet hU ha hc (ν := admissibleMeasure p)] with q h1 h2 hq
   have h3 := ((h2.const_mul (-2)).sub h1)
   have e : -integralII a b c p = -2 * cosMean p - integralI a b c p := by
@@ -107,13 +106,13 @@ include hU in
 /-- **Proposition 3.2(a) at the unit points.** If `(II) < 0` then for `ν`-a.e. `u`, almost surely
 `∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` at `z = e^{iu}`. (Lemma 3.7: `R_s / s → -(II) > 0`, so
 `R_s → +∞`; the Koebe hitting bound in σ-time turns this into the `ε`-form.) -/
-theorem ae_ae_hull_approach (hMO : MarkovOneDim) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
+theorem ae_ae_hull_approach (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hII : integralII a b c p < 0) :
     ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P, ∀ ε > 0, ∃ t : ℝ≥0,
       (t : ℝ≥0∞) < absorbingTime (fun s => U s ω) (unitPt u) ∧
         infDist (unitPt u) (leftHull (fun s => U s ω) t) < ε := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have hfib := ae_ae_of_ae_prod_snd (ae_tendsto_sigmaLogRatio_div hU hMO ha hb hc hp)
+  have hfib := ae_ae_of_ae_prod_snd (ae_tendsto_sigmaLogRatio_div hU ha hb hc hp)
   filter_upwards [hfib] with u hu
   refine ae_exists_infDist_leftHull_lt_of_tendsto hU ha hc (unitPt_ne_zero u) ?_
   filter_upwards [hu] with ω hω

@@ -28,8 +28,9 @@ Source: paper.tex:L2199-2217 with the correction R27 (ERRATA.md).
   `q(e^{iu}) ≥ ∫ q(f̂_s) dP > 0`.
 * `evProb_disc_pos`: `q(z) > 0` for every `z ≠ 0` (scale invariance).
 
-Consumes the EXTERNALs `strongMarkov_sleDriver` and (through the polar and recurrence layers)
-`ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim`.
+Uses the classical inputs `strongMarkov_sleDriver` and (through the polar and recurrence layers)
+`ito_formula` and `timeChange_isContLocalMartingale`, all proved in-project
+(`Internal/ExternalProofs/`).
 -/
 
 public section
@@ -135,7 +136,7 @@ theorem evProb_disc_unit_pos [IsProbabilityMeasure P]
   obtain ⟨u₀, hu₀⟩ := hΛ
   have hu₀Λ : u₀ ∈ Λ := hu₀
   -- the diffusion `θ̂(e^{iu})`, started at `y`
-  obtain ⟨β, hβ, hβsq, -⟩ := exists_beta ha hb hc
+  obtain ⟨β, hβ, hβsq⟩ := exists_contDiff_beta_sq ha hb hc
   have hβc : Continuous β := hβ.continuous
   have hsol := isDiffusionSolution_thetaHatC_fibre hnull hU ha hb hc hβsq u
   set X : ℝ≥0 → Ω → ℝ := fun t ω => thetaHatC hU t (ω, u) with hX

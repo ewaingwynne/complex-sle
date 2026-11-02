@@ -39,8 +39,8 @@ Proof (fixed `z ≠ 0`):
   gives `z ∈ closure (⋃_{t < T_z} L_t)` (`ae_mem_closure_c0_bdy`).
 * The adapted version agrees with `U` a.s., which transfers the closure clause back to `U`.
 
-`lemma_3_12` is `PROVED_REL{…}`: it consumes the EXTERNAL inputs through the sealed anchor
-`proposition_3_1_b` and `KoebeHitSigma`; the oscillation step `liminf M = -∞` is external-free.
+`lemma_3_12` uses the classical inputs (all proved in-project) through the sealed anchor
+`proposition_3_1_b` and `KoebeHitSigma`; the oscillation step `liminf M = -∞` uses none.
 -/
 
 public section
@@ -208,8 +208,8 @@ end Fibre
 section Main
 
 /-- **Lemma 3.12** (`lem-c0-bdy`, paper.tex:L1910-1930): for `c = 0` and `a - b = 8`, the
-`SLE_Σ` driver is in the hitting phase. `PROVED_REL` to the externals consumed by the sealed
-anchor `proposition_3_1_b` and by `KoebeHitSigma`. -/
+`SLE_Σ` driver is in the hitting phase. Uses the classical inputs (all proved in-project) of the
+sealed anchor `proposition_3_1_b` and of `KoebeHitSigma`. -/
 theorem lemma_3_12 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a - b = 8) :
     IsHittingPhase a b 0 := by
   intro Ω _ P _ U hU z hz

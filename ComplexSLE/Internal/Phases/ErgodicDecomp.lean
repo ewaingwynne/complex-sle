@@ -7,7 +7,7 @@ module
 public import ComplexSLE.Internal.Polar.PolarThetaHat
 public import ComplexSLE.Internal.Polar.PolarThetaBrIto
 public import ComplexSLE.Internal.Phases.AllZFHat
-public import ComplexSLE.Internal.Stationary.SLEStatKernel
+public import ComplexSLE.Internal.Stationary.ThetaHatSolution
 public import ComplexSLE.Infrastructure.Stochastic.BoundedBracket
 
 /-!

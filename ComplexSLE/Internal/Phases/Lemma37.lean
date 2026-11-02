@@ -7,7 +7,6 @@ module
 public import ComplexSLE.Internal.Phases.Lemma37Meas
 public import ComplexSLE.Internal.Phases.ErgodicMean
 public import ComplexSLE.Internal.Stationary.PathStat
-import ComplexSLE.External.MarkovOneDim
 
 /-!
 # Lemma 3.9 (`lem-computation`) in the form Proposition 3.2(b) consumes (M7/E1)
@@ -20,21 +19,20 @@ property (2.3)). The theorem proved is the equality in law of real random variab
 
   `dist(f_t(𝐳), L_{t,s+t}) / |f_t(𝐳)|  =_d  dist(𝐳, L_{σ(s̃)})`,
 
-`lemma_3_9_of_markov` (with `hMO : MarkovOneDim`, the statement of the EXTERNAL `markov_oneDim`,
-R29) and `lemma_3_9` (that external discharged); the expectation forms are
-`lintegral_comp_lemma_3_9`, `integral_comp_lemma_3_9` (and `_of_markov`). The two random variables
-are `futureDistRatioRV` and `hullDistRV` (`futureDistRatio`, `hullDist` of `Lemma37Hull.lean`,
-evaluated at the path `ω ↦ U · ω` and the point `e^{iu}`). Both are a.e. equal to measurable
-functions (`aemeasurable_futureDistRatioRV`, `aemeasurable_hullDistRV`), so the equality of the
-image measures is the equality of laws. Off the almost sure event that `σ_𝐳` is defined on `[0, ∞)`
-(Remark 2.12) they carry the project's junk convention, which does not affect the laws.
+`lemma_3_9`; the expectation forms are `lintegral_comp_lemma_3_9` and `integral_comp_lemma_3_9`.
+The two random variables are `futureDistRatioRV` and `hullDistRV` (`futureDistRatio`, `hullDist` of
+`Lemma37Hull.lean`, evaluated at the path `ω ↦ U · ω` and the point `e^{iu}`). Both are a.e. equal
+to measurable functions (`aemeasurable_futureDistRatioRV`, `aemeasurable_hullDistRV`), so the
+equality of the image measures is the equality of laws. Off the almost sure event that `σ_𝐳` is
+defined on `[0, ∞)` (Remark 2.12) they carry the project's junk convention, which does not affect
+the laws.
 
 **The source states a stronger joint law.** Lemma 3.9 asserts the equality in law of the pair
 `(f_t(𝐳)/|f_t(𝐳)|, L_{t,s+t}/|f_t(𝐳)|) =_d (𝐳, L_{σ(s̃)})`. In the available one-time
-stationarity (`SLEStat.lean`) only `e^{2iθ̂}` (not `e^{iθ̂}`) is stationary, because the driver law
-is only known to be symmetric under `U ↦ -U`. What the later argument uses (Step 2 of the proof of
-`lem-converse-w-o-upgrade`, `paper.tex:L1690`) is only the displayed consequence for the
-distance, and the distance is invariant under the simultaneous negation
+stationarity (`InvarianceStationary.lean`) only `e^{2iθ̂}` (not `e^{iθ̂}`) is stationary, because
+the driver law is only known to be symmetric under `U ↦ -U`. What the later argument uses (Step 2 of
+the proof of `lem-converse-w-o-upgrade`, `paper.tex:L1690`) is only the displayed consequence for
+the distance, and the distance is invariant under the simultaneous negation
 `(direction, hull) ↦ (-direction, -hull)` (`hullDistC_neg`, from `leftHull_neg` and `sigmaTime_neg`;
 `map_neg_eq`, from `IsSLEDriver.neg`). The proof therefore applies the strong Markov property at
 `σ_𝐳(t̃)` and the stationarity of `e^{2iθ̂_t̃}` to a `π`-periodic function of the direction, exactly
@@ -46,16 +44,16 @@ as in `PathStat.lean`; the stronger joint statement is not claimed.
   calculation of the source). With `T = σ_𝐳(t̃)`, `r = |f_T(𝐳)|`, `V = r⁻¹ (U_{T + r² ·} - U_T)` the
   rescaled post-`T` driver and `𝐳' = f_T(𝐳)/r = e^{iθ̂_t̃}`, the left side equals
   `dist(𝐳', L^V_{σ^V_{𝐳'}(s̃)})` (`futureDistRatio_eq_hullDistC_scale_postPath`).
-* **Strong Markov step** (`lintegral_futureDistRatio`, EXTERNAL `strongMarkov_sleDriver` through
-  `lintegral_comp_scale_postPath`): for fixed `u`, `E G(left side) = E H_G(θ̂_t̃)`, where
+* **Strong Markov step** (`lintegral_futureDistRatio`, classical input `strongMarkov_sleDriver`
+  through `lintegral_comp_scale_postPath`): for fixed `u`, `E G(left side) = E H_G(θ̂_t̃)`, where
   `H_G(β) = ∫ G(dist(e^{iβ}, L_{σ(s̃)}(w))) dΛ(w)` and `Λ` is the driver law.
 * **Periodicity** (`obsKernelH_add_pi`): `H_G(β + π) = H_G(β)`, by `hullDistC_neg` and `-U =_d U`.
 * **Stationarity** (`lintegral_comp_thetaHat_of_periodic`): the law of `e^{2iθ̂_t̃}` under `μ` is
   that of `e^{2iu}`, so `E_μ H_G(θ̂_t̃) = ∫ H_G dν`.
 * **The right side** (`lintegral_hullDistRV`): `E_μ G(dist(𝐳, L_{σ(s̃)})) = ∫ H_G dν` by Fubini.
 
-Uses the EXTERNALs `strongMarkov_sleDriver`, `hormander_oneDim`, `ito_formula`,
-`timeChange_isContLocalMartingale` and (R29) `markov_oneDim` (as `hMO`, discharged in `lemma_3_9`).
+Uses the classical inputs `strongMarkov_sleDriver`, `ito_formula` and
+`timeChange_isContLocalMartingale`, all proved in-project (`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -126,7 +124,7 @@ theorem hullKernelH_periodic (hU : IsSLEDriverAdapted a b c U P ℱ) [IsProbabil
 
 /-- **Stationarity of the expectation of `H(θ̂_s)` for a measurable `π`-periodic `H`**, from the
 one-time stationarity of `e^{2iθ̂_s}`. -/
-theorem lintegral_comp_thetaHat_of_periodic [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lintegral_comp_thetaHat_of_periodic [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) {H : ℝ → ℝ≥0∞}
     (hHm : Measurable H) (hper : Function.Periodic H π) :
@@ -136,7 +134,7 @@ theorem lintegral_comp_thetaHat_of_periodic [IsProbabilityMeasure P] (hMO : Mark
   have hH'm : Measurable H' := hHm.comp (Complex.measurable_arg.div_const 2)
   have hexp : ∀ β : ℝ, H β = H' (Complex.exp (2 * Complex.I * (β : ℂ))) := fun β =>
     periodic_eq_comp_exp hper β
-  have hlaw := map_exp_thetaHat_prod_eq_of_markovOneDim hMO hU ha hb hc hp s
+  have hlaw := map_exp_thetaHat_prod_eq_admissible hU ha hb hc hp s
   have hY : Measurable fun q : Ω × ℝ =>
       Complex.exp (2 * Complex.I * (thetaHat hU (unitPt q.2) s q.1 : ℝ)) := by
     have := measurable_thetaHat_unit hU s
@@ -318,7 +316,7 @@ theorem aemeasurable_hullDistRV [IsProbabilityMeasure P]
 
 /-- **The left side of Lemma 3.9 under `P ⊗ ν`** (strong Markov step, periodicity and
 stationarity of `e^{2iθ̂_t̃}`): `E_{P ⊗ ν} G(left side) = ∫ H_G dν`. -/
-theorem lintegral_futureDistRatioRV [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lintegral_futureDistRatioRV [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {G : ℝ → ℝ≥0∞}
     (hG : Measurable G) :
@@ -336,18 +334,18 @@ theorem lintegral_futureDistRatioRV [IsProbabilityMeasure P] (hMO : MarkovOneDim
   have e2 := lintegral_prod_symm (μ := P) (ν := admissibleMeasure p)
     (fun q : Ω × ℝ => hullKernelH (driverLaw hU) ss G (thetaHat hU (unitPt q.2) tt q.1))
     hGm.aemeasurable
-  rw [← lintegral_comp_thetaHat_of_periodic hMO hU ha hb hc hp tt hHm
+  rw [← lintegral_comp_thetaHat_of_periodic hU ha hb hc hp tt hHm
     (hullKernelH_periodic hU ss hG), e1, e2]
   refine lintegral_congr fun u => ?_
   exact lintegral_futureDistRatio hU ha hc (unitPt_ne_zero u) tt ss hG
 
 /-! ### Lemma 3.9 -/
 
-/-- **Lemma 3.9 (`lem-computation`), in the form Proposition 3.2(b) consumes**, with the EXTERNAL
-`markov_oneDim` (R29) as the hypothesis `hMO`. On `P ⊗ ν`, `ν = admissibleMeasure p`, with the
-random point `𝐳 = e^{iu}`, for fixed `t̃, s̃ ≥ 0` (`t = σ_𝐳(t̃)`, `t + s = σ_𝐳(s̃ + t̃)`),
+/-- **Lemma 3.9 (`lem-computation`), in the form Proposition 3.2(b) consumes.** On `P ⊗ ν`,
+`ν = admissibleMeasure p`, with the random point `𝐳 = e^{iu}`, for fixed `t̃, s̃ ≥ 0`
+(`t = σ_𝐳(t̃)`, `t + s = σ_𝐳(s̃ + t̃)`),
 `dist(f_t(𝐳), L_{t,s+t}) / |f_t(𝐳)|  =_d  dist(𝐳, L_{σ_𝐳(s̃)})`. -/
-theorem lemma_3_9_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lemma_3_9 [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) :
     (P.prod (admissibleMeasure p)).map (futureDistRatioRV hU tt ss) =
@@ -356,34 +354,25 @@ theorem lemma_3_9_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   refine Measure.ext_of_lintegral _ fun G hG => ?_
   rw [lintegral_map' hG.aemeasurable (aemeasurable_futureDistRatioRV hU ha hc tt ss),
     lintegral_map' hG.aemeasurable (aemeasurable_hullDistRV hU ha hc ss),
-    lintegral_futureDistRatioRV hMO hU ha hb hc hp tt ss hG,
+    lintegral_futureDistRatioRV hU ha hb hc hp tt ss hG,
     lintegral_hullDistRV hU ha hc ss hG]
 
-/-- **Lemma 3.9 (`lem-computation`), in the form Proposition 3.2(b) consumes.** The EXTERNAL
-`markov_oneDim` is discharged. -/
-theorem lemma_3_9 [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a)
-    (hb : 0 < b) (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p)
-    (tt ss : ℝ≥0) :
-    (P.prod (admissibleMeasure p)).map (futureDistRatioRV hU tt ss) =
-      (P.prod (admissibleMeasure p)).map (hullDistRV hU ss) :=
-  lemma_3_9_of_markov External.markov_oneDim hU ha hb hc hp tt ss
-
-/-- **Lemma 3.9, expectation form** (`lintegral`), with `hMO`: for every measurable
+/-- **Lemma 3.9, expectation form** (`lintegral`): for every measurable
 `G : ℝ → ℝ≥0∞`, `E G(left side) = E G(right side)` under `P ⊗ ν`. -/
-theorem lintegral_comp_lemma_3_9_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem lintegral_comp_lemma_3_9 [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {G : ℝ → ℝ≥0∞}
     (hG : Measurable G) :
     ∫⁻ q, G (futureDistRatioRV hU tt ss q) ∂(P.prod (admissibleMeasure p)) =
       ∫⁻ q, G (hullDistRV hU ss q) ∂(P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  exact (lintegral_futureDistRatioRV hMO hU ha hb hc hp tt ss hG).trans
+  exact (lintegral_futureDistRatioRV hU ha hb hc hp tt ss hG).trans
     (lintegral_hullDistRV hU ha hc ss hG).symm
 
-/-- **Lemma 3.9, expectation form** (Bochner integral), with `hMO`: for every Borel
+/-- **Lemma 3.9, expectation form** (Bochner integral): for every Borel
 `φ : ℝ → ℝ`, `E φ(left side) = E φ(right side)` under `P ⊗ ν` (both sides are the integral of `φ`
 against the common law; if `φ` is not integrable for that law both sides are `0`). -/
-theorem integral_comp_lemma_3_9_of_markov [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_comp_lemma_3_9 [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {φ : ℝ → ℝ}
     (hφ : Measurable φ) :
@@ -392,23 +381,7 @@ theorem integral_comp_lemma_3_9_of_markov [IsProbabilityMeasure P] (hMO : Markov
   have hν := isProbabilityMeasure_admissibleMeasure hp
   rw [← integral_map (aemeasurable_futureDistRatioRV hU ha hc tt ss) hφ.aestronglyMeasurable,
     ← integral_map (aemeasurable_hullDistRV hU ha hc ss) hφ.aestronglyMeasurable,
-    lemma_3_9_of_markov hMO hU ha hb hc hp tt ss]
-
-/-- **Lemma 3.9, expectation form** (`lintegral`), `markov_oneDim` discharged. -/
-theorem lintegral_comp_lemma_3_9 [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U P ℱ)
-    (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ}
-    (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {G : ℝ → ℝ≥0∞} (hG : Measurable G) :
-    ∫⁻ q, G (futureDistRatioRV hU tt ss q) ∂(P.prod (admissibleMeasure p)) =
-      ∫⁻ q, G (hullDistRV hU ss q) ∂(P.prod (admissibleMeasure p)) :=
-  lintegral_comp_lemma_3_9_of_markov External.markov_oneDim hU ha hb hc hp tt ss hG
-
-/-- **Lemma 3.9, expectation form** (Bochner integral), `markov_oneDim` discharged. -/
-theorem integral_comp_lemma_3_9 [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U P ℱ)
-    (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ}
-    (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {φ : ℝ → ℝ} (hφ : Measurable φ) :
-    ∫ q, φ (futureDistRatioRV hU tt ss q) ∂(P.prod (admissibleMeasure p)) =
-      ∫ q, φ (hullDistRV hU ss q) ∂(P.prod (admissibleMeasure p)) :=
-  integral_comp_lemma_3_9_of_markov External.markov_oneDim hU ha hb hc hp tt ss hφ
+    lemma_3_9 hU ha hb hc hp tt ss]
 
 end ComplexSLE.Internal
 

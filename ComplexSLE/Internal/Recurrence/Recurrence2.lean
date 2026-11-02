@@ -24,7 +24,7 @@ applies on every piece, and the pieces are summed.
   (`step:wlog-c-nonneg-arg`): the recurrence point for `X` is the reflected one.
   Stationarity enters through the reflected process `-X` and the reflected point `-x`.
 
-Everything is `PROVED_REL{ito_formula}` (through `sle_angle_hit_unif`).
+Everything uses `ito_formula` (through `sle_angle_hit_unif`), proved in-project.
 -/
 
 public section

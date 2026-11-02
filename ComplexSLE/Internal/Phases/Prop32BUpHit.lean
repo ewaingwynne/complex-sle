@@ -31,8 +31,8 @@ Girsanov). Let `U` be an adapted `SLE_Σ` driver and `q(ξ) = P(StaysAway(U, ξ)
   openness of `Λ` is what makes this possible.)
 * `evProb_pos`: `q(z) > 0` for all `z ≠ 0` (scale invariance).
 
-Consumes the EXTERNALs `strongMarkov_sleDriver` and (through the polar layer)
-`ito_formula`, `timeChange_isContLocalMartingale`.
+Uses the classical inputs `strongMarkov_sleDriver` and (through the polar layer) `ito_formula` and
+`timeChange_isContLocalMartingale`, all proved in-project (`Internal/ExternalProofs/`).
 -/
 
 public section
@@ -173,7 +173,7 @@ theorem evProb_unit_pos [IsProbabilityMeasure P]
   obtain ⟨u₀, hu₀⟩ := hΛ
   have hu₀Λ : u₀ ∈ Λ := hu₀
   -- the diffusion `θ̂(e^{iu})`, started at `y`
-  obtain ⟨β, hβ, hβsq, -⟩ := exists_beta ha hb hc
+  obtain ⟨β, hβ, hβsq⟩ := exists_contDiff_beta_sq ha hb hc
   have hβc : Continuous β := hβ.continuous
   have hsol := isDiffusionSolution_thetaHatC_fibre hnull hU ha hb hc hβsq u
   set X : ℝ≥0 → Ω → ℝ := fun t ω => thetaHatC hU t (ω, u) with hX

@@ -77,6 +77,19 @@ Source: `paper.tex` = `source/arxiv-2203.07313v4/complex-sle-final.tex` (sha256 
   Deleted as unused (2026-11-01): `girsanov_law_equiv`, `scale_function_hit`, `levy_characterization`, `koebe_distortion`; `koebe_quarter` after its two uses were
   switched to the ported 1/48 covering theorem (constant `koebeK = 48`, chain constants retuned); `dambis_dubins_schwarz` after Lemma 3.12's `liminf = -∞` step was
   re-proved by a gambler's-ruin exit-time argument (`ae_forall_exists_le_of_bracket_tendsto_atTop`).
+- R31 (2026-11-02, author chose option (a) of `review/approvals/M10.md`) The last two externals, `hormander_oneDim` and
+  `markov_oneDim`, are removed by a proof-route substitution (`review/plans/M10-reroute.md`); no frozen statement changes.
+  - One-time stationarity of θ̂ mod π under P ⊗ ν (Lemma 2.14 through Lemma A.1) is proved without a transition density,
+    from:
+    - the semigroup `Q_t f(u) = E f(θ̂_t(e^{iu}))` of θ̂ itself: Chapman–Kolmogorov from the strong Markov restart, and
+      Feller continuity from continuity in the starting angle;
+    - the periodic Poisson equation `µg' + Dg'' = f − C`, an explicit ODE argument that includes the critical case
+      c² = ab, where D has a double zero on x₀ + πℤ and µ(x₀) ≠ 0;
+    - Cesàro convergence from every starting point, and hence invariance of ν.
+  - Lemma 3.3 no longer uses the Lebesgue density of θ̂₁(z) (Lemma A.2, Hörmander). Instead, θ̂ spends zero time in null
+    sets (occupation estimate), and the strong Markov argument runs at σ_z(t₀) for a suitable t₀ > 0.
+  - Both externals and their manifest entries are deleted. The kernel-form Lemma A.1 modules, which were conditional on
+    the externals' conclusions, are deleted as dead code.
 - R26 (2026-10-30) Approval policy: the author delegates approval of mechanical companions, literal source
   transcriptions (two fresh ACCEPT reviews) and unambiguous typos to the orchestrator (`AUTO-n` items, retroactive
   veto); EXTERNAL inputs, modeling choices, P-item corrections and scope changes are batched into one approval packet

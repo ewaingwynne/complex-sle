@@ -26,7 +26,8 @@ The strong Markov step (`lintegral_gset_mul_Yk`): for the good set
 
 where `V_k` is the post-`τ̂_k` driver rescaled by `|f_{τ̂_k}(z)|⁻¹` and `Λ` the law of the driver. This
 is `lintegral_comp_scale_postPath` with the `ℱ_{τ̂_k}`-measurable pair `(rhoK k, Yk k)`.
-Uses the EXTERNAL `strongMarkov_sleDriver` (through `lintegral_comp_scale_postPath`).
+Uses the classical input `strongMarkov_sleDriver`, proved in-project (through
+`lintegral_comp_scale_postPath`).
 -/
 
 public section

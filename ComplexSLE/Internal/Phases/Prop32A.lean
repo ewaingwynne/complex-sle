@@ -8,21 +8,18 @@ public import ComplexSLE.Frozen.Defs.IsAdmissibleDensity
 public import ComplexSLE.Frozen.Defs.IntegralII
 public import ComplexSLE.Frozen.Defs.IsSLEDriver
 public import ComplexSLE.Frozen.Defs.LeftHull
-public import ComplexSLE.Internal.Stationary.SLEStatKernel
+public import ComplexSLE.Internal.Stationary.ThetaHatSolution
 public import Mathlib.Topology.MetricSpace.HausdorffDistance
 import ComplexSLE.Internal.Phases.Prop31Core
 import ComplexSLE.Internal.Phases.Prop32ARatio
 import ComplexSLE.Internal.Phases.Prop32AEvents
-import ComplexSLE.External.MarkovOneDim
 
 /-!
 # Proposition 3.2(a), assembled (M7/D2)
 
-`proposition_3_2_a_of_markov` and `proposition_3_2_a` have exactly the type of the frozen anchor
-`ComplexSLE.proposition_3_2_a` (paper.tex:L1276-1281; the first with the one extra first argument
-`hMO : MarkovOneDim`, the statement of the EXTERNAL `markov_oneDim` (R29)): if `(II) < 0` then a.s.
-`∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` (the R14 `ε`-form of `lim_{t → T_z⁻} dist(z, L_t) = 0`), for
-every `z ≠ 0`.
+`proposition_3_2_a_main` has exactly the type of the frozen anchor `ComplexSLE.proposition_3_2_a`
+(paper.tex:L1276-1281): if `(II) < 0` then a.s. `∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` (the R14
+`ε`-form of `lim_{t → T_z⁻} dist(z, L_t) = 0`), for every `z ≠ 0`.
 
 Proof (paper.tex:L1430-1466):
 
@@ -36,8 +33,8 @@ Proof (paper.tex:L1430-1466):
   in σ-time (`ae_exists_infDist_leftHull_lt_of_tendsto`) gives the `ε`-form
   (`ae_ae_hull_approach`).
 
-Consumes the EXTERNALs `markov_oneDim`, `birkhoff_stationary`, `strongMarkov_sleDriver`,
-`hormander_oneDim`, `ito_formula` and `timeChange_isContLocalMartingale`.
+Uses the classical inputs `birkhoff_stationary`, `strongMarkov_sleDriver`, `ito_formula` and
+`timeChange_isContLocalMartingale`, all proved in-project (`Internal/ExternalProofs/`).
 -/
 
 public section
@@ -47,9 +44,9 @@ open MeasureTheory Metric
 
 namespace ComplexSLE.Internal
 
-/-- **Proposition 3.2(a)** (paper.tex:L1276-1281), with the EXTERNAL `markov_oneDim` (R29) as the
-hypothesis `hMO`. Apart from `hMO` the statement is that of `ComplexSLE.proposition_3_2_a`. -/
-theorem proposition_3_2_a_of_markov (hMO : MarkovOneDim) (a b c : ℝ) (ha : 0 < a) (hb : 0 < b)
+/-- **Proposition 3.2(a)** (paper.tex:L1276-1281): a.s. `lim_{t → T_z⁻} dist(z, L_t) = 0`, in the
+R14 `ε`-form. Exactly the type of `ComplexSLE.proposition_3_2_a`. -/
+theorem proposition_3_2_a_main (a b c : ℝ) (ha : 0 < a) (hb : 0 < b)
     (hc : c ^ 2 ≤ a * b) (p : ℝ → ℝ) (hp : IsAdmissibleDensity a b c p)
     (hII : integralII a b c p < 0) (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω)
     [IsProbabilityMeasure P] (U : ℝ≥0 → Ω → ℂ) (hU : IsSLEDriver a b c U P) (z : ℂ)
@@ -61,18 +58,7 @@ theorem proposition_3_2_a_of_markov (hMO : MarkovOneDim) (a b c : ℝ) (ha : 0 <
       infDist z (leftHull u t) < ε)
     measurableEvents_hull_approach scaleInvariantEvents_hull_approach
     futureDependentEvents_hull_approach
-    (fun _ _ hU' => ae_ae_hull_approach hU' hMO ha hb hc hp hII) z hz
-
-/-- **Proposition 3.2(a)** (paper.tex:L1276-1281): a.s. `lim_{t → T_z⁻} dist(z, L_t) = 0`, in the
-R14 `ε`-form, with the EXTERNAL `markov_oneDim` (R29) discharged. Exactly the type of
-`ComplexSLE.proposition_3_2_a`. -/
-theorem proposition_3_2_a_main (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    (p : ℝ → ℝ) (hp : IsAdmissibleDensity a b c p) (hII : integralII a b c p < 0)
-    (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
-    (U : ℝ≥0 → Ω → ℂ) (hU : IsSLEDriver a b c U P) (z : ℂ) (hz : z ≠ 0) :
-    ∀ᵐ ω ∂P, ∀ ε > 0, ∃ t : ℝ≥0, (t : ℝ≥0∞) < absorbingTime (U · ω) z ∧
-      infDist z (leftHull (U · ω) t) < ε :=
-  proposition_3_2_a_of_markov External.markov_oneDim a b c ha hb hc p hp hII Ω P U hU z hz
+    (fun _ _ hU' => ae_ae_hull_approach hU' ha hb hc hp hII) z hz
 
 end ComplexSLE.Internal
 

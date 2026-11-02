@@ -4,7 +4,7 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 -/
 module
 
-public import ComplexSLE.Internal.Stationary.KernelBasic
+public import ComplexSLE.Internal.Stationary.ItoReal
 public import ComplexSLE.Internal.Stationary.Coefficients
 public import ComplexSLE.Internal.Polar.PolarThetaHat
 public import ComplexSLE.Internal.Polar.PolarContMeas
@@ -16,11 +16,11 @@ For `a, b > 0`, `c² ≤ ab` and an adapted SLE_Σ driver `U`, the time-changed 
 `θ̂ = θ̂(e^{iu})` (`Polar.thetaHat`) solves the martingale problem `(2.25)` for the periodic
 coefficients `α = µ`, `β² = 2D` (`Polar.isDiffusionSolution_thetaHat`).
 
-* `IsDiffusionSolution` only depends on `β` through `β²` (`isDiffusionSolution_congr_sq`), and is
-  invariant under a shift of the process by a period (`IsDiffusionSolution.add_const`);
-* `ae_thetaHat_zero`: `θ̂_0(e^{iu}) = [u]_{2π}` a.s.;
-* `isDiffusionSolution_thetaHat_of_sq`, `exists_thetaHat_solution`: `θ̂ + 2πk` solves the martingale
-  problem from every real starting point.
+* `IsDiffusionSolution` only depends on `β` through `β²` (`isDiffusionSolution_congr_sq`), so
+  `θ̂(e^{iu})` solves the problem for every `β` with `β² = 2D`
+  (`isDiffusionSolution_thetaHat_of_sq`);
+* `ae_thetaHat_zero`, `thetaHat_zero_ae`: the start of `θ̂(e^{iu})` is a.s. the representative of
+  `u` in `[0, 2π)` (resp. `argInit` of the zero driver).
 
 Uses no external input beyond those of the polar layer.
 -/
@@ -32,7 +32,7 @@ open MeasureTheory ProbabilityTheory Filter Set Function Real
 
 namespace ComplexSLE.Internal
 
-/-! ### `IsDiffusionSolution`: dependence on `β²` and period shifts -/
+/-! ### `IsDiffusionSolution`: dependence on `β²` -/
 
 section Solution
 
@@ -44,19 +44,6 @@ theorem isDiffusionSolution_congr_sq (h : ∀ u, β' u ^ 2 = β u ^ 2) :
     IsDiffusionSolution ℱ α β' X P ↔ IsDiffusionSolution ℱ α β X P := by
   unfold IsDiffusionSolution
   simp only [h]
-
-/-- A period shift of a solution is a solution (for `α` and `β²` periodic with that period). -/
-theorem IsDiffusionSolution.add_const {d : ℝ} (hα : ∀ x, α (x + d) = α x)
-    (hβ : ∀ x, β (x + d) ^ 2 = β x ^ 2) (hX : IsDiffusionSolution ℱ α β X P) :
-    IsDiffusionSolution ℱ α β (fun t ω => X t ω + d) P := by
-  obtain ⟨h1, h2, h3, h4⟩ := hX
-  refine ⟨h1.add (isStronglyProgressive_const ℱ d), ?_, ?_, ?_⟩
-  · filter_upwards [h2] with ω hω
-    exact hω.add continuous_const
-  · convert h3 using 2
-    simp only [hα, add_sub_add_right_eq_sub]
-  · convert h4 using 2
-    simp only [hα, hβ, add_sub_add_right_eq_sub]
 
 end Solution
 
@@ -104,9 +91,21 @@ theorem ae_thetaHat_zero [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c
   rw [hn'']
   simp [zsmul_eq_mul]
 
+/-- `θ̂_0(z)` is almost surely the deterministic representative of `arg z` in `[0, 2π)`
+(`argInit` of the zero driver). -/
+theorem thetaHat_zero_ae [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a b c U P ℱ)
+    (ha : 0 < a) (hc : c ^ 2 ≤ a * b) {z : ℂ} (hz : z ≠ 0) :
+    ∀ᵐ ω ∂P, thetaHat hU z 0 ω = argInit (fun _ => (0 : ℂ)) continuous_const z := by
+  filter_upwards [hU.toIsSLEDriver.zero, ae_thetaHat_eq_and_continuous hU ha hc hz] with ω h0 hω
+  have hmem := hω.1 0
+  have hz' : (0 : ℝ) ∈ lifeSet (fun r => U r ω) z :=
+    zero_mem_lifeSet_iff.2 (pos_absorbingTime_of_mem_sigmaDom (hU.cont ω) hmem)
+  rw [thetaHat_of_mem hU hmem, NNReal.coe_zero, sigmaTime_zero (hU.cont ω) hz', argPath_zero,
+    argInit_eq (hU.cont ω) z, argInit_eq continuous_const z, h0]
+
 end Start
 
-/-! ### A solution from every real starting point -/
+/-! ### `θ̂(e^{iu})` for any `β` with `β² = 2D` -/
 
 section Solutions
 
@@ -123,27 +122,6 @@ theorem isDiffusionSolution_thetaHat_of_sq [IsProbabilityMeasure P]
     fun v => by
       rw [hβsq v, Real.sq_sqrt (by have := diffusionD_nonneg ha hb hc v; positivity)]).2
     (isDiffusionSolution_thetaHat hU ha hc (unitPt_ne_zero u))
-
-/-- `θ̂` shifted by a period is a solution from `u`:
-`θ̂(e^{iu}) + (u - [u]_{2π})` solves `dX = µ(X) dt + β(X) dB`, `X_0 = u` a.s. -/
-theorem exists_thetaHat_solution [IsProbabilityMeasure P]
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    {β : ℝ → ℝ} (hβsq : ∀ u, β u ^ 2 = 2 * diffusionD a b c u) (u : ℝ) :
-    ∃ (𝒢 : Filtration ℝ≥0 m) (X : ℝ≥0 → Ω → ℝ),
-      IsDiffusionSolution 𝒢 (mu a b c) β X P ∧ ∀ᵐ ω ∂P, X 0 ω = u := by
-  have hsol := isDiffusionSolution_thetaHat_of_sq hU ha hb hc hβsq u
-  -- the shift `d = u - [u]_{2π}` is a multiple of `2π`
-  set d : ℝ := u - toIcoMod Real.two_pi_pos 0 u with hd
-  have hdk : d = ((2 * toIcoDiv Real.two_pi_pos 0 u : ℤ) : ℝ) * π := by
-    rw [hd, self_sub_toIcoMod, zsmul_eq_mul]
-    push_cast; ring
-  refine ⟨sigmaFiltration hU (unitPt u), fun t ω => thetaHat hU (unitPt u) t ω + d,
-    IsDiffusionSolution.add_const (fun x => ?_) (fun x => ?_) hsol, ?_⟩
-  · rw [hdk]; exact (mu_periodic a b c).int_mul _ x
-  · rw [hβsq, hβsq, hdk, (diffusionD_periodic a b c).int_mul _ x]
-  · filter_upwards [ae_thetaHat_zero hU ha hc u] with ω hω
-    simp only [hω, hd]
-    ring
 
 end Solutions
 

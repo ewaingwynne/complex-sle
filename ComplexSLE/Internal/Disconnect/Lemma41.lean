@@ -27,8 +27,8 @@ Proof (`c ≥ 0`): pass to an everywhere-continuous version `U'` of `U` (a.s. eq
 deterministic core `lemma41_core` shows that on `E₁ ∩ E₂₃ ∩ E₄` one of two balls is disconnected
 by `L_{K+2+T}`, where `E₁ = {sup_{[0,T]} |U'| < η₁}`, `E₂₃ = {sup_{[0,2]} |W - φ| < η₂}` for the
 shift `W` at `T`, and `E₄ = {sup_{[0,K]} |W'| < η₃}` for the shift `W'` of `W` at `2`. Each event
-has positive probability by the support theorem (the EXTERNAL `support_sleDriver`), and the events
-are independent by the Markov property at deterministic times (`IsSLEDriver.indep_shift_past`
+has positive probability by the support theorem (the classical input `support_sleDriver`), and the
+events are independent by the Markov property at deterministic times (`IsSLEDriver.indep_shift_past`
 applied to `U'` at `T` and to `W` at `2`). For `c < 0` apply the case `c ≥ 0` to the conjugate
 driver (reflection property).
 -/

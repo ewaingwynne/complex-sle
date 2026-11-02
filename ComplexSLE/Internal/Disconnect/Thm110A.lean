@@ -38,8 +38,9 @@ R27: the hitting lemma replaces Girsanov):
    the unit circle.
 6. Lévy's upward theorem (`ae_disc_of_lowerBound`): `P(Disc(U', z)) = 1`; transfer back to `U`.
 
-Consumes the EXTERNALs `strongMarkov_sleDriver` and, through the polar and recurrence layers,
-`ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim` (and what they consume).
+Uses the classical inputs `strongMarkov_sleDriver` and, through the polar and recurrence layers,
+`ito_formula` and `timeChange_isContLocalMartingale` (and what they use), all proved in-project
+(`Internal/ExternalProofs/`).
 -/
 
 public section

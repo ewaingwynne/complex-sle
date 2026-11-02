@@ -9,7 +9,7 @@ public import ComplexSLE.Internal.Stationary.Law
 public import ComplexSLE.Internal.Polar.PolarContMeas
 
 /-!
-# Invariance of `ν` and one-time stationarity of `θ̂`, free of `hMO` (M10-R4, steps 5–6)
+# Invariance of `ν` and one-time stationarity of `θ̂` (M10-R4, steps 5–6)
 
 For `a, b > 0`, `c² ≤ ab`, an adapted driver, an admissible density `p` and
 `ν = admissibleMeasure p`:
@@ -21,11 +21,9 @@ For `a, b > 0`, `c² ≤ ab`, an adapted driver, an admissible density `p` and
   `T⁻¹∫₀ᵀ Q_t f(0) dt` by at most `2 s sup|f| / T`, and the latter tends to `∫ f dν`.
   Uniqueness of limits.
 * `integral_comp_thetaHat_prod_admissible`, `map_addCircle_thetaHat_prod_eq_admissible`,
-  `map_exp_thetaHat_prod_eq_admissible`: the statements of
-  `integral_comp_thetaHat_prod_of_markovOneDim`,
-  `map_addCircle_thetaHat_prod_eq_of_markovOneDim` and
-  `map_exp_thetaHat_prod_eq_of_markovOneDim`, without the `hMO` binder, by Fubini (as in
-  `integral_comp_thetaHat_prod`) and the trigonometric-polynomial density argument of `Law.lean`.
+  `map_exp_thetaHat_prod_eq_admissible`: one-time stationarity of `θ̂` on the product space
+  `(Ω × ℝ, P ⊗ ν)` (integral form, law of `θ̂_s mod π`, law of `e^{2iθ̂_s}`), by Fubini and the
+  trigonometric-polynomial density argument of `Law.lean`.
 
 No transition kernel, no Hörmander smoothing and no Markov external is used.
 -/
@@ -109,7 +107,7 @@ section Prod
 
 variable [IsProbabilityMeasure P]
 
-/-- **One-time stationarity of `θ̂` on the product space, integral form (no `hMO`).** -/
+/-- **One-time stationarity of `θ̂` on the product space, integral form.** -/
 theorem integral_comp_thetaHat_prod_admissible
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) {f : ℝ → ℝ} (hf : Continuous f)
@@ -126,7 +124,7 @@ theorem integral_comp_thetaHat_prod_admissible
   rw [integral_prod_symm _ hint]
   exact integral_thetaSemigroup_admissible hU ha hb hc hp s hf hfper
 
-/-- **One-time stationarity of `θ̂` on the product space, mod `π` (no `hMO`).** -/
+/-- **One-time stationarity of `θ̂` on the product space, mod `π`.** -/
 theorem map_addCircle_thetaHat_prod_eq_admissible
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b)
     (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :
@@ -146,7 +144,7 @@ theorem map_addCircle_thetaHat_prod_eq_admissible
     ← Measure.map_map measurable_coe_addCircle measurable_snd, Measure.map_snd_prod]
   simp
 
-/-- **One-time stationarity of `θ̂` on the product space, `e^{2iθ̂}` (no `hMO`).** -/
+/-- **One-time stationarity of `θ̂` on the product space, `e^{2iθ̂}`.** -/
 theorem map_exp_thetaHat_prod_eq_admissible
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b)
     (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :

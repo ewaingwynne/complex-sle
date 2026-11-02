@@ -24,7 +24,7 @@ Source: paper.tex:L2199-2217 (as the proof of Proposition 3.2(b), paper.tex:L180
   `q_* P(A) ≤ ∫_A q(f̂_n(z)) dP ≤ P(A ∩ Disc(U, z))`; Lévy's upward theorem
   (`ae_mem_of_forall_measureReal_le`) yields `P(Disc(U, z)) = 1`.
 
-Consumes the EXTERNAL `strongMarkov_sleDriver`.
+Uses the classical input `strongMarkov_sleDriver` (proved in-project, `Internal/ExternalProofs/`).
 -/
 
 public section

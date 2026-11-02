@@ -30,8 +30,8 @@ The shared part of the proofs of Proposition 3.1(a) and (b) (paper.tex:L1265-127
   almost sure forms of Lemma 3.6 and of the ODE comparison (`SwallowDistanceAE.lean`) at the unit
   points `z = e^{iu}`.
 
-The results consume the externals of the Lemma 3.3, Lemma 3.4 and Lemma 3.6 layers, and the
-EXTERNAL `markov_oneDim` as the hypothesis `hMO : MarkovOneDim`.
+The results use the classical inputs of the Lemma 3.3, Lemma 3.4 and Lemma 3.6 layers, all
+proved in-project (`Internal/ExternalProofs/`).
 -/
 
 public section
@@ -137,12 +137,12 @@ theorem logFHat_eq_sigmaLogNorm (hU : IsSLEDriverAdapted a b c U P ℱ) {u : ℝ
 /-- **Proposition 3.1(a), fibrewise at the unit points.** If `(I) ≥ 0`, then for `ν`-a.e. `u`,
 almost surely `T_{e^{iu}} = ∞`. (Lemma 3.4: `log |f̂_s| ↛ -∞`; Lemma 3.6: `T_z < ∞` forces
 `log |f̂_s| → -∞`.) -/
-theorem ae_ae_absorbingTime_eq_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem ae_ae_absorbingTime_eq_top [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hI : 0 ≤ integralI a b c p) :
     ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P, absorbingTime (fun t => U t ω) (unitPt u) = ⊤ := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have hfib := ae_ae_of_ae_prod_snd (not_tendsto_atBot_logFHat hMO hU ha hb hc hp hI)
+  have hfib := ae_ae_of_ae_prod_snd (not_tendsto_atBot_logFHat hU ha hb hc hp hI)
   filter_upwards [hfib] with u hu
   have hz := unitPt_ne_zero u
   filter_upwards [hu, ae_tendsto_sigmaLogNorm_atBot hU ha hc hz,
@@ -154,12 +154,12 @@ theorem ae_ae_absorbingTime_eq_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
 /-- **Proposition 3.1(b), fibrewise at the unit points.** If `(I) < 0`, then for `ν`-a.e. `u`,
 almost surely `T_{e^{iu}} < ∞`. (Lemma 3.4: `log |f̂_s| / s → (I) < 0`; the ODE comparison turns
 this into `T_z < ∞`.) -/
-theorem ae_ae_absorbingTime_lt_top [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem ae_ae_absorbingTime_lt_top [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hI : integralI a b c p < 0) :
     ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P, absorbingTime (fun t => U t ω) (unitPt u) < ⊤ := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have hfib := ae_ae_of_ae_prod_snd (tendsto_logFHat_div_of_integralI_neg hMO hU ha hb hc hp hI)
+  have hfib := ae_ae_of_ae_prod_snd (tendsto_logFHat_div_of_integralI_neg hU ha hb hc hp hI)
   filter_upwards [hfib] with u hu
   have hz := unitPt_ne_zero u
   have hα : 0 < -integralI a b c p := neg_pos.2 hI

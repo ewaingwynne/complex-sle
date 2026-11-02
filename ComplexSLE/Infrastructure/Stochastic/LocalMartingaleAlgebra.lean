@@ -17,10 +17,9 @@ and difference need *everywhere* continuous paths of both summands, so that the 
 and a continuous local martingale with everywhere continuous paths stays one after stopping at any
 stopping time.
 
-The last statement was previously obtained from the external time-change input E2c
-(`IsContLocalMartingale.stopped_min`); `IsContLocalMartingale.stopped_min_of_continuous` is an
-external-free drop-in replacement with the same signature, so anything that only consumes
-`stopped_min` can be made `PROVED` by switching to it.
+The last statement was previously obtained from the time-change input E2c
+(`IsContLocalMartingale.stopped_min`); `IsContLocalMartingale.stopped_min_of_continuous` is a
+drop-in replacement with the same signature that does not use it.
 -/
 
 public section

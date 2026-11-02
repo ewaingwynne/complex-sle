@@ -14,15 +14,15 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, with `C_t(ω, u) = �
 measurable functional `cosIv (Ξ_n) 0` of the path observable (`etaSeq`):
 
 * `etaSeq_stationary`: `(η_{n+k})_n` and `(η_n)_n` have the same law on `ℕ → ℝ`
-  (`(η_{n+k})_n = cosSeq (Ξ_k)` and the law of `Ξ_k` does not depend on `k`, `map_pathObs_eq_zero`,
-  modulo `hMO : MarkovOneDim`);
+  (`(η_{n+k})_n = cosSeq (Ξ_k)` and the law of `Ξ_k` does not depend on `k`, `map_pathObs_eq_zero`);
 * `integral_etaSeq_zero`: `E η_0 = ∫ cos(2u) dν` (one-time stationarity of `e^{2iθ̂}`; Riemann sums
   and dominated convergence);
 * `exists_birkhoff_cosInt`: there is an integrable `L` with `∫ L = ∫ cos(2u) dν` such that
-  `P ⊗ ν`-a.s. `C_s / s → L` as `s → ∞` along `ℝ≥0` (EXTERNAL `birkhoff_stationary`; the real-time
-  limit follows from the integer-time one since `|C_s - C_⌊s⌋| ≤ 1`, `tendsto_div_of_floor`).
+  `P ⊗ ν`-a.s. `C_s / s → L` as `s → ∞` along `ℝ≥0` (classical input `birkhoff_stationary`; the
+  real-time limit follows from the integer-time one since `|C_s - C_⌊s⌋| ≤ 1`,
+  `tendsto_div_of_floor`).
 
-Consumes the EXTERNAL `birkhoff_stationary` and everything consumed by `ErgodicStat.lean`.
+Uses the classical input `birkhoff_stationary` and everything used by `ErgodicStat.lean`.
 -/
 
 @[expose] public section
@@ -85,7 +85,7 @@ theorem etaSeq_eq_cosSeq (hU : IsSLEDriverAdapted a b c U P ℱ) (n : ℕ) (q : 
   simpa using this
 
 /-- **Stationarity of `(η_n)`**: the laws of the shifted sequences on `ℕ → ℝ` agree. -/
-theorem etaSeq_stationary [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem etaSeq_stationary [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (k : ℕ) :
     (P.prod (admissibleMeasure p)).map (fun q (n : ℕ) => etaSeq hU (n + k) q) =
@@ -97,7 +97,7 @@ theorem etaSeq_stationary [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   rw [h1, h2, ← Measure.map_map measurable_cosSeq (measurable_pathObs hU _),
     ← Measure.map_map measurable_cosSeq (measurable_pathObs hU _)]
   congr 1
-  exact map_pathObs_eq_zero hMO hU ha hb hc hp (k : ℝ≥0)
+  exact map_pathObs_eq_zero hU ha hb hc hp (k : ℝ≥0)
 
 /-! ### On the good set -/
 
@@ -143,7 +143,7 @@ theorem abs_rsumIv_pathObsAt_le (hU : IsSLEDriverAdapted a b c U P ℱ) (z : ℂ
         field_simp
 
 
-theorem integral_cos_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_cos_thetaHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (s : ℝ≥0) :
     ∫ q, Real.cos (2 * thetaHat hU (unitPt q.2) s q.1) ∂(P.prod (admissibleMeasure p)) =
@@ -152,10 +152,10 @@ theorem integral_cos_thetaHat [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   have hper : Function.Periodic (fun u : ℝ => Real.cos (2 * u)) π := fun u => by
     have : 2 * (u + π) = 2 * u + 2 * π := by ring
     simp only [this, Real.cos_add_two_pi]
-  exact integral_comp_thetaHat_prod_of_markovOneDim hMO hU ha hb hc hp s hf hper
+  exact integral_comp_thetaHat_prod_admissible hU ha hb hc hp s hf hper
 
 /-- `E η_0 = ∫ cos(2u) dν`. -/
-theorem integral_etaSeq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_etaSeq_zero [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     Integrable (etaSeq hU 0) (P.prod (admissibleMeasure p)) ∧
@@ -203,7 +203,7 @@ theorem integral_etaSeq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)
         simp only [pathObs, obsCos_pathObsAt]
         rw [integral_const_mul]
         congr 1
-        exact integral_cos_thetaHat hMO hU ha hb hc hp _
+        exact integral_cos_thetaHat hU ha hb hc hp _
       simp only [hterm]
       rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
       field_simp
@@ -216,10 +216,10 @@ theorem integral_etaSeq_zero [IsProbabilityMeasure P] (hMO : MarkovOneDim)
 
 /-! ### Birkhoff -/
 
-/-- **Birkhoff for `∫₀ˢ cos 2θ̂`** (M7/D2). Under `hMO : MarkovOneDim`: there is an integrable `L`
+/-- **Birkhoff for `∫₀ˢ cos 2θ̂`** (M7/D2). There is an integrable `L`
 on `(Ω × ℝ, P ⊗ ν)` with `∫ L = ∫ cos(2u) dν` such that `P ⊗ ν`-almost surely
 `C_s / s → L` as `s → ∞` along `ℝ≥0`, `C_s = ∫₀ˢ cos 2θ̂_v(e^{iu}) dv`. -/
-theorem exists_birkhoff_cosInt [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem exists_birkhoff_cosInt [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∃ L : Ω × ℝ → ℝ, Integrable L (P.prod (admissibleMeasure p)) ∧
@@ -227,10 +227,10 @@ theorem exists_birkhoff_cosInt [IsProbabilityMeasure P] (hMO : MarkovOneDim)
       ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
         Tendsto (fun s : ℝ≥0 => cosIntU hU s q / s) atTop (𝓝 (L q)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨hint, hmean⟩ := integral_etaSeq_zero hMO hU ha hb hc hp
+  obtain ⟨hint, hmean⟩ := integral_etaSeq_zero hU ha hb hc hp
   obtain ⟨L, hLint, hLmean, hLlim⟩ := External.birkhoff_stationary
     (P := P.prod (admissibleMeasure p)) (etaSeq hU) (measurable_etaSeq hU)
-    (fun k => etaSeq_stationary hMO hU ha hb hc hp k) hint
+    (fun k => etaSeq_stationary hU ha hb hc hp k) hint
   refine ⟨L, hLint, hLmean.trans hmean, ?_⟩
   filter_upwards [hLlim, ae_mem_goodSet hU ha hc (ν := admissibleMeasure p)] with q hq hqG
   have hn : Tendsto (fun n : ℕ => cosIntU hU (n : ℝ≥0) q / n) atTop (𝓝 (L q)) :=

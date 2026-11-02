@@ -14,8 +14,9 @@ public import Mathlib.MeasureTheory.Integral.DominatedConvergence
 /-!
 # Itô's formula for a real diffusion, in expectation
 
-The scalar case of the EXTERNAL `ito_formula` (`step:kol-ito-expectation`, paper.tex:L2365-2375):
-for `X` an `IsDiffusionSolution ℱ α β X P` with everywhere-continuous paths and `f` of class `C²`,
+The scalar case of the classical input `ito_formula` (`step:kol-ito-expectation`,
+paper.tex:L2365-2375): for `X` an `IsDiffusionSolution ℱ α β X P` with everywhere-continuous paths
+and `f` of class `C²`,
 
 * `IsDiffusionSolution.isContLocalMartingale_generator`:
   `f(X_t) - f(X_0) - ∫₀ᵗ (Lf)(X_s) ds` is a continuous local martingale, where
@@ -27,7 +28,7 @@ for `X` an `IsDiffusionSolution ℱ α β X P` with everywhere-continuous paths 
   by dominated convergence along the path continuity instead of Fubini);
 * `IsDiffusionSolution.lipschitzWith_integral_comp`: `t ↦ E f(X_t)` is Lipschitz.
 
-Everything consumes `ito_formula`, so is `PROVED_REL{ito_formula}`.
+Everything uses `ito_formula` (proved in-project, `Internal/ExternalProofs/ItoFormula.lean`).
 -/
 
 public section
@@ -76,7 +77,7 @@ variable {Ω : Type} {mΩ : MeasurableSpace Ω} {P : Measure Ω} [IsProbabilityM
   {ℱ : Filtration ℝ≥0 mΩ} {α β : ℝ → ℝ} {X : ℝ≥0 → Ω → ℝ}
 
 /-- Itô's formula in the scalar case: `f(X_t) - f(X_0) - ∫₀ᵗ (Lf)(X_s) ds` is a continuous local
-martingale for `f ∈ C²` (paper.tex:L2365-2369). Consumes `ito_formula`. -/
+martingale for `f ∈ C²` (paper.tex:L2365-2369). Uses `ito_formula`. -/
 theorem IsDiffusionSolution.isContLocalMartingale_generator
     (hX : IsDiffusionSolution ℱ α β X P) (hXc : ∀ ω, Continuous fun t => X t ω)
     (hα : Continuous α) (hβ : Continuous β) {f : ℝ → ℝ} (hf : ContDiff ℝ 2 f) :

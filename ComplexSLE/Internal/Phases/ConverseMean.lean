@@ -24,8 +24,8 @@ The proof is the decomposition `R_t̃ = -2 C_t̃ - Y_t̃` (`sigmaLogRatio_eq_cos
   bounded by `t̃` (dominated convergence);
 * `(II) = (I) + 2 ∫ cos(2u) dν` (`integralII_eq`).
 
-The EXTERNAL `markov_oneDim` (R29) enters as the hypothesis `hMO : MarkovOneDim`, as in
-`Lemma37.lean` (it is discharged with `External.markov_oneDim` in `ConverseMain.lean`).
+The one-time stationarity of `θ̂` (`integral_comp_thetaHat_prod_admissible`,
+`Stationary/InvarianceStationary.lean`) supplies the means, as in `Lemma37.lean`.
 -/
 
 public section
@@ -90,7 +90,7 @@ theorem integrable_cos_comp_thetaHat [IsProbabilityMeasure P]
     (Eventually.of_forall fun q => by simpa [Real.norm_eq_abs] using Real.abs_cos_le_one _)
 
 /-- **The mean of `C_t̃`**: `E C_t̃ = t̃ ∫ cos(2u) dν`; `C_t̃` is a.e. strongly measurable. -/
-theorem integral_cosIntU [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_cosIntU [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     AEStronglyMeasurable (cosIntU hU t) (P.prod (admissibleMeasure p)) ∧
@@ -111,7 +111,7 @@ theorem integral_cosIntU [IsProbabilityMeasure P] (hMO : MarkovOneDim)
     have hNpos : (0 : ℝ) < N := by exact_mod_cast hN
     unfold cosRiemann
     rw [integral_finsetSum _ fun k _ => (integrable_cos_comp_thetaHat hU _).const_mul _]
-    simp only [integral_const_mul, integral_cos_thetaHat hMO hU ha hb hc hp]
+    simp only [integral_const_mul, integral_cos_thetaHat hU ha hb hc hp]
     rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
     field_simp
   have hev : ∀ᶠ N : ℕ in atTop, ∫ q, cosRiemann hU t N q ∂(P.prod (admissibleMeasure p)) =
@@ -123,12 +123,12 @@ theorem abs_cosIntU_le_of_mem_goodSet (hU : IsSLEDriverAdapted a b c U P ℱ) (t
     {q : Ω × ℝ} (hq : q ∈ goodSet hU) : |cosIntU hU t q| ≤ t :=
   abs_cosInt_le hU (continuous_thetaHat_of_mem_goodSet hU hq) t
 
-theorem integrable_cosIntU [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integrable_cosIntU [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     Integrable (cosIntU hU t) (P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  refine (integrable_const (t : ℝ)).mono' (integral_cosIntU hMO hU ha hb hc hp t).1 ?_
+  refine (integrable_const (t : ℝ)).mono' (integral_cosIntU hU ha hb hc hp t).1 ?_
   filter_upwards [ae_mem_goodSet hU ha hc (ν := admissibleMeasure p)] with q hq
   simpa [Real.norm_eq_abs] using abs_cosIntU_le_of_mem_goodSet hU t hq
 
@@ -141,39 +141,39 @@ theorem ae_sigmaLogRatio_eq [IsProbabilityMeasure P] (hU : IsSLEDriverAdapted a 
       fun q => -2 * cosIntU hU t q - logFHat hU t q :=
   (ae_mem_goodSet hU ha hc (ν := ν)).mono fun _ hq => sigmaLogRatio_eq_cos_sub_logFHat hU hq t
 
-theorem aestronglyMeasurable_sigmaLogRatio [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem aestronglyMeasurable_sigmaLogRatio [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     AEStronglyMeasurable (fun q : Ω × ℝ => sigmaLogRatio hU (unitPt q.2) t q.1)
       (P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have h1 := (integral_cosIntU hMO hU ha hb hc hp t).1
+  have h1 := (integral_cosIntU hU ha hb hc hp t).1
   have h2 := (measurable_logFHat hU t).aestronglyMeasurable (μ := P.prod (admissibleMeasure p))
   exact ((h1.const_mul (-2)).sub h2).congr (ae_sigmaLogRatio_eq hU ha hc t).symm
 
 /-- **`R_t̃` is integrable** (Step 2 of paper.tex:L1677-1690: `E |log(|f_t'|/|f_t|)| < ∞`). -/
-theorem integrable_sigmaLogRatio [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integrable_sigmaLogRatio [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     Integrable (fun q : Ω × ℝ => sigmaLogRatio hU (unitPt q.2) t q.1)
       (P.prod (admissibleMeasure p)) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have h1 := integrable_cosIntU hMO hU ha hb hc hp t
-  have h2 := (integrable_integral_logFHat hMO hU ha hb hc hp t).1
+  have h1 := integrable_cosIntU hU ha hb hc hp t
+  have h2 := (integrable_integral_logFHat hU ha hb hc hp t).1
   exact ((h1.const_mul (-2)).sub h2).congr (ae_sigmaLogRatio_eq hU ha hc t).symm
 
 /-- **Lemma 3.7 in expectation: `E log(|f̂'_t̃|/|f̂_t̃|) = - t̃ · (II)`** (paper.tex:L1430-1440). -/
-theorem integral_sigmaLogRatio [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem integral_sigmaLogRatio [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (t : ℝ≥0) :
     ∫ q, sigmaLogRatio hU (unitPt q.2) t q.1 ∂(P.prod (admissibleMeasure p)) =
       -(t * integralII a b c p) := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  have h1 := integrable_cosIntU hMO hU ha hb hc hp t
-  have h2 := integrable_integral_logFHat hMO hU ha hb hc hp t
+  have h1 := integrable_cosIntU hU ha hb hc hp t
+  have h2 := integrable_integral_logFHat hU ha hb hc hp t
   rw [integral_congr_ae (ae_sigmaLogRatio_eq hU ha hc t),
     integral_sub (h1.const_mul (-2)) h2.1, integral_const_mul,
-    (integral_cosIntU hMO hU ha hb hc hp t).2, h2.2, integralII_eq hp]
+    (integral_cosIntU hU ha hb hc hp t).2, h2.2, integralII_eq hp]
   ring
 
 end ComplexSLE.Internal

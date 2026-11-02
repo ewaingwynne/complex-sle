@@ -25,7 +25,8 @@ adapted driver `hU` and a point `z`, given regeneration data `D k : RegenDatum h
 * `fibre_law_and_const`: the law of `L` is `(Λ).map (limFunctional ∘ obsC (·, 0))` and `L` is a.s.
   constant (the limit is independent of the pasts `ℱ_{S_n} ∋ log |f̂_n|` and is their limit).
 
-Uses the EXTERNAL `strongMarkov_sleDriver` (through the strong Markov step).
+Uses the classical input `strongMarkov_sleDriver`, proved in-project (through the strong Markov
+step).
 -/
 
 @[expose] public section

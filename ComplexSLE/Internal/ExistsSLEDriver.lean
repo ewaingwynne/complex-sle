@@ -17,7 +17,7 @@ import Mathlib.Probability.BrownianMotion.Basic
 Implementation module for the frozen anchor `ComplexSLE/Frozen/ExistsSLEDriver.lean`.
 The anchor is SEALED: it is proved by this module.
 
-Proof. Take a real Brownian motion `B` on `(Ω, P)` (EXTERNAL `exists_isBrownianReal`) and put
+Proof. Take a real Brownian motion `B` on `(Ω, P)` (classical input `exists_isBrownianReal`) and put
 `U t (ω₁, ω₂) = L (B t ω₁, B t ω₂)` on `(Ω × Ω, P ⊗ P)`, where `L` is the real-linear map
 `driverCLM a b c : ℝ × ℝ →L[ℝ] ℂ` with `A Aᵀ = covMatrix a b c`
 (`ComplexSLE.Internal.Driver.Process`).

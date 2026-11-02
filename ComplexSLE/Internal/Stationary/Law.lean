@@ -4,10 +4,9 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 -/
 module
 
-public import ComplexSLE.Internal.Stationary.Kolmogorov
 public import Mathlib.Analysis.Fourier.AddCircle
 public import Mathlib.MeasureTheory.Measure.HasOuterApproxClosed
-public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 
 /-!
 # From periodic test functions to the law of `X_t mod π` and of `e^{2iX_t}`
@@ -18,11 +17,6 @@ public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic
 periodic test functions to all bounded continuous functions on the circle goes through the density
 of trigonometric polynomials (`span_fourier_closure_eq_top`), the real and imaginary parts of
 `fourier n` being `cos (2nu)` and `sin (2nu)`.
-
-Combined with `integral_comp_eq_of_markov` this gives the one-time stationarity statements of
-Lemma A.1, `law(X_t mod π) = law(X_0 mod π)` and `law(e^{2iX_t}) = law(e^{2iX_0})`, modulo the
-Markov property (see the handoff report). Also: the initial-law hypothesis in integral form follows
-from `law(X_0) = p₀(u) 1_{[0,π]}(u) du` as a measure (`integral_comp_zero_of_map_eq`).
 -/
 
 public section
@@ -172,70 +166,6 @@ theorem map_exp_eq_of_forall_integral_eq {Y Z : Ω → ℝ} (hY : Measurable Y) 
   rw [e1, e2, ← Measure.map_map (f := fun ω => ((Y ω : ℝ) : AddCircle π)) hm (hmk.comp hY),
     ← Measure.map_map (f := fun ω => ((Z ω : ℝ) : AddCircle π)) hm (hmk.comp hZ),
     map_addCircle_eq_of_forall_integral_eq hY hZ h]
-
-/-! ### The initial law `p₀(u) 1_{[0,π]}(u) du` -/
-
-omit [IsProbabilityMeasure P] in
-/-- If `law(X_0) = p₀(u) 1_{[0,π]}(u) du` then `E g(X_0) = ∫₀^π g p₀` for bounded measurable `g`. -/
-theorem integral_comp_zero_of_map_eq {X₀ : Ω → ℝ} (hX₀ : Measurable X₀) {p₀ : ℝ → ℝ}
-    (hp₀nn : ∀ v, 0 ≤ p₀ v) (hp₀m : Measurable p₀)
-    (hlaw : P.map X₀ = (volume.restrict (Icc 0 π)).withDensity fun v => ENNReal.ofReal (p₀ v))
-    (g : ℝ → ℝ) (hg : Measurable g) (_hgb : ∃ C : ℝ, ∀ v, |g v| ≤ C) :
-    ∫ ω, g (X₀ ω) ∂P = ∫ u in (0)..π, g u * p₀ u := by
-  rw [← integral_map hX₀.aemeasurable hg.aestronglyMeasurable, hlaw,
-    integral_withDensity_eq_integral_toReal_smul (f := fun v => ENNReal.ofReal (p₀ v))
-      (ENNReal.measurable_ofReal.comp hp₀m) (Eventually.of_forall fun v => ENNReal.ofReal_lt_top),
-    integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le pi_pos.le]
-  congr 1
-  funext v
-  rw [ENNReal.toReal_ofReal (hp₀nn v), smul_eq_mul, mul_comm]
-
-/-! ### Lemma A.1 modulo the Markov property: the laws -/
-
-variable {Ω : Type} {mΩ : MeasurableSpace Ω} {P : Measure Ω} [IsProbabilityMeasure P]
-  {ℱ : Filtration ℝ≥0 mΩ} {α β : ℝ → ℝ} {X : ℝ≥0 → Ω → ℝ}
-
-/-- **Lemma A.1, one-time marginals, modulo the Markov property**: under the hypotheses of
-`integral_comp_eq_of_markov`, `law(X_t mod π) = law(X_0 mod π)` for every `t`. -/
-theorem map_addCircle_eq_of_markov (hα : ContDiff ℝ 1 α) (hβ : ContDiff ℝ 2 β)
-    (hαper : Periodic α π) (hβper : Periodic (fun u => β u ^ 2) π)
-    {p₀ : ℝ → ℝ} (hp₀ : IsKolmogorovDensity α β p₀)
-    (hX : IsDiffusionSolution ℱ α β X P) (hXc : ∀ ω, Continuous fun t => X t ω)
-    (h0 : ∀ g : ℝ → ℝ, Measurable g → (∃ C : ℝ, ∀ v, |g v| ≤ C) →
-      ∫ ω, g (X 0 ω) ∂P = ∫ u in (0)..π, g u * p₀ u)
-    (p : ℝ≥0 → ℝ → ℝ → ℝ)
-    (hp_smooth : ∀ s : ℝ≥0, 0 < s → ∀ f : ℝ → ℝ, Measurable f → (∃ C : ℝ, ∀ v, |f v| ≤ C) →
-      ContDiff ℝ 2 fun u => ∫ v, f v * p s u v)
-    (hp_per : ∀ s : ℝ≥0, 0 < s → ∀ u v, p s (u + π) (v + π) = p s u v)
-    (hMarkov : ∀ t s : ℝ≥0, 0 < s → ∀ f : ℝ → ℝ, Measurable f → (∃ C : ℝ, ∀ v, |f v| ≤ C) →
-      ∫ ω, f (X (t + s) ω) ∂P = ∫ ω, (∫ v, f v * p s (X t ω) v) ∂P)
-    (t : ℝ≥0) :
-    P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) = P.map (fun ω => ((X 0 ω : ℝ) : AddCircle π)) :=
-  map_addCircle_eq_of_forall_integral_eq (IsDiffusionSolution.measurable hX t)
-    (IsDiffusionSolution.measurable hX 0) fun _ hf hfper =>
-    integral_comp_eq_of_markov hα hβ hαper hβper hp₀ hX hXc h0 p hp_smooth hp_per hMarkov hf hfper t
-
-/-- **Lemma A.1, one-time marginals, modulo the Markov property**: under the hypotheses of
-`integral_comp_eq_of_markov`, `law(e^{2iX_t}) = law(e^{2iX_0})` for every `t`
-(paper.tex:L2333-2334, L2401). -/
-theorem map_exp_eq_of_markov (hα : ContDiff ℝ 1 α) (hβ : ContDiff ℝ 2 β)
-    (hαper : Periodic α π) (hβper : Periodic (fun u => β u ^ 2) π)
-    {p₀ : ℝ → ℝ} (hp₀ : IsKolmogorovDensity α β p₀)
-    (hX : IsDiffusionSolution ℱ α β X P) (hXc : ∀ ω, Continuous fun t => X t ω)
-    (h0 : ∀ g : ℝ → ℝ, Measurable g → (∃ C : ℝ, ∀ v, |g v| ≤ C) →
-      ∫ ω, g (X 0 ω) ∂P = ∫ u in (0)..π, g u * p₀ u)
-    (p : ℝ≥0 → ℝ → ℝ → ℝ)
-    (hp_smooth : ∀ s : ℝ≥0, 0 < s → ∀ f : ℝ → ℝ, Measurable f → (∃ C : ℝ, ∀ v, |f v| ≤ C) →
-      ContDiff ℝ 2 fun u => ∫ v, f v * p s u v)
-    (hp_per : ∀ s : ℝ≥0, 0 < s → ∀ u v, p s (u + π) (v + π) = p s u v)
-    (hMarkov : ∀ t s : ℝ≥0, 0 < s → ∀ f : ℝ → ℝ, Measurable f → (∃ C : ℝ, ∀ v, |f v| ≤ C) →
-      ∫ ω, f (X (t + s) ω) ∂P = ∫ ω, (∫ v, f v * p s (X t ω) v) ∂P)
-    (t : ℝ≥0) :
-    P.map (fun ω => Complex.exp (2 * Complex.I * X t ω)) =
-      P.map (fun ω => Complex.exp (2 * Complex.I * X 0 ω)) :=
-  map_exp_eq_of_forall_integral_eq (IsDiffusionSolution.measurable hX t)
-    (IsDiffusionSolution.measurable hX 0) fun _ hf hfper =>
-    integral_comp_eq_of_markov hα hβ hαper hβper hp₀ hX hXc h0 p hp_smooth hp_per hMarkov hf hfper t
 
 end ComplexSLE.Internal
 

@@ -8,7 +8,7 @@ public import ComplexSLE.Internal.Phases.ErgodicMean
 public import ComplexSLE.Internal.Recurrence.Renewal
 public import ComplexSLE.Internal.Recurrence.Recurrence2
 public import ComplexSLE.Internal.Recurrence.StatBridge
-public import ComplexSLE.Internal.Stationary.SLEStat
+public import ComplexSLE.Internal.Stationary.InvarianceStationary
 public import ComplexSLE.Internal.Driver.BridgeAdapted
 public import ComplexSLE.Infrastructure.Stochastic.ContinuousModification
 
@@ -23,9 +23,9 @@ angle `θ̂_t(e^{iu})` is recurrent to the lattice `πℤ`:
 
 The stationarity input `hstat` of the renewal argument (`ae_frequently_mem_latticeSet`) is only
 available on the product (one-time stationarity of `θ̂ mod π`,
-`map_addCircle_thetaHat_prod_eq`), not for a single starting point. The renewal argument uses only
-adaptedness, continuity of the paths and the two inputs `hstat`, `hren`, so it is run on the
-product with the product filtration
+`map_addCircle_thetaHat_prod_eq_admissible`), not for a single starting point. The renewal argument
+uses only adaptedness, continuity of the paths and the two inputs `hstat`, `hren`, so it is run on
+the product with the product filtration
 
   `ℋ_s = {A | A measurable, every fibre A_u ∈ 𝒢^u_s}`,   `𝒢^u = sigmaFiltration (e^{iu})`
   (`prodFiltration`),
@@ -41,9 +41,8 @@ and `hren` is the fibrewise statement of `sle_markov_transport` integrated over 
 
 The reflection `θ ↦ -θ`, `c ↦ -c` handles `c ≤ 0` as in `sle_recurrence_nonpos`.
 
-Consumes `ito_formula`, `timeChange_isContLocalMartingale`, `hormander_oneDim` (through the polar
-and stationarity layers) and the EXTERNAL `markov_oneDim` (R29) as the explicit hypothesis
-`hMO : MarkovOneDim`.
+Uses `ito_formula` and `timeChange_isContLocalMartingale` (through the polar and stationarity
+layers), proved in-project (`Internal/ExternalProofs/`).
 -/
 
 @[expose] public section
@@ -334,14 +333,14 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 /-- **Recurrence of `θ̂` on the product (null sets in `ℱ 0`).** `P ⊗ ν`-a.s., for every `s` there is
 `t ≥ s` with `θ̂_t(e^{iu}) ∈ πℤ` (for the everywhere continuous version `thetaHatC`). -/
-theorem ae_recurrent_prod_of_null [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem ae_recurrent_prod_of_null [IsProbabilityMeasure P]
     (hnull : ∀ N : Set Ω, MeasurableSet N → P N = 0 → MeasurableSet[ℱ 0] N)
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∀ᵐ q ∂(P.prod (admissibleMeasure p)), ∀ s : ℝ≥0, ∃ t : ℝ≥0, s ≤ t ∧
       thetaHatC hU t q ∈ ComplexSLE.Recurrence.latticeSet 0 := by
   have hν := isProbabilityMeasure_admissibleMeasure hp
-  obtain ⟨β, hβ, hβsq, -⟩ := exists_beta ha hb hc
+  obtain ⟨β, hβ, hβsq⟩ := exists_contDiff_beta_sq ha hb hc
   have hβc : Continuous β := hβ.continuous
   have hsol : ∀ u : ℝ, IsDiffusionSolution (sigmaFiltration hU (unitPt u)) (mu a b c) β
       (fun t ω => thetaHatC hU t (ω, u)) P :=
@@ -350,7 +349,7 @@ theorem ae_recurrent_prod_of_null [IsProbabilityMeasure P] (hMO : MarkovOneDim)
   have hlaw : ∀ t : ℝ≥0, (P.prod (admissibleMeasure p)).map
       (fun q : Ω × ℝ => ((thetaHatC hU t q : ℝ) : AddCircle π)) =
       (admissibleMeasure p).map ((↑) : ℝ → AddCircle π) := fun t => by
-    rw [← map_addCircle_thetaHat_prod_eq_of_markovOneDim hMO hU ha hb hc hp t]
+    rw [← map_addCircle_thetaHat_prod_eq_admissible hU ha hb hc hp t]
     refine Measure.map_congr ?_
     filter_upwards [ae_thetaHatC_eq hU ha hc (ν := admissibleMeasure p)] with q hq
     rw [hq t]
@@ -401,9 +400,9 @@ def nullFiltration (ℱ : Filtration ℝ≥0 m) (P : Measure Ω) : Filtration �
   le' t := sup_le (ℱ.le t) (MeasurableSpace.generateFrom_le fun _ hN => hN.1)
 
 /-- **Recurrence of `e^{2iθ̂}` on the product space (A5b, part A; Lemma 2.16 for the random point
-`𝐳 = e^{iu}`).** Under `hMO : MarkovOneDim`: for `ν`-a.e. `u`, almost surely, for every `s` there
+`𝐳 = e^{iu}`).** For `ν`-a.e. `u`, almost surely, for every `s` there
 is `t ≥ s` with `e^{2iθ̂_t(e^{iu})} = 1`. -/
-theorem ae_recurrent_unit [IsProbabilityMeasure P] (hMO : MarkovOneDim)
+theorem ae_recurrent_unit [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
     {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) :
     ∀ᵐ u ∂(admissibleMeasure p), ∀ᵐ ω ∂P, ∀ s : ℝ≥0, ∃ t : ℝ≥0, s ≤ t ∧
@@ -417,7 +416,7 @@ theorem ae_recurrent_unit [IsProbabilityMeasure P] (hMO : MarkovOneDim)
       (MeasurableSpace.measurableSet_generateFrom ⟨hN, hN0⟩)
   have hU' : IsSLEDriverAdapted a b c U P (nullFiltration ℱ P) :=
     hU.of_le_sup_null (fun t => le_sup_left) (fun t => le_rfl)
-  have h := ae_recurrent_prod_of_null hMO hnull hU' ha hb hc hp
+  have h := ae_recurrent_prod_of_null hnull hU' ha hb hc hp
   have h2 : ∀ᵐ q ∂(P.prod (admissibleMeasure p)), ∀ s : ℝ≥0, ∃ t : ℝ≥0, s ≤ t ∧
       Complex.exp (2 * Complex.I * (thetaHat hU (unitPt q.2) t q.1 : ℂ)) = 1 := by
     filter_upwards [h, ae_thetaHatC_eq hU' ha hc (ν := admissibleMeasure p)] with q hq heq s

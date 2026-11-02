@@ -19,7 +19,8 @@ Here lower semicontinuity of the hulls is obtained instead from the Koebe distan
 at `z = i (2 √T + δ')`, together with the Cauchy estimate for `f^V_T' - zeroMap'` coming from
 `exists_small_driver_approx`.
 
-This file consumes the EXTERNAL `loewnerMap_tendstoUniformly`.
+This file uses the classical input `loewnerMap_tendstoUniformly` (proved in-project,
+`Internal/ExternalProofs/`).
 -/
 
 public section

@@ -10,14 +10,14 @@ public import ComplexSLE.External.LoewnerMapTendstoUniformly
 /-!
 # Lemma 4.3 (first bullet) for small drivers: the `ε`-`ρ` form
 
-arXiv:2203.07313v4, Lemma 4.3 (`lem-haus`, paper.tex:L1998-2019). The EXTERNAL E12
+arXiv:2203.07313v4, Lemma 4.3 (`lem-haus`, paper.tex:L1998-2019). The classical input E12
 (`ComplexSLE.External.loewnerMap_tendstoUniformly`) is stated for sequences of drivers converging
 locally uniformly. Here it is turned into the quantitative statement
 `exists_small_driver_approx`: if a continuous driver `V` is uniformly small on `[0, T]`, then
 `f^V_T` is uniformly close to the explicit map `zeroMap T` away from the slit `slitI T`.
 
-This file consumes the EXTERNAL `loewnerMap_tendstoUniformly`; every result that uses it is
-`PROVED_REL`.
+This file uses the classical input `loewnerMap_tendstoUniformly` (proved in-project,
+`Internal/ExternalProofs/`).
 -/
 
 public section
@@ -34,7 +34,7 @@ and `|f^V_T (z) - f⁰_T (z)| < η`, where `f⁰_T = zeroMap T`.
 
 The proof is by contradiction. A violating sequence `V n` with `|V n| < 1/(n+1)` on `[0, T]` is
 truncated to `V n (min · T)`, which does not change `L_T` or `f_T`
-(`leftHull_congr`, `centeredLoewnerMap_congr`) and converges uniformly to `0`; the EXTERNAL
+(`leftHull_congr`, `centeredLoewnerMap_congr`) and converges uniformly to `0`; the classical input
 `loewnerMap_tendstoUniformly` (E12) then contradicts the violation. -/
 theorem exists_small_driver_approx (T : ℝ≥0) {ε η : ℝ} (hε : 0 < ε) (hη : 0 < η) :
     ∃ ρ > 0, ∀ (V : ℝ≥0 → ℂ) (hV : Continuous V), (∀ t ≤ T, ‖V t‖ < ρ) →

@@ -19,13 +19,13 @@ Source: paper.tex:L1796-1816. Let `U` be an adapted `SLE_Σ` driver, `E` an even
   point `X`, an event `A ∈ ℱ_τ` and a measurable set `M` of (path, point) pairs,
   `P(A ∩ {(V, X) ∈ M}) = ∫_A P_U(M_X) dP`, where `V = U_{τ+·} - U_τ` is the post-`τ` driver
   (the quantitative form of `ae_mem_postDriver`, from the independence of `V` and `ℱ_τ` and the
-  equality of the law of `V` with that of `U`: EXTERNAL `strongMarkov_sleDriver`).
+  equality of the law of `V` with that of `U`: classical input `strongMarkov_sleDriver`).
 * `q_mul`, `q_eq_unit`: scale invariance `q(rξ) = q(ξ)`, `q(ξ) = q(ξ/|ξ|)` (law of the rescaled
   driver `r U(·/r²)`).
 * `measure_inter_event_eq_lintegral`: at the σ-time `σ_z(s)` (`τ = sigmaTop hU z s`, `X = f̂_s(z)`),
   `P(A ∩ E(U, z)) = ∫_A q(f̂_s(z)) dP` for `A ∈ 𝒢_s = ℱ_{σ_z(s)}` (future dependence at `σ_z(s)`).
 
-Uses the EXTERNAL `strongMarkov_sleDriver`.
+Uses the classical input `strongMarkov_sleDriver` (proved in-project).
 -/
 
 public section

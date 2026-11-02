@@ -12,8 +12,6 @@ public import ComplexSLE.Internal.Stationary.KolmogorovDensity
 * `admissibleMeasure p`, with `integral_admissibleMeasure` and `isProbabilityMeasure_admissibleMeasure`;
 * `integral_two_pi_eq_two_mul_pi`: for continuous `π`-periodic `G`, `∫₀^{2π} G = 2 ∫₀^π G`
   (the factor 2 of ruling R9: `2p` is the Kolmogorov density on `[0, π]`).
-
-Split out of `SLEStatLaw.lean` (M10) so that it imports no transition-kernel input.
 -/
 
 public section

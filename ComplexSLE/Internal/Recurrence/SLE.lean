@@ -35,7 +35,7 @@ critical one).
   is arbitrary (first bullet, `w = e^{2ix}`); for `c² = ab` any `x` works too, in particular
   the zero of `D` (second bullet, R19 sign).
 
-The hitting results use no Markov property; everything is `PROVED_REL{ito_formula}`
+The hitting results use no Markov property; everything uses `ito_formula` (proved in-project)
 (`sle_recurrence` additionally takes `hMarkov` as a hypothesis).
 -/
 

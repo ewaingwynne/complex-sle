@@ -33,11 +33,11 @@ from `∞` and misses it; `Thm110BEvent.lean`):
 3. `A_n = ⋃_{k ≥ n} G_{1/(k+1)}` has `P(A_n) ≥ p = P(G_1) > 0`, and `A = ⋂_n A_n` has
    `P(A) ≥ p` (continuity from above). `A = ⋂_{n ≥ N} A_n` is measurable for
    `σ(U'_r : r ≤ ε)` for every `ε > 0`, so Blumenthal's 0-1 law gives `P(A) = 1`
-   (`ae_exists_small_gEvent`, the EXTERNAL `blumenthal_sleDriver`).
+   (`ae_exists_small_gEvent`, the classical input `blumenthal_sleDriver`).
 4. On `A`, for every `t > 0` there is `s ≤ t` with `G_s`; left hulls are monotone, so `L_t`
    disconnects the same ball (`exists_ball_subset_interior_of_gEvent`).
 
-Consumes the EXTERNAL `blumenthal_sleDriver`.
+Uses the classical input `blumenthal_sleDriver` (proved in-project, `Internal/ExternalProofs/`).
 -/
 
 public section

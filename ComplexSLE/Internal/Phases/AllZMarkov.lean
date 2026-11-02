@@ -15,8 +15,8 @@ public import Mathlib.MeasureTheory.Measure.Prod
 
 For an adapted `SLE_Σ` driver `U` and an a.s. finite `ℱ`-stopping time `τ`, the post-`τ` driver
 `V_s = U_{τ+s} - U_τ` (`postDriver`) is again an `SLE_Σ` driver, independent of `ℱ_τ`
-(`External.strongMarkov_sleDriver`, EXTERNAL E3). Combined with the uniqueness of the path law
-(`AllZDriverLaw.lean`) this gives the conditional form used in the proof of Lemma 3.3
+(`External.strongMarkov_sleDriver`, classical input E3). Combined with the uniqueness of the path
+law (`AllZDriverLaw.lean`) this gives the conditional form used in the proof of Lemma 3.3
 (paper.tex:L1315-1318, "the conditional law of this latter Loewner chain given `(f_t)_{t ≤ τ}` is
 the same as the law of `(f_t)_{t ≥ 0}`"):
 
@@ -26,7 +26,7 @@ the same as the law of `(f_t)_{t ≥ 0}`"):
   section `M_X`. (Fubini on the independent pair `(V, X)`; for every fixed `ξ` the law of `V`
   equals the law of `U`.)
 
-Uses the EXTERNAL `strongMarkov_sleDriver`.
+Uses the classical input `strongMarkov_sleDriver` (proved in-project).
 -/
 
 public section

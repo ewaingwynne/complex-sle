@@ -23,8 +23,8 @@ with `|V t| < η` on `[0, T]`:
   point to the right of `2 √T - δ` and one to the left of `-(2 √T - δ)`;
 * away from the slit, `f^V_T` is `δ`-close to `zeroMap T`.
 
-The left-hull statements come from `exists_small_driver_approx` (the EXTERNAL E12) and the Koebe
-bound (`LineApproxKoebe`). The right-hull statements follow by the duality
+The left-hull statements come from `exists_small_driver_approx` (the classical input E12) and the
+Koebe bound (`LineApproxKoebe`). The right-hull statements follow by the duality
 `leftHull (dualDriver V T) T = i R^V_T` (`leftHull_dualDriver`), since the dual driver is again
 uniformly small on `[0, T]`.
 
@@ -110,7 +110,8 @@ every continuous driver `V` with `|V t| < η` on `[0, T]` satisfies:
 * for every `z ∉ L^V_T` at distance `≥ δ` from `slitI T`, `|f^V_T (z) - zeroMap T z| < δ`.
 
 (`zeroMap T` is `f⁰_T`, `slitI T = L⁰_T`, `slitR T = R⁰_T`: `leftHull_zero`, `rightHull_zero`,
-`centeredLoewnerMap_zero`.) Uses the EXTERNAL `loewnerMap_tendstoUniformly`. -/
+`centeredLoewnerMap_zero`.) Uses the classical input `loewnerMap_tendstoUniformly`, proved
+in-project. -/
 theorem lineApprox (T : ℝ≥0) (hT : 0 < T) (δ : ℝ) (hδ : 0 < δ) :
     ∃ η > 0, ∀ (V : ℝ≥0 → ℂ) (hV : Continuous V), (∀ t ≤ T, ‖V t‖ < η) →
       (∀ z ∈ leftHull V T, infDist z (slitI T) < δ) ∧

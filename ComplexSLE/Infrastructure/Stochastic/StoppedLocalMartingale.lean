@@ -13,14 +13,14 @@ public import ComplexSLE.External.TimeChangeIsContLocalMartingale
 Source-independent stochastic calculus. Mathlib's optional stopping theorems are stated for
 discrete or countable-range stopping times; for the continuous-time processes of this project we
 obtain the stopped process `M^ρ = M (· ∧ ρ)` of a continuous local martingale `M` at a finite
-stopping time `ρ` as a continuous local martingale from the external time-change input E2c
-(`timeChange_isContLocalMartingale`) with the time change `σ s = s ∧ ρ`, which yields a local
-martingale with respect to the *stopped* filtration `𝒢_s = ℱ_{s ∧ ρ}`. The elementary transfer
-lemma `isContLocalMartingale_of_min_const` then upgrades this to the original filtration `ℱ`:
-for `A ∈ ℱ_s`, split `A = (A ∩ {ρ ≤ s}) ∪ (A ∩ {s < ρ})`; on the first piece the stopped process
-is constant between `s` and `t`, and the second piece belongs to `ℱ_{s ∧ ρ}`.
+stopping time `ρ` as a continuous local martingale from the classical time-change input E2c
+(`timeChange_isContLocalMartingale`, proved in-project) with the time change `σ s = s ∧ ρ`, which
+yields a local martingale with respect to the *stopped* filtration `𝒢_s = ℱ_{s ∧ ρ}`. The elementary
+transfer lemma `isContLocalMartingale_of_min_const` then upgrades this to the original filtration
+`ℱ`: for `A ∈ ℱ_s`, split `A = (A ∩ {ρ ≤ s}) ∪ (A ∩ {s < ρ})`; on the first piece the stopped
+process is constant between `s` and `t`, and the second piece belongs to `ℱ_{s ∧ ρ}`.
 
-Everything that consumes `IsContLocalMartingale.stopped_min` is `PROVED_REL{E2c}`.
+Everything that uses `IsContLocalMartingale.stopped_min` uses E2c.
 -/
 
 public section
