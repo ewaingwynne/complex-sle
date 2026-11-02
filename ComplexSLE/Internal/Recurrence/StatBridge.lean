@@ -17,7 +17,7 @@ public import Mathlib.MeasureTheory.Measure.Typeclasses.NullSingletonClass
 
 The renewal argument (`ae_frequently_mem_latticeSet`, `sle_recurrence'`) takes as input the uniform
 smallness `hstat`: for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) ≤ η` for all `t`, where
-`C_ε = goodSet x ε`. The stationarity layer (`map_addCircle_eq_of_markov`) provides the law of
+`C_ε = goodSet x ε`. The stationarity layer (`map_addCircle_thetaHat_prod_eq_admissible`) provides the law of
 `X_t mod π`, as a random variable in `AddCircle π`, independently of `t`. This file bridges the two:
 
 * `hstat_of_map_eq`: if `P.map (X_t mod π) = μ` for all `t` and `μ` has no atoms, then `hstat`
@@ -32,7 +32,7 @@ smallness `hstat`: for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) �
   continuous, in particular when it is `p₀(u) 1_{[0,π]}(u) du`.
 * `hstat_of_map_eq_density`, `hstat_neg_of_map_eq_density`: the two combined, with the stationarity
   hypothesis in exactly the form `∀ t, law(X_t mod π) = law(X_0 mod π)` produced by
-  `map_addCircle_eq_of_markov` (Stationary layer).
+  `map_addCircle_thetaHat_prod_eq_admissible` (Stationary layer).
 
 No external input is used; this file does not import the Stationary layer.
 -/
@@ -140,7 +140,7 @@ variable {X : ℝ≥0 → Ω → ℝ}
 /-- **Bridge to `hstat`.** If the law of `X_t mod π` (as a random variable in `AddCircle π`) is the
 same measure `μ` for all `t`, and `μ` has no atoms, then for every `η > 0` there is `ε > 0` with
 `P(X_t ∉ C_ε) ≤ η` for all `t`. This is the input `hstat` of `sle_recurrence'`; its hypotheses
-compose with the conclusion of `map_addCircle_eq_of_markov` (take `μ = P.map (X_0 mod π)`). -/
+compose with the conclusion of `map_addCircle_thetaHat_prod_eq_admissible` (take `μ = P.map (X_0 mod π)`). -/
 theorem hstat_of_map_eq (hX : ∀ t, Measurable (X t)) {μ : Measure (AddCircle π)}
     [NullSingletonClass μ]
     (hμ : ∀ t, P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) = μ) (x : ℝ) :
@@ -207,7 +207,7 @@ theorem nullSingletonClass_map_addCircle_of_withDensity {X₀ : Ω → ℝ} (hX�
   exact (withDensity_absolutelyContinuous _ _).trans Measure.restrict_le_self.absolutelyContinuous
 
 /-- **`hstat` from the stationary law with density `p₀`.** If `law(X_0) = p₀(u) 1_{[0,π]}(u) du`
-and `law(X_t mod π) = law(X_0 mod π)` for all `t` (the conclusion of `map_addCircle_eq_of_markov`),
+and `law(X_t mod π) = law(X_0 mod π)` for all `t` (the conclusion of `map_addCircle_thetaHat_prod_eq_admissible`),
 then for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) ≤ η` for all `t`: the input `hstat` of
 `sle_recurrence'`. -/
 theorem hstat_of_map_eq_density (hX : ∀ t, Measurable (X t)) {p₀ : ℝ → ℝ}

@@ -1,4 +1,4 @@
-# M10 re-route of the last two externals (author chose (a), 2026-11-02)
+# M10 re-route of the last two externals (author chose (a), 2026-11-02) — DONE (R31, AU-M10-reroute PASS)
 
 Goal: remove `hormander_oneDim` and `markov_oneDim` by re-proving their four uses, with no
 Hörmander smoothing and no uniqueness in law. No frozen statement changes.

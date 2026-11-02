@@ -1,27 +1,32 @@
 # Status ledger
 
-M10 in progress — 2026-11-01 (author request: remove every `sorry`; ruling R30; plan review/plans/M10.md).
+M10 complete — 2026-11-02 (author request: remove every `sorry`; rulings R30, R31; plans review/plans/M10.md and
+review/plans/M10-reroute.md). No `sorry` remains in `ComplexSLE/`, and no EXTERNAL input remains.
 - **Proved and sealed in place** (10 externals, same statement and ABI; provider in `Internal/ExternalProofs/`):
   - `exists_isBrownianReal` (ported from leobon12/lean-formalizations @31e7483);
   - `loewnerMap_conformal`, `loewnerMap_tendstoUniformly`, `recurrence_stationary`, `birkhoff_stationary`;
   - `timeChange_isContLocalMartingale`, `strongMarkov_sleDriver`, `blumenthal_sleDriver`, `ito_formula` (bounded core
     in Infrastructure/Ito plus localization for an arbitrary filtration), `support_sleDriver`.
-- **Deleted** (6): `girsanov_law_equiv`, `scale_function_hit`, `levy_characterization` and `koebe_distortion`, all
-  unused; `koebe_quarter`, after its uses were switched to the ported 1/48 covering theorem with retuned constants;
-  `dambis_dubins_schwarz`, after Lemma 3.12 was given an exit-time argument.
-- **Remaining EXTERNAL** (2): `hormander_oneDim` and `markov_oneDim`, used only inside the stationarity theorems C1–C4.
-  The open author question is review/approvals/M10.md.
-- **Audit and gate:** audit AU-M10-externals PASS; full gate passes (355 files, ABI OK 62 anchors, EXTERNALS OK 36
-  sealed theorems).
+- **Deleted** (8):
+  - `girsanov_law_equiv`, `scale_function_hit`, `levy_characterization` and `koebe_distortion`, all unused;
+  - `koebe_quarter`, after its uses were switched to the ported 1/48 covering theorem with retuned constants;
+  - `dambis_dubins_schwarz`, after Lemma 3.12 was given an exit-time argument;
+  - `hormander_oneDim` and `markov_oneDim` (R31, author's option (a)). One-time stationarity of θ̂ now comes from the
+    semigroup of θ̂ itself, the periodic Poisson equation (including the critical case c² = ab) and Cesàro
+    invariance. Lemma 3.3 uses an occupation estimate in place of the Hörmander density.
+- **Audit and gate:**
+  - audits AU-M10-externals and AU-M10-reroute;
+  - the full gate passes: 376 files, ABI OK on 60 anchors, all 36 sealed theorems `PROVED`;
+  - the graph gate passes.
 
 ```text
 DRAFT_ANCHORS: 0
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-EXTERNALS: 2 (hormander_oneDim, markov_oneDim)
-PROVED: 30   PROVED_REL: 6 (theorem_1_8, theorem_1_8_c_zero, proposition_3_1_a/b, proposition_3_2_a/b;
-             each PROVED_REL{hormander_oneDim, markov_oneDim})
-theorem_1_10_a, theorem_1_10_b, exists_sleDriver: now PROVED
+EXTERNALS: 0
+PROVED: 36   PROVED_REL: 0
+SEALED_THIS_TURN: 0 (M10 re-route changed proofs only; theorem_1_8, theorem_1_8_c_zero, proposition_3_1_a/b,
+                  proposition_3_2_a/b moved from PROVED_REL to PROVED)
 ```
 
 M9 complete — 2026-11-01 (closure and release). RESULTS.md maps every in-scope item to Lean, with computed statuses and a gap list.

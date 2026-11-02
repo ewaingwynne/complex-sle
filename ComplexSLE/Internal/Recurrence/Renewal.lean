@@ -32,8 +32,8 @@ adapted to `ℱ`. The target is the lattice `Z = x + πℤ` (`latticeSet x`; `X_
   `Z` within time `T` with probability `≥ δ`", which follows from (2.45), the `π`-periodicity of
   the coefficients and the Markov property at the fixed time `s` (paper.tex:L1181-1183; the paper
   uses the strong Markov property at the stopping times `τ_k^ε`, but windows at the deterministic
-  times `kT` suffice, see below). It is an explicit hypothesis here, to be discharged by the
-  pending Markov external.
+  times `kT` suffice, see below). It is an explicit hypothesis here; for `θ̂` it is discharged
+  through the strong Markov restart (`Phases/ErgodicConstRec.lean`, `Phases/ErgodicConstStop.lean`).
 
 The argument replaces the paper's `τ_k^ε` by the windows `[kT, (k+1)T]`: with
 `N_k = {X_{kT} ∉ C_ε}` and `W_k = {∃ t ≤ T, X_{kT+t} ∈ Z}`, the events

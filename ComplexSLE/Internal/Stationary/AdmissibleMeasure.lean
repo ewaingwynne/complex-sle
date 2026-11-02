@@ -9,7 +9,8 @@ public import ComplexSLE.Internal.Stationary.KolmogorovDensity
 /-!
 # The measure `ν = p(u) 1_{[0,2π]}(u) du` of an admissible density
 
-* `admissibleMeasure p`, with `integral_admissibleMeasure` and `isProbabilityMeasure_admissibleMeasure`;
+* `admissibleMeasure p`, with `integral_admissibleMeasure` and
+  `isProbabilityMeasure_admissibleMeasure`;
 * `integral_two_pi_eq_two_mul_pi`: for continuous `π`-periodic `G`, `∫₀^{2π} G = 2 ∫₀^π G`
   (the factor 2 of ruling R9: `2p` is the Kolmogorov density on `[0, π]`).
 -/

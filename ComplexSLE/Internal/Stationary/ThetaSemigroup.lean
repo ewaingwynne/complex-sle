@@ -38,8 +38,8 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
   {U : ℝ≥0 → Ω → ℂ}
 
 /-- `Q_t f(u) = E f(θ̂_t(e^{iu}))`. -/
-@[expose] noncomputable def thetaSemigroup (hU : IsSLEDriverAdapted a b c U P ℱ) (t : ℝ≥0) (f : ℝ → ℝ)
-    (u : ℝ) : ℝ :=
+@[expose] noncomputable def thetaSemigroup (hU : IsSLEDriverAdapted a b c U P ℱ) (t : ℝ≥0)
+    (f : ℝ → ℝ) (u : ℝ) : ℝ :=
   ∫ ω, f (thetaHat hU (unitPt u) t ω) ∂P
 
 /-! ### Measurability and the sup-norm bound -/
