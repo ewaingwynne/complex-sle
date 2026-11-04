@@ -24,11 +24,11 @@ On `(Ω × ℝ, P ⊗ ν)`, `ν = p(u) 1_{[0,2π]}(u) du`, `Y_s = log |f̂_s(e^{
   Markov property and the reflection symmetry (`obsKernel` is a function of `e^{2iβ}` only) show
   that `L` is independent of `ℱ_{S_k} ∋ Y_n` (`n ≤ k`) with a law not depending on `u`
   (`fibre_law_and_const`), hence a.s. constant `κ`, the same for all `u`; and `κ = ∫ L = (I)`.
-* `recurrent_logFHat`: if `(I) = 0`, a.s. for every `ε > 0` there are arbitrarily large `s` with
-  `|Y_s| < ε` (classical input `recurrence_stationary`).
+* `recurrent_logFHat_of_integralI_eq_zero` (in `ErgodicConstRecur.lean`, with the a.s. constancy of
+  the Birkhoff limit as hypothesis): if `(I) = 0`, a.s. for every `ε > 0` there are arbitrarily
+  large `s` with `|Y_s| < ε` (classical input `recurrence_stationary`).
 * `not_tendsto_atBot_logFHat` (Prop 3.1(a) shape): if `(I) ≥ 0`, a.s. `Y_s ↛ -∞`.
-* `tendsto_logFHat_div_of_integralI_neg`, `tendsto_atBot_logFHat` (Prop 3.1(b) shape): if
-  `(I) < 0`, a.s. `Y_s / s → (I)` and `Y_s → -∞`.
+* `tendsto_logFHat_div_of_integralI_neg` (Prop 3.1(b) shape): if `(I) < 0`, a.s. `Y_s / s → (I)`.
 
 Uses the classical inputs `strongMarkov_sleDriver`, `birkhoff_stationary`, `recurrence_stationary`
 and, through the polar and stationarity layers, `ito_formula` and
@@ -112,17 +112,6 @@ theorem birkhoff_logFHat_const [IsProbabilityMeasure P]
   filter_upwards [hLreal', hprod] with q h1 h2
   rwa [h2, hκI] at h1
 
-/-- **Recurrence of `log |f̂|` when `(I) = 0`** (Lemma 3.4, last clause): if
-`(I) = 0`, `P ⊗ ν`-a.s. for every `ε > 0` there are arbitrarily large `s` with
-`|log |f̂_s(e^{iu})|| < ε`. -/
-theorem recurrent_logFHat [IsProbabilityMeasure P]
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hI : integralI a b c p = 0) :
-    ∀ᵐ q ∂(P.prod (admissibleMeasure p)), ∀ ε : ℝ, 0 < ε → ∀ S : ℝ≥0,
-      ∃ s : ℝ≥0, S ≤ s ∧ |logFHat hU s q| < ε :=
-  recurrent_logFHat_of_integralI_eq_zero hU ha hb hc hp hI
-    (birkhoff_logFHat_const hU ha hb hc hp)
-
 /-- **Prop 3.1(a) shape.** If `(I) ≥ 0`, then `P ⊗ ν`-a.s. `log |f̂_s(e^{iu})| ↛ -∞`. -/
 theorem not_tendsto_atBot_logFHat [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
@@ -139,14 +128,6 @@ theorem tendsto_logFHat_div_of_integralI_neg [IsProbabilityMeasure P]
     ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
       Tendsto (fun s : ℝ≥0 => logFHat hU s q / s) atTop (𝓝 (integralI a b c p)) :=
   birkhoff_logFHat_const hU ha hb hc hp
-
-/-- **Prop 3.1(b) shape.** If `(I) < 0`, then `P ⊗ ν`-a.s. `log |f̂_s(e^{iu})| → -∞`. -/
-theorem tendsto_atBot_logFHat [IsProbabilityMeasure P]
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (hI : integralI a b c p < 0) :
-    ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
-      Tendsto (fun s : ℝ≥0 => logFHat hU s q) atTop atBot :=
-  tendsto_atBot_logFHat_of_integralI_neg hU hI (birkhoff_logFHat_const hU ha hb hc hp)
 
 end Main
 

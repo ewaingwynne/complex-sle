@@ -95,15 +95,6 @@ theorem scale (hU : IsSLEDriver a b c U P) (r : ℝ≥0) (hr : 0 < r) :
         simp [covMatrix, Matrix.mul_apply, Fin.sum_univ_two] <;> ring)
   simpa using this
 
-/-- Brownian scaling with a real scale factor `r > 0` (time scaled by `r.toNNReal ^ 2`). -/
-theorem scale_real (hU : IsSLEDriver a b c U P) (r : ℝ) (hr : 0 < r) :
-    IsSLEDriver a b c (fun s ω => (r : ℂ) * U (s / r.toNNReal ^ 2) ω) P := by
-  have h := hU.scale r.toNNReal (Real.toNNReal_pos.2 hr)
-  have e : ((r.toNNReal : ℝ≥0) : ℂ) = (r : ℂ) := by
-    rw [show ((r.toNNReal : ℝ≥0) : ℂ) = (((r.toNNReal : ℝ≥0) : ℝ) : ℂ) from rfl,
-      Real.coe_toNNReal r hr.le]
-  rwa [e] at h
-
 /-- **Negation symmetry** (`-U =_d U`, paper.tex:L984). If `U` is an `SLE_Σ` driver, so is `-U`,
 with the same `(a, b, c)`. -/
 theorem neg (hU : IsSLEDriver a b c U P) : IsSLEDriver a b c (fun s ω => - U s ω) P := by

@@ -46,9 +46,6 @@ variable {U : ℝ≥0 → ℂ}
 (for the sharp Koebe constant `koebeK = 4` this is the paper's `14`). -/
 @[expose] noncomputable def koebeN : ℝ := 1 + 13 * koebeK / 4
 
-theorem koebeN_eq : koebeN = 157 := by
-  rw [koebeN, KoebeChain.koebeK_eq]; norm_num
-
 theorem one_lt_koebeN : 1 < koebeN := by
   rw [koebeN]; linarith [koebeK_pos]
 

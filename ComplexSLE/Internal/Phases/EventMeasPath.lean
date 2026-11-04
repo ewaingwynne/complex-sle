@@ -66,20 +66,6 @@ theorem MeasurableEvents.not {E : (ℝ≥0 → ℂ) → ℂ → Prop} (h : Measu
   exact ⟨Mᶜ, hM.compl, fun u z hu => by
     beta_reduce; rw [hE u z hu]; rfl⟩
 
-theorem MeasurableEvents.and {E F : (ℝ≥0 → ℂ) → ℂ → Prop} (hE : MeasurableEvents E)
-    (hF : MeasurableEvents F) : MeasurableEvents fun u z => E u z ∧ F u z := by
-  obtain ⟨M, hM, hME⟩ := hE
-  obtain ⟨N, hN, hNF⟩ := hF
-  exact ⟨M ∩ N, hM.inter hN, fun u z hu => by
-    beta_reduce; rw [hME u z hu, hNF u z hu]; rfl⟩
-
-theorem MeasurableEvents.or {E F : (ℝ≥0 → ℂ) → ℂ → Prop} (hE : MeasurableEvents E)
-    (hF : MeasurableEvents F) : MeasurableEvents fun u z => E u z ∨ F u z := by
-  obtain ⟨M, hM, hME⟩ := hE
-  obtain ⟨N, hN, hNF⟩ := hF
-  exact ⟨M ∪ N, hM.union hN, fun u z hu => by
-    beta_reduce; rw [hME u z hu, hNF u z hu]; rfl⟩
-
 theorem MeasurableEvents.congr {E F : (ℝ≥0 → ℂ) → ℂ → Prop} (hE : MeasurableEvents E)
     (h : ∀ (u : ℝ≥0 → ℂ), Continuous u → ∀ z, E u z ↔ F u z) : MeasurableEvents F := by
   obtain ⟨M, hM, hME⟩ := hE

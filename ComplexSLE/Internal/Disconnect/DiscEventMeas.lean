@@ -23,8 +23,7 @@ Consequences:
 
 * `measurableSet_discAtSet`: a measurable set `M_t ⊆ ContPath × ℂ` with
   `DiscAt u z t ↔ (u, z) ∈ M_t`, depending on `u` only through `restrictPath t u`;
-* `measurableEvents_disc`, `measurableEvents_discAt`: `MeasurableEvents Disc` (rational times,
-  `disc_iff_exists_rat`);
+* `measurableEvents_disc`: `MeasurableEvents Disc` (rational times, `disc_iff_exists_rat`);
 * `scaleInvariantEvents_disc`: `ScaleInvariantEvents Disc`;
 * `measurableSet_setOf_discAt`, `measurableSet_setOf_ballDiscAt`: for an adapted driver, the events
   `{DiscAt (U · ω) z t}` and `{BallDiscAt (U · ω) c r t}` are `ℱ t`-measurable.
@@ -76,17 +75,7 @@ theorem discAt_iff_mem_discAtSet {u : ℝ≥0 → ℂ} (hu : Continuous u) (z : 
     DiscAt u z t ↔ ((⟨u, hu⟩ : ContPath), z) ∈ discAtSet t :=
   discAt_iff_mem_discJoint hu z t
 
-/-- `DiscAt` at time `t` depends on a continuous driver only through its restriction to `[0, t]`. -/
-theorem discAt_congr_restrictPath {u v : ℝ≥0 → ℂ} (hu : Continuous u) (hv : Continuous v)
-    (z : ℂ) (t : ℝ≥0) (h : restrictPath t ⟨u, hu⟩ = restrictPath t ⟨v, hv⟩) :
-    DiscAt u z t ↔ DiscAt v z t := by
-  rw [discAt_iff_mem_discJoint hu, discAt_iff_mem_discJoint hv, h]
-
 /-! ### `MeasurableEvents` and scale invariance -/
-
-theorem measurableEvents_discAt (t : ℝ≥0) : MeasurableEvents fun u z => DiscAt u z t :=
-  MeasurableEvents.of_measurableSet (measurableSet_discAtSet t) fun _ hu z =>
-    discAt_iff_mem_discAtSet hu z t
 
 theorem measurableEvents_disc : MeasurableEvents Disc := by
   refine MeasurableEvents.of_measurableSet
@@ -149,18 +138,6 @@ theorem measurableSet_setOf_ballDiscAt (hU : IsSLEDriverAdapted a b c U P ℱ) (
       exact ⟨Set.empty_disjoint _, fun y _ _ => Set.empty_disjoint _⟩
     rw [h]
     exact MeasurableSet.univ
-
-/-- For an adapted driver, `{Disc (U · ω) z}` is measurable. -/
-theorem measurableSet_setOf_disc (hU : IsSLEDriverAdapted a b c U P ℱ) (z : ℂ) :
-    MeasurableSet {ω | Disc (fun s => U s ω) z} := by
-  have h : {ω | Disc (fun s => U s ω) z} =
-      ⋃ q : ℚ, ⋃ _ : 0 < q, {ω | DiscAt (fun s => U s ω) z (q : ℝ).toNNReal} := by
-    ext ω
-    simp only [mem_ofPred_eq, mem_iUnion, exists_prop]
-    exact disc_iff_exists_rat
-  rw [h]
-  exact MeasurableSet.iUnion fun q => MeasurableSet.iUnion fun _ =>
-    ℱ.le _ _ (measurableSet_setOf_discAt hU z _)
 
 end Adapted
 

@@ -465,10 +465,6 @@ theorem clock_nonneg (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet
   · rw [← h, clock_zero]
   · exact (clock_zero hU z ▸ clock_lt_clock hU le_rfl h ht).le
 
-theorem clock_pos (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet U z) (h0 : 0 < t) :
-    0 < clock U hU z t :=
-  clock_zero hU z ▸ clock_lt_clock hU le_rfl h0 ht
-
 theorem clock_strictMonoOn (hU : Continuous U) (z : ℂ) :
     StrictMonoOn (clock U hU z) (lifeSet U z) := fun _ hs _ ht hst =>
   clock_lt_clock hU hs.1 hst ht
@@ -476,9 +472,6 @@ theorem clock_strictMonoOn (hU : Continuous U) (z : ℂ) :
 theorem clock_monotoneOn (hU : Continuous U) (z : ℂ) :
     MonotoneOn (clock U hU z) (lifeSet U z) :=
   (clock_strictMonoOn hU z).monotoneOn
-
-theorem clock_injOn (hU : Continuous U) (z : ℂ) : InjOn (clock U hU z) (lifeSet U z) :=
-  (clock_strictMonoOn hU z).injOn
 
 end ComplexSLE.Internal.Polar
 

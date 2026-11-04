@@ -45,9 +45,6 @@ variable {U : ℝ≥0 → ℂ}
 @[expose] noncomputable def restartDriver (U : ℝ≥0 → ℂ) (T r : ℝ≥0) : ℝ≥0 → ℂ :=
   fun s => (r : ℂ)⁻¹ * (U (T + r ^ 2 * s) - U T)
 
-theorem restartDriver_apply (U : ℝ≥0 → ℂ) (T r s : ℝ≥0) :
-    restartDriver U T r s = (r : ℂ)⁻¹ * (U (T + r ^ 2 * s) - U T) := rfl
-
 theorem restartDriver_zero (U : ℝ≥0 → ℂ) (T r : ℝ≥0) : restartDriver U T r 0 = 0 := by
   simp [restartDriver]
 
@@ -106,15 +103,6 @@ theorem absorbingTime_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0} (hT : 
     ← ENNReal.sub_eq_of_eq_add_rev ENNReal.coe_ne_top h1, ENNReal.div_eq_inv_mul]
   have hr2 : (r ^ 2 : ℝ≥0) ≠ 0 := pow_ne_zero 2 hr.ne'
   rw [inv_pow, ENNReal.coe_inv hr2]
-
-/-- The multiplicative form of `absorbingTime_restart`: `r² T_{z'}(V) = T_z(U) - T`. -/
-theorem sq_mul_absorbingTime_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0}
-    (hT : (T : ℝ) ∈ lifeSet U z) {r : ℝ≥0} (hr : 0 < r) :
-    ((r ^ 2 : ℝ≥0) : ℝ≥0∞) * absorbingTime (restartDriver U T r) (restartPt U hU z T r) =
-      absorbingTime U z - (T : ℝ≥0∞) := by
-  rw [absorbingTime_restart hU hT hr, ENNReal.mul_div_cancel]
-  · simpa using hr.ne'
-  · exact ENNReal.coe_ne_top
 
 /-- **Life set of the restarted chain** (`(i)`): `s ∈ [0, T_{z'}(V))` iff `s ≥ 0` and
 `T + r² s ∈ [0, T_z(U))`. -/
@@ -221,12 +209,6 @@ theorem fPath_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0} (hT : (T : ℝ
   rw [solPath_restart hU hT hr hs, toNNReal_restart hs0]
   simp only [restartSol, restartDriver]
   ring
-
-theorem fPath_restart_zero (hU : Continuous U) (z : ℂ) (T r : ℝ≥0) :
-    fPath (restartDriver U T r) (restartDriver_continuous hU T r) (restartPt U hU z T r) 0 =
-      restartPt U hU z T r := by
-  rw [fPath_zero]
-  simp [restartDriver_zero]
 
 theorem norm_fPath_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0} (hT : (T : ℝ) ∈ lifeSet U z)
     {r : ℝ≥0} (hr : 0 < r) {s : ℝ}

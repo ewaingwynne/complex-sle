@@ -15,10 +15,7 @@ The event families of Lemma 3.3 (`lem-all-z`) that the §3 roots use are jointly
 * (a) `T_z < ∞` and `T_z = ∞` (`measurableEvents_absorbingTime_lt_top`, `_eq_top`);
 * (b) the R14 ε-forms of Proposition 3.2: `∀ ε > 0, ∃ t < T_z, dist(z, L_t) < ε` and its negation
   `∃ ε > 0, ∀ t < T_z, ε ≤ dist(z, L_t)` (`measurableEvents_hull_approach`,
-  `measurableEvents_hull_stays_away`);
-* (c) `z ∉ closure (⋃ t, L_t)` (thin phase), and the swallowing, hitting and dense predicates
-  exactly as they appear in `IsSwallowingPhase`, `IsHittingPhase`, `IsDensePhase`
-  (`measurableEvents_thin`, `_swallowing`, `_hitting`, `_dense`).
+  `measurableEvents_hull_stays_away`).
 
 The proof reduces the uncountable quantifier `∃ t` to a countable dense set of times using the
 monotonicity of `t ↦ L_t` (`measurableSet_approach`), and uses the joint measurability of `T_z(u)`
@@ -92,72 +89,6 @@ theorem measurableEvents_hull_stays_away :
   measurableEvents_hull_approach.not.congr fun _ _ _ => by
     push Not
     rfl
-
-/-! ### (c) Closures of the hulls -/
-
-/-- `z` lies in the closure of `⋃_{t : P t} L_t` iff `dist(z, L_t)` is arbitrarily small along
-`P`. -/
-theorem mem_closure_iUnion_leftHull_iff (u : ℝ≥0 → ℂ) (P : ℝ≥0 → Prop) (z : ℂ) :
-    z ∈ closure (⋃ (t : ℝ≥0) (_ : P t), leftHull u t) ↔
-      ∀ ε > 0, ∃ t : ℝ≥0, P t ∧ infDist z (leftHull u t) < ε := by
-  rw [Metric.mem_closure_iff]
-  refine forall₂_congr fun ε hε => ?_
-  simp only [mem_iUnion, exists_prop]
-  constructor
-  · rintro ⟨b, ⟨t, ht, hb⟩, hd⟩
-    exact ⟨t, ht, lt_of_le_of_lt (infDist_le_dist_of_mem hb) hd⟩
-  · rintro ⟨t, ht, hd⟩
-    obtain ⟨y, hy, hyd⟩ := (infDist_lt_iff (leftHull_nonempty u t)).1 hd
-    exact ⟨y, ⟨t, ht, hy⟩, hyd⟩
-
-/-- `z ∈ closure (⋃_{t < T_z} L_t)`, the closure condition of the swallowing/hitting phases. -/
-theorem measurableEvents_mem_closure_lt :
-    MeasurableEvents fun u z =>
-      z ∈ closure (⋃ (t : ℝ≥0) (_ : (t : ℝ≥0∞) < absorbingTime u z), leftHull u t) :=
-  measurableEvents_hull_approach.congr fun u _ z => (mem_closure_iUnion_leftHull_iff u _ z).symm
-
-/-- `z ∈ closure (⋃ t, L_t)`. -/
-theorem measurableEvents_mem_closure :
-    MeasurableEvents fun u z => z ∈ closure (⋃ t : ℝ≥0, leftHull u t) := by
-  refine MeasurableEvents.of_measurableSet
-    (S := {p : ContPath × ℂ | ∀ ε > 0, ∃ t : ℝ≥0, (t : ℝ≥0∞) < ⊤ ∧
-      infDist p.2 (leftHull p.1.1 t) < ε})
-    (measurableSet_approach (fun _ => ⊤) measurable_const) fun u _ z => ?_
-  have := mem_closure_iUnion_leftHull_iff u (fun _ => True) z
-  simp only [iUnion_true, true_and] at this
-  rw [this]
-  simp
-
-/-- The thin phase event `z ∉ closure (⋃ t, L_t)`. -/
-theorem measurableEvents_thin :
-    MeasurableEvents fun u z => z ∉ closure (⋃ t : ℝ≥0, leftHull u t) :=
-  measurableEvents_mem_closure.not
-
-/-- The swallowing phase event `T_z < ∞ ∧ z ∉ closure (⋃_{t < T_z} L_t)`. -/
-theorem measurableEvents_swallowing :
-    MeasurableEvents fun u z => absorbingTime u z < ⊤ ∧
-      z ∉ closure (⋃ (t : ℝ≥0) (_ : (t : ℝ≥0∞) < absorbingTime u z), leftHull u t) :=
-  measurableEvents_absorbingTime_lt_top.and measurableEvents_mem_closure_lt.not
-
-/-- The hitting phase event `T_z < ∞ ∧ z ∈ closure (⋃_{t < T_z} L_t)`. -/
-theorem measurableEvents_hitting :
-    MeasurableEvents fun u z => absorbingTime u z < ⊤ ∧
-      z ∈ closure (⋃ (t : ℝ≥0) (_ : (t : ℝ≥0∞) < absorbingTime u z), leftHull u t) :=
-  measurableEvents_absorbingTime_lt_top.and measurableEvents_mem_closure_lt
-
-/-- The dense phase event `z ∈ closure (⋃ t, L_t) \ ⋃ t, L_t`. -/
-theorem measurableEvents_dense :
-    MeasurableEvents fun u z =>
-      z ∈ closure (⋃ t : ℝ≥0, leftHull u t) \ ⋃ t : ℝ≥0, leftHull u t := by
-  refine (measurableEvents_mem_closure.and measurableEvents_absorbingTime_lt_top.not).congr
-    fun u _ z => ?_
-  simp only [mem_sdiff, mem_iUnion, mem_leftHull_iff]
-  refine and_congr Iff.rfl (not_congr ?_)
-  constructor
-  · intro h
-    exact ⟨(absorbingTime u z).toNNReal, (ENNReal.coe_toNNReal h.ne).ge⟩
-  · rintro ⟨t, ht⟩
-    exact lt_of_le_of_lt ht ENNReal.coe_lt_top
 
 end ComplexSLE.Internal
 

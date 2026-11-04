@@ -79,7 +79,6 @@ theorem intervalIntegrable_and_abs_le_of_lintPath {ξ : ℝ≥0 → Ω → ℝ} 
 
 end Lintegral
 
-
 section Reduction
 
 variable {Ω : Type*} {m0 : MeasurableSpace Ω} {ℱ : Filtration ℝ≥0 m0} {d : ℕ}
@@ -89,9 +88,6 @@ variable {Ω : Type*} {m0 : MeasurableSpace Ω} {ℱ : Filtration ℝ≥0 m0} {d
 noncomputable def varDensity (A : ℝ≥0 → Ω → (Fin d → ℝ))
     (Q : ℝ≥0 → Ω → Matrix (Fin d) (Fin d) ℝ) (s : ℝ≥0) (ω : Ω) : ℝ :=
   ∑ i, |A s ω i| + ∑ i, ∑ j, |Q s ω i j|
-
-theorem varDensity_nonneg (s : ℝ≥0) (ω : Ω) : 0 ≤ varDensity A Q s ω := by
-  unfold varDensity; positivity
 
 theorem abs_apply_le_varDensity (s : ℝ≥0) (ω : Ω) (i : Fin d) :
     |A s ω i| ≤ varDensity A Q s ω := by
@@ -192,8 +188,6 @@ theorem itoProc_gateSmul {F : (Fin d → ℝ) → ℝ} (h : ∀ s, lintPath φ s
 end GateEq
 
 end Reduction
-
-
 
 section Main
 

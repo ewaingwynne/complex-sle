@@ -19,7 +19,7 @@ property (2.3)). The theorem proved is the equality in law of real random variab
 
   `dist(f_t(𝐳), L_{t,s+t}) / |f_t(𝐳)|  =_d  dist(𝐳, L_{σ(s̃)})`,
 
-`lemma_3_9`; the expectation forms are `lintegral_comp_lemma_3_9` and `integral_comp_lemma_3_9`.
+`lemma_3_9`; the expectation form is `integral_comp_lemma_3_9`.
 The two random variables are `futureDistRatioRV` and `hullDistRV` (`futureDistRatio`, `hullDist` of
 `Lemma37Hull.lean`, evaluated at the path `ω ↦ U · ω` and the point `e^{iu}`). Both are a.e. equal
 to measurable functions (`aemeasurable_futureDistRatioRV`, `aemeasurable_hullDistRV`), so the
@@ -185,15 +185,6 @@ theorem futureDistRatio_eq_hullDistC_scale_postPath (hU : IsSLEDriverAdapted a b
   exact (hullDistC_of_mem (v := ⟨sigmaRestartDriver (fun r => U r ω) (hU.cont ω) z (tt : ℝ),
     sigmaRestartDriver_continuous (hU.cont ω) z (tt : ℝ)⟩) hdom).symm
 
-theorem futureDistRatioRV_eq_hullDistC (hU : IsSLEDriverAdapted a b c U P ℱ) {tt ss : ℝ≥0}
-    {q : Ω × ℝ}
-    (hall : sigmaDom (fun r => U r q.1) (hU.cont q.1) (unitPt q.2) = Ici 0) :
-    futureDistRatioRV hU tt ss q =
-      hullDistC ss (CPath.scale (‖fHat hU (unitPt q.2) tt q.1‖₊)⁻¹
-        (postPath hU (sigmaTop hU (unitPt q.2) tt) q.1))
-        (unitPt (thetaHat hU (unitPt q.2) tt q.1)) :=
-  futureDistRatio_eq_hullDistC_scale_postPath hU hall
-
 /-! ### The strong Markov step -/
 
 /-- **Strong Markov step for the left side of Lemma 3.9.** For `z ≠ 0` and measurable
@@ -356,18 +347,6 @@ theorem lemma_3_9 [IsProbabilityMeasure P]
     lintegral_map' hG.aemeasurable (aemeasurable_hullDistRV hU ha hc ss),
     lintegral_futureDistRatioRV hU ha hb hc hp tt ss hG,
     lintegral_hullDistRV hU ha hc ss hG]
-
-/-- **Lemma 3.9, expectation form** (`lintegral`): for every measurable
-`G : ℝ → ℝ≥0∞`, `E G(left side) = E G(right side)` under `P ⊗ ν`. -/
-theorem lintegral_comp_lemma_3_9 [IsProbabilityMeasure P]
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    {p : ℝ → ℝ} (hp : IsAdmissibleDensity a b c p) (tt ss : ℝ≥0) {G : ℝ → ℝ≥0∞}
-    (hG : Measurable G) :
-    ∫⁻ q, G (futureDistRatioRV hU tt ss q) ∂(P.prod (admissibleMeasure p)) =
-      ∫⁻ q, G (hullDistRV hU ss q) ∂(P.prod (admissibleMeasure p)) := by
-  have hν := isProbabilityMeasure_admissibleMeasure hp
-  exact (lintegral_futureDistRatioRV hU ha hb hc hp tt ss hG).trans
-    (lintegral_hullDistRV hU ha hc ss hG).symm
 
 /-- **Lemma 3.9, expectation form** (Bochner integral): for every Borel
 `φ : ℝ → ℝ`, `E φ(left side) = E φ(right side)` under `P ⊗ ν` (both sides are the integral of `φ`

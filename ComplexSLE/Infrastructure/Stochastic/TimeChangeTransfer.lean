@@ -15,10 +15,9 @@ Source-independent tools for time-changed local martingales (M6/S12).
 
 * `isContLocalMartingale_of_le_of_inter_lt`: a continuous local martingale with respect to a
   filtration `𝒢'` with `𝒢'_s ≤ 𝒢_s` is one with respect to `𝒢` provided it is constant on
-  `[ρ, ∞)` for a `𝒢`-stopping time `ρ` such that `A ∩ {s < ρ} ∈ 𝒢'_s` for every `A ∈ 𝒢_s`. This
-  generalises `isContLocalMartingale_of_min_const` (`𝒢'_s = ℱ_{s ∧ ρ}`, `𝒢 = ℱ`); the application
-  is `𝒢'_s = ℱ_{σ_s ∧ τ_n}`, `𝒢_s = ℱ_{σ_s}` for the σ-time parametrisation stopped at the exit
-  times `τ_n`.
+  `[ρ, ∞)` for a `𝒢`-stopping time `ρ` such that `A ∩ {s < ρ} ∈ 𝒢'_s` for every `A ∈ 𝒢_s`. The
+  application is `𝒢'_s = ℱ_{σ_s ∧ τ_n}`, `𝒢_s = ℱ_{σ_s}` for the σ-time parametrisation stopped at
+  the exit times `τ_n`.
 * `isStronglyProgressive_indicator_lt`: the indicator of the stochastic interval `[0, ρ)` of a
   stopping time is progressive (adapted and right-continuous).
 * `IsContLocalMartingale.of_consistent_seq`: if `L` agrees with continuous local martingales

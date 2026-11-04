@@ -1,5 +1,35 @@
 # Status ledger
 
+M11 cleanup — 2026-11-04 (author request: remove all Lean code that the proofs of the results do not use).
+- **Method.** Roots are the 60 manifest anchors. Each declaration was linked to every declaration its compiled type or
+  value mentions, and to every declaration its source text references (the `.ilean` index, which also catches names
+  used only inside tactics). Everything outside the transitive closure was deleted.
+- **Deleted:**
+  - 259 declarations in 82 files, including 4 whole files (`Internal/Driver/BridgeProduct.lean`,
+    `Internal/Driver/BridgeTransfer.lean`, `Infrastructure/Stochastic/BrownianOscillation.lean`,
+    `Infrastructure/Planar/CrossingLimit.lean`). Comments that named them were rewritten (packet M11-docstrings).
+  - Among the deleted declarations are standalone forms of paper items that no sealed result consumes: the displays
+    (3.7)-(3.17) of Lemma 3.8, (2.27) of Lemma 2.11, the generic diffusion forms of Lemma 2.16, the recurrence form of
+    Lemma 3.4, `lintegral_comp_lemma_3_9`, `IsSLEDriver.scale_real` and the span algebra of Lemma A.2. RESULTS.md
+    rows 20, 24, 29, 32, 33, 36, 38 and 49 now say so. All of them remain in git history at `77730a7`.
+- **Kept:**
+  - the six rfl `@[simp]` lemmas `ell_re`, `ell_im` and `toFin2_{zero,one,two,three}`. `simp` uses them by
+    unfolding, so they leave no trace in proof terms, and the build fails without them.
+  - the anchor `loewnerMap_conformal`, a proved classical input. No paper result uses it any more, and only 115 lines
+    (3 declarations) serve it alone. Deleting it would remove a frozen anchor, so it awaits the author.
+- **Size:** 376 → 372 files, 63,825 → 60,567 lines, and 45,666 → 43,296 lines that are not blank and not comments.
+- **Gate:** the full gate passes (lake build 8030 jobs, 372 files, ABI OK on 60 anchors, all 36 sealed theorems
+  `PROVED`), and so does the graph gate.
+
+```text
+DRAFT_ANCHORS: 0
+UNREGISTERED_SORRIES: 0
+DRAFT_IMPORT_VIOLATIONS: 0
+EXTERNALS: 0
+PROVED: 36   PROVED_REL: 0
+SEALED_THIS_TURN: 0 (deletions only; no frozen file or manifest entry changed)
+```
+
 M10 complete — 2026-11-02 (author request: remove every `sorry`; rulings R30, R31; plans review/plans/M10.md and
 review/plans/M10-reroute.md). No `sorry` remains in `ComplexSLE/`, and no EXTERNAL input remains.
 - **Proved and sealed in place** (10 externals, same statement and ABI; provider in `Internal/ExternalProofs/`):

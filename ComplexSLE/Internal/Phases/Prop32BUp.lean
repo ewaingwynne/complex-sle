@@ -19,11 +19,11 @@ import ComplexSLE.Internal.Phases.Prop32BUpZeroOne
 /-!
 # Proposition 3.2(b): the upgrade from the random point to every `z` (M7/E5)
 
-`proposition_3_2_b_of_conv` has exactly the conclusion (and the hypotheses `a b c p hp hII Ω P U hU
-z hz`) of the frozen anchor `ComplexSLE.proposition_3_2_b` (paper.tex:L1276-1283, R14 `ε`-form),
-with one extra explicit hypothesis `hconv`:
+`proposition_3_2_b_of_conv_on` has exactly the conclusion (and the hypotheses `a b c p hp hII Ω P U
+hU z hz`) of the frozen anchor `ComplexSLE.proposition_3_2_b` (paper.tex:L1276-1283, R14 `ε`-form),
+with one extra explicit hypothesis `hconv`, for the space `(Ω, P)` of the statement only:
 
-  for every adapted `SLE_Σ` driver `U'` on any `Ω' : Type`, with `μ = P' ⊗ ν`,
+  for every adapted `SLE_Σ` driver `U'` on `(Ω, P)` (with any filtration), with `μ = P ⊗ ν`,
   `ν = admissibleMeasure p`, `μ(∃ ε > 0, ∀ t < T_z, ε ≤ dist(z, L_t)) > 0` at the random point
   `z = e^{iu}` (`lem-converse-w-o-upgrade`, `E 𝔮(𝐳) > 0`, proved separately).
 
@@ -84,27 +84,6 @@ theorem proposition_3_2_b_of_conv_on (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc
   have e : (fun t => U' t ω) = fun t => U t ω := funext h2
   rw [e] at h1
   exact h1
-
-/-- **Proposition 3.2(b), upgrade from the random point to every `z`** (paper.tex:L1786-1816, with
-the correction R27). Same hypotheses and conclusion as the frozen `ComplexSLE.proposition_3_2_b`
-(R14 `ε`-form of "a.s. `lim_{t → T_z⁻} dist(z, L_t) > 0`"), plus the explicit input `hconv`:
-for every adapted `SLE_Σ` driver on any `Ω' : Type`, the event `∃ ε > 0, ∀ t < T_z,
-ε ≤ dist(z, L_t)` has positive probability for the random point `z = e^{iu}`,
-`(ω, u) ∼ P' ⊗ admissibleMeasure p` (`lem-converse-w-o-upgrade`). -/
-theorem proposition_3_2_b_of_conv (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b)
-    (p : ℝ → ℝ) (hp : IsAdmissibleDensity a b c p) (hII : 0 < integralII a b c p)
-    (hconv : ∀ (Ω' : Type) [MeasurableSpace Ω'] (P' : Measure Ω') [IsProbabilityMeasure P']
-      (ℱ' : Filtration ℝ≥0 ‹MeasurableSpace Ω'›) (U' : ℝ≥0 → Ω' → ℂ),
-      IsSLEDriverAdapted a b c U' P' ℱ' →
-      0 < (P'.prod (admissibleMeasure p))
-        {x : Ω' × ℝ | ∃ ε > 0, ∀ t : ℝ≥0,
-          (t : ℝ≥0∞) < absorbingTime (fun s => U' s x.1) (unitPt x.2) →
-            ε ≤ infDist (unitPt x.2) (leftHull (fun s => U' s x.1) t)})
-    (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
-    (U : ℝ≥0 → Ω → ℂ) (hU : IsSLEDriver a b c U P) (z : ℂ) (hz : z ≠ 0) :
-    ∀ᵐ ω ∂P, ∃ ε > 0, ∀ t : ℝ≥0, (t : ℝ≥0∞) < absorbingTime (U · ω) z →
-      ε ≤ infDist z (leftHull (U · ω) t) :=
-  proposition_3_2_b_of_conv_on a b c ha hb hc p hp hII Ω P (hconv Ω P) U hU z hz
 
 end ComplexSLE.Internal
 

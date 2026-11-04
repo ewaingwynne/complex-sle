@@ -10,18 +10,19 @@ public import ComplexSLE.Internal.Polar.DriverMeasurability
 public import Mathlib.MeasureTheory.Function.Floor
 
 /-!
-# Joint measurability of `e^{iθ̂_s(e^{iu})}` and `θ̂_s - θ̂_0` on `Ω × ℝ` (M7/A3)
+# Joint measurability of `θ̂_s(e^{iu})` and `θ̂_s - θ̂_0` on `Ω × ℝ` (M7/A3)
 
 For `hU : IsSLEDriverAdapted a b c U P ℱ`, `s : ℝ≥0` and the random point `z_u = e^{iu}`:
 
 * `measurableSet_sigmaDom_unit`: the set `{(ω, u) | s ∈ sigmaDom (U(ω)) z_u}` is measurable;
-* `measurable_exp_thetaHat_unit`: `(ω, u) ↦ e^{i θ̂_s(z_u)(ω)}` is measurable;
-* `measurable_thetaHat_sub_unit`: `(ω, u) ↦ θ̂_s(z_u)(ω) - θ̂_0(z_u)(ω)` is measurable,
+* `measurable_thetaHat_sub_unit`: `(ω, u) ↦ θ̂_s(z_u)(ω) - θ̂_0(z_u)(ω)` is measurable;
+* `measurable_thetaHat_unit`: `(ω, u) ↦ θ̂_s(z_u)(ω)` is measurable (the previous item plus the
+  explicit `θ̂_0 = θ_0`, `measurable_thetaHat_zero_unit`),
 
 with `thetaHat` the project's convention (`0` off `sigmaDom`, a.s. never).
 
-**Route (Carathéodory with an open domain).** For fixed `u` the maps are measurable in `ω`
-(`isStronglyProgressive_thetaHat`); for fixed `ω` they are continuous in `u` on the open set
+**Route (Carathéodory with an open domain).** For fixed `u` the map `θ̂_s - θ̂_0` is measurable in
+`ω` (`isStronglyProgressive_thetaHat`); for fixed `ω` it is continuous in `u` on the open set
 `{u | s ∈ sigmaDom (U ω) z_u}` (`PolarContArg.lean`) and equal to a jointly measurable function
 off it. The domain `{(ω, u) | s ∈ sigmaDom}` is measurable: `s ∈ sigmaDom` iff some rational time
 `t` has `t < T_z` and `s < A_t(z)` (`mem_sigmaDom_iff_exists_grid`), and `{t < T_z}`, `A_t` are
@@ -296,14 +297,6 @@ variable {V : ℝ≥0 → ℂ}
 theorem continuous_unitPt : Continuous unitPt := by
   unfold unitPt; fun_prop
 
-/-- `u ↦ e^{iθ̂_s(e^{iu})}` is continuous on `{u | s ∈ sigmaDom (e^{iu})}`. -/
-theorem continuousOn_exp_argPath_unit (hV : Continuous V) (s : ℝ) :
-    ContinuousOn (fun u : ℝ => Complex.exp
-        ((argPath V hV (unitPt u) (sigmaTime V hV (unitPt u) s) : ℂ) * Complex.I))
-      {u | s ∈ sigmaDom V hV (unitPt u)} := fun _ hu =>
-  ((continuousAt_exp_argPath_sigmaTime_initial hV hu).comp
-    (f := unitPt) continuous_unitPt.continuousAt).continuousWithinAt
-
 /-- `u ↦ θ̂_s(e^{iu}) - θ̂_0(e^{iu})` is continuous on `{u | s ∈ sigmaDom (e^{iu})}`. -/
 theorem continuousOn_argPath_sub_unit (hV : Continuous V) (s : ℝ) :
     ContinuousOn (fun u : ℝ => argPath V hV (unitPt u) (sigmaTime V hV (unitPt u) s) -
@@ -377,26 +370,6 @@ theorem measurable_thetaHat_zero_unit (hU : IsSLEDriverAdapted a b c U P ℱ) :
   exact Measurable.ite hS (Measurable.ite (measurableSet_le measurable_const harg) harg
     (harg.add_const _)) measurable_const
 
-/-- **Joint measurability of `e^{iθ̂_s(e^{iu})}` on `Ω × ℝ`** (Carathéodory: measurable in `ω`,
-continuous in `u` on the open domain, constant off it). -/
-theorem measurable_exp_thetaHat_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (s : ℝ≥0) :
-    Measurable fun p : Ω × ℝ =>
-      Complex.exp ((thetaHat hU (unitPt p.2) s p.1 : ℝ) * Complex.I) := by
-  refine measurable_of_continuousOn_sections (S := sigmaDomUnit hU (s : ℝ))
-    (F := fun p : Ω × ℝ => Complex.exp ((thetaHat hU (unitPt p.2) s p.1 : ℝ) * Complex.I))
-    (G := fun _ => 1) (measurableSet_sigmaDomUnit hU (s : ℝ))
-    (isOpen_sigmaDomUnit_section hU (s : ℝ)) measurable_const ?_ ?_ ?_
-  · intro p hp
-    simp [thetaHat_eq_zero_of_notMem_sigmaDomUnit hU s hp]
-  · intro ω
-    refine (continuousOn_exp_argPath_unit (hU.cont ω) (s : ℝ)).congr fun u hu => ?_
-    have hu' : (s : ℝ) ∈ sigmaDom (fun r => U r ω) (hU.cont ω) (unitPt u) := hu
-    simp only [thetaHat_of_mem hU hu']
-  · intro u
-    change Measurable fun ω : Ω => Complex.exp ((thetaHat hU (unitPt u) s ω : ℝ) * Complex.I)
-    exact Complex.measurable_exp.comp
-      ((Complex.measurable_ofReal.comp (measurable_thetaHat hU (unitPt u) s)).mul_const _)
-
 /-- **Joint measurability of `θ̂_s(e^{iu}) - θ̂_0(e^{iu})` on `Ω × ℝ`.** -/
 theorem measurable_thetaHat_sub_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (s : ℝ≥0) :
     Measurable fun p : Ω × ℝ =>
@@ -432,16 +405,6 @@ theorem measurable_thetaHat_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (s : �
     funext p; ring
   rw [e]
   exact (measurable_thetaHat_sub_unit hU s).add (measurable_thetaHat_zero_unit hU)
-
-/-- `(ω, u) ↦ cos θ̂_s(e^{iu})(ω)` is measurable. -/
-theorem measurable_cos_thetaHat_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (s : ℝ≥0) :
-    Measurable fun p : Ω × ℝ => Real.cos (thetaHat hU (unitPt p.2) s p.1) :=
-  Real.measurable_cos.comp (measurable_thetaHat_unit hU s)
-
-/-- `(ω, u) ↦ sin θ̂_s(e^{iu})(ω)` is measurable. -/
-theorem measurable_sin_thetaHat_unit (hU : IsSLEDriverAdapted a b c U P ℱ) (s : ℝ≥0) :
-    Measurable fun p : Ω × ℝ => Real.sin (thetaHat hU (unitPt p.2) s p.1) :=
-  Real.measurable_sin.comp (measurable_thetaHat_unit hU s)
 
 end Final
 

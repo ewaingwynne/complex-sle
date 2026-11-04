@@ -14,7 +14,7 @@ public import ComplexSLE.Internal.Phases.AllZFHat
 
 * `measurable_log_norm_fHat_unit`: `(ω, u) ↦ log |f̂_s(e^{iu})(ω)|` is jointly measurable on
   `Ω × ℝ` (companion of `measurable_thetaHat_unit`; Carathéodory with the open domain
-  `{s ∈ sigmaDom}`, `continuousOn_log_norm_fPath_sigmaTime_initial`).
+  `{s ∈ sigmaDom}`, `continuousAt_log_norm_fPath_sigmaTime_initial`).
 * `thetaC s v z`, `logfC s v z`: `θ̂_s(z)` and `log |f̂_s(z)|` of the chain driven by the continuous
   path `v : CPath`, with the project's junk convention (`0` off `sigmaDom`). For an adapted driver
   `thetaHat hU z s ω = thetaC s (CPath.ofDriver U _ ω) z` (`thetaHat_eq_thetaC`, by `rfl`) and
@@ -93,10 +93,6 @@ theorem thetaC_of_mem {s : ℝ≥0} {v : CPath} {z : ℂ}
     (h : (s : ℝ) ∈ sigmaDom (fun r => v.1 r) v.2 z) :
     thetaC s v z = argPath (fun r => v.1 r) v.2 z (sigmaTime (fun r => v.1 r) v.2 z s) := by
   unfold thetaC; exact ite_eq_left h
-
-theorem thetaC_of_notMem {s : ℝ≥0} {v : CPath} {z : ℂ}
-    (h : (s : ℝ) ∉ sigmaDom (fun r => v.1 r) v.2 z) : thetaC s v z = 0 := by
-  unfold thetaC; exact ite_eq_right h
 
 theorem logfC_of_mem {s : ℝ≥0} {v : CPath} {z : ℂ}
     (h : (s : ℝ) ∈ sigmaDom (fun r => v.1 r) v.2 z) :

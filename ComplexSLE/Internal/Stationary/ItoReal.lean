@@ -22,11 +22,7 @@ and `f` of class `C²`,
   `f(X_t) - f(X_0) - ∫₀ᵗ (Lf)(X_s) ds` is a continuous local martingale, where
   `Lf = f'α + ½f''β²` is `generator α β f`;
 * `IsDiffusionSolution.integral_sub_integral_eq`: if `f` and `Lf` are bounded then
-  `E f(X_t) - E f(X_0) = E ∫₀ᵗ (Lf)(X_s) ds`;
-* `IsDiffusionSolution.hasDerivWithinAt_integral_comp`: the right derivative at `t = 0` of
-  `t ↦ E f(X_t)` is `E (Lf)(X_0)` (the differentiation step of `step:kol-derivative-at-zero`,
-  by dominated convergence along the path continuity instead of Fubini);
-* `IsDiffusionSolution.lipschitzWith_integral_comp`: `t ↦ E f(X_t)` is Lipschitz.
+  `E f(X_t) - E f(X_0) = E ∫₀ᵗ (Lf)(X_s) ds`.
 
 Everything uses `ito_formula` (proved in-project, `Internal/ExternalProofs/ItoFormula.lean`).
 -/
@@ -213,98 +209,6 @@ theorem IsDiffusionSolution.integral_sub_integral_eq
   have hint10 : Integrable (fun ω => f (X t ω) - f (X 0 ω)) P := hint1.sub hint0
   rw [integral_sub hint10 hintI, integral_sub hint1 hint0] at hzero
   linarith
-
-/-- `t ↦ E f(X_t)` is Lipschitz with constant `CL`. -/
-theorem IsDiffusionSolution.abs_integral_sub_integral_le
-    (hX : IsDiffusionSolution ℱ α β X P) (hXc : ∀ ω, Continuous fun t => X t ω)
-    (hα : Continuous α) (hβ : Continuous β) {f : ℝ → ℝ} (hf : ContDiff ℝ 2 f)
-    {Cf CL : ℝ} (hfb : ∀ u, |f u| ≤ Cf) (hLb : ∀ u, |generator α β f u| ≤ CL) (s t : ℝ≥0) :
-    |(∫ ω, f (X t ω) ∂P) - ∫ ω, f (X s ω) ∂P| ≤ CL * |(t : ℝ) - s| := by
-  have hs := IsDiffusionSolution.integral_sub_integral_eq hX hXc hα hβ hf hfb hLb s
-  have ht := IsDiffusionSolution.integral_sub_integral_eq hX hXc hα hβ hf hfb hLb t
-  have hsub : (∫ ω, f (X t ω) ∂P) - ∫ ω, f (X s ω) ∂P =
-      ∫ ω, (pathIntegral (fun s ω => generator α β f (X s ω)) t ω -
-        pathIntegral (fun s ω => generator α β f (X s ω)) s ω) ∂P := by
-    rw [integral_sub (IsDiffusionSolution.integrable_pathIntegral_generator hX hXc hα hβ hf hLb t)
-      (IsDiffusionSolution.integrable_pathIntegral_generator hX hXc hα hβ hf hLb s), ← ht, ← hs]
-    ring
-  rw [hsub]
-  have hcont : ∀ ω, Continuous fun r : ℝ => generator α β f (X (Real.toNNReal r) ω) := fun ω =>
-    (continuous_generator hα hβ hf).comp ((hXc ω).comp continuous_real_toNNReal)
-  have hbound : ∀ ω, |pathIntegral (fun s ω => generator α β f (X s ω)) t ω -
-      pathIntegral (fun s ω => generator α β f (X s ω)) s ω| ≤ CL * |(t : ℝ) - s| := by
-    intro ω
-    unfold pathIntegral
-    rw [intervalIntegral.integral_interval_sub_left ((hcont ω).intervalIntegrable _ _)
-      ((hcont ω).intervalIntegrable _ _)]
-    have := intervalIntegral.norm_integral_le_of_norm_le_const
-      (f := fun r : ℝ => generator α β f (X (Real.toNNReal r) ω)) (a := s) (b := t) (C := CL)
-      fun r _ => by simpa [Real.norm_eq_abs] using hLb (X (Real.toNNReal r) ω)
-    simpa [Real.norm_eq_abs] using this
-  have := norm_integral_le_of_norm_le_const (μ := P)
-    (f := fun ω => pathIntegral (fun s ω => generator α β f (X s ω)) t ω -
-      pathIntegral (fun s ω => generator α β f (X s ω)) s ω) (C := CL * |(t : ℝ) - s|)
-    (Eventually.of_forall fun ω => by simpa [Real.norm_eq_abs] using hbound ω)
-  simpa [Real.norm_eq_abs] using this
-
-/-- The right derivative at `0` of `t ↦ E f(X_t)` is `E (Lf)(X_0)` (paper.tex:L2376-2380,
-(A.3): differentiate the Itô identity at `t = 0`; here by dominated convergence of the time
-averages `t⁻¹ ∫₀ᵗ (Lf)(X_s) ds → (Lf)(X_0)` along the continuous paths). -/
-theorem IsDiffusionSolution.hasDerivWithinAt_integral_comp
-    (hX : IsDiffusionSolution ℱ α β X P) (hXc : ∀ ω, Continuous fun t => X t ω)
-    (hα : Continuous α) (hβ : Continuous β) {f : ℝ → ℝ} (hf : ContDiff ℝ 2 f)
-    {Cf CL : ℝ} (hfb : ∀ u, |f u| ≤ Cf) (hLb : ∀ u, |generator α β f u| ≤ CL) :
-    HasDerivWithinAt (fun t : ℝ => ∫ ω, f (X (Real.toNNReal t) ω) ∂P)
-      (∫ ω, generator α β f (X 0 ω) ∂P) (Ici 0) 0 := by
-  rw [hasDerivWithinAt_iff_tendsto_slope]
-  have hIoi : Ici (0 : ℝ) \ {0} = Ioi 0 := by
-    ext u; simp [lt_iff_le_and_ne, eq_comm]
-  rw [hIoi]
-  set L := generator α β f with hL
-  -- the slope is the expectation of the time average
-  have hslope : ∀ t : ℝ, 0 < t →
-      slope (fun t : ℝ => ∫ ω, f (X (Real.toNNReal t) ω) ∂P) 0 t =
-        ∫ ω, t⁻¹ * pathIntegral (fun s ω => L (X s ω)) (Real.toNNReal t) ω ∂P := by
-    intro t ht
-    rw [slope_def_field, sub_zero, Real.toNNReal_zero, div_eq_inv_mul, integral_const_mul,
-      IsDiffusionSolution.integral_sub_integral_eq hX hXc hα hβ hf hfb hLb (Real.toNNReal t)]
-  have hcongr : (fun t : ℝ =>
-      ∫ ω, t⁻¹ * pathIntegral (fun s ω => L (X s ω)) (Real.toNNReal t) ω ∂P)
-      =ᶠ[𝓝[Ioi 0] 0] slope (fun t : ℝ => ∫ ω, f (X (Real.toNNReal t) ω) ∂P) 0 := by
-    filter_upwards [self_mem_nhdsWithin] with t ht
-    exact (hslope t ht).symm
-  refine Tendsto.congr' hcongr ?_
-  -- dominated convergence
-  refine tendsto_integral_filter_of_dominated_convergence (fun _ => CL) ?_ ?_ ?_ ?_
-  · filter_upwards [self_mem_nhdsWithin] with t ht
-    exact (IsDiffusionSolution.aestronglyMeasurable_pathIntegral_generator hX hXc hα hβ hf
-      (Real.toNNReal t)).const_mul _
-  · filter_upwards [self_mem_nhdsWithin] with t ht
-    refine Eventually.of_forall fun ω => ?_
-    have h := abs_pathIntegral_le (ξ := fun s ω => L (X s ω)) (fun s => hLb (X s ω))
-      (Real.toNNReal t)
-    rw [Real.coe_toNNReal _ (le_of_lt ht)] at h
-    rw [Real.norm_eq_abs, abs_mul, abs_inv, abs_of_pos ht]
-    calc t⁻¹ * |pathIntegral (fun s ω => L (X s ω)) (Real.toNNReal t) ω| ≤ t⁻¹ * (CL * t) :=
-          mul_le_mul_of_nonneg_left h (inv_nonneg.mpr (le_of_lt ht))
-      _ = CL := by
-          have : t ≠ 0 := (mem_Ioi.mp ht).ne'
-          field_simp
-  · exact integrable_const _
-  · refine Eventually.of_forall fun ω => ?_
-    -- `t⁻¹ ∫₀ᵗ L(X_s) ds → L(X_0)` by continuity of the path
-    have hcont : Continuous fun r : ℝ => L (X (Real.toNNReal r) ω) :=
-      (continuous_generator hα hβ hf).comp ((hXc ω).comp continuous_real_toNNReal)
-    have hderiv : HasDerivWithinAt (fun u : ℝ => ∫ r in (0 : ℝ)..u, L (X (Real.toNNReal r) ω))
-        (L (X (Real.toNNReal 0) ω)) (Ici 0) 0 :=
-      intervalIntegral.integral_hasDerivWithinAt_right (hcont.intervalIntegrable _ _)
-        (hcont.stronglyMeasurableAtFilter _ _) hcont.continuousWithinAt
-    rw [hasDerivWithinAt_iff_tendsto_slope, hIoi, Real.toNNReal_zero] at hderiv
-    refine hderiv.congr' ?_
-    filter_upwards [self_mem_nhdsWithin] with t ht
-    rw [slope_def_field, sub_zero, intervalIntegral.integral_same, sub_zero, div_eq_inv_mul]
-    unfold pathIntegral
-    rw [Real.coe_toNNReal _ (le_of_lt (mem_Ioi.mp ht))]
 
 end ComplexSLE.Internal
 

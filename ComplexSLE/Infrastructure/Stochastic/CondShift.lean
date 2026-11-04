@@ -47,9 +47,6 @@ variable {Ω : Type*} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtratio
   mono' _ _ h := ℱ.mono (add_le_add_right h s)
   le' t := ℱ.le (s + t)
 
-@[simp] theorem shiftFiltration_apply (ℱ : Filtration ℝ≥0 m) (s t : ℝ≥0) :
-    shiftFiltration ℱ s t = ℱ (s + t) := rfl
-
 /-! ### Conditional probability: integrals -/
 
 theorem integrable_cond {f : Ω → ℝ} (hf : Integrable f P) {A : Set Ω} (hA0 : P A ≠ 0) :

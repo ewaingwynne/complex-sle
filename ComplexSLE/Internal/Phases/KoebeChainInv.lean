@@ -48,8 +48,6 @@ namespace ComplexSLE.Internal.KoebeChain
 replaces the sharp constant `4` (`= 1 / (1/4)`) of the paper's Koebe `1/4` theorem. -/
 @[expose] def koebeK : ℝ := 48
 
-theorem koebeK_eq : koebeK = 48 := rfl
-
 theorem koebeK_pos : 0 < koebeK := by norm_num [koebeK]
 
 theorem one_le_koebeK : 1 ≤ koebeK := by norm_num [koebeK]

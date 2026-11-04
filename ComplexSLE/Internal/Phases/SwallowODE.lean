@@ -115,12 +115,6 @@ theorem absorbingTime_le_of_log_norm_lt (hU : Continuous U) {z : ℂ} {c : ℝ} 
   rw [ht] at this
   linarith
 
-theorem absorbingTime_ne_top_of_log_norm_lt (hU : Continuous U) {z : ℂ} {c : ℝ} (hc : 0 < c)
-    {t₀ : ℝ} (ht₀ : t₀ ∈ lifeSet U z)
-    (h : ∀ t ∈ lifeSet U z, t₀ ≤ t → Real.log ‖fPath U hU z t‖ < -c * clock U hU z t) :
-    absorbingTime U z ≠ ⊤ :=
-  ne_top_of_le_ne_top ENNReal.ofReal_ne_top (absorbingTime_le_of_log_norm_lt hU hc ht₀ h)
-
 /-! ### The comparison in σ-time -/
 
 /-- A linear bound for `log|f̂_s(z)|` in σ-time, eventually, gives the bound in original time:

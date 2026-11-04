@@ -9,15 +9,12 @@ public import ComplexSLE.Internal.Polar.Argument
 public import ComplexSLE.Internal.Polar.ClockArg
 
 /-!
-# Continuity of `θ̂_s(z)` in the starting point `z` up to the `2π`-ambiguity (M7/A3)
+# Continuity of the winding of `θ̂_s(z)` in the starting point `z` (M7/A3)
 
 The argument process `θ_t(z)` (`argPath`) is the continuous lift of the direction of `f_t(z)` with
 `θ_0 ∈ [0, 2π)`; as `z` varies the initial value `θ_0(z) = argInit` jumps by `2π` where
-`z - U_0` crosses the positive real axis. What is continuous in `z` is:
-
-* `e^{iθ̂_s(z)} = f̂_s(z)/|f̂_s(z)|` (`continuousAt_exp_argPath_sigmaTime_initial`, hence also
-  `cos θ̂_s` and `sin θ̂_s`);
-* the winding `θ̂_s(z) - θ̂_0(z)` (`continuousAt_argPath_sub_initial`).
+`z - U_0` crosses the positive real axis. What is continuous in `z` is the winding
+`θ̂_s(z) - θ̂_0(z)` (`continuousAt_argPath_sub_initial`).
 
 **Winding comparison.** For `z` and `t ∈ [0, T_z)`, `w` near `z` and `r ∈ [0, t]` put
 `Q_w(r) = (d_w(r) d_z(0)) / (d_w(0) d_z(r))`, where `d_w(r) = f_r(w)/|f_r(w)|` is the direction.
@@ -27,10 +24,6 @@ By the Lipschitz dependence of `f_r(w)` on `w` (`exists_lipschitz_initial`), `|Q
 (`lift_unique_of_isPreconnected`) it equals the difference of the windings
 `(θ_r(w) - θ_0(w)) - (θ_r(z) - θ_0(z))` (`argPath_winding_eq_arg`). Since `arg 1 = 0` and `arg`
 is continuous at `1`, the winding is continuous in `w` at `z`.
-
-Finally `θ̂_s(z)` itself is continuous at every `z` with `U_0 - z` in the slit plane, i.e.
-`z - U_0 ∉ [0, ∞)` (`continuousAt_argPath_sigmaTime_initial`), where `argInit` is continuous
-(`argInit_eq_arg_add_pi`).
 -/
 
 public section
@@ -269,114 +262,6 @@ theorem continuousAt_argPath_sub_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
   have := argPath_winding_eq_arg hU ht₂ hlife (fun r hr' => lt_of_le_of_lt (hbd r hr') hKlt)
     _ hr
   linarith
-
-/-- **`e^{iθ̂_s(w)}` is continuous in `w`**, as `f̂_s(w)/|f̂_s(w)|`. -/
-theorem continuousAt_exp_argPath_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
-    (hs : s ∈ sigmaDom U hU z) :
-    ContinuousAt (fun w => Complex.exp ((argPath U hU w (sigmaTime U hU w s) : ℂ) * I)) z := by
-  have hcont : ContinuousAt (fun w => fPath U hU w (sigmaTime U hU w s) /
-      (‖fPath U hU w (sigmaTime U hU w s)‖ : ℂ)) z := by
-    refine (continuousAt_fPath_sigmaTime_initial hU hs).div
-      (Complex.continuous_ofReal.continuousAt.comp
-        (continuousAt_fPath_sigmaTime_initial hU hs).norm) ?_
-    exact_mod_cast (norm_fPath_pos hU (sigmaTime_mem_lifeSet hU hs)).ne'
-  refine hcont.congr ?_
-  filter_upwards [eventually_mem_sigmaDom_initial hU hs] with w hw
-  exact (exp_argPath_mul_I hU (sigmaTime_mem_lifeSet hU hw)).symm
-
-/-- **`e^{iθ̂_s(w)}` as a point of the circle is continuous in `w`.** -/
-theorem continuousAt_circleExp_argPath_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
-    (hs : s ∈ sigmaDom U hU z) :
-    ContinuousAt (fun w => Circle.exp (argPath U hU w (sigmaTime U hU w s))) z := by
-  have hind : Topology.IsInducing ((↑) : Circle → ℂ) := Topology.IsInducing.subtypeVal
-  refine hind.continuousAt_iff.2 ?_
-  exact (continuousAt_exp_argPath_sigmaTime_initial hU hs).congr
-    (Eventually.of_forall fun w => (Circle.coe_exp _).symm)
-
-/-- `w ↦ cos θ̂_s(w)` is continuous. -/
-theorem continuousAt_cos_argPath_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
-    (hs : s ∈ sigmaDom U hU z) :
-    ContinuousAt (fun w => Real.cos (argPath U hU w (sigmaTime U hU w s))) z := by
-  have := Complex.continuous_re.continuousAt.comp
-    (continuousAt_exp_argPath_sigmaTime_initial hU hs)
-  simpa [Function.comp_def, Complex.exp_ofReal_mul_I_re] using this
-
-/-- `w ↦ sin θ̂_s(w)` is continuous. -/
-theorem continuousAt_sin_argPath_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
-    (hs : s ∈ sigmaDom U hU z) :
-    ContinuousAt (fun w => Real.sin (argPath U hU w (sigmaTime U hU w s))) z := by
-  have := Complex.continuous_im.continuousAt.comp
-    (continuousAt_exp_argPath_sigmaTime_initial hU hs)
-  simpa [Function.comp_def, Complex.exp_ofReal_mul_I_im] using this
-
-theorem continuousOn_argPath_sub_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => argPath U hU w (sigmaTime U hU w s) - argPath U hU w 0)
-      (sigmaDomSet U hU s) := fun _ hz =>
-  (continuousAt_argPath_sub_initial hU hz).continuousWithinAt
-
-theorem continuousOn_exp_argPath_sigmaTime_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => Complex.exp ((argPath U hU w (sigmaTime U hU w s) : ℂ) * I))
-      (sigmaDomSet U hU s) := fun _ hz =>
-  (continuousAt_exp_argPath_sigmaTime_initial hU hz).continuousWithinAt
-
-/-- `σ_w(0) = 0` for `w` in the domain, so `θ̂_0(w) = θ_0(w)`: the form of
-`continuousOn_argPath_sub_initial` stated with `θ̂_s(w) = θ_{σ_w(s)}(w)` at both `s` and `0`. -/
-theorem continuousOn_thetaHat_sub_thetaHat_zero_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => argPath U hU w (sigmaTime U hU w s) -
-      argPath U hU w (sigmaTime U hU w 0)) (sigmaDomSet U hU s) := by
-  refine (continuousOn_argPath_sub_initial hU s).congr fun w hw => ?_
-  have hz0 : (0 : ℝ) ∈ lifeSet U w := ne_driver_zero_of_mem_sigmaDomSet hw
-  simp [sigmaTime_zero hU hz0]
-
-/-! ### Continuity of `θ̂_s(w)` itself away from the cut -/
-
-/-- Off the positive real axis shifted by `U_0` (`U_0 - z` in the slit plane),
-`θ_0(z) = arg (U_0 - z) + π`. -/
-theorem argInit_eq_arg_add_pi (hU : Continuous U) {z : ℂ} (hz : U 0 - z ∈ slitPlane) :
-    argInit U hU z = Complex.arg (U 0 - z) + π := by
-  rw [argInit_eq]
-  have hneg : U 0 - z = -(z - U 0) := (neg_sub z (U 0)).symm
-  rw [hneg] at hz ⊢
-  set v : ℂ := z - U 0 with hv
-  rcases lt_trichotomy v.im 0 with him | him | him
-  · have h1 : ¬ 0 ≤ Complex.arg v := by
-      rw [Complex.arg_nonneg_iff]; exact not_le.2 him
-    rw [ite_eq_right_iff.2 (fun h => absurd h h1), Complex.arg_neg_eq_arg_add_pi_of_im_neg him]
-    ring
-  · have hre : v.re < 0 := by
-      rcases hz with h | h
-      · simpa using h
-      · simp [him] at h
-    have h1 : Complex.arg v = π := Complex.arg_eq_pi_iff.2 ⟨hre, him⟩
-    have h2 : Complex.arg (-v) = 0 := by
-      rw [Complex.arg_eq_zero_iff]
-      exact ⟨by simp; linarith, by simp [him]⟩
-    rw [ite_eq_left_iff.2 (fun h => absurd (by rw [h1]; exact Real.pi_pos.le) h), h1, h2]
-    ring
-  · have h1 : 0 ≤ Complex.arg v := Complex.arg_nonneg_iff.2 him.le
-    rw [ite_eq_left_iff.2 (fun h => absurd h1 h), Complex.arg_neg_eq_arg_sub_pi_of_im_pos him]
-    ring
-
-/-- `z ↦ θ_0(z)` is continuous at every `z` with `U_0 - z` in the slit plane (`z - U_0 ∉ [0, ∞)`),
-and in general discontinuous across the positive real axis. -/
-theorem continuousAt_argInit (hU : Continuous U) {z : ℂ} (hz : U 0 - z ∈ slitPlane) :
-    ContinuousAt (fun w => argInit U hU w) z := by
-  have hev : ∀ᶠ w in 𝓝 z, U 0 - w ∈ slitPlane :=
-    (continuousAt_const.sub continuousAt_id).eventually (isOpen_slitPlane.mem_nhds hz)
-  have hc : ContinuousAt (fun w : ℂ => Complex.arg (U 0 - w) + π) z :=
-    ((Complex.continuousAt_arg hz).comp (continuousAt_const.sub continuousAt_id)).add_const π
-  refine hc.congr ?_
-  filter_upwards [hev] with w hw
-  exact (argInit_eq_arg_add_pi hU hw).symm
-
-/-- **`θ̂_s(w)` is continuous in `w`** at every `z` with `s ∈ sigmaDom U hU z` and `U_0 - z` in the
-slit plane (i.e. `z - U_0 ∉ [0, ∞)`, where `θ_0 ∈ [0, 2π)` is continuous). -/
-theorem continuousAt_argPath_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
-    (hs : s ∈ sigmaDom U hU z) (hz : U 0 - z ∈ slitPlane) :
-    ContinuousAt (fun w => argPath U hU w (sigmaTime U hU w s)) z := by
-  have h := (continuousAt_argPath_sub_initial hU hs).add (continuousAt_argInit hU hz)
-  refine h.congr (Eventually.of_forall fun w => ?_)
-  simp [argPath_zero]
 
 end ComplexSLE.Internal.Polar
 

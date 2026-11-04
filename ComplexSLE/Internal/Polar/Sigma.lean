@@ -65,11 +65,6 @@ theorem clock_mem_sigmaDom (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ l
   exact (ENNReal.ofReal_lt_ofReal_iff_of_nonneg (clock_nonneg hU ht)).2
     (clock_lt_clock hU ht.1 hlt ht')
 
-theorem zero_mem_sigmaDom (hU : Continuous U) {z : ℂ} (hz : (0 : ℝ) ∈ lifeSet U z) :
-    (0 : ℝ) ∈ sigmaDom U hU z := by
-  have := clock_mem_sigmaDom hU hz
-  rwa [clock_zero] at this
-
 theorem exists_gt_mem_sigmaDom {hU : Continuous U} {z : ℂ} {s : ℝ} (hs : s ∈ sigmaDom U hU z) :
     ∃ s' ∈ sigmaDom U hU z, s < s' := by
   obtain ⟨x, hx1, hx2⟩ := exists_between hs.2
@@ -172,11 +167,6 @@ theorem sigmaTime_lt_sigmaTime_iff (hU : Continuous U) {z : ℂ} {s s' : ℝ}
     (hs : s ∈ sigmaDom U hU z) (hs' : s' ∈ sigmaDom U hU z) :
     sigmaTime U hU z s < sigmaTime U hU z s' ↔ s < s' :=
   (sigmaTime_strictMonoOn hU z).lt_iff_lt hs hs'
-
-theorem sigmaTime_le_sigmaTime_iff (hU : Continuous U) {z : ℂ} {s s' : ℝ}
-    (hs : s ∈ sigmaDom U hU z) (hs' : s' ∈ sigmaDom U hU z) :
-    sigmaTime U hU z s ≤ sigmaTime U hU z s' ↔ s ≤ s' :=
-  (sigmaTime_strictMonoOn hU z).le_iff_le hs hs'
 
 /-- `σ_z` maps `[0, clockSup)` onto `[0, T_z)` (Remark 2.12 modulo `clockSup = ∞`). -/
 theorem image_sigmaTime (hU : Continuous U) (z : ℂ) :

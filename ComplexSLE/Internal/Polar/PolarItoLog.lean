@@ -183,19 +183,6 @@ theorem logBracket_eq_polar {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) 
     gammaFn_polar _ _ _ (norm_pos_iff.2 (stoppedF_ne_zero hU z n hz t)),
     stoppedF_eq_of_le hU z n hz ht]
 
-/-- After `τ_n` the drift density vanishes. -/
-theorem logDrift_eq_zero_of_lt {ω : Ω} {t : ℝ≥0} (ht : exitR hU z n ω < t) :
-    logDrift hU z n t ω = 0 := by
-  have : beforeExit hU z n t ω = 0 := by
-    simp [beforeExit, (le_exitNN_iff hU z n).not.2 (not_le.2 ht)]
-  simp [logDrift, this]
-
-theorem logBracket_eq_zero_of_lt {ω : Ω} {t : ℝ≥0} (ht : exitR hU z n ω < t) :
-    logBracket hU z n t ω = 0 := by
-  have : beforeExit hU z n t ω = 0 := by
-    simp [beforeExit, (le_exitNN_iff hU z n).not.2 (not_le.2 ht)]
-  simp [logBracket, this]
-
 theorem logNormF_eq_logNorm₃ (t : ℝ≥0) (ω : Ω) :
     logNorm₃ (augState hU z n t ω) = logNormF hU z n t ω := by
   have h : (stoppedF hU z n t ω).re ^ 2 + (stoppedF hU z n t ω).im ^ 2 =
@@ -207,11 +194,7 @@ theorem logNormF_eq_logNorm₃ (t : ℝ≥0) (ω : Ω) :
   push_cast
   ring
 
-theorem augState_zero (t : ℝ≥0) (ω : Ω) : augState hU z n t ω 0 = itoState hU z n t ω 0 := rfl
-theorem augState_one (t : ℝ≥0) (ω : Ω) : augState hU z n t ω 1 = itoState hU z n t ω 1 := rfl
 theorem augState_two (t : ℝ≥0) (ω : Ω) : augState hU z n t ω 2 = augD hU z n t ω := rfl
-theorem augDrift_zero (t : ℝ≥0) (ω : Ω) : augDrift hU z n t ω 0 = itoDrift hU z n t ω 0 := rfl
-theorem augDrift_one (t : ℝ≥0) (ω : Ω) : augDrift hU z n t ω 1 = itoDrift hU z n t ω 1 := rfl
 theorem augDrift_two (t : ℝ≥0) (ω : Ω) : augDrift hU z n t ω 2 = logDrift hU z n t ω := rfl
 
 include hU in
@@ -515,7 +498,6 @@ theorem ito_hMM_aug (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (i j : Fin 3) :
 
 end Martingales
 
-
 /-! ### Applying Itô's formula -/
 
 section Apply
@@ -675,7 +657,6 @@ theorem logMart_eq_of_le {ω : Ω} {s t : ℝ≥0} (hst : s ≤ t) (hs : exitNN 
     pathIntegral (fun s ω => beforeExit hU z n s ω * betaFn a b c (itoState hU z n s ω)) s ω
   rw [pathIntegral_beforeExit_mul, pathIntegral_beforeExit_mul, min_eq_right hs,
     min_eq_right (hs.trans hst)]
-
 
 end Processes
 

@@ -45,15 +45,6 @@ theorem ae_tendsto_sigmaLogNorm_atBot (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (hz : 
   filter_upwards [ae_sigmaDom_eq_Ici hU z ha hc hz] with ω hω hT
   exact tendsto_log_norm_fPath_sigmaTime_nnreal (hU.cont ω) hω hT.ne
 
-/-- The same, with `|f̂_s(z)| → 0`: a.s., if `T_z < ∞` then `|f̂_s(z)| → 0` as `s → ∞`. -/
-theorem ae_tendsto_norm_fPath_sigmaTime (ha : 0 < a) (hc : c ^ 2 ≤ a * b) (hz : z ≠ 0) :
-    ∀ᵐ ω ∂P, absorbingTime (fun s => U s ω) z < ⊤ →
-      Tendsto (fun s : ℝ =>
-        ‖fPath (fun r => U r ω) (hU.cont ω) z (sigmaTime (fun r => U r ω) (hU.cont ω) z s)‖)
-        atTop (𝓝 0) := by
-  filter_upwards [ae_sigmaDom_eq_Ici hU z ha hc hz] with ω hω hT
-  exact tendsto_norm_fPath_sigmaTime (hU.cont ω) hω hT.ne
-
 /-- **Proposition 3.1(b), ODE comparison, almost surely** (paper.tex:L1405-1418): for an adapted
 `SLE_Σ` driver, `z ≠ 0` and `α > 0`, almost surely, if `log|f̂_s(z)| / s → -α` as `s → ∞` then
 `T_z < ∞`. -/

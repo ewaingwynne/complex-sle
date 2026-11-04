@@ -21,7 +21,6 @@ arXiv:2203.07313v4, proof of Lemma 4.3 (paper.tex:L2008-2019), deterministic. Fo
 
 * `leftHull_zero`: `L^0_T = slitI T`;
 * `centeredLoewnerMap_zero`: `f^0_T z = zeroMap T z` for `z ∉ slitI T`;
-* `rightHull_zero`: `R^0_T = slitR T = [-2 √T, 2 √T]`;
 * `exists_zeroMap_eq`: every `w ∉ slitR T` is `zeroMap T z` for some `z ∉ slitI T`
   (explicit preimage `z = w (1 - 4 T / w²)^(1/2)`);
 * `zeroMap_sq`, `differentiableAt_zeroMap`, `zeroMap_mul_deriv`: `zeroMap T z ^ 2 = z ^ 2 + 4 T`
@@ -155,7 +154,6 @@ theorem mem_slitI_iff_mem_slitR {T : ℝ≥0} {z w : ℂ} (h : w ^ 2 = z ^ 2 + 4
   rw [hre, him]
   constructor <;> rintro ⟨h1, h2, h3⟩ <;> refine ⟨h1, ?_, ?_⟩ <;> linarith
 
-
 theorem cpow_half_sq (q : ℂ) : (q ^ (1 / 2 : ℂ)) ^ 2 = q := by
   simp
 
@@ -199,7 +197,6 @@ theorem one_add_div_mem_slitPlane {T : ℝ≥0} {s : ℝ} {z : ℂ} (hz : z ∉ 
   · rw [le_div_iff_of_neg hneg]
     nlinarith
   · exact div_nonpos_of_nonneg_of_nonpos (by positivity) hneg.le
-
 
 theorem hasDerivAt_zeroMap_real {T : ℝ≥0} {z : ℂ} (hz : z ∉ slitI T) {s : ℝ} (hs : 0 ≤ s)
     (hsT : s ≤ T) : HasDerivAt (fun y : ℝ => zeroMap y z) (2 / zeroMap s z) s := by
@@ -259,7 +256,6 @@ theorem closedSol_zero_sq {t : ℝ} {z : ℂ} {γ : ℝ → ℂ} (h0 : γ 0 = z)
     subst this
     simp [h0]
 
-
 /-- The hull of the zero driver is the vertical slit. -/
 theorem leftHull_zero (T : ℝ≥0) : leftHull (fun _ : ℝ≥0 => (0 : ℂ)) T = slitI T := by
   ext z
@@ -291,10 +287,6 @@ theorem centeredLoewnerMap_zero {T : ℝ≥0} {z : ℂ} (hz : z ∉ slitI T)
     (t := T) (z := z) (γ := fun s => zeroMap s z) (by simpa using zeroMap_zero_time z)
     (closedSol_zeroMap hz) h
   simpa using this
-
-theorem zeroMap_notMem_slitR {T : ℝ≥0} {z : ℂ} (hz : z ∉ slitI T) : zeroMap T z ∉ slitR T := by
-  rw [← mem_slitI_iff_mem_slitR (zeroMap_sq (ne_zero_of_notMem_slitI hz))]
-  exact hz
 
 theorem exists_zeroMap_eq {T : ℝ≥0} {w : ℂ} (hw : w ∉ slitR T) :
     ∃ z : ℂ, z ∉ slitI T ∧ zeroMap T z = w := by
@@ -348,25 +340,6 @@ theorem exists_zeroMap_eq {T : ℝ≥0} {w : ℂ} (hw : w ∉ slitR T) :
     unfold zeroMap
     rw [hq, Complex.inv_cpow u _ (Complex.mem_slitPlane_iff_arg.1 hu_slit).1, hz]
     field_simp
-
-theorem rightHull_zero (T : ℝ≥0) :
-    rightHull (fun _ : ℝ≥0 => (0 : ℂ)) continuous_const T = slitR T := by
-  ext w
-  unfold rightHull
-  simp only [mem_compl_iff, mem_range, not_exists]
-  constructor
-  · intro h
-    by_contra hw
-    obtain ⟨z, hz, hzw⟩ := exists_zeroMap_eq hw
-    have hzL : z ∈ (leftHull (fun _ : ℝ≥0 => (0 : ℂ)) T)ᶜ := by
-      rw [leftHull_zero]; exact hz
-    exact h ⟨z, hzL⟩ (by rw [centeredLoewnerMap_zero hz hzL, hzw])
-  · intro hw ⟨z, hzL⟩ hf
-    have hz : z ∉ slitI T := by
-      have := hzL; rwa [mem_compl_iff, leftHull_zero] at this
-    rw [centeredLoewnerMap_zero hz hzL] at hf
-    exact zeroMap_notMem_slitR hz (hf ▸ hw)
-
 
 theorem differentiableAt_zeroMap {T : ℝ≥0} {z : ℂ} (hz : z ∉ slitI T) :
     DifferentiableAt ℂ (zeroMap T) z := by

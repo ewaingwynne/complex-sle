@@ -120,22 +120,6 @@ theorem hitTime_le_iff (hU : Continuous U) {z : ℂ} {r : ℝ} {t : ℝ≥0} :
     · intro h; exact absurd h (WithTop.not_top_le_coe t)
     · intro h; exact absurd ⟨t, h⟩ hne
 
-theorem hitTime_eq_top_iff {z : ℂ} {r : ℝ} :
-    hitTime U z r = ⊤ ↔ ∀ t : ℝ≥0, r < infDist z (leftHull U t) := by
-  unfold hitTime
-  by_cases hne : {t : ℝ≥0 | infDist z (leftHull U t) ≤ r}.Nonempty
-  · simp only [hne, ↓reduceIte]
-    constructor
-    · intro h; exact absurd h WithTop.coe_ne_top
-    · intro h
-      obtain ⟨t, ht⟩ := hne
-      exact absurd (h t) (not_lt.2 ht)
-  · simp only [hne, ↓reduceIte]
-    simp only [true_iff]
-    intro t
-    by_contra h
-    exact hne ⟨t, not_lt.1 h⟩
-
 /-- If `hitTime = τ` is finite, then `dist(z, L_τ) ≤ r` and `dist(z, L_t) > r` for `t < τ`. -/
 theorem infDist_hitTime_le (hU : Continuous U) {z : ℂ} {r : ℝ} {τ : ℝ≥0}
     (h : hitTime U z r = (τ : WithTop ℝ≥0)) : infDist z (leftHull U τ) ≤ r :=

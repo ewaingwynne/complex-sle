@@ -51,7 +51,6 @@ theorem isStronglyProgressive_stopSmul {E : Type*} [AddCommGroup E] [Module ℝ 
     (hA : IsStronglyProgressive ℱ A) : IsStronglyProgressive ℱ (stopSmul T A) :=
   fun i => ((isStronglyProgressive_stopInd hT) i).smul (hA i)
 
-
 /-- `∫₀ᵗ ξ_s 1_{s ≤ T} ds = ∫₀^{t ∧ T} ξ_s ds`. -/
 theorem pathIntegral_ite_le (ξ : ℝ≥0 → Ω → ℝ) (T : Ω → ℝ≥0) (t : ℝ≥0) (ω : Ω) :
     pathIntegral (fun s ω => if s ≤ T ω then ξ s ω else 0) t ω =
@@ -72,9 +71,6 @@ theorem min_zero_left' (x : ℝ≥0) : min 0 x = 0 := min_eq_left zero_le
 
 theorem pathIntegral_zero (ξ : ℝ≥0 → Ω → ℝ) (ω : Ω) : pathIntegral ξ 0 ω = 0 := by
   simp [pathIntegral]
-
-theorem stopInd_apply (T : Ω → ℝ≥0) (s : ℝ≥0) (ω : Ω) :
-    stopInd T s ω = if s ≤ T ω then 1 else 0 := rfl
 
 theorem stopSmul_vec_apply {d : ℕ} (T : Ω → ℝ≥0) (A : ℝ≥0 → Ω → (Fin d → ℝ)) (s : ℝ≥0) (ω : Ω)
     (i : Fin d) : stopSmul T A s ω i = if s ≤ T ω then A s ω i else 0 := by
@@ -124,11 +120,6 @@ section Identities
 variable {Ω : Type*} {d : ℕ} {U : Set (Fin d → ℝ)} {x₀ : Fin d → ℝ} {T : Ω → ℝ≥0}
   {X A : ℝ≥0 → Ω → (Fin d → ℝ)} {Q : ℝ≥0 → Ω → Matrix (Fin d) (Fin d) ℝ}
 
-open scoped Classical in
-theorem frozenStop_zero (ω : Ω) :
-    frozenStop U x₀ T X 0 ω = if X 0 ω ∈ U then X 0 ω else x₀ := by
-  simp [frozenStop]
-
 /-- The martingale part of the frozen data is the stopped martingale part. -/
 theorem Mp_frozenStop (hT0 : ∀ ω, X 0 ω ∉ U → T ω = 0) (i : Fin d) (t : ℝ≥0) (ω : Ω) :
     Mp (frozenStop U x₀ T X) (stopSmul T A) i t ω = Mp X A i (min t (T ω)) ω := by
@@ -141,7 +132,6 @@ theorem Mp_frozenStop (hT0 : ∀ ω, X 0 ω ∉ U → T ω = 0) (i : Fin d) (t :
   · have h0 := hT0 ω hG
     simp only [Mp, frozenStop, hG, ite_false, hp, h0, min_zero, pathIntegral_zero]
     ring
-
 
 /-- The bracket of the frozen data is the stopped bracket. -/
 theorem Np_frozenStop (hT0 : ∀ ω, X 0 ω ∉ U → T ω = 0) (i j : Fin d) (t : ℝ≥0) (ω : Ω) :

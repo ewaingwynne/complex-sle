@@ -51,9 +51,6 @@ namespace ComplexSLE.Internal
 
 open Polar
 
-theorem admissibleLaw_eq_admissibleMeasure (p : ℝ → ℝ) :
-    admissibleLaw p = admissibleMeasure p := rfl
-
 variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration ℝ≥0 m} {a b c : ℝ}
   {U : ℝ≥0 → Ω → ℂ}
 

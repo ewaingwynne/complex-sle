@@ -140,18 +140,6 @@ theorem norm_deriv_fPath_mul_infDist_le (hU : Continuous U) {z : ℂ} {t : ℝ�
   rw [deriv_fPath_initial hU (coe_mem_lifeSet_iff.2 hz)]
   exact norm_derivPath_mul_infDist_le hU hd
 
-/-- The same for the holomorphic extension `w ↦ g_t(w) = solPath U hU w t` of the Loewner map:
-`|(g_t)'(z)| = |(f_t)'(z)|`. -/
-theorem norm_deriv_solPath_mul_infDist_le (hU : Continuous U) {z : ℂ} {t : ℝ≥0}
-    (hd : 0 < infDist z (leftHull U t)) :
-    ‖deriv (fun w => solPath U hU w t) z‖ * infDist z (leftHull U t) ≤
-      KoebeChain.koebeK * ‖fPath U hU z t‖ := by
-  have hz : z ∈ (leftHull U t)ᶜ := fun h => by
-    rw [infDist_zero_of_mem h] at hd
-    exact lt_irrefl _ hd
-  rw [deriv_solPath_initial hU (coe_mem_lifeSet_iff.2 hz)]
-  exact norm_derivPath_mul_infDist_le hU hd
-
 /-- The hypothesis `0 < dist(z, L_t)` is just `z ∉ L_t` (`L_t` is closed and nonempty). -/
 theorem infDist_leftHull_pos (hU : Continuous U) {z : ℂ} {t : ℝ≥0} (hz : z ∉ leftHull U t) :
     0 < infDist z (leftHull U t) := by

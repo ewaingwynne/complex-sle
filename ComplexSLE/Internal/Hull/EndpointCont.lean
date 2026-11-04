@@ -184,25 +184,6 @@ theorem tendsto_log_norm_fPath_nhdsWithin (hU : Continuous U) {z : ℂ}
   · exact tendsto_norm_fPath_nhdsWithin hU hT
   · exact eventually_nhdsWithin_of_forall fun t ht => norm_fPath_pos hU ht
 
-/-- The `ε`-form of Lemma 2.5: if `0 < T_z < ∞`, for every `ε > 0` there is `a < T_z` such that
-`|f_t(z)| < ε` for all `t ∈ [a, T_z)`. -/
-theorem exists_forall_norm_fPath_lt (hU : Continuous U) {z : ℂ} (hz : 0 < absorbingTime U z)
-    (hT : absorbingTime U z ≠ ⊤) {ε : ℝ} (hε : 0 < ε) :
-    ∃ a ∈ lifeSet U z, ∀ t ∈ lifeSet U z, a ≤ t → ‖fPath U hU z t‖ < ε := by
-  set T := (absorbingTime U z).toReal with hTdef
-  have hTpos : 0 < T := ENNReal.toReal_pos hz.ne' hT
-  have hev := (tendsto_norm_fPath_nhdsWithin hU hT).eventually (gt_mem_nhds hε)
-  obtain ⟨δ, hδ, hball⟩ := Metric.mem_nhdsWithin_iff.1 hev
-  set a := max 0 (T - δ / 2) with hadef
-  have haT : a < T := max_lt hTpos (by linarith)
-  have ha : a ∈ lifeSet U z := by
-    rw [lifeSet_eq_Ico hT]; exact ⟨le_max_left _ _, haT⟩
-  refine ⟨a, ha, fun t ht hat => hball ⟨?_, ht⟩⟩
-  have htT : t < T := (lifeSet_eq_Ico hT ▸ ht : t ∈ Ico 0 T).2
-  rw [Metric.mem_ball, Real.dist_eq, abs_sub_comm, abs_of_nonneg (by linarith)]
-  have := (le_max_right 0 (T - δ / 2)).trans hat
-  linarith
-
 end ComplexSLE.Internal.Polar
 
 end

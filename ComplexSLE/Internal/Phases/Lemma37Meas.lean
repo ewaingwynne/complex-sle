@@ -23,13 +23,13 @@ random time `σ_z(s̃)` of the hull, so their measurability in (driver path, dir
   fixed-time measurability of `EventMeasDist.lean`;
 * **measurability of `σ_z(s̃)` in (path, `u`)** for `z = e^{iu}` (`measurable_sigmaTimeC`), by the
   Carathéodory lemma of `PolarContMeas.lean` applied to the canonical driver (`PathStatCanon.lean`),
-  continuity of `σ` in the initial point (`continuousOn_sigmaTime_initial`) and the stopping time
+  continuity of `σ` in the initial point (`continuousAt_sigmaTime_initial`) and the stopping time
   `sigmaTop`.
 
 Consequently `hullDistC s̃ v z = dist(z, L_{σ_z(s̃)}(v))` is jointly measurable in `(v, e^{iu})`
 (`measurable_hullDistC_unit`), and the left side of Lemma 3.9 agrees with a jointly measurable
-function on the event that `σ_z` is defined at `t̃` and `t̃ + s̃`
-(`exists_measurable_futureDistRatio`).
+function on the event that `σ_z` is defined at `t̃` and `t̃ + s̃` (`futureDistRatio_eq_C`,
+`measurable_futureDistRatioC_unit`).
 -/
 
 @[expose] public section

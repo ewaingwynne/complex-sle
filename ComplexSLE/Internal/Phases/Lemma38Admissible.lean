@@ -38,15 +38,6 @@ theorem integrable_log_inv_distSigma_admissible [IsProbabilityMeasure P]
   have := isProbabilityMeasure_admissibleMeasure hp
   exact integrable_log_inv_distSigma hU tt ha hc (admissibleMeasure p)
 
-/-- **Lemma 3.10**, lintegral form on `μ = P ⊗ ν_p`. -/
-theorem lintegral_log_inv_distSigma_admissible_lt_top [IsProbabilityMeasure P]
-    (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ}
-    (hp : IsAdmissibleDensity a b c p) (tt : ℝ≥0) :
-    ∫⁻ q, ENNReal.ofReal (Real.log (1 / distSigma hU tt q)) ∂(P.prod (admissibleMeasure p))
-      < ⊤ := by
-  have := isProbabilityMeasure_admissibleMeasure hp
-  exact lintegral_log_inv_distSigma_lt_top hU tt ha hc (admissibleMeasure p)
-
 /-- `dist(𝐳, L_{σ_𝐳(t̃)})` is `P ⊗ ν_p`-a.s. positive (`ae_distSigma_pos` for admissible `p`). -/
 theorem ae_distSigma_pos_admissible [IsProbabilityMeasure P]
     (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hc : c ^ 2 ≤ a * b) {p : ℝ → ℝ}

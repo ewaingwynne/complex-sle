@@ -183,12 +183,6 @@ theorem thetaDrift_eq_mu {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z) 
     muFn_polar _ _ _ (norm_pos_iff.2 (stoppedF_ne_zero hU z n hz t)),
     stoppedF_eq_of_le hU z n hz ht]
 
-theorem thetaDrift_eq_zero_of_lt {ω : Ω} {t : ℝ≥0} (ht : exitR hU z n ω < t) :
-    thetaDrift hU z n t ω = 0 := by
-  have : beforeExit hU z n t ω = 0 := by
-    simp [beforeExit, (le_exitNN_iff hU z n).not.2 (not_le.2 ht)]
-  simp [thetaDrift, this]
-
 theorem isStronglyProgressive_thetaDrift : IsStronglyProgressive ℱ (thetaDrift hU z n) :=
   fun i => (isStronglyProgressive_beforeExit hU z n i).mul
     (((measurable_muFn a b c).comp (isStronglyProgressive_itoState hU z n i).measurable)
@@ -304,9 +298,6 @@ theorem abs_sub_le_of_le_sInf_sectorSet {S t : ℝ≥0} {ω : Ω} (hSt : S ≤ t
 
 theorem sectorTime_zero (ω : Ω) : sectorTime hU z n 0 ω = 0 := rfl
 
-theorem sectorTime_succ (k : ℕ) (ω : Ω) :
-    sectorTime hU z n (k + 1) ω = sInf (sectorSet hU z n (sectorTime hU z n k ω) ω) := rfl
-
 theorem sectorTime_le_exitNN (k : ℕ) (ω : Ω) : sectorTime hU z n k ω ≤ exitNN hU z n ω := by
   induction k with
   | zero => exact zero_le
@@ -314,9 +305,6 @@ theorem sectorTime_le_exitNN (k : ℕ) (ω : Ω) : sectorTime hU z n k ω ≤ ex
 
 theorem sectorTime_le_succ (k : ℕ) (ω : Ω) : sectorTime hU z n k ω ≤ sectorTime hU z n (k + 1) ω :=
   le_sInf_sectorSet hU z n (sectorTime_le_exitNN hU z n k ω)
-
-theorem sectorTime_mono (ω : Ω) : Monotone fun k => sectorTime hU z n k ω :=
-  monotone_nat_of_le_succ fun k => sectorTime_le_succ hU z n k ω
 
 /-- On `[S_k, S_{k+1}]` the argument stays within `π/2` of `θ̃_{S_k}`. -/
 theorem abs_argStopped_sub_le {k : ℕ} {ω : Ω} {t : ℝ≥0} (h1 : sectorTime hU z n k ω ≤ t)

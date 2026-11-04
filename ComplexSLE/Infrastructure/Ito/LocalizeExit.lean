@@ -64,9 +64,6 @@ theorem expK_subset (D : Set (Fin d → ℝ)) (n : ℕ) : expK D n ⊆ D := by
   by_contra hxD
   exact hx.2 (self_subset_thickening (by positivity) _ hxD)
 
-theorem expU_subset (D : Set (Fin d → ℝ)) (n : ℕ) : expU D n ⊆ D :=
-  (expU_subset_expK D n).trans (expK_subset D n)
-
 theorem expU_mono (D : Set (Fin d → ℝ)) : Monotone (expU D) := by
   intro n m hnm x hx
   refine ⟨ball_subset_ball (by exact_mod_cast hnm) hx.1, fun hxm => hx.2 ?_⟩
@@ -116,10 +113,6 @@ theorem isStoppingTime_exhaustionExitTime (hX : StronglyAdapted ℱ X)
     IsStoppingTime ℱ fun ω => (exhaustionExitTime X D n ω : WithTop ℝ≥0) :=
   QuantumZipper.ItoLite.isStoppingTime_hittingBtwn_of_isClosed (U := X)
     (fun t => (hX t).measurable) hXc (isOpen_expU D n).isClosed_compl (n : ℝ≥0)
-
-theorem exhaustionExitTime_le (D : Set (Fin d → ℝ)) (n : ℕ) (ω : Ω) :
-    exhaustionExitTime X D n ω ≤ n :=
-  hittingBtwn_le ω
 
 /-- Strictly before the exit time, the process is in `expU D n`. -/
 theorem mem_expU_of_lt_exhaustionExitTime {D : Set (Fin d → ℝ)} {n : ℕ} {ω : Ω} {u : ℝ≥0}

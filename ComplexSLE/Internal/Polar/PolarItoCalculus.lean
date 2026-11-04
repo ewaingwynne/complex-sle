@@ -101,9 +101,6 @@ theorem measurable_sqDev : Measurable sqDev := by
   unfold sqDev
   exact (measurable_logNorm₃.sub (measurable_pi_apply 2)).pow_const 2
 
-theorem continuousOn_logNorm₃ : ContinuousOn logNorm₃ posSet₃ :=
-  contDiffOn_logNorm₃.continuousOn
-
 /-- First derivative of `q`. -/
 theorem hasFDerivAt_sqNorm₃ (v : Fin 3 → ℝ) :
     ∃ L : (Fin 3 → ℝ) →L[ℝ] ℝ, HasFDerivAt sqNorm₃ L v ∧

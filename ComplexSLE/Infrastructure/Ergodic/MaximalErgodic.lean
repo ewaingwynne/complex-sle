@@ -85,9 +85,6 @@ theorem maxFn_le_maxFn_succ : ∀ (n : ℕ) (x : α), maxFn T f n x ≤ maxFn T 
     rw [maxFn_succ _ _ n, maxFn_succ _ _ (n + 1)]
     exact max_le_max le_rfl (add_le_add le_rfl (ih (T x)))
 
-theorem maxFn_mono (x : α) : Monotone fun n => maxFn T f n x :=
-  monotone_nat_of_le_succ fun n => maxFn_le_maxFn_succ n x
-
 theorem maxFn_pos_iff (n : ℕ) (x : α) :
     0 < maxFn T f n x ↔ ∃ k ≤ n, 0 < birkhoffSum T f k x := by
   constructor

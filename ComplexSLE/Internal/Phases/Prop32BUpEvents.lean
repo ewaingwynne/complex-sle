@@ -71,10 +71,6 @@ theorem measurableEvents_staysAway : MeasurableEvents StaysAway :=
 
 /-! ### Radii -/
 
-theorem StaysAwayBy.staysAway {r : ℝ} (hr : 0 < r) {u : ℝ≥0 → ℂ} {z : ℂ}
-    (h : StaysAwayBy r u z) : StaysAway u z :=
-  ⟨r, hr, h.2⟩
-
 theorem StaysAwayBy.mono {r r' : ℝ} (hrr : r' ≤ r) {u : ℝ≥0 → ℂ} {z : ℂ}
     (h : StaysAwayBy r u z) : StaysAwayBy r' u z :=
   ⟨h.1, fun t ht => hrr.trans (h.2 t ht)⟩

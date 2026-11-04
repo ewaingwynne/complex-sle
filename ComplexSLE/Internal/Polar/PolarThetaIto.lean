@@ -283,26 +283,11 @@ theorem secStop_of_not_lt {i : Fin 4} (hi : ¬ (i : ℕ) < 2) (ω : Ω) :
     secStop hU z n k i ω = sectorTime hU z n k ω := by
   fin_cases i <;> first | rfl | exact absurd (by decide) hi
 
-theorem sectorTime_le_sectorTime_succ (ω : Ω) :
-    sectorTime hU z n k ω ≤ sectorTime hU z n (k + 1) ω :=
-  sectorTime_le_succ hU z n k ω
-
-theorem secStop_le_exitNN (i : Fin 4) (ω : Ω) : secStop hU z n k i ω ≤ exitNN hU z n ω := by
-  by_cases hi : (i : ℕ) < 2
-  · rw [secStop_of_lt hU z n k hi]; exact sectorTime_le_exitNN hU z n _ ω
-  · rw [secStop_of_not_lt hU z n k hi]; exact sectorTime_le_exitNN hU z n _ ω
-
 theorem isStoppingTime_secStop (i : Fin 4) :
     IsStoppingTime ℱ fun ω => (secStop hU z n k i ω : WithTop ℝ≥0) := by
   by_cases hi : (i : ℕ) < 2
   · simp only [secStop_of_lt hU z n k hi]; exact isStoppingTime_sectorTime hU z n _
   · simp only [secStop_of_not_lt hU z n k hi]; exact isStoppingTime_sectorTime hU z n _
-
-theorem isStoppingTime_secStop_min (i j : Fin 4) :
-    IsStoppingTime ℱ fun ω => ((min (secStop hU z n k i ω) (secStop hU z n k j ω) : ℝ≥0) :
-      WithTop ℝ≥0) := by
-  have := (isStoppingTime_secStop hU z n k i).min (isStoppingTime_secStop hU z n k j)
-  simpa only [WithTop.coe_min] using this
 
 /-- `min (S_i, S_j)` is `S_{k+1}` on the upper block and `S_k` elsewhere. -/
 theorem min_secStop_of_lt {i j : Fin 4} (hi : (i : ℕ) < 2) (hj : (j : ℕ) < 2) (ω : Ω) :

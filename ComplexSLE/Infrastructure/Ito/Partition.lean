@@ -78,15 +78,6 @@ theorem pt_mono {s t : ℝ≥0} (hst : s ≤ t) (m : ℕ) : Monotone (pt s t m) 
 theorem le_pt {s t : ℝ≥0} (hst : s ≤ t) (m k : ℕ) : s ≤ pt s t m k := by
   simpa [pt_zero] using pt_mono hst m (Nat.zero_le k)
 
-theorem pt_le {s t : ℝ≥0} (hst : s ≤ t) (m : ℕ) {k : ℕ} (hk : k ≤ m + 1) : pt s t m k ≤ t := by
-  simpa [pt_last] using pt_mono hst m hk
-
-/-- Adjacent partition points are at distance `(t - s)/(m + 1)`. -/
-theorem abs_ptR_succ_sub {s t : ℝ} (hst : s ≤ t) (m k : ℕ) :
-    |ptR s t m (k + 1) - ptR s t m k| = (t - s) / (m + 1) := by
-  rw [ptR_succ_sub, abs_of_nonneg]
-  exact div_nonneg (sub_nonneg.2 hst) (by positivity)
-
 /-! ### Oscillation along the partitions -/
 
 /-- For a continuous path, the oscillation over the pieces of the uniform partitions tends to

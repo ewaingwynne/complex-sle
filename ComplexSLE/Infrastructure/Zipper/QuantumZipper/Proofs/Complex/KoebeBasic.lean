@@ -26,10 +26,7 @@ public import Mathlib.RingTheory.RootsOfUnity.Complex
 * `deriv_ne_zero_of_injOn`: an injective holomorphic map on an open set has nonvanishing
   derivative (Pommerenke, *Univalent Functions* (1975), §1.1; Ahlfors, *Complex Analysis*,
   Ch. 4, Thm. 11 corollary). Proof by local `n`-th roots and the inverse function theorem.
-* `hasDerivAt_invFunOn_of_injOn`: the inverse of an injective holomorphic map is holomorphic.
 * `isOpen_image_of_injOn`: injective holomorphic maps are open.
-* `radius_mul_norm_deriv_le_of_ball_subset_image`: the Schwarz lemma applied to the inverse map
-  (the "upper Koebe" inequality in its general form).
 -/
 
 public section
@@ -174,25 +171,6 @@ theorem deriv_ne_zero_of_injOn {f : ℂ → ℂ} {U : Set ℂ} (hU : IsOpen U)
       exact this
     exact hω.ne_one (by omega) this
 
-/-- The inverse of an injective holomorphic map is holomorphic, with the expected derivative. -/
-theorem hasDerivAt_invFunOn_of_injOn {f : ℂ → ℂ} {U : Set ℂ} (hU : IsOpen U)
-    (hd : DifferentiableOn ℂ f U) (hinj : InjOn f U) {z : ℂ} (hz : z ∈ U) :
-    HasDerivAt (Function.invFunOn f U) (deriv f z)⁻¹ (f z) := by
-  have hne := deriv_ne_zero_of_injOn hU hd hinj hz
-  have hf : HasStrictDerivAt f (deriv f z) z := ((hd.analyticOnNhd hU) z hz).hasStrictDerivAt
-  set g := hf.localInverse f (deriv f z) z hne
-  have hg : HasStrictDerivAt g (deriv f z)⁻¹ (f z) := hf.to_localInverse hne
-  have hgfz : g (f z) = z := (hf.eventually_left_inverse hne).self_of_nhds
-  have hgU : ∀ᶠ y in 𝓝 (f z), g y ∈ U := by
-    have := hg.hasDerivAt.continuousAt.eventually (hU.mem_nhds (hgfz.symm ▸ hz))
-    exact this
-  have heq : Function.invFunOn f U =ᶠ[𝓝 (f z)] g := by
-    filter_upwards [hgU, hf.eventually_right_inverse hne] with y hy1 hy2
-    have hex : ∃ a ∈ U, f a = y := ⟨g y, hy1, hy2⟩
-    apply hinj (Function.invFunOn_mem hex) hy1
-    rw [Function.invFunOn_eq hex, hy2]
-  exact hg.hasDerivAt.congr_of_eventuallyEq heq
-
 /-- Injective holomorphic maps on open sets are open. -/
 theorem isOpen_image_of_injOn {f : ℂ → ℂ} {U V : Set ℂ} (hU : IsOpen U)
     (hd : DifferentiableOn ℂ f U) (hinj : InjOn f U) (hVU : V ⊆ U) (hV : IsOpen V) :
@@ -203,38 +181,5 @@ theorem isOpen_image_of_injOn {f : ℂ → ℂ} {U V : Set ℂ} (hU : IsOpen U)
     ((hd.analyticOnNhd hU) z (hVU hz)).hasStrictDerivAt
   rw [← hf.map_nhds_eq (deriv_ne_zero_of_injOn hU hd hinj (hVU hz))]
   exact image_mem_map (hV.mem_nhds hz)
-
-/-- **Schwarz lemma for the inverse map.** Let `f` be injective and holomorphic on an open set
-`U`, `z ∈ U`, and let `ψ` be holomorphic on `U` with `ψ '' U ⊆ closedBall (ψ z) ρ`. If the disk
-`ball (f z) R` lies in `f '' U`, then `R ‖ψ'(z)‖ ≤ ρ ‖f'(z)‖`. (With `ψ = id` on a disk this is
-the upper half of Koebe's estimate, Pommerenke, *Boundary Behaviour of Conformal Maps*,
-Cor. 1.4.) -/
-theorem radius_mul_norm_deriv_le_of_ball_subset_image {f ψ : ℂ → ℂ} {U : Set ℂ} (hU : IsOpen U)
-    (hd : DifferentiableOn ℂ f U) (hinj : InjOn f U) {z : ℂ} (hz : z ∈ U)
-    (hψ : DifferentiableOn ℂ ψ U) {ρ : ℝ} (hψmaps : MapsTo ψ U (closedBall (ψ z) ρ))
-    {R : ℝ} (hR : 0 < R) (hsub : ball (f z) R ⊆ f '' U) :
-    R * ‖deriv ψ z‖ ≤ ρ * ‖deriv f z‖ := by
-  set g := Function.invFunOn f U
-  have hgU : MapsTo g (ball (f z) R) U := fun w hw => Function.invFunOn_mem (hsub hw)
-  have hgfz : g (f z) = z := hinj (Function.invFunOn_mem ⟨z, hz, rfl⟩) hz
-    (Function.invFunOn_eq ⟨z, hz, rfl⟩)
-  have hgd : ∀ w ∈ ball (f z) R, DifferentiableAt ℂ g w := by
-    intro w hw
-    obtain ⟨z', hz', rfl⟩ := hsub hw
-    exact (hasDerivAt_invFunOn_of_injOn hU hd hinj hz').differentiableAt
-  have hcd : DifferentiableOn ℂ (ψ ∘ g) (ball (f z) R) := fun w hw =>
-    ((hψ.differentiableAt (hU.mem_nhds (hgU hw))).comp w (hgd w hw)).differentiableWithinAt
-  have hmaps : MapsTo (ψ ∘ g) (ball (f z) R) (closedBall ((ψ ∘ g) (f z)) ρ) := by
-    intro w hw
-    simp only [Function.comp_apply, hgfz]
-    exact hψmaps (hgU hw)
-  have hsch := norm_deriv_le_div_of_mapsTo_ball hcd hmaps hR
-  have hψz : HasDerivAt ψ (deriv ψ z) (g (f z)) := by
-    rw [hgfz]; exact (hψ.differentiableAt (hU.mem_nhds hz)).hasDerivAt
-  have hchain := hψz.comp (f z) (hasDerivAt_invFunOn_of_injOn hU hd hinj hz)
-  rw [hchain.deriv, norm_mul, norm_inv] at hsch
-  have hne : 0 < ‖deriv f z‖ := norm_pos_iff.2 (deriv_ne_zero_of_injOn hU hd hinj hz)
-  rw [← div_eq_mul_inv, div_le_div_iff₀ hne hR] at hsch
-  linarith
 
 end QuantumZipper.CA.Koebe

@@ -14,8 +14,8 @@ For a continuous driver `U` and `t : ℝ≥0`, a point `z` lies outside the left
 is a solution of the Loewner equation on the closed interval `[0, t]` started at `z`
 (`notMem_leftHull_iff_exists_closedSol`), and then `f_t^U (z) = γ t - U t` for every such
 solution (`centeredLoewnerMap_eq_of_closedSol`). Since `ClosedSol` only involves `U` on `[0, t]`,
-two continuous drivers that agree on `[0, t]` have the same `L_t` (`leftHull_congr`), the same
-`f_t` (`centeredLoewnerMap_congr`) and the same `R_t` (`rightHull_congr`).
+two continuous drivers that agree on `[0, t]` have the same `L_t` (`leftHull_congr`) and the same
+`f_t` (`centeredLoewnerMap_congr`).
 -/
 
 public section
@@ -71,20 +71,6 @@ theorem centeredLoewnerMap_congr (hU : Continuous U) (hV : Continuous V) {t : �
   obtain ⟨γ, h0, hγ⟩ := (notMem_leftHull_iff_exists_closedSol hU t z).1 hzU
   rw [centeredLoewnerMap_eq_of_closedSol hU h0 hγ hzU,
     centeredLoewnerMap_eq_of_closedSol hV h0 ((closedSol_congr h).1 hγ) hzV, h t le_rfl]
-
-/-- The right hull `R_t^U` only depends on the driver on `[0, t]`. -/
-theorem rightHull_congr (hU : Continuous U) (hV : Continuous V) {t : ℝ≥0}
-    (h : ∀ s ≤ t, U s = V s) : rightHull U hU t = rightHull V hV t := by
-  have key : ∀ {U V : ℝ≥0 → ℂ} (hU : Continuous U) (hV : Continuous V),
-      (∀ s ≤ t, U s = V s) →
-        Set.range (centeredLoewnerMap U hU t) ⊆ Set.range (centeredLoewnerMap V hV t) := by
-    rintro U V hU hV h _ ⟨z, rfl⟩
-    have hzV : z.1 ∈ (leftHull V t)ᶜ := by
-      rw [← leftHull_congr hU hV h]
-      exact z.2
-    exact ⟨⟨z.1, hzV⟩, (centeredLoewnerMap_congr hU hV h z.2 hzV).symm⟩
-  exact congrArg compl (Set.Subset.antisymm (key hU hV h)
-    (key hV hU fun s hs => (h s hs).symm))
 
 end ComplexSLE.Internal
 

@@ -94,7 +94,6 @@ theorem measurable_lintPath_apply {φ : ℝ≥0 → Ω → ℝ} (hφ : IsStrongl
       (fun _ => ⟨t, mem_Iic.2 le_rfl⟩) id (@measurable_const _ _ _ (ℱ t) _) (@measurable_id _ (ℱ t))
   exact h.comp h2
 
-
 /-- `lintPath φ t ω` as the mass of `(0, t]` for the measure with density `ofReal φ`. -/
 theorem lintPath_eq_measure (φ : ℝ≥0 → Ω → ℝ) (t : ℝ≥0) (ω : Ω) :
     lintPath φ t ω =
@@ -152,13 +151,6 @@ theorem lintPath_tilde_le (φ : ℝ≥0 → Ω → ℝ) (t : ℝ≥0) (ω : Ω) 
     lintPath (tilde φ) t ω ≤ lintPath φ t ω :=
   lintegral_mono fun _ => ofReal_tilde_le _ _ _
 
-/-- On a path along which `lintPath φ` is finite, switching off changes nothing. -/
-theorem lintPath_tilde_eq {φ : ℝ≥0 → Ω → ℝ} {ω : Ω} (h : ∀ s, lintPath φ s ω < ⊤) (t : ℝ≥0) :
-    lintPath (tilde φ) t ω = lintPath φ t ω := by
-  unfold lintPath
-  refine lintegral_congr fun r => ?_
-  rw [tilde_eq_of_lt_top (h _)]
-
 /-- Sections of a progressive process are measurable in the real time variable. -/
 theorem measurable_toNNReal_section {ξ : ℝ≥0 → Ω → ℝ} (hξ : IsStronglyProgressive ℱ ξ) (ω : Ω) :
     Measurable fun r : ℝ => ξ r.toNNReal ω :=
@@ -215,7 +207,6 @@ theorem tendsto_lintPath_tilde_right (φ : ℝ≥0 → Ω → ℝ) (ω : Ω) (t 
     refine tendsto_const_nhds.congr' ?_
     filter_upwards [self_mem_nhdsWithin] with s hs
     exact (hconst s hs).symm
-
 
 /-- **Left limits.** If `lintPath ξ s ω ≤ c` for all `s < ρ`, then `lintPath ξ ρ ω ≤ c`. -/
 theorem lintPath_le_of_forall_lt {ξ : ℝ≥0 → Ω → ℝ} {ω : Ω} {ρ : ℝ≥0} {c : ℝ≥0∞}
@@ -304,9 +295,6 @@ theorem isStoppingTime_variationTime {φ : ℝ≥0 → Ω → ℝ} (hφ : IsStro
   isStoppingTime_hittingBtwn_of_rightContinuous
     (fun t => measurable_lintPath_apply (isStronglyProgressive_tilde hφ) t)
     (fun ω => lintPath_mono _ ω) (fun ω t => tendsto_lintPath_tilde_right φ ω t) _ _
-
-theorem variationTime_le (φ : ℝ≥0 → Ω → ℝ) (n : ℕ) (ω : Ω) : variationTime φ n ω ≤ n :=
-  hittingBtwn_le ω
 
 /-- **The switched-off total variation up to the variation time is at most `n`** (for every `ω`). -/
 theorem lintPath_tilde_variationTime_le (φ : ℝ≥0 → Ω → ℝ) (n : ℕ) (ω : Ω) :

@@ -145,9 +145,6 @@ theorem periodic_exp_two_mul_I : Periodic (fun u : ℝ => Complex.exp (2 * Compl
 /-- `e^{2iu}` as a function on the circle `ℝ ⧸ πℤ`. -/
 @[expose] noncomputable def expTwoI : AddCircle π → ℂ := periodic_exp_two_mul_I.lift
 
-@[simp] theorem expTwoI_coe (u : ℝ) : expTwoI (u : AddCircle π) = Complex.exp (2 * Complex.I * u) :=
-  rfl
-
 theorem continuous_expTwoI : Continuous expTwoI :=
   Continuous.quotient_liftOn' (by fun_prop) _
 

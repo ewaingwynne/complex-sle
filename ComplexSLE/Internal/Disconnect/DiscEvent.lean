@@ -116,11 +116,6 @@ theorem ballDiscAt_iff {u : ℝ≥0 → ℂ} {c : ℂ} {r : ℝ} (hr : 0 < r) {t
     exact ⟨h4, Planar.disconnectsFromInfinity_of_preconnected (convex_ball c r).isPreconnected h4
       (mem_ball_self hr) h3⟩
 
-/-- `BallDiscAt` is monotone in `t` as long as the ball stays outside the hull. -/
-theorem BallDiscAt.mono {u : ℝ≥0 → ℂ} {c : ℂ} {r : ℝ} {t t' : ℝ≥0} (h : BallDiscAt u c r t)
-    (htt : t ≤ t') (hd : Disjoint (ball c r) (leftHull u t')) : BallDiscAt u c r t' :=
-  ⟨hd, Planar.disconnectsFromInfinity_mono (leftHull_mono htt) h.2⟩
-
 /-! ### Openness -/
 
 /-- For a continuous driver, `{z | DiscAt u z t}` is open. -/

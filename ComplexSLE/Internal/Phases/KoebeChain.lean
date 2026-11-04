@@ -151,44 +151,6 @@ theorem compl_union_subset_image :
   intro hx
   exact hu (Or.inl ((mem_leftHull_add_iff hU s t x hx₁).1 hx))
 
-/-- The maps formula of (2.3) in `fPath` form: `f_{s+t}(z) = f_{t,s+t}(f_t z)` for `z ∉ L_{s+t}`. -/
-theorem fPath_add_eq {z : ℂ} (hz : z ∉ leftHull U (s + t)) :
-    fPath U hU z ((s + t : ℝ≥0) : ℝ) =
-      fPath (futureDriver U t) (continuous_futureDriver hU t) (fPath U hU z t) s := by
-  have hz₁ := notMem_leftHull_of_notMem_add t s hz
-  have hz₂ : centeredLoewnerMap U hU t ⟨z, hz₁⟩ ∈ (leftHull (futureDriver U t) s)ᶜ :=
-    fun h => hz ((mem_leftHull_add_iff hU s t z hz₁).2 h)
-  have h := centeredLoewnerMap_add_eq hU s t z hz hz₁ hz₂
-  rw [centeredLoewnerMap_eq_fPath hU (s + t) hz] at h
-  have hw : fPath U hU z t ∈ (leftHull (futureDriver U t) s)ᶜ := by
-    rw [← centeredLoewnerMap_eq_fPath hU t hz₁]; exact hz₂
-  have e : (⟨centeredLoewnerMap U hU t ⟨z, hz₁⟩, hz₂⟩ : ↥(leftHull (futureDriver U t) s)ᶜ) =
-      ⟨fPath U hU z t, hw⟩ := Subtype.ext (centeredLoewnerMap_eq_fPath hU t hz₁)
-  rw [h, ← centeredLoewnerMap_eq_fPath (continuous_futureDriver hU t) s hw]
-  exact congrArg (fun a => centeredLoewnerMap (futureDriver U t) (continuous_futureDriver hU t) s a)
-    e
-
-/-- **The derivative chain rule** `f_{s+t}'(z) = f_{t,s+t}'(f_t z) · f_t'(z)` for `z ∉ L_{s+t}`
-(from the maps formula of (2.3), `fPath_add_eq`, and the holomorphy of the centered maps in the
-initial point, `hasDerivAt_fPath_initial`). -/
-theorem derivPath_add_eq {z : ℂ} (hz : z ∉ leftHull U (s + t)) :
-    derivPath U hU z ((s + t : ℝ≥0) : ℝ) =
-      derivPath (futureDriver U t) (continuous_futureDriver hU t) (fPath U hU z t) s *
-        derivPath U hU z t := by
-  have hz₁ := notMem_leftHull_of_notMem_add t s hz
-  have hw : fPath U hU z t ∉ leftHull (futureDriver U t) s := fun h =>
-    fPath_notMem_union hU t s hz (Or.inl h)
-  have hF := hasDerivAt_fPath_initial hU (coe_mem_lifeSet_iff.2 hz₁)
-  have hG := hasDerivAt_fPath_initial (continuous_futureDriver hU t) (coe_mem_lifeSet_iff.2 hw)
-  have hcomp := hG.comp z hF
-  have hD := hasDerivAt_fPath_initial hU (coe_mem_lifeSet_iff.2 hz)
-  have hev : (fun x => fPath U hU x ((s + t : ℝ≥0) : ℝ)) =ᶠ[nhds z]
-      ((fun y => fPath (futureDriver U t) (continuous_futureDriver hU t) y s) ∘
-        (fun x => fPath U hU x t)) := by
-    filter_upwards [(isOpen_compl_leftHull U hU (s + t)).mem_nhds hz] with x hx
-    exact fPath_add_eq hU t s hx
-  exact hD.unique (hcomp.congr_of_eventuallyEq hev)
-
 end Concat
 
 /-! ### The future hull contains `0`; positivity of the distances -/
@@ -398,30 +360,6 @@ theorem koebe_chain [Decidable (koebeEvent U hU t s z)] (hz : z ∉ leftHull U (
           Real.log_le_log (div_pos hQ hdL) h
       _ = Real.log (1 / infDist z (leftHull U t)) + koebeC := by
           rw [koebeC, Real.log_mul (pow_pos koebeK_pos 2).ne' hpos.ne', add_comm]
-
-/-- `eqn-dist-3` with the hypothesis in the paper's form `s + t < T_z`
-(`notMem_leftHull_iff`). -/
-theorem koebe_chain_of_lt_absorbingTime [Decidable (koebeEvent U hU t s z)]
-    (hz : ((s + t : ℝ≥0) : ℝ≥0∞) < absorbingTime U z) :
-    Real.log (infDist (fPath U hU z t) (leftHull (futureDriver U t) s) / ‖fPath U hU z t‖) -
-        Real.log (infDist z (leftHull U (s + t))) ≤
-      (if koebeEvent U hU t s z then Real.log (‖derivPath U hU z t‖ / ‖fPath U hU z t‖)
-        else Real.log (1 / infDist z (leftHull U t))) + koebeC :=
-  koebe_chain hU (notMem_leftHull_iff.2 hz)
-
-/-- `eqn-dist-3` in the literal indicator form of the paper (paper.tex:L1668-1672):
-`… ≤ 1_{E_s} log(|f_t'(z)| / |f_t z|) + 1_{E_s^c} log(1 / dist(z, L_t)) + koebeC`. -/
-theorem koebe_chain_indicator [Decidable (koebeEvent U hU t s z)] (hz : z ∉ leftHull U (s + t)) :
-    Real.log (infDist (fPath U hU z t) (leftHull (futureDriver U t) s) / ‖fPath U hU z t‖) -
-        Real.log (infDist z (leftHull U (s + t))) ≤
-      (if koebeEvent U hU t s z then (1 : ℝ) else 0) *
-          Real.log (‖derivPath U hU z t‖ / ‖fPath U hU z t‖) +
-        (if koebeEvent U hU t s z then (0 : ℝ) else 1) *
-          Real.log (1 / infDist z (leftHull U t)) + koebeC := by
-  have h := koebe_chain hU hz
-  by_cases hE : koebeEvent U hU t s z
-  · simpa [hE] using h
-  · simpa [hE] using h
 
 end Chain
 

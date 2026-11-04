@@ -10,26 +10,21 @@ module
 public import ComplexSLE.Infrastructure.Zipper.QuantumZipper.Proofs.Complex.KoebeBasic
 
 /-!
-# Koebe covering and Koebe's estimate on a disk (EXT-CA nodes K3, K5a-disk; EXT-JS node D2)
+# Koebe covering on a disk (EXT-CA nodes K3, K5a-disk; EXT-JS node D2)
 
 For `f` injective and holomorphic on `ball c r`:
 
 * `ball_subset_image_koebe`: `ball (f c) (r ‖f'(c)‖ / 48) ⊆ f '' ball c r` (Koebe covering with
-  the non-sharp constant `koebeCovConst = 1/48` instead of `1/4`);
-* `image_ball_ne_univ`: `f '' ball c r ≠ univ`;
-* `koebeCovConst_mul_le_infDist` and `infDist_le_mul_norm_deriv`: Koebe's estimate
-  `r ‖f'(c)‖ / 48 ≤ dist (f c, ∂ f(B)) ≤ r ‖f'(c)‖`.
+  the non-sharp constant `koebeCovConst = 1/48` instead of `1/4`).
 
 ## Sources and deviations
 
-Statement: Koebe's estimate, Garnett–Marshall, *Harmonic Measure* (CUP 2005), Ch. I,
-Theorem 4.3, eq. (4.13), p. 19 (the disk `ball c r` is the unit disk after the affine change
-`z ↦ c + r z`, evaluated at the center); Pommerenke, *Boundary Behaviour of Conformal Maps*
-(1992), Cor. 1.4. Koebe [1907] himself proved the left inequality with some constant `≤ 1/4`
-(Garnett–Marshall, Notes to Ch. I, p. 26); `1/4` is Bieberbach's.
+Statement: the left inequality of Koebe's estimate, in covering form, Garnett–Marshall,
+*Harmonic Measure* (CUP 2005), Ch. I, Theorem 4.3, eq. (4.13), p. 19 (the disk `ball c r` is the
+unit disk after the affine change `z ↦ c + r z`, evaluated at the center); Pommerenke, *Boundary
+Behaviour of Conformal Maps* (1992), Cor. 1.4. Koebe [1907] himself proved the left inequality with
+some constant `≤ 1/4` (Garnett–Marshall, Notes to Ch. I, p. 26); `1/4` is Bieberbach's.
 
-* The right inequality follows Garnett–Marshall's proof of Thm 4.3 (Schwarz lemma for the inverse
-  map), see `radius_mul_norm_deriv_le_of_ball_subset_image`.
 * The left inequality follows Burckel, *Classical Analysis in the Complex Plane* (Birkhäuser
   2021), Theorem 7.27 (step (4)), Corollary 7.28 and the remark after it ("latent in the proof
   of 7.27 is a lower bound of 1/24"), pp. 481–483 (PDF pp. 506–508): with `w₀` a nearest
@@ -229,52 +224,5 @@ theorem ball_subset_image_koebe {f : ℂ → ℂ} {c : ℂ} {r : ℝ}
   have := notMem_of_dist_lt_infDist hlt
   by_contra h
   exact this h
-
-/-- An injective holomorphic map on a disk is not onto `ℂ`. -/
-theorem image_ball_ne_univ {f : ℂ → ℂ} {c : ℂ} {r : ℝ} (hr : 0 < r)
-    (hd : DifferentiableOn ℂ f (ball c r)) (hinj : InjOn f (ball c r)) :
-    f '' ball c r ≠ univ := by
-  intro h
-  have hcB : c ∈ ball c r := mem_ball_self hr
-  set R := r * ‖deriv f c‖ + 1
-  have hR : 0 < R := by positivity
-  have := radius_mul_norm_deriv_le_of_ball_subset_image (ψ := id) isOpen_ball hd hinj hcB
-    differentiableOn_id (ρ := r) (fun z hz => mem_closedBall.2 (le_of_lt (by simpa using hz)))
-    hR (by rw [h]; exact subset_univ _)
-  simp at this
-  linarith
-
-/-- **Koebe's estimate, upper half** (Garnett–Marshall, Thm I.4.3, right inequality):
-`dist (f c, ∂ f(B)) ≤ r ‖f'(c)‖`. -/
-theorem infDist_le_mul_norm_deriv {f : ℂ → ℂ} {c : ℂ} {r : ℝ} (hr : 0 < r)
-    (hd : DifferentiableOn ℂ f (ball c r)) (hinj : InjOn f (ball c r)) :
-    infDist (f c) (f '' ball c r)ᶜ ≤ r * ‖deriv f c‖ := by
-  set d := infDist (f c) (f '' ball c r)ᶜ
-  rcases le_or_gt d 0 with hd0 | hd0
-  · exact hd0.trans (by positivity)
-  have hsub : ball (f c) d ⊆ f '' ball c r := by
-    intro w hw
-    rw [mem_ball, dist_comm] at hw
-    have := notMem_of_dist_lt_infDist hw
-    by_contra h
-    exact this h
-  have hcB : c ∈ ball c r := mem_ball_self hr
-  have := radius_mul_norm_deriv_le_of_ball_subset_image (ψ := id) isOpen_ball hd hinj hcB
-    differentiableOn_id (ρ := r) (fun z hz => mem_closedBall.2 (le_of_lt (by simpa using hz)))
-    hd0 hsub
-  simpa using this
-
-/-- **Koebe's estimate, lower half** (non-sharp constant; Garnett–Marshall, Thm I.4.3, left
-inequality, with `1/48` for `1/4`). This is node D2 `weakKoebe` of `EXT_JS_BLUEPRINT.md`. -/
-theorem koebeCovConst_mul_le_infDist {f : ℂ → ℂ} {c : ℂ} {r : ℝ} (hr : 0 < r)
-    (hd : DifferentiableOn ℂ f (ball c r)) (hinj : InjOn f (ball c r)) :
-    koebeCovConst * r * ‖deriv f c‖ ≤ infDist (f c) (f '' ball c r)ᶜ := by
-  have hne : ((f '' ball c r)ᶜ).Nonempty := by
-    rw [nonempty_compl]; exact image_ball_ne_univ hr hd hinj
-  rw [le_infDist hne]
-  intro y hy
-  by_contra hlt
-  push Not at hlt
-  exact hy (ball_subset_image_koebe hd hinj (by rwa [mem_ball, dist_comm]))
 
 end QuantumZipper.CA.Koebe

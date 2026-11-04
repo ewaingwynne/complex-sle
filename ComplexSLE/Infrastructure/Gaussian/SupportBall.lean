@@ -73,7 +73,6 @@ theorem covRange_eq_of_mul_transpose {S M : Matrix (Fin 2) (Fin 2) ℝ} (h : M *
   rw [Matrix.conjTranspose_eq_transpose_of_trivial, h] at this
   exact this
 
-
 instance : (gaussianReal 0 1).IsOpenPosMeasure :=
   (gaussianReal_absolutelyContinuous' 0 (one_ne_zero)).isOpenPosMeasure
 
@@ -99,10 +98,6 @@ theorem continuous_cmap (M : Matrix (Fin 2) (Fin 2) ℝ) : Continuous (cmap M) :
   have h1 : Continuous fun x : EuclideanSpace ℝ (Fin 2) => (M.mulVec x.ofLp) 1 :=
     (continuous_apply 1).comp hv
   fun_prop
-
-theorem cmap_smul (M : Matrix (Fin 2) (Fin 2) ℝ) (c : ℝ) (x : EuclideanSpace ℝ (Fin 2)) :
-    cmap (c • M) x = (c : ℂ) * cmap M x := by
-  apply Complex.ext <;> simp [cmap, Matrix.smul_mulVec]
 
 theorem cmap_mem_covRange {S M : Matrix (Fin 2) (Fin 2) ℝ} (h : M * Mᵀ = S)
     (x : EuclideanSpace ℝ (Fin 2)) : cmap M x ∈ covRange S := by
@@ -131,7 +126,6 @@ theorem complexGaussian_smul_eq_map {S M : Matrix (Fin 2) (Fin 2) ℝ} (h : M * 
   funext x
   apply Complex.ext <;> simp [cmap, Function.comp, Infrastructure.matrixApply_apply_zero,
     Infrastructure.matrixApply_apply_one, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> ring
-
 
 theorem isClosed_covRange (S : Matrix (Fin 2) (Fin 2) ℝ) : IsClosed (covRange S : Set ℂ) :=
   Submodule.closed_of_finiteDimensional _
@@ -167,7 +161,6 @@ theorem exists_stdGaussian_lower_bound {S M : Matrix (Fin 2) (Fin 2) ℝ} (h : M
   calc ‖cmap M x - z‖ = ‖(cmap M x - z₀) + (z₀ - z)‖ := by ring_nf
     _ ≤ ‖cmap M x - z₀‖ + ‖z₀ - z‖ := norm_add_le _ _
     _ < 1 := by rw [norm_sub_rev z₀ z] at *; linarith
-
 
 theorem quadForm_nonneg {a b c : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : c ^ 2 ≤ a * b)
     (x₀ x₁ : ℝ) : 0 ≤ x₀ * (a * x₀ + c * x₁) + x₁ * (c * x₀ + b * x₁) := by

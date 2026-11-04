@@ -15,11 +15,12 @@ The occupation estimate for the concrete process `θ̂ = θ̂(z)`
 (`Occupation.ae_volume_occupation_null`) and its Fubini corollary, which replaces the Lebesgue
 density of `law θ̂_1(z)` (Hörmander) in Lemma 3.3:
 
-* `ae_volume_thetaHat_null`: for `0 < a`, `0 < b`, `c² ≤ ab`, `z ≠ 0` and a Lebesgue-null `N`,
-  a.s. `Leb {t ∈ [0, T] : θ̂_t(z) ∈ N} = 0` (through an everywhere-continuous version of `θ̂(z)`
-  for the completed filtration, `IsDiffusionSolution.exists_continuous_version`);
-* `exists_pos_measure_thetaHat_preimage_eq_zero`: there is `t ∈ [1, 2]`, in particular `t > 0`,
-  with `P (θ̂_t(z) ∈ N) = 0` (Fubini on `Ω × [1, 2]`).
+* `exists_continuous_version_thetaHat`: an everywhere-continuous version of `θ̂(z)` for the
+  completed filtration (`IsDiffusionSolution.exists_continuous_version`), solving the martingale
+  problem for `(µ, √(2D))`;
+* `exists_pos_measure_thetaHat_preimage_eq_zero`: for `0 < a`, `0 < b`, `c² ≤ ab`, `z ≠ 0` and a
+  Lebesgue-null `N`, there is `t ∈ [1, 2]`, in particular `t > 0`, with `P (θ̂_t(z) ∈ N) = 0`
+  (Fubini on `Ω × [1, 2]`).
 -/
 
 public section
@@ -52,18 +53,6 @@ theorem exists_continuous_version_thetaHat (hU : IsSLEDriverAdapted a b c U P �
         (MeasurableSpace.generateFrom_le fun _ hN => hN.1) }
   obtain ⟨X, hae, hXc, hX⟩ := hsol.exists_continuous_version 𝒢 fun s => rfl
   exact ⟨𝒢, X, hae, hXc, hX⟩
-
-/-- **`θ̂(z)` spends no time in a Lebesgue-null set**: a.s. `Leb {t ∈ [0, T] : θ̂_t(z) ∈ N} = 0`. -/
-theorem ae_volume_thetaHat_null (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a) (hb : 0 < b)
-    (hc : c ^ 2 ≤ a * b) {z : ℂ} (hz : z ≠ 0) {N : Set ℝ} (hN : volume N = 0) (T : ℝ) :
-    ∀ᵐ ω ∂P, volume {t : ℝ | t ∈ Set.Icc 0 T ∧ thetaHat hU z t.toNNReal ω ∈ N} = 0 := by
-  obtain ⟨𝒢, X, hae, hXc, hX⟩ := exists_continuous_version_thetaHat hU ha hc hz
-  have hβc : Continuous fun u => √(2 * diffusionD a b c u) :=
-    (continuous_const.mul (continuous_diffusionD a b c)).sqrt
-  have h := ae_volume_occupation_null ha hb hc hX hXc hβc
-    (fun u => sq_sqrt_two_mul_diffusionD ha hb hc u) hN T
-  filter_upwards [h, hae] with ω hω hω'
-  simpa only [← hω'] using hω
 
 /-- **`θ̂(z)` at a good positive time.** For a Lebesgue-null `N` there is `t > 0` with
 `P (θ̂_t(z) ∈ N) = 0` (indeed some `t ∈ [1, 2]`, by Fubini on `Ω × [1, 2]`). -/

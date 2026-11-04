@@ -119,16 +119,6 @@ theorem capExitTime_le_exitTime (hU : Continuous U) {z : ℂ} (hz : 0 < absorbin
   csInf_le_csInf (capExitSet_bddBelow hU z n m T) (exitSet_nonempty hU hz N)
     (exitSet_subset_capExitSet hU z hn hm T)
 
-theorem capExitTime_le (hU : Continuous U) {z : ℂ} (hz : 0 < absorbingTime U z) (n : ℕ) {m : ℝ}
-    (hm : 0 ≤ m) (T : ℝ) : capExitTime U hU z n m T ≤ m := by
-  by_cases hmT : ENNReal.ofReal m < absorbingTime U z
-  · exact capExitTime_le_of_mem hU ⟨⟨hm, hmT⟩, Or.inr (Or.inr (Or.inl le_rfl))⟩
-  · push Not at hmT
-    have h := (capExitTime_mem_lifeSet hU hz n m T).2
-    by_contra hlt
-    push Not at hlt
-    exact absurd (lt_of_lt_of_le h hmT) (not_lt.2 (ENNReal.ofReal_le_ofReal hlt.le))
-
 /-- Before the capped exit time: in the life set, in the open annulus, before `m`, clock below
 `T`. -/
 theorem of_lt_capExitTime (hU : Continuous U) {z : ℂ} {n : ℕ} {m T t : ℝ} (h0 : 0 ≤ t)

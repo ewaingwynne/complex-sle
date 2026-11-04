@@ -45,13 +45,6 @@ namespace ComplexSLE.Infrastructure
 
 variable {Ω : Type*} {m : MeasurableSpace Ω} {P : Measure Ω}
 
-/-- The `P`-completed filtration `ℱ t ⊔ σ(measurable P-null sets)`. -/
-def completedFiltration {ι : Type*} [Preorder ι] (ℱ : Filtration ι m) (P : Measure Ω) :
-    Filtration ι m where
-  seq t := ℱ t ⊔ MeasurableSpace.generateFrom {N : Set Ω | MeasurableSet[m] N ∧ P N = 0}
-  mono' _ _ hst := sup_le_sup_right (ℱ.mono hst) _
-  le' t := sup_le (ℱ.le t) (MeasurableSpace.generateFrom_le fun _ hN => hN.1)
-
 /-- A set in `m₁ ⊔ σ(null sets)` agrees a.e. with a set of `m₁`. -/
 theorem exists_ae_eq_of_measurableSet_sup {m₁ : MeasurableSpace Ω} {A : Set Ω}
     (hA : MeasurableSet[m₁ ⊔

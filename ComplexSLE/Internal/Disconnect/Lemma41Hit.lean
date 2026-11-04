@@ -4,7 +4,8 @@ Loewner evolution driven by complex Brownian motion: a formalization of arXiv:22
 -/
 module
 
-public import ComplexSLE.Infrastructure.Planar.CrossingLimit
+public import ComplexSLE.Infrastructure.Planar.Crossing
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
 public import ComplexSLE.Infrastructure.Planar.Chain
 
 /-!
@@ -29,8 +30,10 @@ open Set Metric
 
 namespace ComplexSLE.Internal
 
-/-- A version of `ComplexSLE.Planar.exists_mem_image_of_chain_crossing` in which only chains of
-mesh `ρ ≤ ρ₀` are required. -/
+/-- **Limit of chain crossings.** If a compact set `S` carries, for every `ρ ≤ ρ₀`, a `ρ`-chain in
+`S` whose image under a continuous map `F` satisfies the hypotheses of the chain crossing lemma
+`ComplexSLE.Planar.exists_dist_le_of_chain_crossing` for a closed connected set `B`, then `F` maps
+some point of `S` into `B`. -/
 theorem exists_mem_image_of_chain_crossing_small {S : Set ℂ} (hS : IsCompact S) {F : ℂ → ℂ}
     (hF : ContinuousOn F S) {B : Set ℂ} (hB : IsClosed B) (hBc : IsPreconnected B)
     {ε h ρ₀ : ℝ} (hρ₀ : 0 < ρ₀) (hBre : ∀ w ∈ B, |w.re| < ε) {b₁ b₂ : ℂ} (hb₁ : b₁ ∈ B)

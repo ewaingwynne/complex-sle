@@ -46,16 +46,6 @@ theorem sq_sqrt_two_mul_diffusionD (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a *
     √(2 * diffusionD a b c u) ^ 2 = 2 * diffusionD a b c u :=
   Real.sq_sqrt (by have := diffusionD_nonneg ha hb hc u; positivity)
 
-theorem sqrt_two_mul_diffusionD_ne_zero (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 < a * b) (u : ℝ) :
-    √(2 * diffusionD a b c u) ≠ 0 :=
-  (Real.sqrt_pos.mpr (by have := diffusionD_pos ha hb hc u; positivity)).ne'
-
-/-- The Hörmander condition (A.1) in the noncritical case: `β = √(2D)` never vanishes. -/
-theorem hormander_sqrt_two_mul_diffusionD (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 < a * b) (u : ℝ) :
-    √(2 * diffusionD a b c u) ≠ 0 ∨
-      deriv (fun u => √(2 * diffusionD a b c u)) u * mu a b c u ≠ 0 :=
-  Or.inl (sqrt_two_mul_diffusionD_ne_zero ha hb hc u)
-
 /-- `β² = 2D` is `π`-periodic (for any `β` with `β² = 2D`). -/
 theorem sq_periodic_of_sq_eq_two_mul_diffusionD {β : ℝ → ℝ}
     (hβ : ∀ u, β u ^ 2 = 2 * diffusionD a b c u) (u : ℝ) : β (u + π) ^ 2 = β u ^ 2 := by
@@ -69,16 +59,6 @@ theorem sq_periodic_of_sq_eq_two_mul_diffusionD {β : ℝ → ℝ}
 
 theorem contDiff_betaCrit (a c : ℝ) : ContDiff ℝ ∞ (betaCrit a c) := by
   unfold betaCrit; fun_prop
-
-theorem hasDerivAt_betaCrit (a c u : ℝ) :
-    HasDerivAt (betaCrit a c) (√a * cos u + c / √a * sin u) u := by
-  have h := ((hasDerivAt_sin u).const_mul (√a)).sub ((hasDerivAt_cos u).const_mul (c / √a))
-  have e : √a * cos u + c / √a * sin u = √a * cos u - c / √a * -sin u := by ring
-  rw [e]
-  exact h
-
-theorem deriv_betaCrit (a c u : ℝ) : deriv (betaCrit a c) u = √a * cos u + c / √a * sin u :=
-  (hasDerivAt_betaCrit a c u).deriv
 
 /-- `β² = 2D` in the critical case (`step:D-structure`). -/
 theorem sq_betaCrit (ha : 0 < a) (hc : c ^ 2 = a * b) (u : ℝ) :
@@ -128,39 +108,6 @@ theorem mu_eq_of_betaCrit_eq_zero (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 = a * b)
   have h3 := sin_mul_cos_of_betaCrit_eq_zero ha hc h0
   rw [eq_div_iff hab, mu, Real.sin_two_mul, Real.cos_two_mul]
   linear_combination (-(4 - a + b)) * h3 - 2 * c * h2
-
-/-- At a zero of `β` (critical case), `β'(u) ≠ 0`. -/
-theorem deriv_betaCrit_ne_zero_of_eq_zero (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 = a * b) {u : ℝ}
-    (h0 : betaCrit a c u = 0) : deriv (betaCrit a c) u ≠ 0 := by
-  rw [deriv_betaCrit]
-  intro hzero
-  have hsa : √a ^ 2 = a := Real.sq_sqrt ha.le
-  have hsa0 : √a ≠ 0 := (Real.sqrt_pos.mpr ha).ne'
-  have e : c / √a * √a = c := div_mul_cancel₀ c hsa0
-  have h4 : a * cos u + c * sin u = 0 := by
-    linear_combination √a * hzero - cos u * hsa - sin u * e
-  have h2 := cos_sq_of_betaCrit_eq_zero ha hc h0
-  have h3 := sin_mul_cos_of_betaCrit_eq_zero ha hc h0
-  have h5 : a * (a + b) = 0 := by
-    linear_combination -a * h2 - c * h3 + (a + b) * cos u * h4 - hc
-  exact (mul_pos ha (by positivity)).ne' h5
-
-/-- The Hörmander condition (A.1) in the critical case `c² = ab`
-(`step:stat-apply-kolmogorov-critical`). -/
-theorem hormander_betaCrit (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 = a * b) (u : ℝ) :
-    betaCrit a c u ≠ 0 ∨ deriv (betaCrit a c) u * mu a b c u ≠ 0 := by
-  by_cases h0 : betaCrit a c u = 0
-  · right
-    have hc0 : c ≠ 0 := by
-      rintro rfl
-      have := mul_pos ha hb
-      rw [zero_pow two_ne_zero] at hc
-      linarith
-    have hab : a + b ≠ 0 := by positivity
-    refine mul_ne_zero (deriv_betaCrit_ne_zero_of_eq_zero ha hb hc h0) ?_
-    rw [mu_eq_of_betaCrit_eq_zero ha hb hc h0]
-    exact div_ne_zero (by intro h; apply hc0; linarith) hab
-  · exact Or.inl h0
 
 end ComplexSLE.Internal
 

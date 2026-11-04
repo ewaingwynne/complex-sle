@@ -23,7 +23,7 @@ The two quantities compared in Lemma 3.9 are
 
 * `futureDistRatio U hU z t̃ s̃ = dist(f_t(z), L_{t,s+t}) / |f_t(z)|` (with
   `f_t(z) = fPath U hU z t`, which equals `centeredLoewnerMap U hU t ⟨z, _⟩`,
-  `centeredLoewnerMap_eq_fPath`, `futureDistRatio_eq_centeredLoewnerMap`), and
+  `centeredLoewnerMap_eq_fPath`), and
 * `hullDist U hU z s̃ = dist(z, L_{σ_z(s̃)})`.
 
 Both use the project's junk convention off the domain of `σ_z` (an almost sure event, Remark 2.12).
@@ -35,9 +35,6 @@ Both use the project's junk convention off the domain of `σ_z` (an almost sure 
   (`restartPoint`). The proof is the scaling relation of left hulls (`leftHull_scale`) together
   with the clock identity `σ^V_{z'}(s̃) = (σ_z(s̃ + t̃) - σ_z(t̃)) / |f_t(z)|²`
   (`restart_sigmaTime`).
-* `hullDist_neg`: `dist(z, L_{σ_z(s̃)}(-U)) = dist(-z, L_{σ_{-z}(s̃)}(U))`, deterministic and
-  unconditional (the Loewner equation is odd). This is the simultaneous negation
-  `(direction, hull) ↦ (-direction, -hull)` under which the distance is invariant.
 
 No external input is used.
 -/
@@ -69,45 +66,6 @@ noncomputable def futureDistRatio (U : ℝ≥0 → ℂ) (hU : Continuous U) (z :
 noncomputable def hullDist (U : ℝ≥0 → ℂ) (hU : Continuous U) (z : ℂ)
     (ss : ℝ≥0) : ℝ :=
   infDist z (leftHull U (sigmaTime U hU z ss).toNNReal)
-
-theorem hullDist_nonneg (hU : Continuous U) (z : ℂ) (ss : ℝ≥0) : 0 ≤ hullDist U hU z ss :=
-  infDist_nonneg
-
-theorem futureDistRatio_nonneg (hU : Continuous U) (z : ℂ) (tt ss : ℝ≥0) :
-    0 ≤ futureDistRatio U hU z tt ss :=
-  div_nonneg infDist_nonneg (norm_nonneg _)
-
-/-- **`f_t(z)` is the centered Loewner map.** On the domain of `σ_z`, `futureDistRatio` is the
-quantity `dist(f_t(z), L_{t,s+t}) / |f_t(z)|` of the source, with
-`f_t(z) = centeredLoewnerMap U hU t z` at `t = σ_z(t̃)` (`z ∉ L_t`). -/
-theorem futureDistRatio_eq_centeredLoewnerMap (hU : Continuous U) {z : ℂ} {tt : ℝ≥0}
-    (ht : (tt : ℝ) ∈ sigmaDom U hU z) (ss : ℝ≥0) :
-    ∃ h : z ∈ (leftHull U (sigmaTime U hU z tt).toNNReal)ᶜ,
-      futureDistRatio U hU z tt ss =
-        infDist (centeredLoewnerMap U hU (sigmaTime U hU z tt).toNNReal ⟨z, h⟩)
-            (leftHull (fun r => U (r + (sigmaTime U hU z tt).toNNReal) -
-                U (sigmaTime U hU z tt).toNNReal)
-              (sigmaTime U hU z ((ss : ℝ) + tt) - sigmaTime U hU z tt).toNNReal) /
-          ‖centeredLoewnerMap U hU (sigmaTime U hU z tt).toNNReal ⟨z, h⟩‖ := by
-  have hlife : ((sigmaTime U hU z tt).toNNReal : ℝ) ∈ lifeSet U z := by
-    rw [Real.coe_toNNReal _ (sigmaTime_nonneg hU ht)]
-    exact sigmaTime_mem_lifeSet hU ht
-  have h : z ∈ (leftHull U (sigmaTime U hU z tt).toNNReal)ᶜ := coe_mem_lifeSet_iff.1 hlife
-  refine ⟨h, ?_⟩
-  rw [centeredLoewnerMap_eq_fPath hU _ h, Real.coe_toNNReal _ (sigmaTime_nonneg hU ht)]
-  rfl
-
-/-! ### Negation -/
-
-/-- **Negation invariance of the distance to the hull in σ-time**, deterministic and
-unconditional: `dist(z, L_{σ_z(s̃)}(-U)) = dist(-z, L_{σ_{-z}(s̃)}(U))`. -/
-theorem hullDist_neg (hU : Continuous U) (hV : Continuous fun s => -U s) (z : ℂ) (ss : ℝ≥0) :
-    hullDist (fun s => -U s) hV z ss = hullDist U hU (-z) ss := by
-  unfold hullDist
-  rw [sigmaTime_neg hU hV z ss, leftHull_neg]
-  have h := infDist_image (x := -z) (t := leftHull U (sigmaTime U hU (-z) ss).toNNReal)
-    (Φ := (Neg.neg : ℂ → ℂ)) isometry_neg
-  rwa [neg_neg] at h
 
 /-! ### The restart identity -/
 
@@ -154,7 +112,6 @@ theorem leftHull_restart_sigma {tt : ℝ≥0} {z : ℂ} (hU : Continuous U)
   congr 1
   push_cast
   rfl
-
 
 /-- **The pathwise identity behind Lemma 3.9.** If `t̃` and `s̃ + t̃` lie in the domain of `σ_z`,
 the left side `dist(f_t(z), L_{t,s+t}) / |f_t(z)|` equals `dist(z', L^V_{σ^V_{z'}(s̃)})` for the

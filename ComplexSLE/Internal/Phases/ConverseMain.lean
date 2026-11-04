@@ -74,11 +74,6 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 @[expose] def eventF (hU : IsSLEDriverAdapted a b c U P ℱ) (tt ss : ℝ≥0) : Set (Ω × ℝ) :=
   {q | futureDistRatioRV hU tt ss q ≤ koebeBoundRV hU tt q}
 
-theorem koebeBoundRV_eq (hU : IsSLEDriverAdapted a b c U P ℱ) (tt : ℝ≥0) (q : Ω × ℝ) :
-    koebeBoundRV hU tt q =
-      Real.exp (sigmaLogRatio hU (unitPt q.2) tt q.1) * distSigma hU tt q / KoebeChain.koebeK :=
-  rfl
-
 /-- On the good set `σ_𝐳` is defined on all of `[0, ∞)`. -/
 theorem sigmaDom_eq_Ici_of_mem_goodSet (hU : IsSLEDriverAdapted a b c U P ℱ) {q : Ω × ℝ}
     (hq : q ∈ goodSet hU) :
@@ -112,7 +107,6 @@ theorem nullMeasurableSet_eventF [IsProbabilityMeasure P]
   exact nullMeasurableSet_le
     (aemeasurable_futureDistRatioRV hU ha hc (ν := admissibleMeasure p) tt ss)
     (aestronglyMeasurable_koebeBoundRV hU ha hb hc hp tt)
-
 
 /-! ### The pointwise bound -/
 
@@ -177,7 +171,6 @@ theorem distSigma_add_le (hU : IsSLEDriverAdapted a b c U P ℱ) {q : Ω × ℝ}
     leftHull_mono (Real.toNNReal_le_toNNReal hmono)
   exact infDist_le_infDist_of_subset hsub (leftHull_nonempty _ _)
 
-
 /-! ### Integrability and the nonnegativity of `E H_s̃` -/
 
 section Integrals
@@ -228,7 +221,6 @@ theorem integral_log_sub_nonneg (tt ss : ℝ≥0) :
     exact Real.log_le_log hpos (distSigma_add_le hU hq tt ss)
   rw [integral_sub hA hB, hAC]
   linarith
-
 
 include ha hb hc hp in
 theorem aestronglyMeasurable_boundH (tt ss : ℝ≥0) :

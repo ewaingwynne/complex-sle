@@ -26,8 +26,6 @@ complete nor right-continuous).
 * `martingale_of_isContLocalMartingale_of_bounded`: a continuous local martingale that is almost
   surely bounded in absolute value by a constant is a martingale (dominated convergence along the
   localising sequence).
-* `ae_continuous_of_stopped_seq`: almost sure path continuity of a process from that of its stopped
-  processes along stopping times that are a.s. eventually above every level.
 -/
 
 public section
@@ -156,23 +154,6 @@ theorem martingale_of_isContLocalMartingale_of_bounded [IsFiniteMeasure P] {M : 
       (𝓝 (∫ ω in A, M j ω ∂P)) := by
     simp only [heq]; exact hlim j
   exact tendsto_nhds_unique (hlim i) h2
-
-/-- **Path continuity from stopped processes.** If the processes stopped at `ρ k` are almost surely
-continuous and the stopping times `ρ k` are a.s. eventually above every level, then `Y` is almost
-surely continuous. -/
-theorem ae_continuous_of_stopped_seq {Y : ℝ≥0 → Ω → ℝ} {ρ : ℕ → Ω → WithTop ℝ≥0}
-    (hρev : ∀ᵐ ω ∂P, ∀ t : ℝ≥0, ∀ᶠ k in atTop, (t : WithTop ℝ≥0) ≤ ρ k ω)
-    (hc : ∀ k, ∀ᵐ ω ∂P, Continuous fun t => stoppedProcess Y (ρ k) t ω) :
-    ∀ᵐ ω ∂P, Continuous fun t => Y t ω := by
-  have hc' := ae_all_iff.2 hc
-  filter_upwards [hρev, hc'] with ω h1 h2
-  rw [continuous_iff_continuousAt]
-  intro t
-  obtain ⟨k, hk⟩ := (h1 (t + 1)).exists
-  refine ((h2 k).continuousAt (x := t)).congr_of_eventuallyEq ?_
-  filter_upwards [isOpen_Iio.mem_nhds (show t ∈ Iio (t + 1) from lt_add_one t)] with u hu
-  have hu' : (u : WithTop ℝ≥0) ≤ ((t + 1 : ℝ≥0) : WithTop ℝ≥0) := WithTop.coe_le_coe.2 hu.le
-  exact (stoppedProcess_eq_of_le (hu'.trans hk)).symm
 
 end ComplexSLE.Infrastructure
 

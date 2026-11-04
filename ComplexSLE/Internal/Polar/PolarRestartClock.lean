@@ -103,23 +103,6 @@ theorem mem_sigmaDom_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0} (hT : (
     rw [clock_restart hU hT hr hu, huv, hvs]
     ring
 
-theorem zero_mem_sigmaDom_restart (hU : Continuous U) {z : ℂ} {T : ℝ≥0}
-    (hT : (T : ℝ) ∈ lifeSet U z) {r : ℝ≥0} (hr : 0 < r) :
-    (0 : ℝ) ∈ sigmaDom (restartDriver U T r) (restartDriver_continuous hU T r)
-      (restartPt U hU z T r) :=
-  zero_mem_sigmaDom _ (zero_mem_lifeSet_restart hU hT hr)
-
-/-- If `σ_z` is defined on all of `[0, ∞)` then so is `σ` of the restarted chain. -/
-theorem sigmaDom_restart_eq_Ici (hU : Continuous U) {z : ℂ} {T : ℝ≥0}
-    (hT : (T : ℝ) ∈ lifeSet U z) {r : ℝ≥0} (hr : 0 < r) (h : clockSup U hU z = ⊤) :
-    sigmaDom (restartDriver U T r) (restartDriver_continuous hU T r) (restartPt U hU z T r) =
-      Ici 0 := by
-  ext s
-  rw [mem_sigmaDom_restart hU hT hr, sigmaDom_eq_Ici h]
-  simp only [mem_Ici, and_iff_left_iff_imp]
-  intro hs
-  exact add_nonneg (clock_nonneg hU hT) hs
-
 /-! ### The σ-time -/
 
 /-- **σ-time of the restarted chain** (`(ii)`), additive form: for `s` in the domain of `σ^V_{z'}`,

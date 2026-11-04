@@ -316,9 +316,6 @@ variable (z)
     WithTop.coe_le_coe.2 (sigmaStop_mono hU n ω hst)
   le' s := (isStoppingTime_sigmaStop hU z n s).measurableSpace_le
 
-theorem sigmaStopFiltration_apply (n : ℕ) (s : ℝ≥0) :
-    sigmaStopFiltration hU z n s = (isStoppingTime_sigmaStop hU z n s).measurableSpace := rfl
-
 /-! ### The honest σ-time as a `WithTop`-valued stopping time -/
 
 open Classical in
@@ -446,9 +443,6 @@ variable (z)
       exact (sigmaTime_monotoneOn (hU.cont ω) z) hs ht (NNReal.coe_le_coe.2 hst)
     · rw [sigmaTop_of_notMem hU ht]; exact le_top
   le' s := (isStoppingTime_sigmaTop hU z s).measurableSpace_le
-
-theorem sigmaFiltration_apply (s : ℝ≥0) :
-    sigmaFiltration hU z s = (isStoppingTime_sigmaTop hU z s).measurableSpace := rfl
 
 variable {z}
 

@@ -67,14 +67,6 @@ theorem tendsto_sigmaTime_nhdsWithin (hU : Continuous U) {z : ℂ}
   · filter_upwards [eventually_ge_atTop (0 : ℝ)] with s hs using hmem s hs
 
 /-- **Lemma 3.6** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
-continuous driver `U` and `z` with `sigmaDom = [0, ∞)` and `T_z < ∞`, `|f̂_s(z)| → 0` as
-`s → ∞`. -/
-theorem tendsto_norm_fPath_sigmaTime (hU : Continuous U) {z : ℂ}
-    (hdom : sigmaDom U hU z = Ici 0) (hT : absorbingTime U z ≠ ⊤) :
-    Tendsto (fun s : ℝ => ‖fPath U hU z (sigmaTime U hU z s)‖) atTop (𝓝 0) :=
-  (tendsto_norm_fPath_nhdsWithin hU hT).comp (tendsto_sigmaTime_nhdsWithin hU hdom hT)
-
-/-- **Lemma 3.6** (`lem-swallow-distance`, paper.tex:L1389-1398), deterministic form: for a
 continuous driver `U` and `z` with `sigmaDom = [0, ∞)` and `T_z < ∞`, `log|f̂_s(z)| → -∞` as
 `s → ∞`, where `f̂_s(z) = f_{σ_z(s)}(z)`. -/
 theorem tendsto_log_norm_fPath_sigmaTime (hU : Continuous U) {z : ℂ}
@@ -88,12 +80,6 @@ theorem tendsto_log_norm_fPath_sigmaTime_nnreal (hU : Continuous U) {z : ℂ}
     (hdom : sigmaDom U hU z = Ici 0) (hT : absorbingTime U z ≠ ⊤) :
     Tendsto (fun s : ℝ≥0 => Real.log ‖fPath U hU z (sigmaTime U hU z (s : ℝ))‖) atTop atBot :=
   (tendsto_log_norm_fPath_sigmaTime hU hdom hT).comp (NNReal.tendsto_coe_atTop.2 tendsto_id)
-
-/-- The version with the hypothesis `clockSup = ∞` (equivalent to `sigmaDom = [0, ∞)`). -/
-theorem tendsto_log_norm_fPath_sigmaTime_of_clockSup (hU : Continuous U) {z : ℂ}
-    (hclk : clockSup U hU z = ⊤) (hT : absorbingTime U z ≠ ⊤) :
-    Tendsto (fun s : ℝ => Real.log ‖fPath U hU z (sigmaTime U hU z s)‖) atTop atBot :=
-  tendsto_log_norm_fPath_sigmaTime hU (sigmaDom_eq_Ici hclk) hT
 
 end ComplexSLE.Internal.Polar
 

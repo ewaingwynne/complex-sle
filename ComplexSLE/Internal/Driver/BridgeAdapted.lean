@@ -22,7 +22,7 @@ For `hU : IsSLEDriver a b c U P` this file produces
 * the everywhere-continuous measurable version `U'` of `U`
   (`ComplexSLE.IsSLEDriver.exists_measurable_version`),
 * the filtration `ℱ = bridgeFiltration P U' _`: the natural filtration of `U'` enlarged by the
-  measurable `P`-null sets (`ComplexSLE.Infrastructure.completedFiltration`),
+  measurable `P`-null sets (`bridgeFiltration`),
 
 and proves `IsSLEDriverAdapted a b c U' P ℱ` (`IsSLEDriver.exists_adapted`). The independence of
 `U' t - U' s` from `ℱ s` comes from the Markov property at a deterministic time
@@ -54,8 +54,7 @@ theorem indep_sup_generateFrom_null {m₁ m₂ : MeasurableSpace Ω} (h : Indep 
   exact h A B₀ hA hB₀
 
 /-- The filtration of the bridge: the natural filtration of a measurable process `U`, enlarged by
-the measurable `P`-null sets, `ℱ t = σ(U s : s ≤ t) ⊔ σ(null sets)` (the same σ-algebras as
-`ComplexSLE.Infrastructure.completedFiltration` of the natural filtration). -/
+the measurable `P`-null sets, `ℱ t = σ(U s : s ≤ t) ⊔ σ(null sets)`. -/
 noncomputable def bridgeFiltration (P : Measure Ω) (U : ℝ≥0 → Ω → ℂ)
     (hU : ∀ t, Measurable[m] (U t)) : Filtration ℝ≥0 m where
   seq t := Filtration.natural U (fun t => (hU t).stronglyMeasurable) t ⊔
@@ -105,9 +104,7 @@ theorem indep_increment_natural (hU : IsSLEDriver a b c U P) (hm : ∀ t, Measur
   exact MeasurableSpace.comap_mono hh.comap_le
 
 /-- **Enlarging by null sets keeps adaptedness.** If `U` is `ℱ`-adapted and `𝒢` is a filtration with
-`ℱ t ≤ 𝒢 t ≤ ℱ t ⊔ σ(measurable null sets)`, then `U` is `𝒢`-adapted. (This is the form in which
-the completed filtration of `ComplexSLE.Infrastructure.completedFiltration` is available to
-consumers of the driver.) -/
+`ℱ t ≤ 𝒢 t ≤ ℱ t ⊔ σ(measurable null sets)`, then `U` is `𝒢`-adapted. -/
 theorem _root_.ComplexSLE.IsSLEDriverAdapted.of_le_sup_null {ℱ 𝒢 : Filtration ℝ≥0 m}
     (hU : IsSLEDriverAdapted a b c U P ℱ) (hℱ𝒢 : ∀ t, ℱ t ≤ 𝒢 t)
     (h𝒢 : ∀ t, 𝒢 t ≤

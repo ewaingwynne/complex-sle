@@ -109,13 +109,6 @@ theorem hasDerivWithinAt_derivPath (hU : Continuous U) {z : ℂ} {t : ℝ} (ht :
   simp only [derivPath]
   ring
 
-/-- The variational equation in the form `∂_t g_t'(z) = -2 g_t'(z) / f_t(z)²`. -/
-theorem hasDerivWithinAt_derivPath' (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet U z) :
-    HasDerivWithinAt (derivPath U hU z) (-2 * derivPath U hU z t / fPath U hU z t ^ 2)
-      (Ici 0) t := by
-  refine (hasDerivWithinAt_derivPath hU ht).congr_deriv ?_
-  rw [derivRate, inv_pow, div_eq_mul_inv]
-
 theorem continuousOn_derivPath (hU : Continuous U) (z : ℂ) :
     ContinuousOn (derivPath U hU z) (lifeSet U z) := fun _ ht =>
   ((hasDerivWithinAt_derivPath hU ht).continuousWithinAt).mono (lifeSet_subset_Ici z)
@@ -303,10 +296,6 @@ theorem hasDerivAt_solPath_initial (hU : Continuous U) {z : ℂ} {t : ℝ} (ht :
 theorem hasDerivAt_fPath_initial (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet U z) :
     HasDerivAt (fun w => fPath U hU w t) (derivPath U hU z t) z :=
   (hasDerivAt_solPath_initial hU ht).sub_const (U t.toNNReal)
-
-theorem deriv_solPath_initial (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet U z) :
-    deriv (fun w => solPath U hU w t) z = derivPath U hU z t :=
-  (hasDerivAt_solPath_initial hU ht).deriv
 
 theorem deriv_fPath_initial (hU : Continuous U) {z : ℂ} {t : ℝ} (ht : t ∈ lifeSet U z) :
     deriv (fun w => fPath U hU w t) z = derivPath U hU z t :=

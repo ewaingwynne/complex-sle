@@ -76,10 +76,6 @@ lemma gs_meas_ge_le {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} [IsProbab
   rw [hmean, hD.variance_eq, variance_id_gaussianReal] at h
   simpa using h
 
-lemma gs_integral_eq_zero {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω}
-    {D : Ω → ℝ} {v : NNReal} (hD : HasLaw D (gaussianReal 0 v) P) : ∫ ω, D ω ∂P = 0 := by
-  rw [hD.integral_eq, integral_id_gaussianReal]
-
 /-! ### Almost sure convergence along a subsequence -/
 
 lemma gs_diff_eq (a : ℕ → ℝ) {n m : ℕ} (hnm : n ≤ m) (ω : ℕ → ℝ) :

@@ -26,8 +26,8 @@ Proof (fixed `z ≠ 0`):
 * Closure clause, for the adapted version `U'` of the driver (`IsSLEDriver.exists_adapted`): for
   `c = 0`, `a - b = 8` the drift density `ν(θ̂) + 2 cos 2θ̂` of `log(|f̂'|/|f̂|)` vanishes
   identically (`ratioDriftHat_eq_zero`), so `sigmaLogRatio_s = -log|f_0(z)| - M_s` with
-  `M = sigmaLogMart` (`sigmaLogRatio_eq_neg`, paper.tex:L1917-1920), where `log|f_0(z)| = log|z|`
-  (`log_norm_fPath_zero`). `M` is a continuous local martingale for the σ-time filtration with
+  `M = sigmaLogMart` (`sigmaLogRatio_eq_neg`, paper.tex:L1917-1920), where `log|f_0(z)| = log|z|`.
+  `M` is a continuous local martingale for the σ-time filtration with
   `M² - A` a continuous local martingale, `A = M² - sigmaLogMartSq`; a.s. `A_s = ∫₀ˢ Γ̂` with
   `Γ̂ = a cos² θ̂ + b sin² θ̂ ≥ min a b > 0` (`logBracketHat_ge`), so `A` is continuous,
   nondecreasing, `A_0 = 0` and `A_s → ∞` (`ae_sigmaLogBracket_props`). Hence `liminf M = -∞`
@@ -65,12 +65,6 @@ theorem ratioDriftHat_eq_zero (hU : IsSLEDriverAdapted a b 0 U P ℱ) (z : ℂ) 
   have h : (2 - a / 2 + b / 2) = -2 := by linarith
   rw [h]
   ring
-
-/-- `log |f_0(z)| = log |z|` for a driver with `U 0 = 0`. -/
-theorem log_norm_fPath_zero (hU : IsSLEDriverAdapted a b 0 U P ℱ) (z : ℂ) {ω : Ω}
-    (h0 : U 0 ω = 0) :
-    Real.log ‖fPath (fun r => U r ω) (hU.cont ω) z 0‖ = Real.log ‖z‖ := by
-  rw [fPath_zero, h0, sub_zero]
 
 /-- **(eqn-sde-ratio) for `c = 0`, `a - b = 8`** (paper.tex:L1917-1920), on `sigmaDom`:
 `log(|f̂'_s|/|f̂_s|) = -log|f_0(z)| - M_s`, `M = sigmaLogMart`. -/

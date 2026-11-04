@@ -17,9 +17,7 @@ and difference need *everywhere* continuous paths of both summands, so that the 
 and a continuous local martingale with everywhere continuous paths stays one after stopping at any
 stopping time.
 
-The last statement was previously obtained from the time-change input E2c
-(`IsContLocalMartingale.stopped_min`); `IsContLocalMartingale.stopped_min_of_continuous` is a
-drop-in replacement with the same signature that does not use it.
+The last statement is `IsContLocalMartingale.stopped_min_of_continuous`.
 -/
 
 public section
@@ -96,8 +94,8 @@ theorem IsContLocalMartingale.stoppedProcess_of_continuous {M : ℝ≥0 → Ω �
   rw [stoppedProcess_stoppedProcess_min] at h
   rwa [stoppedProcess_stoppedProcess_min, funext fun ω => min_comm (τ n ω) (ρ ω)]
 
-/-- Drop-in external-free replacement of `IsContLocalMartingale.stopped_min` (same signature, no
-E2c): `t ↦ M (t ∧ ρ)` is a continuous local martingale for a finite stopping time `ρ`. -/
+/-- `t ↦ M (t ∧ ρ)` is a continuous local martingale for an everywhere-continuous local martingale
+`M` and a finite stopping time `ρ`. -/
 theorem IsContLocalMartingale.stopped_min_of_continuous (ℱ : Filtration ℝ≥0 m)
     {M : ℝ≥0 → Ω → ℝ} (hM : IsContLocalMartingale ℱ M P) (hMc : ∀ ω, Continuous fun t => M t ω)
     {ρ : Ω → ℝ≥0} (hρ : IsStoppingTime ℱ fun ω => (ρ ω : WithTop ℝ≥0)) :

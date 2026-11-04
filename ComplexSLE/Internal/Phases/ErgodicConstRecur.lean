@@ -22,8 +22,6 @@ proved elsewhere (`ErgodicConst*.lean`).
   `S_n / n = Y_n / n → 0` by `hconst`), and `∑_{k<n} ξ_k = Y_n` a.s.
 * `not_tendsto_atBot_logFHat_of_integralI_nonneg` (Prop 3.1(a) shape): if `(I) ≥ 0`, a.s.
   `Y_s ↛ -∞`.
-* `tendsto_atBot_logFHat_of_integralI_neg` (Prop 3.1(b) shape): if `(I) < 0`, a.s. `Y_s → -∞`
-  (since `Y_s / s → (I)`).
 
 Uses the classical input `recurrence_stationary` (E7') and, through the stationarity layer,
 `ito_formula`, `timeChange_isContLocalMartingale` and `strongMarkov_sleDriver`, all proved
@@ -117,26 +115,6 @@ theorem not_tendsto_atBot_logFHat_of_integralI_nonneg [IsProbabilityMeasure P]
     have h1 := hS s hsS
     have h2 := (abs_lt.1 hs).1
     linarith
-
-/-- **Prop 3.1(b) shape.** If `(I) < 0`, then `P ⊗ ν`-a.s. `log |f̂_s(e^{iu})| → -∞` as `s → ∞`
-(indeed `Y_s / s → (I) < 0`). -/
-theorem tendsto_atBot_logFHat_of_integralI_neg (hU : IsSLEDriverAdapted a b c U P ℱ)
-    {p : ℝ → ℝ} (hI : integralI a b c p < 0)
-    (hconst : ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
-      Tendsto (fun s : ℝ≥0 => logFHat hU s q / s) atTop (𝓝 (integralI a b c p))) :
-    ∀ᵐ q ∂(P.prod (admissibleMeasure p)),
-      Tendsto (fun s : ℝ≥0 => logFHat hU s q) atTop atBot := by
-  filter_upwards [hconst] with q hq
-  have hneg : integralI a b c p / 2 < 0 := by linarith
-  have hlt : ∀ᶠ s : ℝ≥0 in atTop, logFHat hU s q / s < integralI a b c p / 2 :=
-    hq.eventually (gt_mem_nhds (by linarith))
-  have hbot : Tendsto (fun s : ℝ≥0 => integralI a b c p / 2 * (s : ℝ)) atTop atBot :=
-    Tendsto.const_mul_atTop_of_neg hneg (NNReal.tendsto_coe_atTop.2 tendsto_id)
-  refine tendsto_atBot_mono' _ ?_ hbot
-  filter_upwards [hlt, eventually_gt_atTop (0 : ℝ≥0)] with s hs hs0
-  have hs0' : (0 : ℝ) < s := by exact_mod_cast hs0
-  rw [div_lt_iff₀ hs0'] at hs
-  linarith
 
 end ComplexSLE.Internal
 

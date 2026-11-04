@@ -32,8 +32,7 @@ time of the closed set `exitRegion K L = {x ≤ -K} ∪ {L ≤ x}`).
   most `K / (K + L)` (from `E[N_{ρ n}] = 0`), and `N_{ρ n} ∈ (-K, L)` forces `ρ n = n`, where
   `A_{ρ n} = A_n`; Markov's inequality `P(A_{ρ n} ≥ c) ≤ C² / c` and `P(A_n < c) → 0`
   (because `A → ∞`) then give the bound.
-* `ae_forall_exists_le_of_bracket_tendsto_atTop` (and the symmetric
-  `ae_forall_exists_ge_of_bracket_tendsto_atTop`): a.s. `∀ K, ∃ s, N_s ≤ -K`. The hypotheses of
+* `ae_forall_exists_le_of_bracket_tendsto_atTop`: a.s. `∀ K, ∃ s, N_s ≤ -K`. The hypotheses of
   `IsContLocalMartingale` only provide almost sure path continuity; the hitting-time arguments need
   everywhere continuous paths, so the proof first passes to the everywhere continuous versions of
   `N` and `N² - A` for the completed filtration (`IsContLocalMartingale.exists_continuous_version`).
@@ -517,23 +516,6 @@ theorem ae_forall_exists_le_of_bracket_tendsto_atTop (ℱ : Filtration ℝ≥0 m
   filter_upwards [hcore, hN'N] with ω h1 h2 K
   obtain ⟨s, hs⟩ := h1 K
   exact ⟨s, by rwa [← h2 s]⟩
-
-/-- **A continuous local martingale with bracket tending to infinity is unbounded above.** The
-symmetric statement of `ae_forall_exists_le_of_bracket_tendsto_atTop` (apply it to `-N`). -/
-theorem ae_forall_exists_ge_of_bracket_tendsto_atTop (ℱ : Filtration ℝ≥0 m)
-    (N A : ℝ≥0 → Ω → ℝ) (hN : IsContLocalMartingale ℱ N P) (hN0 : ∀ᵐ ω ∂P, N 0 ω = 0)
-    (hAm : ∀ᵐ ω ∂P, Monotone (fun t => A t ω) ∧ A 0 ω = 0)
-    (hNA : IsContLocalMartingale ℱ (fun t ω => N t ω ^ 2 - A t ω) P)
-    (hAtop : ∀ᵐ ω ∂P, Tendsto (fun t => A t ω) atTop atTop) :
-    ∀ᵐ ω ∂P, ∀ K : ℝ, ∃ s, K ≤ N s ω := by
-  have hsq : (fun t ω => (-N) t ω ^ 2 - A t ω) = fun t ω => N t ω ^ 2 - A t ω := by
-    funext t ω
-    simp
-  have h := ae_forall_exists_le_of_bracket_tendsto_atTop ℱ (-N) A hN.neg
-    (by filter_upwards [hN0] with ω h; simp [h]) hAm (by rw [hsq]; exact hNA) hAtop
-  filter_upwards [h] with ω hω K
-  obtain ⟨s, hs⟩ := hω K
-  exact ⟨s, by simp only [Pi.neg_apply] at hs; linarith⟩
 
 end Oscillation
 

@@ -39,7 +39,7 @@ and `hren` is the fibrewise statement of `sle_markov_transport` integrated over 
   in time `0` (so that the fibre filtrations `𝒢^u` do too), for the version `thetaHatC`;
   `ae_recurrent_unit` completes the filtration (`nullFiltration`) and applies Fubini.
 
-The reflection `θ ↦ -θ`, `c ↦ -c` handles `c ≤ 0` as in `sle_recurrence_nonpos`.
+The reflection `θ ↦ -θ`, `c ↦ -c` handles `c ≤ 0` (in `ae_recurrent_prod_of_null`).
 
 Uses `ito_formula` and `timeChange_isContLocalMartingale` (through the polar and stationarity
 layers), proved in-project (`Internal/ExternalProofs/`).
@@ -76,10 +76,6 @@ def prodFiltration (𝒢 : ℝ → Filtration ℝ≥0 m) :
         exact @MeasurableSet.iUnion _ _ (𝒢 u s) _ _ fun i => (hf i).2 u⟩ }
   mono' := fun _ _ hst _ hA => ⟨hA.1, fun u => (𝒢 u).mono hst _ (hA.2 u)⟩
   le' := fun _ _ hA => hA.1
-
-theorem measurableSet_prodFiltration_iff {𝒢 : ℝ → Filtration ℝ≥0 m} {s : ℝ≥0} {A : Set (Ω × ℝ)} :
-    MeasurableSet[prodFiltration 𝒢 s] A ↔
-      MeasurableSet A ∧ ∀ u : ℝ, MeasurableSet[𝒢 u s] ((fun ω => (ω, u)) ⁻¹' A) := Iff.rfl
 
 theorem measurable_prodFiltration {𝒢 : ℝ → Filtration ℝ≥0 m} {s : ℝ≥0} {f : Ω × ℝ → ℝ}
     (hf : Measurable f) (hfib : ∀ u : ℝ, Measurable[𝒢 u s] fun ω => f (ω, u)) :
@@ -177,7 +173,6 @@ theorem ae_recurrent_prod_core (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) 
   rwa [e1] at this
 
 end Core
-
 
 /-! ### Modification on a null set (diffusion solutions) -/
 
@@ -428,7 +423,6 @@ theorem ae_recurrent_unit [IsProbabilityMeasure P]
   exact ae_ae_of_ae_prod_snd h2
 
 end Main
-
 
 end ComplexSLE.Internal
 

@@ -215,11 +215,6 @@ theorem stoppedF_eq_of_le {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z)
     stoppedF hU z n t ω = fPath (fun s => U s ω) (hU.cont ω) z t := by
   rw [stoppedF_eq hU z n hz, min_eq_left ht]
 
-theorem stoppedF_zero {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z) :
-    stoppedF hU z n 0 ω = z - U 0 ω := by
-  rw [stoppedF_eq_of_le hU z n hz (by rw [NNReal.coe_zero]; exact exitR_nonneg hU z n ω),
-    NNReal.coe_zero, fPath_zero]
-
 /-- On `{T_z = 0}` the stopped path vanishes identically. -/
 theorem stoppedF_eq_zero {ω : Ω} (hz : ¬ 0 < absorbingTime (fun s => U s ω) z) (t : ℝ≥0) :
     stoppedF hU z n t ω = 0 := by
@@ -291,17 +286,10 @@ theorem isStronglyProgressive_itoDrift : IsStronglyProgressive ℱ (itoDrift hU 
   exact (isStronglyProgressive_beforeExit hU z n i).smul
     (continuous_reIm.comp_stronglyMeasurable h1)
 
-theorem isStronglyProgressive_itoQ :
-    IsStronglyProgressive ℱ (itoQ hU z n (a := a) (b := b) (c := c)) :=
-  fun i => (isStronglyProgressive_beforeExit hU z n i).smul stronglyMeasurable_const
-
 theorem reIm_zero : reIm 0 = 0 := by
   ext i; fin_cases i <;> simp [reIm]
 
 theorem reIm_sub (x y : ℂ) : reIm (x - y) = reIm x - reIm y := by
-  ext i; fin_cases i <;> simp [reIm]
-
-theorem reIm_neg (x : ℂ) : reIm (-x) = -reIm x := by
   ext i; fin_cases i <;> simp [reIm]
 
 /-- `reIm` as a continuous linear map (for commuting it with integrals). -/
@@ -373,18 +361,6 @@ theorem intervalIntegrable_itoDrift (ω : Ω) (i : Fin 2) (t : ℝ≥0) :
     · simp only [indicator_of_notMem (notMem_Iic.2 (not_le.1 h)), Pi.zero_apply]
   · simp only [itoDrift_eq_zero hU z n hz, Pi.zero_apply]
     exact intervalIntegrable_const
-
-/-- The diffusion matrix is interval integrable (for every `ω`). -/
-theorem intervalIntegrable_itoQ (ω : Ω) (i j : Fin 2) (t : ℝ≥0) :
-    IntervalIntegrable (fun s : ℝ => itoQ hU z n (a := a) (b := b) (c := c) s.toNNReal ω i j)
-      volume 0 t := by
-  have : (fun s : ℝ => itoQ hU z n (a := a) (b := b) (c := c) s.toNNReal ω i j) =
-      fun s => (Iic (exitR hU z n ω)).indicator (fun _ => (1 : ℝ)) s * covMatrix a b c i j := by
-    funext s
-    simp only [itoQ, Matrix.smul_apply, smul_eq_mul, beforeExit_toNNReal]
-  rw [this, intervalIntegrable_iff_integrableOn_Ioc_of_le t.coe_nonneg]
-  refine Integrable.mul_const ?_ _
-  exact (integrableOn_const (C := (1 : ℝ)) measure_Ioc_lt_top.ne).indicator measurableSet_Iic
 
 /-- `∫₀ᵗ Qⁱʲ = Σⁱʲ (t ∧ τ_n)`. -/
 theorem pathIntegral_itoQ (ω : Ω) (i j : Fin 2) (t : ℝ≥0) :
@@ -475,7 +451,6 @@ theorem continuous_bracket_centeredU (i j : Fin 2) (ω : Ω) :
 
 variable [IsProbabilityMeasure P]
 
-
 /-- The centered component `Uⁱ_t - Uⁱ_0` is an `ℱ`-martingale. -/
 theorem martingale_centeredU (i : Fin 2) :
     Martingale (fun t ω => reIm (U t ω) i - reIm (U 0 ω) i) ℱ P := by
@@ -561,7 +536,6 @@ theorem isContLocalMartingale_itoState_mul_sub (ha : 0 < a) (hc : c ^ 2 ≤ a * 
   rw [heq]; exact h
 
 end Martingales
-
 
 end State
 

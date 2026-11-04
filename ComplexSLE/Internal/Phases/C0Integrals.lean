@@ -64,17 +64,6 @@ theorem integralI_c0_neg_iff (ha : 0 < a) (hb : 0 < b) (hp : IsAdmissibleDensity
   have := integralI_c0_nonneg_iff ha hb hp
   rw [← not_le, this, not_le]
 
-/-- `(I) = 0` iff `a - b = 4` (`c = 0`, `a, b > 0`, `p` admissible). -/
-theorem integralI_c0_eq_zero_iff (ha : 0 < a) (hb : 0 < b) (hp : IsAdmissibleDensity a b 0 p) :
-    integralI a b 0 p = 0 ↔ a - b = 4 := by
-  have hS := integral_cos_mul_pos ha hb hp
-  rw [integralI_c0_eq, mul_eq_zero]
-  constructor
-  · rintro (h | h)
-    · linarith
-    · exact absurd h hS.ne'
-  · intro h; left; linarith
-
 /-- `0 < (II)` iff `a - b < 8` (`c = 0`, `a, b > 0`, `p` admissible). -/
 theorem integralII_c0_pos_iff (ha : 0 < a) (hb : 0 < b) (hp : IsAdmissibleDensity a b 0 p) :
     0 < integralII a b 0 p ↔ a - b < 8 := by

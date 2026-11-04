@@ -20,8 +20,7 @@ Source-independent probability for the bounded core of Itô's formula
 * `integral_sq_sub_eq`: `E[(G v - G u)²] = E[G v²] - E[G u²]` for a.s. bounded `G`.
 * `transform G τ c N = ∑_{k<N} c_k (G_{τ_{k+1}} - G_{τ_k})`, the martingale transform of `G` by an
   adapted sequence; `integral_sq_transform_le`: `E[(transform)²] ≤ L² K²` if `|c_k| ≤ L` and
-  `|G| ≤ K` almost surely, and `setIntegral_transform_eq_zero`: it integrates to `0` on every
-  `B ∈ ℱ (τ 0)`.
+  `|G| ≤ K` almost surely.
 -/
 
 @[expose] public section
@@ -57,7 +56,6 @@ theorem integral_mul_sub_eq_zero [IsProbabilityMeasure P] {G : ℝ≥0 → Ω �
       · filter_upwards [h1] with ω hω
         simp only [Pi.mul_apply]
         rw [hω]; simp
-
 
 /-! ### Almost surely bounded random variables -/
 
@@ -123,13 +121,11 @@ theorem finset_sum {ι : Type*} (s : Finset ι) {f : ι → Ω → ℝ} (h : ∀
 
 end AEBdd
 
-
 /-! ### Orthogonality of martingale increments, `L²` bound for martingale transforms -/
 
 theorem AEBdd.of_stronglyMeasurable {i : ℝ≥0} {f : Ω → ℝ} (hf : StronglyMeasurable[ℱ i] f)
     {b : ℝ} (h : ∀ᵐ ω ∂P, |f ω| ≤ b) : AEBdd P f :=
   AEBdd.of_bound (hf.mono (ℱ.le i)).aestronglyMeasurable h
-
 
 theorem integral_sq_sub_eq [IsProbabilityMeasure P] {G : ℝ≥0 → Ω → ℝ}
     (hG : Martingale G ℱ P) {u v : ℝ≥0} (huv : u ≤ v) (hu : AEBdd P (G u)) (hv : AEBdd P (G v)) :
@@ -142,7 +138,6 @@ theorem integral_sq_sub_eq [IsProbabilityMeasure P] {G : ℝ≥0 → Ω → ℝ}
   rw [integral_sub (hv.sq.sub hu.sq).integrable ((hu.mul (hv.sub hu)).const_mul 2).integrable,
     integral_sub hv.sq.integrable hu.sq.integrable, integral_const_mul, h0]
   ring
-
 
 /-- Orthogonality of a martingale increment to bounded `ℱ u`-measurable variables, on a set
 `B ∈ ℱ u`. -/
@@ -258,26 +253,6 @@ theorem integral_sq_transform_le [IsProbabilityMeasure P] {G : ℝ≥0 → Ω �
   have h0 : 0 ≤ ∫ ω, G (τ 0) ω ^ 2 ∂P := integral_nonneg fun ω => sq_nonneg _
   exact mul_le_mul_of_nonneg_left (by linarith) (sq_nonneg _)
 
-/-- The transform of a martingale by an adapted bounded sequence is a.s. bounded, strongly
-measurable for `ℱ (τ N)`, and integrates to zero on every `B ∈ ℱ (τ 0)`. -/
-theorem setIntegral_transform_eq_zero [IsProbabilityMeasure P] {G : ℝ≥0 → Ω → ℝ}
-    (hG : Martingale G ℱ P) {τ : ℕ → ℝ≥0} (hτ : Monotone τ) {c : ℕ → Ω → ℝ}
-    (hc : ∀ k, StronglyMeasurable[ℱ (τ k)] (c k)) {L K : ℝ}
-    (hcL : ∀ k, ∀ᵐ ω ∂P, |c k ω| ≤ L) (hGK : ∀ k, ∀ᵐ ω ∂P, |G (τ k) ω| ≤ K) (N : ℕ)
-    {B : Set Ω} (hB : MeasurableSet[ℱ (τ 0)] B) :
-    ∫ ω in B, transform G τ c N ω ∂P = 0 := by
-  have hGb : ∀ k, AEBdd P (G (τ k)) := fun k =>
-    AEBdd.of_stronglyMeasurable (hG.stronglyMeasurable (τ k)) (hGK k)
-  have hcb : ∀ k, AEBdd P (c k) := fun k => AEBdd.of_stronglyMeasurable (hc k) (hcL k)
-  have hterm : ∀ k, ∫ ω in B, c k ω * (G (τ (k + 1)) ω - G (τ k) ω) ∂P = 0 := fun k =>
-    setIntegral_mul_sub_eq_zero hG (hτ (Nat.le_succ k)) (hc k) (hcL k) (hGK k) (hGK (k + 1))
-      (ℱ.mono (hτ (Nat.zero_le k)) _ hB)
-  simp only [transform]
-  rw [integral_finsetSum]
-  · exact Finset.sum_eq_zero fun k _ => hterm k
-  · intro k _
-    exact ((hcb k).mul ((hGb _).sub (hGb _))).integrable.integrableOn
-
 /-! ### Variables with vanishing mean on a set -/
 
 /-- `f` is a.s. bounded and integrates to zero on `B`. -/
@@ -287,8 +262,6 @@ def NullOn (P : Measure Ω) (B : Set Ω) (f : Ω → ℝ) : Prop :=
 namespace NullOn
 
 variable {B : Set Ω} {f g : Ω → ℝ}
-
-theorem zero : NullOn P B (fun _ => 0) := ⟨AEBdd.const 0, by simp⟩
 
 theorem add [IsFiniteMeasure P] (hf : NullOn P B f) (hg : NullOn P B g) :
     NullOn P B (fun ω => f ω + g ω) := by

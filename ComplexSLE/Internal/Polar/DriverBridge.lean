@@ -473,36 +473,6 @@ namespace IsSLEDriverAdapted
 variable {Ω : Type*} {m : MeasurableSpace Ω} {P : Measure Ω} [IsProbabilityMeasure P]
   {ℱ : Filtration ℝ≥0 m} {a b c : ℝ} {U : ℝ≥0 → Ω → ℂ}
 
-theorem isContLocalMartingale_re (hU : IsSLEDriverAdapted a b c U P ℱ) :
-    IsContLocalMartingale ℱ (fun t ω => (U t ω).re) P :=
-  hU.martingale_re.isContLocalMartingale fun ω => Complex.continuous_re.comp (hU.cont ω)
-
-theorem isContLocalMartingale_im (hU : IsSLEDriverAdapted a b c U P ℱ) :
-    IsContLocalMartingale ℱ (fun t ω => (U t ω).im) P :=
-  hU.martingale_im.isContLocalMartingale fun ω => Complex.continuous_im.comp (hU.cont ω)
-
-theorem isContLocalMartingale_re_sq (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a)
-    (hc : c ^ 2 ≤ a * b) :
-    IsContLocalMartingale ℱ (fun t ω => (U t ω).re ^ 2 - a * (t : ℝ)) P :=
-  (hU.martingale_re_sq ha hc).isContLocalMartingale fun ω => by
-    have := Complex.continuous_re.comp (hU.cont ω)
-    fun_prop
-
-theorem isContLocalMartingale_im_sq (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a)
-    (hc : c ^ 2 ≤ a * b) :
-    IsContLocalMartingale ℱ (fun t ω => (U t ω).im ^ 2 - b * (t : ℝ)) P :=
-  (hU.martingale_im_sq ha hc).isContLocalMartingale fun ω => by
-    have := Complex.continuous_im.comp (hU.cont ω)
-    fun_prop
-
-theorem isContLocalMartingale_re_mul_im (hU : IsSLEDriverAdapted a b c U P ℱ) (ha : 0 < a)
-    (hc : c ^ 2 ≤ a * b) :
-    IsContLocalMartingale ℱ (fun t ω => (U t ω).re * (U t ω).im - c * (t : ℝ)) P :=
-  (hU.martingale_re_mul_im ha hc).isContLocalMartingale fun ω => by
-    have h1 := Complex.continuous_re.comp (hU.cont ω)
-    have h2 := Complex.continuous_im.comp (hU.cont ω)
-    fun_prop
-
 end IsSLEDriverAdapted
 
 end ComplexSLE

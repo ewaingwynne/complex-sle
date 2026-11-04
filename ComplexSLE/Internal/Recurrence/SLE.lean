@@ -27,16 +27,7 @@ critical one).
   `P^y(∃ t ≤ T, θ̂_t = x) ≥ δ` for all `y ∈ [x, x+π-ε]`, stated for every solution started in
   that interval. Here `x` is arbitrary (in the critical case the paper takes the zero of `D`).
 
-* `sle_recurrence`: Lemma 2.16 (paper.tex:L1155-1163) for `c ≥ 0`, in the form "a.s. there are
-  arbitrarily large `t` with `e^{2iX_t} = e^{2ix}`", from (2.45) and the renewal argument
-  (`ae_frequently_mem_latticeSet`), given the stationarity input `hstat` (Lemma 2.14 + density)
-  and the hypothesis `hMarkov` that the Markov property at a fixed time `s` transports the
-  (2.45) bound to the conditional bound on `{X_s ∈ C_ε}` given `ℱ_s`. For `c² < ab` the point `x`
-  is arbitrary (first bullet, `w = e^{2ix}`); for `c² = ab` any `x` works too, in particular
-  the zero of `D` (second bullet, R19 sign).
-
-The hitting results use no Markov property; everything uses `ito_formula` (proved in-project)
-(`sle_recurrence` additionally takes `hMarkov` as a hypothesis).
+The hitting results use no Markov property; everything uses `ito_formula` (proved in-project).
 -/
 
 public section
@@ -136,18 +127,6 @@ theorem sle_hits_upper (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) (hc0 : c
     (by filter_upwards [h0] with ω hω; exact ⟨neg_le_neg hω.2, neg_le_neg hω.1⟩)
   simpa only [neg_inj] using this
 
-/-- Positive probability of ever hitting a lower level (`c ≥ 0`): the qualitative form of R27. -/
-theorem sle_hits_lower_pos (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) (hc0 : 0 ≤ c)
-    (hβc : Continuous β) (hβ2 : ∀ v, β v ^ 2 = 2 * diffusionD a b c v) {y θ : ℝ} (hθ : θ < y)
-    {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
-    {ℱ : Filtration ℝ≥0 ‹_›} {X : ℝ≥0 → Ω → ℝ} (hX : IsDiffusionSolution ℱ (mu a b c) β X P)
-    (hXc : ∀ ω, Continuous fun t => X t ω) (h0 : ∀ᵐ ω ∂P, X 0 ω ∈ Icc θ y) :
-    0 < P.real {ω | ∃ t : ℝ≥0, X t ω = θ} := by
-  obtain ⟨T, δ, -, hδ, h⟩ := sle_hits_lower ha hb hc hc0 hβc hβ2 hθ
-  refine lt_of_lt_of_le hδ ((h Ω P ℱ X hX hXc h0).trans (measureReal_mono ?_))
-  rintro ω ⟨t, -, ht⟩
-  exact ⟨t, ht⟩
-
 /-! ### Claim (2.45) of Lemma 2.16 -/
 
 /-- **Claim (2.45), paper.tex:L1167-1171** (`step:rec-angle-hit-unif`), for `c ≥ 0`: for every
@@ -163,53 +142,6 @@ theorem sle_angle_hit_unif (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) (hc0
         δ ≤ P.real {ω | ∃ t : ℝ≥0, t ≤ T ∧ X t ω = x} :=
   exists_uniform_hit (u := x + π) (continuous_mu a b c) hβc
     (fun _ _ hv => mu_neg_of_sq_eq_zero ha hb hc hc0 hβ2 hv) (by linarith) (by linarith)
-
-/-! ### Lemma 2.16 for SLE_Σ, modulo the Markov transport of (2.45) -/
-
-/-- **Lemma 2.16 (recurrence), `c ≥ 0`, modulo the Markov property.** Let `X` solve the
-`θ̂`-SDE with everywhere-continuous paths. Assume the stationarity input `hstat` (for every
-`η > 0` some `ε > 0` has `P(X_t ∉ C_ε) ≤ η` for all `t`) and the Markov transport `hMarkov`: any
-uniform bound `δ ≤ P'(∃ t ≤ T, X'_t = x)` valid for all solutions started in `[x, x+π-ε]` yields
-`δ · P(A ∩ {X_s ∈ C_ε}) ≤ P(A ∩ {X_s ∈ C_ε} ∩ {∃ t ≤ T, X_{s+t} ∈ x+πℤ})` for all `s` and
-`A ∈ ℱ_s`. Then a.s. there are arbitrarily large `t` with `e^{2iX_t} = e^{2ix}`. -/
-theorem sle_recurrence (ha : 0 < a) (hb : 0 < b) (hc : c ^ 2 ≤ a * b) (hc0 : 0 ≤ c)
-    (hβc : Continuous β) (hβ2 : ∀ v, β v ^ 2 = 2 * diffusionD a b c v)
-    {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
-    {ℱ : Filtration ℝ≥0 ‹_›} {X : ℝ≥0 → Ω → ℝ} (hX : IsDiffusionSolution ℱ (mu a b c) β X P)
-    (hXc : ∀ ω, Continuous fun t => X t ω) (x : ℝ)
-    (hstat : ∀ η : ℝ, 0 < η → ∃ ε : ℝ, 0 < ε ∧ ∀ t : ℝ≥0, P.real {ω | X t ω ∉ goodSet x ε} ≤ η)
-    (hMarkov : ∀ (ε : ℝ) (T : ℝ≥0) (δ : ℝ), 0 < ε → 0 < T → 0 < δ →
-      (∀ (Ω' : Type) [MeasurableSpace Ω'] (P' : Measure Ω') [IsProbabilityMeasure P']
-        (ℱ' : Filtration ℝ≥0 ‹_›) (X' : ℝ≥0 → Ω' → ℝ), IsDiffusionSolution ℱ' (mu a b c) β X' P' →
-        (∀ ω, Continuous fun t => X' t ω) → (∀ᵐ ω ∂P', X' 0 ω ∈ Icc x (x + π - ε)) →
-        δ ≤ P'.real {ω | ∃ t : ℝ≥0, t ≤ T ∧ X' t ω = x}) →
-      ∀ (s : ℝ≥0) (A : Set Ω), MeasurableSet[ℱ s] A →
-        δ * P.real (A ∩ {ω | X s ω ∈ goodSet x ε}) ≤
-          P.real (A ∩ {ω | X s ω ∈ goodSet x ε} ∩
-            {ω | ∃ t ≤ T, X (s + t) ω ∈ latticeSet x})) :
-    ∀ᵐ ω ∂P, ∀ s : ℝ≥0, ∃ t : ℝ≥0, s ≤ t ∧
-      Complex.exp (2 * Complex.I * X t ω) = Complex.exp (2 * Complex.I * x) := by
-  have h := ae_frequently_mem_latticeSet hX.1.stronglyAdapted hXc hstat ?_
-  · filter_upwards [h] with ω hω s
-    obtain ⟨t, hst, ht⟩ := hω s
-    exact ⟨t, hst, mem_latticeSet_iff_exp.1 ht⟩
-  · intro ε hε
-    -- shrink `ε` to `ε' ≤ π`; `C_ε ⊆ C_{ε'}`
-    have hε'pos : 0 < min ε π := lt_min hε Real.pi_pos
-    obtain ⟨T, δ, hT, hδ, h245⟩ :=
-      sle_angle_hit_unif ha hb hc hc0 hβc hβ2 x hε'pos (min_le_right _ _)
-    refine ⟨T, δ, hT, hδ, fun s A hA => ?_⟩
-    have hM := hMarkov (min ε π) T δ hε'pos hT hδ h245
-    have hsub : goodSet x ε ⊆ goodSet x (min ε π) := goodSet_subset_goodSet (min_le_left ε π)
-    have hA' : MeasurableSet[ℱ s] (A ∩ {ω | X s ω ∈ goodSet x ε}) :=
-      hA.inter ((hX.1.stronglyAdapted s).measurable (measurableSet_goodSet x ε))
-    have := hM s _ hA'
-    have e1 : A ∩ {ω | X s ω ∈ goodSet x ε} ∩ {ω | X s ω ∈ goodSet x (min ε π)} =
-        A ∩ {ω | X s ω ∈ goodSet x ε} := by
-      rw [inter_eq_left]
-      rintro ω ⟨-, h⟩
-      exact hsub h
-    rwa [e1] at this
 
 end ComplexSLE.Recurrence
 

@@ -36,53 +36,7 @@ variable {Ω : Type} {m : MeasurableSpace Ω} {P : Measure Ω} {ℱ : Filtration
 
 variable (hU : IsSLEDriverAdapted a b c U P ℱ) (z : ℂ) (n : ℕ)
 
-/-! ### `Θ^n` in the notation of the source -/
-
-theorem muFn_itoState_eq {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z) {s : ℝ}
-    (hs0 : 0 ≤ s) (hs : s ≤ exitR hU z n ω) :
-    muFn a b c (itoState hU z n s.toNNReal ω) =
-      mu a b c (argPath (fun r => U r ω) (hU.cont ω) z s) /
-        ‖fPath (fun r => U r ω) (hU.cont ω) z s‖ ^ 2 := by
-  have h := thetaDrift_eq_mu hU z n hz (t := s.toNNReal) (by rwa [Real.coe_toNNReal _ hs0])
-  have h1 : beforeExit hU z n s.toNNReal ω = 1 := by
-    simp [beforeExit, (le_exitNN_iff hU z n).2 (by rwa [Real.coe_toNNReal _ hs0] : _ ≤ _)]
-  rw [thetaDrift, h1, one_mul, Real.coe_toNNReal _ hs0] at h
-  exact h
-
-/-- The drift integral of `Θ^n` in the form of the source: on `{T_z > 0}`,
-`∫₀ᵗ 1_{s ≤ τ_n} µ̂(f_s) ds = ∫₀^{t ∧ τ_n} µ(θ_s) |f_s|⁻² ds`. -/
-theorem pathIntegral_thetaDrift_eq_source {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z)
-    (t : ℝ≥0) :
-    pathIntegral (thetaDrift hU z n) t ω =
-      ∫ s in (0 : ℝ)..(min (t : ℝ) (exitR hU z n ω)), mu a b c (argPath (fun r => U r ω)
-        (hU.cont ω) z s) / ‖fPath (fun r => U r ω) (hU.cont ω) z s‖ ^ 2 := by
-  rw [pathIntegral_thetaDrift]
-  simp only [pathIntegral, NNReal.coe_min, coe_exitNN]
-  refine intervalIntegral.integral_congr fun s hs => ?_
-  rw [uIcc_of_le (le_min t.coe_nonneg (exitR_nonneg hU z n ω))] at hs
-  exact muFn_itoState_eq hU z n hz hs.1 (hs.2.trans (min_le_right _ _))
-
-/-- **`Θ^n` in the notation of the source** (`eqn-theta-t-op`): on `{T_z > 0}`,
-`Θ^n_t = θ_{t ∧ τ_n} - θ_0 - ∫₀^{t ∧ τ_n} µ(θ_s) |f_s|⁻² ds`. -/
-theorem thetaMart_eq_source {ω : Ω} (hz : 0 < absorbingTime (fun s => U s ω) z) (t : ℝ≥0) :
-    thetaMart hU z n t ω =
-      argPath (fun r => U r ω) (hU.cont ω) z (min (t : ℝ) (exitR hU z n ω)) -
-        argPath (fun r => U r ω) (hU.cont ω) z 0 -
-        ∫ s in (0 : ℝ)..(min (t : ℝ) (exitR hU z n ω)), mu a b c (argPath (fun r => U r ω)
-          (hU.cont ω) z s) / ‖fPath (fun r => U r ω) (hU.cont ω) z s‖ ^ 2 := by
-  rw [thetaMart, argStopped_eq hU z n hz, argStopped_eq hU z n hz,
-    pathIntegral_thetaDrift_eq_source hU z n hz, NNReal.coe_zero,
-    min_eq_left (exitR_nonneg hU z n ω)]
-
 /-! ### Summation over the sectors -/
-
-/-- Telescoping: `Θ^n_{t ∧ S_K} = ∑_{k < K} (Θ^n_{t ∧ S_{k+1}} - Θ^n_{t ∧ S_k})`. -/
-theorem thetaMart_min_sectorTime_eq_sum (K : ℕ) (t : ℝ≥0) (ω : Ω) :
-    thetaMart hU z n (min t (sectorTime hU z n K ω)) ω =
-      ∑ k ∈ Finset.range K, (thetaMart hU z n (min t (sectorTime hU z n (k + 1) ω)) ω -
-        thetaMart hU z n (min t (sectorTime hU z n k ω)) ω) := by
-  rw [Finset.sum_range_sub (fun k => thetaMart hU z n (min t (sectorTime hU z n k ω)) ω) K]
-  simp [sectorTime_zero, thetaMart_zero, min_eq_right (zero_le : (0 : ℝ≥0) ≤ t)]
 
 variable [IsProbabilityMeasure P]
 

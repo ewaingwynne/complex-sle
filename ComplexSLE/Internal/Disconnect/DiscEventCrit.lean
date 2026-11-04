@@ -62,9 +62,6 @@ def discCrit (K : Set ℂ) (z : ℂ) : Prop :=
   ∃ i : ℕ, ‖z - denseSeqC i‖ < infDist (denseSeqC i) K ∧
     ∃ R : ℕ, ∀ n : ℕ, ∀ j ∈ reachIdx K i n, ‖denseSeqC j‖ ≤ R
 
-theorem mem_reachIdx_succ_of_mem {K : Set ℂ} {i n j : ℕ} (h : j ∈ reachIdx K i n) :
-    j ∈ reachIdx K i (n + 1) := Or.inl h
-
 theorem mem_reachIdx_succ_of_step {K : Set ℂ} {i n k j : ℕ} (hk : k ∈ reachIdx K i n)
     (h : ‖denseSeqC k - denseSeqC j‖ < infDist (denseSeqC k) K) : j ∈ reachIdx K i (n + 1) :=
   Or.inr ⟨k, hk, h⟩
@@ -103,12 +100,6 @@ noncomputable def reachBalls (K : Set ℂ) (i : ℕ) : Set ℂ :=
 
 theorem isOpen_reachBalls (K : Set ℂ) (i : ℕ) : IsOpen (reachBalls K i) :=
   isOpen_iUnion fun _ => isOpen_iUnion fun _ => isOpen_iUnion fun _ => isOpen_ball
-
-theorem reachBalls_subset_compl (K : Set ℂ) (i : ℕ) : reachBalls K i ⊆ Kᶜ := by
-  intro y hy
-  simp only [reachBalls, mem_iUnion] at hy
-  obtain ⟨n, j, -, hy⟩ := hy
-  exact ball_infDist_subset_compl hy
 
 /-- The complement of the union of the reach balls is open inside `Kᶜ`. -/
 theorem isOpen_compl_inter_compl_reachBalls {K : Set ℂ} (hne : K.Nonempty) (hK : IsClosed K)

@@ -138,18 +138,6 @@ theorem fiber_sigmaLogMart [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b)
     (isContLocalMartingale_sigmaLogMart hU ha hc hz) (ae_of_all _ fun ω => sigmaLogMart_zero hU ω)
     (thetaHat_sigmaLogMart_decomposition hU ha hc hz).2.2.2.1
 
-/-- `M_t = sigmaLogMart` is measurable. -/
-theorem measurable_sigmaLogMart (ha : 0 < a) (hc : c ^ 2 ≤ a * b) [IsProbabilityMeasure P]
-    (hz : z ≠ 0) (t : ℝ≥0) : Measurable (sigmaLogMart hU z t) :=
-  (((isContLocalMartingale_sigmaLogMart hU ha hc hz).1.stronglyAdapted t).mono
-    ((sigmaFiltration hU z).le t)).measurable
-
-theorem integrable_sigmaLogMart [IsProbabilityMeasure P] (ha : 0 < a) (hb : 0 < b)
-    (hc : c ^ 2 ≤ a * b) (hz : z ≠ 0) (t : ℝ≥0) : Integrable (sigmaLogMart hU z t) P :=
-  ((memLp_two_iff_integrable_sq
-    (measurable_sigmaLogMart hU ha hc hz t).aestronglyMeasurable).2
-      ((fiber_sigmaLogMart hU ha hb hc hz).1 t)).integrable one_le_two
-
 /-- **`log |f̂_s(𝐳)| = ∫₀ˢ ν(θ̂_v) dv + M_s`** for `|z| = 1`, almost surely for all `s`
 (`Y_0 = log |z - U 0| = 0` a.s.). -/
 theorem ae_log_norm_fHat_eq [IsProbabilityMeasure P] (ha : 0 < a) (hc : c ^ 2 ≤ a * b)

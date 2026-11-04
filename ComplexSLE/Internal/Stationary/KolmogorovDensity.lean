@@ -28,7 +28,6 @@ Analytic part of the Kolmogorov forward equation for periodic one-dimensional di
   The proof avoids differentiating `p` at the lattice points: with `G := β²p` (`C¹` on `ℝ`) the
   integrand is `½(f'G)' + f'·(αp - ½G')` everywhere, and `αp - ½G'` is constant on `(x, x + π)`
   by the ODE; both pieces integrate to zero over a period.
-* `hormander_span_iff`: the algebra of `step:horm-span-condition` (Lemma A.2).
 -/
 
 public section
@@ -47,12 +46,6 @@ theorem _root_.Function.Periodic.deriv_periodic {f : ℝ → ℝ} {c : ℝ} (hf 
   intro u
   have h : (fun x => f (x + c)) = f := funext hf
   rw [← deriv_comp_add_const, h]
-
-/-- A continuous periodic function is bounded. -/
-theorem _root_.Function.Periodic.exists_bound {f : ℝ → ℝ} {c : ℝ} (hc : c ≠ 0) (hf : Periodic f c)
-    (hcont : Continuous f) : ∃ C : ℝ, ∀ u, |f u| ≤ C := by
-  obtain ⟨C, hC⟩ := (hf.compact_of_continuous hc hcont).isBounded.subset_closedBall 0
-  exact ⟨C, fun u => by simpa [Real.dist_eq] using hC (mem_range_self u)⟩
 
 /-- Integral of a periodic function over `[0, T]` equals its integral over `[x, x + T]`. -/
 theorem _root_.Function.Periodic.intervalIntegral_zero_eq {f : ℝ → ℝ} {T : ℝ} (hf : Periodic f T)
@@ -265,21 +258,6 @@ theorem integral_generator_eq_zero (hp : IsKolmogorovDensity α β p)
     _ = 0 := by rw [hint1, hint2, add_zero]
 
 end IsKolmogorovDensity
-
-/-! ### Lemma A.2: the span condition (`step:horm-span-condition`) -/
-
-/-- The Hörmander span condition of [Hai11, Thm 1.3] for the Stratonovich coefficients
-`γ = α - ½β'β`, `β` — that `β(u)` and `β'(u)γ(u) - γ'(u)β(u)` span `ℝ` — is equivalent to the
-paper's (A.1): `β(u) ≠ 0` or `β'(u)α(u) ≠ 0` (paper.tex:L2351-2355). Pure algebra at a zero of
-`β`. -/
-theorem hormander_span_iff (α β : ℝ → ℝ) (u : ℝ) :
-    (β u ≠ 0 ∨
-      deriv β u * (α u - (1 / 2) * deriv β u * β u) -
-        deriv (fun v => α v - (1 / 2) * deriv β v * β v) u * β u ≠ 0) ↔
-    (β u ≠ 0 ∨ deriv β u * α u ≠ 0) := by
-  by_cases hβ : β u = 0
-  · simp only [hβ, ne_eq, not_true_eq_false, false_or, mul_zero, sub_zero]
-  · simp [hβ]
 
 end ComplexSLE.Internal
 

@@ -13,9 +13,8 @@ public import ComplexSLE.Frozen.Defs.IsSLEDriverAdapted
 Let `U : ℝ≥0 → Ω → ℂ` be a driver with continuous paths, adapted to a filtration `ℱ`. We prove that
 the objects of the deterministic polar layer are `ℱ`-measurable / adapted functionals of `U`:
 
-* `isStoppingTime_absorbingTime`: `ω ↦ T_z(U(ω))` is an `ℱ`-stopping time;
-* `measurable_centeredPath`, `measurable_solPath`, `measurableSet_lifeSet`: for fixed `t`, the
-  value `f_t(z)` (resp. `g_t(z)`) on the event `{t < T_z}`, and that event, are `ℱ t`-measurable.
+* `measurable_centeredPath`, `measurableSet_mem_lifeSet`: for fixed `t`, the value `f_t(z)` on the
+  event `{t < T_z}`, and that event, are `ℱ t`-measurable.
 
 The proof sends `ω` to the stopped path `U(ω)|[0, t] ∈ C([0, t], ℂ)`, which is `ℱ t`-measurable
 (`measurable_driverPath`, from Mathlib's `ContinuousMap.measurable_iff_eval`) and composes with the
@@ -65,18 +64,6 @@ theorem measurableSet_mem_lifeSet (hc : ∀ ω, Continuous fun t => U t ω) (had
   rw [this]
   exact measurable_driverPath hc had t (isOpen_alive t z).measurableSet
 
-/-- **`T_z` is an `ℱ`-stopping time.** -/
-theorem isStoppingTime_absorbingTime (hc : ∀ ω, Continuous fun t => U t ω) (had : Adapted ℱ U)
-    (z : ℂ) : IsStoppingTime ℱ fun ω => (absorbingTime (fun s => U s ω) z : WithTop ℝ≥0) := by
-  intro i
-  change MeasurableSet[ℱ i] {ω | absorbingTime (fun s => U s ω) z ≤ (i : ℝ≥0∞)}
-  have : {ω | absorbingTime (fun s => U s ω) z ≤ (i : ℝ≥0∞)} =
-      {ω | (i : ℝ) ∈ lifeSet (fun s => U s ω) z}ᶜ := by
-    ext ω
-    simp only [Set.mem_ofPred_eq, mem_compl_iff, coe_mem_lifeSet_iff, leftHull, not_not]
-  rw [this]
-  exact (measurableSet_mem_lifeSet hc had i z).compl
-
 open Classical in
 /-- **`f_t(z)` is `ℱ t`-measurable** (on `{t < T_z}`; `0` elsewhere). -/
 theorem measurable_centeredPath (hc : ∀ ω, Continuous fun t => U t ω) (had : Adapted ℱ U)
@@ -98,34 +85,6 @@ theorem measurable_centeredPath (hc : ∀ ω, Continuous fun t => U t ω) (had :
       simp [h, h']
   rw [this]
   exact (measurable_centeredValue t z).comp (measurable_driverPath hc had t)
-
-/-- **The indicator of `{t < T_z}` is `ℱ t`-measurable.** -/
-theorem measurable_indicator_mem_lifeSet (hc : ∀ ω, Continuous fun t => U t ω)
-    (had : Adapted ℱ U) (t : ℝ≥0) (z : ℂ) :
-    Measurable[ℱ t] ({ω | (t : ℝ) ∈ lifeSet (fun s => U s ω) z}.indicator fun _ => (1 : ℝ)) :=
-  measurable_const.indicator (measurableSet_mem_lifeSet hc had t z)
-
-open Classical in
-/-- **`g_t(z)` is `ℱ t`-measurable** (on `{t < T_z}`; `0` elsewhere). -/
-theorem measurable_solPath (hc : ∀ ω, Continuous fun t => U t ω) (had : Adapted ℱ U)
-    (t : ℝ≥0) (z : ℂ) :
-    Measurable[ℱ t] fun ω =>
-      if (t : ℝ) ∈ lifeSet (fun s => U s ω) z then solPath (fun s => U s ω) (hc ω) z t else 0 := by
-  have h1 := measurable_centeredPath hc had t z
-  have h2 : Measurable[ℱ t] fun ω =>
-      if (t : ℝ) ∈ lifeSet (fun s => U s ω) z then U t ω else 0 :=
-    Measurable.ite (measurableSet_mem_lifeSet hc had t z) (had t) measurable_const
-  have : (fun ω => if (t : ℝ) ∈ lifeSet (fun s => U s ω) z then
-      solPath (fun s => U s ω) (hc ω) z t else 0) =
-      (fun ω => if (t : ℝ) ∈ lifeSet (fun s => U s ω) z then
-        fPath (fun s => U s ω) (hc ω) z t else 0) +
-      fun ω => if (t : ℝ) ∈ lifeSet (fun s => U s ω) z then U t ω else 0 := by
-    funext ω
-    by_cases h : (t : ℝ) ∈ lifeSet (fun s => U s ω) z
-    · simp [h, fPath]
-    · simp [h]
-  rw [this]
-  exact h1.add h2
 
 end ComplexSLE.Internal.Polar
 

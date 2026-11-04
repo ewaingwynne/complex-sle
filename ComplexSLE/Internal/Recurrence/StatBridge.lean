@@ -15,7 +15,7 @@ public import Mathlib.MeasureTheory.Measure.Typeclasses.NullSingletonClass
 /-!
 # Lemma 2.16: from a stationary law with no atoms to the recurrence input `hstat`
 
-The renewal argument (`ae_frequently_mem_latticeSet`, `sle_recurrence'`) takes as input the uniform
+The renewal argument (`ae_frequently_mem_latticeSet`) takes as input the uniform
 smallness `hstat`: for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) ≤ η` for all `t`, where
 `C_ε = goodSet x ε`. The stationarity layer (`map_addCircle_thetaHat_prod_eq_admissible`) provides the law of
 `X_t mod π`, as a random variable in `AddCircle π`, independently of `t`. This file bridges the two:
@@ -24,15 +24,11 @@ smallness `hstat`: for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) �
   holds. The point is that `X_t ∉ C_ε` forces `X_t mod π` into an arc of length `ε` ending at
   `x mod π`, and `μ` of such arcs tends to `0` (outer regularity of the finite measure `μ` at the
   null set `{x mod π}`; no condition beyond `NullSingletonClass μ` is needed).
-* `hstat_neg_of_map_eq`: the reflected form used by `sle_recurrence_nonpos` (the process `-X`, the
-  point `-x`), under the same hypotheses.
-* `nullSingletonClass_map_addCircle_of_absolutelyContinuous`,
-  `nullSingletonClass_map_addCircle_of_withDensity`: the law of `X_0 mod π` has no atoms
+* `hstat_neg_of_map_eq`: the reflected form (the process `-X`, the point `-x`, used for `c ≤ 0`),
+  under the same hypotheses.
+* `nullSingletonClass_map_addCircle_of_absolutelyContinuous`: the law of `X_0 mod π` has no atoms
   (`NullSingletonClass`, the current name of `NoAtoms`) when the law of `X_0` is absolutely
-  continuous, in particular when it is `p₀(u) 1_{[0,π]}(u) du`.
-* `hstat_of_map_eq_density`, `hstat_neg_of_map_eq_density`: the two combined, with the stationarity
-  hypothesis in exactly the form `∀ t, law(X_t mod π) = law(X_0 mod π)` produced by
-  `map_addCircle_thetaHat_prod_eq_admissible` (Stationary layer).
+  continuous.
 
 No external input is used; this file does not import the Stationary layer.
 -/
@@ -139,8 +135,9 @@ variable {X : ℝ≥0 → Ω → ℝ}
 
 /-- **Bridge to `hstat`.** If the law of `X_t mod π` (as a random variable in `AddCircle π`) is the
 same measure `μ` for all `t`, and `μ` has no atoms, then for every `η > 0` there is `ε > 0` with
-`P(X_t ∉ C_ε) ≤ η` for all `t`. This is the input `hstat` of `sle_recurrence'`; its hypotheses
-compose with the conclusion of `map_addCircle_thetaHat_prod_eq_admissible` (take `μ = P.map (X_0 mod π)`). -/
+`P(X_t ∉ C_ε) ≤ η` for all `t`. This is the input `hstat` of `ae_frequently_mem_latticeSet`; its
+hypotheses compose with the conclusion of `map_addCircle_thetaHat_prod_eq_admissible` (take
+`μ = P.map (X_0 mod π)`). -/
 theorem hstat_of_map_eq (hX : ∀ t, Measurable (X t)) {μ : Measure (AddCircle π)}
     [NullSingletonClass μ]
     (hμ : ∀ t, P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) = μ) (x : ℝ) :
@@ -154,9 +151,9 @@ theorem hstat_of_map_eq (hX : ∀ t, Measurable (X t)) {μ : Measure (AddCircle 
     (S := {v | v ∉ goodSet x ε}) hεU
   exact this.trans hμU.le
 
-/-- **Bridge to the reflected `hstat`** (the input of `sle_recurrence_nonpos`): under the
-hypotheses of `hstat_of_map_eq`, for every `η > 0` there is `ε > 0` with
-`P(-X_t ∉ C_ε(-x)) ≤ η` for all `t`. -/
+/-- **Bridge to the reflected `hstat`** (the input of the renewal argument for the process `-X`
+and the point `-x`): under the hypotheses of `hstat_of_map_eq`, for every `η > 0` there is `ε > 0`
+with `P(-X_t ∉ C_ε(-x)) ≤ η` for all `t`. -/
 theorem hstat_neg_of_map_eq (hX : ∀ t, Measurable (X t)) {μ : Measure (AddCircle π)}
     [NullSingletonClass μ]
     (hμ : ∀ t, P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) = μ) (x : ℝ) :
@@ -195,39 +192,6 @@ theorem nullSingletonClass_map_addCircle_of_absolutelyContinuous {X₀ : Ω → 
     push_cast
     linarith
   exact hac (hcount.measure_zero volume)
-
-omit [IsProbabilityMeasure P] in
-/-- The law of `X₀ mod π` has no atoms when the law of `X₀` is `p₀(u) 1_{[0,π]}(u) du`. -/
-theorem nullSingletonClass_map_addCircle_of_withDensity {X₀ : Ω → ℝ} (hX₀ : Measurable X₀)
-    {p₀ : ℝ → ℝ}
-    (hlaw : P.map X₀ = (volume.restrict (Icc 0 π)).withDensity fun v => ENNReal.ofReal (p₀ v)) :
-    NullSingletonClass (P.map fun ω => ((X₀ ω : ℝ) : AddCircle π)) := by
-  refine nullSingletonClass_map_addCircle_of_absolutelyContinuous hX₀ ?_
-  rw [hlaw]
-  exact (withDensity_absolutelyContinuous _ _).trans Measure.restrict_le_self.absolutelyContinuous
-
-/-- **`hstat` from the stationary law with density `p₀`.** If `law(X_0) = p₀(u) 1_{[0,π]}(u) du`
-and `law(X_t mod π) = law(X_0 mod π)` for all `t` (the conclusion of `map_addCircle_thetaHat_prod_eq_admissible`),
-then for every `η > 0` there is `ε > 0` with `P(X_t ∉ C_ε) ≤ η` for all `t`: the input `hstat` of
-`sle_recurrence'`. -/
-theorem hstat_of_map_eq_density (hX : ∀ t, Measurable (X t)) {p₀ : ℝ → ℝ}
-    (hlaw : P.map (X 0) = (volume.restrict (Icc 0 π)).withDensity fun v => ENNReal.ofReal (p₀ v))
-    (hstat : ∀ t : ℝ≥0, P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) =
-      P.map (fun ω => ((X 0 ω : ℝ) : AddCircle π))) (x : ℝ) :
-    ∀ η : ℝ, 0 < η → ∃ ε : ℝ, 0 < ε ∧ ∀ t : ℝ≥0, P.real {ω | X t ω ∉ goodSet x ε} ≤ η :=
-  haveI := nullSingletonClass_map_addCircle_of_withDensity (hX 0) hlaw
-  hstat_of_map_eq hX hstat x
-
-/-- **Reflected `hstat` from the stationary law with density `p₀`**: the input of
-`sle_recurrence_nonpos` under the hypotheses of `hstat_of_map_eq_density`. -/
-theorem hstat_neg_of_map_eq_density (hX : ∀ t, Measurable (X t)) {p₀ : ℝ → ℝ}
-    (hlaw : P.map (X 0) = (volume.restrict (Icc 0 π)).withDensity fun v => ENNReal.ofReal (p₀ v))
-    (hstat : ∀ t : ℝ≥0, P.map (fun ω => ((X t ω : ℝ) : AddCircle π)) =
-      P.map (fun ω => ((X 0 ω : ℝ) : AddCircle π))) (x : ℝ) :
-    ∀ η : ℝ, 0 < η → ∃ ε : ℝ, 0 < ε ∧
-      ∀ t : ℝ≥0, P.real {ω | -X t ω ∉ goodSet (-x) ε} ≤ η :=
-  haveI := nullSingletonClass_map_addCircle_of_withDensity (hX 0) hlaw
-  hstat_neg_of_map_eq hX hstat x
 
 end ComplexSLE.Recurrence
 

@@ -168,9 +168,6 @@ theorem eventually_mem_sigmaDom_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
 @[expose] def sigmaDomSet (U : ℝ≥0 → ℂ) (hU : Continuous U) (s : ℝ) : Set ℂ :=
   {w | s ∈ sigmaDom U hU w}
 
-theorem mem_sigmaDomSet {hU : Continuous U} {s : ℝ} {w : ℂ} :
-    w ∈ sigmaDomSet U hU s ↔ s ∈ sigmaDom U hU w := Iff.rfl
-
 /-- **`{w | s ∈ sigmaDom U hU w}` is open.** -/
 theorem isOpen_sigmaDomSet (U : ℝ≥0 → ℂ) (hU : Continuous U) (s : ℝ) :
     IsOpen (sigmaDomSet U hU s) :=
@@ -198,10 +195,6 @@ theorem continuousAt_sigmaTime_initial (hU : Continuous U) {z : ℂ} {s : ℝ}
   · obtain ⟨t₂, ht₂, hlt, hlt'⟩ := exists_mem_lifeSet_between hσ hb
     filter_upwards [eventually_mem_sigmaDom_sigmaTime_lt hU hs ht₂ hlt] with w hw
     exact hw.2.trans hlt'
-
-theorem continuousOn_sigmaTime_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => sigmaTime U hU w s) (sigmaDomSet U hU s) := fun _ hz =>
-  (continuousAt_sigmaTime_initial hU hz).continuousWithinAt
 
 /-! ### Continuity of `f̂_s(w) = f_{σ_w(s)}(w)` and of `log|f̂_s(w)|` -/
 
@@ -254,15 +247,6 @@ theorem continuousAt_log_norm_fPath_sigmaTime_initial (hU : Continuous U) {z : �
     ContinuousAt (fun w => Real.log ‖fPath U hU w (sigmaTime U hU w s)‖) z :=
   (continuousAt_fPath_sigmaTime_initial hU hs).norm.log
     (norm_ne_zero_iff.2 (fPath_sigmaTime_ne_zero hU hs))
-
-theorem continuousOn_fPath_sigmaTime_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => fPath U hU w (sigmaTime U hU w s)) (sigmaDomSet U hU s) := fun _ hz =>
-  (continuousAt_fPath_sigmaTime_initial hU hz).continuousWithinAt
-
-theorem continuousOn_log_norm_fPath_sigmaTime_initial (hU : Continuous U) (s : ℝ) :
-    ContinuousOn (fun w => Real.log ‖fPath U hU w (sigmaTime U hU w s)‖)
-      (sigmaDomSet U hU s) := fun _ hz =>
-  (continuousAt_log_norm_fPath_sigmaTime_initial hU hz).continuousWithinAt
 
 end ComplexSLE.Internal.Polar
 
