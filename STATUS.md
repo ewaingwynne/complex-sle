@@ -16,7 +16,7 @@ M11 cleanup — 2026-11-04 (author request: remove all Lean code that the proofs
   - the six rfl `@[simp]` lemmas `ell_re`, `ell_im` and `toFin2_{zero,one,two,three}`. `simp` uses them by
     unfolding, so they leave no trace in proof terms, and the build fails without them.
   - the anchor `loewnerMap_conformal`, a proved classical input. No paper result uses it any more, and only 115 lines
-    (3 declarations) serve it alone. Deleting it would remove a frozen anchor, so it awaits the author.
+    (3 declarations) serve it alone. The author chose to keep it (2026-11-04).
 - **Size:** 376 → 372 files, 63,825 → 60,567 lines, and 45,666 → 43,296 lines that are not blank and not comments.
 - **Gate:** the full gate passes (lake build 8030 jobs, 372 files, ABI OK on 60 anchors, all 36 sealed theorems
   `PROVED`), and so does the graph gate.
